@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"strings"
 
+	validator "github.com/go-playground/validator"
 	form "github.com/xendit/xendit-go/form"
 	option "github.com/xendit/xendit-go/option"
 )
@@ -92,8 +93,12 @@ type Response struct {
 
 // CreateInvoice creates new invoice
 func (i Invoice) CreateInvoice(data form.CreateInvoiceData) (Response, error) {
-	// TODO: validate the input data
 	var response Response
+
+	v := validator.New()
+	if err := v.Struct(data); err != nil {
+		return response, err
+	}
 
 	reqBody, err := json.Marshal(data)
 	if err != nil {
@@ -218,7 +223,6 @@ func convertJSONStringToStringSlice(stringParams string) [][]string {
 
 // GetAllInvoices gets all invoices with conditions
 func (i Invoice) GetAllInvoices(data form.GetAllInvoicesData) ([]Response, error) {
-	// TODO: validate the input data
 	var responses []Response
 
 	req, err := http.NewRequest(
