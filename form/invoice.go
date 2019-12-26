@@ -2,10 +2,10 @@ package form
 
 // CreateInvoiceData is data that needed to CreateInvoice
 type CreateInvoiceData struct {
-	ExternalID               string   `json:"external_id"`
-	PayerEmail               string   `json:"payer_email"`
-	Description              string   `json:"description"`
-	Amount                   int64    `json:"amount"`
+	ExternalID               string   `json:"external_id" validate:"required"`
+	PayerEmail               string   `json:"payer_email" validate:"required"`
+	Description              string   `json:"description" validate:"required"`
+	Amount                   int64    `json:"amount" validate:"required"`
 	ShouldSendEmail          bool     `json:"should_send_email,omitempty"`
 	CallbackVirtualAccountID string   `json:"callback_virtual_account_id,omitempty"`
 	InvoiceDuration          int      `json:"invoice_duration,omitempty"`
