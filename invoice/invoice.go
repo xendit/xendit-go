@@ -1,8 +1,15 @@
 package invoice
 
 import (
-	form "github.com/xendit/xendit-go-client/form"
-	option "github.com/xendit/xendit-go-client/option"
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"strings"
+
+	form "github.com/xendit/xendit-go/form"
+	option "github.com/xendit/xendit-go/option"
 )
 
 // Invoice is ...
@@ -77,31 +84,182 @@ type Response struct {
 	FailureRedirectURL        string         `json:"failure_redirect_url,omitempty"`
 	Items                     string         `json:"items,omitempty"`
 	FixedVA                   string         `json:"fixed_va,omitempty"`
-	ErrorCode                 string         `json:"error_code"`
+	ErrorCode                 string         `json:"error_code,omitempty"`
+	ErrorMessage              string         `json:"message,omitempty"`
 }
+
+// TODO: implement context
 
 // CreateInvoice creates new invoice
 func (i Invoice) CreateInvoice(data form.CreateInvoiceData) (Response, error) {
 	// TODO: validate the input data
 
 	var response Response
+
+	reqBody, err := json.Marshal(data)
+	if err != nil {
+		return response, err
+	}
+
+	req, err := http.NewRequest(
+		"POST",
+		fmt.Sprintf("%s/v2/invoices", i.Opt.XenditURL),
+		bytes.NewBuffer(reqBody),
+	)
+	if err != nil {
+		return response, err
+	}
+	req.SetBasicAuth(i.Opt.SecretKey, "")
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return response, err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return response, err
+	}
+
+	if err := json.Unmarshal(body, &response); err != nil {
+		return response, err
+	}
+
 	return response, nil
 }
 
 // GetInvoice gets one invoice
 func (i Invoice) GetInvoice(invoiceID string) (Response, error) {
+
 	var response Response
+
+	req, err := http.NewRequest(
+		"GET",
+		fmt.Sprintf("%s/v2/invoices/%s", i.Opt.XenditURL, invoiceID),
+		nil,
+	)
+	if err != nil {
+		return response, err
+	}
+	req.SetBasicAuth(i.Opt.SecretKey, "")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return response, err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return response, err
+	}
+
+	if err := json.Unmarshal(body, &response); err != nil {
+		return response, err
+	}
+
 	return response, nil
 }
 
 // ExpireInvoice expire the created invoice
 func (i Invoice) ExpireInvoice(invoiceID string) (Response, error) {
+
 	var response Response
+
+	req, err := http.NewRequest(
+		"POST",
+		fmt.Sprintf("%s/invoices/%s/expire!", i.Opt.XenditURL, invoiceID),
+		nil,
+	)
+	if err != nil {
+		return response, err
+	}
+	req.SetBasicAuth(i.Opt.SecretKey, "")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return response, err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return response, err
+	}
+
+	if err := json.Unmarshal(body, &response); err != nil {
+		return response, err
+	}
+
 	return response, nil
+}
+
+func removeFromList(slice []string, idx int) []string {
+	return append(slice[:idx], slice[idx+1:]...)
+}
+
+func convertJSONStringToStringList(stringParams string) [][]string {
+	var stringList [][]string
+
+	stringParamsList := strings.Split(stringParams, ",")
+
+	loopEnd := len(stringParamsList)
+	for i := 0; i < loopEnd; i++ {
+		if strings.Contains(stringParamsList[i], "[") {
+			stringParamsList[i] = stringParamsList[i] + stringParamsList[i+1]
+			stringParamsList = removeFromList(stringParamsList, i+1)
+			loopEnd--
+		}
+
+		stringList = append(stringList, strings.SplitN(stringParamsList[i], ":", 2))
+	}
+
+	return stringList
 }
 
 // GetAllInvoices gets all invoices with conditions
 func (i Invoice) GetAllInvoices(data form.GetAllInvoicesData) ([]Response, error) {
+	// TODO: validate the input data
 	var responses []Response
+
+	req, err := http.NewRequest(
+		"GET",
+		fmt.Sprintf("%s/v2/invoices", i.Opt.XenditURL),
+		nil,
+	)
+	if err != nil {
+		return responses, err
+	}
+	req.SetBasicAuth(i.Opt.SecretKey, "")
+
+	reqParamsByte, err := json.Marshal(data)
+	if err != nil {
+		return responses, err
+	}
+	paramList := convertJSONStringToStringList(string(reqParamsByte)[1 : len(reqParamsByte)-1])
+
+	queryParams := req.URL.Query()
+	for _, param := range paramList {
+		queryParams.Add(param[0], param[1])
+	}
+	req.URL.RawQuery = queryParams.Encode()
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return responses, err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return responses, err
+	}
+
+	if err := json.Unmarshal(body, &responses); err != nil {
+		return responses, err
+	}
+
 	return responses, nil
 }
