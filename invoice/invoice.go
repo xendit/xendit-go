@@ -93,7 +93,6 @@ type Response struct {
 // CreateInvoice creates new invoice
 func (i Invoice) CreateInvoice(data form.CreateInvoiceData) (Response, error) {
 	// TODO: validate the input data
-
 	var response Response
 
 	reqBody, err := json.Marshal(data)
@@ -132,7 +131,6 @@ func (i Invoice) CreateInvoice(data form.CreateInvoiceData) (Response, error) {
 
 // GetInvoice gets one invoice
 func (i Invoice) GetInvoice(invoiceID string) (Response, error) {
-
 	var response Response
 
 	req, err := http.NewRequest(
@@ -165,7 +163,6 @@ func (i Invoice) GetInvoice(invoiceID string) (Response, error) {
 
 // ExpireInvoice expire the created invoice
 func (i Invoice) ExpireInvoice(invoiceID string) (Response, error) {
-
 	var response Response
 
 	req, err := http.NewRequest(
@@ -196,12 +193,12 @@ func (i Invoice) ExpireInvoice(invoiceID string) (Response, error) {
 	return response, nil
 }
 
-func removeFromList(slice []string, idx int) []string {
+func removeFromSlice(slice []string, idx int) []string {
 	return append(slice[:idx], slice[idx+1:]...)
 }
 
-func convertJSONStringToStringList(stringParams string) [][]string {
-	var stringList [][]string
+func convertJSONStringToStringSlice(stringParams string) [][]string {
+	var stringSlice [][]string
 
 	stringParamsList := strings.Split(stringParams, ",")
 
@@ -209,14 +206,14 @@ func convertJSONStringToStringList(stringParams string) [][]string {
 	for i := 0; i < loopEnd; i++ {
 		if strings.Contains(stringParamsList[i], "[") {
 			stringParamsList[i] = stringParamsList[i] + stringParamsList[i+1]
-			stringParamsList = removeFromList(stringParamsList, i+1)
+			stringParamsList = removeFromSlice(stringParamsList, i+1)
 			loopEnd--
 		}
 
-		stringList = append(stringList, strings.SplitN(stringParamsList[i], ":", 2))
+		stringSlice = append(stringSlice, strings.SplitN(stringParamsList[i], ":", 2))
 	}
 
-	return stringList
+	return stringSlice
 }
 
 // GetAllInvoices gets all invoices with conditions
@@ -238,7 +235,7 @@ func (i Invoice) GetAllInvoices(data form.GetAllInvoicesData) ([]Response, error
 	if err != nil {
 		return responses, err
 	}
-	paramList := convertJSONStringToStringList(string(reqParamsByte)[1 : len(reqParamsByte)-1])
+	paramList := convertJSONStringToStringSlice(string(reqParamsByte)[1 : len(reqParamsByte)-1])
 
 	queryParams := req.URL.Query()
 	for _, param := range paramList {
