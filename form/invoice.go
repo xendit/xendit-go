@@ -2,10 +2,10 @@ package form
 
 // CreateInvoiceData is data that needed to CreateInvoice
 type CreateInvoiceData struct {
-	ExternalID               string   `json:"external_id"`
-	PayerEmail               string   `json:"payer_email"`
-	Description              string   `json:"description"`
-	Amount                   int64    `json:"amount"`
+	ExternalID               string   `json:"external_id" validate:"required"`
+	PayerEmail               string   `json:"payer_email" validate:"required"`
+	Description              string   `json:"description" validate:"required"`
+	Amount                   int64    `json:"amount" validate:"required"`
 	ShouldSendEmail          bool     `json:"should_send_email,omitempty"`
 	CallbackVirtualAccountID string   `json:"callback_virtual_account_id,omitempty"`
 	InvoiceDuration          int      `json:"invoice_duration,omitempty"`
@@ -19,17 +19,17 @@ type CreateInvoiceData struct {
 
 // GetAllInvoicesData is data that needed to GetAllInvoices
 type GetAllInvoicesData struct {
-	Statuses           []string `json:"statuses"`
-	Limit              int      `json:"limit"`
-	CreatedAfter       string   `json:"created_after"`
-	CreatedBefore      string   `json:"created_before"`
-	PaidAfter          string   `json:"paid_after"`
-	PaidBefore         string   `json:"paid_before"`
-	ExpiredAfter       string   `json:"expired_after"`
-	ExpiredBefore      string   `json:"expired_before"`
-	LastInvoiceID      string   `json:"last_invoice_id"`
-	ClientTypes        []string `json:"client_types"`
-	PaymentChannels    []string `json:"payment_channels"`
-	OnDemandLink       string   `json:"on_demand_link"`
-	RecurringPaymentID string   `json:"recurring_payment_id"`
+	Statuses           []string `json:"statuses,omitempty"`
+	Limit              int      `json:"limit,omitempty"`
+	CreatedAfter       string   `json:"created_after,omitempty"`
+	CreatedBefore      string   `json:"created_before,omitempty"`
+	PaidAfter          string   `json:"paid_after,omitempty"`
+	PaidBefore         string   `json:"paid_before,omitempty"`
+	ExpiredAfter       string   `json:"expired_after,omitempty"`
+	ExpiredBefore      string   `json:"expired_before,omitempty"`
+	LastInvoiceID      string   `json:"last_invoice_id,omitempty"`
+	ClientTypes        []string `json:"client_types,omitempty"`
+	PaymentChannels    []string `json:"payment_channels,omitempty"`
+	OnDemandLink       string   `json:"on_demand_link,omitempty"`
+	RecurringPaymentID string   `json:"recurring_payment_id,omitempty"`
 }
