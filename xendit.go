@@ -1,8 +1,8 @@
 package xendit
 
 import (
-	invoice "github.com/xendit/xendit-go-client/invoice"
-	option "github.com/xendit/xendit-go-client/option"
+	invoice "github.com/xendit/xendit-go/invoice"
+	option "github.com/xendit/xendit-go/option"
 )
 
 // Xendit is ...
