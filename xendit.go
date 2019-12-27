@@ -1,5 +1,16 @@
 package xendit
 
+// PublicKey ...
+var PublicKey string
+
+// SecretKey ...
+var SecretKey string
+
+// XenditURL ...
+var XenditURL string = "https://api.xendit.co"
+
+var defaultHTTPRequester HTTPRequester = HTTPRequesterImplementation{}
+
 // Option is ...
 type Option struct {
 	PublicKey string // customer's public API key
@@ -7,9 +18,12 @@ type Option struct {
 	XenditURL string // should there be a need to override API base URL
 }
 
-// GetHTTPRequester gets the default implementation of HTTPRequester
+// GetHTTPRequester returns the defaultHTTPRequester
 func GetHTTPRequester() HTTPRequester {
-	httpRequester := HTTPRequesterImplementation{}
+	return defaultHTTPRequester
+}
 
-	return httpRequester
+// SetHTTPRequester sets the defaultHTTPRequester
+func SetHTTPRequester(httpRequester HTTPRequester) {
+	defaultHTTPRequester = httpRequester
 }

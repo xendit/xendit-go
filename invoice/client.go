@@ -16,7 +16,12 @@ type Client struct {
 }
 
 // CreateInvoice creates new invoice
-func (c *Client) CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+func CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+	return getClient().CreateInvoice(data)
+}
+
+// CreateInvoice creates new invoice
+func (c Client) CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
 	var response *xendit.Invoice
 
 	v := validator.New()
@@ -47,7 +52,12 @@ func (c *Client) CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoic
 }
 
 // GetInvoice gets one invoice
-func (c *Client) GetInvoice(invoiceID string) (*xendit.Invoice, error) {
+func GetInvoice(invoiceID string) (*xendit.Invoice, error) {
+	return getClient().GetInvoice(invoiceID)
+}
+
+// GetInvoice gets one invoice
+func (c Client) GetInvoice(invoiceID string) (*xendit.Invoice, error) {
 	var response *xendit.Invoice
 
 	respBody, err := c.HTTPRequester.Call(
@@ -68,7 +78,12 @@ func (c *Client) GetInvoice(invoiceID string) (*xendit.Invoice, error) {
 }
 
 // ExpireInvoice expire the created invoice
-func (c *Client) ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
+func ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
+	return getClient().ExpireInvoice(invoiceID)
+}
+
+// ExpireInvoice expire the created invoice
+func (c Client) ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
 	var response *xendit.Invoice
 
 	respBody, err := c.HTTPRequester.Call(
@@ -89,7 +104,12 @@ func (c *Client) ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
 }
 
 // GetAllInvoices gets all invoices with conditions
-func (c *Client) GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+func GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+	return getClient().GetAllInvoices(data)
+}
+
+// GetAllInvoices gets all invoices with conditions
+func (c Client) GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
 	var responses []xendit.Invoice
 
 	reqParams, err := json.Marshal(data)
@@ -112,4 +132,15 @@ func (c *Client) GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Inv
 	}
 
 	return responses, nil
+}
+
+func getClient() Client {
+	return Client{
+		Opt: &xendit.Option{
+			PublicKey: xendit.PublicKey,
+			SecretKey: xendit.SecretKey,
+			XenditURL: xendit.XenditURL,
+		},
+		HTTPRequester: xendit.GetHTTPRequester(),
+	}
 }
