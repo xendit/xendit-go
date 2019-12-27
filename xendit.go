@@ -1,34 +1,15 @@
 package xendit
 
-import (
-	invoice "github.com/xendit/xendit-go/invoice"
-	option "github.com/xendit/xendit-go/option"
-)
-
-// Xendit is ...
-type Xendit struct {
-	Opt     option.Option
-	Invoice invoice.Invoice
+// Option is ...
+type Option struct {
+	PublicKey string // customer's public API key
+	SecretKey string // customer's secret API key
+	XenditURL string // should there be a need to override API base URL
 }
 
-// New is constructor of Xendit
-func New(publicKey string, secretKey string, xenditURL string) Xendit {
+// GetHTTPRequester gets the default implementation of HTTPRequester
+func GetHTTPRequester() HTTPRequester {
+	httpRequester := HTTPRequesterImplementation{}
 
-	if xenditURL == "" {
-		xenditURL = "https://api.xendit.co"
-	}
-
-	xendit := Xendit{
-		Opt: option.Option{
-			PublicKey: publicKey,
-			SecretKey: secretKey,
-			XenditURL: xenditURL,
-		},
-	}
-
-	xendit.Invoice = invoice.Invoice{
-		Opt: &xendit.Opt,
-	}
-
-	return xendit
+	return httpRequester
 }
