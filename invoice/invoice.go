@@ -20,13 +20,13 @@ type Invoice struct {
 
 // bank is data that contained in API response of invoice in available_banks
 type bank struct {
-	BankCode          string `json:"bank_code"`
-	CollectionType    string `json:"collection_type"`
-	BankAccountNumber string `json:"bank_account_number"`
-	TransferAmount    int64  `json:"transfer_amount"`
-	BankBranch        string `json:"bank_branch"`
-	AccountHolderName string `json:"account_holder_name"`
-	IdentityAmount    int    `json:"identity_amount"`
+	BankCode          string  `json:"bank_code"`
+	CollectionType    string  `json:"collection_type"`
+	BankAccountNumber string  `json:"bank_account_number"`
+	TransferAmount    float64 `json:"transfer_amount"`
+	BankBranch        string  `json:"bank_branch"`
+	AccountHolderName string  `json:"account_holder_name"`
+	IdentityAmount    int     `json:"identity_amount"`
 }
 
 // eWallet is data that contained in response at availableEWallets
@@ -36,17 +36,17 @@ type eWallet struct {
 
 // retailOutlet is data that contained in response at availableEWallets
 type retailOutlet struct {
-	RetailOutletName string `json:"retail_outlet_name"`
-	PaymentCode      string `json:"payment_code"`
-	TransferAmount   int64  `json:"transfer_amount"`
-	MerchantName     string `json:"merchant_name,omitempty"`
+	RetailOutletName string  `json:"retail_outlet_name"`
+	PaymentCode      string  `json:"payment_code"`
+	TransferAmount   float64 `json:"transfer_amount"`
+	MerchantName     string  `json:"merchant_name,omitempty"`
 }
 
 //
 type item struct {
-	Name     string `json:"name"`
-	Price    int64  `json:"price"`
-	Quantity int    `json:"quantity"`
+	Name     string  `json:"name"`
+	Price    float64 `json:"price"`
+	Quantity int     `json:"quantity"`
 }
 
 // Response is data that contained in API response of invoice related request
@@ -56,7 +56,7 @@ type Response struct {
 	UserID                    string         `json:"user_id"`
 	PayerEmail                string         `json:"payer_email"`
 	Description               string         `json:"description"`
-	Amount                    int64          `json:"amount"`
+	Amount                    float64        `json:"amount"`
 	MerchantName              string         `json:"merchant_name"`
 	MerchantProfilePictureURL string         `json:"merchant_profile_picture_url"`
 	InvoiceURL                string         `json:"invoice_url"`
