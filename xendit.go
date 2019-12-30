@@ -1,17 +1,13 @@
 package xendit
 
-// PublicKey ...
-var PublicKey string
-
-// SecretKey ...
-var SecretKey string
-
-// XenditURL ...
-var XenditURL string = "https://api.xendit.co"
+// Opt is the default Option for the API call without API client
+var Opt Option = Option{
+	XenditURL: "https://api.xendit.co",
+}
 
 var defaultHTTPRequester HTTPRequester = HTTPRequesterImplementation{}
 
-// Option is ...
+// Option is the wrap of the parameters needed for the API call
 type Option struct {
 	PublicKey string // customer's public API key
 	SecretKey string // customer's secret API key

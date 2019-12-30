@@ -141,11 +141,7 @@ func (c Client) GetAllInvoices(ctx context.Context, data *xendit.GetAllInvoicesP
 
 func getClient() Client {
 	return Client{
-		Opt: &xendit.Option{
-			PublicKey: xendit.PublicKey,
-			SecretKey: xendit.SecretKey,
-			XenditURL: xendit.XenditURL,
-		},
+		Opt:           &xendit.Opt,
 		HTTPRequester: xendit.GetHTTPRequester(),
 	}
 }

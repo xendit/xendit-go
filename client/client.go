@@ -11,7 +11,7 @@ type API struct {
 	Invoice *invoice.Client
 }
 
-// Init is constructor of Xendit
+// Init initiate all the products of the API client
 func (a *API) Init(httpRequester *xendit.HTTPRequester) {
 	if httpRequester == nil {
 		httpRequesterObj := xendit.GetHTTPRequester()
@@ -21,7 +21,7 @@ func (a *API) Init(httpRequester *xendit.HTTPRequester) {
 	a.Invoice = &invoice.Client{Opt: &a.opt, HTTPRequester: *httpRequester}
 }
 
-// New creates a new Xendit client
+// New creates a new Xendit API client
 func New(publicKey string, secretKey string, xenditURL string, httpRequester *xendit.HTTPRequester) *API {
 	if xenditURL == "" {
 		xenditURL = "https://api.xendit.co"
