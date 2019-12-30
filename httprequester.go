@@ -2,6 +2,7 @@ package xendit
 
 import (
 	"bytes"
+	"context"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -10,7 +11,7 @@ import (
 // HTTPRequester is an interface for making http requests
 // This interface exists to enable mocking for testing
 type HTTPRequester interface {
-	Call(method string, url string, secretKey string, paramsString string) ([]byte, error)
+	Call(ctx context.Context, method string, url string, secretKey string, paramsString string) ([]byte, error)
 }
 
 // HTTPRequesterImplementation is the default implementation of HTTPRequester
@@ -18,14 +19,14 @@ type HTTPRequesterImplementation struct {
 }
 
 // Call makes http request
-func (h HTTPRequesterImplementation) Call(method string, url string, secretKey string, paramsString string) ([]byte, error) {
+func (h HTTPRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, paramsString string) ([]byte, error) {
 	var req *http.Request
 	var err error
 
 	if method == "GET" {
-		req, err = h.getReq(url, paramsString)
+		req, err = h.getReq(ctx, url, paramsString)
 	} else if method == "POST" {
-		req, err = h.postReq(url, paramsString)
+		req, err = h.postReq(ctx, url, paramsString)
 	}
 	if err != nil {
 		return nil, err
@@ -47,8 +48,9 @@ func (h HTTPRequesterImplementation) Call(method string, url string, secretKey s
 	return body, nil
 }
 
-func (h HTTPRequesterImplementation) getReq(url string, paramsString string) (*http.Request, error) {
-	req, err := http.NewRequest(
+func (h HTTPRequesterImplementation) getReq(ctx context.Context, url string, paramsString string) (*http.Request, error) {
+	req, err := http.NewRequestWithContext(
+		ctx,
 		"GET",
 		url,
 		nil,
@@ -70,18 +72,20 @@ func (h HTTPRequesterImplementation) getReq(url string, paramsString string) (*h
 	return req, nil
 }
 
-func (h HTTPRequesterImplementation) postReq(url string, paramsString string) (*http.Request, error) {
+func (h HTTPRequesterImplementation) postReq(ctx context.Context, url string, paramsString string) (*http.Request, error) {
 	var req *http.Request
 	var err error
 
 	if paramsString == "" {
-		req, err = http.NewRequest(
+		req, err = http.NewRequestWithContext(
+			ctx,
 			"POST",
 			url,
 			nil,
 		)
 	} else {
-		req, err = http.NewRequest(
+		req, err = http.NewRequestWithContext(
+			ctx,
 			"POST",
 			url,
 			bytes.NewBuffer([]byte(paramsString)),
