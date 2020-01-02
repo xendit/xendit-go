@@ -38,6 +38,7 @@ type Invoice struct {
 	FixedVA                   string                `json:"fixed_va,omitempty"`
 	ErrorCode                 string                `json:"error_code,omitempty"`
 	ErrorMessage              string                `json:"message,omitempty"`
+	Errors                    interface{}           `json:"errors,omitempty"`
 }
 
 // invoiceBank is data that contained in API response of invoice in available_banks
