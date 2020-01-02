@@ -80,3 +80,13 @@ func TestGetAllInvoices(t *testing.T) {
 	assert.Nil(t, err)
 	assert.NotNil(t, resp)
 }
+
+func TestInvoiceWithoutSecretKey(t *testing.T) {
+	ctx, cancel := getTestingContext()
+	defer cancel()
+
+	resp, err := GetInvoice(ctx, "5e058d9af4d38b20d542012f")
+
+	assert.NotNil(t, err)
+	assert.Nil(t, resp)
+}

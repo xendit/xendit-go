@@ -91,7 +91,7 @@ func getAllInvoicesWithoutClientTest(ctx context.Context) {
 /* Wrapper */
 
 func invoiceWithClientTest(ctx context.Context) {
-	x := client.New("", "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab", "", nil)
+	x, _ := client.New("", "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab", "", nil)
 
 	createInvoiceWithClientTest(ctx, *x)
 	getInvoiceWithClientTest(ctx, *x)

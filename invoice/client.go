@@ -3,6 +3,7 @@ package invoice
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 
 	"github.com/xendit/xendit-go"
@@ -18,7 +19,12 @@ type Client struct {
 
 // CreateInvoice creates new invoice
 func CreateInvoice(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	return getClient().CreateInvoice(ctx, data)
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CreateInvoice(ctx, data)
 }
 
 // CreateInvoice creates new invoice
@@ -55,7 +61,12 @@ func (c Client) CreateInvoice(ctx context.Context, data *xendit.CreateInvoicePar
 
 // GetInvoice gets one invoice
 func GetInvoice(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
-	return getClient().GetInvoice(ctx, invoiceID)
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetInvoice(ctx, invoiceID)
 }
 
 // GetInvoice gets one invoice
@@ -82,7 +93,12 @@ func (c Client) GetInvoice(ctx context.Context, invoiceID string) (*xendit.Invoi
 
 // ExpireInvoice expire the created invoice
 func ExpireInvoice(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
-	return getClient().ExpireInvoice(ctx, invoiceID)
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.ExpireInvoice(ctx, invoiceID)
 }
 
 // ExpireInvoice expire the created invoice
@@ -109,7 +125,12 @@ func (c Client) ExpireInvoice(ctx context.Context, invoiceID string) (*xendit.In
 
 // GetAllInvoices gets all invoices with conditions
 func GetAllInvoices(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
-	return getClient().GetAllInvoices(ctx, data)
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetAllInvoices(ctx, data)
 }
 
 // GetAllInvoices gets all invoices with conditions
@@ -139,9 +160,13 @@ func (c Client) GetAllInvoices(ctx context.Context, data *xendit.GetAllInvoicesP
 	return responses, nil
 }
 
-func getClient() Client {
+func getClient() (Client, error) {
+	if xendit.Opt.SecretKey == "" {
+		return Client{}, errors.New("secret key is not allowed to be empty")
+	}
+
 	return Client{
 		Opt:           &xendit.Opt,
 		HTTPRequester: xendit.GetHTTPRequester(),
-	}
+	}, nil
 }
