@@ -12,9 +12,9 @@ type Invoice struct {
 	MerchantProfilePictureURL string                `json:"merchant_profile_picture_url"`
 	InvoiceURL                string                `json:"invoice_url"`
 	ExpiryDate                string                `json:"expiry_date"`
-	AvailableBanks            []invoiceBank         `json:"available_banks,omitempty"`
-	AvailableEWallets         []invoiceEWallet      `json:"available_ewallets,omitempty"`
-	AvailableRetailOutlets    []invoiceRetailOutlet `json:"available_retail_outlets,omitempty"`
+	AvailableBanks            []InvoiceBank         `json:"available_banks,omitempty"`
+	AvailableEWallets         []InvoiceEWallet      `json:"available_ewallets,omitempty"`
+	AvailableRetailOutlets    []InvoiceRetailOutlet `json:"available_retail_outlets,omitempty"`
 	ShouldExcludeCreditCard   bool                  `json:"should_exclude_credit_card"`
 	ShouldSendEmail           bool                  `json:"should_send_email"`
 	Created                   string                `json:"created"`
@@ -41,8 +41,8 @@ type Invoice struct {
 	Errors                    interface{}           `json:"errors,omitempty"`
 }
 
-// invoiceBank is data that contained in API response of invoice in available_banks
-type invoiceBank struct {
+// InvoiceBank is data that contained in API response of invoice in available_banks
+type InvoiceBank struct {
 	BankCode          string  `json:"bank_code"`
 	CollectionType    string  `json:"collection_type"`
 	BankAccountNumber string  `json:"bank_account_number"`
@@ -52,21 +52,21 @@ type invoiceBank struct {
 	IdentityAmount    int     `json:"identity_amount"`
 }
 
-// invoiceEWallet is data that contained in response at availableEWallets
-type invoiceEWallet struct {
+// InvoiceEWallet is data that contained in response at availableEWallets
+type InvoiceEWallet struct {
 	EWalletType string `json:"ewallet_type"`
 }
 
-// invoiceRetailOutlet is data that contained in response at availableEWallets
-type invoiceRetailOutlet struct {
+// InvoiceRetailOutlet is data that contained in response at availableEWallets
+type InvoiceRetailOutlet struct {
 	RetailOutletName string  `json:"retail_outlet_name"`
 	PaymentCode      string  `json:"payment_code"`
 	TransferAmount   float64 `json:"transfer_amount"`
 	MerchantName     string  `json:"merchant_name,omitempty"`
 }
 
-// invoiceItem is data that contained in response at items
-type invoiceItem struct {
+// InvoiceItem is data that contained in response at items
+type InvoiceItem struct {
 	Name     string  `json:"name"`
 	Price    float64 `json:"price"`
 	Quantity int     `json:"quantity"`

@@ -1,11 +1,15 @@
 package xendit
 
+import "sync"
+
 // Opt is the default Option for the API call without API client
 var Opt Option = Option{
 	XenditURL: "https://api.xendit.co",
 }
 
-var defaultHTTPRequester HTTPRequester = HTTPRequesterImplementation{}
+var httpRequesterWrapper HTTPRequesterWrapper = HTTPRequesterWrapper{
+	httpRequester: HTTPRequesterImplementation{},
+}
 
 // Option is the wrap of the parameters needed for the API call
 type Option struct {
@@ -14,12 +18,21 @@ type Option struct {
 	XenditURL string // should there be a need to override API base URL
 }
 
-// GetHTTPRequester returns the defaultHTTPRequester
-func GetHTTPRequester() HTTPRequester {
-	return defaultHTTPRequester
+// HTTPRequesterWrapper is the HTTPRequester with locker for setting the HTTPRequester
+type HTTPRequesterWrapper struct {
+	httpRequester HTTPRequester
+	mu            sync.RWMutex
 }
 
-// SetHTTPRequester sets the defaultHTTPRequester
+// GetHTTPRequester returns the httpRequester
+func GetHTTPRequester() HTTPRequester {
+	return httpRequesterWrapper.httpRequester
+}
+
+// SetHTTPRequester sets the httpRequester
 func SetHTTPRequester(httpRequester HTTPRequester) {
-	defaultHTTPRequester = httpRequester
+	httpRequesterWrapper.mu.Lock()
+	defer httpRequesterWrapper.mu.Unlock()
+
+	httpRequesterWrapper.httpRequester = httpRequester
 }

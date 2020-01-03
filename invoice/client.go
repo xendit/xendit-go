@@ -2,7 +2,6 @@ package invoice
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 
@@ -18,41 +17,67 @@ type Client struct {
 }
 
 // CreateInvoice creates new invoice
-func CreateInvoice(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+func CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.CreateInvoice(ctx, data)
+	return client.CreateInvoice(data)
 }
 
 // CreateInvoice creates new invoice
-func (c Client) CreateInvoice(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	var response *xendit.Invoice
+func (c Client) CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+	response := &xendit.Invoice{}
 
 	v := validator.New()
 	if err := v.Struct(data); err != nil {
 		return nil, err
 	}
 
-	reqBody, err := json.Marshal(data)
-	if err != nil {
-		return nil, err
-	}
-
-	respBody, err := c.HTTPRequester.Call(
-		ctx,
+	err := c.HTTPRequester.Call(
+		nil,
 		"POST",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		string(reqBody),
+		data,
+		response,
 	)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := json.Unmarshal(respBody, &response); err != nil {
+	return response, nil
+}
+
+// CreateInvoiceWithContext creates new invoice with context
+func CreateInvoiceWithContext(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CreateInvoiceWithContext(ctx, data)
+}
+
+// CreateInvoiceWithContext creates new invoice with context
+func (c Client) CreateInvoiceWithContext(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+	response := &xendit.Invoice{}
+
+	v := validator.New()
+	if err := v.Struct(data); err != nil {
+		return nil, err
+	}
+
+	err := c.HTTPRequester.Call(
+		ctx,
+		"POST",
+		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
+		c.Opt.SecretKey,
+		data,
+		response,
+	)
+	if err != nil {
 		return nil, err
 	}
 
@@ -60,31 +85,57 @@ func (c Client) CreateInvoice(ctx context.Context, data *xendit.CreateInvoicePar
 }
 
 // GetInvoice gets one invoice
-func GetInvoice(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+func GetInvoice(invoiceID string) (*xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.GetInvoice(ctx, invoiceID)
+	return client.GetInvoice(invoiceID)
 }
 
 // GetInvoice gets one invoice
-func (c Client) GetInvoice(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
-	var response *xendit.Invoice
+func (c Client) GetInvoice(invoiceID string) (*xendit.Invoice, error) {
+	response := &xendit.Invoice{}
 
-	respBody, err := c.HTTPRequester.Call(
+	err := c.HTTPRequester.Call(
+		nil,
+		"GET",
+		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, invoiceID),
+		c.Opt.SecretKey,
+		nil,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+// GetInvoiceWithContext gets one invoice with context
+func GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetInvoiceWithContext(ctx, invoiceID)
+}
+
+// GetInvoiceWithContext gets one invoice with context
+func (c Client) GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+	response := &xendit.Invoice{}
+
+	err := c.HTTPRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, invoiceID),
 		c.Opt.SecretKey,
-		"",
+		nil,
+		response,
 	)
 	if err != nil {
-		return nil, err
-	}
-
-	if err := json.Unmarshal(respBody, &response); err != nil {
 		return nil, err
 	}
 
@@ -92,31 +143,57 @@ func (c Client) GetInvoice(ctx context.Context, invoiceID string) (*xendit.Invoi
 }
 
 // ExpireInvoice expire the created invoice
-func ExpireInvoice(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+func ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.ExpireInvoice(ctx, invoiceID)
+	return client.ExpireInvoice(invoiceID)
 }
 
 // ExpireInvoice expire the created invoice
-func (c Client) ExpireInvoice(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
-	var response *xendit.Invoice
+func (c Client) ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
+	response := &xendit.Invoice{}
 
-	respBody, err := c.HTTPRequester.Call(
+	err := c.HTTPRequester.Call(
+		nil,
+		"POST",
+		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, invoiceID),
+		c.Opt.SecretKey,
+		nil,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+// ExpireInvoiceWithContext expire the created invoice with context
+func ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.ExpireInvoiceWithContext(ctx, invoiceID)
+}
+
+// ExpireInvoiceWithContext expire the created invoice with context
+func (c Client) ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+	response := &xendit.Invoice{}
+
+	err := c.HTTPRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, invoiceID),
 		c.Opt.SecretKey,
-		"",
+		nil,
+		response,
 	)
 	if err != nil {
-		return nil, err
-	}
-
-	if err := json.Unmarshal(respBody, &response); err != nil {
 		return nil, err
 	}
 
@@ -124,40 +201,61 @@ func (c Client) ExpireInvoice(ctx context.Context, invoiceID string) (*xendit.In
 }
 
 // GetAllInvoices gets all invoices with conditions
-func GetAllInvoices(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+func GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.GetAllInvoices(ctx, data)
+	return client.GetAllInvoices(data)
 }
 
 // GetAllInvoices gets all invoices with conditions
-func (c Client) GetAllInvoices(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
-	var responses []xendit.Invoice
+func (c Client) GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+	response := []xendit.Invoice{}
 
-	reqParams, err := json.Marshal(data)
-	if err != nil {
-		return nil, err
-	}
-
-	respBody, err := c.HTTPRequester.Call(
-		ctx,
+	err := c.HTTPRequester.Call(
+		nil,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		string(reqParams),
+		data,
+		&response,
 	)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := json.Unmarshal(respBody, &responses); err != nil {
+	return response, nil
+}
+
+// GetAllInvoicesWithContext gets all invoices with conditions
+func GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+	client, err := getClient()
+	if err != nil {
 		return nil, err
 	}
 
-	return responses, nil
+	return client.GetAllInvoicesWithContext(ctx, data)
+}
+
+// GetAllInvoicesWithContext gets all invoices with conditions
+func (c Client) GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+	response := []xendit.Invoice{}
+
+	err := c.HTTPRequester.Call(
+		ctx,
+		"GET",
+		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
+		c.Opt.SecretKey,
+		data,
+		&response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
 }
 
 func getClient() (Client, error) {

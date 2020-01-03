@@ -1,8 +1,6 @@
 package client
 
 import (
-	"errors"
-
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/invoice"
 )
@@ -24,11 +22,7 @@ func (a *API) Init(httpRequester *xendit.HTTPRequester) {
 }
 
 // New creates a new Xendit API client
-func New(publicKey string, secretKey string, xenditURL string, httpRequester *xendit.HTTPRequester) (*API, error) {
-	if secretKey == "" {
-		return nil, errors.New("secret key is not allowed to be empty")
-	}
-
+func New(publicKey string, secretKey string, xenditURL string, httpRequester *xendit.HTTPRequester) *API {
 	if xenditURL == "" {
 		xenditURL = "https://api.xendit.co"
 	}
@@ -42,5 +36,5 @@ func New(publicKey string, secretKey string, xenditURL string, httpRequester *xe
 	}
 	api.Init(httpRequester)
 
-	return &api, nil
+	return &api
 }
