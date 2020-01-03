@@ -101,16 +101,18 @@ func (h HTTPRequesterImplementation) doRequest(req *http.Request, result interfa
 func (h HTTPRequesterImplementation) createGETURL(path string, body string) string {
 	base, _ := url.Parse(path)
 
-	paramList := convertJSONStringToStringSlice(body[1 : len(body)-1])
+	if body != "" && body != "null" {
+		paramList := convertJSONStringToStringSlice(body[1 : len(body)-1])
 
-	queryParams := url.Values{}
-	for _, param := range paramList {
-		if param[1][0] == '"' {
-			param[1] = param[1][1 : len(param[1])-1]
+		queryParams := url.Values{}
+		for _, param := range paramList {
+			if param[1][0] == '"' {
+				param[1] = param[1][1 : len(param[1])-1]
+			}
+			queryParams.Add(param[0][1:len(param[0])-1], param[1])
 		}
-		queryParams.Add(param[0][1:len(param[0])-1], param[1])
+		base.RawQuery = queryParams.Encode()
 	}
-	base.RawQuery = queryParams.Encode()
 
 	return base.String()
 }
