@@ -12,100 +12,96 @@ import (
 
 /* With Client */
 
-func createInvoiceWithClientTest(ctx context.Context, x client.API) {
+func createInvoiceWithClient(ctx context.Context, x client.API) {
 	data := xendit.CreateInvoiceParams{
-		ExternalID:  "invoice-" + time.Now().String(),
+		ExternalID:  "invoice-external-id",
 		Amount:      200000,
 		PayerEmail:  "customer@customer.com",
-		Description: "invoice test #1",
+		Description: "invoice  #1",
 	}
 
-	resp, err := x.Invoice.CreateInvoice(ctx, &data)
+	resp, err := x.Invoice.CreateInvoice(&data)
+	fmt.Println(resp, err)
 
+	resp, err = x.Invoice.CreateInvoiceWithContext(ctx, &data)
 	fmt.Println(resp, err)
 }
 
-func getInvoiceWithClientTest(ctx context.Context, x client.API) {
-	resp, err := x.Invoice.GetInvoice(ctx, "5e058d9af4d38b20d542012f")
+func getInvoiceWithClient(ctx context.Context, x client.API) {
+	resp, err := x.Invoice.GetInvoice("5e058d9af4d38b20d542012f")
+	fmt.Println(resp, err)
 
+	resp, err = x.Invoice.GetInvoiceWithContext(ctx, "5e058d9af4d38b20d542012f")
 	fmt.Println(resp, err)
 }
 
-func expireInvoiceWithClientTest(ctx context.Context, x client.API) {
-	resp, err := x.Invoice.ExpireInvoice(ctx, "5e058d9af4d38b20d542012f")
+func expireInvoiceWithClient(ctx context.Context, x client.API) {
+	resp, err := x.Invoice.ExpireInvoice("5e0ec2bff4d38b20d5422231")
+	fmt.Println(resp, err)
 
+	resp, err = x.Invoice.ExpireInvoiceWithContext(ctx, "5e0ec2bff4d38b20d5422231")
 	fmt.Println(resp, err)
 }
 
-func getAllInvoicesWithClientTest(ctx context.Context, x client.API) {
+func getAllInvoicesWithClient(ctx context.Context, x client.API) {
 	data := xendit.GetAllInvoicesParams{
 		Statuses:     []string{"EXPIRED", "SETTLED"},
 		Limit:        2,
 		CreatedAfter: "2016-02-24T23:48:36.697Z",
 	}
 
-	resp, err := x.Invoice.GetAllInvoices(ctx, &data)
+	resp, err := x.Invoice.GetAllInvoices(&data)
+	fmt.Println(resp, err)
 
+	resp, err = x.Invoice.GetAllInvoicesWithContext(ctx, &data)
 	fmt.Println(resp, err)
 }
 
 /* Without Client */
 
-func createInvoiceWithoutClientTest(ctx context.Context) {
+func createInvoiceWithoutClient(ctx context.Context) {
 	data := xendit.CreateInvoiceParams{
 		ExternalID:  "invoice-" + time.Now().String(),
 		Amount:      200000,
 		PayerEmail:  "customer@customer.com",
-		Description: "invoice test #1",
+		Description: "invoice  #1",
 	}
 
-	resp, err := invoice.CreateInvoice(ctx, &data)
+	resp, err := invoice.CreateInvoice(&data)
+	fmt.Println(resp, err)
 
+	resp, err = invoice.CreateInvoiceWithContext(ctx, &data)
 	fmt.Println(resp, err)
 }
 
-func getInvoiceWithoutClientTest(ctx context.Context) {
-	resp, err := invoice.GetInvoice(ctx, "5e058d9af4d38b20d542012f")
+func getInvoiceWithoutClient(ctx context.Context) {
+	resp, err := invoice.GetInvoice("5e058d9af4d38b20d542012f")
+	fmt.Println(resp, err)
 
+	resp, err = invoice.GetInvoiceWithContext(ctx, "5e058d9af4d38b20d542012f")
 	fmt.Println(resp, err)
 }
 
-func expireInvoiceWithoutClientTest(ctx context.Context) {
-	resp, err := invoice.ExpireInvoice(ctx, "5e058d9af4d38b20d542012f")
+func expireInvoiceWithoutClient(ctx context.Context) {
+	resp, err := invoice.ExpireInvoice("5e058d9af4d38b20d542012f")
+	fmt.Println(resp, err)
 
+	resp, err = invoice.ExpireInvoiceWithContext(ctx, "5e058d9af4d38b20d542012f")
 	fmt.Println(resp, err)
 }
 
-func getAllInvoicesWithoutClientTest(ctx context.Context) {
+func getAllInvoicesWithoutClient(ctx context.Context) {
 	data := xendit.GetAllInvoicesParams{
 		Statuses:     []string{"EXPIRED", "SETTLED"},
 		Limit:        2,
 		CreatedAfter: "2016-02-24T23:48:36.697Z",
 	}
 
-	resp, err := invoice.GetAllInvoices(ctx, &data)
-
+	resp, err := invoice.GetAllInvoices(&data)
 	fmt.Println(resp, err)
-}
 
-/* Wrapper */
-
-func invoiceWithClientTest(ctx context.Context) {
-	x, _ := client.New("", "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab", "", nil)
-
-	createInvoiceWithClientTest(ctx, *x)
-	getInvoiceWithClientTest(ctx, *x)
-	expireInvoiceWithClientTest(ctx, *x)
-	getAllInvoicesWithClientTest(ctx, *x)
-}
-
-func invoiceWithoutClientTest(ctx context.Context) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
-
-	createInvoiceWithoutClientTest(ctx)
-	getInvoiceWithoutClientTest(ctx)
-	expireInvoiceWithoutClientTest(ctx)
-	getAllInvoicesWithoutClientTest(ctx)
+	resp, err = invoice.GetAllInvoicesWithContext(ctx, &data)
+	fmt.Println(resp, err)
 }
 
 func main() {
@@ -113,6 +109,17 @@ func main() {
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	invoiceWithClientTest(ctx)
-	invoiceWithoutClientTest(ctx)
+	x := client.New("", "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab", "", nil)
+
+	createInvoiceWithClient(ctx, *x)
+	getInvoiceWithClient(ctx, *x)
+	expireInvoiceWithClient(ctx, *x)
+	getAllInvoicesWithClient(ctx, *x)
+
+	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+
+	createInvoiceWithoutClient(ctx)
+	getInvoiceWithoutClient(ctx)
+	expireInvoiceWithoutClient(ctx)
+	getAllInvoicesWithoutClient(ctx)
 }
