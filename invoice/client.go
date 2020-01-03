@@ -38,12 +38,12 @@ func CreateInvoiceWithContext(ctx context.Context, data *xendit.CreateInvoicePar
 
 // CreateInvoiceWithContext creates new invoice with context
 func (c Client) CreateInvoiceWithContext(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	response := &xendit.Invoice{}
-
 	v := validator.New()
 	if err := v.Struct(data); err != nil {
 		return nil, err
 	}
+
+	response := &xendit.Invoice{}
 
 	err := c.XdAPIRequester.Call(
 		ctx,
@@ -82,6 +82,11 @@ func GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoi
 
 // GetInvoiceWithContext gets one invoice with context
 func (c Client) GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+	v := validator.New()
+	if err := v.Var(invoiceID, "required"); err != nil {
+		return nil, err
+	}
+
 	response := &xendit.Invoice{}
 
 	err := c.XdAPIRequester.Call(
@@ -121,6 +126,11 @@ func ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.In
 
 // ExpireInvoiceWithContext expire the created invoice with context
 func (c Client) ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+	v := validator.New()
+	if err := v.Var(invoiceID, "required"); err != nil {
+		return nil, err
+	}
+
 	response := &xendit.Invoice{}
 
 	err := c.XdAPIRequester.Call(

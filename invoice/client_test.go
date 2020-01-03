@@ -2,26 +2,17 @@ package invoice
 
 import (
 	"context"
+	"encoding/json"
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/xendit/xendit-go"
 )
 
-type httpRequesterMock struct {
-	mock.Mock
-}
-
-func (m *httpRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
-	args := m.Called(ctx, method, path, secretKey, params, result)
-
-	return args.Error(0)
-}
-
-func initTesting() {
+func initTesting(xdAPIRequesterMockObj xendit.XdAPIRequester) {
 	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.SetXdAPIRequester(xdAPIRequesterMockObj)
 }
 
 func getTestingContext() (context.Context, func()) {
@@ -31,19 +22,42 @@ func getTestingContext() (context.Context, func()) {
 	return ctx, cancel
 }
 
-func TestCreateInvoice(t *testing.T) {
-	initTesting()
-	httpRequesterMockObj := new(httpRequesterMock)
-	xendit.SetHTTPRequester(httpRequesterMockObj)
+type xdAPIRequesterMock struct {
+	mock.Mock
+}
 
-	data := xendit.CreateInvoiceParams{
-		ExternalID:  "invoice-" + time.Now().String(),
+func (m *xdAPIRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
+	args := m.Called(ctx, method, path, secretKey, params, result)
+
+	result.(*xendit.Invoice).ID = "123"
+	result.(*xendit.Invoice).ExternalID = "invoice-external-id"
+	result.(*xendit.Invoice).Amount = 200000
+	result.(*xendit.Invoice).PayerEmail = "customer@customer.com"
+	result.(*xendit.Invoice).Description = "invoice test #1"
+
+	return args.Error(0)
+}
+
+func TestCreateInvoice(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
+	initTesting(xdAPIRequesterMockObj)
+
+	expectedResult := &xendit.Invoice{
+		ID:          "123",
+		ExternalID:  "invoice-external-id",
 		Amount:      200000,
 		PayerEmail:  "customer@customer.com",
 		Description: "invoice test #1",
 	}
 
-	httpRequesterMockObj.On(
+	data := xendit.CreateInvoiceParams{
+		ExternalID:  "invoice-external-id",
+		Amount:      200000,
+		PayerEmail:  "customer@customer.com",
+		Description: "invoice test #1",
+	}
+
+	xdAPIRequesterMockObj.On(
 		"Call",
 		nil,
 		"POST",
@@ -55,59 +69,162 @@ func TestCreateInvoice(t *testing.T) {
 
 	resp, err := CreateInvoice(&data)
 
-	httpRequesterMockObj.AssertExpectations(t)
+	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
+	assert.Equal(t, expectedResult, resp)
+}
+
+func TestFalseCreateInvoice(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
+	initTesting(xdAPIRequesterMockObj)
+
+	data := xendit.CreateInvoiceParams{
+		ExternalID: "invoice-external-id",
+		Amount:     200000,
+	}
+
+	resp, err := CreateInvoice(&data)
+
+	xdAPIRequesterMockObj.AssertExpectations(t)
+	assert.NotNil(t, err)
 	assert.Nil(t, resp)
 }
 
-// func TestGetInvoice(t *testing.T) {
-// 	initTesting()
+func TestGetInvoice(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
+	initTesting(xdAPIRequesterMockObj)
 
-// 	ctx, cancel := getTestingContext()
-// 	defer cancel()
+	expectedResult := &xendit.Invoice{
+		ID:          "123",
+		ExternalID:  "invoice-external-id",
+		Amount:      200000,
+		PayerEmail:  "customer@customer.com",
+		Description: "invoice test #1",
+	}
 
-// 	resp, err := GetInvoice("5e058d9af4d38b20d542012f")
+	xdAPIRequesterMockObj.On(
+		"Call",
+		nil,
+		"GET",
+		"https://api.xendit.co/v2/invoices/123",
+		xendit.Opt.SecretKey,
+		nil,
+		&xendit.Invoice{},
+	).Return(nil)
 
-// 	assert.Nil(t, err)
-// 	assert.NotNil(t, resp)
-// }
+	resp, err := GetInvoice("123")
 
-// func TestExpireInvoice(t *testing.T) {
-// 	initTesting()
+	xdAPIRequesterMockObj.AssertExpectations(t)
+	assert.Nil(t, err)
+	assert.Equal(t, expectedResult, resp)
+}
 
-// 	ctx, cancel := getTestingContext()
-// 	defer cancel()
+func TestFalseGetInvoice(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
+	initTesting(xdAPIRequesterMockObj)
 
-// 	resp, err := ExpireInvoice("5e058d9af4d38b20d542012f")
+	resp, err := GetInvoice("")
 
-// 	assert.Nil(t, err)
-// 	assert.NotNil(t, resp)
-// }
+	xdAPIRequesterMockObj.AssertExpectations(t)
+	assert.NotNil(t, err)
+	assert.Nil(t, resp)
+}
 
-// func TestGetAllInvoices(t *testing.T) {
-// 	initTesting()
+func TestExpireInvoice(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
+	initTesting(xdAPIRequesterMockObj)
 
-// 	ctx, cancel := getTestingContext()
-// 	defer cancel()
+	expectedResult := &xendit.Invoice{
+		ID:          "123",
+		ExternalID:  "invoice-external-id",
+		Amount:      200000,
+		PayerEmail:  "customer@customer.com",
+		Description: "invoice test #1",
+	}
 
-// 	data := xendit.GetAllInvoicesParams{
-// 		Statuses:     []string{"EXPIRED", "SETTLED"},
-// 		Limit:        2,
-// 		CreatedAfter: "2016-02-24T23:48:36.697Z",
-// 	}
+	xdAPIRequesterMockObj.On(
+		"Call",
+		nil,
+		"POST",
+		"https://api.xendit.co/invoices/123/expire!",
+		xendit.Opt.SecretKey,
+		nil,
+		&xendit.Invoice{},
+	).Return(nil)
 
-// 	resp, err := GetAllInvoices(&data)
+	resp, err := ExpireInvoice("123")
 
-// 	assert.Nil(t, err)
-// 	assert.NotNil(t, resp)
-// }
+	xdAPIRequesterMockObj.AssertExpectations(t)
+	assert.Nil(t, err)
+	assert.Equal(t, expectedResult, resp)
+}
 
-// func TestInvoiceWithoutSecretKey(t *testing.T) {
-// 	ctx, cancel := getTestingContext()
-// 	defer cancel()
+func TestFalseExpireInvoice(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
+	initTesting(xdAPIRequesterMockObj)
 
-// 	resp, err := GetInvoice("5e058d9af4d38b20d542012f")
+	resp, err := ExpireInvoice("123")
 
-// 	assert.NotNil(t, err)
-// 	assert.Nil(t, resp)
-// }
+	xdAPIRequesterMockObj.AssertExpectations(t)
+	assert.NotNil(t, err)
+	assert.Nil(t, resp)
+}
+
+type xdAPIRequesterGetAllMock struct {
+	mock.Mock
+}
+
+func (m *xdAPIRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
+	args := m.Called(ctx, method, path, secretKey, params, result)
+
+	resultString := `[{
+		"id": "123",
+		"external_id": "invoice-external-id",
+		"amount": 200000,
+		"payer_email": "customer@customer.com",
+		"description": "invoice test #1"
+	}]`
+
+	if err := json.Unmarshal([]byte(resultString), &result); err != nil {
+		return err
+	}
+
+	return args.Error(0)
+}
+
+func TestGetAllInvoices(t *testing.T) {
+	xdAPIRequesterMockObj := new(xdAPIRequesterGetAllMock)
+	initTesting(xdAPIRequesterMockObj)
+
+	expectedResult := []xendit.Invoice{
+		xendit.Invoice{
+			ID:          "123",
+			ExternalID:  "invoice-external-id",
+			Amount:      200000,
+			PayerEmail:  "customer@customer.com",
+			Description: "invoice test #1",
+		},
+	}
+
+	data := xendit.GetAllInvoicesParams{
+		Statuses:     []string{"EXPIRED", "SETTLED"},
+		Limit:        2,
+		CreatedAfter: "2016-02-24T23:48:36.697Z",
+	}
+
+	xdAPIRequesterMockObj.On(
+		"Call",
+		nil,
+		"GET",
+		"https://api.xendit.co/v2/invoices",
+		xendit.Opt.SecretKey,
+		&data,
+		&[]xendit.Invoice{},
+	).Return(nil)
+
+	resp, err := GetAllInvoices(&data)
+
+	xdAPIRequesterMockObj.AssertExpectations(t)
+	assert.Nil(t, err)
+	assert.Equal(t, expectedResult, resp)
+}
