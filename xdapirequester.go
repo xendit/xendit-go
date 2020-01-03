@@ -10,18 +10,19 @@ import (
 	"strings"
 )
 
-// HTTPRequester is an interface for making http requests
+// XdAPIRequester is an interface for making http requests
 // This interface exists to enable mocking for testing
-type HTTPRequester interface {
+type XdAPIRequester interface {
 	Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error
 }
 
-// HTTPRequesterImplementation is the default implementation of HTTPRequester
-type HTTPRequesterImplementation struct {
+// XdAPIRequesterImplementation is the default implementation of XdAPIRequester
+type XdAPIRequesterImplementation struct {
+	HTTPClient *http.Client
 }
 
 // Call creates a HTTP request
-func (h HTTPRequesterImplementation) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
+func (h XdAPIRequesterImplementation) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
 	var body string
 
 	if params != nil {
@@ -50,7 +51,7 @@ func (h HTTPRequesterImplementation) Call(ctx context.Context, method string, pa
 	return nil
 }
 
-func (h HTTPRequesterImplementation) newRequest(ctx context.Context, method string, path string, secretKey string, body string) (*http.Request, error) {
+func (h XdAPIRequesterImplementation) newRequest(ctx context.Context, method string, path string, secretKey string, body string) (*http.Request, error) {
 	var req *http.Request
 	var err error
 
@@ -78,9 +79,8 @@ func (h HTTPRequesterImplementation) newRequest(ctx context.Context, method stri
 	return req, nil
 }
 
-func (h HTTPRequesterImplementation) doRequest(req *http.Request, result interface{}) error {
-	client := &http.Client{}
-	resp, err := client.Do(req)
+func (h XdAPIRequesterImplementation) doRequest(req *http.Request, result interface{}) error {
+	resp, err := h.HTTPClient.Do(req)
 	if err != nil {
 		return err
 	}
@@ -98,7 +98,7 @@ func (h HTTPRequesterImplementation) doRequest(req *http.Request, result interfa
 }
 
 // createGETURL creates an url with query string for HTTP GET request
-func (h HTTPRequesterImplementation) createGETURL(path string, body string) string {
+func (h XdAPIRequesterImplementation) createGETURL(path string, body string) string {
 	base, _ := url.Parse(path)
 
 	if body != "" && body != "null" {

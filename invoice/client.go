@@ -12,8 +12,8 @@ import (
 
 // Client is the client used to invoke invoice API.
 type Client struct {
-	Opt           *xendit.Option
-	HTTPRequester xendit.HTTPRequester
+	Opt            *xendit.Option
+	XdAPIRequester xendit.XdAPIRequester
 }
 
 // CreateInvoice creates new invoice
@@ -45,7 +45,7 @@ func (c Client) CreateInvoiceWithContext(ctx context.Context, data *xendit.Creat
 		return nil, err
 	}
 
-	err := c.HTTPRequester.Call(
+	err := c.XdAPIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
@@ -84,7 +84,7 @@ func GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoi
 func (c Client) GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
 	response := &xendit.Invoice{}
 
-	err := c.HTTPRequester.Call(
+	err := c.XdAPIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, invoiceID),
@@ -123,7 +123,7 @@ func ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.In
 func (c Client) ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
 	response := &xendit.Invoice{}
 
-	err := c.HTTPRequester.Call(
+	err := c.XdAPIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, invoiceID),
@@ -162,7 +162,7 @@ func GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesP
 func (c Client) GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
 	response := []xendit.Invoice{}
 
-	err := c.HTTPRequester.Call(
+	err := c.XdAPIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
@@ -183,7 +183,7 @@ func getClient() (Client, error) {
 	}
 
 	return Client{
-		Opt:           &xendit.Opt,
-		HTTPRequester: xendit.GetHTTPRequester(),
+		Opt:            &xendit.Opt,
+		XdAPIRequester: xendit.GetXdAPIRequester(),
 	}, nil
 }
