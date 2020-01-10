@@ -13,7 +13,7 @@ import (
 // `body` is POST-requests' bodies if applicable.
 // `result` pointer to value which response string will be unmarshalled to.
 type APIRequester interface {
-	Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) error
+	Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) *Error
 }
 
 // APIRequesterImplementation is the default implementation of XdAPIRequester
@@ -24,7 +24,7 @@ type APIRequesterImplementation struct {
 // Call makes HTTP requests with JSON-format body.
 // `body` is POST-requests' bodies if applicable.
 // `result` pointer to value which response string will be unmarshalled to.
-func (h *APIRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) error {
+func (h *APIRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) *Error {
 	reqBody := []byte("")
 	var req *http.Request
 	var err error
@@ -34,7 +34,7 @@ func (h *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 	if !isParamsNil {
 		reqBody, err = json.Marshal(body)
 		if err != nil {
-			return err
+			return FromGoErr(err)
 		}
 	}
 
@@ -45,32 +45,28 @@ func (h *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 		bytes.NewBuffer(reqBody),
 	)
 	if err != nil {
-		return err
+		return FromGoErr(err)
 	}
 
 	req.SetBasicAuth(secretKey, "")
 	req.Header.Set("Content-Type", "application/json")
 
-	if err := h.doRequest(req, result); err != nil {
-		return err
-	}
-
-	return nil
+	return h.doRequest(req, result)
 }
 
-func (h *APIRequesterImplementation) doRequest(req *http.Request, result interface{}) error {
+func (h *APIRequesterImplementation) doRequest(req *http.Request, result interface{}) *Error {
 	resp, err := h.HTTPClient.Do(req)
 	if err != nil {
-		return err
+		return FromGoErr(err)
 	}
 	defer resp.Body.Close()
 	respBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return err
+		return FromGoErr(err)
 	}
 
 	if err := json.Unmarshal(respBody, &result); err != nil {
-		return err
+		return FromGoErr(err)
 	}
 
 	return nil

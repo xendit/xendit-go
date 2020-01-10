@@ -28,8 +28,8 @@ type xdAPIRequesterMock struct {
 	mock.Mock
 }
 
-func (m *xdAPIRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
-	args := m.Called(ctx, method, path, secretKey, params, result)
+func (m *xdAPIRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, params, result)
 
 	result.(*xendit.Invoice).ID = "123"
 	result.(*xendit.Invoice).ExternalID = "invoice-external-id"
@@ -37,7 +37,7 @@ func (m *xdAPIRequesterMock) Call(ctx context.Context, method string, path strin
 	result.(*xendit.Invoice).PayerEmail = "customer@customer.com"
 	result.(*xendit.Invoice).Description = "invoice test #1"
 
-	return args.Error(0)
+	return nil
 }
 
 func TestCreateInvoice(t *testing.T) {
@@ -165,8 +165,8 @@ type xdAPIRequesterGetAllMock struct {
 	mock.Mock
 }
 
-func (m *xdAPIRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) error {
-	args := m.Called(ctx, method, path, secretKey, params, result)
+func (m *xdAPIRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, params, result)
 
 	resultString := `[{
 		"id": "123",
@@ -176,11 +176,8 @@ func (m *xdAPIRequesterGetAllMock) Call(ctx context.Context, method string, path
 		"description": "invoice test #1"
 	}]`
 
-	if err := json.Unmarshal([]byte(resultString), &result); err != nil {
-		return err
-	}
-
-	return args.Error(0)
+	json.Unmarshal([]byte(resultString), &result)
+	return nil
 }
 
 func TestGetAllInvoices(t *testing.T) {
