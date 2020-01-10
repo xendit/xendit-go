@@ -12,9 +12,9 @@ type API struct {
 }
 
 // Init initiate all the products of the API client
-func (a *API) Init(xdAPIRequester *xendit.XdAPIRequester) {
+func (a *API) Init(xdAPIRequester *xendit.APIRequester) {
 	if xdAPIRequester == nil {
-		xdAPIRequesterObj := xendit.GetXdAPIRequester()
+		xdAPIRequesterObj := xendit.GetAPIRequester()
 		xdAPIRequester = &xdAPIRequesterObj
 	}
 
@@ -22,7 +22,7 @@ func (a *API) Init(xdAPIRequester *xendit.XdAPIRequester) {
 }
 
 // New creates a new Xendit API client
-func New(publicKey string, secretKey string, xenditURL string, xdAPIRequester *xendit.XdAPIRequester) *API {
+func New(publicKey string, secretKey string, xenditURL string, xdAPIRequester *xendit.APIRequester) *API {
 	if xenditURL == "" {
 		xenditURL = "https://api.xendit.co"
 	}
