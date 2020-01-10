@@ -16,28 +16,28 @@ type Client struct {
 	XdAPIRequester xendit.APIRequester
 }
 
-// CreateInvoice creates new invoice
-func CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	return CreateInvoiceWithContext(context.Background(), data)
+// Create creates new invoice
+func Create(data *CreateParams) (*xendit.Invoice, error) {
+	return CreateWithContext(context.Background(), data)
 }
 
-// CreateInvoice creates new invoice
-func (c Client) CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	return c.CreateInvoiceWithContext(context.Background(), data)
+// Create creates new invoice
+func (c Client) Create(data *CreateParams) (*xendit.Invoice, error) {
+	return c.CreateWithContext(context.Background(), data)
 }
 
-// CreateInvoiceWithContext creates new invoice with context
-func CreateInvoiceWithContext(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+// CreateWithContext creates new invoice with context
+func CreateWithContext(ctx context.Context, data *CreateParams) (*xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.CreateInvoiceWithContext(ctx, data)
+	return client.CreateWithContext(ctx, data)
 }
 
-// CreateInvoiceWithContext creates new invoice with context
-func (c Client) CreateInvoiceWithContext(ctx context.Context, data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
+// CreateWithContext creates new invoice with context
+func (c Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xendit.Invoice, error) {
 	v := validator.New()
 	if err := v.Struct(data); err != nil {
 		return nil, err
@@ -60,28 +60,28 @@ func (c Client) CreateInvoiceWithContext(ctx context.Context, data *xendit.Creat
 	return response, nil
 }
 
-// GetInvoice gets one invoice
-func GetInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return GetInvoiceWithContext(context.Background(), invoiceID)
+// Get gets one invoice
+func Get(invoiceID string) (*xendit.Invoice, error) {
+	return GetWithContext(context.Background(), invoiceID)
 }
 
-// GetInvoice gets one invoice
-func (c Client) GetInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return c.GetInvoiceWithContext(context.Background(), invoiceID)
+// Get gets one invoice
+func (c Client) Get(invoiceID string) (*xendit.Invoice, error) {
+	return c.GetWithContext(context.Background(), invoiceID)
 }
 
-// GetInvoiceWithContext gets one invoice with context
-func GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+// GetWithContext gets one invoice with context
+func GetWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.GetInvoiceWithContext(ctx, invoiceID)
+	return client.GetWithContext(ctx, invoiceID)
 }
 
-// GetInvoiceWithContext gets one invoice with context
-func (c Client) GetInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+// GetWithContext gets one invoice with context
+func (c Client) GetWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
 	v := validator.New()
 	if err := v.Var(invoiceID, "required"); err != nil {
 		return nil, err
@@ -104,28 +104,28 @@ func (c Client) GetInvoiceWithContext(ctx context.Context, invoiceID string) (*x
 	return response, nil
 }
 
-// ExpireInvoice expire the created invoice
-func ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return ExpireInvoiceWithContext(context.Background(), invoiceID)
+// Expire expire the created invoice
+func Expire(invoiceID string) (*xendit.Invoice, error) {
+	return ExpireWithContext(context.Background(), invoiceID)
 }
 
-// ExpireInvoice expire the created invoice
-func (c Client) ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return c.ExpireInvoiceWithContext(context.Background(), invoiceID)
+// Expire expire the created invoice
+func (c Client) Expire(invoiceID string) (*xendit.Invoice, error) {
+	return c.ExpireWithContext(context.Background(), invoiceID)
 }
 
-// ExpireInvoiceWithContext expire the created invoice with context
-func ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+// ExpireWithContext expire the created invoice with context
+func ExpireWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.ExpireInvoiceWithContext(ctx, invoiceID)
+	return client.ExpireWithContext(ctx, invoiceID)
 }
 
-// ExpireInvoiceWithContext expire the created invoice with context
-func (c Client) ExpireInvoiceWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
+// ExpireWithContext expire the created invoice with context
+func (c Client) ExpireWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, error) {
 	v := validator.New()
 	if err := v.Var(invoiceID, "required"); err != nil {
 		return nil, err
@@ -148,28 +148,28 @@ func (c Client) ExpireInvoiceWithContext(ctx context.Context, invoiceID string) 
 	return response, nil
 }
 
-// GetAllInvoices gets all invoices with conditions
-func GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
-	return GetAllInvoicesWithContext(context.Background(), data)
+// GetAll gets all invoices with conditions
+func GetAll(data *GetAllParams) ([]xendit.Invoice, error) {
+	return GetAllWithContext(context.Background(), data)
 }
 
-// GetAllInvoices gets all invoices with conditions
-func (c Client) GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
-	return c.GetAllInvoicesWithContext(context.Background(), data)
+// GetAll gets all invoices with conditions
+func (c Client) GetAll(data *GetAllParams) ([]xendit.Invoice, error) {
+	return c.GetAllWithContext(context.Background(), data)
 }
 
-// GetAllInvoicesWithContext gets all invoices with conditions
-func GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+// GetAllWithContext gets all invoices with conditions
+func GetAllWithContext(ctx context.Context, data *GetAllParams) ([]xendit.Invoice, error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.GetAllInvoicesWithContext(ctx, data)
+	return client.GetAllWithContext(ctx, data)
 }
 
-// GetAllInvoicesWithContext gets all invoices with conditions
-func (c Client) GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
+// GetAllWithContext gets all invoices with conditions
+func (c Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]xendit.Invoice, error) {
 	response := []xendit.Invoice{}
 	var queryString string
 

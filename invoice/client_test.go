@@ -52,7 +52,7 @@ func TestCreateInvoice(t *testing.T) {
 		Description: "invoice test #1",
 	}
 
-	data := xendit.CreateInvoiceParams{
+	data := invoice.CreateParams{
 		ExternalID:  "invoice-external-id",
 		Amount:      200000,
 		PayerEmail:  "customer@customer.com",
@@ -69,7 +69,7 @@ func TestCreateInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := invoice.CreateInvoice(&data)
+	resp, err := invoice.Create(&data)
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
@@ -80,12 +80,12 @@ func TestFalseCreateInvoice(t *testing.T) {
 	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
 	initTesting(xdAPIRequesterMockObj)
 
-	data := xendit.CreateInvoiceParams{
+	data := invoice.CreateParams{
 		ExternalID: "invoice-external-id",
 		Amount:     200000,
 	}
 
-	resp, err := invoice.CreateInvoice(&data)
+	resp, err := invoice.Create(&data)
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
@@ -114,7 +114,7 @@ func TestGetInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := invoice.GetInvoice("123")
+	resp, err := invoice.Get("123")
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
@@ -125,7 +125,7 @@ func TestFalseGetInvoice(t *testing.T) {
 	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
 	initTesting(xdAPIRequesterMockObj)
 
-	resp, err := invoice.GetInvoice("")
+	resp, err := invoice.Get("")
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
@@ -154,7 +154,7 @@ func TestExpireInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := invoice.ExpireInvoice("123")
+	resp, err := invoice.Expire("123")
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
@@ -198,7 +198,7 @@ func TestGetAllInvoices(t *testing.T) {
 	}
 
 	createdAfter, _ := time.Parse(time.RFC3339, "2016-02-24T23:48:36.697Z")
-	data := xendit.GetAllInvoicesParams{
+	data := invoice.GetAllParams{
 		Statuses:     []string{"EXPIRED", "SETTLED"},
 		Limit:        2,
 		CreatedAfter: createdAfter,
@@ -214,7 +214,7 @@ func TestGetAllInvoices(t *testing.T) {
 		&[]xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := invoice.GetAllInvoices(&data)
+	resp, err := invoice.GetAll(&data)
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
