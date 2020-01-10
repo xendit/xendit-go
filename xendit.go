@@ -23,27 +23,27 @@ type Option struct {
 
 // XdAPIRequesterWrapper is the XdAPIRequester with locker for setting the XdAPIRequester
 type XdAPIRequesterWrapper struct {
-	xdAPIRequester XdAPIRequester
+	xdAPIRequester APIRequester
 	mu             sync.RWMutex
 }
 
-// GetXdAPIRequester returns the xdAPIRequester
+// GetAPIRequester returns the xendit APIRequester
 // if it is already created, it will return the created one
 // else, it will create a default implementation
-func GetXdAPIRequester() XdAPIRequester {
+func GetAPIRequester() APIRequester {
 	if xdAPIRequesterWrapper.xdAPIRequester != nil {
 		return xdAPIRequesterWrapper.xdAPIRequester
 	}
 
-	xdAPIRequesterWrapper.xdAPIRequester = XdAPIRequesterImplementation{
+	xdAPIRequesterWrapper.xdAPIRequester = &APIRequesterImplementation{
 		HTTPClient: httpClient,
 	}
 
 	return xdAPIRequesterWrapper.xdAPIRequester
 }
 
-// SetXdAPIRequester sets the xdAPIRequester
-func SetXdAPIRequester(xdAPIRequester XdAPIRequester) {
+// SetAPIRequester sets the APIRequester
+func SetAPIRequester(xdAPIRequester APIRequester) {
 	xdAPIRequesterWrapper.mu.Lock()
 	defer xdAPIRequesterWrapper.mu.Unlock()
 

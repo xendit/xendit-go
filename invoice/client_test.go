@@ -1,18 +1,20 @@
-package invoice
+package invoice_test
 
 import (
 	"context"
 	"encoding/json"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/xendit/xendit-go"
+	"github.com/xendit/xendit-go/invoice"
 )
 
-func initTesting(xdAPIRequesterMockObj xendit.XdAPIRequester) {
+func initTesting(xdAPIRequesterMockObj xendit.APIRequester) {
 	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
-	xendit.SetXdAPIRequester(xdAPIRequesterMockObj)
+	xendit.SetAPIRequester(xdAPIRequesterMockObj)
 }
 
 func getTestingContext() (context.Context, func()) {
@@ -59,7 +61,7 @@ func TestCreateInvoice(t *testing.T) {
 
 	xdAPIRequesterMockObj.On(
 		"Call",
-		nil,
+		context.Background(),
 		"POST",
 		"https://api.xendit.co/v2/invoices",
 		xendit.Opt.SecretKey,
@@ -67,7 +69,7 @@ func TestCreateInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := CreateInvoice(&data)
+	resp, err := invoice.CreateInvoice(&data)
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
@@ -83,7 +85,7 @@ func TestFalseCreateInvoice(t *testing.T) {
 		Amount:     200000,
 	}
 
-	resp, err := CreateInvoice(&data)
+	resp, err := invoice.CreateInvoice(&data)
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
@@ -104,7 +106,7 @@ func TestGetInvoice(t *testing.T) {
 
 	xdAPIRequesterMockObj.On(
 		"Call",
-		nil,
+		context.Background(),
 		"GET",
 		"https://api.xendit.co/v2/invoices/123",
 		xendit.Opt.SecretKey,
@@ -112,7 +114,7 @@ func TestGetInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := GetInvoice("123")
+	resp, err := invoice.GetInvoice("123")
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
@@ -123,7 +125,7 @@ func TestFalseGetInvoice(t *testing.T) {
 	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
 	initTesting(xdAPIRequesterMockObj)
 
-	resp, err := GetInvoice("")
+	resp, err := invoice.GetInvoice("")
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
@@ -144,7 +146,7 @@ func TestExpireInvoice(t *testing.T) {
 
 	xdAPIRequesterMockObj.On(
 		"Call",
-		nil,
+		context.Background(),
 		"POST",
 		"https://api.xendit.co/invoices/123/expire!",
 		xendit.Opt.SecretKey,
@@ -152,22 +154,11 @@ func TestExpireInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := ExpireInvoice("123")
+	resp, err := invoice.ExpireInvoice("123")
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedResult, resp)
-}
-
-func TestFalseExpireInvoice(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
-	initTesting(xdAPIRequesterMockObj)
-
-	resp, err := ExpireInvoice("123")
-
-	xdAPIRequesterMockObj.AssertExpectations(t)
-	assert.NotNil(t, err)
-	assert.Nil(t, resp)
 }
 
 type xdAPIRequesterGetAllMock struct {
@@ -206,23 +197,24 @@ func TestGetAllInvoices(t *testing.T) {
 		},
 	}
 
+	createdAfter, _ := time.Parse(time.RFC3339, "2016-02-24T23:48:36.697Z")
 	data := xendit.GetAllInvoicesParams{
 		Statuses:     []string{"EXPIRED", "SETTLED"},
 		Limit:        2,
-		CreatedAfter: "2016-02-24T23:48:36.697Z",
+		CreatedAfter: createdAfter,
 	}
 
 	xdAPIRequesterMockObj.On(
 		"Call",
-		nil,
+		context.Background(),
 		"GET",
-		"https://api.xendit.co/v2/invoices",
+		"https://api.xendit.co/v2/invoices?"+data.QueryString(),
 		xendit.Opt.SecretKey,
 		&data,
 		&[]xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := GetAllInvoices(&data)
+	resp, err := invoice.GetAllInvoices(&data)
 
 	xdAPIRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)

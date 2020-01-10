@@ -13,17 +13,17 @@ import (
 // Client is the client used to invoke invoice API.
 type Client struct {
 	Opt            *xendit.Option
-	XdAPIRequester xendit.XdAPIRequester
+	XdAPIRequester xendit.APIRequester
 }
 
 // CreateInvoice creates new invoice
 func CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	return CreateInvoiceWithContext(nil, data)
+	return CreateInvoiceWithContext(context.Background(), data)
 }
 
 // CreateInvoice creates new invoice
 func (c Client) CreateInvoice(data *xendit.CreateInvoiceParams) (*xendit.Invoice, error) {
-	return c.CreateInvoiceWithContext(nil, data)
+	return c.CreateInvoiceWithContext(context.Background(), data)
 }
 
 // CreateInvoiceWithContext creates new invoice with context
@@ -62,12 +62,12 @@ func (c Client) CreateInvoiceWithContext(ctx context.Context, data *xendit.Creat
 
 // GetInvoice gets one invoice
 func GetInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return GetInvoiceWithContext(nil, invoiceID)
+	return GetInvoiceWithContext(context.Background(), invoiceID)
 }
 
 // GetInvoice gets one invoice
 func (c Client) GetInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return c.GetInvoiceWithContext(nil, invoiceID)
+	return c.GetInvoiceWithContext(context.Background(), invoiceID)
 }
 
 // GetInvoiceWithContext gets one invoice with context
@@ -106,12 +106,12 @@ func (c Client) GetInvoiceWithContext(ctx context.Context, invoiceID string) (*x
 
 // ExpireInvoice expire the created invoice
 func ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return ExpireInvoiceWithContext(nil, invoiceID)
+	return ExpireInvoiceWithContext(context.Background(), invoiceID)
 }
 
 // ExpireInvoice expire the created invoice
 func (c Client) ExpireInvoice(invoiceID string) (*xendit.Invoice, error) {
-	return c.ExpireInvoiceWithContext(nil, invoiceID)
+	return c.ExpireInvoiceWithContext(context.Background(), invoiceID)
 }
 
 // ExpireInvoiceWithContext expire the created invoice with context
@@ -150,12 +150,12 @@ func (c Client) ExpireInvoiceWithContext(ctx context.Context, invoiceID string) 
 
 // GetAllInvoices gets all invoices with conditions
 func GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
-	return GetAllInvoicesWithContext(nil, data)
+	return GetAllInvoicesWithContext(context.Background(), data)
 }
 
 // GetAllInvoices gets all invoices with conditions
 func (c Client) GetAllInvoices(data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
-	return c.GetAllInvoicesWithContext(nil, data)
+	return c.GetAllInvoicesWithContext(context.Background(), data)
 }
 
 // GetAllInvoicesWithContext gets all invoices with conditions
@@ -171,11 +171,16 @@ func GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesP
 // GetAllInvoicesWithContext gets all invoices with conditions
 func (c Client) GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetAllInvoicesParams) ([]xendit.Invoice, error) {
 	response := []xendit.Invoice{}
+	var queryString string
+
+	if data != nil {
+		queryString = data.QueryString()
+	}
 
 	err := c.XdAPIRequester.Call(
 		ctx,
 		"GET",
-		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
+		fmt.Sprintf("%s/v2/invoices?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
 		data,
 		&response,
@@ -187,13 +192,13 @@ func (c Client) GetAllInvoicesWithContext(ctx context.Context, data *xendit.GetA
 	return response, nil
 }
 
-func getClient() (Client, error) {
+func getClient() (*Client, error) {
 	if xendit.Opt.SecretKey == "" {
-		return Client{}, errors.New("secret key is not allowed to be empty")
+		return nil, errors.New("secret key is not allowed to be empty")
 	}
 
-	return Client{
+	return &Client{
 		Opt:            &xendit.Opt,
-		XdAPIRequester: xendit.GetXdAPIRequester(),
+		XdAPIRequester: xendit.GetAPIRequester(),
 	}, nil
 }

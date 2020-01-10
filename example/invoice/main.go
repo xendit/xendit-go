@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/xendit/xendit-go"
@@ -18,15 +19,27 @@ func main() {
 		Description: "invoice  #1",
 	}
 
-	resp, _ := invoice.CreateInvoice(&data)
-	fmt.Println("created invoice:", resp)
+	resp, err := invoice.CreateInvoice(&data)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("created invoice: %+v\n", resp)
 
-	resp, _ = invoice.GetInvoice(resp.ID)
-	fmt.Println("retrieved invoice:", resp)
+	resp, err = invoice.GetInvoice(resp.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("retrieved invoice: %+v\n", resp)
 
-	resp, _ = invoice.ExpireInvoice(resp.ID)
-	fmt.Println("expired invoice:", resp)
+	resp, err = invoice.ExpireInvoice(resp.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("expired invoice: %+v\n", resp)
 
-	resps, _ := invoice.GetAllInvoices(nil)
-	fmt.Println("first 10 invoices", resps)
+	resps, err := invoice.GetAllInvoices(nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("first 10 invoices %+v\n", resps)
 }
