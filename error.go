@@ -22,6 +22,16 @@ func (e *Error) Error() string {
 	return e.Message
 }
 
+// GetErrorCode returns error code coming from xendit backend
+func (e *Error) GetErrorCode() string {
+	return e.ErrorCode
+}
+
+// GetStatus returns http status code
+func (e *Error) GetStatus() int {
+	return e.Status
+}
+
 // FromGoErr generate xendit.Error from generic go errors
 func FromGoErr(err error) *Error {
 	return &Error{
