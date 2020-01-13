@@ -74,7 +74,7 @@ func (p *GetAllParams) QueryString() string {
 	return urlValues.Encode()
 }
 
-// ExpireParams paramters for Expire
+// ExpireParams parameters for Expire
 type ExpireParams struct {
 	ID string `json:"id" validate:"required"`
 }

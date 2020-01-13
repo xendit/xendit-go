@@ -44,7 +44,7 @@ func FromGoErr(err error) *Error {
 	}
 }
 
-// FromHTTPErr generate xendit.Error from http errors with not 2xx status
+// FromHTTPErr generate xendit.Error from http errors with non 2xx status
 func FromHTTPErr(status int, respBody []byte) *Error {
 	var httpError *Error
 	if err := json.Unmarshal(respBody, &httpError); err != nil {
