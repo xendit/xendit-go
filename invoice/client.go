@@ -11,8 +11,8 @@ import (
 
 // Client is the client used to invoke invoice API.
 type Client struct {
-	Opt            *xendit.Option
-	XdAPIRequester xendit.APIRequester
+	Opt          *xendit.Option
+	APIRequester xendit.APIRequester
 }
 
 // Create creates new invoice
@@ -44,7 +44,7 @@ func (c Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xen
 
 	response := &xendit.Invoice{}
 
-	err := c.XdAPIRequester.Call(
+	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
@@ -88,7 +88,7 @@ func (c Client) GetWithContext(ctx context.Context, invoiceID string) (*xendit.I
 
 	response := &xendit.Invoice{}
 
-	err := c.XdAPIRequester.Call(
+	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, invoiceID),
@@ -132,7 +132,7 @@ func (c Client) ExpireWithContext(ctx context.Context, invoiceID string) (*xendi
 
 	response := &xendit.Invoice{}
 
-	err := c.XdAPIRequester.Call(
+	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, invoiceID),
@@ -176,7 +176,7 @@ func (c Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]xe
 		queryString = data.QueryString()
 	}
 
-	err := c.XdAPIRequester.Call(
+	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices?%s", c.Opt.XenditURL, queryString),
@@ -193,7 +193,7 @@ func (c Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]xe
 
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
-		Opt:            &xendit.Opt,
-		XdAPIRequester: xendit.GetAPIRequester(),
+		Opt:          &xendit.Opt,
+		APIRequester: xendit.GetAPIRequester(),
 	}, nil
 }

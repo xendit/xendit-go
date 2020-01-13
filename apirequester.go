@@ -16,7 +16,7 @@ type APIRequester interface {
 	Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) *Error
 }
 
-// APIRequesterImplementation is the default implementation of XdAPIRequester
+// APIRequesterImplementation is the default implementation of APIRequester
 type APIRequesterImplementation struct {
 	HTTPClient *http.Client
 }

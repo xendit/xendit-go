@@ -12,9 +12,9 @@ import (
 	"github.com/xendit/xendit-go/invoice"
 )
 
-func initTesting(xdAPIRequesterMockObj xendit.APIRequester) {
+func initTesting(apiRequesterMockObj xendit.APIRequester) {
 	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
-	xendit.SetAPIRequester(xdAPIRequesterMockObj)
+	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
 func getTestingContext() (context.Context, func()) {
@@ -24,11 +24,11 @@ func getTestingContext() (context.Context, func()) {
 	return ctx, cancel
 }
 
-type xdAPIRequesterMock struct {
+type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *xdAPIRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, params, result)
 
 	result.(*xendit.Invoice).ID = "123"
@@ -41,8 +41,8 @@ func (m *xdAPIRequesterMock) Call(ctx context.Context, method string, path strin
 }
 
 func TestCreateInvoice(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
-	initTesting(xdAPIRequesterMockObj)
+	apiRequesterMockObj := new(apiRequesterMock)
+	initTesting(apiRequesterMockObj)
 
 	expectedResult := &xendit.Invoice{
 		ID:          "123",
@@ -59,7 +59,7 @@ func TestCreateInvoice(t *testing.T) {
 		Description: "invoice test #1",
 	}
 
-	xdAPIRequesterMockObj.On(
+	apiRequesterMockObj.On(
 		"Call",
 		context.Background(),
 		"POST",
@@ -71,14 +71,14 @@ func TestCreateInvoice(t *testing.T) {
 
 	resp, err := invoice.Create(&data)
 
-	xdAPIRequesterMockObj.AssertExpectations(t)
+	apiRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedResult, resp)
 }
 
 func TestFalseCreateInvoice(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
-	initTesting(xdAPIRequesterMockObj)
+	apiRequesterMockObj := new(apiRequesterMock)
+	initTesting(apiRequesterMockObj)
 
 	data := invoice.CreateParams{
 		ExternalID: "invoice-external-id",
@@ -87,14 +87,14 @@ func TestFalseCreateInvoice(t *testing.T) {
 
 	resp, err := invoice.Create(&data)
 
-	xdAPIRequesterMockObj.AssertExpectations(t)
+	apiRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
 	assert.Nil(t, resp)
 }
 
 func TestGetInvoice(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
-	initTesting(xdAPIRequesterMockObj)
+	apiRequesterMockObj := new(apiRequesterMock)
+	initTesting(apiRequesterMockObj)
 
 	expectedResult := &xendit.Invoice{
 		ID:          "123",
@@ -104,7 +104,7 @@ func TestGetInvoice(t *testing.T) {
 		Description: "invoice test #1",
 	}
 
-	xdAPIRequesterMockObj.On(
+	apiRequesterMockObj.On(
 		"Call",
 		context.Background(),
 		"GET",
@@ -116,25 +116,25 @@ func TestGetInvoice(t *testing.T) {
 
 	resp, err := invoice.Get("123")
 
-	xdAPIRequesterMockObj.AssertExpectations(t)
+	apiRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedResult, resp)
 }
 
 func TestFalseGetInvoice(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
-	initTesting(xdAPIRequesterMockObj)
+	apiRequesterMockObj := new(apiRequesterMock)
+	initTesting(apiRequesterMockObj)
 
 	resp, err := invoice.Get("")
 
-	xdAPIRequesterMockObj.AssertExpectations(t)
+	apiRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
 	assert.Nil(t, resp)
 }
 
 func TestExpireInvoice(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterMock)
-	initTesting(xdAPIRequesterMockObj)
+	apiRequesterMockObj := new(apiRequesterMock)
+	initTesting(apiRequesterMockObj)
 
 	expectedResult := &xendit.Invoice{
 		ID:          "123",
@@ -144,7 +144,7 @@ func TestExpireInvoice(t *testing.T) {
 		Description: "invoice test #1",
 	}
 
-	xdAPIRequesterMockObj.On(
+	apiRequesterMockObj.On(
 		"Call",
 		context.Background(),
 		"POST",
@@ -156,16 +156,16 @@ func TestExpireInvoice(t *testing.T) {
 
 	resp, err := invoice.Expire("123")
 
-	xdAPIRequesterMockObj.AssertExpectations(t)
+	apiRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedResult, resp)
 }
 
-type xdAPIRequesterGetAllMock struct {
+type apiRequesterGetAllMock struct {
 	mock.Mock
 }
 
-func (m *xdAPIRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, params, result)
 
 	resultString := `[{
@@ -181,8 +181,8 @@ func (m *xdAPIRequesterGetAllMock) Call(ctx context.Context, method string, path
 }
 
 func TestGetAllInvoices(t *testing.T) {
-	xdAPIRequesterMockObj := new(xdAPIRequesterGetAllMock)
-	initTesting(xdAPIRequesterMockObj)
+	apiRequesterMockObj := new(apiRequesterGetAllMock)
+	initTesting(apiRequesterMockObj)
 
 	expectedResult := []xendit.Invoice{
 		xendit.Invoice{
@@ -201,7 +201,7 @@ func TestGetAllInvoices(t *testing.T) {
 		CreatedAfter: createdAfter,
 	}
 
-	xdAPIRequesterMockObj.On(
+	apiRequesterMockObj.On(
 		"Call",
 		context.Background(),
 		"GET",
@@ -213,7 +213,7 @@ func TestGetAllInvoices(t *testing.T) {
 
 	resp, err := invoice.GetAll(&data)
 
-	xdAPIRequesterMockObj.AssertExpectations(t)
+	apiRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedResult, resp)
 }

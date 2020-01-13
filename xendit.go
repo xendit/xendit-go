@@ -10,7 +10,7 @@ var Opt Option = Option{
 	XenditURL: "https://api.xendit.co",
 }
 
-var xdAPIRequesterWrapper XdAPIRequesterWrapper = XdAPIRequesterWrapper{}
+var apiRequesterWrapper APIRequesterWrapper = APIRequesterWrapper{}
 
 var httpClient *http.Client = &http.Client{}
 
@@ -21,9 +21,9 @@ type Option struct {
 	XenditURL string // should there be a need to override API base URL
 }
 
-// XdAPIRequesterWrapper is the XdAPIRequester with locker for setting the XdAPIRequester
-type XdAPIRequesterWrapper struct {
-	xdAPIRequester APIRequester
+// APIRequesterWrapper is the APIRequester with locker for setting the APIRequester
+type APIRequesterWrapper struct {
+	apiRequester APIRequester
 	mu             sync.RWMutex
 }
 
@@ -31,23 +31,23 @@ type XdAPIRequesterWrapper struct {
 // if it is already created, it will return the created one
 // else, it will create a default implementation
 func GetAPIRequester() APIRequester {
-	if xdAPIRequesterWrapper.xdAPIRequester != nil {
-		return xdAPIRequesterWrapper.xdAPIRequester
+	if apiRequesterWrapper.apiRequester != nil {
+		return apiRequesterWrapper.apiRequester
 	}
 
-	xdAPIRequesterWrapper.xdAPIRequester = &APIRequesterImplementation{
+	apiRequesterWrapper.apiRequester = &APIRequesterImplementation{
 		HTTPClient: httpClient,
 	}
 
-	return xdAPIRequesterWrapper.xdAPIRequester
+	return apiRequesterWrapper.apiRequester
 }
 
 // SetAPIRequester sets the APIRequester
-func SetAPIRequester(xdAPIRequester APIRequester) {
-	xdAPIRequesterWrapper.mu.Lock()
-	defer xdAPIRequesterWrapper.mu.Unlock()
+func SetAPIRequester(apiRequester APIRequester) {
+	apiRequesterWrapper.mu.Lock()
+	defer apiRequesterWrapper.mu.Unlock()
 
-	xdAPIRequesterWrapper.xdAPIRequester = xdAPIRequester
+	apiRequesterWrapper.apiRequester = apiRequester
 }
 
 // SetHTTPClient sets the httpClient
