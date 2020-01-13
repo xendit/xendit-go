@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/xendit/xendit-go/utils"
+	"github.com/xendit/xendit-go/utils/urlvalues"
 )
 
 // CreateParams is parameters that are needed to Create
@@ -23,6 +23,11 @@ type CreateParams struct {
 	MidLabel                 string   `json:"mid_label,omitempty"`
 	Currency                 string   `json:"currency,omitempty"`
 	FixedVA                  bool     `json:"fixed_va,omitempty"`
+}
+
+// GetParams parameters for Get
+type GetParams struct {
+	ID string `json:"id" validate:"required"`
 }
 
 // GetAllParams is parameters that are needed to GetAll
@@ -46,19 +51,19 @@ type GetAllParams struct {
 func (p *GetAllParams) QueryString() string {
 	urlValues := &url.Values{}
 
-	utils.AddStringSliceToURLValues(urlValues, p.Statuses, "statuses")
+	urlvalues.AddStringSliceToURLValues(urlValues, p.Statuses, "statuses")
 	if p.Limit > 0 {
 		urlValues.Add("limit", strconv.Itoa(p.Limit))
 	}
-	utils.AddTimeToURLValues(urlValues, p.CreatedAfter, "created_after")
-	utils.AddTimeToURLValues(urlValues, p.CreatedBefore, "created_before")
-	utils.AddTimeToURLValues(urlValues, p.PaidAfter, "paid_after")
-	utils.AddTimeToURLValues(urlValues, p.PaidBefore, "paid_before")
-	utils.AddTimeToURLValues(urlValues, p.PaidBefore, "paid_before")
-	utils.AddTimeToURLValues(urlValues, p.ExpiredAfter, "expired_after")
-	utils.AddTimeToURLValues(urlValues, p.ExpiredBefore, "expired_before")
-	utils.AddStringSliceToURLValues(urlValues, p.ClientTypes, "client_types")
-	utils.AddStringSliceToURLValues(urlValues, p.PaymentChannels, "payment_channels")
+	urlvalues.AddTimeToURLValues(urlValues, p.CreatedAfter, "created_after")
+	urlvalues.AddTimeToURLValues(urlValues, p.CreatedBefore, "created_before")
+	urlvalues.AddTimeToURLValues(urlValues, p.PaidAfter, "paid_after")
+	urlvalues.AddTimeToURLValues(urlValues, p.PaidBefore, "paid_before")
+	urlvalues.AddTimeToURLValues(urlValues, p.PaidBefore, "paid_before")
+	urlvalues.AddTimeToURLValues(urlValues, p.ExpiredAfter, "expired_after")
+	urlvalues.AddTimeToURLValues(urlValues, p.ExpiredBefore, "expired_before")
+	urlvalues.AddStringSliceToURLValues(urlValues, p.ClientTypes, "client_types")
+	urlvalues.AddStringSliceToURLValues(urlValues, p.PaymentChannels, "payment_channels")
 	if p.OnDemandLink != "" {
 		urlValues.Add("on_demand", p.OnDemandLink)
 	}
@@ -67,4 +72,9 @@ func (p *GetAllParams) QueryString() string {
 	}
 
 	return urlValues.Encode()
+}
+
+// ExpireParams paramters for Expire
+type ExpireParams struct {
+	ID string `json:"id" validate:"required"`
 }

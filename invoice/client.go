@@ -5,8 +5,7 @@ import (
 	"fmt"
 
 	"github.com/xendit/xendit-go"
-
-	validator "github.com/go-playground/validator"
+	"github.com/xendit/xendit-go/utils/validator"
 )
 
 // Client is the client used to invoke invoice API.
@@ -37,9 +36,8 @@ func CreateWithContext(ctx context.Context, data *CreateParams) (*xendit.Invoice
 
 // CreateWithContext creates new invoice with context
 func (c Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xendit.Invoice, *xendit.Error) {
-	v := validator.New()
-	if err := v.Struct(data); err != nil {
-		return nil, xendit.FromGoErr(err)
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
 	}
 
 	response := &xendit.Invoice{}
@@ -60,30 +58,29 @@ func (c Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xen
 }
 
 // Get gets one invoice
-func Get(invoiceID string) (*xendit.Invoice, *xendit.Error) {
-	return GetWithContext(context.Background(), invoiceID)
+func Get(data *GetParams) (*xendit.Invoice, *xendit.Error) {
+	return GetWithContext(context.Background(), data)
 }
 
 // Get gets one invoice
-func (c Client) Get(invoiceID string) (*xendit.Invoice, *xendit.Error) {
-	return c.GetWithContext(context.Background(), invoiceID)
+func (c Client) Get(data *GetParams) (*xendit.Invoice, *xendit.Error) {
+	return c.GetWithContext(context.Background(), data)
 }
 
 // GetWithContext gets one invoice with context
-func GetWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, *xendit.Error) {
+func GetWithContext(ctx context.Context, data *GetParams) (*xendit.Invoice, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.GetWithContext(ctx, invoiceID)
+	return client.GetWithContext(ctx, data)
 }
 
 // GetWithContext gets one invoice with context
-func (c Client) GetWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, *xendit.Error) {
-	v := validator.New()
-	if err := v.Var(invoiceID, "required"); err != nil {
-		return nil, xendit.FromGoErr(err)
+func (c Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.Invoice, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
 	}
 
 	response := &xendit.Invoice{}
@@ -91,7 +88,7 @@ func (c Client) GetWithContext(ctx context.Context, invoiceID string) (*xendit.I
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
-		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, invoiceID),
+		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
 		response,
@@ -104,30 +101,29 @@ func (c Client) GetWithContext(ctx context.Context, invoiceID string) (*xendit.I
 }
 
 // Expire expire the created invoice
-func Expire(invoiceID string) (*xendit.Invoice, *xendit.Error) {
-	return ExpireWithContext(context.Background(), invoiceID)
+func Expire(data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
+	return ExpireWithContext(context.Background(), data)
 }
 
 // Expire expire the created invoice
-func (c Client) Expire(invoiceID string) (*xendit.Invoice, *xendit.Error) {
-	return c.ExpireWithContext(context.Background(), invoiceID)
+func (c Client) Expire(data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
+	return c.ExpireWithContext(context.Background(), data)
 }
 
 // ExpireWithContext expire the created invoice with context
-func ExpireWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, *xendit.Error) {
+func ExpireWithContext(ctx context.Context, data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.ExpireWithContext(ctx, invoiceID)
+	return client.ExpireWithContext(ctx, data)
 }
 
 // ExpireWithContext expire the created invoice with context
-func (c Client) ExpireWithContext(ctx context.Context, invoiceID string) (*xendit.Invoice, *xendit.Error) {
-	v := validator.New()
-	if err := v.Var(invoiceID, "required"); err != nil {
-		return nil, xendit.FromGoErr(err)
+func (c Client) ExpireWithContext(ctx context.Context, data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
 	}
 
 	response := &xendit.Invoice{}
@@ -135,7 +131,7 @@ func (c Client) ExpireWithContext(ctx context.Context, invoiceID string) (*xendi
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
-		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, invoiceID),
+		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
 		response,

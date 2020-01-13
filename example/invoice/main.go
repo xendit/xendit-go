@@ -22,16 +22,21 @@ func main() {
 	resp, err := invoice.Create(&data)
 	if err != nil {
 		log.Fatal(err)
+
 	}
 	fmt.Printf("created invoice: %+v\n", resp)
 
-	resp, err = invoice.Get(resp.ID)
+	resp, err = invoice.Get(&invoice.GetParams{
+		ID: resp.ID,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("retrieved invoice: %+v\n", resp)
 
-	resp, err = invoice.Expire(resp.ID)
+	resp, err = invoice.Expire(&invoice.ExpireParams{
+		ID: resp.ID,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

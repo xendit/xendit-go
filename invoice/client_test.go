@@ -114,7 +114,9 @@ func TestGetInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := invoice.Get("123")
+	resp, err := invoice.Get(&invoice.GetParams{
+		ID: "123",
+	})
 
 	apiRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
@@ -125,7 +127,7 @@ func TestFalseGetInvoice(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
-	resp, err := invoice.Get("")
+	resp, err := invoice.Get(&invoice.GetParams{})
 
 	apiRequesterMockObj.AssertExpectations(t)
 	assert.NotNil(t, err)
@@ -154,7 +156,9 @@ func TestExpireInvoice(t *testing.T) {
 		&xendit.Invoice{},
 	).Return(nil)
 
-	resp, err := invoice.Expire("123")
+	resp, err := invoice.Expire(&invoice.ExpireParams{
+		ID: "123",
+	})
 
 	apiRequesterMockObj.AssertExpectations(t)
 	assert.Nil(t, err)
