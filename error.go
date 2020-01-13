@@ -1,6 +1,9 @@
 package xendit
 
-import "net/http"
+import (
+	"encoding/json"
+	"net/http"
+)
 
 const (
 	// APIValidationErrCode error code for parameters validation
@@ -39,4 +42,15 @@ func FromGoErr(err error) *Error {
 		ErrorCode: GoErrCode,
 		Message:   err.Error(),
 	}
+}
+
+// FromHTTPErr generate xendit.Error from http errors with not 2xx status
+func FromHTTPErr(status int, respBody []byte) *Error {
+	var httpError *Error
+	if err := json.Unmarshal(respBody, &httpError); err != nil {
+		return FromGoErr(err)
+	}
+	httpError.Status = status
+
+	return httpError
 }

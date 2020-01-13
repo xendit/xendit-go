@@ -65,6 +65,10 @@ func (h *APIRequesterImplementation) doRequest(req *http.Request, result interfa
 		return FromGoErr(err)
 	}
 
+	if resp.StatusCode < 200 || resp.StatusCode > 299 {
+		return FromHTTPErr(resp.StatusCode, respBody)
+	}
+
 	if err := json.Unmarshal(respBody, &result); err != nil {
 		return FromGoErr(err)
 	}
