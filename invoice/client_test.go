@@ -3,6 +3,7 @@ package invoice_test
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"testing"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/invoice"
+	"github.com/xendit/xendit-go/utils/validator"
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
@@ -44,125 +46,162 @@ func TestCreateInvoice(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
-	expectedResult := &xendit.Invoice{
-		ID:          "123",
-		ExternalID:  "invoice-external-id",
-		Amount:      200000,
-		PayerEmail:  "customer@customer.com",
-		Description: "invoice test #1",
+	testCases := []struct {
+		desc        string
+		data        *invoice.CreateParams
+		expectedRes *xendit.Invoice
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should create an invoice",
+			data: &invoice.CreateParams{
+				ExternalID:  "invoice-external-id",
+				Amount:      200000,
+				PayerEmail:  "customer@customer.com",
+				Description: "invoice test #1",
+			},
+			expectedRes: &xendit.Invoice{
+				ID:          "123",
+				ExternalID:  "invoice-external-id",
+				Amount:      200000,
+				PayerEmail:  "customer@customer.com",
+				Description: "invoice test #1",
+			},
+			expectedErr: nil,
+		},
+		{
+			desc: "should report missing required fields",
+			data: &invoice.CreateParams{
+				ExternalID: "invoice-external-id",
+				Amount:     200000,
+			},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'PayerEmail', 'Description'")),
+		},
 	}
 
-	data := invoice.CreateParams{
-		ExternalID:  "invoice-external-id",
-		Amount:      200000,
-		PayerEmail:  "customer@customer.com",
-		Description: "invoice test #1",
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"POST",
+				"https://api.xendit.co/v2/invoices",
+				xendit.Opt.SecretKey,
+				tC.data,
+				&xendit.Invoice{},
+			).Return(nil)
+
+			resp, err := invoice.Create(tC.data)
+
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
 	}
-
-	apiRequesterMockObj.On(
-		"Call",
-		context.Background(),
-		"POST",
-		"https://api.xendit.co/v2/invoices",
-		xendit.Opt.SecretKey,
-		&data,
-		&xendit.Invoice{},
-	).Return(nil)
-
-	resp, err := invoice.Create(&data)
-
-	apiRequesterMockObj.AssertExpectations(t)
-	assert.Nil(t, err)
-	assert.Equal(t, expectedResult, resp)
-}
-
-func TestFalseCreateInvoice(t *testing.T) {
-	apiRequesterMockObj := new(apiRequesterMock)
-	initTesting(apiRequesterMockObj)
-
-	data := invoice.CreateParams{
-		ExternalID: "invoice-external-id",
-		Amount:     200000,
-	}
-
-	resp, err := invoice.Create(&data)
-
-	apiRequesterMockObj.AssertExpectations(t)
-	assert.NotNil(t, err)
-	assert.Nil(t, resp)
 }
 
 func TestGetInvoice(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
-	expectedResult := &xendit.Invoice{
-		ID:          "123",
-		ExternalID:  "invoice-external-id",
-		Amount:      200000,
-		PayerEmail:  "customer@customer.com",
-		Description: "invoice test #1",
+	testCases := []struct {
+		desc        string
+		data        *invoice.GetParams
+		expectedRes *xendit.Invoice
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should get an invoice",
+			data: &invoice.GetParams{
+				ID: "123",
+			},
+			expectedRes: &xendit.Invoice{
+				ID:          "123",
+				ExternalID:  "invoice-external-id",
+				Amount:      200000,
+				PayerEmail:  "customer@customer.com",
+				Description: "invoice test #1",
+			},
+			expectedErr: nil,
+		},
+		{
+			desc:        "should report missing required fields",
+			data:        &invoice.GetParams{},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ID'")),
+		},
 	}
 
-	apiRequesterMockObj.On(
-		"Call",
-		context.Background(),
-		"GET",
-		"https://api.xendit.co/v2/invoices/123",
-		xendit.Opt.SecretKey,
-		nil,
-		&xendit.Invoice{},
-	).Return(nil)
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"GET",
+				"https://api.xendit.co/v2/invoices/123",
+				xendit.Opt.SecretKey,
+				nil,
+				&xendit.Invoice{},
+			).Return(nil)
 
-	resp, err := invoice.Get(&invoice.GetParams{
-		ID: "123",
-	})
+			resp, err := invoice.Get(tC.data)
 
-	apiRequesterMockObj.AssertExpectations(t)
-	assert.Nil(t, err)
-	assert.Equal(t, expectedResult, resp)
-}
-
-func TestFalseGetInvoice(t *testing.T) {
-	apiRequesterMockObj := new(apiRequesterMock)
-	initTesting(apiRequesterMockObj)
-
-	resp, err := invoice.Get(&invoice.GetParams{})
-
-	apiRequesterMockObj.AssertExpectations(t)
-	assert.NotNil(t, err)
-	assert.Nil(t, resp)
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
+	}
 }
 
 func TestExpireInvoice(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
-	expectedResult := &xendit.Invoice{
-		ID:          "123",
-		ExternalID:  "invoice-external-id",
-		Amount:      200000,
-		PayerEmail:  "customer@customer.com",
-		Description: "invoice test #1",
+	testCases := []struct {
+		desc        string
+		data        *invoice.ExpireParams
+		expectedRes *xendit.Invoice
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should expire an invoice",
+			data: &invoice.ExpireParams{
+				ID: "123",
+			},
+			expectedRes: &xendit.Invoice{
+				ID:          "123",
+				ExternalID:  "invoice-external-id",
+				Amount:      200000,
+				PayerEmail:  "customer@customer.com",
+				Description: "invoice test #1",
+			},
+			expectedErr: nil,
+		},
+		{
+			desc:        "should report missing required fields",
+			data:        &invoice.ExpireParams{},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ID'")),
+		},
 	}
 
-	apiRequesterMockObj.On(
-		"Call",
-		context.Background(),
-		"POST",
-		"https://api.xendit.co/invoices/123/expire!",
-		xendit.Opt.SecretKey,
-		nil,
-		&xendit.Invoice{},
-	).Return(nil)
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"POST",
+				"https://api.xendit.co/invoices/123/expire!",
+				xendit.Opt.SecretKey,
+				nil,
+				&xendit.Invoice{},
+			).Return(nil)
 
-	resp, err := invoice.Expire(&invoice.ExpireParams{
-		ID: "123",
-	})
+			resp, err := invoice.Expire(tC.data)
 
-	apiRequesterMockObj.AssertExpectations(t)
-	assert.Nil(t, err)
-	assert.Equal(t, expectedResult, resp)
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
+	}
 }
 
 type apiRequesterGetAllMock struct {
@@ -188,36 +227,64 @@ func TestGetAllInvoices(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterGetAllMock)
 	initTesting(apiRequesterMockObj)
 
-	expectedResult := []xendit.Invoice{
-		xendit.Invoice{
-			ID:          "123",
-			ExternalID:  "invoice-external-id",
-			Amount:      200000,
-			PayerEmail:  "customer@customer.com",
-			Description: "invoice test #1",
+	createdAfter, _ := time.Parse(time.RFC3339, "2016-02-24T23:48:36.697Z")
+
+	testCases := []struct {
+		desc        string
+		data        *invoice.GetAllParams
+		expectedRes []xendit.Invoice
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should get a list of invoices",
+			data: &invoice.GetAllParams{},
+			expectedRes: []xendit.Invoice{
+				xendit.Invoice{
+					ID:          "123",
+					ExternalID:  "invoice-external-id",
+					Amount:      200000,
+					PayerEmail:  "customer@customer.com",
+					Description: "invoice test #1",
+				},
+			},
+			expectedErr: nil,
+		},
+		{
+			desc: "should get a list of invoices",
+			data: &invoice.GetAllParams{
+				Statuses:     []string{"EXPIRED", "SETTLED"},
+				Limit:        2,
+				CreatedAfter: createdAfter,
+			},
+			expectedRes: []xendit.Invoice{
+				xendit.Invoice{
+					ID:          "123",
+					ExternalID:  "invoice-external-id",
+					Amount:      200000,
+					PayerEmail:  "customer@customer.com",
+					Description: "invoice test #1",
+				},
+			},
+			expectedErr: nil,
 		},
 	}
 
-	createdAfter, _ := time.Parse(time.RFC3339, "2016-02-24T23:48:36.697Z")
-	data := invoice.GetAllParams{
-		Statuses:     []string{"EXPIRED", "SETTLED"},
-		Limit:        2,
-		CreatedAfter: createdAfter,
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"GET",
+				"https://api.xendit.co/v2/invoices?"+tC.data.QueryString(),
+				xendit.Opt.SecretKey,
+				tC.data,
+				&[]xendit.Invoice{},
+			).Return(nil)
+
+			resp, err := invoice.GetAll(tC.data)
+
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
 	}
-
-	apiRequesterMockObj.On(
-		"Call",
-		context.Background(),
-		"GET",
-		"https://api.xendit.co/v2/invoices?"+data.QueryString(),
-		xendit.Opt.SecretKey,
-		&data,
-		&[]xendit.Invoice{},
-	).Return(nil)
-
-	resp, err := invoice.GetAll(&data)
-
-	apiRequesterMockObj.AssertExpectations(t)
-	assert.Nil(t, err)
-	assert.Equal(t, expectedResult, resp)
 }
