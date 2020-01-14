@@ -19,13 +19,6 @@ func initTesting(apiRequesterMockObj xendit.APIRequester) {
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
-func getTestingContext() (context.Context, func()) {
-	ctx := context.Background()
-	ctx, cancel := context.WithCancel(ctx)
-
-	return ctx, cancel
-}
-
 type apiRequesterMock struct {
 	mock.Mock
 }

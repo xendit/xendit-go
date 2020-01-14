@@ -8,7 +8,7 @@ import (
 	"github.com/xendit/xendit-go/utils/urlvalues"
 )
 
-// CreateParams is parameters that are needed to Create
+// CreateParams contains parameters for Create
 type CreateParams struct {
 	ExternalID               string   `json:"external_id" validate:"required"`
 	PayerEmail               string   `json:"payer_email" validate:"required"`
@@ -25,12 +25,12 @@ type CreateParams struct {
 	FixedVA                  bool     `json:"fixed_va,omitempty"`
 }
 
-// GetParams parameters for Get
+// GetParams contains parameters for Get
 type GetParams struct {
 	ID string `json:"id" validate:"required"`
 }
 
-// GetAllParams is parameters that are needed to GetAll
+// GetAllParams contains parameters for GetAll
 type GetAllParams struct {
 	Statuses           []string  `json:"statuses,omitempty"`
 	Limit              int       `json:"limit,omitempty"`
@@ -47,7 +47,7 @@ type GetAllParams struct {
 	RecurringPaymentID string    `json:"recurring_payment_id,omitempty"`
 }
 
-// QueryString create query string from GetAllParams, ignore nil values
+// QueryString creates query string from GetAllParams, ignores nil values
 func (p *GetAllParams) QueryString() string {
 	urlValues := &url.Values{}
 
@@ -74,7 +74,7 @@ func (p *GetAllParams) QueryString() string {
 	return urlValues.Encode()
 }
 
-// ExpireParams parameters for Expire
+// ExpireParams contains parameters for Expire
 type ExpireParams struct {
 	ID string `json:"id" validate:"required"`
 }

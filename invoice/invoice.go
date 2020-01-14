@@ -36,12 +36,12 @@ func GetWithContext(ctx context.Context, data *GetParams) (*xendit.Invoice, *xen
 	return client.GetWithContext(ctx, data)
 }
 
-// Expire expire the created invoice
+// Expire expires the created invoice
 func Expire(data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
 	return ExpireWithContext(context.Background(), data)
 }
 
-// ExpireWithContext expire the created invoice with context
+// ExpireWithContext expires the created invoice with context
 func ExpireWithContext(ctx context.Context, data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {

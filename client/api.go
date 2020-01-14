@@ -1,3 +1,4 @@
+// Package client provides a Xendit client for invoking APIs across all products
 package client
 
 import (
@@ -11,7 +12,7 @@ type API struct {
 	Invoice *invoice.Client
 }
 
-// Init initiate all the products of the API client
+// Init initiates all the products of the API client
 func (a *API) Init(apiRequester *xendit.APIRequester) {
 	if apiRequester == nil {
 		apiRequesterObj := xendit.GetAPIRequester()

@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Contains constants for the ErrorCode in xendit.Error
 const (
 	// APIValidationErrCode error code for parameters validation
 	APIValidationErrCode string = "API_VALIDATION_ERROR"
@@ -12,15 +13,15 @@ const (
 	GoErrCode string = "GO_ERROR"
 )
 
-// Error conventional Xendit error
+// Error is the conventional Xendit error
 type Error struct {
 	Status    int    `json:"status,omitempty"`
 	ErrorCode string `json:"error_code,omitempty"`
 	Message   string `json:"message,omitempty"`
 }
 
-// Error return error message
-// this enables xendit.Error to comply with Go error interface
+// Error returns error message.
+// This enables xendit.Error to comply with Go error interface
 func (e *Error) Error() string {
 	return e.Message
 }
@@ -35,7 +36,7 @@ func (e *Error) GetStatus() int {
 	return e.Status
 }
 
-// FromGoErr generate xendit.Error from generic go errors
+// FromGoErr generates xendit.Error from generic go errors
 func FromGoErr(err error) *Error {
 	return &Error{
 		Status:    http.StatusTeapot,
@@ -44,7 +45,7 @@ func FromGoErr(err error) *Error {
 	}
 }
 
-// FromHTTPErr generate xendit.Error from http errors with non 2xx status
+// FromHTTPErr generates xendit.Error from http errors with non 2xx status
 func FromHTTPErr(status int, respBody []byte) *Error {
 	var httpError *Error
 	if err := json.Unmarshal(respBody, &httpError); err != nil {

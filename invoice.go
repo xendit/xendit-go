@@ -1,6 +1,7 @@
 package xendit
 
-// Invoice is data that contained in API response of invoice related request
+// Invoice contains data from Xendit's API response of invoice related request.
+// For more details see https://xendit.github.io/apireference/?bash#invoices.
 type Invoice struct {
 	ID                        string                `json:"id"`
 	ExternalID                string                `json:"external_id"`
@@ -38,7 +39,7 @@ type Invoice struct {
 	FixedVA                   string                `json:"fixed_va,omitempty"`
 }
 
-// InvoiceBank is data that contained in API response of invoice in available_banks
+// InvoiceBank is data that contained in `Invoice` at AvailableBanks
 type InvoiceBank struct {
 	BankCode          string  `json:"bank_code"`
 	CollectionType    string  `json:"collection_type"`
@@ -49,12 +50,12 @@ type InvoiceBank struct {
 	IdentityAmount    int     `json:"identity_amount"`
 }
 
-// InvoiceEWallet is data that contained in response at availableEWallets
+// InvoiceEWallet is data that contained in `Invoice` at AvailableEWallets
 type InvoiceEWallet struct {
 	EWalletType string `json:"ewallet_type"`
 }
 
-// InvoiceRetailOutlet is data that contained in response at availableEWallets
+// InvoiceRetailOutlet is data that contained in `Invoice` at AvailableRetailOutlets
 type InvoiceRetailOutlet struct {
 	RetailOutletName string  `json:"retail_outlet_name"`
 	PaymentCode      string  `json:"payment_code"`
@@ -62,7 +63,7 @@ type InvoiceRetailOutlet struct {
 	MerchantName     string  `json:"merchant_name,omitempty"`
 }
 
-// InvoiceItem is data that contained in response at items
+// InvoiceItem is data that contained in `Invoice` at Items
 type InvoiceItem struct {
 	Name     string  `json:"name"`
 	Price    float64 `json:"price"`

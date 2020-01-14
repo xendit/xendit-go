@@ -1,3 +1,4 @@
+// Package xendit provides the binding for Xendit APIs.
 package xendit
 
 import (
@@ -24,12 +25,12 @@ type Option struct {
 // APIRequesterWrapper is the APIRequester with locker for setting the APIRequester
 type APIRequesterWrapper struct {
 	apiRequester APIRequester
-	mu             sync.RWMutex
+	mu           sync.RWMutex
 }
 
-// GetAPIRequester returns the xendit APIRequester
-// if it is already created, it will return the created one
-// else, it will create a default implementation
+// GetAPIRequester returns the xendit APIRequester.
+// If it is already created, it will return the created one.
+// Else, it will create a default implementation.
 func GetAPIRequester() APIRequester {
 	if apiRequesterWrapper.apiRequester != nil {
 		return apiRequesterWrapper.apiRequester
@@ -42,7 +43,7 @@ func GetAPIRequester() APIRequester {
 	return apiRequesterWrapper.apiRequester
 }
 
-// SetAPIRequester sets the APIRequester
+// SetAPIRequester sets the APIRequester for API call
 func SetAPIRequester(apiRequester APIRequester) {
 	apiRequesterWrapper.mu.Lock()
 	defer apiRequesterWrapper.mu.Unlock()
@@ -50,7 +51,7 @@ func SetAPIRequester(apiRequester APIRequester) {
 	apiRequesterWrapper.apiRequester = apiRequester
 }
 
-// SetHTTPClient sets the httpClient
+// SetHTTPClient sets the httpClient for API call
 func SetHTTPClient(newHTTPClient *http.Client) {
 	httpClient = newHTTPClient
 }

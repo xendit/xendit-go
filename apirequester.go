@@ -9,7 +9,7 @@ import (
 	"reflect"
 )
 
-// APIRequester abstraction of HTTP Client that will make API calls to Xendit backend
+// APIRequester abstraction of HTTP Client that will make API calls to Xendit backend.
 // `body` is POST-requests' bodies if applicable.
 // `result` pointer to value which response string will be unmarshalled to.
 type APIRequester interface {

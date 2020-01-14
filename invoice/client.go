@@ -70,12 +70,12 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.I
 	return response, nil
 }
 
-// Expire expire the created invoice
+// Expire expires the created invoice
 func (c *Client) Expire(data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
 	return c.ExpireWithContext(context.Background(), data)
 }
 
-// ExpireWithContext expire the created invoice with context
+// ExpireWithContext expires the created invoice with context
 func (c *Client) ExpireWithContext(ctx context.Context, data *ExpireParams) (*xendit.Invoice, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
