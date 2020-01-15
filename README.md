@@ -10,6 +10,7 @@ This library is the abstraction of Xendit API for access from applications writt
 
 - [Documentation](#documentation)
 - [Installation](#installation)
+  - [Go Module Support](#go-module-support)
 - [Usage](#usage)
   - [Without Client](#without-client)
   - [With Client](#with-client)
@@ -30,7 +31,7 @@ This library is the abstraction of Xendit API for access from applications writt
 
 For the API documentation, check [Xendit API Reference](https://xendit.github.io/apireference).
 
-For the details of this library, see the GoDoc.
+For the details of this library, see the [GoDoc](http://godoc.org/github.com/xendit/xendit-go).
 
 ## Installation
 
@@ -41,6 +42,31 @@ go get -u github.com/xendit/xendit-go
 ```
 
 Then, import it using:
+
+```go
+import (
+    "github.com/xendit/xendit-go"
+    "github.com/xendit/xendit-go/$product$"
+)
+```
+
+with `$product$` is the product of Xendit such as `invoice` and `balance`.
+
+### Go Module Support
+
+This library can also be included via Go modules. To do so, require xendit-go in `go.mod` with a version like so:
+
+```go
+module github.com/my/package
+
+go 1.13
+
+require (
+	github.com/xendit/xendit-go v1.0.0
+)
+```
+
+And use the same style of import paths as above:
 
 ```go
 import (
@@ -138,18 +164,6 @@ invoice.GetAll(data *invoice.GetAll) (*xendit.Invoice, *xendit.Error)
 
 For any requests, bugs, or comments, please [open an issue](https://github.com/xendit/xendit-go/issues/new) or submit a pull request.
 
-To submit a pull request, please clone this project with https:
-
-```sh
-git clone https://github.com/xendit/xendit-go.git
-```
-
-or with ssh:
-
-```sh
-git clone git@github.com:xendit/xendit-go.git
-```
-
 ### Test
 
 After modifying the code, please make sure that the code passes all test cases.
@@ -177,14 +191,10 @@ go test ./invoice -run TestCreateInvoice
 Before making any commits, please install pre-commit.
 To install pre-commit, follow the [installation steps](https://pre-commit.com/#install).
 
-The pre-commit hooks need `goimports` and `golangci-lint`.
+After installing the pre-commit, please install the needed dependencies:
 
-- Install `goimports`:
-  
-  ```
-  go get golang.org/x/tools/cmd/goimports
-  ```
-
-- Install `golangci-lint` by following the [installation steps](https://github.com/golangci/golangci-lint#install).
+```sh
+make init
+```
 
 After the code passes everything, please [submit a pull request](https://github.com/xendit/xendit-go/pulls).
