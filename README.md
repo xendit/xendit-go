@@ -4,8 +4,25 @@ This library is the abstraction of Xendit API for access from applications writt
 
 ---
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Without Client](#without-client)
+  - [With Client](#with-client)
+  - [Packages Method Signatures](#packages-method-signatures)
+    - [Invoice](#invoice)
+- [Contribute](#contribute)
+  - [Test](#test)
+    - [Run all tests:](#run-all-tests)
+    - [Run tests for a packages:](#run-tests-for-a-packages)
+    - [Run a single test:](#run-a-single-test)
+  - [Pre-commit](#pre-commit)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
 
@@ -117,25 +134,57 @@ GetAll Invoice
 invoice.GetAll(data *invoice.GetAll) (*xendit.Invoice, *xendit.Error)
 ```
 
-## Test
+## Contribute
 
-The test suite needs testify's `assert` and `mock`
+For any requests, bugs, or comments, please [open an issue](https://github.com/xendit/xendit-go/issues/new) or submit a pull request.
 
-```txt
-github.com/stretchr/testify/assert
-github.com/stretchr/testify/mock
-```
-
-Before running the tests, make sure to grab all of the package's dependencies:
+To submit a pull request, please clone this project with https:
 
 ```sh
-go get -t -v
+git clone https://github.com/xendit/xendit-go.git
 ```
 
-Run all tests:
+or with ssh:
+
+```sh
+git clone git@github.com:xendit/xendit-go.git
+```
+
+### Test
+
+After modifying the code, please make sure that the code passes all test cases.
+
+#### Run all tests:
 
 ```sh
 go test ./...
 ```
 
-For any requests, bugs, or comments, please [open an issue](https://github.com/xendit/xendit-go/issues/new) or [submit a pull request](https://github.com/xendit/xendit-go/pulls).
+#### Run tests for a packages:
+
+```sh
+go test ./invoice
+```
+
+#### Run a single test:
+
+```sh
+go test ./invoice -run TestCreateInvoice
+```
+
+### Pre-commit
+
+Before making any commits, please install pre-commit.
+To install pre-commit, follow the [installation steps](https://pre-commit.com/#install).
+
+The pre-commit hooks need `goimports` and `golangci-lint`.
+
+- Install `goimports`:
+  
+  ```
+  go get golang.org/x/tools/cmd/goimports
+  ```
+
+- Install `golangci-lint` by following the [installation steps](https://github.com/golangci/golangci-lint#install).
+
+After the code passes everything, please [submit a pull request](https://github.com/xendit/xendit-go/pulls).
