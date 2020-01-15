@@ -23,14 +23,13 @@ func (a *API) Init(apiRequester *xendit.APIRequester) {
 }
 
 // New creates a new Xendit API client
-func New(publicKey string, secretKey string, xenditURL string, apiRequester *xendit.APIRequester) *API {
+func New(secretKey string, xenditURL string, apiRequester *xendit.APIRequester) *API {
 	if xenditURL == "" {
 		xenditURL = "https://api.xendit.co"
 	}
 
 	api := API{
 		opt: xendit.Option{
-			PublicKey: publicKey,
 			SecretKey: secretKey,
 			XenditURL: xenditURL,
 		},

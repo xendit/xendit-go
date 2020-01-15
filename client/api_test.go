@@ -19,7 +19,7 @@ func TestAPIInit(t *testing.T) {
 }
 
 func TestAPINew(t *testing.T) {
-	api := New("", "sk_123", "", nil)
+	api := New("sk_123", "", nil)
 
 	assert.Equal(t, "sk_123", api.opt.SecretKey)
 	assert.Equal(t, "https://api.xendit.co", api.opt.XenditURL)
