@@ -8,20 +8,19 @@ This library is the abstraction of Xendit API for access from applications writt
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Xendit API Go Client](#xendit-api-go-client)
-  - [Documentation](#documentation)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Without Client](#without-client)
-    - [With Client](#with-client)
-    - [Packages Method Signatures](#packages-method-signatures)
-      - [Invoice](#invoice)
-  - [Contribute](#contribute)
-    - [Test](#test)
-      - [Run all tests](#run-all-tests)
-      - [Run tests for a package](#run-tests-for-a-package)
-      - [Run a single test](#run-a-single-test)
-    - [Pre-commit](#pre-commit)
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Without Client](#without-client)
+  - [With Client](#with-client)
+  - [Packages Method Signatures](#packages-method-signatures)
+    - [Invoice](#invoice)
+- [Contribute](#contribute)
+  - [Test](#test)
+    - [Run all tests](#run-all-tests)
+    - [Run tests for a package](#run-tests-for-a-package)
+    - [Run a single test](#run-a-single-test)
+  - [Pre-commit](#pre-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
