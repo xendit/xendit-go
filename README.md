@@ -19,7 +19,7 @@ This library is the abstraction of Xendit API for access from applications writt
   - [Contribute](#contribute)
     - [Test](#test)
       - [Run all tests](#run-all-tests)
-      - [Run tests for a packages](#run-tests-for-a-packages)
+      - [Run tests for a package](#run-tests-for-a-package)
       - [Run a single test](#run-a-single-test)
     - [Pre-commit](#pre-commit)
 
@@ -161,7 +161,7 @@ After modifying the code, please make sure that the code passes all test cases.
 go test ./...
 ```
 
-#### Run tests for a packages
+#### Run tests for a package
 
 ```sh
 go test ./invoice
