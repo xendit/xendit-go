@@ -4,24 +4,8 @@ This library is the abstraction of Xendit API for access from applications writt
 
 ---
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Documentation](#documentation)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Without Client](#without-client)
-  - [With Client](#with-client)
-  - [Packages Method Signatures](#packages-method-signatures)
-    - [Invoice](#invoice)
-- [Contribute](#contribute)
-  - [Test](#test)
-    - [Run all tests:](#run-all-tests)
-    - [Run tests for a packages:](#run-tests-for-a-packages)
-    - [Run a single test:](#run-a-single-test)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ---
 
@@ -133,42 +117,25 @@ GetAll Invoice
 invoice.GetAll(data *invoice.GetAll) (*xendit.Invoice, *xendit.Error)
 ```
 
-## Contribute
+## Test
 
-For any requests, bugs, or comments, please [open an issue](https://github.com/xendit/xendit-go/issues/new) or submit a pull request.
+The test suite needs testify's `assert` and `mock`
 
-To submit a pull request, please clone this project with https:
-
-```sh
-git clone https://github.com/xendit/xendit-go.git
+```txt
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/mock
 ```
 
-or with ssh:
+Before running the tests, make sure to grab all of the package's dependencies:
 
 ```sh
-git clone git@github.com:xendit/xendit-go.git
+go get -t -v
 ```
 
-After modifying the code, please make sure that the code passes all test cases.
-
-### Test
-
-#### Run all tests:
+Run all tests:
 
 ```sh
 go test ./...
 ```
 
-#### Run tests for a packages:
-
-```sh
-go test ./invoice
-```
-
-#### Run a single test:
-
-```sh
-go test ./invoice -run TestCreateInvoice
-```
-
-After passing all the test cases, please [submit a pull request](https://github.com/xendit/xendit-go/pulls).
+For any requests, bugs, or comments, please [open an issue](https://github.com/xendit/xendit-go/issues/new) or [submit a pull request](https://github.com/xendit/xendit-go/pulls).
