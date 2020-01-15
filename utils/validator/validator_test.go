@@ -3,11 +3,12 @@ package validator_test
 import (
 	"context"
 	"errors"
+	"net/http"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
-	"net/http"
-	"testing"
 )
 
 func TestValidateRequired(t *testing.T) {

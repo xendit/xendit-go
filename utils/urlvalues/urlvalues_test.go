@@ -1,11 +1,12 @@
 package urlvalues_test
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/xendit/xendit-go/utils/urlvalues"
 	"net/url"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/xendit/xendit-go/utils/urlvalues"
 )
 
 func TestAddTimeToURLValues(t *testing.T) {

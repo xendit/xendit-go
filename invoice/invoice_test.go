@@ -212,7 +212,8 @@ func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path s
 		"description": "invoice test #1"
 	}]`
 
-	json.Unmarshal([]byte(resultString), &result)
+	_ = json.Unmarshal([]byte(resultString), &result)
+
 	return nil
 }
 
