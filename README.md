@@ -4,7 +4,24 @@ This library is the abstraction of Xendit API for access from applications writt
 
 ---
 
-<!--toc-->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Without Client](#without-client)
+  - [With Client](#with-client)
+  - [Packages Method Signatures](#packages-method-signatures)
+    - [Invoice](#invoice)
+- [Contribute](#contribute)
+  - [Test](#test)
+    - [Run all tests:](#run-all-tests)
+    - [Run tests for a packages:](#run-tests-for-a-packages)
+    - [Run a single test:](#run-a-single-test)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
 
