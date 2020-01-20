@@ -22,3 +22,22 @@ type VirtualAccount struct {
 	ExpectedAmount  float64    `json:"expected_amount,omitempty"`
 	Description     string     `json:"description,omitempty"`
 }
+
+// VirtualAccountBank contains data from Xendit's API response of Get Virtual Account Banks.
+type VirtualAccountBank struct {
+	Name string `json:"name"`
+	Code string `json:"code"`
+}
+
+// VirtualAccountPayment contains data from Xendit's API response of Get Fixed Virtual Account Payment.
+type VirtualAccountPayment struct {
+	ID                       string     `json:"id"`
+	PaymentID                string     `json:"payment_id"`
+	CallbackVirtualAccountID string     `json:"callback_virtual_account_id"`
+	AccountNumber            string     `json:"account_number"`
+	BankCode                 string     `json:"bank_code"`
+	Amount                   float64    `json:"amount"`
+	TransactionTimestamp     *time.Time `json:"transaction_timestamp"`
+	MerchantCode             string     `json:"merchant_code"`
+	Currency                 string     `json:"currency"`
+}
