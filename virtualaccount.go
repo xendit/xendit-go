@@ -17,6 +17,7 @@ type VirtualAccount struct {
 	ID              string     `json:"id"`
 	IsSingleUse     bool       `json:"is_single_use"`
 	Status          string     `json:"status"`
+	Currency        string     `json:"currency"`
 	ExpirationDate  *time.Time `json:"expiration_date"`
 	SuggestedAmount float64    `json:"suggested_amount,omitempty"`
 	ExpectedAmount  float64    `json:"expected_amount,omitempty"`
