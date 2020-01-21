@@ -192,19 +192,19 @@ ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet,
 ##### Create Fixed
 
 ```go
-virtualaccount.CreateFixed(data *CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.CreateFixed(data *virtualaccount.CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
 ##### GetFixed
 
 ```go
-virtualaccount.GetFixed(data *GetFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.GetFixed(data *virtualaccount.GetFixedParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
 ##### UpdateFixed
 
 ```go
-virtualaccount.UpdateFixed(data *UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.UpdateFixed(data *virtualaccount.UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
 ##### GetAvailableBanks
@@ -216,7 +216,7 @@ virtualaccount.GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error)
 ##### GetPayment
 
 ```go
-virtualaccount.GetPayment(data *GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
+virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
 ```
 
 ## Contribute
