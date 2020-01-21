@@ -3,6 +3,7 @@ package client
 
 import (
 	"github.com/xendit/xendit-go"
+	"github.com/xendit/xendit-go/balance"
 	"github.com/xendit/xendit-go/ewallet"
 	"github.com/xendit/xendit-go/invoice"
 )
@@ -12,6 +13,7 @@ type API struct {
 	opt     xendit.Option
 	Invoice *invoice.Client
 	EWallet *ewallet.Client
+	Balance *balance.Client
 }
 
 // Init initiates all the products of the API client
@@ -23,6 +25,7 @@ func (a *API) Init(apiRequester *xendit.APIRequester) {
 
 	a.Invoice = &invoice.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.EWallet = &ewallet.Client{Opt: &a.opt, APIRequester: *apiRequester}
+	a.Balance = &balance.Client{Opt: &a.opt, APIRequester: *apiRequester}
 }
 
 // New creates a new Xendit API client
