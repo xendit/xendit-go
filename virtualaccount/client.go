@@ -8,7 +8,7 @@ import (
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
-// Client is the client used to invoke invoice API.
+// Client is the client used to invoke virtual account API.
 type Client struct {
 	Opt          *xendit.Option
 	APIRequester xendit.APIRequester
