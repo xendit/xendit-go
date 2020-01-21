@@ -15,14 +15,14 @@ type Item struct {
 
 // CreatePaymentParams contains parameters for CreatePayment
 type CreatePaymentParams struct {
-	EWalletType    string    `json:"ewallet_type" validate:"required"`
-	ExternalID     string    `json:"external_id" validate:"required"`
-	Amount         float64   `json:"amount" validate:"required"`
-	Phone          string    `json:"phone,omitempty"`
-	ExpirationDate time.Time `json:"expiration_date,omitempty"`
-	CallbackURL    string    `json:"callback_url,omitempty"`
-	RedirectURL    string    `json:"redirect_url,omitempty"`
-	Items          []Item    `json:"items,omitempty"`
+	EWalletType    string     `json:"ewallet_type" validate:"required"`
+	ExternalID     string     `json:"external_id" validate:"required"`
+	Amount         float64    `json:"amount" validate:"required"`
+	Phone          string     `json:"phone,omitempty"`
+	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
+	CallbackURL    string     `json:"callback_url,omitempty"`
+	RedirectURL    string     `json:"redirect_url,omitempty"`
+	Items          []Item     `json:"items,omitempty"`
 }
 
 // GetPaymentStatusParams contains parameters for GetPaymentStatus

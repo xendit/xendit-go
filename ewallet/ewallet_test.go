@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
@@ -45,13 +44,12 @@ func TestCreatePayment(t *testing.T) {
 		{
 			desc: "should create a payment",
 			data: &CreatePaymentParams{
-				ExternalID:     "dana-ewallet",
-				Amount:         200000,
-				Phone:          "08123123123",
-				EWalletType:    "DANA",
-				CallbackURL:    "mystore.com/callback",
-				RedirectURL:    "mystore.com/redirect",
-				ExpirationDate: time.Now().Local().Add(60 * time.Hour),
+				ExternalID:  "dana-ewallet",
+				Amount:      200000,
+				Phone:       "08123123123",
+				EWalletType: "DANA",
+				CallbackURL: "mystore.com/callback",
+				RedirectURL: "mystore.com/redirect",
 			},
 			expectedRes: &xendit.EWallet{
 				EWalletType: "DANA",
