@@ -13,12 +13,12 @@ type Client struct {
 	APIRequester xendit.APIRequester
 }
 
-// Get gets one balance
+// Get gets balance
 func (c *Client) Get(data *GetParams) (*xendit.Balance, *xendit.Error) {
 	return c.GetWithContext(context.Background(), data)
 }
 
-// GetWithContext gets one balance with context
+// GetWithContext gets balance with context
 func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.Balance, *xendit.Error) {
 	var queryString string
 
