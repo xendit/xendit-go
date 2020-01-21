@@ -53,11 +53,12 @@ func main() {
 	}
 	fmt.Printf("updated fixed va: %+v\n", resp)
 
-	// payment, err := virtualaccount.GetPayment(&virtualaccount.GetPaymentParams{
-	// 	PaymentID: "VA_fixed-1579507045_1579507068112",
-	// })
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// fmt.Printf("retrieved va payment: %+v\n", payment)
+	payment, err := virtualaccount.GetPayment(&virtualaccount.GetPaymentParams{
+		PaymentID: "VA_fixed-1579507045_1579507068112",
+	})
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("retrieved va payment: %+v\n", payment)
 }
