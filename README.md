@@ -8,27 +8,30 @@ This library is the abstraction of Xendit API for access from applications writt
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Documentation](#documentation)
-- [Installation](#installation)
-  - [Go Module Support](#go-module-support)
-- [Usage](#usage)
-  - [Without Client](#without-client)
-  - [With Client](#with-client)
-  - [Packages Method Signatures](#packages-method-signatures)
-    - [Invoice](#invoice)
-      - [Create Invoice](#create-invoice)
-      - [Get Invoice](#get-invoice)
-      - [Expire Invoice](#expire-invoice)
-      - [GetAll Invoice](#getall-invoice)
-    - [E-Wallet](#e-wallet)
-      - [Create Payment](#create-payment)
-      - [Get Payment Status](#get-payment-status)
-- [Contribute](#contribute)
-  - [Test](#test)
-    - [Run all tests](#run-all-tests)
-    - [Run tests for a package](#run-tests-for-a-package)
-    - [Run a single test](#run-a-single-test)
-  - [Pre-commit](#pre-commit)
+- [Xendit API Go Client](#xendit-api-go-client)
+  - [Documentation](#documentation)
+  - [Installation](#installation)
+    - [Go Module Support](#go-module-support)
+  - [Usage](#usage)
+    - [Without Client](#without-client)
+    - [With Client](#with-client)
+    - [Packages Method Signatures](#packages-method-signatures)
+      - [Invoice](#invoice)
+        - [Create Invoice](#create-invoice)
+        - [Get Invoice](#get-invoice)
+        - [Expire Invoice](#expire-invoice)
+        - [GetAll Invoice](#getall-invoice)
+      - [E-Wallet](#e-wallet)
+        - [Create Payment](#create-payment)
+        - [Get Payment Status](#get-payment-status)
+      - [Balance](#balance)
+        - [Get](#get)
+  - [Contribute](#contribute)
+    - [Test](#test)
+      - [Run all tests](#run-all-tests)
+      - [Run tests for a package](#run-tests-for-a-package)
+      - [Run a single test](#run-a-single-test)
+    - [Pre-commit](#pre-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -179,6 +182,14 @@ ewallet.CreatePayment(data *ewallet.CreatePaymentParams) (*xendit.EWallet, *xend
 
 ```go
 ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error)
+```
+
+#### Balance
+
+##### Get
+
+```go
+balance.Get(data *balance.GetParams) (*xendit.Balance, *xendit.Error)
 ```
 
 ## Contribute
