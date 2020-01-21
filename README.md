@@ -23,6 +23,10 @@ This library is the abstraction of Xendit API for access from applications writt
     - [E-Wallet](#e-wallet)
       - [Create Payment](#create-payment)
       - [Get Payment Status](#get-payment-status)
+    - [Retail Outlet](#retail-outlet)
+      - [Create Fixed Payment Code](#create-fixed-payment-code)
+      - [Get Fixed Payment Code](#get-fixed-payment-code)
+      - [Update Fixed Payment Code](#update-fixed-payment-code)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -179,6 +183,26 @@ ewallet.CreatePayment(data *ewallet.CreatePaymentParams) (*xendit.EWallet, *xend
 
 ```go
 ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error)
+```
+
+#### Retail Outlet
+
+##### Create Fixed Payment Code
+
+```go
+retailoutlet.CreateFixedPaymentCode(data *retailoutlet.CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Get Fixed Payment Code
+
+```go
+retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Update Fixed Payment Code
+
+```go
+retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
 ## Contribute
