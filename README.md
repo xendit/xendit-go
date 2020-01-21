@@ -23,6 +23,12 @@ This library is the abstraction of Xendit API for access from applications writt
     - [E-Wallet](#e-wallet)
       - [Create Payment](#create-payment)
       - [Get Payment Status](#get-payment-status)
+    - [Virtual Account](#virtual-account)
+      - [Create Fixed](#create-fixed)
+      - [GetFixed](#getfixed)
+      - [UpdateFixed](#updatefixed)
+      - [GetAvailableBanks](#getavailablebanks)
+      - [GetPayment](#getpayment)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -69,7 +75,7 @@ module github.com/my/package
 go 1.13
 
 require (
-	github.com/xendit/xendit-go v1.0.0
+  github.com/xendit/xendit-go v1.0.0
 )
 ```
 
@@ -179,6 +185,38 @@ ewallet.CreatePayment(data *ewallet.CreatePaymentParams) (*xendit.EWallet, *xend
 
 ```go
 ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error)
+```
+
+#### Virtual Account
+
+##### Create Fixed
+
+```go
+virtualaccount.CreateFixed(data *CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### GetFixed
+
+```go
+virtualaccount.GetFixed(data *GetFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### UpdateFixed
+
+```go
+virtualaccount.UpdateFixed(data *UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### GetAvailableBanks
+
+```go
+virtualaccount.GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error)
+```
+
+##### GetPayment
+
+```go
+virtualaccount.GetPayment(data *GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
 ```
 
 ## Contribute
