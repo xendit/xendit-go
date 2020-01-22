@@ -2,9 +2,11 @@ package xendit
 
 import "time"
 
-// CardCreateAuthorizationResponse contains data from Xendit's API response of credit card's Create Authorization related request.
-// For more details see https://xendit.github.io/apireference/?bash#create-authorization.
-type CardCreateAuthorizationResponse struct {
+// CardCharge contains data from Xendit's API response of card's charge related requests
+// and Create Authorization request.
+// For more details see https://xendit.github.io/apireference/?bash#create-charge
+// and https://xendit.github.io/apireference/?bash#create-authorization.
+type CardCharge struct {
 	ID                    string     `json:"id"`
 	Status                string     `json:"status"`
 	MerchantID            string     `json:"merchant_id"`
@@ -26,7 +28,7 @@ type CardCreateAuthorizationResponse struct {
 	Currency              string     `json:"currency,omitempty"`
 }
 
-// CardReverseAuthorizationResponse contains data from Xendit's API response of credit card's Create Authorization related request.
+// CardReverseAuthorizationResponse contains data from Xendit's API response of card's Reverse Authorization request.
 // For more details see https://xendit.github.io/apireference/?bash#reverse-authorization.
 type CardReverseAuthorizationResponse struct {
 	ID                 string     `json:"id"`

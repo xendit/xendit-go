@@ -12,21 +12,21 @@ import (
 func main() {
 	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
 
-	createAuthorizationData := card.CreateAuthorizationParams{
+	createChargeData := card.CreateChargeParams{
 		TokenID:          "5e280aeecb812150cac94743",
 		AuthenticationID: "5e280aeecb812150cac94744",
 		ExternalID:       "cardAuth-" + time.Now().String(),
 		Amount:           200000,
 	}
 
-	createAuthorizationResp, err := card.CreateAuthorization(&createAuthorizationData)
+	createChargeResp, err := card.CreateCharge(&createChargeData)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("created authorization: %+v\n", createAuthorizationResp)
+	fmt.Printf("created authorization: %+v\n", createChargeResp)
 
 	reverseAuthorizationData := card.ReverseAuthorizationParams{
-		ChargeID:   createAuthorizationResp.ID,
+		ChargeID:   createChargeResp.ID,
 		ExternalID: "reverseAuth-" + time.Now().String(),
 	}
 

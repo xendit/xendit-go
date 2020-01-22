@@ -6,20 +6,54 @@ import (
 	"github.com/xendit/xendit-go"
 )
 
-// CreateAuthorization creates new card authorization
-func CreateAuthorization(data *CreateAuthorizationParams) (*xendit.CardCreateAuthorizationResponse, *xendit.Error) {
-	return CreateAuthorizationWithContext(context.Background(), data)
+/* Charge */
+
+// CreateCharge creates new card charge
+func CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error) {
+	return CreateChargeWithContext(context.Background(), data)
 }
 
-// CreateAuthorizationWithContext creates new card authorization with context
-func CreateAuthorizationWithContext(ctx context.Context, data *CreateAuthorizationParams) (*xendit.CardCreateAuthorizationResponse, *xendit.Error) {
+// CreateChargeWithContext creates new card charge with context
+func CreateChargeWithContext(ctx context.Context, data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.CreateAuthorizationWithContext(ctx, data)
+	return client.CreateChargeWithContext(ctx, data)
 }
+
+// CaptureCharge captures a card charge
+func CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
+	return CaptureChargeWithContext(context.Background(), data)
+}
+
+// CaptureChargeWithContext captures a card charge with context
+func CaptureChargeWithContext(ctx context.Context, data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CaptureChargeWithContext(ctx, data)
+}
+
+// GetCharge gets a card charge
+func GetCharge(data *GetChargeParams) (*xendit.CardCharge, *xendit.Error) {
+	return GetChargeWithContext(context.Background(), data)
+}
+
+// GetChargeWithContext gets a card charge with context
+func GetChargeWithContext(ctx context.Context, data *GetChargeParams) (*xendit.CardCharge, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetChargeWithContext(ctx, data)
+}
+
+/* Authorization */
 
 // ReverseAuthorization reverses a card authorization
 func ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorizationResponse, *xendit.Error) {

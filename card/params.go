@@ -8,8 +8,8 @@ type Data struct {
 	CVN           string `json:"cvn,omitempty"`
 }
 
-// CreateAuthorizationParams contains parameters for CreateAuthorization
-type CreateAuthorizationParams struct {
+// CreateChargeParams contains parameters for CreateCharge
+type CreateChargeParams struct {
 	TokenID          string  `json:"token_id" validate:"required"`
 	ExternalID       string  `json:"external_id" validate:"required"`
 	Amount           float64 `json:"amount" validate:"required"`
@@ -21,6 +21,17 @@ type CreateAuthorizationParams struct {
 	MidLabel         string  `json:"mid_label,omitempty"`
 	Currency         string  `json:"currency,omitempty"`
 	IsRecurring      bool    `json:"is_recurring,omitempty"`
+}
+
+// CaptureChargeParams contains parameters for CaptureCharge
+type CaptureChargeParams struct {
+	ChargeID string  `json:"-" validate:"required"`
+	Amount   float64 `json:"amount" validate:"required"`
+}
+
+// GetChargeParams contains parameters for GetCharge
+type GetChargeParams struct {
+	ChargeID string `json:"charge_id" validate:"required"`
 }
 
 // ReverseAuthorizationParams contains parameters for ReverseAuthorization
