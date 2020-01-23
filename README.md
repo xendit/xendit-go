@@ -16,6 +16,13 @@ This library is the abstraction of Xendit API for access from applications writt
   - [With Client](#with-client)
   - [Packages Method Signatures](#packages-method-signatures)
     - [Invoice](#invoice)
+      - [Create Invoice](#create-invoice)
+      - [Get Invoice](#get-invoice)
+      - [Expire Invoice](#expire-invoice)
+      - [GetAll Invoice](#getall-invoice)
+    - [E-Wallet](#e-wallet)
+      - [Create Payment](#create-payment)
+      - [Get Payment Status](#get-payment-status)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -127,7 +134,7 @@ resp, err := client.$product$.Create($product$.CreateParams)
 resp, err := client.$product$.Get($product$.GetParams)
 
 // GetAll
-resp, err := client.$product$.Get($product$.GetAllParams)
+resp, err := client.$product$.GetAll($product$.GetAllParams)
 ```
 
 ### Packages Method Signatures
@@ -136,28 +143,42 @@ The following is a list of method signatures for each packages (for quick refere
 
 #### Invoice
 
-Create Invoice
+##### Create Invoice
 
 ```go
 invoice.Create(data *invoice.CreateParams) (*xendit.Invoice, *xendit.Error)
 ```
 
-Get Invoice
+##### Get Invoice
 
 ```go
 invoice.Get(data *invoice.GetParams) (*xendit.Invoice, *xendit.Error)
 ```
 
-Expire Invoice
+##### Expire Invoice
 
 ```go
 invoice.Expire(data *invoice.ExpireParams) (*xendit.Invoice, *xendit.Error)
 ```
 
-GetAll Invoice
+##### GetAll Invoice
 
 ```go
 invoice.GetAll(data *invoice.GetAll) (*xendit.Invoice, *xendit.Error)
+```
+
+#### E-Wallet
+
+##### Create Payment
+
+```go
+ewallet.CreatePayment(data *ewallet.CreatePaymentParams) (*xendit.EWallet, *xendit.Error)
+```
+
+##### Get Payment Status
+
+```go
+ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error)
 ```
 
 ## Contribute

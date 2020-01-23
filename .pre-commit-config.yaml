@@ -1,4 +1,9 @@
 repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.4.0
+  hooks:
+  - id: mixed-line-ending
+    args: [--fix=lf]
 - repo: https://github.com/thlorenz/doctoc
   rev: v1.4.0
   hooks:
@@ -8,7 +13,7 @@ repos:
   - id: golangci-lint
     name: golangci-lint
     description: Fast linters runner for Go.
-    entry: ./bin/golangci-lint run --fix
+    entry: go run golangci_lint/main.go
     types: [go]
     language: golang
     pass_filenames: false
