@@ -3,12 +3,13 @@ package ewallet
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
-// Client is the client used to invoke invoice API.
+// Client is the client used to invoke ewallet API.
 type Client struct {
 	Opt          *xendit.Option
 	APIRequester xendit.APIRequester
@@ -18,12 +19,12 @@ type Client struct {
 // It exists because the type of `Amount` in Get Payment Status json response is string,
 // different from the CreatePayment
 type getPaymentStatusResponse struct {
-	EWalletType     string  `json:"ewallet_type"`
-	ExternalID      string  `json:"external_id"`
-	Amount          float64 `json:"amount,string"`
-	TransactionDate string  `json:"transaction_date,omitempty"`
-	CheckoutURL     string  `json:"checkout_url,omitempty"`
-	BusinessID      string  `json:"business_id,omitempty"`
+	EWalletType     xendit.EWalletTypeEnum `json:"ewallet_type"`
+	ExternalID      string                 `json:"external_id"`
+	Amount          float64                `json:"amount,string"`
+	TransactionDate *time.Time             `json:"transaction_date,omitempty"`
+	CheckoutURL     string                 `json:"checkout_url,omitempty"`
+	BusinessID      string                 `json:"business_id,omitempty"`
 }
 
 // CreatePayment creates new payment

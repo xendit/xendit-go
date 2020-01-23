@@ -3,7 +3,6 @@ package ewallet_test
 import (
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/ewallet"
@@ -13,13 +12,12 @@ func ExampleCreatePayment() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := ewallet.CreatePaymentParams{
-		ExternalID:     "dana-ewallet",
-		Amount:         20000,
-		Phone:          "08123123123",
-		EWalletType:    "DANA",
-		CallbackURL:    "mystore.com/callback",
-		RedirectURL:    "mystore.com/redirect",
-		ExpirationDate: time.Now().Local().Add(60 * time.Hour),
+		ExternalID:  "dana-ewallet",
+		Amount:      20000,
+		Phone:       "08123123123",
+		EWalletType: "DANA",
+		CallbackURL: "mystore.com/callback",
+		RedirectURL: "mystore.com/redirect",
 	}
 
 	resp, err := ewallet.CreatePayment(&data)
