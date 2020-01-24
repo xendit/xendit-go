@@ -25,6 +25,10 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Get Payment Status](#get-payment-status)
     - [Balance](#balance)
       - [Get](#get)
+    - [Retail Outlet](#retail-outlet)
+      - [Create Fixed Payment Code](#create-fixed-payment-code)
+      - [Get Fixed Payment Code](#get-fixed-payment-code)
+      - [Update Fixed Payment Code](#update-fixed-payment-code)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -71,7 +75,7 @@ module github.com/my/package
 go 1.13
 
 require (
-	github.com/xendit/xendit-go v1.0.0
+  github.com/xendit/xendit-go v1.0.0
 )
 ```
 
@@ -189,6 +193,26 @@ ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet,
 
 ```go
 balance.Get(data *balance.GetParams) (*xendit.Balance, *xendit.Error)
+```
+
+#### Retail Outlet
+
+##### Create Fixed Payment Code
+
+```go
+retailoutlet.CreateFixedPaymentCode(data *retailoutlet.CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Get Fixed Payment Code
+
+```go
+retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Update Fixed Payment Code
+
+```go
+retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
 ## Contribute
