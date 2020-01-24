@@ -54,12 +54,12 @@ func GetChargeWithContext(ctx context.Context, data *GetChargeParams) (*xendit.C
 }
 
 // CreateRefund gets a card charge
-func CreateRefund(data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+func CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
 	return CreateRefundWithContext(context.Background(), data)
 }
 
 // CreateRefundWithContext gets a card charge with context
-func CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+func CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err

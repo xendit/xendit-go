@@ -103,19 +103,19 @@ func (c Client) GetChargeWithContext(ctx context.Context, data *GetChargeParams)
 }
 
 // CreateRefund creates a refund
-func (c Client) CreateRefund(data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+func (c Client) CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
 	return c.CreateRefundWithContext(context.Background(), data)
 }
 
 // CreateRefundWithContext creates a refund with context
-func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
 
 	var header http.Header = nil
 
-	response := &xendit.CardCharge{}
+	response := &xendit.CardRefund{}
 
 	if data.IdempotencyKey != "" {
 		header = http.Header{}
