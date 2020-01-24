@@ -34,6 +34,7 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.B
 		fmt.Sprintf("%s/balance?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
 		nil,
+		nil,
 		response,
 	)
 	if err != nil {

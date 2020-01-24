@@ -3,6 +3,7 @@ package retailoutlet_test
 import (
 	"context"
 	"errors"
+	"net/http"
 	"testing"
 	"time"
 
@@ -22,8 +23,8 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
 
@@ -99,6 +100,7 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 				"POST",
 				"https://api.xendit.co/fixed_payment_code",
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.RetailOutlet{},
 			).Return(nil)
@@ -160,6 +162,7 @@ func TestGetFixedPaymentCode(t *testing.T) {
 				"GET",
 				"https://api.xendit.co/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
 				xendit.Opt.SecretKey,
+				nil,
 				nil,
 				&xendit.RetailOutlet{},
 			).Return(nil)
@@ -226,6 +229,7 @@ func TestUpdateFixedPaymentCode(t *testing.T) {
 				"PATCH",
 				"https://api.xendit.co/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.RetailOutlet{},
 			).Return(nil)
