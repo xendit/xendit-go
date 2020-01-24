@@ -13,7 +13,7 @@ import (
 // `body` is POST-requests' bodies if applicable.
 // `result` pointer to value which response string will be unmarshalled to.
 type APIRequester interface {
-	Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) *Error
+	Call(ctx context.Context, method string, url string, secretKey string, header *http.Header, body interface{}, result interface{}) *Error
 }
 
 // APIRequesterImplementation is the default implementation of APIRequester
@@ -24,7 +24,7 @@ type APIRequesterImplementation struct {
 // Call makes HTTP requests with JSON-format body.
 // `body` is POST-requests' bodies if applicable.
 // `result` pointer to value which response string will be unmarshalled to.
-func (h *APIRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, body interface{}, result interface{}) *Error {
+func (h *APIRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, header *http.Header, body interface{}, result interface{}) *Error {
 	reqBody := []byte("")
 	var req *http.Request
 	var err error
