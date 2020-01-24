@@ -29,6 +29,12 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Create Fixed Payment Code](#create-fixed-payment-code)
       - [Get Fixed Payment Code](#get-fixed-payment-code)
       - [Update Fixed Payment Code](#update-fixed-payment-code)
+    - [Virtual Account](#virtual-account)
+      - [Create Fixed](#create-fixed)
+      - [GetFixed](#getfixed)
+      - [UpdateFixed](#updatefixed)
+      - [GetAvailableBanks](#getavailablebanks)
+      - [GetPayment](#getpayment)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -213,6 +219,38 @@ retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (
 
 ```go
 retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+#### Virtual Account
+
+##### Create Fixed
+
+```go
+virtualaccount.CreateFixed(data *virtualaccount.CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### GetFixed
+
+```go
+virtualaccount.GetFixed(data *virtualaccount.GetFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### UpdateFixed
+
+```go
+virtualaccount.UpdateFixed(data *virtualaccount.UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### GetAvailableBanks
+
+```go
+virtualaccount.GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error)
+```
+
+##### GetPayment
+
+```go
+virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
 ```
 
 ## Contribute
