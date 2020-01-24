@@ -13,7 +13,7 @@ repos:
   - id: golangci-lint
     name: golangci-lint
     description: Fast linters runner for Go.
-    entry: ./bin/golangci-lint run --fix
+    entry: go run golangci_lint/main.go
     types: [go]
     language: golang
     pass_filenames: false
