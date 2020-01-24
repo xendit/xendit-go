@@ -48,6 +48,9 @@ func (h *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 		return FromGoErr(err)
 	}
 
+	if header != nil {
+		req.Header = *header
+	}
 	req.SetBasicAuth(secretKey, "")
 	req.Header.Set("Content-Type", "application/json")
 
