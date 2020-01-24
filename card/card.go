@@ -53,6 +53,21 @@ func GetChargeWithContext(ctx context.Context, data *GetChargeParams) (*xendit.C
 	return client.GetChargeWithContext(ctx, data)
 }
 
+// CreateRefund gets a card charge
+func CreateRefund(data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+	return CreateRefundWithContext(context.Background(), data)
+}
+
+// CreateRefundWithContext gets a card charge with context
+func CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CreateRefundWithContext(ctx, data)
+}
+
 /* Authorization */
 
 // ReverseAuthorization reverses a card authorization

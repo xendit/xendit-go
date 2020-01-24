@@ -3,6 +3,7 @@ package card
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
@@ -32,6 +33,7 @@ func (c Client) CreateChargeWithContext(ctx context.Context, data *CreateChargeP
 		"POST",
 		fmt.Sprintf("%s/credit_card_charges", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -60,6 +62,7 @@ func (c Client) CaptureChargeWithContext(ctx context.Context, data *CaptureCharg
 		"POST",
 		fmt.Sprintf("%s/credit_card_charges/%s/capture", c.Opt.XenditURL, data.ChargeID),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -88,6 +91,43 @@ func (c Client) GetChargeWithContext(ctx context.Context, data *GetChargeParams)
 		"GET",
 		fmt.Sprintf("%s/credit_card_charges/%s", c.Opt.XenditURL, data.ChargeID),
 		c.Opt.SecretKey,
+		nil,
+		nil,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+// CreateRefund creates a refund
+func (c Client) CreateRefund(data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+	return c.CreateRefundWithContext(context.Background(), data)
+}
+
+// CreateRefundWithContext creates a refund with context
+func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardCharge, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	var header http.Header = nil
+
+	response := &xendit.CardCharge{}
+
+	if data.IdempotencyKey != "" {
+		header = http.Header{}
+		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
+	}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"POST",
+		fmt.Sprintf("%s/credit_card_charges/%s/refunds", c.Opt.XenditURL, data.ChargeID),
+		c.Opt.SecretKey,
+		&header,
 		data,
 		response,
 	)
@@ -116,6 +156,7 @@ func (c Client) ReverseAuthorizationWithContext(ctx context.Context, data *Rever
 		"POST",
 		fmt.Sprintf("%s/credit_card_charges/%s/auth_reversal", c.Opt.XenditURL, data.ChargeID),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)

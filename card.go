@@ -28,6 +28,22 @@ type CardCharge struct {
 	Currency              string     `json:"currency,omitempty"`
 }
 
+// CardRefund contains data from Xendit's API response of card's Create Refund request.
+// For more details see https://xendit.github.io/apireference/?bash#CreateRefund.
+type CardRefund struct {
+	ID                 string     `json:"id"`
+	Updated            *time.Time `json:"updated"`
+	Created            *time.Time `json:"created"`
+	CreditCardChargeID string     `json:"credit_card_charge_id"`
+	UserID             string     `json:"user_id"`
+	Amount             float64    `json:"amount"`
+	ExternalID         string     `json:"external_id"`
+	Currency           string     `json:"currency"`
+	Status             string     `json:"status"`
+	FeeRefundAmount    float64    `json:"fee_refund_amount"`
+	FailureReason      string     `json:"failure_reason"`
+}
+
 // CardReverseAuthorizationResponse contains data from Xendit's API response of card's Reverse Authorization request.
 // For more details see https://xendit.github.io/apireference/?bash#reverse-authorization.
 type CardReverseAuthorizationResponse struct {
