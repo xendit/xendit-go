@@ -32,6 +32,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 		"POST",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -61,6 +62,7 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.I
 		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
+		nil,
 		response,
 	)
 	if err != nil {
@@ -88,6 +90,7 @@ func (c *Client) ExpireWithContext(ctx context.Context, data *ExpireParams) (*xe
 		"POST",
 		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
+		nil,
 		nil,
 		response,
 	)
@@ -117,6 +120,7 @@ func (c *Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]x
 		"GET",
 		fmt.Sprintf("%s/v2/invoices?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		&response,
 	)

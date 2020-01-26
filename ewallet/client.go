@@ -19,12 +19,12 @@ type Client struct {
 // It exists because the type of `Amount` in Get Payment Status json response is string,
 // different from the CreatePayment
 type getPaymentStatusResponse struct {
-	EWalletType     string     `json:"ewallet_type"`
-	ExternalID      string     `json:"external_id"`
-	Amount          float64    `json:"amount,string"`
-	TransactionDate *time.Time `json:"transaction_date,omitempty"`
-	CheckoutURL     string     `json:"checkout_url,omitempty"`
-	BusinessID      string     `json:"business_id,omitempty"`
+	EWalletType     xendit.EWalletTypeEnum `json:"ewallet_type"`
+	ExternalID      string                 `json:"external_id"`
+	Amount          float64                `json:"amount,string"`
+	TransactionDate *time.Time             `json:"transaction_date,omitempty"`
+	CheckoutURL     string                 `json:"checkout_url,omitempty"`
+	BusinessID      string                 `json:"business_id,omitempty"`
 }
 
 // CreatePayment creates new payment
@@ -45,6 +45,7 @@ func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymen
 		"POST",
 		fmt.Sprintf("%s/ewallets", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -78,6 +79,7 @@ func (c Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymen
 		"GET",
 		fmt.Sprintf("%s/ewallets?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
+		nil,
 		nil,
 		tempResponse,
 	)
