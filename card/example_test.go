@@ -1,22 +1,20 @@
-package main
+package card_test
 
 import (
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/card"
 )
 
-// To run this example, create the token first in https://js.xendit.co/test_tokenize.html
-func main() {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+func ExampleCreateCharge() {
+	xendit.Opt.SecretKey = "examplesecretkey"
 
 	createChargeData := card.CreateChargeParams{
-		TokenID:          "5e2ab828d97c174c58bcd9f6",
-		AuthenticationID: "5e2ab828d97c174c58bcd9f7",
-		ExternalID:       "cardAuth-" + time.Now().String(),
+		TokenID:          "example-token-id",
+		AuthenticationID: "example-authentication-id",
+		ExternalID:       "cardAuth-1",
 		Amount:           10000,
 		Capture:          new(bool), // false
 	}
@@ -25,51 +23,71 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Printf("created charge: %+v\n", chargeResp)
+}
+
+func ExampleGetCharge() {
+	xendit.Opt.SecretKey = "examplesecretkey"
 
 	getChargeData := card.GetChargeParams{
-		ChargeID: chargeResp.ID,
+		ChargeID: "123",
 	}
 
-	chargeResp, err = card.GetCharge(&getChargeData)
+	chargeResp, err := card.GetCharge(&getChargeData)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Printf("retrieved charge: %+v\n", chargeResp)
+}
+
+func ExampleCaptureCharge() {
+	xendit.Opt.SecretKey = "examplesecretkey"
 
 	captureChargeData := card.CaptureChargeParams{
-		ChargeID: chargeResp.ID,
+		ChargeID: "123",
 		Amount:   10000,
 	}
 
-	chargeResp, err = card.CaptureCharge(&captureChargeData)
+	chargeResp, err := card.CaptureCharge(&captureChargeData)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Printf("captured charge: %+v\n", chargeResp)
+}
+
+func ExampleCreateRefund() {
+	xendit.Opt.SecretKey = "examplesecretkey"
 
 	createRefundData := card.CreateRefundParams{
-		IdempotencyKey: "idempotency-" + time.Now().String(),
-		ChargeID:       "5e2abc61d97c174c58bcda30",
+		IdempotencyKey: "unique-idempotency-key",
+		ChargeID:       "123",
 		Amount:         10000,
-		ExternalID:     "refund-" + time.Now().String(),
+		ExternalID:     "example-external-id",
 	}
 
 	refundResp, err := card.CreateRefund(&createRefundData)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("refunded charge: %+v\n", refundResp)
 
-	// To run this part (ReverseAuthorization), the charge must not be captured first.
+	fmt.Printf("refunded charge: %+v\n", refundResp)
+}
+
+func ExampleReverseAuthorization() {
+	xendit.Opt.SecretKey = "examplesecretkey"
+
 	reverseAuthorizationData := card.ReverseAuthorizationParams{
-		ChargeID:   chargeResp.ID,
-		ExternalID: "reverseAuth-" + time.Now().String(),
+		ChargeID:   "123",
+		ExternalID: "reverseAuth-id",
 	}
 
 	reverseAuthorizationResp, err := card.ReverseAuthorization(&reverseAuthorizationData)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Printf("reversed authorization: %+v\n", reverseAuthorizationResp)
 }

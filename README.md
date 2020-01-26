@@ -35,6 +35,12 @@ This library is the abstraction of Xendit API for access from applications writt
       - [UpdateFixed](#updatefixed)
       - [GetAvailableBanks](#getavailablebanks)
       - [GetPayment](#getpayment)
+    - [Card](#card)
+      - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
+      - [GetCharge](#getcharge)
+    - [CaptureCharge](#capturecharge)
+    - [CreateRefund](#createrefund)
+    - [ReverseAuthorization](#reverseauthorization)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -251,6 +257,38 @@ virtualaccount.GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error)
 
 ```go
 virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
+```
+
+#### Card
+
+##### CreateCharge (Create Authorization)
+
+```go
+card.CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error)
+```
+
+##### GetCharge
+
+```go
+card.GetCharge(data *GetChargeParams) (*xendit.CardCharge, *xendit.Error)
+```
+
+#### CaptureCharge
+
+```go
+card.CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error)
+```
+
+#### CreateRefund
+
+```go
+card.CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error)
+```
+
+#### ReverseAuthorization
+
+```go
+card.ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error)
 ```
 
 ## Contribute
