@@ -113,12 +113,11 @@ func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundP
 		return nil, validator.APIValidatorErr(err)
 	}
 
-	var header http.Header = nil
+	header := http.Header{}
 
 	response := &xendit.CardRefund{}
 
 	if data.IdempotencyKey != "" {
-		header = http.Header{}
 		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
 	}
 
@@ -139,17 +138,17 @@ func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundP
 }
 
 // ReverseAuthorization reverses a card authorization
-func (c Client) ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorizationResponse, *xendit.Error) {
+func (c Client) ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
 	return c.ReverseAuthorizationWithContext(context.Background(), data)
 }
 
 // ReverseAuthorizationWithContext reverses a card authorization with context
-func (c Client) ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorizationResponse, *xendit.Error) {
+func (c Client) ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
 
-	response := &xendit.CardReverseAuthorizationResponse{}
+	response := &xendit.CardReverseAuthorization{}
 
 	err := c.APIRequester.Call(
 		ctx,

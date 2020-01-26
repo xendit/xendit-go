@@ -44,9 +44,9 @@ type CardRefund struct {
 	FailureReason      string     `json:"failure_reason"`
 }
 
-// CardReverseAuthorizationResponse contains data from Xendit's API response of card's Reverse Authorization request.
+// CardReverseAuthorization contains data from Xendit's API response of card's Reverse Authorization request.
 // For more details see https://xendit.github.io/apireference/?bash#reverse-authorization.
-type CardReverseAuthorizationResponse struct {
+type CardReverseAuthorization struct {
 	ID                 string     `json:"id"`
 	ExternalID         string     `json:"external_id"`
 	CreditCardChargeID string     `json:"credit_card_charge_id"`

@@ -71,12 +71,12 @@ func CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xe
 /* Authorization */
 
 // ReverseAuthorization reverses a card authorization
-func ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorizationResponse, *xendit.Error) {
+func ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
 	return ReverseAuthorizationWithContext(context.Background(), data)
 }
 
 // ReverseAuthorizationWithContext reverses a card authorization with context
-func ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorizationResponse, *xendit.Error) {
+func ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
