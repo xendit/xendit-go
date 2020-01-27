@@ -25,6 +25,12 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Get Payment Status](#get-payment-status)
     - [Balance](#balance)
       - [Get](#get)
+    - [Virtual Account](#virtual-account)
+      - [CreateFixedVA](#createfixedva)
+      - [GetFixedVA](#getfixedva)
+      - [UpdateFixedVA](#updatefixedva)
+      - [GetAvailableBanks](#getavailablebanks)
+      - [GetPayment](#getpayment)
     - [Retail Outlet](#retail-outlet)
       - [Create Fixed Payment Code](#create-fixed-payment-code)
       - [Get Fixed Payment Code](#get-fixed-payment-code)
@@ -75,7 +81,7 @@ module github.com/my/package
 go 1.13
 
 require (
-	github.com/xendit/xendit-go v1.0.0
+  github.com/xendit/xendit-go v1.0.0
 )
 ```
 
@@ -193,6 +199,38 @@ ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet,
 
 ```go
 balance.Get(data *balance.GetParams) (*xendit.Balance, *xendit.Error)
+```
+
+#### Virtual Account
+
+##### CreateFixedVA
+
+```go
+virtualaccount.CreateFixedVA(data *virtualaccount.CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### GetFixedVA
+
+```go
+virtualaccount.GetFixedVA(data *virtualaccount.GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### UpdateFixedVA
+
+```go
+virtualaccount.UpdateFixedVA(data *virtualaccount.UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
+```
+
+##### GetAvailableBanks
+
+```go
+virtualaccount.GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error)
+```
+
+##### GetPayment
+
+```go
+virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
 ```
 
 #### Retail Outlet
