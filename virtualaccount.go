@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-// VirtualAccount contains data from Xendit's API response of virtual account related request.
+// VirtualAccount contains data from Xendit's API response of virtual account related requests.
 // For more details see https://xendit.github.io/apireference/?bash#virtual-accounts.
 type VirtualAccount struct {
 	OwnerID         string     `json:"owner_id"`
