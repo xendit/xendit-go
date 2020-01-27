@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"net/http"
 	"testing"
 	"time"
 
@@ -23,8 +24,8 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	result.(*xendit.Invoice).ID = "123"
 	result.(*xendit.Invoice).ExternalID = "invoice-external-id"
@@ -81,6 +82,7 @@ func TestCreateInvoice(t *testing.T) {
 				"POST",
 				"https://api.xendit.co/v2/invoices",
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.Invoice{},
 			).Return(nil)
@@ -134,6 +136,7 @@ func TestGetInvoice(t *testing.T) {
 				"https://api.xendit.co/v2/invoices/123",
 				xendit.Opt.SecretKey,
 				nil,
+				nil,
 				&xendit.Invoice{},
 			).Return(nil)
 
@@ -186,6 +189,7 @@ func TestExpireInvoice(t *testing.T) {
 				"https://api.xendit.co/invoices/123/expire!",
 				xendit.Opt.SecretKey,
 				nil,
+				nil,
 				&xendit.Invoice{},
 			).Return(nil)
 
@@ -201,8 +205,8 @@ type apiRequesterGetAllMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{
 		"id": "123",
@@ -271,6 +275,7 @@ func TestGetAllInvoices(t *testing.T) {
 				"GET",
 				"https://api.xendit.co/v2/invoices?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&[]xendit.Invoice{},
 			).Return(nil)

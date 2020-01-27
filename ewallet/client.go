@@ -45,6 +45,7 @@ func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymen
 		"POST",
 		fmt.Sprintf("%s/ewallets", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -78,6 +79,7 @@ func (c Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymen
 		"GET",
 		fmt.Sprintf("%s/ewallets?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
+		nil,
 		nil,
 		tempResponse,
 	)
