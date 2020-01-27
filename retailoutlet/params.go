@@ -1,16 +1,20 @@
 package retailoutlet
 
-import "time"
+import (
+	"time"
+
+	"github.com/xendit/xendit-go"
+)
 
 // CreateFixedPaymentCodeParams contains parameters for CreateFixedPaymentCode
 type CreateFixedPaymentCodeParams struct {
-	ExternalID       string     `json:"external_id" validate:"required"`
-	RetailOutletName string     `json:"retail_outlet_name" validate:"required"`
-	Name             string     `json:"name" validate:"required"`
-	ExpectedAmount   float64    `json:"expected_amount" validate:"required"`
-	PaymentCode      string     `json:"payment_code,omitempty"`
-	ExpirationDate   *time.Time `json:"expiration_date,omitempty"`
-	IsSingleUse      bool       `json:"is_single_use,omitempty"`
+	ExternalID       string                      `json:"external_id" validate:"required"`
+	RetailOutletName xendit.RetailOutletNameEnum `json:"retail_outlet_name" validate:"required"`
+	Name             string                      `json:"name" validate:"required"`
+	ExpectedAmount   float64                     `json:"expected_amount" validate:"required"`
+	PaymentCode      string                      `json:"payment_code,omitempty"`
+	ExpirationDate   *time.Time                  `json:"expiration_date,omitempty"`
+	IsSingleUse      bool                        `json:"is_single_use,omitempty"`
 }
 
 // GetFixedPaymentCodeParams contains parameters for GetFixedPaymentCode

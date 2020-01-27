@@ -31,7 +31,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.RetailOutlet).Status = "ACTIVE"
 	result.(*xendit.RetailOutlet).OwnerID = "someone-owner-id"
 	result.(*xendit.RetailOutlet).ExternalID = "retailoutlet-external-id"
-	result.(*xendit.RetailOutlet).RetailOutletName = "ALFAMART"
+	result.(*xendit.RetailOutlet).RetailOutletName = xendit.RetailOutletNameAlfamart
 	result.(*xendit.RetailOutlet).Prefix = "TEST"
 	result.(*xendit.RetailOutlet).Name = "Michael Jackson"
 	result.(*xendit.RetailOutlet).PaymentCode = "TEST123"
@@ -59,7 +59,7 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 			desc: "should create a retail outlet fixed payment code",
 			data: &retailoutlet.CreateFixedPaymentCodeParams{
 				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: "ALFAMART",
+				RetailOutletName: xendit.RetailOutletNameAlfamart,
 				Name:             "Michael Jackson",
 				ExpectedAmount:   200000,
 			},
@@ -68,7 +68,7 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 				Status:           "ACTIVE",
 				OwnerID:          "someone-owner-id",
 				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: "ALFAMART",
+				RetailOutletName: xendit.RetailOutletNameAlfamart,
 				Prefix:           "TEST",
 				Name:             "Michael Jackson",
 				PaymentCode:      "TEST123",
@@ -83,7 +83,7 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 			desc: "should report missing required fields",
 			data: &retailoutlet.CreateFixedPaymentCodeParams{
 				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: "ALFAMART",
+				RetailOutletName: xendit.RetailOutletNameAlfamart,
 				ExpectedAmount:   200000,
 			},
 			expectedRes: nil,
@@ -133,7 +133,7 @@ func TestGetFixedPaymentCode(t *testing.T) {
 				Status:           "ACTIVE",
 				OwnerID:          "someone-owner-id",
 				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: "ALFAMART",
+				RetailOutletName: xendit.RetailOutletNameAlfamart,
 				Prefix:           "TEST",
 				Name:             "Michael Jackson",
 				PaymentCode:      "TEST123",
@@ -197,7 +197,7 @@ func TestUpdateFixedPaymentCode(t *testing.T) {
 				Status:           "ACTIVE",
 				OwnerID:          "someone-owner-id",
 				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: "ALFAMART",
+				RetailOutletName: xendit.RetailOutletNameAlfamart,
 				Prefix:           "TEST",
 				Name:             "Michael Jackson",
 				PaymentCode:      "TEST123",
