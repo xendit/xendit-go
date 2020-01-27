@@ -301,13 +301,13 @@ func TestGetAvailableBanks(t *testing.T) {
 		{
 			desc: "should get available disbursement banks",
 			expectedRes: []xendit.DisbursementBank{
-				xendit.DisbursementBank{
+				{
 					Name:            "Bank Mandiri",
 					Code:            "MANDIRI",
 					CanDisburse:     true,
 					CanNameValidate: true,
 				},
-				xendit.DisbursementBank{
+				{
 					Name:            "Bank Negara Indonesia",
 					Code:            "BNI",
 					CanDisburse:     true,
