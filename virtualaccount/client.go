@@ -106,7 +106,7 @@ func (c *Client) GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error
 	return c.GetAvailableBanksWithContext(context.Background())
 }
 
-// GetAvailableBanksWithContext gets available virtual account banks with context
+// GetAvailableBanksWithCfontext gets available virtual account banks with context
 func (c *Client) GetAvailableBanksWithContext(ctx context.Context) ([]xendit.VirtualAccountBank, *xendit.Error) {
 	response := []xendit.VirtualAccountBank{}
 
