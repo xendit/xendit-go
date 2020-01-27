@@ -117,7 +117,7 @@ func (c *Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]x
 		"GET",
 		fmt.Sprintf("%s/v2/invoices?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
-		data,
+		nil,
 		&response,
 	)
 	if err != nil {

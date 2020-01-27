@@ -35,7 +35,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	return nil
 }
 
-func TestCreateInvoice(t *testing.T) {
+func TestCreate(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
@@ -93,7 +93,7 @@ func TestCreateInvoice(t *testing.T) {
 	}
 }
 
-func TestGetInvoice(t *testing.T) {
+func TestGet(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
@@ -145,7 +145,7 @@ func TestGetInvoice(t *testing.T) {
 	}
 }
 
-func TestExpireInvoice(t *testing.T) {
+func TestExpire(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
@@ -217,7 +217,7 @@ func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path s
 	return nil
 }
 
-func TestGetAllInvoices(t *testing.T) {
+func TestGetAll(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterGetAllMock)
 	initTesting(apiRequesterMockObj)
 
@@ -271,7 +271,7 @@ func TestGetAllInvoices(t *testing.T) {
 				"GET",
 				"https://api.xendit.co/v2/invoices?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
-				tC.data,
+				nil,
 				&[]xendit.Invoice{},
 			).Return(nil)
 
