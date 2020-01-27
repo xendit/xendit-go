@@ -38,5 +38,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("voidd payout: %+v\n", resp)
+	fmt.Printf("voided payout: %+v\n", resp)
 }
