@@ -14,13 +14,13 @@ type Client struct {
 	APIRequester xendit.APIRequester
 }
 
-// CreateFixed creates new fixed virtual account
-func (c Client) CreateFixed(data *CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
-	return c.CreateFixedWithContext(context.Background(), data)
+// CreateFixedVA creates new fixed virtual account
+func (c Client) CreateFixedVA(data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+	return c.CreateFixedVAWithContext(context.Background(), data)
 }
 
-// CreateFixedWithContext creates new fixed virtual account with context
-func (c *Client) CreateFixedWithContext(ctx context.Context, data *CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+// CreateFixedVAWithContext creates new fixed virtual account with context
+func (c *Client) CreateFixedVAWithContext(ctx context.Context, data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -42,13 +42,13 @@ func (c *Client) CreateFixedWithContext(ctx context.Context, data *CreateFixedPa
 	return response, nil
 }
 
-// GetFixed gets one fixed virtual account
-func (c *Client) GetFixed(data *GetFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
-	return c.GetFixedWithContext(context.Background(), data)
+// GetFixedVA gets one fixed virtual account
+func (c *Client) GetFixedVA(data *GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+	return c.GetFixedVAWithContext(context.Background(), data)
 }
 
-// GetFixedWithContext gets one invoice with context
-func (c *Client) GetFixedWithContext(ctx context.Context, data *GetFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+// GetFixedVAWithContext gets one invoice with context
+func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -70,13 +70,13 @@ func (c *Client) GetFixedWithContext(ctx context.Context, data *GetFixedParams) 
 	return response, nil
 }
 
-// UpdateFixed updates one fixed virtual account
-func (c Client) UpdateFixed(data *UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+// UpdateFixedVA updates one fixed virtual account
+func (c Client) UpdateFixedVA(data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	return c.UpdateFixedWithContext(context.Background(), data)
 }
 
 // UpdateFixedWithContext updates one fixed virtual account with context
-func (c *Client) UpdateFixedWithContext(ctx context.Context, data *UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+func (c *Client) UpdateFixedWithContext(ctx context.Context, data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}

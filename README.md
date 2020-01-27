@@ -24,9 +24,9 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Create Payment](#create-payment)
       - [Get Payment Status](#get-payment-status)
     - [Virtual Account](#virtual-account)
-      - [Create Fixed](#create-fixed)
-      - [GetFixed](#getfixed)
-      - [UpdateFixed](#updatefixed)
+      - [CreateFixedVA](#createfixedva)
+      - [GetFixedVA](#getfixedva)
+      - [UpdateFixedVA](#updatefixedva)
       - [GetAvailableBanks](#getavailablebanks)
       - [GetPayment](#getpayment)
 - [Contribute](#contribute)
@@ -189,22 +189,22 @@ ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet,
 
 #### Virtual Account
 
-##### Create Fixed
+##### CreateFixedVA
 
 ```go
-virtualaccount.CreateFixed(data *virtualaccount.CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.CreateFixedVA(data *virtualaccount.CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
-##### GetFixed
+##### GetFixedVA
 
 ```go
-virtualaccount.GetFixed(data *virtualaccount.GetFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.GetFixedVA(data *virtualaccount.GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
-##### UpdateFixed
+##### UpdateFixedVA
 
 ```go
-virtualaccount.UpdateFixed(data *virtualaccount.UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.UpdateFixedVA(data *virtualaccount.UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
 ##### GetAvailableBanks
