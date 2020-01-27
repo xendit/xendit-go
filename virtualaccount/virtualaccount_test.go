@@ -336,7 +336,7 @@ func TestGetPayment(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should gets a va payment",
+			desc: "should get va available banks",
 			data: &virtualaccount.GetPaymentParams{
 				PaymentID: "payment123",
 			},
