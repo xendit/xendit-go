@@ -6,43 +6,43 @@ import (
 	"github.com/xendit/xendit-go"
 )
 
-// CreateFixed creates new fixed virtual account
-func CreateFixed(data *CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
-	return CreateFixedWithContext(context.Background(), data)
+// CreateFixedVA creates new fixed virtual account
+func CreateFixedVA(data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+	return CreateFixedVAWithContext(context.Background(), data)
 }
 
-// CreateFixedWithContext creates new fixed virtual account with context
-func CreateFixedWithContext(ctx context.Context, data *CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+// CreateFixedVAWithContext creates new fixed virtual account with context
+func CreateFixedVAWithContext(ctx context.Context, data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.CreateFixedWithContext(ctx, data)
+	return client.CreateFixedVAWithContext(ctx, data)
 }
 
-// GetFixed gets a fixed virtual account
-func GetFixed(data *GetFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
-	return GetFixedWithContext(context.Background(), data)
+// GetFixedVA gets a fixed virtual account
+func GetFixedVA(data *GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+	return GetFixedVAWithContext(context.Background(), data)
 }
 
-// GetFixedWithContext gets a fixed virtual account with context
-func GetFixedWithContext(ctx context.Context, data *GetFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+// GetFixedVAWithContext gets a fixed virtual account with context
+func GetFixedVAWithContext(ctx context.Context, data *GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err
 	}
 
-	return client.GetFixedWithContext(ctx, data)
+	return client.GetFixedVAWithContext(ctx, data)
 }
 
-// UpdateFixed updates a fixed virtual account
-func UpdateFixed(data *UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
-	return UpdateFixedWithContext(context.Background(), data)
+// UpdateFixedVA updates a fixed virtual account
+func UpdateFixedVA(data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+	return UpdateFixedVAWithContext(context.Background(), data)
 }
 
-// UpdateFixedWithContext updates a fixed virtual account with context
-func UpdateFixedWithContext(ctx context.Context, data *UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error) {
+// UpdateFixedVAWithContext updates a fixed virtual account with context
+func UpdateFixedVAWithContext(ctx context.Context, data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
 		return nil, err

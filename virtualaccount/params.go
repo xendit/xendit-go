@@ -2,8 +2,8 @@ package virtualaccount
 
 import "time"
 
-// CreateFixedParams contains parameters for CreateFixed
-type CreateFixedParams struct {
+// CreateFixedVAParams contains parameters for CreateFixedVA
+type CreateFixedVAParams struct {
 	ExternalID           string     `json:"external_id" validate:"required"`
 	BankCode             string     `json:"bank_code" validate:"required"`
 	Name                 string     `json:"name" validate:"required"`
@@ -16,13 +16,13 @@ type CreateFixedParams struct {
 	Description          string     `json:"description,omitempty"`
 }
 
-// GetFixedParams contains parameters for GetFixed
-type GetFixedParams struct {
+// GetFixedVAParams contains parameters for GetFixedVA
+type GetFixedVAParams struct {
 	ID string `json:"id" validate:"required"`
 }
 
-// UpdateFixedParams contains parameters for UpdateFixed
-type UpdateFixedParams struct {
+// UpdateFixedVAParams contains parameters for UpdateFixedVA
+type UpdateFixedVAParams struct {
 	ID              string     `json:"-" validate:"required"`
 	IsSingleUse     bool       `json:"is_single_use,omitempty"`
 	ExpirationDate  *time.Time `json:"expiration_date,omitempty"`
