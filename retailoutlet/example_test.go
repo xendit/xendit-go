@@ -14,7 +14,7 @@ func ExampleCreateFixedPaymentCode() {
 
 	data := retailoutlet.CreateFixedPaymentCodeParams{
 		ExternalID:       "retailoutlet-external-id",
-		RetailOutletName: "ALFAMART",
+		RetailOutletName: xendit.RetailOutletNameAlfamart,
 		Name:             "Michael Jackson",
 		ExpectedAmount:   200000,
 	}

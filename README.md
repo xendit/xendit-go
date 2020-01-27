@@ -31,6 +31,10 @@ This library is the abstraction of Xendit API for access from applications writt
       - [UpdateFixedVA](#updatefixedva)
       - [GetAvailableBanks](#getavailablebanks)
       - [GetPayment](#getpayment)
+    - [Retail Outlet](#retail-outlet)
+      - [Create Fixed Payment Code](#create-fixed-payment-code)
+      - [Get Fixed Payment Code](#get-fixed-payment-code)
+      - [Update Fixed Payment Code](#update-fixed-payment-code)
     - [Card](#card)
       - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
       - [GetCharge](#getcharge)
@@ -233,6 +237,26 @@ virtualaccount.GetAvailableBanks() ([]xendit.VirtualAccountBank, *xendit.Error)
 
 ```go
 virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
+```
+
+#### Retail Outlet
+
+##### Create Fixed Payment Code
+
+```go
+retailoutlet.CreateFixedPaymentCode(data *retailoutlet.CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Get Fixed Payment Code
+
+```go
+retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Update Fixed Payment Code
+
+```go
+retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
 #### Card
