@@ -23,6 +23,8 @@ This library is the abstraction of Xendit API for access from applications writt
     - [E-Wallet](#e-wallet)
       - [Create Payment](#create-payment)
       - [Get Payment Status](#get-payment-status)
+    - [Balance](#balance)
+      - [Get](#get)
     - [Retail Outlet](#retail-outlet)
       - [Create Fixed Payment Code](#create-fixed-payment-code)
       - [Get Fixed Payment Code](#get-fixed-payment-code)
@@ -183,6 +185,14 @@ ewallet.CreatePayment(data *ewallet.CreatePaymentParams) (*xendit.EWallet, *xend
 
 ```go
 ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error)
+```
+
+#### Balance
+
+##### Get
+
+```go
+balance.Get(data *balance.GetParams) (*xendit.Balance, *xendit.Error)
 ```
 
 #### Retail Outlet
