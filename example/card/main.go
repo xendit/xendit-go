@@ -14,10 +14,10 @@ func main() {
 	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
 
 	createChargeData := card.CreateChargeParams{
-		TokenID:          "5e2ab828d97c174c58bcd9f6",
-		AuthenticationID: "5e2ab828d97c174c58bcd9f7",
+		TokenID:          "5e2e81bbbae82e4d54d76473",
+		AuthenticationID: "5e2e8322bae82e4d54d7648f",
 		ExternalID:       "cardAuth-" + time.Now().String(),
-		Amount:           10000,
+		Amount:           1000000,
 		Capture:          new(bool), // false
 	}
 
@@ -39,7 +39,7 @@ func main() {
 
 	captureChargeData := card.CaptureChargeParams{
 		ChargeID: chargeResp.ID,
-		Amount:   10000,
+		Amount:   500000,
 	}
 
 	chargeResp, err = card.CaptureCharge(&captureChargeData)
@@ -50,7 +50,7 @@ func main() {
 
 	createRefundData := card.CreateRefundParams{
 		IdempotencyKey: "idempotency-" + time.Now().String(),
-		ChargeID:       "5e2abc61d97c174c58bcda30",
+		ChargeID:       "5e2e8354d97c174c58bcf664",
 		Amount:         10000,
 		ExternalID:     "refund-" + time.Now().String(),
 	}
