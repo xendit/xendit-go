@@ -25,22 +25,18 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Get Payment Status](#get-payment-status)
     - [Balance](#balance)
       - [Get](#get)
-    - [Retail Outlet](#retail-outlet)
-      - [Create Fixed Payment Code](#create-fixed-payment-code)
-      - [Get Fixed Payment Code](#get-fixed-payment-code)
-      - [Update Fixed Payment Code](#update-fixed-payment-code)
     - [Virtual Account](#virtual-account)
-      - [Create Fixed](#create-fixed)
-      - [GetFixed](#getfixed)
-      - [UpdateFixed](#updatefixed)
+      - [CreateFixedVA](#createfixedva)
+      - [GetFixedVA](#getfixedva)
+      - [UpdateFixedVA](#updatefixedva)
       - [GetAvailableBanks](#getavailablebanks)
       - [GetPayment](#getpayment)
     - [Card](#card)
       - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
       - [GetCharge](#getcharge)
-    - [CaptureCharge](#capturecharge)
-    - [CreateRefund](#createrefund)
-    - [ReverseAuthorization](#reverseauthorization)
+      - [CaptureCharge](#capturecharge)
+      - [CreateRefund](#createrefund)
+      - [ReverseAuthorization](#reverseauthorization)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -207,44 +203,24 @@ ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet,
 balance.Get(data *balance.GetParams) (*xendit.Balance, *xendit.Error)
 ```
 
-#### Retail Outlet
-
-##### Create Fixed Payment Code
-
-```go
-retailoutlet.CreateFixedPaymentCode(data *retailoutlet.CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
-```
-
-##### Get Fixed Payment Code
-
-```go
-retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
-```
-
-##### Update Fixed Payment Code
-
-```go
-retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
-```
-
 #### Virtual Account
 
-##### Create Fixed
+##### CreateFixedVA
 
 ```go
-virtualaccount.CreateFixed(data *virtualaccount.CreateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.CreateFixedVA(data *virtualaccount.CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
-##### GetFixed
+##### GetFixedVA
 
 ```go
-virtualaccount.GetFixed(data *virtualaccount.GetFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.GetFixedVA(data *virtualaccount.GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
-##### UpdateFixed
+##### UpdateFixedVA
 
 ```go
-virtualaccount.UpdateFixed(data *virtualaccount.UpdateFixedParams) (*xendit.VirtualAccount, *xendit.Error)
+virtualaccount.UpdateFixedVA(data *virtualaccount.UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error)
 ```
 
 ##### GetAvailableBanks
@@ -273,19 +249,19 @@ card.CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error)
 card.GetCharge(data *GetChargeParams) (*xendit.CardCharge, *xendit.Error)
 ```
 
-#### CaptureCharge
+##### CaptureCharge
 
 ```go
 card.CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error)
 ```
 
-#### CreateRefund
+##### CreateRefund
 
 ```go
 card.CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error)
 ```
 
-#### ReverseAuthorization
+##### ReverseAuthorization
 
 ```go
 card.ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error)

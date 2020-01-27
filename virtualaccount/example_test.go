@@ -9,16 +9,16 @@ import (
 	"github.com/xendit/xendit-go/virtualaccount"
 )
 
-func ExampleCreateFixed() {
+func ExampleCreateFixedVA() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
-	data := virtualaccount.CreateFixedParams{
+	data := virtualaccount.CreateFixedVAParams{
 		ExternalID: "va-example",
 		BankCode:   "BRI",
 		Name:       "Michael Jackson",
 	}
 
-	resp, err := virtualaccount.CreateFixed(&data)
+	resp, err := virtualaccount.CreateFixedVA(&data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,14 +26,14 @@ func ExampleCreateFixed() {
 	fmt.Printf("created fixed va: %+v\n", resp)
 }
 
-func ExampleGetFixed() {
+func ExampleGetFixedVA() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
-	data := virtualaccount.GetFixedParams{
+	data := virtualaccount.GetFixedVAParams{
 		ID: "va-id",
 	}
 
-	resp, err := virtualaccount.GetFixed(&data)
+	resp, err := virtualaccount.GetFixedVA(&data)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -41,18 +41,18 @@ func ExampleGetFixed() {
 	fmt.Printf("retrieved fixed va: %+v\n", resp)
 }
 
-func ExampleUpdateFixed() {
+func ExampleUpdateFixedVA() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	expirationDate := time.Now().AddDate(0, 0, 1)
 
-	updateFixedData := virtualaccount.UpdateFixedParams{
+	updateFixedVAData := virtualaccount.UpdateFixedVAParams{
 		ID:             "va-id",
 		ExpirationDate: &expirationDate,
 		ExpectedAmount: 100000,
 	}
 
-	resp, err := virtualaccount.UpdateFixed(&updateFixedData)
+	resp, err := virtualaccount.UpdateFixedVA(&updateFixedVAData)
 	if err != nil {
 		log.Fatal(err)
 	}
