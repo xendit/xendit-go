@@ -14,7 +14,7 @@ type Disbursement struct {
 	EmailTo                 []string `json:"email_to,omitempty"`
 	EmailCC                 []string `json:"email_cc,omitempty"`
 	EmailBCC                []string `json:"email_bcc,omitempty"`
-	IsInstant               bool     `json:"is_instant,omitempty"`
+	IsInstant               *bool    `json:"is_instant,omitempty"`
 	FailureCode             string   `json:"failure_code,omitempty"`
 }
 
