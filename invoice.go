@@ -1,6 +1,6 @@
 package xendit
 
-// Invoice contains data from Xendit's API response of invoice related request.
+// Invoice contains data from Xendit's API response of invoice related requests.
 // For more details see https://xendit.github.io/apireference/?bash#invoices.
 type Invoice struct {
 	ID                        string                `json:"id"`
