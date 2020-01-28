@@ -1,9 +1,9 @@
 package xendit
 
-// BalanceAccountTypeEnum constants are the available e-wallet type
+// BalanceAccountTypeEnum constants are the available balance account type
 type BalanceAccountTypeEnum string
 
-// This consists the values that EWalletTypeEnum can take
+// This consists the values that BalanceAccountType can take
 const (
 	BalanceAccountTypeCash    BalanceAccountTypeEnum = "CASH"
 	BalanceAccountTypeHolding BalanceAccountTypeEnum = "HOLDING"
