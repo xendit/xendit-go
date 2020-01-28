@@ -18,23 +18,23 @@ func main() {
 	}
 	fmt.Printf("available va banks: %+v\n", availableBanks)
 
-	createFixedData := virtualaccount.CreateFixedParams{
+	createFixedVAData := virtualaccount.CreateFixedVAParams{
 		ExternalID: "va-" + time.Now().String(),
 		BankCode:   availableBanks[0].Code,
 		Name:       "Michael Jackson",
 	}
 
-	resp, err := virtualaccount.CreateFixed(&createFixedData)
+	resp, err := virtualaccount.CreateFixedVA(&createFixedVAData)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("created fixed va: %+v\n", resp)
 
-	getFixedData := virtualaccount.GetFixedParams{
+	getFixedVAData := virtualaccount.GetFixedVAParams{
 		ID: resp.ID,
 	}
 
-	resp, err = virtualaccount.GetFixed(&getFixedData)
+	resp, err = virtualaccount.GetFixedVA(&getFixedVAData)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,12 +42,12 @@ func main() {
 
 	expirationDate := time.Now().AddDate(0, 0, 1)
 
-	updateFixedData := virtualaccount.UpdateFixedParams{
+	updateFixedVAData := virtualaccount.UpdateFixedVAParams{
 		ID:             resp.ID,
 		ExpirationDate: &expirationDate,
 	}
 
-	resp, err = virtualaccount.UpdateFixed(&updateFixedData)
+	resp, err = virtualaccount.UpdateFixedVA(&updateFixedVAData)
 	if err != nil {
 		log.Fatal(err)
 	}
