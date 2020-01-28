@@ -4,6 +4,7 @@ import "time"
 
 // CreateFixedVAParams contains parameters for CreateFixedVA
 type CreateFixedVAParams struct {
+	ForUserID            string     `json:"-"`
 	ExternalID           string     `json:"external_id" validate:"required"`
 	BankCode             string     `json:"bank_code" validate:"required"`
 	Name                 string     `json:"name" validate:"required"`

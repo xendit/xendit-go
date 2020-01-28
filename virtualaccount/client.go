@@ -3,6 +3,7 @@ package virtualaccount
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
@@ -26,13 +27,18 @@ func (c *Client) CreateFixedVAWithContext(ctx context.Context, data *CreateFixed
 	}
 
 	response := &xendit.VirtualAccount{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/callback_virtual_accounts", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)

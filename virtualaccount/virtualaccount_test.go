@@ -25,7 +25,7 @@ type apiRequesterMock struct {
 }
 
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, nil, params, result)
+	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2051-01-19T17:00:00.000Z")
 
@@ -99,7 +99,7 @@ func TestCreateFixedVA(t *testing.T) {
 				"POST",
 				"https://api.xendit.co/callback_virtual_accounts",
 				xendit.Opt.SecretKey,
-				nil,
+				&http.Header{},
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -155,13 +155,15 @@ func TestGetFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
+			var header *http.Header
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"GET",
 				"https://api.xendit.co/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
-				nil,
+				header,
 				nil,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -218,13 +220,15 @@ func TestUpdateFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
+			var header *http.Header
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"PATCH",
 				"https://api.xendit.co/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
-				nil,
+				header,
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
