@@ -38,7 +38,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.RecurringPayment).Interval = "DAY"
 	result.(*xendit.RecurringPayment).IntervalCount = 3
 	result.(*xendit.RecurringPayment).RecurrenceProgress = 1
-	result.(*xendit.RecurringPayment).ShouldSendEmail = false
+	result.(*xendit.RecurringPayment).ShouldSendEmail = new(bool)
 	result.(*xendit.RecurringPayment).MissedPaymentAction = "IGNORE"
 	result.(*xendit.RecurringPayment).LastCreatedInvoiceURL = "https://invoice-url.com"
 	result.(*xendit.RecurringPayment).Created = &date
@@ -83,7 +83,7 @@ func TestCreateRecurringPayment(t *testing.T) {
 				Interval:              "DAY",
 				IntervalCount:         3,
 				RecurrenceProgress:    1,
-				ShouldSendEmail:       false,
+				ShouldSendEmail:       new(bool),
 				MissedPaymentAction:   "IGNORE",
 				LastCreatedInvoiceURL: "https://invoice-url.com",
 				Created:               &date,
@@ -156,7 +156,7 @@ func TestGetRecurringPayment(t *testing.T) {
 				Interval:              "DAY",
 				IntervalCount:         3,
 				RecurrenceProgress:    1,
-				ShouldSendEmail:       false,
+				ShouldSendEmail:       new(bool),
 				MissedPaymentAction:   "IGNORE",
 				LastCreatedInvoiceURL: "https://invoice-url.com",
 				Created:               &date,
@@ -226,7 +226,7 @@ func TestEditRecurringPayment(t *testing.T) {
 				Interval:              "DAY",
 				IntervalCount:         3,
 				RecurrenceProgress:    1,
-				ShouldSendEmail:       false,
+				ShouldSendEmail:       new(bool),
 				MissedPaymentAction:   "IGNORE",
 				LastCreatedInvoiceURL: "https://invoice-url.com",
 				Created:               &date,
@@ -293,7 +293,7 @@ func TestStopRecurringPayment(t *testing.T) {
 				Interval:              "DAY",
 				IntervalCount:         3,
 				RecurrenceProgress:    1,
-				ShouldSendEmail:       false,
+				ShouldSendEmail:       new(bool),
 				MissedPaymentAction:   "IGNORE",
 				LastCreatedInvoiceURL: "https://invoice-url.com",
 				Created:               &date,
@@ -360,7 +360,7 @@ func TestPauseRecurringPayment(t *testing.T) {
 				Interval:              "DAY",
 				IntervalCount:         3,
 				RecurrenceProgress:    1,
-				ShouldSendEmail:       false,
+				ShouldSendEmail:       new(bool),
 				MissedPaymentAction:   "IGNORE",
 				LastCreatedInvoiceURL: "https://invoice-url.com",
 				Created:               &date,
@@ -427,7 +427,7 @@ func TestResumeRecurringPayment(t *testing.T) {
 				Interval:              "DAY",
 				IntervalCount:         3,
 				RecurrenceProgress:    1,
-				ShouldSendEmail:       false,
+				ShouldSendEmail:       new(bool),
 				MissedPaymentAction:   "IGNORE",
 				LastCreatedInvoiceURL: "https://invoice-url.com",
 				Created:               &date,

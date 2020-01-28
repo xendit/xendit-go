@@ -31,7 +31,7 @@ type RecurringPayment struct {
 	Description           string                       `json:"description"`
 	Status                string                       `json:"status"`
 	Amount                float64                      `json:"amount"`
-	ShouldSendEmail       bool                         `json:"should_send_email"`
+	ShouldSendEmail       *bool                        `json:"should_send_email"`
 	Interval              RecurringPaymentIntervalEnum `json:"interval"`
 	IntervalCount         int                          `json:"interval_count"`
 	MissedPaymentAction   MissedPaymentActionEnum      `json:"missed_payment_action"`
