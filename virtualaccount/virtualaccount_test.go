@@ -270,7 +270,7 @@ func TestGetAvailableBanks(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should get a fixed va",
+			desc: "should get available va banks",
 			expectedRes: []xendit.VirtualAccountBank{
 				xendit.VirtualAccountBank{
 					Name: "Bank Mandiri",
@@ -341,7 +341,7 @@ func TestGetPayment(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should get va available banks",
+			desc: "should get va payment",
 			data: &virtualaccount.GetPaymentParams{
 				PaymentID: "payment123",
 			},
