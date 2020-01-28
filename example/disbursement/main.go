@@ -78,5 +78,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("create batch disbursement: %+v\n", batchDisbursementResp)
+	fmt.Printf("created batch disbursement: %+v\n", batchDisbursementResp)
 }
