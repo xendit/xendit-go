@@ -17,8 +17,8 @@ type API struct {
 	Invoice          *invoice.Client
 	EWallet          *ewallet.Client
 	Balance          *balance.Client
-	RetailOutlet     *retailoutlet.Client
 	VirtualAccount   *virtualaccount.Client
+	RetailOutlet     *retailoutlet.Client
 	RecurringPayment *recurringpayment.Client
 }
 
@@ -32,8 +32,8 @@ func (a *API) Init(apiRequester *xendit.APIRequester) {
 	a.Invoice = &invoice.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.EWallet = &ewallet.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.Balance = &balance.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.RetailOutlet = &retailoutlet.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.VirtualAccount = &virtualaccount.Client{Opt: &a.opt, APIRequester: *apiRequester}
+	a.RetailOutlet = &retailoutlet.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.RecurringPayment = &recurringpayment.Client{Opt: &a.opt, APIRequester: *apiRequester}
 }
 
