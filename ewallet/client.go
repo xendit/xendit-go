@@ -3,6 +3,7 @@ package ewallet
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/xendit/xendit-go"
@@ -39,13 +40,18 @@ func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymen
 	}
 
 	response := &xendit.EWallet{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/ewallets", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
