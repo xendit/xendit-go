@@ -113,9 +113,8 @@ func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundP
 		return nil, validator.APIValidatorErr(err)
 	}
 
-	header := http.Header{}
-
 	response := &xendit.CardRefund{}
+	header := &http.Header{}
 
 	if data.IdempotencyKey != "" {
 		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
@@ -126,7 +125,7 @@ func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundP
 		"POST",
 		fmt.Sprintf("%s/credit_card_charges/%s/refunds", c.Opt.XenditURL, data.ChargeID),
 		c.Opt.SecretKey,
-		&header,
+		header,
 		data,
 		response,
 	)
