@@ -1,5 +1,7 @@
 package xendit
 
+import "time"
+
 // Invoice contains data from Xendit's API response of invoice related requests.
 // For more details see https://xendit.github.io/apireference/?bash#invoices.
 type Invoice struct {
@@ -12,14 +14,14 @@ type Invoice struct {
 	MerchantName              string                `json:"merchant_name"`
 	MerchantProfilePictureURL string                `json:"merchant_profile_picture_url"`
 	InvoiceURL                string                `json:"invoice_url"`
-	ExpiryDate                string                `json:"expiry_date"`
+	ExpiryDate                *time.Time            `json:"expiry_date"`
 	AvailableBanks            []InvoiceBank         `json:"available_banks,omitempty"`
 	AvailableEWallets         []InvoiceEWallet      `json:"available_ewallets,omitempty"`
 	AvailableRetailOutlets    []InvoiceRetailOutlet `json:"available_retail_outlets,omitempty"`
 	ShouldExcludeCreditCard   bool                  `json:"should_exclude_credit_card"`
 	ShouldSendEmail           bool                  `json:"should_send_email"`
-	Created                   string                `json:"created"`
-	Updated                   string                `json:"updated"`
+	Created                   *time.Time            `json:"created"`
+	Updated                   *time.Time            `json:"updated"`
 	BankCode                  string                `json:"bank_code,omitempty"`
 	PaidAmount                string                `json:"paid_amount,omitempty"`
 	AdjustedReceivedAmount    string                `json:"adjusted_received_amount,omitempty"`
@@ -28,14 +30,14 @@ type Invoice struct {
 	Currency                  string                `json:"currency,omitempty"`
 	InitialCurrency           string                `json:"initial_currency,omitempty"`
 	InitialAmount             string                `json:"initial_amount,omitempty"`
-	PaidAt                    string                `json:"paid_at,omitempty"`
+	PaidAt                    *time.Time            `json:"paid_at,omitempty"`
 	MidLabel                  string                `json:"mid_label,omitempty"`
 	PaymentChannel            string                `json:"payment_channel,omitempty"`
 	PaymentMethod             string                `json:"payment_method,omitempty"`
 	PaymentDestination        string                `json:"payment_destination,omitempty"`
 	SuccessRedirectURL        string                `json:"success_redirect_url,omitempty"`
 	FailureRedirectURL        string                `json:"failure_redirect_url,omitempty"`
-	Items                     string                `json:"items,omitempty"`
+	Items                     []InvoiceItem         `json:"items,omitempty"`
 	FixedVA                   string                `json:"fixed_va,omitempty"`
 }
 
