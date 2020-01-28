@@ -25,7 +25,7 @@ type apiRequesterMock struct {
 }
 
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, nil, params, result)
+	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.Invoice).ID = "123"
 	result.(*xendit.Invoice).ExternalID = "invoice-external-id"
@@ -82,7 +82,7 @@ func TestCreate(t *testing.T) {
 				"POST",
 				"https://api.xendit.co/v2/invoices",
 				xendit.Opt.SecretKey,
-				nil,
+				&http.Header{},
 				tC.data,
 				&xendit.Invoice{},
 			).Return(nil)
@@ -129,13 +129,15 @@ func TestGet(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
+			var header *http.Header
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"GET",
 				"https://api.xendit.co/v2/invoices/123",
 				xendit.Opt.SecretKey,
-				nil,
+				header,
 				nil,
 				&xendit.Invoice{},
 			).Return(nil)
@@ -182,13 +184,15 @@ func TestExpire(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
+			var header *http.Header
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"POST",
 				"https://api.xendit.co/invoices/123/expire!",
 				xendit.Opt.SecretKey,
-				nil,
+				header,
 				nil,
 				&xendit.Invoice{},
 			).Return(nil)

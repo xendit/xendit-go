@@ -10,6 +10,7 @@ import (
 
 // CreateParams contains parameters for Create
 type CreateParams struct {
+	ForUserID                string   `json:"-"`
 	ExternalID               string   `json:"external_id" validate:"required"`
 	PayerEmail               string   `json:"payer_email" validate:"required"`
 	Description              string   `json:"description" validate:"required"`
