@@ -2,6 +2,7 @@ package balance_test
 
 import (
 	"context"
+	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -19,8 +20,8 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	result.(*xendit.Balance).Balance = 200000
 
@@ -55,6 +56,7 @@ func TestGet(t *testing.T) {
 				"GET",
 				"https://api.xendit.co/balance?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
+				nil,
 				nil,
 				&xendit.Balance{},
 			).Return(nil)
