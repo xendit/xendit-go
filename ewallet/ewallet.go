@@ -35,3 +35,10 @@ func GetPaymentStatusWithContext(ctx context.Context, data *GetPaymentStatusPara
 
 	return client.GetPaymentStatusWithContext(ctx, data)
 }
+
+func getClient() (*Client, *xendit.Error) {
+	return &Client{
+		Opt:          &xendit.Opt,
+		APIRequester: xendit.GetAPIRequester(),
+	}, nil
+}

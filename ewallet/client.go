@@ -91,10 +91,3 @@ func (c Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymen
 
 	return &response, nil
 }
-
-func getClient() (*Client, *xendit.Error) {
-	return &Client{
-		Opt:          &xendit.Opt,
-		APIRequester: xendit.GetAPIRequester(),
-	}, nil
-}
