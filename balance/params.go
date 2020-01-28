@@ -8,6 +8,7 @@ import (
 
 // GetParams contains parameters for Get
 type GetParams struct {
+	ForUserID   string                        `json:"-"`
 	AccountType xendit.BalanceAccountTypeEnum `json:"account_type"`
 }
 
