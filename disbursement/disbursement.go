@@ -66,6 +66,21 @@ func GetAvailableBanksWithContext(ctx context.Context) ([]xendit.DisbursementBan
 	return client.GetAvailableBanksWithContext(ctx)
 }
 
+// CreateBatch creates new batch disbursement
+func CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error) {
+	return CreateBatchWithContext(context.Background(), data)
+}
+
+// CreateBatchWithContext creates new batch disbursement with context
+func CreateBatchWithContext(ctx context.Context, data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CreateBatchWithContext(ctx, data)
+}
+
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
 		Opt:          &xendit.Opt,

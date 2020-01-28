@@ -53,4 +53,30 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("retrieved disbursements: %+v\n", resps)
+
+	createBatchData := disbursement.CreateBatchParams{
+		Reference: "batch_disbursement" + time.Now().String(),
+		Disbursements: []disbursement.DisbursementItem{
+			{
+				Amount:            200000,
+				BankCode:          availableBanks[0].Code,
+				BankAccountName:   "Michael Jackson",
+				BankAccountNumber: "1234567890",
+				Description:       "Batch disbursement from Go",
+			},
+			{
+				Amount:            100000,
+				BankCode:          availableBanks[1].Code,
+				BankAccountName:   "Michael Jackson",
+				BankAccountNumber: "1234567890",
+				Description:       "Batch disbursement from Go 2",
+			},
+		},
+	}
+
+	batchDisbursementResp, err := disbursement.CreateBatch(&createBatchData)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("create batch disbursement: %+v\n", batchDisbursementResp)
 }

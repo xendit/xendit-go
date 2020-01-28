@@ -1,5 +1,7 @@
 package xendit
 
+import "time"
+
 // Disbursement contains data from Xendit's API response of disbursement related requests.
 // For more details see https://xendit.github.io/apireference/?bash#disbursement.
 type Disbursement struct {
@@ -24,4 +26,15 @@ type DisbursementBank struct {
 	Code            string `json:"code"`
 	CanDisburse     *bool  `json:"can_disburse"`
 	CanNameValidate *bool  `json:"can_name_validate"`
+}
+
+// BatchDisbursement contains data from Xendit's API response of batch disbursement.
+// For more details see https://xendit.github.io/apireference/?bash#batch-disbursement.
+type BatchDisbursement struct {
+	Created             *time.Time `json:"created"`
+	Reference           string     `json:"reference"`
+	TotalUploadedAmount float64    `json:"total_uploaded_amount"`
+	TotalUploadedCount  int        `json:"total_uploaded_count"`
+	Status              string     `json:"status"`
+	ID                  string     `json:"id"`
 }
