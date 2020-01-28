@@ -45,7 +45,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	return nil
 }
 
-func TestCreateFixed(t *testing.T) {
+func TestCreateFixedVA(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
@@ -53,13 +53,13 @@ func TestCreateFixed(t *testing.T) {
 
 	testCases := []struct {
 		desc        string
-		data        *virtualaccount.CreateFixedParams
+		data        *virtualaccount.CreateFixedVAParams
 		expectedRes *xendit.VirtualAccount
 		expectedErr *xendit.Error
 	}{
 		{
 			desc: "should create a fixed va",
-			data: &virtualaccount.CreateFixedParams{
+			data: &virtualaccount.CreateFixedVAParams{
 				ExternalID: "va-external-id",
 				BankCode:   "MANDIRI",
 				Name:       "Michael Jackson",
@@ -82,7 +82,7 @@ func TestCreateFixed(t *testing.T) {
 		},
 		{
 			desc: "should report missing required fields",
-			data: &virtualaccount.CreateFixedParams{
+			data: &virtualaccount.CreateFixedVAParams{
 				ExternalID: "va-external-id",
 				BankCode:   "MANDIRI",
 			},
@@ -104,7 +104,7 @@ func TestCreateFixed(t *testing.T) {
 				&xendit.VirtualAccount{},
 			).Return(nil)
 
-			resp, err := virtualaccount.CreateFixed(tC.data)
+			resp, err := virtualaccount.CreateFixedVA(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)
@@ -112,7 +112,7 @@ func TestCreateFixed(t *testing.T) {
 	}
 }
 
-func TestGetFixed(t *testing.T) {
+func TestGetFixedVA(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
@@ -120,13 +120,13 @@ func TestGetFixed(t *testing.T) {
 
 	testCases := []struct {
 		desc        string
-		data        *virtualaccount.GetFixedParams
+		data        *virtualaccount.GetFixedVAParams
 		expectedRes *xendit.VirtualAccount
 		expectedErr *xendit.Error
 	}{
 		{
 			desc: "should get a fixed va",
-			data: &virtualaccount.GetFixedParams{
+			data: &virtualaccount.GetFixedVAParams{
 				ID: "123",
 			},
 			expectedRes: &xendit.VirtualAccount{
@@ -147,7 +147,7 @@ func TestGetFixed(t *testing.T) {
 		},
 		{
 			desc:        "should report missing required fields",
-			data:        &virtualaccount.GetFixedParams{},
+			data:        &virtualaccount.GetFixedVAParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ID'")),
 		},
@@ -166,7 +166,7 @@ func TestGetFixed(t *testing.T) {
 				&xendit.VirtualAccount{},
 			).Return(nil)
 
-			resp, err := virtualaccount.GetFixed(tC.data)
+			resp, err := virtualaccount.GetFixedVA(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)
@@ -174,7 +174,7 @@ func TestGetFixed(t *testing.T) {
 	}
 }
 
-func TestUpdateFixed(t *testing.T) {
+func TestUpdateFixedVA(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
@@ -182,13 +182,13 @@ func TestUpdateFixed(t *testing.T) {
 
 	testCases := []struct {
 		desc        string
-		data        *virtualaccount.UpdateFixedParams
+		data        *virtualaccount.UpdateFixedVAParams
 		expectedRes *xendit.VirtualAccount
 		expectedErr *xendit.Error
 	}{
 		{
 			desc: "should update a fixed va",
-			data: &virtualaccount.UpdateFixedParams{
+			data: &virtualaccount.UpdateFixedVAParams{
 				ID:             "123",
 				ExpirationDate: &expirationDate,
 			},
@@ -210,7 +210,7 @@ func TestUpdateFixed(t *testing.T) {
 		},
 		{
 			desc:        "should report missing required fields",
-			data:        &virtualaccount.UpdateFixedParams{},
+			data:        &virtualaccount.UpdateFixedVAParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ID'")),
 		},
@@ -229,7 +229,7 @@ func TestUpdateFixed(t *testing.T) {
 				&xendit.VirtualAccount{},
 			).Return(nil)
 
-			resp, err := virtualaccount.UpdateFixed(tC.data)
+			resp, err := virtualaccount.UpdateFixedVA(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)
@@ -341,7 +341,7 @@ func TestGetPayment(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should gets a va payment",
+			desc: "should get va available banks",
 			data: &virtualaccount.GetPaymentParams{
 				PaymentID: "payment123",
 			},
