@@ -22,6 +22,6 @@ type Disbursement struct {
 type DisbursementBank struct {
 	Name            string `json:"name"`
 	Code            string `json:"code"`
-	CanDisburse     bool   `json:"can_disburse"`
-	CanNameValidate bool   `json:"can_name_validate"`
+	CanDisburse     *bool  `json:"can_disburse"`
+	CanNameValidate *bool  `json:"can_name_validate"`
 }
