@@ -13,9 +13,9 @@ type VirtualAccount struct {
 	MerchantCode    string     `json:"merchant_code"`
 	Name            string     `json:"name"`
 	AccountNumber   string     `json:"account_number"`
-	IsClosed        bool       `json:"is_closed"`
+	IsClosed        *bool      `json:"is_closed"`
 	ID              string     `json:"id"`
-	IsSingleUse     bool       `json:"is_single_use"`
+	IsSingleUse     *bool      `json:"is_single_use"`
 	Status          string     `json:"status"`
 	Currency        string     `json:"currency"`
 	ExpirationDate  *time.Time `json:"expiration_date"`

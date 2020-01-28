@@ -29,7 +29,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2051-01-19T17:00:00.000Z")
 
-	result.(*xendit.VirtualAccount).IsClosed = false
+	result.(*xendit.VirtualAccount).IsClosed = new(bool)
 	result.(*xendit.VirtualAccount).Status = "PENDING"
 	result.(*xendit.VirtualAccount).Currency = "IDR"
 	result.(*xendit.VirtualAccount).OwnerID = "owner-id"
@@ -38,7 +38,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.VirtualAccount).MerchantCode = "88888"
 	result.(*xendit.VirtualAccount).Name = "Michael Jackson"
 	result.(*xendit.VirtualAccount).AccountNumber = "8888888888888"
-	result.(*xendit.VirtualAccount).IsSingleUse = false
+	result.(*xendit.VirtualAccount).IsSingleUse = new(bool)
 	result.(*xendit.VirtualAccount).ExpirationDate = &expirationDate
 	result.(*xendit.VirtualAccount).ID = "123"
 
@@ -65,7 +65,7 @@ func TestCreateFixedVA(t *testing.T) {
 				Name:       "Michael Jackson",
 			},
 			expectedRes: &xendit.VirtualAccount{
-				IsClosed:       false,
+				IsClosed:       new(bool),
 				Status:         "PENDING",
 				Currency:       "IDR",
 				OwnerID:        "owner-id",
@@ -74,7 +74,7 @@ func TestCreateFixedVA(t *testing.T) {
 				MerchantCode:   "88888",
 				Name:           "Michael Jackson",
 				AccountNumber:  "8888888888888",
-				IsSingleUse:    false,
+				IsSingleUse:    new(bool),
 				ExpirationDate: &expirationDate,
 				ID:             "123",
 			},
@@ -130,7 +130,7 @@ func TestGetFixedVA(t *testing.T) {
 				ID: "123",
 			},
 			expectedRes: &xendit.VirtualAccount{
-				IsClosed:       false,
+				IsClosed:       new(bool),
 				Status:         "PENDING",
 				Currency:       "IDR",
 				OwnerID:        "owner-id",
@@ -139,7 +139,7 @@ func TestGetFixedVA(t *testing.T) {
 				MerchantCode:   "88888",
 				Name:           "Michael Jackson",
 				AccountNumber:  "8888888888888",
-				IsSingleUse:    false,
+				IsSingleUse:    new(bool),
 				ExpirationDate: &expirationDate,
 				ID:             "123",
 			},
@@ -193,7 +193,7 @@ func TestUpdateFixedVA(t *testing.T) {
 				ExpirationDate: &expirationDate,
 			},
 			expectedRes: &xendit.VirtualAccount{
-				IsClosed:       false,
+				IsClosed:       new(bool),
 				Status:         "PENDING",
 				Currency:       "IDR",
 				OwnerID:        "owner-id",
@@ -202,7 +202,7 @@ func TestUpdateFixedVA(t *testing.T) {
 				MerchantCode:   "88888",
 				Name:           "Michael Jackson",
 				AccountNumber:  "8888888888888",
-				IsSingleUse:    false,
+				IsSingleUse:    new(bool),
 				ExpirationDate: &expirationDate,
 				ID:             "123",
 			},

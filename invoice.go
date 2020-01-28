@@ -18,8 +18,8 @@ type Invoice struct {
 	AvailableBanks            []InvoiceBank         `json:"available_banks,omitempty"`
 	AvailableEWallets         []InvoiceEWallet      `json:"available_ewallets,omitempty"`
 	AvailableRetailOutlets    []InvoiceRetailOutlet `json:"available_retail_outlets,omitempty"`
-	ShouldExcludeCreditCard   bool                  `json:"should_exclude_credit_card"`
-	ShouldSendEmail           bool                  `json:"should_send_email"`
+	ShouldExcludeCreditCard   *bool                 `json:"should_exclude_credit_card"`
+	ShouldSendEmail           *bool                 `json:"should_send_email"`
 	Created                   *time.Time            `json:"created"`
 	Updated                   *time.Time            `json:"updated"`
 	BankCode                  string                `json:"bank_code,omitempty"`
