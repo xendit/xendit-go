@@ -15,7 +15,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -104,7 +104,7 @@ func TestCreateCharge(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/credit_card_charges",
+				xendit.Opt.XenditURL+"/credit_card_charges",
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
@@ -169,7 +169,7 @@ func TestGetCharge(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/credit_card_charges/"+tC.data.ChargeID,
+				xendit.Opt.XenditURL+"/credit_card_charges/"+tC.data.ChargeID,
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -237,7 +237,7 @@ func TestCaptureCharge(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/credit_card_charges/"+tC.data.ChargeID+"/capture",
+				xendit.Opt.XenditURL+"/credit_card_charges/"+tC.data.ChargeID+"/capture",
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
@@ -328,7 +328,7 @@ func TestCreateRefund(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/credit_card_charges/"+tC.data.ChargeID+"/refunds",
+				xendit.Opt.XenditURL+"/credit_card_charges/"+tC.data.ChargeID+"/refunds",
 				xendit.Opt.SecretKey,
 				mock.Anything,
 				tC.data,
@@ -412,7 +412,7 @@ func TestReverseAuthorization(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/credit_card_charges/"+tC.data.ChargeID+"/auth_reversal",
+				xendit.Opt.XenditURL+"/credit_card_charges/"+tC.data.ChargeID+"/auth_reversal",
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,

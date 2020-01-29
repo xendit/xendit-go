@@ -15,7 +15,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -113,7 +113,7 @@ func TestCreateRecurringPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/recurring_payments",
+				xendit.Opt.XenditURL+"/recurring_payments",
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
@@ -180,7 +180,7 @@ func TestGetRecurringPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/recurring_payments/"+tC.data.ID,
+				xendit.Opt.XenditURL+"/recurring_payments/"+tC.data.ID,
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -250,7 +250,7 @@ func TestEditRecurringPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"PATCH",
-				"https://api.xendit.co/recurring_payments/"+tC.data.ID,
+				xendit.Opt.XenditURL+"/recurring_payments/"+tC.data.ID,
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
@@ -317,7 +317,7 @@ func TestStopRecurringPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/recurring_payments/"+tC.data.ID+"/stop!",
+				xendit.Opt.XenditURL+"/recurring_payments/"+tC.data.ID+"/stop!",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -384,7 +384,7 @@ func TestPauseRecurringPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/recurring_payments/"+tC.data.ID+"/pause!",
+				xendit.Opt.XenditURL+"/recurring_payments/"+tC.data.ID+"/pause!",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -451,7 +451,7 @@ func TestResumeRecurringPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/recurring_payments/"+tC.data.ID+"/resume!",
+				xendit.Opt.XenditURL+"/recurring_payments/"+tC.data.ID+"/resume!",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
