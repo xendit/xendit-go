@@ -15,7 +15,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -98,7 +98,7 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/fixed_payment_code",
+				xendit.Opt.XenditURL+"/fixed_payment_code",
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
@@ -160,7 +160,7 @@ func TestGetFixedPaymentCode(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
+				xendit.Opt.XenditURL+"/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -227,7 +227,7 @@ func TestUpdateFixedPaymentCode(t *testing.T) {
 				"Call",
 				context.Background(),
 				"PATCH",
-				"https://api.xendit.co/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
+				xendit.Opt.XenditURL+"/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
