@@ -17,7 +17,7 @@ func main() {
 	if godotenvErr != nil {
 		log.Fatal(godotenvErr)
 	}
-	xendit.Opt.SecretKey = os.Getenv("SECRET_API_KEY")
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createChargeData := card.CreateChargeParams{
 		TokenID:          "5e2e81bbbae82e4d54d76473",

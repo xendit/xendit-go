@@ -16,7 +16,7 @@ func main() {
 	if godotenvErr != nil {
 		log.Fatal(godotenvErr)
 	}
-	xendit.Opt.SecretKey = os.Getenv("SECRET_API_KEY")
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createData := recurringpayment.CreateParams{
 		ExternalID:    "recurringpayment-" + time.Now().String(),

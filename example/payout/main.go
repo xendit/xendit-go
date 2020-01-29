@@ -17,7 +17,7 @@ func main() {
 	if godotenvErr != nil {
 		log.Fatal(godotenvErr)
 	}
-	xendit.Opt.SecretKey = os.Getenv("SECRET_API_KEY")
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createData := payout.CreateParams{
 		ExternalID: "payout-" + time.Now().String(),
