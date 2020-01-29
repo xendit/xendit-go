@@ -16,15 +16,15 @@ This library is the abstraction of Xendit API for access from applications writt
   - [With Client](#with-client)
   - [Packages Method Signatures](#packages-method-signatures)
     - [Invoice](#invoice)
-      - [Create Invoice](#create-invoice)
-      - [Get Invoice](#get-invoice)
-      - [Expire Invoice](#expire-invoice)
-      - [GetAll Invoice](#getall-invoice)
-    - [E-Wallet](#e-wallet)
-      - [Create Payment](#create-payment)
-      - [Get Payment Status](#get-payment-status)
-    - [Balance](#balance)
+      - [Create](#create)
       - [Get](#get)
+      - [Expire](#expire)
+      - [GetAll](#getall)
+    - [E-Wallet](#e-wallet)
+      - [CreatePayment](#createpayment)
+      - [GetPaymentStatus](#getpaymentstatus)
+    - [Balance](#balance)
+      - [Get](#get-1)
     - [Virtual Account](#virtual-account)
       - [CreateFixedVA](#createfixedva)
       - [GetFixedVA](#getfixedva)
@@ -32,20 +32,32 @@ This library is the abstraction of Xendit API for access from applications writt
       - [GetAvailableBanks](#getavailablebanks)
       - [GetPayment](#getpayment)
     - [Retail Outlet](#retail-outlet)
-      - [Create Fixed Payment Code](#create-fixed-payment-code)
-      - [Get Fixed Payment Code](#get-fixed-payment-code)
-      - [Update Fixed Payment Code](#update-fixed-payment-code)
+      - [CreateFixedPaymentCode](#createfixedpaymentcode)
+      - [GetFixedPaymentCode](#getfixedpaymentcode)
+      - [UpdateFixedPaymentCode](#updatefixedpaymentcode)
     - [Disbursement](#disbursement)
-      - [Create](#create)
+      - [Create](#create-1)
       - [GetByID](#getbyid)
       - [GetByExternalID](#getbyexternalid)
       - [GetAvailableBanks](#getavailablebanks-1)
+      - [CreateBatch](#createbatch)
     - [Card](#card)
       - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
       - [GetCharge](#getcharge)
       - [CaptureCharge](#capturecharge)
       - [CreateRefund](#createrefund)
       - [ReverseAuthorization](#reverseauthorization)
+    - [Payout](#payout)
+      - [Create](#create-2)
+      - [Get](#get-2)
+      - [Expire](#expire-1)
+    - [Retail Outlet](#retail-outlet-1)
+      - [Create](#create-3)
+      - [Get](#get-3)
+      - [Edit](#edit)
+      - [Stop](#stop)
+      - [Pause](#pause)
+      - [Resume](#resume)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -166,25 +178,25 @@ The following is a list of method signatures for each packages (for quick refere
 
 #### Invoice
 
-##### Create Invoice
+##### Create
 
 ```go
 invoice.Create(data *invoice.CreateParams) (*xendit.Invoice, *xendit.Error)
 ```
 
-##### Get Invoice
+##### Get
 
 ```go
 invoice.Get(data *invoice.GetParams) (*xendit.Invoice, *xendit.Error)
 ```
 
-##### Expire Invoice
+##### Expire
 
 ```go
 invoice.Expire(data *invoice.ExpireParams) (*xendit.Invoice, *xendit.Error)
 ```
 
-##### GetAll Invoice
+##### GetAll
 
 ```go
 invoice.GetAll(data *invoice.GetAll) (*xendit.Invoice, *xendit.Error)
@@ -192,13 +204,13 @@ invoice.GetAll(data *invoice.GetAll) (*xendit.Invoice, *xendit.Error)
 
 #### E-Wallet
 
-##### Create Payment
+##### CreatePayment
 
 ```go
 ewallet.CreatePayment(data *ewallet.CreatePaymentParams) (*xendit.EWallet, *xendit.Error)
 ```
 
-##### Get Payment Status
+##### GetPaymentStatus
 
 ```go
 ewallet.GetPaymentStatus(data *ewallet.GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error)
@@ -246,19 +258,19 @@ virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.Virtua
 
 #### Retail Outlet
 
-##### Create Fixed Payment Code
+##### CreateFixedPaymentCode
 
 ```go
 retailoutlet.CreateFixedPaymentCode(data *retailoutlet.CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
-##### Get Fixed Payment Code
+##### GetFixedPaymentCode
 
 ```go
 retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
-##### Update Fixed Payment Code
+##### UpdateFixedPaymentCode
 
 ```go
 retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
@@ -288,6 +300,12 @@ disbursement.GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disbursement
 
 ```go
 disbursement.GetAvailableBanks() ([]xendit.DisbursementBank, *xendit.Error)
+```
+
+##### CreateBatch
+
+```go
+disbursement.CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error)
 ```
 
 #### Card
@@ -320,6 +338,64 @@ card.CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error)
 
 ```go
 card.ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error)
+```
+
+#### Payout
+
+##### Create
+
+```go
+payout.Create(data *payout.CreateParams) (*xendit.Payout, *xendit.Error)
+```
+
+##### Get
+
+```go
+payout.Get(data *payout.GetParams) (*xendit.Payout, *xendit.Error)
+```
+
+##### Expire
+
+```go
+payout.Expire(data *payout.ExpireParams) (*xendit.Payout, *xendit.Error)
+```
+
+#### Retail Outlet
+
+##### Create
+
+```go
+retailoutlet.Create(data *retailoutlet.CreateParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Get
+
+```go
+retailoutlet.Get(data *retailoutlet.GetParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Edit
+
+```go
+retailoutlet.Edit(data *retailoutlet.EditParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Stop
+
+```go
+retailoutlet.Stop(data *retailoutlet.StopParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Pause
+
+```go
+retailoutlet.Pause(data *retailoutlet.PauseParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Resume
+
+```go
+retailoutlet.Resume(data *retailoutlet.ResumeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
 ## Contribute
