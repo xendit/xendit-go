@@ -29,12 +29,12 @@ type getPaymentStatusResponse struct {
 }
 
 // CreatePayment creates new payment
-func (c Client) CreatePayment(data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) CreatePayment(data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
 	return c.CreatePaymentWithContext(context.Background(), data)
 }
 
 // CreatePaymentWithContext creates new payment
-func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -63,12 +63,12 @@ func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymen
 }
 
 // GetPaymentStatus gets one payment with its status
-func (c Client) GetPaymentStatus(data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) GetPaymentStatus(data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
 	return c.GetPaymentStatusWithContext(context.Background(), data)
 }
 
 // GetPaymentStatusWithContext gets one payment with its status
-func (c Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}

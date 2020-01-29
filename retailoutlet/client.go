@@ -15,7 +15,7 @@ type Client struct {
 }
 
 // CreateFixedPaymentCode creates new retail outlet fixed payment code
-func (c Client) CreateFixedPaymentCode(data *CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error) {
+func (c *Client) CreateFixedPaymentCode(data *CreateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error) {
 	return c.CreateFixedPaymentCodeWithContext(context.Background(), data)
 }
 
@@ -73,7 +73,7 @@ func (c *Client) GetFixedPaymentCodeWithContext(ctx context.Context, data *GetFi
 }
 
 // UpdateFixedPaymentCode updates a retail outlet fixed payment code
-func (c Client) UpdateFixedPaymentCode(data *UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error) {
+func (c *Client) UpdateFixedPaymentCode(data *UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error) {
 	return c.UpdateFixedPaymentCodeWithContext(context.Background(), data)
 }
 

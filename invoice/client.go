@@ -16,7 +16,7 @@ type Client struct {
 }
 
 // Create creates new invoice
-func (c Client) Create(data *CreateParams) (*xendit.Invoice, *xendit.Error) {
+func (c *Client) Create(data *CreateParams) (*xendit.Invoice, *xendit.Error) {
 	return c.CreateWithContext(context.Background(), data)
 }
 

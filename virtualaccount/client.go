@@ -16,7 +16,7 @@ type Client struct {
 }
 
 // CreateFixedVA creates new fixed virtual account
-func (c Client) CreateFixedVA(data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+func (c *Client) CreateFixedVA(data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	return c.CreateFixedVAWithContext(context.Background(), data)
 }
 
@@ -79,7 +79,7 @@ func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAPara
 }
 
 // UpdateFixedVA updates one fixed virtual account
-func (c Client) UpdateFixedVA(data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+func (c *Client) UpdateFixedVA(data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	return c.UpdateFixedWithContext(context.Background(), data)
 }
 

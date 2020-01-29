@@ -16,7 +16,7 @@ type Client struct {
 }
 
 // Create creates new disbursement
-func (c Client) Create(data *CreateParams) (*xendit.Disbursement, *xendit.Error) {
+func (c *Client) Create(data *CreateParams) (*xendit.Disbursement, *xendit.Error) {
 	return c.CreateWithContext(context.Background(), data)
 }
 
@@ -53,7 +53,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 }
 
 // GetByID gets a disbursement by id
-func (c Client) GetByID(data *GetByIDParams) (*xendit.Disbursement, *xendit.Error) {
+func (c *Client) GetByID(data *GetByIDParams) (*xendit.Disbursement, *xendit.Error) {
 	return c.GetByIDWithContext(context.Background(), data)
 }
 
@@ -82,7 +82,7 @@ func (c *Client) GetByIDWithContext(ctx context.Context, data *GetByIDParams) (*
 }
 
 // GetByExternalID gets a disbursement by id
-func (c Client) GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disbursement, *xendit.Error) {
+func (c *Client) GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disbursement, *xendit.Error) {
 	return c.GetByExternalIDWithContext(context.Background(), data)
 }
 
@@ -136,7 +136,7 @@ func (c *Client) GetAvailableBanksWithContext(ctx context.Context) ([]xendit.Dis
 }
 
 // CreateBatch creates new batch disbursement
-func (c Client) CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error) {
+func (c *Client) CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error) {
 	return c.CreateBatchWithContext(context.Background(), data)
 }
 

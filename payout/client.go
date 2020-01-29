@@ -15,7 +15,7 @@ type Client struct {
 }
 
 // Create creates new payout
-func (c Client) Create(data *CreateParams) (*xendit.Payout, *xendit.Error) {
+func (c *Client) Create(data *CreateParams) (*xendit.Payout, *xendit.Error) {
 	return c.CreateWithContext(context.Background(), data)
 }
 
