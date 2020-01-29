@@ -16,7 +16,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -97,7 +97,7 @@ func TestCreateFixedVA(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/callback_virtual_accounts",
+				xendit.Opt.XenditURL+"/callback_virtual_accounts",
 				xendit.Opt.SecretKey,
 				&http.Header{},
 				tC.data,
@@ -161,7 +161,7 @@ func TestGetFixedVA(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/callback_virtual_accounts/"+tC.data.ID,
+				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
 				header,
 				nil,
@@ -226,7 +226,7 @@ func TestUpdateFixedVA(t *testing.T) {
 				"Call",
 				context.Background(),
 				"PATCH",
-				"https://api.xendit.co/callback_virtual_accounts/"+tC.data.ID,
+				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
 				header,
 				tC.data,
@@ -295,7 +295,7 @@ func TestGetAvailableBanks(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/available_virtual_account_banks",
+				xendit.Opt.XenditURL+"/available_virtual_account_banks",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -376,7 +376,7 @@ func TestGetPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/callback_virtual_account_payments/payment_id="+tC.data.PaymentID,
+				xendit.Opt.XenditURL+"/callback_virtual_account_payments/payment_id="+tC.data.PaymentID,
 				xendit.Opt.SecretKey,
 				nil,
 				nil,

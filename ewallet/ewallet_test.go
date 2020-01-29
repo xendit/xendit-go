@@ -13,7 +13,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -77,7 +77,7 @@ func TestCreatePayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/ewallets",
+				xendit.Opt.XenditURL+"/ewallets",
 				xendit.Opt.SecretKey,
 				&http.Header{},
 				tC.data,
@@ -147,7 +147,7 @@ func TestGetPaymentStatus(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/ewallets?"+tC.data.QueryString(),
+				xendit.Opt.XenditURL+"/ewallets?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
 				nil,
 				nil,

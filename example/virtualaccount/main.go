@@ -3,14 +3,20 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/virtualaccount"
 )
 
 func main() {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	godotenvErr := godotenv.Load()
+	if godotenvErr != nil {
+		log.Fatal(godotenvErr)
+	}
+	xendit.Opt.SecretKey = os.Getenv("SECRET_API_KEY")
 
 	availableBanks, err := virtualaccount.GetAvailableBanks()
 	if err != nil {
