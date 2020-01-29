@@ -35,6 +35,11 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Create Fixed Payment Code](#create-fixed-payment-code)
       - [Get Fixed Payment Code](#get-fixed-payment-code)
       - [Update Fixed Payment Code](#update-fixed-payment-code)
+    - [Disbursement](#disbursement)
+      - [Create](#create)
+      - [GetByID](#getbyid)
+      - [GetByExternalID](#getbyexternalid)
+      - [GetAvailableBanks](#getavailablebanks-1)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -251,6 +256,32 @@ retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (
 
 ```go
 retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+#### Disbursement
+
+##### Create
+
+```go
+disbursement.Create(data *CreateParams) (*xendit.Disbursement, *xendit.Error)
+```
+
+##### GetByID
+
+```go
+disbursement.GetByID(data *GetByIDParams) (*xendit.Disbursement, *xendit.Error)
+```
+
+##### GetByExternalID
+
+```go
+disbursement.GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disbursement, *xendit.Error)
+```
+
+##### GetAvailableBanks
+
+```go
+disbursement.GetAvailableBanks() ([]xendit.DisbursementBank, *xendit.Error)
 ```
 
 ## Contribute

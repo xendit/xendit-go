@@ -32,6 +32,7 @@ func (c *Client) CreateFixedPaymentCodeWithContext(ctx context.Context, data *Cr
 		"POST",
 		fmt.Sprintf("%s/fixed_payment_code", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -61,6 +62,7 @@ func (c *Client) GetFixedPaymentCodeWithContext(ctx context.Context, data *GetFi
 		fmt.Sprintf("%s/fixed_payment_code/%s", c.Opt.XenditURL, data.FixedPaymentCodeID),
 		c.Opt.SecretKey,
 		nil,
+		nil,
 		response,
 	)
 	if err != nil {
@@ -88,6 +90,7 @@ func (c *Client) UpdateFixedPaymentCodeWithContext(ctx context.Context, data *Up
 		"PATCH",
 		fmt.Sprintf("%s/fixed_payment_code/%s", c.Opt.XenditURL, data.FixedPaymentCodeID),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)

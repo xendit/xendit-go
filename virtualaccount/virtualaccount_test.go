@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"net/http"
 	"testing"
 	"time"
 
@@ -15,7 +16,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -23,8 +24,8 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2051-01-19T17:00:00.000Z")
 
@@ -96,8 +97,9 @@ func TestCreateFixedVA(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/callback_virtual_accounts",
+				xendit.Opt.XenditURL+"/callback_virtual_accounts",
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -157,8 +159,9 @@ func TestGetFixedVA(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/callback_virtual_accounts/"+tC.data.ID,
+				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
+				nil,
 				nil,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -219,8 +222,9 @@ func TestUpdateFixedVA(t *testing.T) {
 				"Call",
 				context.Background(),
 				"PATCH",
-				"https://api.xendit.co/callback_virtual_accounts/"+tC.data.ID,
+				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -237,8 +241,8 @@ type apiRequesterGetAvailableBanksMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[
 		{
@@ -287,8 +291,9 @@ func TestGetAvailableBanks(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/available_virtual_account_banks",
+				xendit.Opt.XenditURL+"/available_virtual_account_banks",
 				xendit.Opt.SecretKey,
+				nil,
 				nil,
 				&[]xendit.VirtualAccountBank{},
 			).Return(nil)
@@ -305,8 +310,8 @@ type apiRequesterGetPaymentMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetPaymentMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterGetPaymentMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	transactionTimestamp, _ := time.Parse(time.RFC3339, "2020-01-01T17:00:00.000Z")
 
@@ -367,8 +372,9 @@ func TestGetPayment(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/callback_virtual_account_payments/payment_id="+tC.data.PaymentID,
+				xendit.Opt.XenditURL+"/callback_virtual_account_payments/payment_id="+tC.data.PaymentID,
 				xendit.Opt.SecretKey,
+				nil,
 				nil,
 				&xendit.VirtualAccountPayment{},
 			).Return(nil)

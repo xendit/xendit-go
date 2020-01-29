@@ -32,6 +32,7 @@ func (c *Client) CreateFixedVAWithContext(ctx context.Context, data *CreateFixed
 		"POST",
 		fmt.Sprintf("%s/callback_virtual_accounts", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -61,6 +62,7 @@ func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAPara
 		fmt.Sprintf("%s/callback_virtual_accounts/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
+		nil,
 		response,
 	)
 	if err != nil {
@@ -88,6 +90,7 @@ func (c *Client) UpdateFixedWithContext(ctx context.Context, data *UpdateFixedVA
 		"PATCH",
 		fmt.Sprintf("%s/callback_virtual_accounts/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
+		nil,
 		data,
 		response,
 	)
@@ -112,6 +115,7 @@ func (c *Client) GetAvailableBanksWithContext(ctx context.Context) ([]xendit.Vir
 		"GET",
 		fmt.Sprintf("%s/available_virtual_account_banks", c.Opt.XenditURL),
 		c.Opt.SecretKey,
+		nil,
 		nil,
 		&response,
 	)
@@ -140,6 +144,7 @@ func (c *Client) GetPaymentWithContext(ctx context.Context, data *GetPaymentPara
 		"GET",
 		fmt.Sprintf("%s/callback_virtual_account_payments/payment_id=%s", c.Opt.XenditURL, data.PaymentID),
 		c.Opt.SecretKey,
+		nil,
 		nil,
 		response,
 	)

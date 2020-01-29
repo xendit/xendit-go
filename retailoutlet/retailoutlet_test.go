@@ -3,6 +3,7 @@ package retailoutlet_test
 import (
 	"context"
 	"errors"
+	"net/http"
 	"testing"
 	"time"
 
@@ -14,7 +15,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -22,8 +23,8 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, params, result)
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
 
@@ -97,8 +98,9 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/fixed_payment_code",
+				xendit.Opt.XenditURL+"/fixed_payment_code",
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.RetailOutlet{},
 			).Return(nil)
@@ -158,8 +160,9 @@ func TestGetFixedPaymentCode(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
+				xendit.Opt.XenditURL+"/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
 				xendit.Opt.SecretKey,
+				nil,
 				nil,
 				&xendit.RetailOutlet{},
 			).Return(nil)
@@ -224,8 +227,9 @@ func TestUpdateFixedPaymentCode(t *testing.T) {
 				"Call",
 				context.Background(),
 				"PATCH",
-				"https://api.xendit.co/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
+				xendit.Opt.XenditURL+"/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
 				xendit.Opt.SecretKey,
+				nil,
 				tC.data,
 				&xendit.RetailOutlet{},
 			).Return(nil)
