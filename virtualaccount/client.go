@@ -54,7 +54,7 @@ func (c *Client) GetFixedVA(data *GetFixedVAParams) (*xendit.VirtualAccount, *xe
 	return c.GetFixedVAWithContext(context.Background(), data)
 }
 
-// GetFixedVAWithContext gets one invoice with context
+// GetFixedVAWithContext gets one fixed virtual account with context
 func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)

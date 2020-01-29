@@ -10,13 +10,13 @@ import (
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
-// Client is the client used to invoke ewallet API.
+// Client is the client used to invoke e-wallet API.
 type Client struct {
 	Opt          *xendit.Option
 	APIRequester xendit.APIRequester
 }
 
-// getPaymentStatusResponse is ewallet data that is contained in API response of Get Payment Status.
+// getPaymentStatusResponse is e-wallet data that is contained in API response of Get Payment Status.
 // It exists because the type of `Amount` in Get Payment Status json response is string,
 // different from the CreatePayment
 type getPaymentStatusResponse struct {
