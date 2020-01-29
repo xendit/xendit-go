@@ -16,7 +16,7 @@ func main() {
 	if godotenvErr != nil {
 		log.Fatal(godotenvErr)
 	}
-	xendit.Opt.SecretKey = os.Getenv("SECRET_API_KEY")
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	availableBanks, err := disbursement.GetAvailableBanks()
 	if err != nil {
