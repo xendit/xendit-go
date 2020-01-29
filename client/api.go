@@ -7,6 +7,7 @@ import (
 	"github.com/xendit/xendit-go/card"
 	"github.com/xendit/xendit-go/ewallet"
 	"github.com/xendit/xendit-go/invoice"
+	"github.com/xendit/xendit-go/payout"
 	"github.com/xendit/xendit-go/retailoutlet"
 	"github.com/xendit/xendit-go/virtualaccount"
 )
@@ -20,6 +21,7 @@ type API struct {
 	VirtualAccount *virtualaccount.Client
 	RetailOutlet   *retailoutlet.Client
 	Card           *card.Client
+	Payout         *payout.Client
 }
 
 // Init initiates all the products of the API client
@@ -35,6 +37,7 @@ func (a *API) Init(apiRequester *xendit.APIRequester) {
 	a.VirtualAccount = &virtualaccount.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.RetailOutlet = &retailoutlet.Client{Opt: &a.opt, APIRequester: *apiRequester}
 	a.Card = &card.Client{Opt: &a.opt, APIRequester: *apiRequester}
+	a.Payout = &payout.Client{Opt: &a.opt, APIRequester: *apiRequester}
 }
 
 // New creates a new Xendit API client
