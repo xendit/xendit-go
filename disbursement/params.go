@@ -37,3 +37,24 @@ func (p *GetByExternalIDParams) QueryString() string {
 
 	return urlValues.Encode()
 }
+
+// CreateBatchParams contains parameters for CreateBatch
+type CreateBatchParams struct {
+	IdempotencyKey string             `json:"-"`
+	ForUserID      string             `json:"-"`
+	Reference      string             `json:"reference" validate:"required"`
+	Disbursements  []DisbursementItem `json:"disbursements" validate:"required"`
+}
+
+// DisbursementItem is data that contained in CreateBatch at Disbursements
+type DisbursementItem struct {
+	Amount            float64  `json:"amount" validate:"required"`
+	BankCode          string   `json:"bank_code" validate:"required"`
+	BankAccountName   string   `json:"bank_account_name" validate:"required"`
+	BankAccountNumber string   `json:"bank_account_number" validate:"required"`
+	Description       string   `json:"description" validate:"required"`
+	ExternalID        string   `json:"external_id,omitempty"`
+	EmailTo           []string `json:"email_to,omitempty"`
+	EmailCC           []string `json:"email_cc,omitempty"`
+	EmailBCC          []string `json:"email_bcc,omitempty"`
+}
