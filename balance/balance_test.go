@@ -54,7 +54,7 @@ func TestGet(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/balance?"+tC.data.QueryString(),
+				xendit.Opt.XenditURL+"/balance?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
 				&http.Header{},
 				nil,
