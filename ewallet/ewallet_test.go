@@ -24,7 +24,7 @@ type apiRequesterMock struct {
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
-	result.(*xendit.EWallet).EWalletType = "DANA"
+	result.(*xendit.EWallet).EWalletType = xendit.EWalletTypeDANA
 	result.(*xendit.EWallet).ExternalID = "dana-ewallet"
 	result.(*xendit.EWallet).Amount = 200000
 	result.(*xendit.EWallet).CheckoutURL = "mystore.com/callback"
@@ -48,12 +48,12 @@ func TestCreatePayment(t *testing.T) {
 				ExternalID:  "dana-ewallet",
 				Amount:      200000,
 				Phone:       "08123123123",
-				EWalletType: "DANA",
+				EWalletType: xendit.EWalletTypeDANA,
 				CallbackURL: "mystore.com/callback",
 				RedirectURL: "mystore.com/redirect",
 			},
 			expectedRes: &xendit.EWallet{
-				EWalletType: "DANA",
+				EWalletType: xendit.EWalletTypeDANA,
 				ExternalID:  "dana-ewallet",
 				Amount:      200000,
 				CheckoutURL: "mystore.com/callback",
@@ -63,7 +63,7 @@ func TestCreatePayment(t *testing.T) {
 		{
 			desc: "should report missing required fields",
 			data: &CreatePaymentParams{
-				EWalletType: "DANA",
+				EWalletType: xendit.EWalletTypeDANA,
 				ExternalID:  "dana-ewallet",
 			},
 			expectedRes: nil,
@@ -99,7 +99,7 @@ type apiRequesterMockGet struct {
 func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
-	result.(*getPaymentStatusResponse).EWalletType = "DANA"
+	result.(*getPaymentStatusResponse).EWalletType = xendit.EWalletTypeDANA
 	result.(*getPaymentStatusResponse).ExternalID = "dana-ewallet"
 	result.(*getPaymentStatusResponse).Amount = 200000
 	result.(*getPaymentStatusResponse).CheckoutURL = "mystore.com/callback"
@@ -121,10 +121,10 @@ func TestGetPaymentStatus(t *testing.T) {
 			desc: "should get a payment status",
 			data: &GetPaymentStatusParams{
 				ExternalID:  "dana-ewallet",
-				EWalletType: "DANA",
+				EWalletType: xendit.EWalletTypeDANA,
 			},
 			expectedRes: &xendit.EWallet{
-				EWalletType: "DANA",
+				EWalletType: xendit.EWalletTypeDANA,
 				ExternalID:  "dana-ewallet",
 				Amount:      200000,
 				CheckoutURL: "mystore.com/callback",
@@ -134,7 +134,7 @@ func TestGetPaymentStatus(t *testing.T) {
 		{
 			desc: "should report missing required fields",
 			data: &GetPaymentStatusParams{
-				EWalletType: "DANA",
+				EWalletType: xendit.EWalletTypeDANA,
 			},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ExternalID'")),

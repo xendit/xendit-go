@@ -16,7 +16,7 @@ func main() {
 		ExternalID:  "dana-" + time.Now().String(),
 		Amount:      20000,
 		Phone:       "08123123123",
-		EWalletType: "DANA",
+		EWalletType: xendit.EWalletTypeDANA,
 		CallbackURL: "mystore.com/callback",
 		RedirectURL: "mystore.com/redirect",
 	}
