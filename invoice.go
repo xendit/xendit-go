@@ -23,8 +23,8 @@ type Invoice struct {
 	Created                   *time.Time            `json:"created"`
 	Updated                   *time.Time            `json:"updated"`
 	BankCode                  string                `json:"bank_code,omitempty"`
-	PaidAmount                string                `json:"paid_amount,omitempty"`
-	AdjustedReceivedAmount    string                `json:"adjusted_received_amount,omitempty"`
+	PaidAmount                float64               `json:"paid_amount,omitempty"`
+	AdjustedReceivedAmount    float64               `json:"adjusted_received_amount,omitempty"`
 	RecurringPaymentID        string                `json:"recurring_payment_id,omitempty"`
 	CreditCardChargeID        string                `json:"credit_card_charge_id,omitempty"`
 	Currency                  string                `json:"currency,omitempty"`
