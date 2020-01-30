@@ -17,3 +17,6 @@ bin/
 
 # IDE configuration files
 .idea
+
+# Environment files
+.env

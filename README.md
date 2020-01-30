@@ -42,17 +42,18 @@ This library is the abstraction of Xendit API for access from applications writt
       - [GetAvailableBanks](#getavailablebanks-1)
       - [CreateBatch](#createbatch)
     - [Card](#card)
-      - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
-      - [GetCharge](#getcharge)
-      - [CaptureCharge](#capturecharge)
-      - [CreateRefund](#createrefund)
-      - [ReverseAuthorization](#reverseauthorization)
-    - [Payout](#payout)
       - [Create](#create-2)
+      - [GetByID](#getbyid-1)
+      - [GetByExternalID](#getbyexternalid-1)
+      - [GetAvailableBanks](#getavailablebanks-2)
+    - [Card](#card-1)
+      - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
+    - [Payout](#payout)
+      - [Create](#create-3)
       - [Get](#get-2)
       - [Expire](#expire-1)
     - [Retail Outlet](#retail-outlet-1)
-      - [Create](#create-3)
+      - [Create](#create-4)
       - [Get](#get-3)
       - [Edit](#edit)
       - [Stop](#stop)
@@ -310,31 +311,33 @@ disbursement.CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *x
 
 #### Card
 
+##### Create
+
+```go
+disbursement.Create(data *CreateParams) (*xendit.Disbursement, *xendit.Error)
+```
+
+##### GetByID
+
+```go
+disbursement.GetByID(data *GetByIDParams) (*xendit.Disbursement, *xendit.Error)
+```
+
+##### GetByExternalID
+
+```go
+disbursement.GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disbursement, *xendit.Error)
+```
+
+##### GetAvailableBanks
+
+```go
+disbursement.GetAvailableBanks() ([]xendit.DisbursementBank, *xendit.Error)
+```
+
+#### Card
+
 ##### CreateCharge (Create Authorization)
-
-```go
-card.CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error)
-```
-
-##### GetCharge
-
-```go
-card.GetCharge(data *GetChargeParams) (*xendit.CardCharge, *xendit.Error)
-```
-
-##### CaptureCharge
-
-```go
-card.CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error)
-```
-
-##### CreateRefund
-
-```go
-card.CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error)
-```
-
-##### ReverseAuthorization
 
 ```go
 card.ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error)
