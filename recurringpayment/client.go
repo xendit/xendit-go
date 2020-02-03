@@ -16,7 +16,7 @@ type Client struct {
 }
 
 // Create creates new recurring payment
-func (c Client) Create(data *CreateParams) (*xendit.RecurringPayment, *xendit.Error) {
+func (c *Client) Create(data *CreateParams) (*xendit.RecurringPayment, *xendit.Error) {
 	return c.CreateWithContext(context.Background(), data)
 }
 
@@ -79,7 +79,7 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.R
 }
 
 // Edit edits a recurring payment
-func (c Client) Edit(data *EditParams) (*xendit.RecurringPayment, *xendit.Error) {
+func (c *Client) Edit(data *EditParams) (*xendit.RecurringPayment, *xendit.Error) {
 	return c.EditWithContext(context.Background(), data)
 }
 

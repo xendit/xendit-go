@@ -21,7 +21,7 @@ type apiRequesterMock struct {
 }
 
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, nil, params, result)
+	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.Balance).Balance = 200000
 
@@ -56,7 +56,7 @@ func TestGet(t *testing.T) {
 				"GET",
 				xendit.Opt.XenditURL+"/balance?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
-				nil,
+				&http.Header{},
 				nil,
 				&xendit.Balance{},
 			).Return(nil)

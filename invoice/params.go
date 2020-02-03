@@ -10,11 +10,12 @@ import (
 
 // CreateParams contains parameters for Create
 type CreateParams struct {
+	ForUserID                string   `json:"-"`
 	ExternalID               string   `json:"external_id" validate:"required"`
 	PayerEmail               string   `json:"payer_email" validate:"required"`
 	Description              string   `json:"description" validate:"required"`
 	Amount                   float64  `json:"amount" validate:"required"`
-	ShouldSendEmail          bool     `json:"should_send_email,omitempty"`
+	ShouldSendEmail          *bool    `json:"should_send_email,omitempty"`
 	CallbackVirtualAccountID string   `json:"callback_virtual_account_id,omitempty"`
 	InvoiceDuration          int      `json:"invoice_duration,omitempty"`
 	SuccessRedirectURL       string   `json:"success_redirect_url,omitempty"`
@@ -22,7 +23,7 @@ type CreateParams struct {
 	PaymentMethods           []string `json:"payment_methods,omitempty"`
 	MidLabel                 string   `json:"mid_label,omitempty"`
 	Currency                 string   `json:"currency,omitempty"`
-	FixedVA                  bool     `json:"fixed_va,omitempty"`
+	FixedVA                  *bool    `json:"fixed_va,omitempty"`
 }
 
 // GetParams contains parameters for Get

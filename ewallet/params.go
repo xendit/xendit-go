@@ -17,6 +17,7 @@ type Item struct {
 
 // CreatePaymentParams contains parameters for CreatePayment
 type CreatePaymentParams struct {
+	ForUserID      string                 `json:"-"`
 	EWalletType    xendit.EWalletTypeEnum `json:"ewallet_type" validate:"required"`
 	ExternalID     string                 `json:"external_id" validate:"required"`
 	Amount         float64                `json:"amount" validate:"required"`

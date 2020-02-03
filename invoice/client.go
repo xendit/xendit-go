@@ -3,6 +3,7 @@ package invoice
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
@@ -15,7 +16,7 @@ type Client struct {
 }
 
 // Create creates new invoice
-func (c Client) Create(data *CreateParams) (*xendit.Invoice, *xendit.Error) {
+func (c *Client) Create(data *CreateParams) (*xendit.Invoice, *xendit.Error) {
 	return c.CreateWithContext(context.Background(), data)
 }
 
@@ -26,13 +27,18 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	}
 
 	response := &xendit.Invoice{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/v2/invoices", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
@@ -121,7 +127,7 @@ func (c *Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]x
 		fmt.Sprintf("%s/v2/invoices?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
 		nil,
-		data,
+		nil,
 		&response,
 	)
 	if err != nil {

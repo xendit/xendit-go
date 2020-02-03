@@ -12,7 +12,7 @@ const (
 	EWalletTypeLINKAJA EWalletTypeEnum = "LINKAJA"
 )
 
-// EWallet contains data from Xendit's API response of eWallet related request.
+// EWallet contains data from Xendit's API response of e-wallet related requests.
 // For more details see https://xendit.github.io/apireference/?bash#ewallets.
 type EWallet struct {
 	EWalletType     EWalletTypeEnum `json:"ewallet_type"`

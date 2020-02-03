@@ -16,12 +16,12 @@ type Client struct {
 }
 
 // CreateCharge creates new card charge
-func (c Client) CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error) {
+func (c *Client) CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	return c.CreateChargeWithContext(context.Background(), data)
 }
 
 // CreateChargeWithContext creates new card charge with context
-func (c Client) CreateChargeWithContext(ctx context.Context, data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error) {
+func (c *Client) CreateChargeWithContext(ctx context.Context, data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -45,12 +45,12 @@ func (c Client) CreateChargeWithContext(ctx context.Context, data *CreateChargeP
 }
 
 // CaptureCharge captures a card charge
-func (c Client) CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
+func (c *Client) CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	return c.CaptureChargeWithContext(context.Background(), data)
 }
 
 // CaptureChargeWithContext captures a card charge with context
-func (c Client) CaptureChargeWithContext(ctx context.Context, data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
+func (c *Client) CaptureChargeWithContext(ctx context.Context, data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -74,12 +74,12 @@ func (c Client) CaptureChargeWithContext(ctx context.Context, data *CaptureCharg
 }
 
 // GetCharge gets a card charge
-func (c Client) GetCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
+func (c *Client) GetCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	return c.CaptureChargeWithContext(context.Background(), data)
 }
 
 // GetChargeWithContext gets a card charge with context
-func (c Client) GetChargeWithContext(ctx context.Context, data *GetChargeParams) (*xendit.CardCharge, *xendit.Error) {
+func (c *Client) GetChargeWithContext(ctx context.Context, data *GetChargeParams) (*xendit.CardCharge, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -103,12 +103,12 @@ func (c Client) GetChargeWithContext(ctx context.Context, data *GetChargeParams)
 }
 
 // CreateRefund creates a refund
-func (c Client) CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
+func (c *Client) CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
 	return c.CreateRefundWithContext(context.Background(), data)
 }
 
 // CreateRefundWithContext creates a refund with context
-func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
+func (c *Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -137,12 +137,12 @@ func (c Client) CreateRefundWithContext(ctx context.Context, data *CreateRefundP
 }
 
 // ReverseAuthorization reverses a card authorization
-func (c Client) ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
+func (c *Client) ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
 	return c.ReverseAuthorizationWithContext(context.Background(), data)
 }
 
 // ReverseAuthorizationWithContext reverses a card authorization with context
-func (c Client) ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
+func (c *Client) ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}

@@ -3,15 +3,21 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/card"
 )
 
 // To run this example, create the token first in https://js.xendit.co/test_tokenize.html
 func main() {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	godotenvErr := godotenv.Load()
+	if godotenvErr != nil {
+		log.Fatal(godotenvErr)
+	}
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createChargeData := card.CreateChargeParams{
 		TokenID:          "5e2e81bbbae82e4d54d76473",

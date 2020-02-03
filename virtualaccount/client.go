@@ -3,6 +3,7 @@ package virtualaccount
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
@@ -15,7 +16,7 @@ type Client struct {
 }
 
 // CreateFixedVA creates new fixed virtual account
-func (c Client) CreateFixedVA(data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+func (c *Client) CreateFixedVA(data *CreateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	return c.CreateFixedVAWithContext(context.Background(), data)
 }
 
@@ -26,13 +27,18 @@ func (c *Client) CreateFixedVAWithContext(ctx context.Context, data *CreateFixed
 	}
 
 	response := &xendit.VirtualAccount{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/callback_virtual_accounts", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
@@ -48,7 +54,7 @@ func (c *Client) GetFixedVA(data *GetFixedVAParams) (*xendit.VirtualAccount, *xe
 	return c.GetFixedVAWithContext(context.Background(), data)
 }
 
-// GetFixedVAWithContext gets one invoice with context
+// GetFixedVAWithContext gets one fixed virtual account with context
 func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
@@ -73,7 +79,7 @@ func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAPara
 }
 
 // UpdateFixedVA updates one fixed virtual account
-func (c Client) UpdateFixedVA(data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
+func (c *Client) UpdateFixedVA(data *UpdateFixedVAParams) (*xendit.VirtualAccount, *xendit.Error) {
 	return c.UpdateFixedWithContext(context.Background(), data)
 }
 

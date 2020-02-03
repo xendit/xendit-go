@@ -3,6 +3,7 @@ package balance
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 )
@@ -27,13 +28,18 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.B
 	}
 
 	response := &xendit.Balance{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/balance?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)

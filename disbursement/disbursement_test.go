@@ -418,7 +418,7 @@ func TestCreateBatch(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/batch_disbursements",
+				xendit.Opt.XenditURL+"/batch_disbursements",
 				xendit.Opt.SecretKey,
 				mock.AnythingOfType("*http.Header"),
 				tC.data,

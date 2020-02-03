@@ -3,19 +3,20 @@ package ewallet
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
-// Client is the client used to invoke ewallet API.
+// Client is the client used to invoke e-wallet API.
 type Client struct {
 	Opt          *xendit.Option
 	APIRequester xendit.APIRequester
 }
 
-// getPaymentStatusResponse is ewallet data that is contained in API response of Get Payment Status.
+// getPaymentStatusResponse is e-wallet data that is contained in API response of Get Payment Status.
 // It exists because the type of `Amount` in Get Payment Status json response is string,
 // different from the CreatePayment
 type getPaymentStatusResponse struct {
@@ -28,24 +29,29 @@ type getPaymentStatusResponse struct {
 }
 
 // CreatePayment creates new payment
-func (c Client) CreatePayment(data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) CreatePayment(data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
 	return c.CreatePaymentWithContext(context.Background(), data)
 }
 
 // CreatePaymentWithContext creates new payment
-func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
 
 	response := &xendit.EWallet{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/ewallets", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
@@ -57,12 +63,12 @@ func (c Client) CreatePaymentWithContext(ctx context.Context, data *CreatePaymen
 }
 
 // GetPaymentStatus gets one payment with its status
-func (c Client) GetPaymentStatus(data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) GetPaymentStatus(data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
 	return c.GetPaymentStatusWithContext(context.Background(), data)
 }
 
 // GetPaymentStatusWithContext gets one payment with its status
-func (c Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
+func (c *Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymentStatusParams) (*xendit.EWallet, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
 	}
@@ -90,11 +96,4 @@ func (c Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPaymen
 	response := xendit.EWallet(*tempResponse)
 
 	return &response, nil
-}
-
-func getClient() (*Client, *xendit.Error) {
-	return &Client{
-		Opt:          &xendit.Opt,
-		APIRequester: xendit.GetAPIRequester(),
-	}, nil
 }

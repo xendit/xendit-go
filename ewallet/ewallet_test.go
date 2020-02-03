@@ -22,7 +22,7 @@ type apiRequesterMock struct {
 }
 
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, nil, params, result)
+	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.EWallet).EWalletType = xendit.EWalletTypeDANA
 	result.(*xendit.EWallet).ExternalID = "dana-ewallet"
@@ -79,7 +79,7 @@ func TestCreatePayment(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/ewallets",
 				xendit.Opt.SecretKey,
-				nil,
+				&http.Header{},
 				tC.data,
 				&xendit.EWallet{},
 			).Return(nil)

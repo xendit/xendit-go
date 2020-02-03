@@ -25,11 +25,11 @@ type apiRequesterMock struct {
 }
 
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
-	m.Called(ctx, method, path, secretKey, nil, params, result)
+	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2051-01-19T17:00:00.000Z")
 
-	result.(*xendit.VirtualAccount).IsClosed = false
+	result.(*xendit.VirtualAccount).IsClosed = new(bool)
 	result.(*xendit.VirtualAccount).Status = "PENDING"
 	result.(*xendit.VirtualAccount).Currency = "IDR"
 	result.(*xendit.VirtualAccount).OwnerID = "owner-id"
@@ -38,7 +38,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.VirtualAccount).MerchantCode = "88888"
 	result.(*xendit.VirtualAccount).Name = "Michael Jackson"
 	result.(*xendit.VirtualAccount).AccountNumber = "8888888888888"
-	result.(*xendit.VirtualAccount).IsSingleUse = false
+	result.(*xendit.VirtualAccount).IsSingleUse = new(bool)
 	result.(*xendit.VirtualAccount).ExpirationDate = &expirationDate
 	result.(*xendit.VirtualAccount).ID = "123"
 
@@ -65,7 +65,7 @@ func TestCreateFixedVA(t *testing.T) {
 				Name:       "Michael Jackson",
 			},
 			expectedRes: &xendit.VirtualAccount{
-				IsClosed:       false,
+				IsClosed:       new(bool),
 				Status:         "PENDING",
 				Currency:       "IDR",
 				OwnerID:        "owner-id",
@@ -74,7 +74,7 @@ func TestCreateFixedVA(t *testing.T) {
 				MerchantCode:   "88888",
 				Name:           "Michael Jackson",
 				AccountNumber:  "8888888888888",
-				IsSingleUse:    false,
+				IsSingleUse:    new(bool),
 				ExpirationDate: &expirationDate,
 				ID:             "123",
 			},
@@ -99,7 +99,7 @@ func TestCreateFixedVA(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/callback_virtual_accounts",
 				xendit.Opt.SecretKey,
-				nil,
+				&http.Header{},
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -130,7 +130,7 @@ func TestGetFixedVA(t *testing.T) {
 				ID: "123",
 			},
 			expectedRes: &xendit.VirtualAccount{
-				IsClosed:       false,
+				IsClosed:       new(bool),
 				Status:         "PENDING",
 				Currency:       "IDR",
 				OwnerID:        "owner-id",
@@ -139,7 +139,7 @@ func TestGetFixedVA(t *testing.T) {
 				MerchantCode:   "88888",
 				Name:           "Michael Jackson",
 				AccountNumber:  "8888888888888",
-				IsSingleUse:    false,
+				IsSingleUse:    new(bool),
 				ExpirationDate: &expirationDate,
 				ID:             "123",
 			},
@@ -155,13 +155,15 @@ func TestGetFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
+			var header *http.Header
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"GET",
 				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
-				nil,
+				header,
 				nil,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -193,7 +195,7 @@ func TestUpdateFixedVA(t *testing.T) {
 				ExpirationDate: &expirationDate,
 			},
 			expectedRes: &xendit.VirtualAccount{
-				IsClosed:       false,
+				IsClosed:       new(bool),
 				Status:         "PENDING",
 				Currency:       "IDR",
 				OwnerID:        "owner-id",
@@ -202,7 +204,7 @@ func TestUpdateFixedVA(t *testing.T) {
 				MerchantCode:   "88888",
 				Name:           "Michael Jackson",
 				AccountNumber:  "8888888888888",
-				IsSingleUse:    false,
+				IsSingleUse:    new(bool),
 				ExpirationDate: &expirationDate,
 				ID:             "123",
 			},
@@ -218,13 +220,15 @@ func TestUpdateFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
+			var header *http.Header
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"PATCH",
 				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
-				nil,
+				header,
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -270,7 +274,7 @@ func TestGetAvailableBanks(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should get a fixed va",
+			desc: "should get available va banks",
 			expectedRes: []xendit.VirtualAccountBank{
 				xendit.VirtualAccountBank{
 					Name: "Bank Mandiri",
@@ -341,7 +345,7 @@ func TestGetPayment(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should get va available banks",
+			desc: "should get va payment",
 			data: &virtualaccount.GetPaymentParams{
 				PaymentID: "payment123",
 			},

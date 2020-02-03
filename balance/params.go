@@ -8,10 +8,11 @@ import (
 
 // GetParams contains parameters for Get
 type GetParams struct {
+	ForUserID   string                        `json:"-"`
 	AccountType xendit.BalanceAccountTypeEnum `json:"account_type"`
 }
 
-// QueryString creates query string from GetAllParams, ignores nil values
+// QueryString creates query string from GetParams, ignores nil values
 func (p *GetParams) QueryString() string {
 	urlValues := &url.Values{}
 

@@ -59,8 +59,11 @@ func main() {
 	}
 	fmt.Printf("updated fixed va: %+v\n", resp)
 
+	// Before running this example, create a fixed virtual account payment simulation
+	// by making a POST request to
+	// https://api.xendit.co/callback_virtual_accounts/external_id=<FVA external ID>/simulate_payment
 	payment, err := virtualaccount.GetPayment(&virtualaccount.GetPaymentParams{
-		PaymentID: "VA_fixed-1579507045_1579507068112",
+		PaymentID: "VA_fixed-1580285972",
 	})
 
 	if err != nil {
