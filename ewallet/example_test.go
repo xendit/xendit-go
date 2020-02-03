@@ -15,7 +15,7 @@ func ExampleCreatePayment() {
 		ExternalID:  "dana-ewallet",
 		Amount:      20000,
 		Phone:       "08123123123",
-		EWalletType: "DANA",
+		EWalletType: xendit.EWalletTypeDANA,
 		CallbackURL: "mystore.com/callback",
 		RedirectURL: "mystore.com/redirect",
 	}
@@ -33,7 +33,7 @@ func ExampleGetPaymentStatus() {
 
 	data := ewallet.GetPaymentStatusParams{
 		ExternalID:  "data-ewallet",
-		EWalletType: "DANA",
+		EWalletType: xendit.EWalletTypeDANA,
 	}
 
 	resp, err := ewallet.GetPaymentStatus(&data)

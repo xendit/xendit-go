@@ -3,14 +3,20 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/retailoutlet"
 )
 
 func main() {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	godotenvErr := godotenv.Load()
+	if godotenvErr != nil {
+		log.Fatal(godotenvErr)
+	}
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createFixedPaymentCodeData := retailoutlet.CreateFixedPaymentCodeParams{
 		ExternalID:       "retailoutlet-" + time.Now().String(),
@@ -21,7 +27,7 @@ func main() {
 
 	resp, err := retailoutlet.CreateFixedPaymentCode(&createFixedPaymentCodeData)
 	if err != nil {
-		log.Fatal(err.ErrorCode)
+		log.Fatal(err)
 	}
 	fmt.Printf("created retail outlet fixed payment code: %+v\n", resp)
 
@@ -31,7 +37,7 @@ func main() {
 
 	resp, err = retailoutlet.GetFixedPaymentCode(&getFixedPaymentCodeData)
 	if err != nil {
-		log.Fatal(err.ErrorCode)
+		log.Fatal(err)
 	}
 	fmt.Printf("retrieved retail outlet fixed payment code: %+v\n", resp)
 
@@ -46,7 +52,7 @@ func main() {
 
 	resp, err = retailoutlet.UpdateFixedPaymentCode(&updateFixedPaymentCodeData)
 	if err != nil {
-		log.Fatal(err.ErrorCode)
+		log.Fatal(err)
 	}
 	fmt.Printf("updated retail outlet fixed payment code: %+v\n", resp)
 }

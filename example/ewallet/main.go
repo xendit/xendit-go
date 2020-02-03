@@ -3,20 +3,26 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/ewallet"
 )
 
 func main() {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	godotenvErr := godotenv.Load()
+	if godotenvErr != nil {
+		log.Fatal(godotenvErr)
+	}
+	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createPaymentData := ewallet.CreatePaymentParams{
 		ExternalID:  "dana-" + time.Now().String(),
 		Amount:      20000,
 		Phone:       "08123123123",
-		EWalletType: "DANA",
+		EWalletType: xendit.EWalletTypeDANA,
 		CallbackURL: "mystore.com/callback",
 		RedirectURL: "mystore.com/redirect",
 	}
