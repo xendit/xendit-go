@@ -24,7 +24,7 @@ type APIRequesterImplementation struct {
 // Call makes HTTP requests with JSON-format body.
 // `body` is POST-requests' bodies if applicable.
 // `result` pointer to value which response string will be unmarshalled to.
-func (h *APIRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, header *http.Header, body interface{}, result interface{}) *Error {
+func (a *APIRequesterImplementation) Call(ctx context.Context, method string, url string, secretKey string, header *http.Header, body interface{}, result interface{}) *Error {
 	reqBody := []byte("")
 	var req *http.Request
 	var err error
@@ -54,11 +54,11 @@ func (h *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 	req.SetBasicAuth(secretKey, "")
 	req.Header.Set("Content-Type", "application/json")
 
-	return h.doRequest(req, result)
+	return a.doRequest(req, result)
 }
 
-func (h *APIRequesterImplementation) doRequest(req *http.Request, result interface{}) *Error {
-	resp, err := h.HTTPClient.Do(req)
+func (a *APIRequesterImplementation) doRequest(req *http.Request, result interface{}) *Error {
+	resp, err := a.HTTPClient.Do(req)
 	if err != nil {
 		return FromGoErr(err)
 	}

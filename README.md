@@ -34,12 +34,19 @@ This library is the abstraction of Xendit API for access from applications writt
     - [Retail Outlet](#retail-outlet)
       - [Create Fixed Payment Code](#create-fixed-payment-code)
       - [Get Fixed Payment Code](#get-fixed-payment-code)
+      - [Update Fixed Payment Code](#update-fixed-payment-code)
     - [Disbursement](#disbursement)
       - [Create](#create)
       - [GetByID](#getbyid)
       - [GetByExternalID](#getbyexternalid)
       - [GetAvailableBanks](#getavailablebanks-1)
       - [CreateBatch](#createbatch)
+    - [Card](#card)
+      - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
+      - [GetCharge](#getcharge)
+      - [CaptureCharge](#capturecharge)
+      - [CreateRefund](#createrefund)
+      - [ReverseAuthorization](#reverseauthorization)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -249,7 +256,13 @@ retailoutlet.CreateFixedPaymentCode(data *retailoutlet.CreateFixedPaymentCodePar
 ##### Get Fixed Payment Code
 
 ```go
-virtualaccount.GetPayment(data *virtualaccount.GetPaymentParams) (*xendit.VirtualAccountPayment, *xendit.Error)
+retailoutlet.GetFixedPaymentCode(data *retailoutlet.GetFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+##### Update Fixed Payment Code
+
+```go
+retailoutlet.UpdateFixedPaymentCode(data *retailoutlet.UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
 #### Disbursement
@@ -282,6 +295,38 @@ disbursement.GetAvailableBanks() ([]xendit.DisbursementBank, *xendit.Error)
 
 ```go
 disbursement.CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error)
+```
+
+#### Card
+
+##### CreateCharge (Create Authorization)
+
+```go
+card.CreateCharge(data *CreateChargeParams) (*xendit.CardCharge, *xendit.Error)
+```
+
+##### GetCharge
+
+```go
+card.GetCharge(data *GetChargeParams) (*xendit.CardCharge, *xendit.Error)
+```
+
+##### CaptureCharge
+
+```go
+card.CaptureCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error)
+```
+
+##### CreateRefund
+
+```go
+card.CreateRefund(data *CreateRefundParams) (*xendit.CardRefund, *xendit.Error)
+```
+
+##### ReverseAuthorization
+
+```go
+card.ReverseAuthorization(data *ReverseAuthorizationParams) (*xendit.CardReverseAuthorization, *xendit.Error)
 ```
 
 ## Contribute

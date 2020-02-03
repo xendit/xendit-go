@@ -16,7 +16,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -91,7 +91,7 @@ func TestCreate(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/disbursements",
+				xendit.Opt.XenditURL+"/disbursements",
 				xendit.Opt.SecretKey,
 				mock.AnythingOfType("*http.Header"),
 				tC.data,
@@ -147,7 +147,7 @@ func TestGetByID(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/disbursements/"+tC.data.DisbursementID,
+				xendit.Opt.XenditURL+"/disbursements/"+tC.data.DisbursementID,
 				xendit.Opt.SecretKey,
 				mock.AnythingOfType("*http.Header"),
 				nil,
@@ -248,7 +248,7 @@ func TestGetByExternalID(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/disbursements?"+tC.data.QueryString(),
+				xendit.Opt.XenditURL+"/disbursements?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -325,7 +325,7 @@ func TestGetAvailableBanks(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/available_disbursements_banks",
+				xendit.Opt.XenditURL+"/available_disbursements_banks",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,

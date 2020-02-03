@@ -12,7 +12,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -54,7 +54,7 @@ func TestGet(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/balance?"+tC.data.QueryString(),
+				xendit.Opt.XenditURL+"/balance?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
 				nil,
 				nil,

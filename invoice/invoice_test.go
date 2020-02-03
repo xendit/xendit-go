@@ -16,7 +16,7 @@ import (
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
-	xendit.Opt.SecretKey = "xnd_development_REt02KJzkM6AootfKnDrMw1Sse4LlzEDHfKzXoBocqIEiH4bqjHUJXbl6Cfaab"
+	xendit.Opt.SecretKey = "examplesecretkey"
 	xendit.SetAPIRequester(apiRequesterMockObj)
 }
 
@@ -80,7 +80,7 @@ func TestCreateInvoice(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/v2/invoices",
+				xendit.Opt.XenditURL+"/v2/invoices",
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
@@ -133,7 +133,7 @@ func TestGetInvoice(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/v2/invoices/123",
+				xendit.Opt.XenditURL+"/v2/invoices/123",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -186,7 +186,7 @@ func TestExpireInvoice(t *testing.T) {
 				"Call",
 				context.Background(),
 				"POST",
-				"https://api.xendit.co/invoices/123/expire!",
+				xendit.Opt.XenditURL+"/invoices/123/expire!",
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
@@ -273,7 +273,7 @@ func TestGetAllInvoices(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				"https://api.xendit.co/v2/invoices?"+tC.data.QueryString(),
+				xendit.Opt.XenditURL+"/v2/invoices?"+tC.data.QueryString(),
 				xendit.Opt.SecretKey,
 				nil,
 				tC.data,
