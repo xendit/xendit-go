@@ -14,7 +14,7 @@ const (
 // RetailOutlet contains data from Xendit's API response of retail outlet related requests.
 // For more details see https://xendit.github.io/apireference/?bash#retail-outlets
 type RetailOutlet struct {
-	IsSingleUse      *bool                `json:"is_single_use"`
+	IsSingleUse      bool                 `json:"is_single_use"`
 	Status           string               `json:"status"`
 	OwnerID          string               `json:"owner_id"`
 	ExternalID       string               `json:"external_id"`

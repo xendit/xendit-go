@@ -294,8 +294,6 @@ func TestGetAvailableBanks(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterGetAvailableBanksMock)
 	initTesting(apiRequesterMockObj)
 
-	trueObj := true
-
 	testCases := []struct {
 		desc        string
 		expectedRes []xendit.DisbursementBank
@@ -307,14 +305,14 @@ func TestGetAvailableBanks(t *testing.T) {
 				{
 					Name:            "Bank Mandiri",
 					Code:            "MANDIRI",
-					CanDisburse:     &trueObj,
-					CanNameValidate: &trueObj,
+					CanDisburse:     true,
+					CanNameValidate: true,
 				},
 				{
 					Name:            "Bank Negara Indonesia",
 					Code:            "BNI",
-					CanDisburse:     &trueObj,
-					CanNameValidate: &trueObj,
+					CanDisburse:     true,
+					CanNameValidate: true,
 				},
 			},
 			expectedErr: nil,

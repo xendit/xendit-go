@@ -31,7 +31,7 @@ type RecurringPayment struct {
 	Description           string                       `json:"description"`
 	Status                string                       `json:"status"`
 	Amount                float64                      `json:"amount"`
-	ShouldSendEmail       *bool                        `json:"should_send_email"`
+	ShouldSendEmail       bool                         `json:"should_send_email"`
 	Interval              RecurringPaymentIntervalEnum `json:"interval"`
 	IntervalCount         int                          `json:"interval_count"`
 	MissedPaymentAction   MissedPaymentActionEnum      `json:"missed_payment_action"`
@@ -45,6 +45,6 @@ type RecurringPayment struct {
 	FailureRedirectURL    string                       `json:"failure_redirect_url,omitempty,omitempty"`
 	TotalRecurrence       int                          `json:"total_recurrence,omitempty"`
 	RecurrenceProgress    int                          `json:"recurrence_progress,omitempty"`
-	Recharge              *bool                        `json:"recharge,omitempty"`
-	ChargeImmediately     *bool                        `json:"charge_immediately,omitempty"`
+	Recharge              bool                         `json:"recharge,omitempty"`
+	ChargeImmediately     bool                         `json:"charge_immediately,omitempty"`
 }

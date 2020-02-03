@@ -28,7 +28,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
 
-	result.(*xendit.RetailOutlet).IsSingleUse = new(bool)
+	result.(*xendit.RetailOutlet).IsSingleUse = false
 	result.(*xendit.RetailOutlet).Status = "ACTIVE"
 	result.(*xendit.RetailOutlet).OwnerID = "someone-owner-id"
 	result.(*xendit.RetailOutlet).ExternalID = "retailoutlet-external-id"
@@ -65,7 +65,7 @@ func TestCreateFixedPaymentCode(t *testing.T) {
 				ExpectedAmount:   200000,
 			},
 			expectedRes: &xendit.RetailOutlet{
-				IsSingleUse:      new(bool),
+				IsSingleUse:      false,
 				Status:           "ACTIVE",
 				OwnerID:          "someone-owner-id",
 				ExternalID:       "retailoutlet-external-id",
@@ -131,7 +131,7 @@ func TestGetFixedPaymentCode(t *testing.T) {
 				FixedPaymentCodeID: "123",
 			},
 			expectedRes: &xendit.RetailOutlet{
-				IsSingleUse:      new(bool),
+				IsSingleUse:      false,
 				Status:           "ACTIVE",
 				OwnerID:          "someone-owner-id",
 				ExternalID:       "retailoutlet-external-id",
@@ -196,7 +196,7 @@ func TestUpdateFixedPaymentCode(t *testing.T) {
 				ExpectedAmount:     200000,
 			},
 			expectedRes: &xendit.RetailOutlet{
-				IsSingleUse:      new(bool),
+				IsSingleUse:      false,
 				Status:           "ACTIVE",
 				OwnerID:          "someone-owner-id",
 				ExternalID:       "retailoutlet-external-id",

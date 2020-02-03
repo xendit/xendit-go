@@ -16,7 +16,7 @@ type Disbursement struct {
 	EmailTo                 []string `json:"email_to,omitempty"`
 	EmailCC                 []string `json:"email_cc,omitempty"`
 	EmailBCC                []string `json:"email_bcc,omitempty"`
-	IsInstant               *bool    `json:"is_instant,omitempty"`
+	IsInstant               bool     `json:"is_instant,omitempty"`
 	FailureCode             string   `json:"failure_code,omitempty"`
 }
 
@@ -24,8 +24,8 @@ type Disbursement struct {
 type DisbursementBank struct {
 	Name            string `json:"name"`
 	Code            string `json:"code"`
-	CanDisburse     *bool  `json:"can_disburse"`
-	CanNameValidate *bool  `json:"can_name_validate"`
+	CanDisburse     bool   `json:"can_disburse"`
+	CanNameValidate bool   `json:"can_name_validate"`
 }
 
 // BatchDisbursement contains data from Xendit's API response of batch disbursement.
