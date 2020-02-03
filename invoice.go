@@ -6,6 +6,7 @@ import "time"
 // For more details see https://xendit.github.io/apireference/?bash#invoices.
 type Invoice struct {
 	ID                        string                `json:"id"`
+	Status                    string                `json:"status"`
 	ExternalID                string                `json:"external_id"`
 	UserID                    string                `json:"user_id"`
 	PayerEmail                string                `json:"payer_email"`
