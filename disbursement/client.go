@@ -134,3 +134,40 @@ func (c *Client) GetAvailableBanksWithContext(ctx context.Context) ([]xendit.Dis
 
 	return response, nil
 }
+
+// CreateBatch creates new batch disbursement
+func (c Client) CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error) {
+	return c.CreateBatchWithContext(context.Background(), data)
+}
+
+// CreateBatchWithContext creates new batch disbursement with context
+func (c *Client) CreateBatchWithContext(ctx context.Context, data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.BatchDisbursement{}
+	header := &http.Header{}
+
+	if data.IdempotencyKey != "" {
+		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
+	}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"POST",
+		fmt.Sprintf("%s/batch_disbursements", c.Opt.XenditURL),
+		c.Opt.SecretKey,
+		header,
+		data,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}

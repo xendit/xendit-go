@@ -40,6 +40,7 @@ This library is the abstraction of Xendit API for access from applications writt
       - [GetByID](#getbyid)
       - [GetByExternalID](#getbyexternalid)
       - [GetAvailableBanks](#getavailablebanks-1)
+      - [CreateBatch](#createbatch)
     - [Card](#card)
       - [CreateCharge (Create Authorization)](#createcharge-create-authorization)
       - [GetCharge](#getcharge)
@@ -288,6 +289,12 @@ disbursement.GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disbursement
 
 ```go
 disbursement.GetAvailableBanks() ([]xendit.DisbursementBank, *xendit.Error)
+```
+
+##### CreateBatch
+
+```go
+disbursement.CreateBatch(data *CreateBatchParams) (*xendit.BatchDisbursement, *xendit.Error)
 ```
 
 #### Card

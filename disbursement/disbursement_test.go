@@ -6,6 +6,7 @@ import (
 	"errors"
 	"net/http"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
@@ -293,8 +294,6 @@ func TestGetAvailableBanks(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterGetAvailableBanksMock)
 	initTesting(apiRequesterMockObj)
 
-	trueObj := true
-
 	testCases := []struct {
 		desc        string
 		expectedRes []xendit.DisbursementBank
@@ -306,14 +305,14 @@ func TestGetAvailableBanks(t *testing.T) {
 				{
 					Name:            "Bank Mandiri",
 					Code:            "MANDIRI",
-					CanDisburse:     &trueObj,
-					CanNameValidate: &trueObj,
+					CanDisburse:     true,
+					CanNameValidate: true,
 				},
 				{
 					Name:            "Bank Negara Indonesia",
 					Code:            "BNI",
-					CanDisburse:     &trueObj,
-					CanNameValidate: &trueObj,
+					CanDisburse:     true,
+					CanNameValidate: true,
 				},
 			},
 			expectedErr: nil,
@@ -334,6 +333,99 @@ func TestGetAvailableBanks(t *testing.T) {
 			).Return(nil)
 
 			resp, err := disbursement.GetAvailableBanks()
+
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
+	}
+}
+
+type apiRequesterBatchMock struct {
+	mock.Mock
+}
+
+func (m *apiRequesterBatchMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, header, params, result)
+
+	date, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
+
+	result.(*xendit.BatchDisbursement).Created = &date
+	result.(*xendit.BatchDisbursement).Reference = "reference_test"
+	result.(*xendit.BatchDisbursement).TotalUploadedAmount = 400000
+	result.(*xendit.BatchDisbursement).TotalUploadedCount = 2
+	result.(*xendit.BatchDisbursement).Status = "NEEDS_APPROVAL"
+	result.(*xendit.BatchDisbursement).ID = "123"
+
+	return nil
+}
+
+func TestCreateBatch(t *testing.T) {
+	apiRequesterMockObj := new(apiRequesterBatchMock)
+	initTesting(apiRequesterMockObj)
+
+	date, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
+
+	testCases := []struct {
+		desc        string
+		data        *disbursement.CreateBatchParams
+		expectedRes *xendit.BatchDisbursement
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should create a batch disbursement",
+			data: &disbursement.CreateBatchParams{
+				Reference: "reference_test",
+				Disbursements: []disbursement.DisbursementItem{
+					{
+						Amount:            200000,
+						BankCode:          "BRI",
+						BankAccountName:   "Michael Jackson",
+						BankAccountNumber: "1234567890",
+						Description:       "Batch disbursement test 1",
+					},
+					{
+						Amount:            200000,
+						BankCode:          "BNI",
+						BankAccountName:   "Michael Jackson",
+						BankAccountNumber: "1234567890",
+						Description:       "Batch disbursement test 2",
+					},
+				},
+			},
+			expectedRes: &xendit.BatchDisbursement{
+				Created:             &date,
+				Reference:           "reference_test",
+				TotalUploadedAmount: 400000,
+				TotalUploadedCount:  2,
+				Status:              "NEEDS_APPROVAL",
+				ID:                  "123",
+			},
+			expectedErr: nil,
+		},
+		{
+			desc: "should report missing required fields",
+			data: &disbursement.CreateBatchParams{
+				Reference: "reference_test",
+			},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'Disbursements'")),
+		},
+	}
+
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"POST",
+				"https://api.xendit.co/batch_disbursements",
+				xendit.Opt.SecretKey,
+				mock.AnythingOfType("*http.Header"),
+				tC.data,
+				&xendit.BatchDisbursement{},
+			).Return(nil)
+
+			resp, err := disbursement.CreateBatch(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)

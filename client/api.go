@@ -15,16 +15,15 @@ import (
 
 // API is the Xendit client which contains all products
 type API struct {
-	opt            xendit.Option
-	Invoice        *invoice.Client
-	EWallet        *ewallet.Client
-	Balance        *balance.Client
-	RetailOutlet   *retailoutlet.Client
-	VirtualAccount *virtualaccount.Client
-	Card           *card.Client
-	Payout         *payout.Client
+	opt              xendit.Option
+	Invoice          *invoice.Client
+	EWallet          *ewallet.Client
+	Balance          *balance.Client
+	RetailOutlet     *retailoutlet.Client
+	VirtualAccount   *virtualaccount.Client
+	Card             *card.Client
+	Payout           *payout.Client
 	RecurringPayment *recurringpayment.Client
-
 }
 
 // Init initiates all the products of the API client
