@@ -10,7 +10,12 @@ const (
 	BalanceAccountTypeTax     BalanceAccountTypeEnum = "TAX"
 )
 
-// Balance contains data from Xendit's API response of balance related requests.
+// String returns the BalanceAccountTypeEnum in type string
+func (b *BalanceAccountTypeEnum) String() string {
+	return string(*b)
+}
+
+// Balance contains data from Xendit's API response of balance related request.
 // For more details see https://xendit.github.io/apireference/?bash#balances.
 type Balance struct {
 	Balance float64 `json:"balance"`

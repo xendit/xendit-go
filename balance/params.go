@@ -17,7 +17,7 @@ func (p *GetParams) QueryString() string {
 	urlValues := &url.Values{}
 
 	if p.AccountType != "" {
-		urlValues.Add("account_type", string(p.AccountType))
+		urlValues.Add("account_type", p.AccountType.String())
 	}
 
 	return urlValues.Encode()
