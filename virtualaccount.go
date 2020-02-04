@@ -35,6 +35,7 @@ type VirtualAccountPayment struct {
 	ID                       string     `json:"id"`
 	PaymentID                string     `json:"payment_id"`
 	CallbackVirtualAccountID string     `json:"callback_virtual_account_id"`
+	ExternalID               string     `json:"external_id"`
 	AccountNumber            string     `json:"account_number"`
 	BankCode                 string     `json:"bank_code"`
 	Amount                   float64    `json:"amount"`
