@@ -10,7 +10,7 @@ import (
 
 // This example shows the usage of Xendit's API client
 func Example() {
-	api := client.New("examplesecretkey", "", nil)
+	api := client.New("examplesecretkey")
 
 	data := invoice.GetParams{
 		ID: "invoice-id",

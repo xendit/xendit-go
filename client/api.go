@@ -16,6 +16,7 @@ import (
 // API is the Xendit client which contains all products
 type API struct {
 	opt              xendit.Option
+	apiRequester     xendit.APIRequester
 	Invoice          *invoice.Client
 	EWallet          *ewallet.Client
 	Balance          *balance.Client
@@ -26,36 +27,45 @@ type API struct {
 	RecurringPayment *recurringpayment.Client
 }
 
-// Init initiates all the products of the API client
-func (a *API) Init(apiRequester *xendit.APIRequester) {
-	if apiRequester == nil {
-		apiRequesterObj := xendit.GetAPIRequester()
-		apiRequester = &apiRequesterObj
-	}
-
-	a.Invoice = &invoice.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.EWallet = &ewallet.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.Balance = &balance.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.RetailOutlet = &retailoutlet.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.VirtualAccount = &virtualaccount.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.Card = &card.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.Payout = &payout.Client{Opt: &a.opt, APIRequester: *apiRequester}
-	a.RecurringPayment = &recurringpayment.Client{Opt: &a.opt, APIRequester: *apiRequester}
+func (a *API) init() {
+	a.Invoice = &invoice.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.EWallet = &ewallet.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.Balance = &balance.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.RetailOutlet = &retailoutlet.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.VirtualAccount = &virtualaccount.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.Card = &card.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.Payout = &payout.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.RecurringPayment = &recurringpayment.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 }
 
 // New creates a new Xendit API client
-func New(secretKey string, xenditURL string, apiRequester *xendit.APIRequester) *API {
-	if xenditURL == "" {
-		xenditURL = "https://api.xendit.co"
-	}
-
+func New(secretKey string) *API {
 	api := API{
 		opt: xendit.Option{
 			SecretKey: secretKey,
-			XenditURL: xenditURL,
+			XenditURL: "https://api.xendit.co",
 		},
+		apiRequester: xendit.GetAPIRequester(),
 	}
-	api.Init(apiRequester)
+	api.init()
 
 	return &api
+}
+
+// WithAPIRequester set custom APIRequester for Xendit Client
+// Can be chained with constructor like below:
+// 		client.New(yourSecretKey).WithAPIRequester(yourCustomRequester)
+func (a *API) WithAPIRequester(apiRequester xendit.APIRequester) *API {
+	a.apiRequester = apiRequester
+	a.init()
+	return a
+}
+
+// WithCustomURL set custom xendit URL for Xendit Client
+// Can be chained with constructor like below:
+// 		client.New(yourSecretKey).WithCustomURL(yourCustomURL)
+func (a *API) WithCustomURL(xenditURL string) *API {
+	a.opt.XenditURL = xenditURL
+	a.init()
+	return a
 }
