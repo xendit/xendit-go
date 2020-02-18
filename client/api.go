@@ -2,6 +2,8 @@
 package client
 
 import (
+	"net/http"
+
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/balance"
 	"github.com/xendit/xendit-go/card"
@@ -66,6 +68,17 @@ func (a *API) WithAPIRequester(apiRequester xendit.APIRequester) *API {
 // 		client.New(yourSecretKey).WithCustomURL(yourCustomURL)
 func (a *API) WithCustomURL(xenditURL string) *API {
 	a.opt.XenditURL = xenditURL
+	a.init()
+	return a
+}
+
+// WithCustomHTTPClient set custom HTTP Client for default API Requester
+// Can be chained with constructor like below:
+// 		client.New(yourSecretKey).WithCustomHTTPClient(yourCustomHTTPClient)
+func (a *API) WithCustomHTTPClient(client *http.Client) *API {
+	a.apiRequester = &xendit.APIRequesterImplementation{
+		HTTPClient: client,
+	}
 	a.init()
 	return a
 }
