@@ -158,9 +158,11 @@ import (
     "github.com/xendit/xendit-go/client"
 )
 
-// Setup
-client := client.New("examplepublickey", "examplesecretkey", "", exampleAPIRequester)
-// the `exampleAPIRequester is optional, useful for mocking
+// Basic setup
+client := client.New("examplesecretkey")
+
+// or with optional, useful-for-mocking `exampleAPIRequester`
+client := client.New("examplesecretkey").WithAPIRequester(exampleAPIRequester)
 
 // Create
 resp, err := client.$product$.Create($product$.CreateParams)
