@@ -13,13 +13,13 @@ func TestAPIInit(t *testing.T) {
 			SecretKey: "sk_123",
 		},
 	}
-	api.Init(nil)
+	api.init()
 
 	assert.Equal(t, *api.Invoice.Opt, api.opt)
 }
 
 func TestAPINew(t *testing.T) {
-	api := New("sk_123", "", nil)
+	api := New("sk_123")
 
 	assert.Equal(t, "sk_123", api.opt.SecretKey)
 	assert.Equal(t, "https://api.xendit.co", api.opt.XenditURL)

@@ -28,6 +28,17 @@ type getPaymentStatusResponse struct {
 	BusinessID      string                 `json:"business_id,omitempty"`
 }
 
+func (r *getPaymentStatusResponse) toEwalletResponse() *xendit.EWallet {
+	return &xendit.EWallet{
+		EWalletType:     r.EWalletType,
+		ExternalID:      r.ExternalID,
+		Amount:          r.Amount,
+		TransactionDate: r.TransactionDate,
+		CheckoutURL:     r.CheckoutURL,
+		BusinessID:      r.BusinessID,
+	}
+}
+
 // CreatePayment creates new payment
 func (c *Client) CreatePayment(data *CreatePaymentParams) (*xendit.EWallet, *xendit.Error) {
 	return c.CreatePaymentWithContext(context.Background(), data)
@@ -93,7 +104,7 @@ func (c *Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPayme
 		return nil, err
 	}
 
-	response := xendit.EWallet(*tempResponse)
+	response := tempResponse.toEwalletResponse()
 
-	return &response, nil
+	return response, nil
 }
