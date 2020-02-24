@@ -22,7 +22,7 @@ func main() {
 		ExternalID:         "cardless-credit-" + time.Now().String(),
 		Amount:             200000,
 		PaymentType:        xendit.PaymentTypeEnum3Months,
-		Items:              []cardlesscredit.Item{
+		Items: []cardlesscredit.Item{
 			{
 				ID:       "123",
 				Name:     "Laptop Asus Ila",
@@ -32,13 +32,13 @@ func main() {
 				Quantity: 1,
 			},
 		},
-		CustomerDetails:    cardlesscredit.CustomerDetails{
+		CustomerDetails: cardlesscredit.CustomerDetails{
 			FirstName: "Michael",
 			LastName:  "Belajarrock",
 			Email:     "michaelbelajarrock@mail.com",
 			Phone:     "08123123123",
 		},
-		ShippingAddress:    cardlesscredit.ShippingAddress{
+		ShippingAddress: cardlesscredit.ShippingAddress{
 			FirstName:   "Michael",
 			LastName:    "Belajarjazz",
 			Address:     "Jalan Teknologi No. 12",
@@ -47,8 +47,8 @@ func main() {
 			Phone:       "08123123123",
 			CountryCode: "IDN",
 		},
-		RedirectURL:        "https://google.com",
-		CallbackURL:        "https://google.com",
+		RedirectURL: "https://google.com",
+		CallbackURL: "https://google.com",
 	}
 
 	resp, err := cardlesscredit.CreatePayment(&createPaymentData)
