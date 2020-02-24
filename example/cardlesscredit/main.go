@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
-	"github.com/xendit/xendit-go"
-	"github.com/xendit/xendit-go/cardlesscredit"
 	"log"
 	"os"
 	"time"
+
+	"github.com/joho/godotenv"
+	"github.com/xendit/xendit-go"
+	"github.com/xendit/xendit-go/cardlesscredit"
 )
 
 func main() {

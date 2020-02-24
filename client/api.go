@@ -2,8 +2,9 @@
 package client
 
 import (
-	"github.com/xendit/xendit-go/cardlesscredit"
 	"net/http"
+
+	"github.com/xendit/xendit-go/cardlesscredit"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/balance"

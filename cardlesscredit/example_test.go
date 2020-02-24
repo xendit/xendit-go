@@ -2,9 +2,10 @@ package cardlesscredit_test
 
 import (
 	"fmt"
-	"github.com/xendit/xendit-go/cardlesscredit"
 	"log"
 	"time"
+
+	"github.com/xendit/xendit-go/cardlesscredit"
 
 	"github.com/xendit/xendit-go"
 )
