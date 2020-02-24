@@ -50,6 +50,6 @@ func ExampleCreatePayment() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	fmt.Printf("created payment: %+v\n", resp)
 }

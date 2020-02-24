@@ -400,6 +400,14 @@ retailoutlet.Pause(data *retailoutlet.PauseParams) (*xendit.RetailOutlet, *xendi
 retailoutlet.Resume(data *retailoutlet.ResumeParams) (*xendit.RetailOutlet, *xendit.Error)
 ```
 
+#### Cardless Credit
+
+##### CreatePayment
+
+```go
+CreatePayment(data *CreatePaymentParams) (*xendit.CardlessCredit, *xendit.Error)
+```
+
 ## Contribute
 
 For any requests, bugs, or comments, please [open an issue](https://github.com/xendit/xendit-go/issues/new) or submit a pull request.
