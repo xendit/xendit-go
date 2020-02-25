@@ -56,6 +56,9 @@ func (c *Client) CreatePaymentWithContext(ctx context.Context, data *CreatePayme
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
+	if data.XApiVersion != "" {
+		header.Add("X-API-VERSION", data.XApiVersion)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
