@@ -58,6 +58,8 @@ This library is the abstraction of Xendit API for access from applications writt
       - [Stop](#stop)
       - [Pause](#pause)
       - [Resume](#resume)
+    - [Cardless Credit](#cardless-credit)
+      - [CreatePayment](#createpayment-1)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -398,6 +400,14 @@ retailoutlet.Pause(data *retailoutlet.PauseParams) (*xendit.RetailOutlet, *xendi
 
 ```go
 retailoutlet.Resume(data *retailoutlet.ResumeParams) (*xendit.RetailOutlet, *xendit.Error)
+```
+
+#### Cardless Credit
+
+##### CreatePayment
+
+```go
+CreatePayment(data *CreatePaymentParams) (*xendit.CardlessCredit, *xendit.Error)
 ```
 
 ## Contribute
