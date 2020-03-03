@@ -4,11 +4,11 @@ package client
 import (
 	"net/http"
 
-	"github.com/xendit/xendit-go/cardlesscredit"
-
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/balance"
 	"github.com/xendit/xendit-go/card"
+	"github.com/xendit/xendit-go/cardlesscredit"
+	"github.com/xendit/xendit-go/disbursement"
 	"github.com/xendit/xendit-go/ewallet"
 	"github.com/xendit/xendit-go/invoice"
 	"github.com/xendit/xendit-go/payout"
@@ -30,6 +30,7 @@ type API struct {
 	Payout           *payout.Client
 	RecurringPayment *recurringpayment.Client
 	CardlessCredit   *cardlesscredit.Client
+	Disbursement     *disbursement.Client
 }
 
 func (a *API) init() {
@@ -42,6 +43,7 @@ func (a *API) init() {
 	a.Payout = &payout.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 	a.RecurringPayment = &recurringpayment.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 	a.CardlessCredit = &cardlesscredit.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.Disbursement = &disbursement.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 }
 
 // New creates a new Xendit API client
