@@ -17,6 +17,7 @@ func (b *BalanceAccountTypeEnum) String() string {
 
 // Balance contains data from Xendit's API response of balance related request.
 // For more details see https://xendit.github.io/apireference/?bash#balances.
+// For documentation of subpackage balance, checkout https://pkg.go.dev/github.com/xendit/xendit-go/balance
 type Balance struct {
 	Balance float64 `json:"balance"`
 }

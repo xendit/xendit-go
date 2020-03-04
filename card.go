@@ -6,6 +6,7 @@ import "time"
 // and Create Authorization request.
 // For more details see https://xendit.github.io/apireference/?bash#create-charge
 // and https://xendit.github.io/apireference/?bash#create-authorization.
+// For documentation of subpackage card, checkout https://pkg.go.dev/github.com/xendit/xendit-go/card
 type CardCharge struct {
 	ID                    string     `json:"id"`
 	Status                string     `json:"status"`
@@ -30,6 +31,7 @@ type CardCharge struct {
 
 // CardRefund contains data from Xendit's API response of card's Create Refund request.
 // For more details see https://xendit.github.io/apireference/?bash#CreateRefund.
+// For documentation of subpackage card, checkout https://pkg.go.dev/github.com/xendit/xendit-go/card
 type CardRefund struct {
 	ID                 string     `json:"id"`
 	Updated            *time.Time `json:"updated"`
@@ -46,6 +48,7 @@ type CardRefund struct {
 
 // CardReverseAuthorization contains data from Xendit's API response of card's Reverse Authorization request.
 // For more details see https://xendit.github.io/apireference/?bash#reverse-authorization.
+// For documentation of subpackage card, checkout https://pkg.go.dev/github.com/xendit/xendit-go/card
 type CardReverseAuthorization struct {
 	ID                 string     `json:"id"`
 	ExternalID         string     `json:"external_id"`

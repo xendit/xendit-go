@@ -21,6 +21,7 @@ const (
 
 // CardlessCredit contains data from Xendit's API response of cardless credit related requests.
 // For more details see https://xendit.github.io/apireference/?bash#cardless-credit.
+// For documentation of subpackage cardlesscredit, checkout https://pkg.go.dev/github.com/xendit/xendit-go/cardlesscredit
 type CardlessCredit struct {
 	RedirectURL        string                 `json:"redirect_url"`
 	TransactionID      string                 `json:"transaction_id"`
