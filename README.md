@@ -15,16 +15,6 @@ This library is the abstraction of Xendit API for access from applications writt
   - [Without Client](#without-client)
   - [With Client](#with-client)
   - [Sub-Packages Documentations](#sub-packages-documentations)
-    - [Invoice](#invoice)
-    - [E-Wallet](#e-wallet)
-    - [Balance](#balance)
-    - [Virtual Account](#virtual-account)
-    - [Retail Outlet](#retail-outlet)
-    - [Disbursement](#disbursement)
-    - [Card](#card)
-    - [Payout](#payout)
-    - [Recurring Payment](#recurring-payment)
-    - [Cardless Credit](#cardless-credit)
 - [Contribute](#contribute)
   - [Test](#test)
     - [Run all tests](#run-all-tests)
@@ -143,45 +133,16 @@ resp, err := client.$product$.GetAll($product$.GetAllParams)
 
 The following is a list of pointers to documentations for sub-packages of [xendit-go](https://github.com/xendit/xendit-go).
 
-#### Invoice
-
-Find invoice documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/invoice).
-
-#### E-Wallet
-
-Find ewallet documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/ewallet).
-
-#### Balance
-
-Find balance documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/balance).
-
-#### Virtual Account
-
-Find virtualaccount documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/virtualaccount).
-
-#### Retail Outlet
-
-Find retailoutlet documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/retailoutlet).
-
-#### Disbursement
-
-Find disbursement documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/disbursement).
-
-#### Card
-
-Find card documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/card).
-
-#### Payout
-
-Find payout documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/payout).
-
-#### Recurring Payment
-
-Find recurringpayment documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/recurringpayment).
-
-#### Cardless Credit
-
-Find cardlesscredit documentation in [go.dev](https://pkg.go.dev/github.com/xendit/xendit-go/cardlesscredit).
+- [Invoice](https://pkg.go.dev/github.com/xendit/xendit-go/invoice)
+- [E-Wallet](https://pkg.go.dev/github.com/xendit/xendit-go/ewallet)
+- [Balance](https://pkg.go.dev/github.com/xendit/xendit-go/balance)
+- [Virtual Account](https://pkg.go.dev/github.com/xendit/xendit-go/virtualaccount)
+- [Retail Outlet](https://pkg.go.dev/github.com/xendit/xendit-go/retailoutlet)
+- [Disbursement](https://pkg.go.dev/github.com/xendit/xendit-go/disbursement)
+- [Card](https://pkg.go.dev/github.com/xendit/xendit-go/card)
+- [Payout](https://pkg.go.dev/github.com/xendit/xendit-go/payout)
+- [Recurring Payment](https://pkg.go.dev/github.com/xendit/xendit-go/recurringpayment)
+- [Cardless Credit](https://pkg.go.dev/github.com/xendit/xendit-go/cardlesscredit)
 
 ## Contribute
 
