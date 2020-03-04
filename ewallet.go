@@ -14,6 +14,7 @@ const (
 
 // EWallet contains data from Xendit's API response of e-wallet related requests.
 // For more details see https://xendit.github.io/apireference/?bash#ewallets.
+// For documentation of subpackage ewallet, checkout https://pkg.go.dev/github.com/xendit/xendit-go/ewallet
 type EWallet struct {
 	EWalletType          EWalletTypeEnum `json:"ewallet_type"`
 	ExternalID           string          `json:"external_id"`

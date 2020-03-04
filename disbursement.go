@@ -4,6 +4,7 @@ import "time"
 
 // Disbursement contains data from Xendit's API response of disbursement related requests.
 // For more details see https://xendit.github.io/apireference/?bash#disbursement.
+// For documentation of subpackage disbursement, checkout https://pkg.go.dev/github.com/xendit/xendit-go/disbursement
 type Disbursement struct {
 	ID                      string   `json:"id"`
 	UserID                  string   `json:"user_id"`

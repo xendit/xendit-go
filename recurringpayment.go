@@ -23,6 +23,7 @@ const (
 
 // RecurringPayment contains data from Xendit's API response of recurring payment related requests.
 // For more details see https://xendit.github.io/apireference/?bash#recurring-payments.
+// For documentation of subpackage recurringpayment, checkout https://pkg.go.dev/github.com/xendit/xendit-go/recurringpayment
 type RecurringPayment struct {
 	ID                    string                       `json:"id"`
 	ExternalID            string                       `json:"external_id"`

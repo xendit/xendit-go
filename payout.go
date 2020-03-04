@@ -4,6 +4,7 @@ import "time"
 
 // Payout contains data from Xendit's API response of invoice related request.
 // For more details see https://xendit.github.io/apireference/?bash#payouts.
+// For documentation of subpackage payout, checkout https://pkg.go.dev/github.com/xendit/xendit-go/payout
 type Payout struct {
 	ID                  string     `json:"id"`
 	ExternalID          string     `json:"external_id"`

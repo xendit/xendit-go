@@ -6,6 +6,7 @@ import (
 
 // VirtualAccount contains data from Xendit's API response of virtual account related requests.
 // For more details see https://xendit.github.io/apireference/?bash#virtual-accounts.
+// For documentation of subpackage virtualaccount, checkout https://pkg.go.dev/github.com/xendit/xendit-go/virtualaccount
 type VirtualAccount struct {
 	OwnerID         string     `json:"owner_id"`
 	ExternalID      string     `json:"external_id"`

@@ -3,7 +3,8 @@ package xendit
 import "time"
 
 // Invoice contains data from Xendit's API response of invoice related requests.
-// For more details see https://xendit.github.io/apireference/?bash#invoices.
+// For more API details see https://xendit.github.io/apireference/?bash#invoices.
+// For documentation of subpackage invoice, checkout https://pkg.go.dev/github.com/xendit/xendit-go/invoice
 type Invoice struct {
 	ID                        string                `json:"id"`
 	Status                    string                `json:"status"`
