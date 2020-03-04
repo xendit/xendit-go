@@ -1,0 +1,37 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"time"
+
+	"github.com/xendit/xendit-go/payout"
+)
+
+func payoutTest() {
+	createData := payout.CreateParams{
+		ExternalID: "payout-" + time.Now().String(),
+		Amount:     200000,
+	}
+
+	resp, err := payout.Create(&createData)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	resp, err = payout.Get(&payout.GetParams{
+		ID: resp.ID,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = payout.Void(&payout.VoidParams{
+		ID: resp.ID,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Payout integration tests done!")
+}

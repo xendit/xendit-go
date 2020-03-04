@@ -20,6 +20,7 @@ This library is the abstraction of Xendit API for access from applications writt
     - [Run all tests](#run-all-tests)
     - [Run tests for a package](#run-tests-for-a-package)
     - [Run a single test](#run-a-single-test)
+    - [Run integration tests](#run-integration-tests)
   - [Pre-commit](#pre-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -114,19 +115,19 @@ import (
 )
 
 // Basic setup
-client := client.New("examplesecretkey")
+xenCli := client.New("examplesecretkey")
 
 // or with optional, useful-for-mocking `exampleAPIRequester`
-client := client.New("examplesecretkey").WithAPIRequester(exampleAPIRequester)
+xenCli := client.New("examplesecretkey").WithAPIRequester(exampleAPIRequester)
 
 // Create
-resp, err := client.$product$.Create($product$.CreateParams)
+resp, err := xenCli.$product$.Create($product$.CreateParams)
 
 // Get
-resp, err := client.$product$.Get($product$.GetParams)
+resp, err := xenCli.$product$.Get($product$.GetParams)
 
 // GetAll
-resp, err := client.$product$.GetAll($product$.GetAllParams)
+resp, err := xenCli.$product$.GetAll($product$.GetAllParams)
 ```
 
 ### Sub-Packages Documentations
@@ -168,6 +169,12 @@ go test ./invoice
 
 ```sh
 go test ./invoice -run TestCreateInvoice
+```
+
+#### Run integration tests
+
+```sh
+SECRET_KEY=<your secret key> go run ./integration_test
 ```
 
 ### Pre-commit
