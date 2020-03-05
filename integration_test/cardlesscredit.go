@@ -45,7 +45,7 @@ func cardlesscreditTest() {
 	}
 	_, err := cardlesscredit.CreatePayment(&createPaymentData)
 	if err != nil && err.GetErrorCode() != "MERCHANT_NOT_FOUND_ERROR" {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Cardless Credit integration tests done!")

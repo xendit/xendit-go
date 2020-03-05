@@ -11,7 +11,7 @@ import (
 func disbursementTest() {
 	availableBanks, err := disbursement.GetAvailableBanks()
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	createData := disbursement.CreateParams{
@@ -25,7 +25,7 @@ func disbursementTest() {
 	}
 	resp, err := disbursement.Create(&createData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	getByIDData := disbursement.GetByIDParams{
@@ -33,7 +33,7 @@ func disbursementTest() {
 	}
 	resp, err = disbursement.GetByID(&getByIDData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	getByExternalIDData := disbursement.GetByExternalIDParams{
@@ -41,7 +41,7 @@ func disbursementTest() {
 	}
 	_, err = disbursement.GetByExternalID(&getByExternalIDData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	createBatchData := disbursement.CreateBatchParams{
@@ -66,7 +66,7 @@ func disbursementTest() {
 
 	_, err = disbursement.CreateBatch(&createBatchData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Disbursement integration tests done!")

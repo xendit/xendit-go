@@ -11,7 +11,7 @@ import (
 func virtualaccountTest() {
 	availableBanks, err := virtualaccount.GetAvailableBanks()
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	createFixedVAData := virtualaccount.CreateFixedVAParams{
@@ -21,7 +21,7 @@ func virtualaccountTest() {
 	}
 	resp, err := virtualaccount.CreateFixedVA(&createFixedVAData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	getFixedVAData := virtualaccount.GetFixedVAParams{
@@ -29,7 +29,7 @@ func virtualaccountTest() {
 	}
 	resp, err = virtualaccount.GetFixedVA(&getFixedVAData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	expirationDate := time.Now().AddDate(0, 0, 1)
@@ -39,7 +39,7 @@ func virtualaccountTest() {
 	}
 	_, err = virtualaccount.UpdateFixedVA(&updateFixedVAData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Virtual Account integration tests done!")

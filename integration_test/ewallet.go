@@ -21,7 +21,7 @@ func ewalletTest() {
 
 	resp, err := ewallet.CreatePayment(&createPaymentData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	getPaymentStatusData := ewallet.GetPaymentStatusParams{
 		ExternalID:  resp.ExternalID,
@@ -30,7 +30,7 @@ func ewalletTest() {
 
 	_, err = ewallet.GetPaymentStatus(&getPaymentStatusData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("EWallet integration tests done!")

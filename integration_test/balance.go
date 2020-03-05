@@ -13,7 +13,7 @@ func balanceTest() {
 	}
 	_, err := balance.Get(&getData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Balance integration tests done!")

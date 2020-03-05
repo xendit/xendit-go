@@ -20,7 +20,7 @@ func recurringpaymentTest() {
 	}
 	resp, err := recurringpayment.Create(&createData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	getData := recurringpayment.GetParams{
@@ -28,7 +28,7 @@ func recurringpaymentTest() {
 	}
 	resp, err = recurringpayment.Get(&getData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	editData := recurringpayment.EditParams{
@@ -37,7 +37,7 @@ func recurringpaymentTest() {
 	}
 	resp, err = recurringpayment.Edit(&editData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	pauseData := recurringpayment.PauseParams{
@@ -45,7 +45,7 @@ func recurringpaymentTest() {
 	}
 	resp, err = recurringpayment.Pause(&pauseData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	resumeData := recurringpayment.ResumeParams{
@@ -53,7 +53,7 @@ func recurringpaymentTest() {
 	}
 	resp, err = recurringpayment.Resume(&resumeData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	stopData := recurringpayment.StopParams{
@@ -61,7 +61,7 @@ func recurringpaymentTest() {
 	}
 	_, err = recurringpayment.Stop(&stopData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Recurring Payment integration tests done!")

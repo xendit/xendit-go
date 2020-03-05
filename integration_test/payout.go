@@ -16,21 +16,21 @@ func payoutTest() {
 
 	resp, err := payout.Create(&createData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	resp, err = payout.Get(&payout.GetParams{
 		ID: resp.ID,
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	_, err = payout.Void(&payout.VoidParams{
 		ID: resp.ID,
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Payout integration tests done!")

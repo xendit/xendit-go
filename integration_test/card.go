@@ -12,7 +12,7 @@ func cardTest() {
 		ChargeID: "5e046a736113354249aab8bd",
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	fmt.Println("Card integration tests done!")
 }

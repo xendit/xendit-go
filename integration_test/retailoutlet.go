@@ -19,7 +19,7 @@ func retailoutletTest() {
 
 	resp, err := retailoutlet.CreateFixedPaymentCode(&createFixedPaymentCodeData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	getFixedPaymentCodeData := retailoutlet.GetFixedPaymentCodeParams{
@@ -28,7 +28,7 @@ func retailoutletTest() {
 
 	resp, err = retailoutlet.GetFixedPaymentCode(&getFixedPaymentCodeData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	expirationDate := time.Now().AddDate(0, 0, 1)
@@ -41,7 +41,7 @@ func retailoutletTest() {
 
 	_, err = retailoutlet.UpdateFixedPaymentCode(&updateFixedPaymentCodeData)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
 	fmt.Println("Retail Outlet integration tests done!")

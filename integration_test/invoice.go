@@ -17,24 +17,24 @@ func invoiceTest() {
 	}
 	resp, err := invoice.Create(&data)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 
 	}
 	resp, err = invoice.Get(&invoice.GetParams{
 		ID: resp.ID,
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	_, err = invoice.Expire(&invoice.ExpireParams{
 		ID: resp.ID,
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	_, err = invoice.GetAll(nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 	fmt.Println("Invoice integration tests done!")
 }
