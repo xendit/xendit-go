@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ["1.14", "1.13", "1.11"]
+        go-version: ["1.14", "1.13", "1.12"]
     name: Test with Go version ${{ matrix.go-version }}
     steps:
       - name: Checkout
@@ -25,3 +25,5 @@ jobs:
       - run: go mod download
       - run: go test ./...
       - run: go run ./integration_test
+        env:
+          SECRET_KEY: xnd_development_chBDpzjQZEI8nncBLrWtwau5r7rgiuunCJ4JCqsd68rXemDd74BnRpdO0bIZAMK
