@@ -21,7 +21,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-go@v1
         with:
-          go-version: ${{ matrix.node }}
+          go-version: ${{ matrix.go-version }}
       - run: go mod download
       - run: go test ./...
       - run: go run ./integration_test

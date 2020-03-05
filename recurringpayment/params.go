@@ -22,7 +22,7 @@ type CreateParams struct {
 	CreditCardToken     string                              `json:"credit_card_token,omitempty"`
 	StartDate           *time.Time                          `json:"start_date,omitempty"`
 	SuccessRedirectURL  string                              `json:"success_redirect_url,omitempty"`
-	FailureRedirectURL  string                              `json:"failure_redirect_url,omitempty,omitempty"`
+	FailureRedirectURL  string                              `json:"failure_redirect_url,omitempty"`
 	Recharge            *bool                               `json:"recharge,omitempty"`
 	ChargeImmediately   *bool                               `json:"charge_immediately,omitempty"`
 }

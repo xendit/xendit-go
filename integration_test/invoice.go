@@ -26,7 +26,7 @@ func invoiceTest() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	resp, err = invoice.Expire(&invoice.ExpireParams{
+	_, err = invoice.Expire(&invoice.ExpireParams{
 		ID: resp.ID,
 	})
 	if err != nil {
