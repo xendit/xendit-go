@@ -38,7 +38,7 @@ func (a *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 		}
 	}
 
-	req, err = http.NewRequestWithContext(
+	req, err = newHTTPRequestWithContext(
 		ctx,
 		method,
 		url,
