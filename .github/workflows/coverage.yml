@@ -1,0 +1,42 @@
+name: "coveralls"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: '1.14'
+      - run: go mod download
+      - run: >-
+        go test -race -covermode atomic -coverprofile=profile.cov
+          .
+          ./balance/...
+          ./card/...
+          ./cardlesscredit/...
+          ./client/...
+          ./disbursement/...
+          ./ewallet/...
+          ./invoice/...
+          ./payout/...
+          ./recurringpayment/...
+          ./retailoutlet/...
+          ./utils/...
+          ./virtualaccount/...
+      - name: Send coverage
+        env:
+          COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          go get github.com/mattn/goveralls
+          $(go env GOPATH)/bin/goveralls -coverprofile=profile.cov -service=github
