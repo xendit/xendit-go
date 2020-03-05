@@ -13,16 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ["1.14", "1.13"]
+        go-version: [1.14.x, 1.13.x]
     name: Test with Go version ${{ matrix.go-version }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Setup go
         uses: actions/setup-go@v1
         with:
           go-version: ${{ matrix.go-version }}
-      - run: go mod download
+      - name: Checkout
+        uses: actions/checkout@v2
       - run: go test ./...
       - run: go run ./integration_test
         env:
@@ -32,27 +31,26 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ["1.12", "1.11"]
+        go-version: [1.12.x, 1.11.x]
     env:
       GOPATH: ${{ github.workspace }}
       GO111MODULE: off
-      working-dir: ./src/github.com/${{ github.repository }}
     name: Test with Go version ${{ matrix.go-version }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: ./src/github.com/${{ github.repository }}
-          ref: ${{ github.event.pull_request.head.ref }} # to solve go get problem with detached HEAD
       - name: Setup go
         uses: actions/setup-go@v1
         with:
           go-version: ${{ matrix.go-version }}
-      - run: go get -v -u ./...
-        working-directory: ${{ env.working-dir }}
-      - run: go test ./...
-        working-directory: ${{ env.working-dir }}
-      - run: go run ./integration_test
-        working-directory: ${{ env.working-dir }}
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: ./src/github.com/${{ github.repository }}
+      - name: deps installation
+        run: |
+          go get -u github.com/go-playground/validator
+          go get -u github.com/joho/godotenv
+          go get -u github.com/stretchr/testify
+      - run: go test ./src/github.com/${{ github.repository }}/...
+      - run: go run ./src/github.com/${{ github.repository }}/integration_test
         env:
           SECRET_KEY: xnd_development_chBDpzjQZEI8nncBLrWtwau5r7rgiuunCJ4JCqsd68rXemDd74BnRpdO0bIZAMK
