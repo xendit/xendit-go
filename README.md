@@ -14,6 +14,7 @@ This library is the abstraction of Xendit API for access from applications writt
 - [Documentation](#documentation)
 - [Installation](#installation)
   - [Go Module Support](#go-module-support)
+  - [Using xendit-go with \$GOPATH](#using-xendit-go-with-%5Cgopath)
 - [Usage](#usage)
   - [Without Client](#without-client)
   - [With Client](#with-client)
@@ -55,7 +56,7 @@ with `$product$` is the product of Xendit such as `invoice` and `balance`.
 
 ### Go Module Support
 
-This library can also be included via Go modules. To do so, require xendit-go in `go.mod` with a version like so:
+This library supports Go modules by default. Simply require xendit-go in `go.mod` with a version like so:
 
 ```go
 module github.com/my/package
@@ -77,6 +78,22 @@ import (
 ```
 
 with `$product$` is the product of Xendit such as `invoice` and `balance`.
+
+### Using xendit-go with \$GOPATH
+
+If you are still using `$GOPATH` and not planning to [migrate to go mod](https://blog.golang.org/migrating-to-go-modules),
+installing `xendit-go` would require installing its (only) dependency [validator](https://github.com/go-playground/validator)
+via
+
+```bash
+go get -u github.com/go-playground/validator
+```
+
+Please note that this means you are using `master` of [validator](https://github.com/go-playground/validator)
+and effectively miss out on its versioning that's gomod-based.
+
+After installing [validator](https://github.com/go-playground/validator), [xendit-go](https://github.com/xendit/xendit-go)
+can be [installed normally](#installation).
 
 ## Usage
 
