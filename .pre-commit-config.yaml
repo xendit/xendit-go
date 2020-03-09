@@ -1,40 +1,26 @@
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.4.0
-  hooks:
-  - id: mixed-line-ending
-    args: [--fix=lf]
-- repo: https://github.com/thlorenz/doctoc
-  rev: v1.4.0
-  hooks:
-  - id: doctoc
-- repo: local
-  hooks:
-  - id: golangci-lint
-    name: golangci-lint
-    description: Fast linters runner for Go.
-    entry: go run golangci_lint/main.go
-    types: [go]
-    language: golang
-    pass_filenames: false
-  - id: go-fmt
-    name: go-fmt
-    description: Runs gofmt
-    entry: gofmt -w .
-    types: [go]
-    language: golang
-    pass_filenames: false
-  - id: go-vet
-    name: go-vet
-    description: Runs go vet
-    entry: go vet ./...
-    types: [go]
-    language: golang
-    pass_filenames: false
-  - id: go-imports
-    name: go-imports
-    description: Runs goimport
-    entry: goimports -w .
-    types: [go]
-    language: golang
-    pass_filenames: false
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.4.0
+    hooks:
+      - id: mixed-line-ending
+        args: [--fix=lf]
+  - repo: https://github.com/thlorenz/doctoc
+    rev: v1.4.0
+    hooks:
+      - id: doctoc
+  - repo: local
+    hooks:
+      - id: go-fmt
+        name: go-fmt
+        description: Runs gofmt
+        entry: gofmt -w
+        types: [go]
+        language: golang
+        pass_filenames: true
+      - id: go-imports
+        name: go-imports
+        description: Runs goimport
+        entry: goimports -w
+        types: [go]
+        language: golang
+        pass_filenames: true

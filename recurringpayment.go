@@ -43,7 +43,7 @@ type RecurringPayment struct {
 	LastCreatedInvoiceURL string                       `json:"last_created_invoice_url,omitempty"`
 	CreditCardToken       string                       `json:"credit_card_token,omitempty"`
 	SuccessRedirectURL    string                       `json:"success_redirect_url,omitempty"`
-	FailureRedirectURL    string                       `json:"failure_redirect_url,omitempty,omitempty"`
+	FailureRedirectURL    string                       `json:"failure_redirect_url,omitempty"`
 	TotalRecurrence       int                          `json:"total_recurrence,omitempty"`
 	RecurrenceProgress    int                          `json:"recurrence_progress,omitempty"`
 	Recharge              bool                         `json:"recharge,omitempty"`

@@ -20,3 +20,6 @@ bin/
 
 # Environment files
 .env
+
+*.coverprofile
+*.cov

@@ -1,6 +1,9 @@
 # Xendit API Go Client
 
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/xendit/xendit-go)
+![](https://github.com/xendit/xendit-go/workflows/integration-test/badge.svg)
+![](https://github.com/xendit/xendit-go/workflows/lint/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/xendit/xendit-go/badge.svg)](https://coveralls.io/github/xendit/xendit-go)
 
 This library is the abstraction of Xendit API for access from applications written with Go.
 
@@ -11,6 +14,7 @@ This library is the abstraction of Xendit API for access from applications writt
 - [Documentation](#documentation)
 - [Installation](#installation)
   - [Go Module Support](#go-module-support)
+  - [Using xendit-go with \$GOPATH](#using-xendit-go-with-%5Cgopath)
 - [Usage](#usage)
   - [Without Client](#without-client)
   - [With Client](#with-client)
@@ -20,6 +24,7 @@ This library is the abstraction of Xendit API for access from applications writt
     - [Run all tests](#run-all-tests)
     - [Run tests for a package](#run-tests-for-a-package)
     - [Run a single test](#run-a-single-test)
+    - [Run integration tests](#run-integration-tests)
   - [Pre-commit](#pre-commit)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -51,7 +56,7 @@ with `$product$` is the product of Xendit such as `invoice` and `balance`.
 
 ### Go Module Support
 
-This library can also be included via Go modules. To do so, require xendit-go in `go.mod` with a version like so:
+This library supports Go modules by default. Simply require xendit-go in `go.mod` with a version like so:
 
 ```go
 module github.com/my/package
@@ -73,6 +78,22 @@ import (
 ```
 
 with `$product$` is the product of Xendit such as `invoice` and `balance`.
+
+### Using xendit-go with \$GOPATH
+
+If you are still using `$GOPATH` and not planning to [migrate to go mod](https://blog.golang.org/migrating-to-go-modules),
+installing `xendit-go` would require installing its (only) dependency [validator](https://github.com/go-playground/validator)
+via
+
+```bash
+go get -u github.com/go-playground/validator
+```
+
+Please note that this means you are using `master` of [validator](https://github.com/go-playground/validator)
+and effectively miss out on its versioning that's gomod-based.
+
+After installing [validator](https://github.com/go-playground/validator), [xendit-go](https://github.com/xendit/xendit-go)
+can be [installed normally](#installation).
 
 ## Usage
 
@@ -114,19 +135,19 @@ import (
 )
 
 // Basic setup
-client := client.New("examplesecretkey")
+xenCli := client.New("examplesecretkey")
 
 // or with optional, useful-for-mocking `exampleAPIRequester`
-client := client.New("examplesecretkey").WithAPIRequester(exampleAPIRequester)
+xenCli := client.New("examplesecretkey").WithAPIRequester(exampleAPIRequester)
 
 // Create
-resp, err := client.$product$.Create($product$.CreateParams)
+resp, err := xenCli.$product$.Create($product$.CreateParams)
 
 // Get
-resp, err := client.$product$.Get($product$.GetParams)
+resp, err := xenCli.$product$.Get($product$.GetParams)
 
 // GetAll
-resp, err := client.$product$.GetAll($product$.GetAllParams)
+resp, err := xenCli.$product$.GetAll($product$.GetAllParams)
 ```
 
 ### Sub-Packages Documentations
@@ -168,6 +189,12 @@ go test ./invoice
 
 ```sh
 go test ./invoice -run TestCreateInvoice
+```
+
+#### Run integration tests
+
+```sh
+SECRET_KEY=<your secret key> go run ./integration_test
 ```
 
 ### Pre-commit

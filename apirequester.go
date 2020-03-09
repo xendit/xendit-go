@@ -38,7 +38,7 @@ func (a *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 		}
 	}
 
-	req, err = http.NewRequestWithContext(
+	req, err = newHTTPRequestWithContext(
 		ctx,
 		method,
 		url,
@@ -53,6 +53,8 @@ func (a *APIRequesterImplementation) Call(ctx context.Context, method string, ur
 	}
 	req.SetBasicAuth(secretKey, "")
 	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("xendit-lib", "go")
+	req.Header.Set("xendit-lib-ver", "v0")
 
 	return a.doRequest(req, result)
 }
