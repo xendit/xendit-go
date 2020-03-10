@@ -13,7 +13,7 @@ repos:
       - id: go-fmt
         name: go-fmt
         description: Runs gofmt
-        entry: gofmt -w
+        entry: gofmt -s -w
         types: [go]
         language: golang
         pass_filenames: true
