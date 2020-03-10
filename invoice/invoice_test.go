@@ -241,7 +241,7 @@ func TestGetAll(t *testing.T) {
 			desc: "should get a list of invoices",
 			data: &invoice.GetAllParams{},
 			expectedRes: []xendit.Invoice{
-				xendit.Invoice{
+				{
 					ID:          "123",
 					ExternalID:  "invoice-external-id",
 					Amount:      200000,
@@ -259,7 +259,7 @@ func TestGetAll(t *testing.T) {
 				CreatedAfter: createdAfter,
 			},
 			expectedRes: []xendit.Invoice{
-				xendit.Invoice{
+				{
 					ID:          "123",
 					ExternalID:  "invoice-external-id",
 					Amount:      200000,
