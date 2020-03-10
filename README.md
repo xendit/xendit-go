@@ -4,6 +4,7 @@
 ![](https://github.com/xendit/xendit-go/workflows/integration-test/badge.svg)
 ![](https://github.com/xendit/xendit-go/workflows/lint/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/xendit/xendit-go/badge.svg)](https://coveralls.io/github/xendit/xendit-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/xendit/xendit-go)](https://goreportcard.com/report/github.com/xendit/xendit-go)
 
 This library is the abstraction of Xendit API for access from applications written with Go.
 
