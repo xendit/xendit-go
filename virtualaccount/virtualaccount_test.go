@@ -276,11 +276,11 @@ func TestGetAvailableBanks(t *testing.T) {
 		{
 			desc: "should get available va banks",
 			expectedRes: []xendit.VirtualAccountBank{
-				xendit.VirtualAccountBank{
+				{
 					Name: "Bank Mandiri",
 					Code: "MANDIRI",
 				},
-				xendit.VirtualAccountBank{
+				{
 					Name: "Bank Negara Indonesia",
 					Code: "BNI",
 				},

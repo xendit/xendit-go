@@ -57,7 +57,7 @@ func (c *Client) GetByID(data *GetByIDParams) (*xendit.Disbursement, *xendit.Err
 	return c.GetByIDWithContext(context.Background(), data)
 }
 
-// GetByID gets a disbursement by id with context
+// GetByIDWithContext gets a disbursement by id with context
 func (c *Client) GetByIDWithContext(ctx context.Context, data *GetByIDParams) (*xendit.Disbursement, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
@@ -86,7 +86,7 @@ func (c *Client) GetByExternalID(data *GetByExternalIDParams) ([]xendit.Disburse
 	return c.GetByExternalIDWithContext(context.Background(), data)
 }
 
-// GetByExternalID gets a disbursement by id with context
+// GetByExternalIDWithContext gets a disbursement by id with context
 func (c *Client) GetByExternalIDWithContext(ctx context.Context, data *GetByExternalIDParams) ([]xendit.Disbursement, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
