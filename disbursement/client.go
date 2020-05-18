@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-
+	
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
 )
@@ -64,13 +64,17 @@ func (c *Client) GetByIDWithContext(ctx context.Context, data *GetByIDParams) (*
 	}
 
 	response := &xendit.Disbursement{}
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/disbursements/%s", c.Opt.XenditURL, data.DisbursementID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)
@@ -93,13 +97,17 @@ func (c *Client) GetByExternalIDWithContext(ctx context.Context, data *GetByExte
 	}
 
 	response := []xendit.Disbursement{}
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/disbursements?%s", c.Opt.XenditURL, data.QueryString()),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		&response,
 	)

@@ -22,11 +22,13 @@ type CreateParams struct {
 // GetByIDParams contains parameters for GetByID
 type GetByIDParams struct {
 	DisbursementID string `json:"disbursement_id" validate:"required"`
+	ForUserID      string `json:"-"`
 }
 
 // GetByExternalIDParams contains parameters for GetByExternalID
 type GetByExternalIDParams struct {
 	ExternalID string `json:"external_id" validate:"required"`
+	ForUserID  string `json:"-"`
 }
 
 // QueryString creates query string from GetByExternalIDParams, ignores nil values
