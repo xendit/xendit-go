@@ -77,7 +77,7 @@ func TestCreatePayout(t *testing.T) {
 				ExternalID: "payout-external-id",
 			},
 			expectedRes: nil,
-			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'Amount'")),
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'Amount', 'Email'")),
 		},
 	}
 
