@@ -32,7 +32,6 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.Payout).ExternalID = "payout-external-id"
 	result.(*xendit.Payout).Amount = 200000
 	result.(*xendit.Payout).Status = "ISSUED"
-	result.(*xendit.Payout).Passcode = "123123"
 	result.(*xendit.Payout).Created = &date
 	result.(*xendit.Payout).ExpirationTimestamp = &date
 	result.(*xendit.Payout).MerchantName = "Business Name"
@@ -58,13 +57,13 @@ func TestCreatePayout(t *testing.T) {
 			data: &payout.CreateParams{
 				ExternalID: "payout-external-id",
 				Amount:     200000,
+				Email:      "customer@customer.com",
 			},
 			expectedRes: &xendit.Payout{
 				ID:                  "123",
 				ExternalID:          "payout-external-id",
 				Amount:              200000,
 				Status:              "ISSUED",
-				Passcode:            "123123",
 				Created:             &date,
 				ExpirationTimestamp: &date,
 				MerchantName:        "Business Name",
@@ -125,7 +124,6 @@ func TestGetPayout(t *testing.T) {
 				ExternalID:          "payout-external-id",
 				Amount:              200000,
 				Status:              "ISSUED",
-				Passcode:            "123123",
 				Created:             &date,
 				ExpirationTimestamp: &date,
 				MerchantName:        "Business Name",
@@ -184,7 +182,6 @@ func TestVoidPayout(t *testing.T) {
 				ExternalID:          "payout-external-id",
 				Amount:              200000,
 				Status:              "ISSUED",
-				Passcode:            "123123",
 				Created:             &date,
 				ExpirationTimestamp: &date,
 				MerchantName:        "Business Name",
