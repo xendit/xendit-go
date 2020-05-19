@@ -22,6 +22,7 @@ func main() {
 	createData := payout.CreateParams{
 		ExternalID: "payout-" + time.Now().String(),
 		Amount:     200000,
+		Email:      "customer@customer.com",
 	}
 
 	resp, err := payout.Create(&createData)

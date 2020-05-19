@@ -10,7 +10,6 @@ type Payout struct {
 	ExternalID          string     `json:"external_id"`
 	Amount              float64    `json:"amount"`
 	Status              string     `json:"status"`
-	Passcode            string     `json:"passcode"`
 	Email               string     `json:"email,omitempty"`
 	PaymentID           string     `json:"payment_id,omitempty"`
 	BankCode            string     `json:"bank_code,omitempty"`
