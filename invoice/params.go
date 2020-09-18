@@ -77,5 +77,6 @@ func (p *GetAllParams) QueryString() string {
 
 // ExpireParams contains parameters for Expire
 type ExpireParams struct {
-	ID string `json:"id" validate:"required"`
+	ID        string `json:"id" validate:"required"`
+	ForUserID string `json:"-"`
 }
