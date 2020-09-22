@@ -90,13 +90,16 @@ func (c *Client) ExpireWithContext(ctx context.Context, data *ExpireParams) (*xe
 	}
 
 	response := &xendit.Invoice{}
-
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/invoices/%s/expire!", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)

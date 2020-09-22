@@ -184,7 +184,6 @@ func TestExpire(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header *http.Header
 
 			apiRequesterMockObj.On(
 				"Call",
@@ -192,7 +191,7 @@ func TestExpire(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/invoices/123/expire!",
 				xendit.Opt.SecretKey,
-				header,
+				&http.Header{},
 				nil,
 				&xendit.Invoice{},
 			).Return(nil)
