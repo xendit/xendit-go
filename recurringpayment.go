@@ -48,4 +48,5 @@ type RecurringPayment struct {
 	RecurrenceProgress    int                          `json:"recurrence_progress,omitempty"`
 	Recharge              bool                         `json:"recharge,omitempty"`
 	ChargeImmediately     bool                         `json:"charge_immediately,omitempty"`
+	Currency              string                       `json:"currency,omitempty"`
 }

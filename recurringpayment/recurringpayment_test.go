@@ -71,6 +71,7 @@ func TestCreateRecurringPayment(t *testing.T) {
 				Interval:      xendit.RecurringPaymentIntervalDay,
 				IntervalCount: 3,
 				Recharge:      new(bool),
+				Currency:      "IDR",
 			},
 			expectedRes: &xendit.RecurringPayment{
 				ID:                    "123",
@@ -90,6 +91,7 @@ func TestCreateRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},

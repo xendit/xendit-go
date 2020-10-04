@@ -25,6 +25,7 @@ type CreateParams struct {
 	FailureRedirectURL  string                              `json:"failure_redirect_url,omitempty"`
 	Recharge            *bool                               `json:"recharge,omitempty"`
 	ChargeImmediately   *bool                               `json:"charge_immediately,omitempty"`
+	Currency            string                              `json:"currency,omitempty"`
 }
 
 // GetParams contains parameters for Get
