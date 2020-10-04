@@ -45,6 +45,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.RecurringPayment).Updated = &date
 	result.(*xendit.RecurringPayment).StartDate = &date
 	result.(*xendit.RecurringPayment).Recharge = false
+	result.(*xendit.RecurringPayment).Currency = "IDR"
 
 	return nil
 }
@@ -165,6 +166,7 @@ func TestGetRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -235,6 +237,7 @@ func TestEditRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -302,6 +305,7 @@ func TestStopRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -369,6 +373,7 @@ func TestPauseRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -436,6 +441,7 @@ func TestResumeRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
