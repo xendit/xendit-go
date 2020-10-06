@@ -45,6 +45,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.RecurringPayment).Updated = &date
 	result.(*xendit.RecurringPayment).StartDate = &date
 	result.(*xendit.RecurringPayment).Recharge = false
+	result.(*xendit.RecurringPayment).Currency = "IDR"
 
 	return nil
 }
@@ -71,6 +72,7 @@ func TestCreateRecurringPayment(t *testing.T) {
 				Interval:      xendit.RecurringPaymentIntervalDay,
 				IntervalCount: 3,
 				Recharge:      new(bool),
+				Currency:      "IDR",
 			},
 			expectedRes: &xendit.RecurringPayment{
 				ID:                    "123",
@@ -90,6 +92,7 @@ func TestCreateRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -163,6 +166,7 @@ func TestGetRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -233,6 +237,7 @@ func TestEditRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -300,6 +305,7 @@ func TestStopRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -367,6 +373,7 @@ func TestPauseRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
@@ -434,6 +441,7 @@ func TestResumeRecurringPayment(t *testing.T) {
 				Updated:               &date,
 				StartDate:             &date,
 				Recharge:              false,
+				Currency:              "IDR",
 			},
 			expectedErr: nil,
 		},
