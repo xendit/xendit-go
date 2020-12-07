@@ -426,3 +426,113 @@ func TestReverseAuthorization(t *testing.T) {
 		})
 	}
 }
+
+/* Promotion */
+
+type apiRequesterPromotionMock struct {
+	mock.Mock
+}
+
+func (m *apiRequesterPromotionMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
+
+	mockTime, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
+
+	result.(*xendit.CardPromotion).ID = "36ab1517-208a-4f22-b155-96fb101cb378"
+	result.(*xendit.CardPromotion).BusinessID = "5e61664b3dba955c203d232e"
+	result.(*xendit.CardPromotion).ReferenceID = "BRI_20_JAN"
+	result.(*xendit.CardPromotion).Description = "20% discount applied for all BRI cards"
+	result.(*xendit.CardPromotion).Status = "ACTIVE"
+	result.(*xendit.CardPromotion).BinList = []string{"400000", "460000"}
+	result.(*xendit.CardPromotion).DiscountPercent = 20
+	result.(*xendit.CardPromotion).Currency = "IDR"
+	result.(*xendit.CardPromotion).ChannelCode = "BRI"
+	result.(*xendit.CardPromotion).StartTime = &mockTime
+	result.(*xendit.CardPromotion).EndTime = &mockTime
+	result.(*xendit.CardPromotion).MinOriginalAmount = 25000
+	result.(*xendit.CardPromotion).MaxDiscountAmount = 5000
+
+	return nil
+}
+
+func TestCreatePromotion(t *testing.T) {
+	apiRequesterMockObj := new(apiRequesterPromotionMock)
+	initTesting(apiRequesterMockObj)
+
+	mockTime, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
+
+	testCases := []struct {
+		desc        string
+		data        *card.CreatePromotionParams
+		expectedRes *xendit.CardPromotion
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should create a promotion",
+			data: &card.CreatePromotionParams{
+				ReferenceID:       "BRI_20_JAN",
+				Description:       "20% discount applied for all BRI cards",
+				BinList:           []string{"400000", "460000"},
+				DiscountPercent:   20,
+				Currency:          "IDR",
+				ChannelCode:       "BRI",
+				StartTime:         &mockTime,
+				EndTime:           &mockTime,
+				MinOriginalAmount: 25000,
+				MaxDiscountAmount: 5000,
+			},
+			expectedRes: &xendit.CardPromotion{
+				ID:                "36ab1517-208a-4f22-b155-96fb101cb378",
+				BusinessID:        "5e61664b3dba955c203d232e",
+				ReferenceID:       "BRI_20_JAN",
+				Description:       "20% discount applied for all BRI cards",
+				Status:            "ACTIVE",
+				BinList:           []string{"400000", "460000"},
+				DiscountPercent:   20,
+				Currency:          "IDR",
+				ChannelCode:       "BRI",
+				StartTime:         &mockTime,
+				EndTime:           &mockTime,
+				MinOriginalAmount: 25000,
+				MaxDiscountAmount: 5000,
+			},
+			expectedErr: nil,
+		},
+		{
+			desc: "should report missing required fields",
+			data: &card.CreatePromotionParams{
+				Description:       "20% discount applied for all BRI cards",
+				BinList:           []string{"400000", "460000"},
+				DiscountPercent:   20,
+				Currency:          "IDR",
+				ChannelCode:       "BRI",
+				StartTime:         &mockTime,
+				EndTime:           &mockTime,
+				MinOriginalAmount: 25000,
+				MaxDiscountAmount: 5000,
+			},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ReferenceID'")),
+		},
+	}
+
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"POST",
+				xendit.Opt.XenditURL+"/promotions",
+				xendit.Opt.SecretKey,
+				nil,
+				tC.data,
+				&xendit.CardPromotion{},
+			).Return(nil)
+
+			resp, err := card.CreatePromotion(tC.data)
+
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
+	}
+}

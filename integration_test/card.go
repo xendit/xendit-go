@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/xendit/xendit-go/card"
 )
@@ -18,6 +19,9 @@ func cardTest() {
 }
 
 func cardPromotionTest() {
+	startTime := time.Now().Add(time.Hour)
+	endTime := startTime.Add(time.Hour)
+
 	_, err := card.CreatePromotion(&card.CreatePromotionParams{
 		ReferenceID: "BRI_20_JAN",
 		Description: "20% discount applied for all BRI cards",
@@ -27,6 +31,8 @@ func cardPromotionTest() {
 		},
 		DiscountPercent:   20,
 		Currency:          "IDR",
+		StartTime:         &startTime,
+		EndTime:           &endTime,
 		ChannelCode:       "BRI",
 		MinOriginalAmount: 25000,
 		MaxDiscountAmount: 5000,
