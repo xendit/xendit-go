@@ -13,12 +13,12 @@ type Client struct {
 	APIRequester xendit.APIRequester
 }
 
-// CreatePromotion creates new card promotion
+// CreatePromotion creates new promotion
 func (c *Client) CreatePromotion(data *CreatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	return c.CreatePromotionWithContext(context.Background(), data)
 }
 
-// CreatePromotionWithContext creates new card promotion with context
+// CreatePromotionWithContext creates new promotion with context
 func (c *Client) CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
@@ -42,12 +42,12 @@ func (c *Client) CreatePromotionWithContext(ctx context.Context, data *CreatePro
 	return response, nil
 }
 
-// GetPromotions gets card promotions
+// GetPromotions gets promotions
 func (c *Client) GetPromotions(data *GetPromotionsParams) ([]xendit.Promotion, *xendit.Error) {
 	return c.GetPromotionsWithContext(context.Background(), data)
 }
 
-// GetPromotionsWithContext gets card promotions with context
+// GetPromotionsWithContext gets promotions with context
 func (c *Client) GetPromotionsWithContext(ctx context.Context, data *GetPromotionsParams) ([]xendit.Promotion, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)

@@ -5,12 +5,12 @@ import (
 	"github.com/xendit/xendit-go"
 )
 
-// CreatePromotion creates new card promotion
+// CreatePromotion creates new promotion
 func CreatePromotion(data *CreatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	return CreatePromotionWithContext(context.Background(), data)
 }
 
-// CreatePromotionWithContext creates new card promotion with context
+// CreatePromotionWithContext creates new promotion with context
 func CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
@@ -20,12 +20,12 @@ func CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams
 	return client.CreatePromotionWithContext(ctx, data)
 }
 
-// GetPromotions gets card promotions
+// GetPromotions gets promotions
 func GetPromotions(data *GetPromotionsParams) ([]xendit.Promotion, *xendit.Error) {
 	return GetPromotionsWithContext(context.Background(), data)
 }
 
-// GetPromotionsWithContext gets card promotions with context
+// GetPromotionsWithContext gets promotions with context
 func GetPromotionsWithContext(ctx context.Context, data *GetPromotionsParams) ([]xendit.Promotion, *xendit.Error) {
 	client, err := getClient()
 	if err != nil {
