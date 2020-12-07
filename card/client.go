@@ -74,8 +74,8 @@ func (c *Client) CaptureChargeWithContext(ctx context.Context, data *CaptureChar
 }
 
 // GetCharge gets a card charge
-func (c *Client) GetCharge(data *CaptureChargeParams) (*xendit.CardCharge, *xendit.Error) {
-	return c.CaptureChargeWithContext(context.Background(), data)
+func (c *Client) GetCharge(data *GetChargeParams) (*xendit.CardCharge, *xendit.Error) {
+	return c.GetChargeWithContext(context.Background(), data)
 }
 
 // GetChargeWithContext gets a card charge with context
