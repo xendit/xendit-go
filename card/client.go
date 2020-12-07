@@ -193,3 +193,32 @@ func (c *Client) CreatePromotionWithContext(ctx context.Context, data *CreatePro
 
 	return response, nil
 }
+
+// GetPromotions gets card promotions
+func (c *Client) GetPromotions(data *GetPromotionsParams) ([]xendit.CardPromotion, *xendit.Error) {
+	return c.GetPromotionsWithContext(context.Background(), data)
+}
+
+// GetPromotionsWithContext gets card promotions with context
+func (c *Client) GetPromotionsWithContext(ctx context.Context, data *GetPromotionsParams) ([]xendit.CardPromotion, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := []xendit.CardPromotion{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"GET",
+		fmt.Sprintf("%s/promotions?%s", c.Opt.XenditURL, data.QueryString()),
+		c.Opt.SecretKey,
+		nil,
+		nil,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}

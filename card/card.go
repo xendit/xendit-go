@@ -102,6 +102,21 @@ func CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams
 	return client.CreatePromotionWithContext(ctx, data)
 }
 
+// GetPromotions gets card promotions
+func GetPromotions(data *GetPromotionsParams) ([]xendit.CardPromotion, *xendit.Error) {
+	return GetPromotionsWithContext(context.Background(), data)
+}
+
+// GetPromotionsWithContext gets card promotions with context
+func GetPromotionsWithContext(ctx context.Context, data *GetPromotionsParams) ([]xendit.CardPromotion, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetPromotionsWithContext(ctx, data)
+}
+
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
 		Opt:          &xendit.Opt,
