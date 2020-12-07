@@ -21,6 +21,10 @@ func main() {
 		wg.Done()
 	}()
 	go func() {
+		cardPromotionTest()
+		wg.Done()
+	}()
+	go func() {
 		cardlesscreditTest()
 		wg.Done()
 	}()

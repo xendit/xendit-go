@@ -85,6 +85,23 @@ func ReverseAuthorizationWithContext(ctx context.Context, data *ReverseAuthoriza
 	return client.ReverseAuthorizationWithContext(ctx, data)
 }
 
+/* Promotion */
+
+// CreatePromotion creates new card promotion
+func CreatePromotion(data *CreatePromotionParams) (*xendit.CardPromotion, *xendit.Error) {
+	return CreatePromotionWithContext(context.Background(), data)
+}
+
+// CreatePromotionWithContext creates new card promotion with context
+func CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams) (*xendit.CardPromotion, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CreatePromotionWithContext(ctx, data)
+}
+
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
 		Opt:          &xendit.Opt,

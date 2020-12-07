@@ -164,3 +164,32 @@ func (c *Client) ReverseAuthorizationWithContext(ctx context.Context, data *Reve
 
 	return response, nil
 }
+
+// CreatePromotion creates new card promotion
+func (c *Client) CreatePromotion(data *CreatePromotionParams) (*xendit.CardPromotion, *xendit.Error) {
+	return c.CreatePromotionWithContext(context.Background(), data)
+}
+
+// CreatePromotionWithContext creates new card promotion with context
+func (c *Client) CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams) (*xendit.CardPromotion, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.CardPromotion{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"POST",
+		fmt.Sprintf("%s/promotions", c.Opt.XenditURL),
+		c.Opt.SecretKey,
+		nil,
+		data,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
