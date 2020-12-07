@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/xendit/xendit-go/card"
 	"log"
+
+	"github.com/xendit/xendit-go/card"
 )
 
 func cardTest() {

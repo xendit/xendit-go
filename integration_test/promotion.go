@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/xendit/xendit-go/promotion"
 	"log"
 	"time"
+
+	"github.com/xendit/xendit-go/promotion"
 )
 
 func promotionTest() {

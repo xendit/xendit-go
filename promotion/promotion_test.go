@@ -5,14 +5,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"net/http"
+	"testing"
+	"time"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/promotion"
 	"github.com/xendit/xendit-go/utils/validator"
-	"net/http"
-	"testing"
-	"time"
 )
 
 func initTesting(apiRequesterMockObj xendit.APIRequester) {
@@ -194,8 +195,8 @@ func TestGetPromotions(t *testing.T) {
 		{
 			desc: "should get promotions",
 			data: &promotion.GetPromotionsParams{
-				Currency:          "IDR",
-				ChannelCode:       "BRI",
+				Currency:    "IDR",
+				ChannelCode: "BRI",
 			},
 			expectedRes: []xendit.Promotion{
 				{

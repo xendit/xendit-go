@@ -2,9 +2,10 @@ package card_test
 
 import (
 	"fmt"
+	"log"
+
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/card"
-	"log"
 )
 
 func ExampleCreateCharge() {

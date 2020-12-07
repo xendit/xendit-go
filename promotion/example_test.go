@@ -2,10 +2,11 @@ package promotion_test
 
 import (
 	"fmt"
-	"github.com/xendit/xendit-go"
-	"github.com/xendit/xendit-go/promotion"
 	"log"
 	"time"
+
+	"github.com/xendit/xendit-go"
+	"github.com/xendit/xendit-go/promotion"
 )
 
 func ExampleCreatePromotion() {
