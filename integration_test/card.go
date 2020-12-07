@@ -22,7 +22,7 @@ func cardPromotionTest() {
 	startTime := time.Now().Add(time.Hour)
 	endTime := startTime.Add(time.Hour)
 
-	_, err := card.CreatePromotion(&card.CreatePromotionParams{
+	created, err := card.CreatePromotion(&card.CreatePromotionParams{
 		ReferenceID: "BRI_20_JAN",
 		Description: "20% discount applied for all BRI cards",
 		BinList: []string{
@@ -40,5 +40,13 @@ func cardPromotionTest() {
 	if err != nil {
 		log.Panic(err)
 	}
+
+	_, err = card.GetPromotions(&card.GetPromotionsParams{
+		ReferenceID: created.ReferenceID,
+	})
+	if err != nil {
+		log.Panic(err)
+	}
+
 	fmt.Println("Card's promotion integration tests done!")
 }
