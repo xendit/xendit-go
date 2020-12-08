@@ -13,7 +13,7 @@ func promotionTest() {
 	endTime := startTime.Add(time.Hour)
 
 	created, err := promotion.CreatePromotion(&promotion.CreatePromotionParams{
-		ReferenceID: "BRI_20_JAN",
+		ReferenceID: fmt.Sprintf("promotion-%s", startTime.String()),
 		Description: "20% discount applied for all BRI cards",
 		BinList: []string{
 			"400000",
