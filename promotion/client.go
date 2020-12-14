@@ -129,3 +129,32 @@ func (c *Client) UpdatePromotionWithContext(ctx context.Context, data *UpdatePro
 
 	return response, nil
 }
+
+// DeletePromotion deletes a promotion.
+func (c *Client) DeletePromotion(data *DeletePromotionParams) (*xendit.PromotionDeletion, *xendit.Error) {
+	return c.DeletePromotionWithContext(context.Background(), data)
+}
+
+// DeletePromotionWithContext deletes a promotion with context.
+func (c *Client) DeletePromotionWithContext(ctx context.Context, data *DeletePromotionParams) (*xendit.PromotionDeletion, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.PromotionDeletion{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"DELETE",
+		fmt.Sprintf("%s/promotions/%s", c.Opt.XenditURL, data.PromotionID),
+		c.Opt.SecretKey,
+		nil,
+		nil,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}

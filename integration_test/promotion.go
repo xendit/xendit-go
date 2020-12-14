@@ -32,32 +32,39 @@ func promotionTest() {
 	}
 
 	/* Comment out for now, waiting for fix
-		_, err = promotion.GetPromotions(&promotion.GetPromotionsParams{
-			ReferenceID: created.ReferenceID,
-		})
-		if err != nil {
-			log.Panic(err)
-		}
+	_, err = promotion.GetPromotions(&promotion.GetPromotionsParams{
+		ReferenceID: created.ReferenceID,
+	})
+	if err != nil {
+		log.Panic(err)
+	}
 
-		_, err = promotion.GetPromotionsCalculation(&promotion.GetPromotionsCalculationParams{
-			Amount: 1000000,
-			Bin:    "460000",
-		})
-		if err != nil {
-			log.Panic(err)
-		}
+	_, err = promotion.GetPromotionsCalculation(&promotion.GetPromotionsCalculationParams{
+		Amount: 1000000,
+		Bin:    "460000",
+	})
+	if err != nil {
+		log.Panic(err)
+	}
 	*/
 
-	_, err = promotion.UpdatePromotion(&promotion.UpdatePromotionParams{
+	updated, err := promotion.UpdatePromotion(&promotion.UpdatePromotionParams{
 		PromotionID: created.ID,
 		Description: "20% discount applied for all BCA cards",
 		BinList: []string{
 			"400000",
 			"460000",
 		},
-		DiscountPercent:   20,
-		Currency:          "IDR",
-		ChannelCode:       "BCA",
+		DiscountPercent: 20,
+		Currency:        "IDR",
+		ChannelCode:     "BCA",
+	})
+	if err != nil {
+		log.Panic(err)
+	}
+
+	_, err = promotion.DeletePromotion(&promotion.DeletePromotionParams{
+		PromotionID: updated.ID,
 	})
 	if err != nil {
 		log.Panic(err)

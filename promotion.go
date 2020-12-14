@@ -35,3 +35,10 @@ type PromotionCalculation struct {
 	MinOriginalAmount float64 `json:"min_original_amount"`
 	MaxDiscountAmount float64 `json:"max_discount_amount"`
 }
+
+// PromotionDeletion contains data from Xendit's API response of delete promotion request.
+// For more details see https://xendit.github.io/apireference/?bash#create-promotion.
+type PromotionDeletion struct {
+	ID        string `json:"id"`
+	IsDeleted bool   `json:"is_deleted"`
+}

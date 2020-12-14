@@ -291,7 +291,7 @@ func TestGetPromotionsCalculation(t *testing.T) {
 		{
 			desc: "should get promotions calculation",
 			data: &promotion.GetPromotionsCalculationParams{
-				Amount: 1000000,
+				Amount:    1000000,
 				PromoCode: "BRI_20",
 			},
 			expectedRes: &xendit.PromotionCalculation{
@@ -308,8 +308,8 @@ func TestGetPromotionsCalculation(t *testing.T) {
 			expectedErr: nil,
 		},
 		{
-			desc: "should report missing required fields",
-			data: &promotion.GetPromotionsCalculationParams{},
+			desc:        "should report missing required fields",
+			data:        &promotion.GetPromotionsCalculationParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'Amount'")),
 		},
@@ -411,6 +411,69 @@ func TestUpdatePromotion(t *testing.T) {
 			).Return(nil)
 
 			resp, err := promotion.UpdatePromotion(tC.data)
+
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
+	}
+}
+
+type apiRequesterDeletePromotionMock struct {
+	mock.Mock
+}
+
+func (m *apiRequesterDeletePromotionMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
+
+	result.(*xendit.PromotionDeletion).ID = "36ab1517-208a-4f22-b155-96fb101cb378"
+	result.(*xendit.PromotionDeletion).IsDeleted = true
+
+	return nil
+}
+
+func TestDeletePromotion(t *testing.T) {
+	apiRequesterMockObj := new(apiRequesterDeletePromotionMock)
+	initTesting(apiRequesterMockObj)
+
+	testCases := []struct {
+		desc        string
+		data        *promotion.DeletePromotionParams
+		expectedRes *xendit.PromotionDeletion
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should delete a promotion",
+			data: &promotion.DeletePromotionParams{
+				PromotionID: "36ab1517-208a-4f22-b155-96fb101cb378",
+			},
+			expectedRes: &xendit.PromotionDeletion{
+				ID:        "36ab1517-208a-4f22-b155-96fb101cb378",
+				IsDeleted: true,
+			},
+			expectedErr: nil,
+		},
+		{
+			desc:        "should report missing required fields",
+			data:        &promotion.DeletePromotionParams{},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'PromotionID'")),
+		},
+	}
+
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"DELETE",
+				xendit.Opt.XenditURL+"/promotions/"+tC.data.PromotionID,
+				xendit.Opt.SecretKey,
+				nil,
+				nil,
+				&xendit.PromotionDeletion{},
+			).Return(nil)
+
+			resp, err := promotion.DeletePromotion(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)

@@ -88,3 +88,18 @@ func ExampleUpdatePromotion() {
 
 	fmt.Printf("updated promotion: %+v\n", promotionResp)
 }
+
+func ExampleDeletePromotion() {
+	xendit.Opt.SecretKey = "examplesecretkey"
+
+	deletePromotionData := promotion.DeletePromotionParams{
+		PromotionID: "36ab1517-208a-4f22-b155-96fb101cb378",
+	}
+
+	promotionResp, err := promotion.DeletePromotion(&deletePromotionData)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("deleted promotion: %+v\n", promotionResp)
+}

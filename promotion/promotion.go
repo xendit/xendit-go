@@ -66,6 +66,21 @@ func UpdatePromotionWithContext(ctx context.Context, data *UpdatePromotionParams
 	return client.UpdatePromotionWithContext(ctx, data)
 }
 
+// DeletePromotion deletes a promotion.
+func DeletePromotion(data *DeletePromotionParams) (*xendit.PromotionDeletion, *xendit.Error) {
+	return DeletePromotionWithContext(context.Background(), data)
+}
+
+// DeletePromotionWithContext deletes a promotion with context.
+func DeletePromotionWithContext(ctx context.Context, data *DeletePromotionParams) (*xendit.PromotionDeletion, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.DeletePromotionWithContext(ctx, data)
+}
+
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
 		Opt:          &xendit.Opt,

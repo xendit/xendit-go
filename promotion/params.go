@@ -99,3 +99,8 @@ type UpdatePromotionParams struct {
 	MinOriginalAmount float64    `json:"min_original_amount,omitempty"`
 	MaxDiscountAmount float64    `json:"max_discount_amount,omitempty"`
 }
+
+// DeletePromotionParams contains parameters for DeletePromotion.
+type DeletePromotionParams struct {
+	PromotionID string `validate:"required"`
+}
