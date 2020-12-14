@@ -38,3 +38,30 @@ func ExampleCreatePromotion() {
 
 	fmt.Printf("created promotion: %+v\n", promotionResp)
 }
+
+func ExampleGetPromotions() {
+	xendit.Opt.SecretKey = "examplesecretkey"
+
+	promotions, err := promotion.GetPromotions(&promotion.GetPromotionsParams{
+		ReferenceID: "BRI_20_JAN",
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("retrieved promotions: %+v\n", promotions)
+}
+
+func ExampleGetPromotionsCalculation() {
+	xendit.Opt.SecretKey = "examplesecretkey"
+
+	promotionsCalculation, err := promotion.GetPromotionsCalculation(&promotion.GetPromotionsCalculationParams{
+		Amount: 1000000,
+		Bin:    "460000",
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("retrieved promotions calculation: %+v\n", promotionsCalculation)
+}

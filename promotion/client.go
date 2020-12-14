@@ -14,12 +14,12 @@ type Client struct {
 	APIRequester xendit.APIRequester
 }
 
-// CreatePromotion creates new promotion
+// CreatePromotion creates new promotion.
 func (c *Client) CreatePromotion(data *CreatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	return c.CreatePromotionWithContext(context.Background(), data)
 }
 
-// CreatePromotionWithContext creates new promotion with context
+// CreatePromotionWithContext creates new promotion with context.
 func (c *Client) CreatePromotionWithContext(ctx context.Context, data *CreatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
@@ -43,12 +43,12 @@ func (c *Client) CreatePromotionWithContext(ctx context.Context, data *CreatePro
 	return response, nil
 }
 
-// GetPromotions gets promotions
+// GetPromotions gets promotions.
 func (c *Client) GetPromotions(data *GetPromotionsParams) ([]xendit.Promotion, *xendit.Error) {
 	return c.GetPromotionsWithContext(context.Background(), data)
 }
 
-// GetPromotionsWithContext gets promotions with context
+// GetPromotionsWithContext gets promotions with context.
 func (c *Client) GetPromotionsWithContext(ctx context.Context, data *GetPromotionsParams) ([]xendit.Promotion, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
@@ -64,6 +64,35 @@ func (c *Client) GetPromotionsWithContext(ctx context.Context, data *GetPromotio
 		nil,
 		nil,
 		&response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+// GetPromotionsCalculation gets promotions calculation.
+func (c *Client) GetPromotionsCalculation(data *GetPromotionsCalculationParams) (*xendit.PromotionCalculation, *xendit.Error) {
+	return c.GetPromotionsCalculationWithContext(context.Background(), data)
+}
+
+// GetPromotionsCalculationWithContext gets promotions calculation with context.
+func (c *Client) GetPromotionsCalculationWithContext(ctx context.Context, data *GetPromotionsCalculationParams) (*xendit.PromotionCalculation, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.PromotionCalculation{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"GET",
+		fmt.Sprintf("%s/promotions/calculate?%s", c.Opt.XenditURL, data.QueryString()),
+		c.Opt.SecretKey,
+		nil,
+		nil,
+		response,
 	)
 	if err != nil {
 		return nil, err

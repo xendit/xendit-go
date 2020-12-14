@@ -1,11 +1,12 @@
 package promotion
 
 import (
+	"fmt"
 	"net/url"
 	"time"
 )
 
-// CreatePromotionParams contains parameters for CreatePromotion
+// CreatePromotionParams contains parameters for CreatePromotion.
 type CreatePromotionParams struct {
 	ReferenceID       string     `json:"reference_id" validate:"required"`
 	Description       string     `json:"description" validate:"required"`
@@ -21,7 +22,7 @@ type CreatePromotionParams struct {
 	MaxDiscountAmount int        `json:"max_discount_amount,omitempty"`
 }
 
-// GetPromotionsParams contains parameters for GetPromotions
+// GetPromotionsParams contains parameters for GetPromotions.
 type GetPromotionsParams struct {
 	ReferenceID string
 	Status      string
@@ -30,7 +31,7 @@ type GetPromotionsParams struct {
 	Currency    string
 }
 
-// QueryString creates query string from GetPromotionsParams, ignores nil values
+// QueryString creates query string from GetPromotionsParams, ignores nil values.
 func (p *GetPromotionsParams) QueryString() string {
 	urlValues := &url.Values{}
 
@@ -48,6 +49,36 @@ func (p *GetPromotionsParams) QueryString() string {
 	}
 	if p.Currency != "" {
 		urlValues.Add("currency", p.Currency)
+	}
+
+	return urlValues.Encode()
+}
+
+// GetPromotionsCalculationParams contains parameters for GetPromotionsCalculation.
+type GetPromotionsCalculationParams struct {
+	Amount    float64 `validate:"required"`
+	Bin       string
+	PromoCode string
+	Currency  string
+	TokenID   string
+}
+
+// QueryString creates query string from GetPromotionsCalculationParams, ignores nil values.
+func (p *GetPromotionsCalculationParams) QueryString() string {
+	urlValues := &url.Values{}
+
+	urlValues.Add("amount", fmt.Sprintf("%f", p.Amount))
+	if p.Bin != "" {
+		urlValues.Add("bin", p.Bin)
+	}
+	if p.PromoCode != "" {
+		urlValues.Add("promo_code", p.PromoCode)
+	}
+	if p.Currency != "" {
+		urlValues.Add("currency", p.Currency)
+	}
+	if p.TokenID != "" {
+		urlValues.Add("token_id", p.TokenID)
 	}
 
 	return urlValues.Encode()
