@@ -335,3 +335,85 @@ func TestGetPromotionsCalculation(t *testing.T) {
 		})
 	}
 }
+
+func TestUpdatePromotion(t *testing.T) {
+	apiRequesterMockObj := new(apiRequesterPromotionMock)
+	initTesting(apiRequesterMockObj)
+
+	mockTime, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
+
+	testCases := []struct {
+		desc        string
+		data        *promotion.UpdatePromotionParams
+		expectedRes *xendit.Promotion
+		expectedErr *xendit.Error
+	}{
+		{
+			desc: "should update a promotion",
+			data: &promotion.UpdatePromotionParams{
+				PromotionID:       "36ab1517-208a-4f22-b155-96fb101cb378",
+				Description:       "20% discount applied for all BRI cards",
+				BinList:           []string{"400000", "460000"},
+				DiscountPercent:   20,
+				Currency:          "IDR",
+				ChannelCode:       "BRI",
+				StartTime:         &mockTime,
+				EndTime:           &mockTime,
+				MinOriginalAmount: 25000,
+				MaxDiscountAmount: 5000,
+			},
+			expectedRes: &xendit.Promotion{
+				ID:                "36ab1517-208a-4f22-b155-96fb101cb378",
+				BusinessID:        "5e61664b3dba955c203d232e",
+				ReferenceID:       "BRI_20_JAN",
+				Description:       "20% discount applied for all BRI cards",
+				Status:            "ACTIVE",
+				BinList:           []string{"400000", "460000"},
+				DiscountPercent:   20,
+				Currency:          "IDR",
+				ChannelCode:       "BRI",
+				StartTime:         &mockTime,
+				EndTime:           &mockTime,
+				MinOriginalAmount: 25000,
+				MaxDiscountAmount: 5000,
+			},
+			expectedErr: nil,
+		},
+		{
+			desc: "should report missing required fields",
+			data: &promotion.UpdatePromotionParams{
+				Description:       "20% discount applied for all BRI cards",
+				BinList:           []string{"400000", "460000"},
+				DiscountPercent:   20,
+				Currency:          "IDR",
+				ChannelCode:       "BRI",
+				StartTime:         &mockTime,
+				EndTime:           &mockTime,
+				MinOriginalAmount: 25000,
+				MaxDiscountAmount: 5000,
+			},
+			expectedRes: nil,
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'PromotionID'")),
+		},
+	}
+
+	for _, tC := range testCases {
+		t.Run(tC.desc, func(t *testing.T) {
+			apiRequesterMockObj.On(
+				"Call",
+				context.Background(),
+				"PATCH",
+				xendit.Opt.XenditURL+"/promotions/"+tC.data.PromotionID,
+				xendit.Opt.SecretKey,
+				nil,
+				tC.data,
+				&xendit.Promotion{},
+			).Return(nil)
+
+			resp, err := promotion.UpdatePromotion(tC.data)
+
+			assert.Equal(t, tC.expectedRes, resp)
+			assert.Equal(t, tC.expectedErr, err)
+		})
+	}
+}

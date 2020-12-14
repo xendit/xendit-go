@@ -51,6 +51,21 @@ func GetPromotionsCalculationWithContext(ctx context.Context, data *GetPromotion
 	return client.GetPromotionsCalculationWithContext(ctx, data)
 }
 
+// UpdatePromotion updates a promotion.
+func UpdatePromotion(data *UpdatePromotionParams) (*xendit.Promotion, *xendit.Error) {
+	return UpdatePromotionWithContext(context.Background(), data)
+}
+
+// UpdatePromotionWithContext updates a promotion with context.
+func UpdatePromotionWithContext(ctx context.Context, data *UpdatePromotionParams) (*xendit.Promotion, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.UpdatePromotionWithContext(ctx, data)
+}
+
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
 		Opt:          &xendit.Opt,

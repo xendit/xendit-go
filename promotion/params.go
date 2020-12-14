@@ -18,8 +18,8 @@ type CreatePromotionParams struct {
 	Currency          string     `json:"currency" validate:"required"`
 	StartTime         *time.Time `json:"start_time" validate:"required"`
 	EndTime           *time.Time `json:"end_time" validate:"required"`
-	MinOriginalAmount int        `json:"min_original_amount,omitempty"`
-	MaxDiscountAmount int        `json:"max_discount_amount,omitempty"`
+	MinOriginalAmount float64    `json:"min_original_amount,omitempty"`
+	MaxDiscountAmount float64    `json:"max_discount_amount,omitempty"`
 }
 
 // GetPromotionsParams contains parameters for GetPromotions.
@@ -82,4 +82,20 @@ func (p *GetPromotionsCalculationParams) QueryString() string {
 	}
 
 	return urlValues.Encode()
+}
+
+// UpdatePromotionParams contains parameters for UpdatePromotion.
+type UpdatePromotionParams struct {
+	PromotionID       string     `json:"-" validate:"required"`
+	Description       string     `json:"description,omitempty"`
+	PromoCode         string     `json:"promo_code,omitempty"`
+	BinList           []string   `json:"bin_list,omitempty"`
+	ChannelCode       string     `json:"channel_code,omitempty"`
+	DiscountPercent   float64    `json:"discount_percent,omitempty"`
+	DiscountAmount    float64    `json:"discount_amount,omitempty"`
+	Currency          string     `json:"currency,omitempty"`
+	StartTime         *time.Time `json:"start_time,omitempty"`
+	EndTime           *time.Time `json:"end_time,omitempty"`
+	MinOriginalAmount float64    `json:"min_original_amount,omitempty"`
+	MaxDiscountAmount float64    `json:"max_discount_amount,omitempty"`
 }

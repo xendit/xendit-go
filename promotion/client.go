@@ -100,3 +100,32 @@ func (c *Client) GetPromotionsCalculationWithContext(ctx context.Context, data *
 
 	return response, nil
 }
+
+// UpdatePromotion updates a promotion.
+func (c *Client) UpdatePromotion(data *UpdatePromotionParams) (*xendit.Promotion, *xendit.Error) {
+	return c.UpdatePromotionWithContext(context.Background(), data)
+}
+
+// UpdatePromotionWithContext updates a promotion with context.
+func (c *Client) UpdatePromotionWithContext(ctx context.Context, data *UpdatePromotionParams) (*xendit.Promotion, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.Promotion{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"PATCH",
+		fmt.Sprintf("%s/promotions/%s", c.Opt.XenditURL, data.PromotionID),
+		c.Opt.SecretKey,
+		nil,
+		data,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}

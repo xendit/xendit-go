@@ -65,3 +65,26 @@ func ExampleGetPromotionsCalculation() {
 
 	fmt.Printf("retrieved promotions calculation: %+v\n", promotionsCalculation)
 }
+
+func ExampleUpdatePromotion() {
+	xendit.Opt.SecretKey = "examplesecretkey"
+
+	updatePromotionData := promotion.UpdatePromotionParams{
+		PromotionID: "36ab1517-208a-4f22-b155-96fb101cb378",
+		Description: "20% discount applied for all BCA cards",
+		BinList: []string{
+			"123123",
+			"456456",
+		},
+		DiscountPercent: 20,
+		Currency:        "IDR",
+		ChannelCode:     "BCA",
+	}
+
+	promotionResp, err := promotion.UpdatePromotion(&updatePromotionData)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("updated promotion: %+v\n", promotionResp)
+}
