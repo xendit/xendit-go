@@ -53,4 +53,4 @@ jobs:
       - run: go test ./src/github.com/${{ github.repository }}/...
       - run: go run ./src/github.com/${{ github.repository }}/integration_test
         env:
-          SECRET_KEY: xnd_development_chBDpzjQZEI8nncBLrWtwau5r7rgiuunCJ4JCqsd68rXemDd74BnRpdO0bIZAMK
+          SECRET_KEY: xnd_development_n9wBjjLUDhHxiaA90owLxSnaUZxGxE1f264kNV7S3HjjPCmgOou1gJrznW4TFB
