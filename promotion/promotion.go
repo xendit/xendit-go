@@ -36,21 +36,6 @@ func GetPromotionsWithContext(ctx context.Context, data *GetPromotionsParams) ([
 	return client.GetPromotionsWithContext(ctx, data)
 }
 
-// GetPromotionsCalculation gets promotions calculation.
-func GetPromotionsCalculation(data *GetPromotionsCalculationParams) (*xendit.PromotionCalculation, *xendit.Error) {
-	return GetPromotionsCalculationWithContext(context.Background(), data)
-}
-
-// GetPromotionsCalculationWithContext gets promotions calculation with context.
-func GetPromotionsCalculationWithContext(ctx context.Context, data *GetPromotionsCalculationParams) (*xendit.PromotionCalculation, *xendit.Error) {
-	client, err := getClient()
-	if err != nil {
-		return nil, err
-	}
-
-	return client.GetPromotionsCalculationWithContext(ctx, data)
-}
-
 // UpdatePromotion updates a promotion.
 func UpdatePromotion(data *UpdatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	return UpdatePromotionWithContext(context.Background(), data)

@@ -31,22 +31,12 @@ func promotionTest() {
 		log.Panic(err)
 	}
 
-	/* Comment out for now, waiting for fix
 	_, err = promotion.GetPromotions(&promotion.GetPromotionsParams{
 		ReferenceID: created.ReferenceID,
 	})
 	if err != nil {
 		log.Panic(err)
 	}
-
-	_, err = promotion.GetPromotionsCalculation(&promotion.GetPromotionsCalculationParams{
-		Amount: 1000000,
-		Bin:    "460000",
-	})
-	if err != nil {
-		log.Panic(err)
-	}
-	*/
 
 	updated, err := promotion.UpdatePromotion(&promotion.UpdatePromotionParams{
 		PromotionID: created.ID,

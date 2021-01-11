@@ -72,35 +72,6 @@ func (c *Client) GetPromotionsWithContext(ctx context.Context, data *GetPromotio
 	return response, nil
 }
 
-// GetPromotionsCalculation gets promotions calculation.
-func (c *Client) GetPromotionsCalculation(data *GetPromotionsCalculationParams) (*xendit.PromotionCalculation, *xendit.Error) {
-	return c.GetPromotionsCalculationWithContext(context.Background(), data)
-}
-
-// GetPromotionsCalculationWithContext gets promotions calculation with context.
-func (c *Client) GetPromotionsCalculationWithContext(ctx context.Context, data *GetPromotionsCalculationParams) (*xendit.PromotionCalculation, *xendit.Error) {
-	if err := validator.ValidateRequired(ctx, data); err != nil {
-		return nil, validator.APIValidatorErr(err)
-	}
-
-	response := &xendit.PromotionCalculation{}
-
-	err := c.APIRequester.Call(
-		ctx,
-		"GET",
-		fmt.Sprintf("%s/promotions/calculate?%s", c.Opt.XenditURL, data.QueryString()),
-		c.Opt.SecretKey,
-		nil,
-		nil,
-		response,
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	return response, nil
-}
-
 // UpdatePromotion updates a promotion.
 func (c *Client) UpdatePromotion(data *UpdatePromotionParams) (*xendit.Promotion, *xendit.Error) {
 	return c.UpdatePromotionWithContext(context.Background(), data)

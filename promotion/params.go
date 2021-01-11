@@ -1,7 +1,6 @@
 package promotion
 
 import (
-	"fmt"
 	"net/url"
 	"time"
 )
@@ -49,36 +48,6 @@ func (p *GetPromotionsParams) QueryString() string {
 	}
 	if p.Currency != "" {
 		urlValues.Add("currency", p.Currency)
-	}
-
-	return urlValues.Encode()
-}
-
-// GetPromotionsCalculationParams contains parameters for GetPromotionsCalculation.
-type GetPromotionsCalculationParams struct {
-	Amount    float64 `validate:"required"`
-	Bin       string
-	PromoCode string
-	Currency  string
-	TokenID   string
-}
-
-// QueryString creates query string from GetPromotionsCalculationParams, ignores nil values.
-func (p *GetPromotionsCalculationParams) QueryString() string {
-	urlValues := &url.Values{}
-
-	urlValues.Add("amount", fmt.Sprintf("%f", p.Amount))
-	if p.Bin != "" {
-		urlValues.Add("bin", p.Bin)
-	}
-	if p.PromoCode != "" {
-		urlValues.Add("promo_code", p.PromoCode)
-	}
-	if p.Currency != "" {
-		urlValues.Add("currency", p.Currency)
-	}
-	if p.TokenID != "" {
-		urlValues.Add("token_id", p.TokenID)
 	}
 
 	return urlValues.Encode()
