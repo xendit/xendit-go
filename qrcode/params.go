@@ -9,11 +9,11 @@ import (
 
 // CreateQRCodeParams contains parameters for CreateQRCode
 type CreateQRCodeParams struct {
-	ForUserID   string                `json:"-"`
-	ExternalID  string                `json:"external_id" validate:"required"`
-	Type        xendit.QRCodeTypeEnum `json:"type" validate:"required"`
-	CallbackURL string                `json:"callback_url" validate:"required"`
-	Amount      float64               `json:"amount,omitempty"`
+	ForUserID   string            `json:"-"`
+	ExternalID  string            `json:"external_id" validate:"required"`
+	Type        xendit.QRCodeType `json:"type" validate:"required"`
+	CallbackURL string            `json:"callback_url" validate:"required"`
+	Amount      float64           `json:"amount,omitempty"`
 }
 
 // GetQRCodeParams contains parameters for GetQRCode
