@@ -28,6 +28,31 @@ type getPaymentStatusResponse struct {
 	BusinessID      string                 `json:"business_id,omitempty"`
 }
 
+type EWalletChargeResponse struct {
+	ID                 string                 `json:"id"`
+	BusinessID         string                 `json:"business_id"`
+	ReferenceID        string                 `json:"reference_id"`
+	Status             string                 `json:"status"`
+	Currency           string                 `json:"currency"`
+	ChargeAmount       float64                `json:"charge_amount"`
+	CaptureAmount      float64                `json:"capture_amount"`
+	CheckoutMethod     string                 `json:"checkout_method"`
+	ChannelCode        string                 `json:"channel_code"`
+	ChannelProperties  map[string]string      `json:"channel_properties"`
+	Actions            map[string]string      `json:"actions"`
+	IsRedirectRequired bool                   `json:"is_redirect_required"`
+	CallbackURL        string                 `json:"callback_url"`
+	Created            string                 `json:"created"`
+	Updated            string                 `json:"updated"`
+	VoidedAt           string                 `json:"voided_at"`
+	CaptureNow         bool                   `json:"capture_now"`
+	CustomerID         string                 `json:"customer_id"`
+	PaymentMethodID    string                 `json:"payment_method_id"`
+	FailureCode        string                 `json:"failure_code"`
+	Basket             []xendit.BasketItem    `json:"basket"`
+	Metadata           map[string]interface{} `json:"metadata"`
+}
+
 func (r *getPaymentStatusResponse) toEwalletResponse() *xendit.EWallet {
 	return &xendit.EWallet{
 		EWalletType:     r.EWalletType,
@@ -36,6 +61,33 @@ func (r *getPaymentStatusResponse) toEwalletResponse() *xendit.EWallet {
 		TransactionDate: r.TransactionDate,
 		CheckoutURL:     r.CheckoutURL,
 		BusinessID:      r.BusinessID,
+	}
+}
+
+func (r *EWalletChargeResponse) toEWalletChargeResponse() *xendit.EWalletCharge {
+	return &xendit.EWalletCharge{
+		ID:                 r.ID,
+		BusinessID:         r.BusinessID,
+		ReferenceID:        r.ReferenceID,
+		Status:             r.Status,
+		Currency:           r.Currency,
+		ChargeAmount:       r.ChargeAmount,
+		CaptureAmount:      r.CaptureAmount,
+		CheckoutMethod:     r.CheckoutMethod,
+		ChannelCode:        r.ChannelCode,
+		ChannelProperties:  r.ChannelProperties,
+		Actions:            r.Actions,
+		IsRedirectRequired: r.IsRedirectRequired,
+		CallbackURL:        r.CallbackURL,
+		Created:            r.Created,
+		Updated:            r.Updated,
+		VoidedAt:           r.VoidedAt,
+		CaptureNow:         r.CaptureNow,
+		CustomerID:         r.CustomerID,
+		PaymentMethodID:    r.PaymentMethodID,
+		FailureCode:        r.FailureCode,
+		Basket:             r.Basket,
+		Metadata:           r.Metadata,
 	}
 }
 
@@ -108,6 +160,74 @@ func (c *Client) GetPaymentStatusWithContext(ctx context.Context, data *GetPayme
 	}
 
 	response := tempResponse.toEwalletResponse()
+
+	return response, nil
+}
+
+// CreateEWalletCharge creates new e-wallet charge
+func (c *Client) CreateEWalletCharge(data *CreateEWalletChargeParams) (*xendit.EWalletCharge, *xendit.Error) {
+	return c.CreateEWalletChargeWithContext(context.Background(), data)
+}
+
+// CreateEWalletChargeWithContext creates new e-wallet charge
+func (c *Client) CreateEWalletChargeWithContext(ctx context.Context, data *CreateEWalletChargeParams) (*xendit.EWalletCharge, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.EWalletCharge{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
+	if data.WithFeeRule != "" {
+		header.Add("with-fee-rule", data.WithFeeRule)
+	}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"POST",
+		fmt.Sprintf("%s/ewallets/charges", c.Opt.XenditURL),
+		c.Opt.SecretKey,
+		header,
+		data,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+// GetEWalletChargeStatus gets one e-wallet charge with its status
+func (c *Client) GetEWalletChargeStatus(data *GetEWalletChargeStatusParams) (*xendit.EWalletCharge, *xendit.Error) {
+	return c.GetEWalletChargeStatusWithContext(context.Background(), data)
+}
+
+// GetPaymentStatusWithContext gets one payment with its status
+func (c *Client) GetEWalletChargeStatusWithContext(ctx context.Context, data *GetEWalletChargeStatusParams) (*xendit.EWalletCharge, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	tempResponse := &EWalletChargeResponse{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"GET",
+		fmt.Sprintf("%s/ewallets/charges/%s", c.Opt.XenditURL, data.ChargeID),
+		c.Opt.SecretKey,
+		nil,
+		nil,
+		tempResponse,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	response := tempResponse.toEWalletChargeResponse()
 
 	return response, nil
 }

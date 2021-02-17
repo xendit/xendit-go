@@ -36,6 +36,36 @@ func GetPaymentStatusWithContext(ctx context.Context, data *GetPaymentStatusPara
 	return client.GetPaymentStatusWithContext(ctx, data)
 }
 
+// CreateEWalletCharge creates new e-wallet charge
+func CreateEWalletCharge(data *CreateEWalletChargeParams) (*xendit.EWalletCharge, *xendit.Error) {
+	return CreateEWalletChargeWithContext(context.Background(), data)
+}
+
+// CreateEWalletChargeWithContext creates new e-wallet charge
+func CreateEWalletChargeWithContext(ctx context.Context, data *CreateEWalletChargeParams) (*xendit.EWalletCharge, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.CreateEWalletChargeWithContext(ctx, data)
+}
+
+// GetEWalletChargeStatus gets one e-wallet charge with its status
+func GetEWalletChargeStatus(data *GetEWalletChargeStatusParams) (*xendit.EWalletCharge, *xendit.Error) {
+	return GetEWalletChargeStatusWithContext(context.Background(), data)
+}
+
+// GetEWalletChargeStatusWithContext gets one e-wallet with its status
+func GetEWalletChargeStatusWithContext(ctx context.Context, data *GetEWalletChargeStatusParams) (*xendit.EWalletCharge, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetEWalletChargeStatusWithContext(ctx, data)
+}
+
 func getClient() (*Client, *xendit.Error) {
 	return &Client{
 		Opt:          &xendit.Opt,
