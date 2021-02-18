@@ -27,7 +27,7 @@ type EWallet struct {
 	EWalletTransactionID string          `json:"e_wallet_transaction_id,omitempty"`
 }
 
-type BasketItem struct {
+type EWalletBasketItem struct {
 	ReferenceID string                 `json:"reference_id" validate:"required"`
 	Name        string                 `json:"name" validate:"required"`
 	Category    string                 `json:"category" validate:"required"`
@@ -62,6 +62,6 @@ type EWalletCharge struct {
 	CustomerID         string                 `json:"customer_id,omitempty"`
 	PaymentMethodID    string                 `json:"payment_method_id,omitempty"`
 	FailureCode        string                 `json:"failure_code,omitempty"`
-	Basket             []BasketItem           `json:"basket,omitempty"`
+	Basket             []EWalletBasketItem    `json:"basket,omitempty"`
 	Metadata           map[string]interface{} `json:"metadata,omitempty"`
 }

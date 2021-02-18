@@ -47,7 +47,7 @@ func ExampleGetPaymentStatus() {
 func ExampleCreateEWalletCharge() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
-	basketItem := xendit.BasketItem{
+	ewalletBasketItem := xendit.EWalletBasketItem{
 		ReferenceID: "basket-product-ref-id",
 		Name:        "product name",
 		Category:    "mechanics",
@@ -70,8 +70,8 @@ func ExampleCreateEWalletCharge() {
 		ChannelProperties: map[string]string{
 			"success_redirect_url": "https://yourwebsite.com/order/123",
 		},
-		Basket: []xendit.BasketItem{
-			basketItem,
+		Basket: []xendit.EWalletBasketItem{
+			ewalletBasketItem,
 		},
 		Metadata: map[string]interface{}{
 			"meta": "data",

@@ -48,7 +48,7 @@ func main() {
 		"meta": "data",
 	}
 
-	basketItem := xendit.BasketItem{
+	ewalletBasketItem := xendit.EWalletBasketItem{
 		ReferenceID: "basket-product-ref-id",
 		Name:        "product name",
 		Category:    "mechanics",
@@ -69,8 +69,8 @@ func main() {
 		ChannelProperties: map[string]string{
 			"success_redirect_url": "https://yourwebsite.com/order/123",
 		},
-		Basket: []xendit.BasketItem{
-			basketItem,
+		Basket: []xendit.EWalletBasketItem{
+			ewalletBasketItem,
 		},
 		Metadata: metadata,
 	}

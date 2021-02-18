@@ -29,28 +29,28 @@ type getPaymentStatusResponse struct {
 }
 
 type EWalletChargeResponse struct {
-	ID                 string                 `json:"id"`
-	BusinessID         string                 `json:"business_id"`
-	ReferenceID        string                 `json:"reference_id"`
-	Status             string                 `json:"status"`
-	Currency           string                 `json:"currency"`
-	ChargeAmount       float64                `json:"charge_amount"`
-	CaptureAmount      float64                `json:"capture_amount"`
-	CheckoutMethod     string                 `json:"checkout_method"`
-	ChannelCode        string                 `json:"channel_code"`
-	ChannelProperties  map[string]string      `json:"channel_properties"`
-	Actions            map[string]string      `json:"actions"`
-	IsRedirectRequired bool                   `json:"is_redirect_required"`
-	CallbackURL        string                 `json:"callback_url"`
-	Created            string                 `json:"created"`
-	Updated            string                 `json:"updated"`
-	VoidedAt           string                 `json:"voided_at"`
-	CaptureNow         bool                   `json:"capture_now"`
-	CustomerID         string                 `json:"customer_id"`
-	PaymentMethodID    string                 `json:"payment_method_id"`
-	FailureCode        string                 `json:"failure_code"`
-	Basket             []xendit.BasketItem    `json:"basket"`
-	Metadata           map[string]interface{} `json:"metadata"`
+	ID                 string                     `json:"id"`
+	BusinessID         string                     `json:"business_id"`
+	ReferenceID        string                     `json:"reference_id"`
+	Status             string                     `json:"status"`
+	Currency           string                     `json:"currency"`
+	ChargeAmount       float64                    `json:"charge_amount"`
+	CaptureAmount      float64                    `json:"capture_amount"`
+	CheckoutMethod     string                     `json:"checkout_method"`
+	ChannelCode        string                     `json:"channel_code"`
+	ChannelProperties  map[string]string          `json:"channel_properties"`
+	Actions            map[string]string          `json:"actions"`
+	IsRedirectRequired bool                       `json:"is_redirect_required"`
+	CallbackURL        string                     `json:"callback_url"`
+	Created            string                     `json:"created"`
+	Updated            string                     `json:"updated"`
+	VoidedAt           string                     `json:"voided_at"`
+	CaptureNow         bool                       `json:"capture_now"`
+	CustomerID         string                     `json:"customer_id"`
+	PaymentMethodID    string                     `json:"payment_method_id"`
+	FailureCode        string                     `json:"failure_code"`
+	Basket             []xendit.EWalletBasketItem `json:"basket"`
+	Metadata           map[string]interface{}     `json:"metadata"`
 }
 
 func (r *getPaymentStatusResponse) toEwalletResponse() *xendit.EWallet {
