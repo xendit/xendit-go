@@ -43,4 +43,5 @@ type VirtualAccountPayment struct {
 	TransactionTimestamp     *time.Time `json:"transaction_timestamp"`
 	MerchantCode             string     `json:"merchant_code"`
 	Currency                 string     `json:"currency"`
+	SenderName               string     `json:"sender_name"`
 }
