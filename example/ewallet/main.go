@@ -43,4 +43,51 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("retrieved payment: %+v\n", resp)
+
+	metadata := map[string]interface{}{
+		"meta": "data",
+	}
+
+	ewalletBasketItem := xendit.EWalletBasketItem{
+		ReferenceID: "basket-product-ref-id",
+		Name:        "product name",
+		Category:    "mechanics",
+		Currency:    "IDR",
+		Price:       50000,
+		Quantity:    5,
+		Type:        "type",
+		SubCategory: "subcategory",
+		Metadata:    metadata,
+	}
+
+	createEWalletChargeData := ewallet.CreateEWalletChargeParams{
+		ReferenceID:    "test-reference-id",
+		Currency:       "IDR",
+		Amount:         1688,
+		CheckoutMethod: "ONE_TIME_PAYMENT",
+		ChannelCode:    "ID_SHOPEEPAY",
+		ChannelProperties: map[string]string{
+			"success_redirect_url": "https://yourwebsite.com/order/123",
+		},
+		Basket: []xendit.EWalletBasketItem{
+			ewalletBasketItem,
+		},
+		Metadata: metadata,
+	}
+
+	charge, chargeErr := ewallet.CreateEWalletCharge(&createEWalletChargeData)
+	if chargeErr != nil {
+		log.Fatal(chargeErr)
+	}
+	fmt.Printf("created e-wallet charge: %+v\n", charge)
+
+	getEWalletChargeStatusData := ewallet.GetEWalletChargeStatusParams{
+		ChargeID: charge.ID,
+	}
+
+	charge, chargeErr = ewallet.GetEWalletChargeStatus(&getEWalletChargeStatusData)
+	if chargeErr != nil {
+		log.Fatal(chargeErr)
+	}
+	fmt.Printf("retrieved e-wallet charge: %+v\n", charge)
 }
