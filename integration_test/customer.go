@@ -24,7 +24,7 @@ func customerTest() {
 	}
 
 	createCustomerData := customer.CreateCustomerParams{
-		ReferenceID: 	"test-reference-id-004",
+		ReferenceID: 	"testrefid123",
 		Email:			"tes@tes.com",
 		GivenNames:     "Given Names",
 		Nationality: 	"ID",
