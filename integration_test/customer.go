@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/customer"
@@ -24,7 +25,7 @@ func customerTest() {
 	}
 
 	createCustomerData := customer.CreateCustomerParams{
-		ReferenceID: 	"testrefid123",
+		ReferenceID: 	time.Now().String(),
 		Email:			"tes@tes.com",
 		GivenNames:     "Given Names",
 		Nationality: 	"ID",
