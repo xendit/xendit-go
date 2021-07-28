@@ -6,12 +6,42 @@ import (
 	"time"
 
 	"github.com/xendit/xendit-go"
+	"github.com/xendit/xendit-go/customer"
 	"github.com/xendit/xendit-go/directdebit/directdebitpayment"
 	"github.com/xendit/xendit-go/directdebit/linkedaccount"
 	"github.com/xendit/xendit-go/directdebit/paymentmethod"
 )
 
 func directDebitTest() {
+	customerAddress := xendit.CustomerAddress{
+		Country:		"ID",
+		StreetLine1:	"Jl. 123",
+		StreetLine2:    "Jl. 456",
+		City:			"Jakarta Selatan",
+		Province:       "DKI Jakarta",
+		State:			"-",
+		PostalCode:     "12345",
+	}
+
+	metadata := map[string]interface{}{
+		"meta": "data",
+	}
+
+	createCustomerData := customer.CreateCustomerParams{
+		ReferenceID: 	time.Now().String(),
+		Email:			"tes@tes.com",
+		GivenNames:     "Given Names",
+		Nationality: 	"ID",
+		DateOfBirth: 	"1995-12-30",
+		Addresses:		[]xendit.CustomerAddress{customerAddress},
+		Metadata:		metadata,
+	}
+
+	customer, err := customer.CreateCustomer(&createCustomerData)
+	if err != nil {
+		log.Panic(err)
+	}
+
 	properties := map[string]interface{}{
 		"account_mobile_number": "+62818555988",
 		"card_last_four": "8888",
@@ -19,11 +49,7 @@ func directDebitTest() {
 		"account_email": "test.email@xendit.co",
 	}
 
-	metadata := map[string]interface{}{
-		"meta": "data",
-	}
-
-	customerID := "791ac956-397a-400f-9fda-4958894e61b5"
+	customerID := customer.ID
 
 	initializeTokenizationData := linkedaccount.InitializeLinkedAccountTokenizationParams{
 		CustomerID:		customerID,
