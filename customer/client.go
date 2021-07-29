@@ -80,7 +80,5 @@ func (c *Client) GetCustomerByReferenceIDWithContext(ctx context.Context, data *
 		return nil, err
 	}
 
-	// response := []CustomerResponse{tempResponse.toCustomerResponse()}
-
 	return response, nil
 }
