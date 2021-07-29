@@ -111,4 +111,3 @@ func (c *Client) GetQRCodePaymentsWithContext(ctx context.Context, data *GetQRCo
 
 	return response, nil
 }
-
