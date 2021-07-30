@@ -9,7 +9,7 @@ import (
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
-// Client is the client used to invoke e-wallet API.
+// Client is the client used to invoke customer API.
 type Client struct {
 	Opt          *xendit.Option
 	APIRequester xendit.APIRequester
