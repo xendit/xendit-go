@@ -14,6 +14,7 @@ type CustomerAddress struct {
 
 // Customer contains data from Xendit's API response of customer related requests.
 // For more details see https://xendit.github.io/apireference/?bash#customers.
+// For documentation of subpackage customer, checkout https://pkg.go.dev/github.com/xendit/xendit-go/customer/
 type Customer struct {
 	ID           string                 `json:"id"`
 	ReferenceID  string                 `json:"reference_id"`
