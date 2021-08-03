@@ -12,13 +12,13 @@ func ExampleCreateCustomer() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	customerAddress := xendit.CustomerAddress{
-		Country:		"ID",
-		StreetLine1:	"Jl. 123",
-		StreetLine2:    "Jl. 456",
-		City:			"Jakarta Selatan",
-		Province:       "DKI Jakarta",
-		State:			"-",
-		PostalCode:     "12345",
+		Country:     "ID",
+		StreetLine1: "Jl. 123",
+		StreetLine2: "Jl. 456",
+		City:        "Jakarta Selatan",
+		Province:    "DKI Jakarta",
+		State:       "-",
+		PostalCode:  "12345",
 	}
 
 	metadata := map[string]interface{}{
@@ -26,13 +26,13 @@ func ExampleCreateCustomer() {
 	}
 
 	data := customer.CreateCustomerParams{
-		ReferenceID: 	"test-reference-id-002",
-		Email:			"tes@tes.com",
-		GivenNames:     "Given Names",
-		Nationality: 	"ID",
-		DateOfBirth: 	"1992-12-30",
-		Addresses:		[]xendit.CustomerAddress{customerAddress},
-		Metadata:		metadata,
+		ReferenceID: "test-reference-id-002",
+		Email:       "tes@tes.com",
+		GivenNames:  "Given Names",
+		Nationality: "ID",
+		DateOfBirth: "1992-12-30",
+		Addresses:   []xendit.CustomerAddress{customerAddress},
+		Metadata:    metadata,
 	}
 
 	resp, err := customer.CreateCustomer(&data)
@@ -47,7 +47,7 @@ func ExampleGetCustomerByReferenceID() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := customer.GetCustomerByReferenceIDParams{
-		ReferenceID: 	"test-reference-id-002",
+		ReferenceID: "test-reference-id-002",
 	}
 
 	resp, err := customer.GetCustomerByReferenceID(&data)

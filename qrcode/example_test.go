@@ -12,10 +12,10 @@ func ExampleCreateQRCode() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	createQRCodeData := qrcode.CreateQRCodeParams{
-		ExternalID: "external_id",
+		ExternalID:  "external_id",
 		CallbackURL: "http://webhook-site",
-		Type: xendit.DynamicQRCode,
-		Amount: 10000,
+		Type:        xendit.DynamicQRCode,
+		Amount:      10000,
 	}
 
 	qrCodeResponse, err := qrcode.CreateQRCode(&createQRCodeData)
@@ -44,7 +44,7 @@ func ExampleGetQRCodePayments() {
 
 	getQRCodePaymentsdata := qrcode.GetQRCodePaymentsParams{
 		ExternalID: "external_id",
-		Limit: 20,
+		Limit:      20,
 	}
 
 	getQRCodePaymentsRes, err := qrcode.GetQRCodePayments(&getQRCodePaymentsdata)

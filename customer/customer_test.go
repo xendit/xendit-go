@@ -34,13 +34,13 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.Customer).DateOfBirth = "1995-12-30"
 
 	customerAddress := xendit.CustomerAddress{
-		Country:		"ID",
-		StreetLine1:	"Jl. 123",
-		StreetLine2:    "Jl. 456",
-		City:			"Jakarta Selatan",
-		Province:       "DKI Jakarta",
-		State:			"-",
-		PostalCode:     "12345",
+		Country:     "ID",
+		StreetLine1: "Jl. 123",
+		StreetLine2: "Jl. 456",
+		City:        "Jakarta Selatan",
+		Province:    "DKI Jakarta",
+		State:       "-",
+		PostalCode:  "12345",
 	}
 
 	result.(*xendit.Customer).Addresses = []xendit.CustomerAddress{customerAddress}
@@ -56,13 +56,13 @@ func TestCreateCustomer(t *testing.T) {
 	initTesting(apiRequesterMockObj)
 
 	customerAddress := xendit.CustomerAddress{
-		Country:		"ID",
-		StreetLine1:	"Jl. 123",
-		StreetLine2:    "Jl. 456",
-		City:			"Jakarta Selatan",
-		Province:       "DKI Jakarta",
-		State:			"-",
-		PostalCode:     "12345",
+		Country:     "ID",
+		StreetLine1: "Jl. 123",
+		StreetLine2: "Jl. 456",
+		City:        "Jakarta Selatan",
+		Province:    "DKI Jakarta",
+		State:       "-",
+		PostalCode:  "12345",
 	}
 
 	metadata := map[string]interface{}{
@@ -78,24 +78,24 @@ func TestCreateCustomer(t *testing.T) {
 		{
 			desc: "should create a customer",
 			data: &CreateCustomerParams{
-				ReferenceID: 	"test-reference-id",
-				Email:			"tes@tes.com",
-				GivenNames:     "Given Names",
-				Nationality: 	"ID",
-				DateOfBirth: 	"1995-12-30",
-				Addresses:		[]xendit.CustomerAddress{customerAddress},
-				Metadata:		metadata,
+				ReferenceID: "test-reference-id",
+				Email:       "tes@tes.com",
+				GivenNames:  "Given Names",
+				Nationality: "ID",
+				DateOfBirth: "1995-12-30",
+				Addresses:   []xendit.CustomerAddress{customerAddress},
+				Metadata:    metadata,
 			},
 			expectedRes: &xendit.Customer{
-				ID:				"791ac956-397a-400f-9fda-4958894e61b5",
-				ReferenceID:  	"test-reference-id",
-				GivenNames:     "Given Names",
-				Email: 			"tes@tes.com",
-				MobileNumber: 	"+6281234567890",
-				Nationality: 	"ID",
-				DateOfBirth: 	"1995-12-30",
-				Addresses: 		[]xendit.CustomerAddress{customerAddress},
-				Metadata: 		metadata,
+				ID:           "791ac956-397a-400f-9fda-4958894e61b5",
+				ReferenceID:  "test-reference-id",
+				GivenNames:   "Given Names",
+				Email:        "tes@tes.com",
+				MobileNumber: "+6281234567890",
+				Nationality:  "ID",
+				DateOfBirth:  "1995-12-30",
+				Addresses:    []xendit.CustomerAddress{customerAddress},
+				Metadata:     metadata,
 			},
 			expectedErr: nil,
 		},
@@ -179,13 +179,13 @@ func TestGetCustomerByReferenceID(t *testing.T) {
 	initTesting(apiRequesterMockObj)
 
 	customerAddress := xendit.CustomerAddress{
-		Country:		"ID",
-		StreetLine1:	"Jl. 123",
-		StreetLine2:    "Jl. 456",
-		City:			"Jakarta Selatan",
-		Province:       "DKI Jakarta",
-		State:			"-",
-		PostalCode:     "12345",
+		Country:     "ID",
+		StreetLine1: "Jl. 123",
+		StreetLine2: "Jl. 456",
+		City:        "Jakarta Selatan",
+		Province:    "DKI Jakarta",
+		State:       "-",
+		PostalCode:  "12345",
 	}
 
 	metadata := map[string]interface{}{
@@ -205,22 +205,22 @@ func TestGetCustomerByReferenceID(t *testing.T) {
 			},
 			expectedRes: []xendit.Customer{
 				{
-					ID:				"791ac956-397a-400f-9fda-4958894e61b5",
-					ReferenceID:  	"test-reference-id",
-					GivenNames:     "Given Names",
-					Email: 			"tes@tes.com",
-					MobileNumber: 	"+6281234567890",
-					Nationality: 	"ID",
-					DateOfBirth: 	"1995-12-30",
-					Addresses: 		[]xendit.CustomerAddress{customerAddress},
-					Metadata: 		metadata,
+					ID:           "791ac956-397a-400f-9fda-4958894e61b5",
+					ReferenceID:  "test-reference-id",
+					GivenNames:   "Given Names",
+					Email:        "tes@tes.com",
+					MobileNumber: "+6281234567890",
+					Nationality:  "ID",
+					DateOfBirth:  "1995-12-30",
+					Addresses:    []xendit.CustomerAddress{customerAddress},
+					Metadata:     metadata,
 				},
 			},
 			expectedErr: nil,
 		},
 		{
-			desc: "should report missing required fields",
-			data: &GetCustomerByReferenceIDParams{},
+			desc:        "should report missing required fields",
+			data:        &GetCustomerByReferenceIDParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ReferenceID'")),
 		},

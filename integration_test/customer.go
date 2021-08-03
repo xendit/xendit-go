@@ -11,13 +11,13 @@ import (
 
 func customerTest() {
 	customerAddress := xendit.CustomerAddress{
-		Country:		"ID",
-		StreetLine1:	"Jl. 123",
-		StreetLine2:    "Jl. 456",
-		City:			"Jakarta Selatan",
-		Province:       "DKI Jakarta",
-		State:			"-",
-		PostalCode:     "12345",
+		Country:     "ID",
+		StreetLine1: "Jl. 123",
+		StreetLine2: "Jl. 456",
+		City:        "Jakarta Selatan",
+		Province:    "DKI Jakarta",
+		State:       "-",
+		PostalCode:  "12345",
 	}
 
 	metadata := map[string]interface{}{
@@ -25,13 +25,13 @@ func customerTest() {
 	}
 
 	createCustomerData := customer.CreateCustomerParams{
-		ReferenceID: 	time.Now().String(),
-		Email:			"tes@tes.com",
-		GivenNames:     "Given Names",
-		Nationality: 	"ID",
-		DateOfBirth: 	"1995-12-30",
-		Addresses:		[]xendit.CustomerAddress{customerAddress},
-		Metadata:		metadata,
+		ReferenceID: time.Now().String(),
+		Email:       "tes@tes.com",
+		GivenNames:  "Given Names",
+		Nationality: "ID",
+		DateOfBirth: "1995-12-30",
+		Addresses:   []xendit.CustomerAddress{customerAddress},
+		Metadata:    metadata,
 	}
 
 	resp, err := customer.CreateCustomer(&createCustomerData)
