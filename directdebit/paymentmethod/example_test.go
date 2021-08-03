@@ -20,10 +20,10 @@ func ExampleCreatePaymentMethod() {
 	}
 
 	data := paymentmethod.CreatePaymentMethodParams{
-		CustomerID:		"test-cust-id",
-		Type:			xendit.DEBIT_CARD,
-		Properties: 	properties,
-		Metadata:		metadata,
+		CustomerID: "test-cust-id",
+		Type:       xendit.DEBIT_CARD,
+		Properties: properties,
+		Metadata:   metadata,
 	}
 
 	resp, err := paymentmethod.CreatePaymentMethod(&data)
@@ -38,7 +38,7 @@ func ExampleGetPaymentMethodsByCustomerID() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := paymentmethod.GetPaymentMethodsByCustomerIDParams{
-		CustomerID:		"test-cust-id",
+		CustomerID: "test-cust-id",
 	}
 
 	resp, err := paymentmethod.GetPaymentMethodsByCustomerID(&data)

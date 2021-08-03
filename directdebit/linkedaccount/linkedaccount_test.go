@@ -39,9 +39,9 @@ func TestInitializeLinkedAccountTokenization(t *testing.T) {
 
 	properties := map[string]interface{}{
 		"account_mobile_number": "+62818555988",
-		"card_last_four": "8888",
-		"card_expiry": "06/24",
-		"account_email": "test.email@xendit.co",
+		"card_last_four":        "8888",
+		"card_expiry":           "06/24",
+		"account_email":         "test.email@xendit.co",
 	}
 
 	testCases := []struct {
@@ -53,22 +53,22 @@ func TestInitializeLinkedAccountTokenization(t *testing.T) {
 		{
 			desc: "should initialize linked account tokenization",
 			data: &InitializeLinkedAccountTokenizationParams{
-				CustomerID:		"6778b829-1936-4c4a-a321-9a0178840571",
-				ChannelCode: 	xendit.DC_BRI,
-				Properties: 	properties,
+				CustomerID:  "6778b829-1936-4c4a-a321-9a0178840571",
+				ChannelCode: xendit.DC_BRI,
+				Properties:  properties,
 			},
 			expectedRes: &xendit.InitializedLinkedAccount{
-				ID:				"lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
-				CustomerID:  	"6778b829-1936-4c4a-a321-9a0178840571",
-				ChannelCode:    xendit.DC_BRI,
-				Status: 		"PENDING",
+				ID:          "lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
+				CustomerID:  "6778b829-1936-4c4a-a321-9a0178840571",
+				ChannelCode: xendit.DC_BRI,
+				Status:      "PENDING",
 			},
 			expectedErr: nil,
 		},
 		{
 			desc: "should report missing required fields",
 			data: &InitializeLinkedAccountTokenizationParams{
-				ChannelCode:	xendit.DC_BRI,
+				ChannelCode: xendit.DC_BRI,
 			},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'CustomerID'")),
@@ -124,21 +124,21 @@ func TestValidateOTPForLinkedAccount(t *testing.T) {
 		{
 			desc: "should validate OTP for linked account",
 			data: &ValidateOTPForLinkedAccountParams{
-				LinkedAccountTokenID:		"lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
-				OTPCode: 					"333000",
+				LinkedAccountTokenID: "lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
+				OTPCode:              "333000",
 			},
 			expectedRes: &xendit.ValidatedLinkedAccount{
-				ID:				"lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
-				CustomerID:  	"6778b829-1936-4c4a-a321-9a0178840571",
-				ChannelCode:    xendit.DC_BRI,
-				Status: 		"SUCCESS",
+				ID:          "lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
+				CustomerID:  "6778b829-1936-4c4a-a321-9a0178840571",
+				ChannelCode: xendit.DC_BRI,
+				Status:      "SUCCESS",
 			},
 			expectedErr: nil,
 		},
 		{
 			desc: "should report missing required fields",
 			data: &ValidateOTPForLinkedAccountParams{
-				LinkedAccountTokenID:		"lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
+				LinkedAccountTokenID: "lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
 			},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'OTPCode'")),
@@ -195,10 +195,10 @@ func TestRetrieveAccessibleLinkedAccounts(t *testing.T) {
 	initTesting(apiRequesterMockObj)
 
 	properties := map[string]interface{}{
-		"card_expiry": "11/23",
+		"card_expiry":    "11/23",
 		"card_last_four": "8888",
-		"currency": "IDR",
-		"description": "",
+		"currency":       "IDR",
+		"description":    "",
 	}
 
 	testCases := []struct {
@@ -214,17 +214,17 @@ func TestRetrieveAccessibleLinkedAccounts(t *testing.T) {
 			},
 			expectedRes: []xendit.AccessibleLinkedAccount{
 				{
-					ID:				"la-958b3e15-a354-4ac1-80d5-d7f68061fda2",
-					ChannelCode:  	xendit.DC_BRI,
-					AccountType:    xendit.DEBIT_CARD,
-					Properties: 	properties,
+					ID:          "la-958b3e15-a354-4ac1-80d5-d7f68061fda2",
+					ChannelCode: xendit.DC_BRI,
+					AccountType: xendit.DEBIT_CARD,
+					Properties:  properties,
 				},
 			},
 			expectedErr: nil,
 		},
 		{
-			desc: "should report missing required fields",
-			data: &RetrieveAccessibleLinkedAccountParams{},
+			desc:        "should report missing required fields",
+			data:        &RetrieveAccessibleLinkedAccountParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'LinkedAccountTokenID'")),
 		},
@@ -277,17 +277,17 @@ func TestUnbindLinkedAccountToken(t *testing.T) {
 		{
 			desc: "should unbind linked account token",
 			data: &UnbindLinkedAccountTokenParams{
-				LinkedAccountTokenID:		"lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
+				LinkedAccountTokenID: "lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
 			},
 			expectedRes: &xendit.UnbindedLinkedAccount{
-				ID:				"lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
-				IsDeleted:		true,
+				ID:        "lat-f9dc34e7-153a-444e-b337-cd2599e7f670",
+				IsDeleted: true,
 			},
 			expectedErr: nil,
 		},
 		{
-			desc: "should report missing required fields",
-			data: &UnbindLinkedAccountTokenParams{},
+			desc:        "should report missing required fields",
+			data:        &UnbindLinkedAccountTokenParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'LinkedAccountTokenID'")),
 		},

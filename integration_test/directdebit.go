@@ -14,13 +14,13 @@ import (
 
 func directDebitTest() {
 	customerAddress := xendit.CustomerAddress{
-		Country:		"ID",
-		StreetLine1:	"Jl. 123",
-		StreetLine2:    "Jl. 456",
-		City:			"Jakarta Selatan",
-		Province:       "DKI Jakarta",
-		State:			"-",
-		PostalCode:     "12345",
+		Country:     "ID",
+		StreetLine1: "Jl. 123",
+		StreetLine2: "Jl. 456",
+		City:        "Jakarta Selatan",
+		Province:    "DKI Jakarta",
+		State:       "-",
+		PostalCode:  "12345",
 	}
 
 	metadata := map[string]interface{}{
@@ -28,13 +28,13 @@ func directDebitTest() {
 	}
 
 	createCustomerData := customer.CreateCustomerParams{
-		ReferenceID: 	time.Now().String(),
-		Email:			"tes@tes.com",
-		GivenNames:     "Given Names",
-		Nationality: 	"ID",
-		DateOfBirth: 	"1995-12-30",
-		Addresses:		[]xendit.CustomerAddress{customerAddress},
-		Metadata:		metadata,
+		ReferenceID: time.Now().String(),
+		Email:       "tes@tes.com",
+		GivenNames:  "Given Names",
+		Nationality: "ID",
+		DateOfBirth: "1995-12-30",
+		Addresses:   []xendit.CustomerAddress{customerAddress},
+		Metadata:    metadata,
 	}
 
 	customer, err := customer.CreateCustomer(&createCustomerData)
@@ -44,18 +44,18 @@ func directDebitTest() {
 
 	properties := map[string]interface{}{
 		"account_mobile_number": "+62818555988",
-		"card_last_four": "8888",
-		"card_expiry": "06/24",
-		"account_email": "test.email@xendit.co",
+		"card_last_four":        "8888",
+		"card_expiry":           "06/24",
+		"account_email":         "test.email@xendit.co",
 	}
 
 	customerID := customer.ID
 
 	initializeTokenizationData := linkedaccount.InitializeLinkedAccountTokenizationParams{
-		CustomerID:		customerID,
-		ChannelCode:	xendit.DC_BRI,
-		Properties:		properties,
-		Metadata:		metadata,
+		CustomerID:  customerID,
+		ChannelCode: xendit.DC_BRI,
+		Properties:  properties,
+		Metadata:    metadata,
 	}
 
 	resp, err := linkedaccount.InitializeLinkedAccountTokenization(&initializeTokenizationData)
@@ -64,8 +64,8 @@ func directDebitTest() {
 	}
 
 	validateOTPForLinkedAccountData := linkedaccount.ValidateOTPForLinkedAccountParams{
-		LinkedAccountTokenID: 	resp.ID,
-		OTPCode:				"333000",
+		LinkedAccountTokenID: resp.ID,
+		OTPCode:              "333000",
 	}
 
 	_, err = linkedaccount.ValidateOTPForLinkedAccount(&validateOTPForLinkedAccountData)
@@ -74,7 +74,7 @@ func directDebitTest() {
 	}
 
 	retrieveAccessibleLinkedAccountsData := linkedaccount.RetrieveAccessibleLinkedAccountParams{
-		LinkedAccountTokenID:	resp.ID,
+		LinkedAccountTokenID: resp.ID,
 	}
 
 	resps, err := linkedaccount.RetrieveAccessibleLinkedAccounts(&retrieveAccessibleLinkedAccountsData)
@@ -83,7 +83,7 @@ func directDebitTest() {
 	}
 
 	unbindLinkedAccountTokenData := linkedaccount.UnbindLinkedAccountTokenParams{
-		LinkedAccountTokenID:	resp.ID,
+		LinkedAccountTokenID: resp.ID,
 	}
 
 	_, err = linkedaccount.UnbindLinkedAccountToken(&unbindLinkedAccountTokenData)
@@ -96,10 +96,10 @@ func directDebitTest() {
 	}
 
 	createPaymentMethodData := paymentmethod.CreatePaymentMethodParams{
-		CustomerID:	customerID,
-		Type:		xendit.DEBIT_CARD,
+		CustomerID: customerID,
+		Type:       xendit.DEBIT_CARD,
 		Properties: properties,
-		Metadata:	metadata,	
+		Metadata:   metadata,
 	}
 
 	resppm, err := paymentmethod.CreatePaymentMethod(&createPaymentMethodData)
@@ -117,38 +117,38 @@ func directDebitTest() {
 	}
 
 	createDirectDebitPaymentData := directdebitpayment.CreateDirectDebitPaymentParams{
-		ReferenceID:		"test-direct-debit-ref-0100",
-		PaymentMethodID: 	resppm.ID,
-		Currency:			"IDR",
-		Amount:				15000,
-		CallbackURL:		"http://webhook.site/",
-		EnableOTP:			true,
-		Description:		"test description",
-		Basket:				[]xendit.DirectDebitBasketItem{
+		ReferenceID:     "test-direct-debit-ref-0100",
+		PaymentMethodID: resppm.ID,
+		Currency:        "IDR",
+		Amount:          15000,
+		CallbackURL:     "http://webhook.site/",
+		EnableOTP:       true,
+		Description:     "test description",
+		Basket: []xendit.DirectDebitBasketItem{
 			{
-				ReferenceID:	"basket-product-ref-id",
-				Name:			"product-name",
-				Category: 		"mechanics",
-				Market: 		"ID",
-				Price: 			50000,
-				Quantity: 		5,
-				Type: 			"product type",
-				SubCategory:	"product sub category",
-				Description: 	"product description",
-				URL:			"https://product.url",
+				ReferenceID: "basket-product-ref-id",
+				Name:        "product-name",
+				Category:    "mechanics",
+				Market:      "ID",
+				Price:       50000,
+				Quantity:    5,
+				Type:        "product type",
+				SubCategory: "product sub category",
+				Description: "product description",
+				URL:         "https://product.url",
 			},
 		},
-		Device:				xendit.DirectDebitDevice{
-			ID:			"device-id",
-			IPAddress:	"0.0.0.0",
-			UserAgent:	"user-agent",
-			ADID: 		"ad-id",
-			Imei: 		"123a456b789c",
+		Device: xendit.DirectDebitDevice{
+			ID:        "device-id",
+			IPAddress: "0.0.0.0",
+			UserAgent: "user-agent",
+			ADID:      "ad-id",
+			Imei:      "123a456b789c",
 		},
 		SuccessRedirectURL: "https://success-redirect.url",
 		FailureRedirectURL: "https://failure-redirect.url",
-		Metadata: 			metadata,
-		IdempotencyKey: 	time.Now().String(),
+		Metadata:           metadata,
+		IdempotencyKey:     time.Now().String(),
 	}
 
 	respdd, err := directdebitpayment.CreateDirectDebitPayment(&createDirectDebitPaymentData)
@@ -157,8 +157,8 @@ func directDebitTest() {
 	}
 
 	validateOTPForDirectDebitPaymentData := directdebitpayment.ValidateOTPForDirectDebitPaymentParams{
-		DirectDebitID:	respdd.ID,
-		OTPCode:		"222000",
+		DirectDebitID: respdd.ID,
+		OTPCode:       "222000",
 	}
 
 	_, err = directdebitpayment.ValidateOTPForDirectDebitPayment(&validateOTPForDirectDebitPaymentData)
@@ -167,7 +167,7 @@ func directDebitTest() {
 	}
 
 	getDirectDebitPaymentStatusByIDData := directdebitpayment.GetDirectDebitPaymentStatusByIDParams{
-		ID:	respdd.ID,
+		ID: respdd.ID,
 	}
 
 	_, err = directdebitpayment.GetDirectDebitPaymentStatusByID(&getDirectDebitPaymentStatusByIDData)
@@ -183,6 +183,6 @@ func directDebitTest() {
 	if err != nil {
 		log.Panic(err)
 	}
-	
+
 	fmt.Println("Direct debit integration tests done!")
 }

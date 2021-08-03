@@ -22,9 +22,9 @@ func main() {
 
 	properties := map[string]interface{}{
 		"account_mobile_number": "+62818555988",
-		"card_last_four": "8888",
-		"card_expiry": "06/24",
-		"account_email": "test.email@xendit.co",
+		"card_last_four":        "8888",
+		"card_expiry":           "06/24",
+		"account_email":         "test.email@xendit.co",
 	}
 
 	metadata := map[string]interface{}{
@@ -34,10 +34,10 @@ func main() {
 	customerID := "791ac956-397a-400f-9fda-4958894e61b5"
 
 	initializeTokenizationData := linkedaccount.InitializeLinkedAccountTokenizationParams{
-		CustomerID:		customerID,
-		ChannelCode:	xendit.DC_BRI,
-		Properties:		properties,
-		Metadata:		metadata,
+		CustomerID:  customerID,
+		ChannelCode: xendit.DC_BRI,
+		Properties:  properties,
+		Metadata:    metadata,
 	}
 
 	initializedLinkedAccount, err := linkedaccount.InitializeLinkedAccountTokenization(&initializeTokenizationData)
@@ -47,8 +47,8 @@ func main() {
 	fmt.Printf("initialized linked account tokenization: %+v\n\n", initializedLinkedAccount)
 
 	validateOTPForLinkedAccountData := linkedaccount.ValidateOTPForLinkedAccountParams{
-		LinkedAccountTokenID: 	initializedLinkedAccount.ID,
-		OTPCode:				"333000",
+		LinkedAccountTokenID: initializedLinkedAccount.ID,
+		OTPCode:              "333000",
 	}
 
 	validatedLinkedAccount, err := linkedaccount.ValidateOTPForLinkedAccount(&validateOTPForLinkedAccountData)
@@ -58,7 +58,7 @@ func main() {
 	fmt.Printf("validated linked account: %+v\n\n", validatedLinkedAccount)
 
 	retrieveAccessibleLinkedAccountsData := linkedaccount.RetrieveAccessibleLinkedAccountParams{
-		LinkedAccountTokenID:	initializedLinkedAccount.ID,
+		LinkedAccountTokenID: initializedLinkedAccount.ID,
 	}
 
 	accessibleLinkedAccounts, err := linkedaccount.RetrieveAccessibleLinkedAccounts(&retrieveAccessibleLinkedAccountsData)
@@ -68,7 +68,7 @@ func main() {
 	fmt.Printf("retrieved accessible linked accounts: %+v\n\n", accessibleLinkedAccounts)
 
 	unbindLinkedAccountTokenData := linkedaccount.UnbindLinkedAccountTokenParams{
-		LinkedAccountTokenID:	initializedLinkedAccount.ID,
+		LinkedAccountTokenID: initializedLinkedAccount.ID,
 	}
 
 	unbindedLinkedAccount, err := linkedaccount.UnbindLinkedAccountToken(&unbindLinkedAccountTokenData)
@@ -82,10 +82,10 @@ func main() {
 	}
 
 	createPaymentMethodData := paymentmethod.CreatePaymentMethodParams{
-		CustomerID:	customerID,
-		Type:		xendit.DEBIT_CARD,
+		CustomerID: customerID,
+		Type:       xendit.DEBIT_CARD,
 		Properties: properties,
-		Metadata:	metadata,	
+		Metadata:   metadata,
 	}
 
 	paymentMethod, err := paymentmethod.CreatePaymentMethod(&createPaymentMethodData)
@@ -105,38 +105,38 @@ func main() {
 	fmt.Printf("retrieved payment methods: %+v\n\n", paymentMethods)
 
 	createDirectDebitPaymentData := directdebitpayment.CreateDirectDebitPaymentParams{
-		ReferenceID:		"test-direct-debit-ref-0100",
-		PaymentMethodID: 	paymentMethod.ID,
-		Currency:			"IDR",
-		Amount:				15000,
-		CallbackURL:		"http://webhook.site/",
-		EnableOTP:			true,
-		Description:		"test description",
-		Basket:				[]xendit.DirectDebitBasketItem{
+		ReferenceID:     "test-direct-debit-ref-0100",
+		PaymentMethodID: paymentMethod.ID,
+		Currency:        "IDR",
+		Amount:          15000,
+		CallbackURL:     "http://webhook.site/",
+		EnableOTP:       true,
+		Description:     "test description",
+		Basket: []xendit.DirectDebitBasketItem{
 			{
-				ReferenceID:	"basket-product-ref-id",
-				Name:			"product-name",
-				Category: 		"mechanics",
-				Market: 		"ID",
-				Price: 			50000,
-				Quantity: 		5,
-				Type: 			"product type",
-				SubCategory:	"product sub category",
-				Description: 	"product description",
-				URL:			"https://product.url",
+				ReferenceID: "basket-product-ref-id",
+				Name:        "product-name",
+				Category:    "mechanics",
+				Market:      "ID",
+				Price:       50000,
+				Quantity:    5,
+				Type:        "product type",
+				SubCategory: "product sub category",
+				Description: "product description",
+				URL:         "https://product.url",
 			},
 		},
-		Device:				xendit.DirectDebitDevice{
-			ID:			"device-id",
-			IPAddress:	"0.0.0.0",
-			UserAgent:	"user-agent",
-			ADID: 		"ad-id",
-			Imei: 		"123a456b789c",
+		Device: xendit.DirectDebitDevice{
+			ID:        "device-id",
+			IPAddress: "0.0.0.0",
+			UserAgent: "user-agent",
+			ADID:      "ad-id",
+			Imei:      "123a456b789c",
 		},
 		SuccessRedirectURL: "https://success-redirect.url",
 		FailureRedirectURL: "https://failure-redirect.url",
-		Metadata: 			metadata,
-		IdempotencyKey: 	time.Now().String(),
+		Metadata:           metadata,
+		IdempotencyKey:     time.Now().String(),
 	}
 
 	directDebitPayment, err := directdebitpayment.CreateDirectDebitPayment(&createDirectDebitPaymentData)
@@ -146,8 +146,8 @@ func main() {
 	fmt.Printf("created direct debit payment: %+v\n\n", directDebitPayment)
 
 	validateOTPForDirectDebitPaymentData := directdebitpayment.ValidateOTPForDirectDebitPaymentParams{
-		DirectDebitID:	directDebitPayment.ID,
-		OTPCode:		"222000",
+		DirectDebitID: directDebitPayment.ID,
+		OTPCode:       "222000",
 	}
 
 	directDebitPayment, err = directdebitpayment.ValidateOTPForDirectDebitPayment(&validateOTPForDirectDebitPaymentData)
@@ -157,7 +157,7 @@ func main() {
 	fmt.Printf("validated direct debit payment: %+v\n\n", directDebitPayment)
 
 	getDirectDebitPaymentStatusByIDData := directdebitpayment.GetDirectDebitPaymentStatusByIDParams{
-		ID:	directDebitPayment.ID,
+		ID: directDebitPayment.ID,
 	}
 
 	directDebitPayment, err = directdebitpayment.GetDirectDebitPaymentStatusByID(&getDirectDebitPaymentStatusByIDData)

@@ -32,11 +32,11 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.PaymentMethod).Created = "2021-07-15T03:17:53.989Z"
 	result.(*xendit.PaymentMethod).Updated = "2021-07-15T03:17:53.989Z"
 	result.(*xendit.PaymentMethod).Properties = map[string]interface{}{
-		"id": "la-55048b41-a7ab-4799-9f33-6ec5cc078db0",
-		"currency": "IDR",
-		"card_expiry": "11/23",
-		"description": "",
-		"channel_code": "DC_BRI",
+		"id":             "la-55048b41-a7ab-4799-9f33-6ec5cc078db0",
+		"currency":       "IDR",
+		"card_expiry":    "11/23",
+		"description":    "",
+		"channel_code":   "DC_BRI",
 		"card_last_four": "8888",
 	}
 	result.(*xendit.PaymentMethod).Metadata = map[string]interface{}{
@@ -55,11 +55,11 @@ func TestCreatePaymentMethod(t *testing.T) {
 	}
 
 	responseProperties := map[string]interface{}{
-		"id": "la-55048b41-a7ab-4799-9f33-6ec5cc078db0",
-		"currency": "IDR",
-		"card_expiry": "11/23",
-		"description": "",
-		"channel_code": "DC_BRI",
+		"id":             "la-55048b41-a7ab-4799-9f33-6ec5cc078db0",
+		"currency":       "IDR",
+		"card_expiry":    "11/23",
+		"description":    "",
+		"channel_code":   "DC_BRI",
 		"card_last_four": "8888",
 	}
 
@@ -76,29 +76,29 @@ func TestCreatePaymentMethod(t *testing.T) {
 		{
 			desc: "should create a payment method",
 			data: &CreatePaymentMethodParams{
-				CustomerID: 	"4b7b6050-0830-440a-903b-37d527dbbaa9",
-				Type:			xendit.DEBIT_CARD,
-				Properties:		requestProperties,
-				Metadata:		metadata,
+				CustomerID: "4b7b6050-0830-440a-903b-37d527dbbaa9",
+				Type:       xendit.DEBIT_CARD,
+				Properties: requestProperties,
+				Metadata:   metadata,
 			},
 			expectedRes: &xendit.PaymentMethod{
-				ID:				"pm-ebb1c863-c7b5-4f20-b116-b3071b1d3aef",
-				CustomerID:  	"4b7b6050-0830-440a-903b-37d527dbbaa9",
-				Type:     		xendit.DEBIT_CARD,
-				Status: 		"ACTIVE",
-				Created: 		"2021-07-15T03:17:53.989Z",
-				Updated: 		"2021-07-15T03:17:53.989Z",
-				Properties: 	responseProperties,
-				Metadata: 		metadata,
+				ID:         "pm-ebb1c863-c7b5-4f20-b116-b3071b1d3aef",
+				CustomerID: "4b7b6050-0830-440a-903b-37d527dbbaa9",
+				Type:       xendit.DEBIT_CARD,
+				Status:     "ACTIVE",
+				Created:    "2021-07-15T03:17:53.989Z",
+				Updated:    "2021-07-15T03:17:53.989Z",
+				Properties: responseProperties,
+				Metadata:   metadata,
 			},
 			expectedErr: nil,
 		},
 		{
 			desc: "should report missing required fields",
 			data: &CreatePaymentMethodParams{
-				Type:			xendit.DEBIT_CARD,
-				Properties:		requestProperties,
-				Metadata:		metadata,
+				Type:       xendit.DEBIT_CARD,
+				Properties: requestProperties,
+				Metadata:   metadata,
 			},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'CustomerID'")),
@@ -163,11 +163,11 @@ func TestGetPaymentMethodsByCustomerID(t *testing.T) {
 	initTesting(apiRequesterMockObj)
 
 	properties := map[string]interface{}{
-		"id": "la-55048b41-a7ab-4799-9f33-6ec5cc078db0",
-		"currency": "IDR",
-		"card_expiry": "11/23",
-		"description": "",
-		"channel_code": "DC_BRI",
+		"id":             "la-55048b41-a7ab-4799-9f33-6ec5cc078db0",
+		"currency":       "IDR",
+		"card_expiry":    "11/23",
+		"description":    "",
+		"channel_code":   "DC_BRI",
 		"card_last_four": "8888",
 	}
 
@@ -188,21 +188,21 @@ func TestGetPaymentMethodsByCustomerID(t *testing.T) {
 			},
 			expectedRes: []xendit.PaymentMethod{
 				{
-					ID:				"pm-ebb1c863-c7b5-4f20-b116-b3071b1d3aef",
-					CustomerID:  	"4b7b6050-0830-440a-903b-37d527dbbaa9",
-					Type:     		xendit.DEBIT_CARD,
-					Status: 		"ACTIVE",
-					Created: 		"2021-07-15T03:17:53.989Z",
-					Updated: 		"2021-07-15T03:17:53.989Z",
-					Properties: 	properties,
-					Metadata: 		metadata,
+					ID:         "pm-ebb1c863-c7b5-4f20-b116-b3071b1d3aef",
+					CustomerID: "4b7b6050-0830-440a-903b-37d527dbbaa9",
+					Type:       xendit.DEBIT_CARD,
+					Status:     "ACTIVE",
+					Created:    "2021-07-15T03:17:53.989Z",
+					Updated:    "2021-07-15T03:17:53.989Z",
+					Properties: properties,
+					Metadata:   metadata,
 				},
 			},
 			expectedErr: nil,
 		},
 		{
-			desc: "should report missing required fields",
-			data: &GetPaymentMethodsByCustomerIDParams{},
+			desc:        "should report missing required fields",
+			data:        &GetPaymentMethodsByCustomerIDParams{},
 			expectedRes: nil,
 			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'CustomerID'")),
 		},

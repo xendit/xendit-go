@@ -16,56 +16,56 @@ type Client struct {
 }
 
 type DirectDebitPaymentResponse struct {
-	ID 						string 							`json:"id"`
-	ReferenceID				string							`json:"reference_id"`
-	ChannelCode 			xendit.ChannelCodeEnum			`json:"channel_code"`
-	PaymentMethodID			string							`json:"payment_method_id"`
-	Currency				string							`json:"currency"`
-	Amount					float64							`json:"amount"`
-	Description				string							`json:"description"`
-	Status					string							`json:"status"`
-	FailureCode				string							`json:"failure_code"`
-	IsOTPRequired			bool							`json:"is_otp_required"`
-	OTPMobileNumber			string							`json:"otp_mobile_number"`
-	OTPExpirationTimestamp	string							`json:"otp_expiration_timestamp"`
-	Created					string							`json:"created"`
-	Updated					string							`json:"updated"`
-	Basket 					[]xendit.DirectDebitBasketItem	`json:"basket"`
-	Metadata				map[string]interface{}			`json:"metadata"`
-	Device 					xendit.DirectDebitDevice		`json:"device"`
-	RefundedAmount 			float64							`json:"refunded_amount"`
-	Refunds 				xendit.DirectDebitRefunds 		`json:"refunds"`
-	SuccessRedirectURL 		string 							`json:"success_redirect_url"`
-	CheckoutURL 			string 							`json:"checkout_url"`
-	FailureRedirectURL 		string 							`json:"failure_redirect_url"`
-	RequiredAction 			string 							`json:"required_action"`
+	ID                     string                         `json:"id"`
+	ReferenceID            string                         `json:"reference_id"`
+	ChannelCode            xendit.ChannelCodeEnum         `json:"channel_code"`
+	PaymentMethodID        string                         `json:"payment_method_id"`
+	Currency               string                         `json:"currency"`
+	Amount                 float64                        `json:"amount"`
+	Description            string                         `json:"description"`
+	Status                 string                         `json:"status"`
+	FailureCode            string                         `json:"failure_code"`
+	IsOTPRequired          bool                           `json:"is_otp_required"`
+	OTPMobileNumber        string                         `json:"otp_mobile_number"`
+	OTPExpirationTimestamp string                         `json:"otp_expiration_timestamp"`
+	Created                string                         `json:"created"`
+	Updated                string                         `json:"updated"`
+	Basket                 []xendit.DirectDebitBasketItem `json:"basket"`
+	Metadata               map[string]interface{}         `json:"metadata"`
+	Device                 xendit.DirectDebitDevice       `json:"device"`
+	RefundedAmount         float64                        `json:"refunded_amount"`
+	Refunds                xendit.DirectDebitRefunds      `json:"refunds"`
+	SuccessRedirectURL     string                         `json:"success_redirect_url"`
+	CheckoutURL            string                         `json:"checkout_url"`
+	FailureRedirectURL     string                         `json:"failure_redirect_url"`
+	RequiredAction         string                         `json:"required_action"`
 }
 
 func (r *DirectDebitPaymentResponse) toDirectDebitPaymentResponse() *xendit.DirectDebitPayment {
 	return &xendit.DirectDebitPayment{
-		ID:						r.ID,
-		ReferenceID:			r.ReferenceID,
-		ChannelCode:			r.ChannelCode,
-		PaymentMethodID:		r.PaymentMethodID,
-		Currency:				r.Currency,
-		Amount:					r.Amount,
-		Description:			r.Description,
-		Status:					r.Status,
-		FailureCode:			r.FailureCode,
-		IsOTPRequired:			r.IsOTPRequired,
-		OTPMobileNumber:		r.OTPMobileNumber,
-		OTPExpirationTimestamp:	r.OTPExpirationTimestamp,
-		Created:				r.Created,
-		Updated:				r.Updated,
-		Basket: 				r.Basket,
-		Metadata:				r.Metadata,
-		Device: 				r.Device,
-		RefundedAmount: 		r.RefundedAmount,
-		Refunds: 				r.Refunds,
-		SuccessRedirectURL:		r.SuccessRedirectURL,
-		CheckoutURL:			r.CheckoutURL,
-		FailureRedirectURL: 	r.FailureRedirectURL,
-		RequiredAction:			r.RequiredAction,
+		ID:                     r.ID,
+		ReferenceID:            r.ReferenceID,
+		ChannelCode:            r.ChannelCode,
+		PaymentMethodID:        r.PaymentMethodID,
+		Currency:               r.Currency,
+		Amount:                 r.Amount,
+		Description:            r.Description,
+		Status:                 r.Status,
+		FailureCode:            r.FailureCode,
+		IsOTPRequired:          r.IsOTPRequired,
+		OTPMobileNumber:        r.OTPMobileNumber,
+		OTPExpirationTimestamp: r.OTPExpirationTimestamp,
+		Created:                r.Created,
+		Updated:                r.Updated,
+		Basket:                 r.Basket,
+		Metadata:               r.Metadata,
+		Device:                 r.Device,
+		RefundedAmount:         r.RefundedAmount,
+		Refunds:                r.Refunds,
+		SuccessRedirectURL:     r.SuccessRedirectURL,
+		CheckoutURL:            r.CheckoutURL,
+		FailureRedirectURL:     r.FailureRedirectURL,
+		RequiredAction:         r.RequiredAction,
 	}
 }
 
@@ -122,7 +122,7 @@ func (c *Client) ValidateOTPForDirectDebitPaymentWithContext(ctx context.Context
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
-	
+
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
@@ -180,7 +180,7 @@ func (c *Client) GetDirectDebitPaymentStatusByReferenceIDWithContext(ctx context
 		return nil, validator.APIValidatorErr(err)
 	}
 	response := []xendit.DirectDebitPayment{}
-	
+
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",

@@ -13,9 +13,9 @@ func ExampleInitializeLinkedAccountTokenization() {
 
 	properties := map[string]interface{}{
 		"account_mobile_number": "+62818555988",
-		"card_last_four": "8888",
-		"card_expiry": "06/24",
-		"account_email": "test.email@xendit.co",
+		"card_last_four":        "8888",
+		"card_expiry":           "06/24",
+		"account_email":         "test.email@xendit.co",
 	}
 
 	metadata := map[string]interface{}{
@@ -23,10 +23,10 @@ func ExampleInitializeLinkedAccountTokenization() {
 	}
 
 	data := linkedaccount.InitializeLinkedAccountTokenizationParams{
-		CustomerID: 	"test-cust-id",
-		ChannelCode:	xendit.DC_BRI,
-		Properties: 	properties,
-		Metadata:		metadata,
+		CustomerID:  "test-cust-id",
+		ChannelCode: xendit.DC_BRI,
+		Properties:  properties,
+		Metadata:    metadata,
 	}
 
 	resp, err := linkedaccount.InitializeLinkedAccountTokenization(&data)
@@ -41,8 +41,8 @@ func ExampleValidateOTPForLinkedAccount() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := linkedaccount.ValidateOTPForLinkedAccountParams{
-		LinkedAccountTokenID: 	"test-lat-id",
-		OTPCode:				"333000",
+		LinkedAccountTokenID: "test-lat-id",
+		OTPCode:              "333000",
 	}
 
 	resp, err := linkedaccount.ValidateOTPForLinkedAccount(&data)
@@ -57,7 +57,7 @@ func ExampleRetrieveAccessibleLinkedAccounts() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := linkedaccount.RetrieveAccessibleLinkedAccountParams{
-		LinkedAccountTokenID:	"test-lat-id",
+		LinkedAccountTokenID: "test-lat-id",
 	}
 
 	resp, err := linkedaccount.RetrieveAccessibleLinkedAccounts(&data)
@@ -72,7 +72,7 @@ func ExampleUnbindLinkedAccountToken() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := linkedaccount.UnbindLinkedAccountTokenParams{
-		LinkedAccountTokenID:	"test-lat-id",
+		LinkedAccountTokenID: "test-lat-id",
 	}
 
 	resp, err := linkedaccount.UnbindLinkedAccountToken(&data)

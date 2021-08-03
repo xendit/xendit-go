@@ -16,38 +16,38 @@ func ExampleCreateDirectDebitPayment() {
 	}
 
 	data := directdebitpayment.CreateDirectDebitPaymentParams{
-		IdempotencyKey: 	"idem-key",
-		ReferenceID: 		"test-ref-id",
-		PaymentMethodID:	"test-pm-id",
-		Currency: 			"IDR",
-		Amount:				15000,
-		CallbackURL:		"http://webhook.site",
-		EnableOTP:			true,
-		Description:		"Test description",
-		Basket:	[]xendit.DirectDebitBasketItem{
+		IdempotencyKey:  "idem-key",
+		ReferenceID:     "test-ref-id",
+		PaymentMethodID: "test-pm-id",
+		Currency:        "IDR",
+		Amount:          15000,
+		CallbackURL:     "http://webhook.site",
+		EnableOTP:       true,
+		Description:     "Test description",
+		Basket: []xendit.DirectDebitBasketItem{
 			{
-				ReferenceID:	"basket-product-ref-id",
-				Name:			"product-name",
-				Category: 		"mechanics",
-				Market: 		"ID",
-				Price: 			50000,
-				Quantity: 		5,
-				Type: 			"product type",
-				SubCategory:	"product sub category",
-				Description: 	"product description",
-				URL:			"https://product.url",
+				ReferenceID: "basket-product-ref-id",
+				Name:        "product-name",
+				Category:    "mechanics",
+				Market:      "ID",
+				Price:       50000,
+				Quantity:    5,
+				Type:        "product type",
+				SubCategory: "product sub category",
+				Description: "product description",
+				URL:         "https://product.url",
 			},
 		},
 		Device: xendit.DirectDebitDevice{
-			ID:			"device-id",
-			IPAddress:	"0.0.0.0",
-			UserAgent:	"user-agent",
-			ADID: 		"ad-id",
-			Imei: 		"123a456b789c",
+			ID:        "device-id",
+			IPAddress: "0.0.0.0",
+			UserAgent: "user-agent",
+			ADID:      "ad-id",
+			Imei:      "123a456b789c",
 		},
 		SuccessRedirectURL: "https://success-redirect.url",
 		FailureRedirectURL: "https://failure-redirect.url",
-		Metadata:			metadata,
+		Metadata:           metadata,
 	}
 
 	resp, err := directdebitpayment.CreateDirectDebitPayment(&data)
@@ -62,8 +62,8 @@ func ExampleValidateOTPForDirectDebitPayment() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := directdebitpayment.ValidateOTPForDirectDebitPaymentParams{
-		DirectDebitID: 	"test-ddpy-id",
-		OTPCode:		"333000",
+		DirectDebitID: "test-ddpy-id",
+		OTPCode:       "333000",
 	}
 
 	resp, err := directdebitpayment.ValidateOTPForDirectDebitPayment(&data)
@@ -78,7 +78,7 @@ func ExampleGetDirectDebitPaymentStatusByID() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := directdebitpayment.GetDirectDebitPaymentStatusByIDParams{
-		ID:	"test-ddpy-id",
+		ID: "test-ddpy-id",
 	}
 
 	resp, err := directdebitpayment.GetDirectDebitPaymentStatusByID(&data)
@@ -93,7 +93,7 @@ func ExampleGetDirectDebitPaymentStatusByReferenceID() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
 	data := directdebitpayment.GetDirectDebitPaymentStatusByReferenceIDParams{
-		ReferenceID:	"test-ddpy-ref-id",
+		ReferenceID: "test-ddpy-ref-id",
 	}
 
 	resp, err := directdebitpayment.GetDirectDebitPaymentStatusByReferenceID(&data)
