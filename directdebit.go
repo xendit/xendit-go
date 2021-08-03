@@ -19,6 +19,9 @@ const (
 	BANK_ACCOUNT AccountTypeEnum = "BANK_ACCOUNT"
 )
 
+// InitializedLinkedAccount contains data from Xendit's API response of initialize linked account related requests.
+// For more details see https://xendit.github.io/apireference/?bash#initialize-linked-account-tokenization.
+// For documentation of subpackage linked account, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebit/linkedaccount/
 type InitializedLinkedAccount struct {
 	ID            string                 `json:"id"`
 	CustomerID    string                 `json:"customer_id"`
@@ -28,6 +31,9 @@ type InitializedLinkedAccount struct {
 	Metadata      map[string]interface{} `json:"metadata,omitempty"`
 }
 
+// ValidatedLinkedAccount contains data from Xendit's API response of validate linked account related requests.
+// For more details see https://xendit.github.io/apireference/?bash#validate-otp-for-linked-account-token.
+// For documentation of subpackage linked account, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebit/linkedaccount/
 type ValidatedLinkedAccount struct {
 	ID          string          `json:"id"`
 	CustomerID  string          `json:"customer_id"`
@@ -35,6 +41,9 @@ type ValidatedLinkedAccount struct {
 	Status      string          `json:"status"`
 }
 
+// AccessibleLinkedAccount contains data from Xendit's API response of get accessible linked account related requests.
+// For more details see https://xendit.github.io/apireference/?bash#retrieve-accessible-accounts-by-linked-account-token.
+// For documentation of subpackage linked account, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebit/linkedaccount/
 type AccessibleLinkedAccount struct {
 	ID          string                 `json:"id"`
 	ChannelCode ChannelCodeEnum        `json:"channel_code"`
@@ -42,11 +51,17 @@ type AccessibleLinkedAccount struct {
 	Properties  map[string]interface{} `json:"properties"`
 }
 
+// UnbindedLinkedAccount contains data from Xendit's API response of unbind linked account token related requests.
+// For more details see https://xendit.github.io/apireference/?bash#unbind-a-linked-account-token.
+// For documentation of subpackage linked account, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebit/linkedaccount/
 type UnbindedLinkedAccount struct {
 	ID        string `json:"id"`
 	IsDeleted bool   `json:"is_deleted"`
 }
 
+// PaymentMethod contains data from Xendit's API response of payment method related requests.
+// For more details see https://xendit.github.io/apireference/?bash#create-payment-method.
+// For documentation of subpackage payment method, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebit/paymentmethod/
 type PaymentMethod struct {
 	ID         string                 `json:"id"`
 	Type       AccountTypeEnum        `json:"type"`
@@ -58,6 +73,9 @@ type PaymentMethod struct {
 	Metadata   map[string]interface{} `json:"metadata,omitempty"`
 }
 
+// DirectDebitBasketItem contains data from Xendit's API response of direct debit's basket requests.
+// For more details see https://xendit.github.io/apireference/?bash#create-direct-debit-payment.
+// For documentation of subpackage direct debit payment, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebitpayment/
 type DirectDebitBasketItem struct {
 	ReferenceID string                 `json:"reference_id"`
 	Name        string                 `json:"name"`
@@ -72,6 +90,9 @@ type DirectDebitBasketItem struct {
 	Quantity    int                    `json:"quantity,omitempty"`
 }
 
+// DirectDebitDevice contains data from Xendit's API response of direct debit's device requests.
+// For more details see https://xendit.github.io/apireference/?bash#create-direct-debit-payment.
+// For documentation of subpackage direct debit payment, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebitpayment/
 type DirectDebitDevice struct {
 	ID        string `json:"id"`
 	IPAddress string `json:"ip_address"`
@@ -80,12 +101,18 @@ type DirectDebitDevice struct {
 	Imei      string `json:"imei,omitempty"`
 }
 
+// DirectDebitRefunds contains data from Xendit's API response of direct debit's refunds requests.
+// For more details see https://xendit.github.io/apireference/?bash#create-direct-debit-payment.
+// For documentation of subpackage direct debit payment, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebitpayment/
 type DirectDebitRefunds struct {
 	Data    []string `json:"data"`
 	HasMore bool     `json:"has_more"`
 	URL     string   `json:"url"`
 }
 
+// DirectDebitPayment contains data from Xendit's API response of direct debit payment requests.
+// For more details see https://xendit.github.io/apireference/?bash#create-direct-debit-payment.
+// For documentation of subpackage direct debit payment, checkout https://pkg.go.dev/github.com/xendit/xendit-go/directdebitpayment/
 type DirectDebitPayment struct {
 	ID                     string                  `json:"id"`
 	ReferenceID            string                  `json:"reference_id"`
