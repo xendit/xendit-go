@@ -11,7 +11,7 @@ func main() {
 	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	wg := sync.WaitGroup{}
-	wg.Add(12)
+	wg.Add(13)
 	go func() {
 		balanceTest()
 		wg.Done()
@@ -58,6 +58,10 @@ func main() {
 	}()
 	go func() {
 		customerTest()
+		wg.Done()
+	}()
+	go func() {
+		directDebitTest()
 		wg.Done()
 	}()
 
