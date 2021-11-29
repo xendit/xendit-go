@@ -40,7 +40,7 @@ type Invoice struct {
 	SuccessRedirectURL        string                `json:"success_redirect_url,omitempty"`
 	FailureRedirectURL        string                `json:"failure_redirect_url,omitempty"`
 	Items                     []InvoiceItem         `json:"items,omitempty"`
-	FixedVA                   string                `json:"fixed_va,omitempty"`
+	FixedVA                   bool                  `json:"fixed_va,omitempty"`
 }
 
 // InvoiceBank is data that contained in `Invoice` at AvailableBanks
