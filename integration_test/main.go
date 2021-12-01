@@ -65,5 +65,10 @@ func main() {
 		wg.Done()
 	}()
 
+	go func() {
+		qrcodeTest()
+		wg.Done()
+	}()
+
 	wg.Wait()
 }
