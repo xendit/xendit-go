@@ -19,11 +19,17 @@ func main() {
 	}
 	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
+	// your token id
+	tokenID := "5e0461a86113354249aab7ec"
+	//your auth id
+	authID := "5e0461a96113354249aab7ee"
+
+	fmt.Println("created charge")
 	createChargeData := card.CreateChargeParams{
-		TokenID:          "5e2e81bbbae82e4d54d76473",
-		AuthenticationID: "5e2e8322bae82e4d54d7648f",
+		TokenID:          tokenID,
+		AuthenticationID: authID,
+		Amount:           10000,
 		ExternalID:       "cardAuth-" + time.Now().String(),
-		Amount:           1000000,
 		Capture:          new(bool), // false
 	}
 
