@@ -24,12 +24,12 @@ type Customer struct {
 	MobileNumber string                 `json:"mobile_number,omitempty"`
 	Email        string                 `json:"email,omitempty"`
 	GivenNames   string                 `json:"given_names"`
-	MiddleName   string                 `json:"middle_name,omitempty"`
-	Surname      string                 `json:"surname,omitempty"`
+	MiddleName   string                 `json:"middle_name"`
+	Surname      string                 `json:"surname"`
 	Description  string                 `json:"description,omitempty"`
-	PhoneNumber  string                 `json:"phone_number,omitempty"`
-	Nationality  string                 `json:"nationality,omitempty"`
-	Addresses    []CustomerAddress      `json:"addresses,omitempty"`
-	DateOfBirth  string                 `json:"date_of_birth,omitempty"`
-	Metadata     map[string]interface{} `json:"metadata,omitempty"`
+	PhoneNumber  string                 `json:"phone_number"`
+	Nationality  string                 `json:"nationality"`
+	Addresses    []CustomerAddress      `json:"addresses"`
+	DateOfBirth  string                 `json:"date_of_birth"`
+	Metadata     map[string]interface{} `json:"metadata"`
 }
