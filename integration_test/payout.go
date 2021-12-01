@@ -10,9 +10,9 @@ import (
 
 func payoutTest() {
 	createData := payout.CreateParams{
-		ExternalID: "payout-" + time.Now().String(),
-		Amount:     200000,
-		Email:      "customer@customer.com",
+		ExternalID: time.Now().String(),
+		Amount:     10000,
+		Email:      "test@example.com",
 	}
 
 	resp, err := payout.Create(&createData)
