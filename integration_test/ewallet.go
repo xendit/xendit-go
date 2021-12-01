@@ -11,12 +11,10 @@ import (
 
 func ewalletTest() {
 	createPaymentData := ewallet.CreatePaymentParams{
-		ExternalID:  "dana-" + time.Now().String(),
-		Amount:      20000,
+		ExternalID:  "ovo-" + time.Now().String(),
+		Amount:      1,
 		Phone:       "08123123123",
-		EWalletType: xendit.EWalletTypeDANA,
-		CallbackURL: "mystore.com/callback",
-		RedirectURL: "mystore.com/redirect",
+		EWalletType: xendit.EWalletTypeOVO,
 	}
 
 	resp, err := ewallet.CreatePayment(&createPaymentData)
