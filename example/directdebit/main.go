@@ -31,7 +31,7 @@ func main() {
 		"meta": "data",
 	}
 
-	customerID := "791ac956-397a-400f-9fda-4958894e61b5"
+	customerID := "74965fb0-0446-47a9-a7d7-0db06b70af98"
 
 	initializeTokenizationData := linkedaccount.InitializeLinkedAccountTokenizationParams{
 		CustomerID:  customerID,

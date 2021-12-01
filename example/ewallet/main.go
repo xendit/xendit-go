@@ -19,12 +19,10 @@ func main() {
 	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
 	createPaymentData := ewallet.CreatePaymentParams{
-		ExternalID:  "dana-" + time.Now().String(),
-		Amount:      20000,
-		Phone:       "08123123123",
-		EWalletType: xendit.EWalletTypeDANA,
-		CallbackURL: "mystore.com/callback",
-		RedirectURL: "mystore.com/redirect",
+		ExternalID:  "ovo-" + time.Now().String(),
+		Amount:      10000,
+		Phone:       "081234567890",
+		EWalletType: xendit.EWalletTypeOVO,
 	}
 
 	resp, err := ewallet.CreatePayment(&createPaymentData)
