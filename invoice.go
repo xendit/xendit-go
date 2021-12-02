@@ -67,10 +67,12 @@ type InvoiceEWallet struct {
 
 // InvoiceRetailOutlet is data that contained in `Invoice` at AvailableRetailOutlets
 type InvoiceRetailOutlet struct {
-	RetailOutletName string  `json:"retail_outlet_name"`
-	PaymentCode      string  `json:"payment_code"`
-	TransferAmount   float64 `json:"transfer_amount"`
-	MerchantName     string  `json:"merchant_name,omitempty"`
+	RetailOutletName string `json:"retail_outlet_name"`
+	//WILL BE DEPRECATED SOON
+	PaymentCode string `json:"payment_code,omitempty"`
+	//WILL BE DEPRECATED SOON
+	TransferAmount float64 `json:"transfer_amount,omitempty"`
+	MerchantName   string  `json:"merchant_name,omitempty"`
 }
 
 // InvoiceItem is data that contained in `Invoice` at Items
