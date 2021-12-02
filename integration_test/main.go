@@ -10,7 +10,6 @@ import (
 func main() {
 	xendit.Opt.SecretKey = os.Getenv("SECRET_KEY")
 
-	// invoiceTest()
 	wg := sync.WaitGroup{}
 	wg.Add(13)
 	go func() {
