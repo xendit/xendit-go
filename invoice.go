@@ -75,9 +75,11 @@ type InvoiceRetailOutlet struct {
 
 // InvoiceItem is data that contained in `Invoice` at Items
 type InvoiceItem struct {
-	Name     string  `json:"name"`
-	Price    float64 `json:"price"`
-	Quantity int     `json:"quantity"`
+	Name     string  `json:"name" validate:"required"`
+	Price    float64 `json:"price" validate:"required"`
+	Quantity int     `json:"quantity" validate:"required"`
+	Category string  `json:"category,omitempty"`
+	Url      string  `json:"url,omitempty"`
 }
 
 // InvoiceCustomer is data that contained in `Invoice` at Customer
@@ -90,10 +92,10 @@ type InvoiceCustomer struct {
 
 // InvoiceCustomerNotificationPreference is data that contained in `Invoice` at CustomerNotificationPreference
 type InvoiceCustomerNotificationPreference struct {
-	invoiceCreated  []string `json:"invoice_created,omitempty"`
-	invoiceReminder []string `json:"invoice_reminder,omitempty"`
-	invoicePaid     []string `json:"invoice_paid,omitempty"`
-	invoiceExpired  []string `json:"invoice_expired,omitempty"`
+	InvoiceCreated  []string `json:"invoice_created,omitempty"`
+	InvoiceReminder []string `json:"invoice_reminder,omitempty"`
+	InvoicePaid     []string `json:"invoice_paid,omitempty"`
+	InvoiceExpired  []string `json:"invoice_expired,omitempty"`
 }
 
 // InvoiceFee is data that contained in `Invoice` at Fees
