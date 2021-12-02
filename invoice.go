@@ -6,41 +6,47 @@ import "time"
 // For more API details see https://xendit.github.io/apireference/?bash#invoices.
 // For documentation of subpackage invoice, checkout https://pkg.go.dev/github.com/xendit/xendit-go/invoice
 type Invoice struct {
-	ID                        string                `json:"id"`
-	Status                    string                `json:"status"`
-	ExternalID                string                `json:"external_id"`
-	UserID                    string                `json:"user_id"`
-	PayerEmail                string                `json:"payer_email"`
-	Description               string                `json:"description"`
-	Amount                    float64               `json:"amount"`
-	MerchantName              string                `json:"merchant_name"`
-	MerchantProfilePictureURL string                `json:"merchant_profile_picture_url"`
-	InvoiceURL                string                `json:"invoice_url"`
-	ExpiryDate                *time.Time            `json:"expiry_date"`
-	AvailableBanks            []InvoiceBank         `json:"available_banks,omitempty"`
-	AvailableEWallets         []InvoiceEWallet      `json:"available_ewallets,omitempty"`
-	AvailableRetailOutlets    []InvoiceRetailOutlet `json:"available_retail_outlets,omitempty"`
-	ShouldExcludeCreditCard   bool                  `json:"should_exclude_credit_card"`
-	ShouldSendEmail           bool                  `json:"should_send_email"`
-	Created                   *time.Time            `json:"created"`
-	Updated                   *time.Time            `json:"updated"`
-	BankCode                  string                `json:"bank_code,omitempty"`
-	PaidAmount                float64               `json:"paid_amount,omitempty"`
-	AdjustedReceivedAmount    float64               `json:"adjusted_received_amount,omitempty"`
-	RecurringPaymentID        string                `json:"recurring_payment_id,omitempty"`
-	CreditCardChargeID        string                `json:"credit_card_charge_id,omitempty"`
-	Currency                  string                `json:"currency,omitempty"`
-	InitialCurrency           string                `json:"initial_currency,omitempty"`
-	InitialAmount             string                `json:"initial_amount,omitempty"`
-	PaidAt                    *time.Time            `json:"paid_at,omitempty"`
-	MidLabel                  string                `json:"mid_label,omitempty"`
-	PaymentChannel            string                `json:"payment_channel,omitempty"`
-	PaymentMethod             string                `json:"payment_method,omitempty"`
-	PaymentDestination        string                `json:"payment_destination,omitempty"`
-	SuccessRedirectURL        string                `json:"success_redirect_url,omitempty"`
-	FailureRedirectURL        string                `json:"failure_redirect_url,omitempty"`
-	Items                     []InvoiceItem         `json:"items,omitempty"`
-	FixedVA                   bool                  `json:"fixed_va,omitempty"`
+	ID                             string                                `json:"id"`
+	InvoiceURL                     string                                `json:"invoice_url"`
+	UserID                         string                                `json:"user_id,omitempty"`
+	ExternalID                     string                                `json:"external_id"`
+	Status                         string                                `json:"status"`
+	MerchantName                   string                                `json:"merchant_name"`
+	MerchantProfilePictureURL      string                                `json:"merchant_profile_picture_url,omitempty"`
+	Amount                         float64                               `json:"amount"`
+	Locale                         string                                `json:"locale,omitempty"`
+	Items                          []InvoiceItem                         `json:"items,omitempty"`
+	Fees                           []InvoiceFee                          `json:"fees,omitempty"`
+	PayerEmail                     string                                `json:"payer_email,omitempty"`
+	Description                    string                                `json:"description,omitempty"`
+	ExpiryDate                     *time.Time                            `json:"expiry_date"`
+	Customer                       InvoiceCustomer                       `json:"customer,omitempty"`
+	CustomerNotificationPreference InvoiceCustomerNotificationPreference `json:"customer_notification_preference,omitempty"`
+	AvailableBanks                 []InvoiceBank                         `json:"available_banks,omitempty"`
+	AvailableEWallets              []InvoiceEWallet                      `json:"available_ewallets,omitempty"`
+	AvailableRetailOutlets         []InvoiceRetailOutlet                 `json:"available_retail_outlets,omitempty"`
+	ReminderDate                   *time.Time                            `json:"reminder_date,omitempty"`
+	FixedVA                        bool                                  `json:"fixed_va,omitempty"`
+	MidLabel                       string                                `json:"mid_label,omitempty"`
+	ShouldExcludeCreditCard        bool                                  `json:"should_exclude_credit_card,omitempty"`
+	ShouldAuthenticateCreditCard   bool                                  `json:"should_authenticate_credit_card,omitempty"`
+	ShouldSendEmail                bool                                  `json:"should_send_email"`
+	Created                        *time.Time                            `json:"created"`
+	Updated                        *time.Time                            `json:"updated"`
+	Currency                       string                                `json:"currency,omitempty"`
+	PaidAt                         *time.Time                            `json:"paid_at,omitempty"`
+	PaymentMethod                  string                                `json:"payment_method,omitempty"`
+	PaymentChannel                 string                                `json:"payment_channel,omitempty"`
+	PaymentDestination             string                                `json:"payment_destination,omitempty"`
+	PaymentDetail                  InvoicePaymentDetail                  `json:"payment_details,omitempty"`
+	SuccessRedirectURL             string                                `json:"success_redirect_url,omitempty"`
+	FailureRedirectURL             string                                `json:"failure_redirect_url,omitempty"`
+	RecurringPaymentID             string                                `json:"recurring_payment_id,omitempty"`
+	CreditCardChargeID             string                                `json:"credit_card_charge_id,omitempty"`
+	AdjustedReceivedAmount         float64                               `json:"adjusted_received_amount,omitempty"`
+	//deprecated
+	BankCode   string  `json:"bank_code,omitempty"`
+	PaidAmount float64 `json:"paid_amount,omitempty"`
 }
 
 // InvoiceBank is data that contained in `Invoice` at AvailableBanks
@@ -72,4 +78,32 @@ type InvoiceItem struct {
 	Name     string  `json:"name"`
 	Price    float64 `json:"price"`
 	Quantity int     `json:"quantity"`
+}
+
+// InvoiceCustomer is data that contained in `Invoice` at Customer
+type InvoiceCustomer struct {
+	GivenNames   string `json:"given_names,omitempty"`
+	Email        string `json:"email,omitempty"`
+	MobileNumber string `json:"mobile_number,omitempty"`
+	Address      string `json:"address,omitempty"`
+}
+
+// InvoiceCustomerNotificationPreference is data that contained in `Invoice` at CustomerNotificationPreference
+type InvoiceCustomerNotificationPreference struct {
+	invoiceCreated  []string `json:"invoice_created,omitempty"`
+	invoiceReminder []string `json:"invoice_reminder,omitempty"`
+	invoicePaid     []string `json:"invoice_paid,omitempty"`
+	invoiceExpired  []string `json:"invoice_expired,omitempty"`
+}
+
+// InvoiceFee is data that contained in `Invoice` at Fees
+type InvoiceFee struct {
+	Type  string `json:"type" validate:"required"`
+	Value string `value:"value" validate:"required"`
+}
+
+// InvoiceFInvoicePaymentDetaile is data that contained in `Invoice` at PaymentDetail
+type InvoicePaymentDetail struct {
+	Type  string `json:"receipt_id,omitempty"`
+	Value string `value:"source,omitempty"`
 }
