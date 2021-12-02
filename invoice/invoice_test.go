@@ -66,11 +66,11 @@ func TestCreate(t *testing.T) {
 		{
 			desc: "should report missing required fields",
 			data: &invoice.CreateParams{
-				ExternalID: "invoice-external-id",
-				Amount:     200000,
+				// ExternalID: "invoice-external-id",
+				Amount: 200000,
 			},
 			expectedRes: nil,
-			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'PayerEmail', 'Description'")),
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'ExternalID'")),
 		},
 	}
 

@@ -5,25 +5,34 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/urlvalues"
 )
 
 // CreateParams contains parameters for Create
 type CreateParams struct {
-	ForUserID                string   `json:"-"`
-	ExternalID               string   `json:"external_id" validate:"required"`
-	PayerEmail               string   `json:"payer_email" validate:"required"`
-	Description              string   `json:"description" validate:"required"`
-	Amount                   float64  `json:"amount" validate:"required"`
-	ShouldSendEmail          *bool    `json:"should_send_email,omitempty"`
-	CallbackVirtualAccountID string   `json:"callback_virtual_account_id,omitempty"`
-	InvoiceDuration          int      `json:"invoice_duration,omitempty"`
-	SuccessRedirectURL       string   `json:"success_redirect_url,omitempty"`
-	FailureRedirectURL       string   `json:"failure_redirect_url,omitempty"`
-	PaymentMethods           []string `json:"payment_methods,omitempty"`
-	MidLabel                 string   `json:"mid_label,omitempty"`
-	Currency                 string   `json:"currency,omitempty"`
-	FixedVA                  *bool    `json:"fixed_va,omitempty"`
+	ForUserID                      string                                       `json:"-"`
+	ExternalID                     string                                       `json:"external_id" validate:"required"`
+	Amount                         float64                                      `json:"amount" validate:"required"`
+	Description                    string                                       `json:"description,omitempty"`
+	PayerEmail                     string                                       `json:"payer_email,omitempty"`
+	ShouldSendEmail                *bool                                        `json:"should_send_email,omitempty"`
+	Customer                       xendit.InvoiceCustomer                       `json:"customer,omitempty"`
+	CustomerNotificationPreference xendit.InvoiceCustomerNotificationPreference `json:"customer_notification_preference,omitempty"`
+	InvoiceDuration                int                                          `json:"invoice_duration,omitempty"`
+	SuccessRedirectURL             string                                       `json:"success_redirect_url,omitempty"`
+	FailureRedirectURL             string                                       `json:"failure_redirect_url,omitempty"`
+	PaymentMethods                 []string                                     `json:"payment_methods,omitempty"`
+	Currency                       string                                       `json:"currency,omitempty"`
+	FixedVA                        *bool                                        `json:"fixed_va,omitempty"`
+	CallbackVirtualAccountID       string                                       `json:"callback_virtual_account_id,omitempty"`
+	MidLabel                       string                                       `json:"mid_label,omitempty"`
+	ReminderTimeUnit               string                                       `json:"reminder_time_unit,omitempty"`
+	ReminderTime                   int                                          `json:"reminder_time,omitempty"`
+	Locale                         string                                       `json:"locale,omitempty"`
+	Items                          []xendit.InvoiceItem                         `json:"items,omitempty"`
+	Fees                           []xendit.InvoiceFee                          `json:"fees,omitempty"`
+	ShouldAuthenticateCreditCard   bool                                         `json:"should_authenticate_credit_card,omitempty"`
 }
 
 // GetParams contains parameters for Get
