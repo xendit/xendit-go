@@ -28,13 +28,15 @@ func directDebitTest() {
 	}
 
 	createCustomerData := customer.CreateCustomerParams{
-		ReferenceID: time.Now().String(),
-		Email:       "tes@tes.com",
-		GivenNames:  "Given Names",
-		Nationality: "ID",
-		DateOfBirth: "1995-12-30",
-		Addresses:   []xendit.CustomerAddress{customerAddress},
-		Metadata:    metadata,
+		ReferenceID:  time.Now().String(),
+		GivenNames:   "customer 1",
+		MiddleName:   "middle",
+		Surname:      "surname",
+		Email:        "customer@website.com",
+		MobileNumber: "+6281212345678",
+		Description:  "dummy customer",
+		Addresses:    []xendit.CustomerAddress{customerAddress},
+		Metadata:     metadata,
 	}
 
 	customer, err := customer.CreateCustomer(&createCustomerData)
@@ -78,15 +80,6 @@ func directDebitTest() {
 	}
 
 	resps, err := linkedaccount.RetrieveAccessibleLinkedAccounts(&retrieveAccessibleLinkedAccountsData)
-	if err != nil {
-		log.Panic(err)
-	}
-
-	unbindLinkedAccountTokenData := linkedaccount.UnbindLinkedAccountTokenParams{
-		LinkedAccountTokenID: resp.ID,
-	}
-
-	_, err = linkedaccount.UnbindLinkedAccountToken(&unbindLinkedAccountTokenData)
 	if err != nil {
 		log.Panic(err)
 	}
