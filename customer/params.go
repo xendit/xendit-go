@@ -9,6 +9,7 @@ import (
 // CreateCustomerParams contains parameters for CreateCustomer
 type CreateCustomerParams struct {
 	ForUserID    string                   `json:"-"`
+	APIVersion   string                   `json:"-"`
 	ReferenceID  string                   `json:"reference_id" validate:"required"`
 	MobileNumber string                   `json:"mobile_number,omitempty"`
 	Email        string                   `json:"email,omitempty"`

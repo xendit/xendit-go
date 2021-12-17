@@ -32,6 +32,9 @@ func (c *Client) CreateCustomerWithContext(ctx context.Context, data *CreateCust
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
+	if data.APIVersion != "" {
+		header.Add("api-version", data.APIVersion)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
