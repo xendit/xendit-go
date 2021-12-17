@@ -31,10 +31,6 @@ func ewalletTest() {
 		log.Panic(err)
 	}
 
-	metadata := map[string]interface{}{
-		"meta": "data",
-	}
-
 	ewalletBasketItem := xendit.EWalletBasketItem{
 		ReferenceID: "basket-product-ref-id",
 		Name:        "product name",
@@ -42,24 +38,28 @@ func ewalletTest() {
 		Currency:    "IDR",
 		Price:       50000,
 		Quantity:    5,
-		Type:        "type",
-		SubCategory: "subcategory",
-		Metadata:    metadata,
+		Type:        "wht",
+		SubCategory: "evr",
+		Metadata: map[string]interface{}{
+			"meta": "data",
+		},
 	}
 
 	createEWalletChargeData := ewallet.CreateEWalletChargeParams{
-		ReferenceID:    "test-reference-id",
+		ReferenceID:    time.Now().String(),
 		Currency:       "IDR",
-		Amount:         1688,
+		Amount:         100,
 		CheckoutMethod: "ONE_TIME_PAYMENT",
-		ChannelCode:    "ID_SHOPEEPAY",
+		ChannelCode:    "ID_OVO",
 		ChannelProperties: map[string]string{
-			"success_redirect_url": "https://yourwebsite.com/order/123",
+			"mobile_number": "+6281234567890",
 		},
 		Basket: []xendit.EWalletBasketItem{
 			ewalletBasketItem,
 		},
-		Metadata: metadata,
+		Metadata: map[string]interface{}{
+			"meta2": "data2",
+		},
 	}
 
 	charge, chargeErr := ewallet.CreateEWalletCharge(&createEWalletChargeData)
