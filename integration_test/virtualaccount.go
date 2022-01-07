@@ -24,6 +24,7 @@ func virtualaccountTest() {
 		log.Panic(err)
 	}
 
+	time.Sleep(3 * time.Second)
 	getFixedVAData := virtualaccount.GetFixedVAParams{
 		ID: resp.ID,
 	}
