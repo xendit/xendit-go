@@ -72,6 +72,35 @@ func (c *Client) GetFixedPaymentCodeWithContext(ctx context.Context, data *GetFi
 	return response, nil
 }
 
+// GetPaymentByFixedPaymentCode gets list retail outlet fixed payment code
+func (c *Client) GetPaymentByFixedPaymentCode(data *GetPaymentByFixedPaymentCodeParams) (*xendit.RetailOutletPayments, *xendit.Error) {
+	return c.GetPaymentByFixedPaymentCodeWithContext(context.Background(), data)
+}
+
+// GetPaymentByFixedPaymentCodeWithContext gets list retail outlet fixed payment code with context
+func (c *Client) GetPaymentByFixedPaymentCodeWithContext(ctx context.Context, data *GetPaymentByFixedPaymentCodeParams) (*xendit.RetailOutletPayments, *xendit.Error) {
+	if err := validator.ValidateRequired(ctx, data); err != nil {
+		return nil, validator.APIValidatorErr(err)
+	}
+
+	response := &xendit.RetailOutletPayments{}
+
+	err := c.APIRequester.Call(
+		ctx,
+		"GET",
+		fmt.Sprintf("%s/fixed_payment_code/%s/payments", c.Opt.XenditURL, data.FixedPaymentCodeID),
+		c.Opt.SecretKey,
+		nil,
+		nil,
+		response,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
 // UpdateFixedPaymentCode updates a retail outlet fixed payment code
 func (c *Client) UpdateFixedPaymentCode(data *UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error) {
 	return c.UpdateFixedPaymentCodeWithContext(context.Background(), data)

@@ -22,6 +22,11 @@ type GetFixedPaymentCodeParams struct {
 	FixedPaymentCodeID string `json:"fixed_payment_code_id" validate:"required"`
 }
 
+// GetPaymentByFixedPaymentCodeParams contains parameters for GetFixedPaymentCode
+type GetPaymentByFixedPaymentCodeParams struct {
+	FixedPaymentCodeID string `json:"fixed_payment_code_id" validate:"required"`
+}
+
 // UpdateFixedPaymentCodeParams contains parameters for UpdateFixedPaymentCode
 type UpdateFixedPaymentCodeParams struct {
 	FixedPaymentCodeID string     `json:"-" validate:"required"`
