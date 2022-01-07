@@ -42,6 +42,21 @@ func ExampleGetFixedPaymentCode() {
 	fmt.Printf("retrieved retail outlet fixed payment code: %+v\n", resp)
 }
 
+func ExampleGetPaymentByFixedPaymentCode() {
+	xendit.Opt.SecretKey = "examplesecretkey"
+
+	getPaymentByFixedPaymentCodeData := retailoutlet.GetPaymentByFixedPaymentCodeParams{
+		FixedPaymentCodeID: "123",
+	}
+
+	resp, err := retailoutlet.GetPaymentByFixedPaymentCode(&getPaymentByFixedPaymentCodeData)
+	if err != nil {
+		log.Fatal(err.ErrorCode)
+	}
+
+	fmt.Printf("retrieved retail outlet list payment by fixed payment code %+v\n", resp)
+}
+
 func ExampleUpdateFixedPaymentCode() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 

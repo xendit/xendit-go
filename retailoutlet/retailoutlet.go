@@ -36,6 +36,21 @@ func GetFixedPaymentCodeWithContext(ctx context.Context, data *GetFixedPaymentCo
 	return client.GetFixedPaymentCodeWithContext(ctx, data)
 }
 
+// GetPaymentByFixedPaymentCode gets one retail outlet fixed payment code
+func GetPaymentByFixedPaymentCode(data *GetPaymentByFixedPaymentCodeParams) (*xendit.RetailOutletPayments, *xendit.Error) {
+	return GetPaymentByFixedPaymentCodeWithContext(context.Background(), data)
+}
+
+// GetPaymentByFixedPaymentCodeWithContext gets one retail outlet fixed payment code with context
+func GetPaymentByFixedPaymentCodeWithContext(ctx context.Context, data *GetPaymentByFixedPaymentCodeParams) (*xendit.RetailOutletPayments, *xendit.Error) {
+	client, err := getClient()
+	if err != nil {
+		return nil, err
+	}
+
+	return client.GetPaymentByFixedPaymentCodeWithContext(ctx, data)
+}
+
 // UpdateFixedPaymentCode updates a retail outlet fixed payment code
 func UpdateFixedPaymentCode(data *UpdateFixedPaymentCodeParams) (*xendit.RetailOutlet, *xendit.Error) {
 	return UpdateFixedPaymentCodeWithContext(context.Background(), data)
