@@ -102,12 +102,12 @@ type InvoiceCustomerNotificationPreference struct {
 
 // InvoiceFee is data that contained in `Invoice` at Fees
 type InvoiceFee struct {
-	Type  string `json:"type" validate:"required"`
-	Value float64 `value:"value" validate:"required"`
+	Type  string  `json:"type" validate:"required"`
+	Value float64 `json:"value" validate:"required"`
 }
 
 // InvoiceFInvoicePaymentDetaile is data that contained in `Invoice` at PaymentDetail
 type InvoicePaymentDetail struct {
-	Type  string `json:"receipt_id,omitempty"`
-	Value float64 `value:"source,omitempty"`
+	Type  string  `json:"receipt_id,omitempty"`
+	Value float64 `json:"source,omitempty"`
 }
