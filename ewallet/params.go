@@ -62,5 +62,6 @@ type CreateEWalletChargeParams struct {
 
 // GetEWalletChargeStatusParams contains parameters for GetEWalletChargeStatus
 type GetEWalletChargeStatusParams struct {
-	ChargeID string `json:"charge_id" validate:"required"`
+	ForUserID string `json:"-"`
+	ChargeID  string `json:"charge_id" validate:"required"`
 }
