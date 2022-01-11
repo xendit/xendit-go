@@ -213,13 +213,18 @@ func (c *Client) GetEWalletChargeStatusWithContext(ctx context.Context, data *Ge
 	}
 
 	tempResponse := &EWalletChargeResponse{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/ewallets/charges/%s", c.Opt.XenditURL, data.ChargeID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		tempResponse,
 	)
