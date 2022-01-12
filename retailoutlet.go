@@ -33,9 +33,16 @@ type RetailOutlet struct {
 // For more details see https://developers.xendit.co/api-reference/#get-payments-by-fixed-payment-code-id.
 // For documentation of subpackage direct debit payment, checkout https://pkg.go.dev/github.com/xendit/xendit-go/retailoutlet/
 type RetailOutletPayments struct {
-	Data    []RetailOutletPayment `json:"data"`
-	HasMore bool                  `json:"has_more"`
-	URL     string                `json:"url"`
+	Data    []RetailOutletPayment     `json:"data"`
+	HasMore bool                      `json:"has_more"`
+	Links   RetailOutletPaymentsLinks `json:"links"`
+}
+
+// RetailOutletPaymentsLinks is data that contained in `RetailOutletPayments` at Links field.
+type RetailOutletPaymentsLinks struct {
+	Href   string `json:"href"`
+	Rel    string `json:"rel"`
+	Method string `json:"method"`
 }
 
 // RetailOutletPayments contains data from Xendit's API response of Retail Outlet Get Payments By Fixed Payment Code ID requests.
