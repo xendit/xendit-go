@@ -8,10 +8,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/google/go-querystring/query"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/xendit/xendit-go"
-	"github.com/xendit/xendit-go/retailoutlet"
+	"github.com/xendit/xendit-go/transaction"
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
@@ -27,7 +28,7 @@ type apiRequesterMock struct {
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
-	rawJsonString := `{
+	resultString := `{
 		"id": "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
 		"product_id": "d290f1ee-6c54-4b01-90e6-d701748f0701",
 		"type": "PAYMENT",
@@ -51,11 +52,7 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 		}
 	}`
 
-	var transaction xendit.Transaction
-
-	json.Unmarshal([]byte(rawJsonString), &transaction)
-
-	result = transaction
+	_ = json.Unmarshal([]byte(resultString), &result)
 
 	return nil
 }
@@ -64,40 +61,50 @@ func TestGetTransaction(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
-	expirationDate, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
+	created := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
+	updated := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
 
 	testCases := []struct {
 		desc        string
-		data        *retailoutlet.GetFixedPaymentCodeParams
-		expectedRes *xendit.RetailOutlet
+		data        *transaction.GetTransactionParams
+		expectedRes *xendit.Transaction
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should gets a retail outlet fixed payment code",
-			data: &retailoutlet.GetFixedPaymentCodeParams{
-				FixedPaymentCodeID: "123",
+			desc: "should gets a single transaction",
+			data: &transaction.GetTransactionParams{
+				TransactionID: "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
 			},
-			expectedRes: &xendit.RetailOutlet{
-				IsSingleUse:      false,
-				Status:           "ACTIVE",
-				OwnerID:          "someone-owner-id",
-				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: xendit.RetailOutletNameAlfamart,
-				Prefix:           "TEST",
-				Name:             "Michael Jackson",
-				PaymentCode:      "TEST123",
-				Type:             "USER",
-				ExpectedAmount:   200000,
-				ExpirationDate:   &expirationDate,
-				ID:               "123",
-			},
+			expectedRes: &xendit.Transaction{
+				ID:                "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
+				ProductID:         "d290f1ee-6c54-4b01-90e6-d701748f0701",
+				Type:              "PAYMENT",
+				ChannelCategory:   "RETAIL_OUTLET",
+				ChannelCode:       "ALFAMART",
+				ReferenceID:       "ref23232",
+				AccountIdentifier: "",
+				Currency:          "IDR",
+				Amount:            500000,
+				Cashflow:          "MONEY_IN",
+				Status:            "SUCCESS",
+				BusinessID:        "5fc9f5b246f820517e38c84d",
+				Created:           &created,
+				Updated:           &updated,
+				Fee: xendit.TransactionFee{
+					XenditFee:                1500,
+					ValueAddedTax:            500,
+					XenditWithholdingTax:     0,
+					ThirdPartyWithholdingTax: 0,
+					Status:                   "COMPLETED",
+				}},
 			expectedErr: nil,
 		},
+
 		{
 			desc:        "should report missing required fields",
-			data:        &retailoutlet.GetFixedPaymentCodeParams{},
+			data:        &transaction.GetTransactionParams{},
 			expectedRes: nil,
-			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'FixedPaymentCodeID'")),
+			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'TransactionID'")),
 		},
 	}
 
@@ -107,14 +114,14 @@ func TestGetTransaction(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				xendit.Opt.XenditURL+"/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
+				xendit.Opt.XenditURL+"/transactions/"+tC.data.TransactionID,
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
-				&xendit.RetailOutlet{},
+				&xendit.Transaction{},
 			).Return(nil)
 
-			resp, err := retailoutlet.GetFixedPaymentCode(tC.data)
+			resp, err := transaction.GetTransaction(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)
@@ -122,66 +129,148 @@ func TestGetTransaction(t *testing.T) {
 	}
 }
 
-func TestUpdateFixedPaymentCode(t *testing.T) {
-	apiRequesterMockObj := new(apiRequesterMock)
+type apiRequesterGetListMock struct {
+	mock.Mock
+}
+
+func (m *apiRequesterGetListMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	m.Called(ctx, method, path, secretKey, nil, params, result)
+
+	resultString := `{
+		"has_more": true,
+		"data": [
+			{
+				"id": "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
+				"product_id": "d290f1ee-6c54-4b01-90e6-d701748f0701",
+				"type": "PAYMENT",
+				"status": "SUCCESS",
+				"channel_category": "RETAIL_OUTLET",
+				"channel_code": "ALFAMART",
+				"reference_id": "ref23244",
+				"account_identifier": null,
+				"currency": "IDR",
+				"amount": 1,
+				"cashflow": "MONEY_IN",
+				"business_id": "5fc9f5b246f820517e38c84d",
+				"created": "2021-06-23T02:42:15.601Z",
+				"updated": "2021-06-23T02:42:15.601Z"
+			},
+			{
+				"id": "txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
+				"product_id": "d290f1ee-6c54-4b01-90e6-d701748f0700",
+				"type": "PAYMENT",
+				"status": "SUCCESS",
+				"channel_category": "RETAIL_OUTLET",
+				"channel_code": "ALFAMART",
+				"reference_id": "ref242424",
+				"account_identifier": null,
+				"currency": "IDR",
+				"amount": 1,
+				"cashflow": "MONEY_IN",
+				"business_id": "5fc9f5b246f820517e38c84d",
+				"created": "2021-06-23T02:39:23.176Z",
+				"updated": "2021-06-23T02:39:23.176Z"
+			}
+		],
+		"links": [
+			{
+				"href": "/transactions?types=PAYMENT&statuses=SUCCESS&channel_categories=EWALLET&channel_categories=RETAIL_OUTLET&limit=2&after_id=txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
+				"method": "GET",
+				"rel": "next"
+			}
+		]
+	}`
+
+	_ = json.Unmarshal([]byte(resultString), &result)
+
+	return nil
+}
+
+func TestGetListTransaction(t *testing.T) {
+	apiRequesterMockObj := new(apiRequesterGetListMock)
 	initTesting(apiRequesterMockObj)
 
-	expirationDate, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
+	created := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
+	updated := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
+
+	created2 := time.Date(2021, 6, 23, 2, 39, 23, 176000000, time.UTC)
+	updated2 := time.Date(2021, 6, 23, 2, 39, 23, 176000000, time.UTC)
 
 	testCases := []struct {
 		desc        string
-		data        *retailoutlet.UpdateFixedPaymentCodeParams
-		expectedRes *xendit.RetailOutlet
+		data        *transaction.GetListTransactionParams
+		expectedRes *xendit.ListTransactions
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should update a retail outlet fixed payment code",
-			data: &retailoutlet.UpdateFixedPaymentCodeParams{
-				FixedPaymentCodeID: "123",
-				ExpirationDate:     &expirationDate,
-				Name:               "Michael Jackson",
-				ExpectedAmount:     200000,
-			},
-			expectedRes: &xendit.RetailOutlet{
-				IsSingleUse:      false,
-				Status:           "ACTIVE",
-				OwnerID:          "someone-owner-id",
-				ExternalID:       "retailoutlet-external-id",
-				RetailOutletName: xendit.RetailOutletNameAlfamart,
-				Prefix:           "TEST",
-				Name:             "Michael Jackson",
-				PaymentCode:      "TEST123",
-				Type:             "USER",
-				ExpectedAmount:   200000,
-				ExpirationDate:   &expirationDate,
-				ID:               "123",
+			desc: "should get a list of transaction",
+			data: &transaction.GetListTransactionParams{},
+			expectedRes: &xendit.ListTransactions{
+				HasMore: true,
+				Data: []xendit.Transaction{
+					{
+						ID:                "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
+						ProductID:         "d290f1ee-6c54-4b01-90e6-d701748f0701",
+						Type:              "PAYMENT",
+						Status:            "SUCCESS",
+						ChannelCategory:   "RETAIL_OUTLET",
+						ChannelCode:       "ALFAMART",
+						ReferenceID:       "ref23244",
+						AccountIdentifier: "",
+						Currency:          "IDR",
+						Amount:            1,
+						Cashflow:          "MONEY_IN",
+						BusinessID:        "5fc9f5b246f820517e38c84d",
+						Created:           &created,
+						Updated:           &updated,
+					},
+					{
+						ID:                "txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
+						ProductID:         "d290f1ee-6c54-4b01-90e6-d701748f0700",
+						Type:              "PAYMENT",
+						Status:            "SUCCESS",
+						ChannelCategory:   "RETAIL_OUTLET",
+						ChannelCode:       "ALFAMART",
+						ReferenceID:       "ref242424",
+						AccountIdentifier: "",
+						Currency:          "IDR",
+						Amount:            1,
+						Cashflow:          "MONEY_IN",
+						BusinessID:        "5fc9f5b246f820517e38c84d",
+						Created:           &created2,
+						Updated:           &updated2,
+					},
+				},
+				Links: []xendit.ListTransactionsLinks{
+					{
+						Href:   "/transactions?types=PAYMENT&statuses=SUCCESS&channel_categories=EWALLET&channel_categories=RETAIL_OUTLET&limit=2&after_id=txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
+						Method: "GET",
+						Rel:    "next",
+					},
+				},
 			},
 			expectedErr: nil,
-		},
-		{
-			desc: "should report missing required fields",
-			data: &retailoutlet.UpdateFixedPaymentCodeParams{
-				ExpectedAmount: 200000,
-			},
-			expectedRes: nil,
-			expectedErr: validator.APIValidatorErr(errors.New("Missing required fields: 'FixedPaymentCodeID'")),
 		},
 	}
 
 	for _, tC := range testCases {
+
+		qs, _ := query.Values(tC.data)
+
 		t.Run(tC.desc, func(t *testing.T) {
+
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
-				"PATCH",
-				xendit.Opt.XenditURL+"/fixed_payment_code/"+tC.data.FixedPaymentCodeID,
+				"GET",
+				xendit.Opt.XenditURL+"/transactions?"+qs.Encode(),
 				xendit.Opt.SecretKey,
 				nil,
-				tC.data,
-				&xendit.RetailOutlet{},
+				nil,
+				&xendit.ListTransactions{},
 			).Return(nil)
 
-			resp, err := retailoutlet.UpdateFixedPaymentCode(tC.data)
+			resp, err := transaction.GetListTransaction(tC.data)
 
 			assert.Equal(t, tC.expectedRes, resp)
 			assert.Equal(t, tC.expectedErr, err)

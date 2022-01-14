@@ -8,20 +8,20 @@ type GetTransactionParams struct {
 
 // GetListTransactionParams contains parameters for GetListTransaction
 type GetListTransactionParams struct {
-	ForUserID         string
-	Types             []string `url:"types"`
-	Statuses          []string `url:"statuses"`
-	ChannelCategories []string `url:"channel_categories"`
-	ReferenceID       string   `url:"reference_id"`
-	ProductID         string   `url:"product_id"`
-	AccountIdentifier string   `url:"account_identifier"`
-	Currency          string   `url:"currency"`
-	Amount            float64  `url:"Amount"`
-	CreatedGte        string   `url:"created[gte]"`
-	CreatedLte        string   `url:"created[lte]"`
-	UpdatedGte        string   `url:"updated[gte]"`
-	UpdatedLte        string   `url:"updated[lte]"`
-	Limit             int      `url:"limit"`
-	AfterID           string   `url:"after_id"`
-	BeforeID          string   `url:"before_id"`
+	ForUserID         string   `url:"-"`
+	Types             []string `url:"types,omitempty"`
+	Statuses          []string `url:"statuses,omitempty"`
+	ChannelCategories []string `url:"channel_categories,omitempty"`
+	ReferenceID       string   `url:"reference_id,omitempty"`
+	ProductID         string   `url:"product_id,omitempty"`
+	AccountIdentifier string   `url:"account_identifier,omitempty"`
+	Currency          string   `url:"currency,omitempty"`
+	Amount            float64  `url:"Amount,omitempty"`
+	CreatedGte        string   `url:"created[gte],omitempty"`
+	CreatedLte        string   `url:"created[lte],omitempty"`
+	UpdatedGte        string   `url:"updated[gte],omitempty"`
+	UpdatedLte        string   `url:"updated[lte],omitempty"`
+	Limit             int      `url:"limit,omitempty"`
+	AfterID           string   `url:"after_id,omitempty"`
+	BeforeID          string   `url:"before_id,omitempty"`
 }

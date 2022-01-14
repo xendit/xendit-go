@@ -26,16 +26,16 @@ type Transaction struct {
 
 type TransactionFee struct {
 	XenditFee                float64 `json:"xendit_fee,omitempty"`
-	ValueAdded_tax           float64 `json:"value_added_tax,omitempty"`
+	ValueAddedTax            float64 `json:"value_added_tax,omitempty"`
 	XenditWithholdingTax     float64 `json:"xendit_withholding_tax,omitempty"`
 	ThirdPartyWithholdingTax float64 `json:"third_party_withholding_tax,omitempty"`
 	Status                   string  `json:"status,omitempty"`
 }
 
 type ListTransactions struct {
-	Data    []Transaction         `json:"data"`
-	HasMore bool                  `json:"has_more"`
-	Links   ListTransactionsLinks `json:"links"`
+	Data    []Transaction           `json:"data"`
+	HasMore bool                    `json:"has_more"`
+	Links   []ListTransactionsLinks `json:"links"`
 }
 
 // ListTransactionsLinks is data that contained in `ListTransactions` at Links field.

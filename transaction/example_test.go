@@ -3,75 +3,37 @@ package transaction_test
 import (
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/xendit/xendit-go"
-	"github.com/xendit/xendit-go/retailoutlet"
+	"github.com/xendit/xendit-go/transaction"
 )
 
-func ExampleCreateFixedPaymentCode() {
+func ExampleGetTransaction() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
-	data := retailoutlet.CreateFixedPaymentCodeParams{
-		ExternalID:       "retailoutlet-external-id",
-		RetailOutletName: xendit.RetailOutletNameAlfamart,
-		Name:             "Michael Jackson",
-		ExpectedAmount:   200000,
+	getTransaction := transaction.GetTransactionParams{
+		TransactionID: "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
 	}
 
-	resp, err := retailoutlet.CreateFixedPaymentCode(&data)
+	resp, err := transaction.GetTransaction(&getTransaction)
 	if err != nil {
 		log.Fatal(err.ErrorCode)
 	}
 
-	fmt.Printf("created retail outlet fixed payment code: %+v\n", resp)
+	fmt.Printf("retrieved transaction %+v\n", resp)
 }
 
-func ExampleGetFixedPaymentCode() {
+func ExampleGetListTransaction() {
 	xendit.Opt.SecretKey = "examplesecretkey"
 
-	getFixedPaymentCodeData := retailoutlet.GetFixedPaymentCodeParams{
-		FixedPaymentCodeID: "123",
+	getListTransaction := transaction.GetListTransactionParams{
+		Limit: 10,
 	}
 
-	resp, err := retailoutlet.GetFixedPaymentCode(&getFixedPaymentCodeData)
+	resp, err := transaction.GetListTransaction(&getListTransaction)
 	if err != nil {
 		log.Fatal(err.ErrorCode)
 	}
 
-	fmt.Printf("retrieved retail outlet fixed payment code: %+v\n", resp)
-}
-
-func ExampleGetPaymentByFixedPaymentCode() {
-	xendit.Opt.SecretKey = "examplesecretkey"
-
-	getPaymentByFixedPaymentCodeData := retailoutlet.GetPaymentByFixedPaymentCodeParams{
-		FixedPaymentCodeID: "123",
-	}
-
-	resp, err := retailoutlet.GetPaymentByFixedPaymentCode(&getPaymentByFixedPaymentCodeData)
-	if err != nil {
-		log.Fatal(err.ErrorCode)
-	}
-
-	fmt.Printf("retrieved retail outlet list payment by fixed payment code %+v\n", resp)
-}
-
-func ExampleUpdateFixedPaymentCode() {
-	xendit.Opt.SecretKey = "examplesecretkey"
-
-	expirationDate := time.Now().AddDate(0, 0, 1)
-
-	updateFixedPaymentCodeData := retailoutlet.UpdateFixedPaymentCodeParams{
-		FixedPaymentCodeID: "123",
-		Name:               "Billy Jackson",
-		ExpectedAmount:     2000000,
-		ExpirationDate:     &expirationDate,
-	}
-
-	resp, err := retailoutlet.UpdateFixedPaymentCode(&updateFixedPaymentCodeData)
-	if err != nil {
-		log.Fatal(err.ErrorCode)
-	}
-	fmt.Printf("updated retail outlet fixed payment code: %+v\n", resp)
+	fmt.Printf("retrieved list transaction %+v\n", resp)
 }

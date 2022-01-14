@@ -51,9 +51,9 @@ type RetailOutletPaymentsLinks struct {
 
 type RetailOutletPayment struct {
 	ID                        string               `json:"id"`
-	FixedPaymentCodeId        string               `json:"fixed_payment_code_id"`
-	FixedPaymentCodePaymentId string               `json:"fixed_payment_code_payment_id"`
-	FixedPaymentCode          string               `json:"fixed_payment_code"`
+	FixedPaymentCodeID        string               `json:"fixed_payment_code_id"`
+	FixedPaymentCodePaymentID string               `json:"fixed_payment_code_payment_id"`
+	PaymentCode               string               `json:"payment_code"`
 	RetailOutletName          RetailOutletNameEnum `json:"retail_outlet_name"`
 	Amount                    float64              `json:"amount"`
 	Status                    string               `json:"status"`

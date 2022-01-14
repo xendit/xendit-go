@@ -129,7 +129,6 @@ func TestGet(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header *http.Header
 
 			apiRequesterMockObj.On(
 				"Call",
@@ -137,7 +136,7 @@ func TestGet(t *testing.T) {
 				"GET",
 				xendit.Opt.XenditURL+"/v2/invoices/123",
 				xendit.Opt.SecretKey,
-				header,
+				&http.Header{},
 				nil,
 				&xendit.Invoice{},
 			).Return(nil)

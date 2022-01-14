@@ -41,6 +41,16 @@ func main() {
 	}
 	fmt.Printf("retrieved retail outlet fixed payment code: %+v\n", resp)
 
+	getPaymentByFixedPaymentCodeData := retailoutlet.GetPaymentByFixedPaymentCodeParams{
+		FixedPaymentCodeID: resp.ID,
+	}
+
+	respPayments, err := retailoutlet.GetPaymentByFixedPaymentCode(&getPaymentByFixedPaymentCodeData)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("retrieved retail outlet payments: %+v\n", respPayments)
+
 	expirationDate := time.Now().AddDate(0, 0, 1)
 
 	updateFixedPaymentCodeData := retailoutlet.UpdateFixedPaymentCodeParams{
