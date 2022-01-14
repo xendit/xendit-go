@@ -195,7 +195,7 @@ go test ./invoice -run TestCreateInvoice
 #### Run integration tests
 
 ```sh
-SECRET_KEY=<your secret key> go run ./integration_test
+SECRET_KEY=<your secret key> go run -race ./integration_test
 ```
 
 ### Pre-commit
