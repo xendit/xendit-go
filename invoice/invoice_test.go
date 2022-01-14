@@ -24,7 +24,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.Invoice).ID = "123"
@@ -82,7 +82,7 @@ func TestCreate(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/v2/invoices",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.Invoice{},
 			).Return(nil)
@@ -129,7 +129,7 @@ func TestGet(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header *http.Header
+			var header http.Header
 
 			apiRequesterMockObj.On(
 				"Call",
@@ -191,7 +191,7 @@ func TestExpire(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/invoices/123/expire!",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				nil,
 				&xendit.Invoice{},
 			).Return(nil)
@@ -208,7 +208,7 @@ type apiRequesterGetAllMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetAllMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{

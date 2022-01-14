@@ -27,7 +27,7 @@ func (c *Client) CreatePaymentMethodWithContext(ctx context.Context, data *Creat
 	}
 
 	response := &xendit.PaymentMethod{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

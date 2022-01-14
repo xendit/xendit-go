@@ -22,7 +22,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.DirectDebitPayment).ID = "ddpy-7e61b0a7-92f9-4762-a994-c2936306f44c"
@@ -227,7 +227,7 @@ func TestCreateDirectDebitPayment(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/direct_debits",
 				xendit.Opt.SecretKey,
-				&http.Header{"Idempotency-Key": []string{tC.data.IdempotencyKey}},
+				http.Header{"Idempotency-Key": []string{tC.data.IdempotencyKey}},
 				tC.data,
 				&xendit.DirectDebitPayment{},
 			).Return(nil)
@@ -244,7 +244,7 @@ type apiRequesterMockValidate struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockValidate) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockValidate) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.DirectDebitPayment).ID = "ddpy-7e61b0a7-92f9-4762-a994-c2936306f44c"
@@ -385,7 +385,7 @@ func TestValidateOTPForDirectDebitPayment(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/direct_debits/"+tC.data.DirectDebitID+"/validate_otp/",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.DirectDebitPayment{},
 			).Return(nil)
@@ -402,7 +402,7 @@ type apiRequesterMockGetByID struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockGetByID) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockGetByID) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	result.(*DirectDebitPaymentResponse).ID = "ddpy-7e61b0a7-92f9-4762-a994-c2936306f44c"
@@ -557,7 +557,7 @@ type apiRequesterMockGetByReferenceID struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockGetByReferenceID) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockGetByReferenceID) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{

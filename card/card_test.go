@@ -25,7 +25,7 @@ type apiRequesterChargeMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterChargeMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterChargeMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	created, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
@@ -258,7 +258,7 @@ type apiRequesterRefundMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterRefundMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterRefundMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	created, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
@@ -349,7 +349,7 @@ type apiRequesterReverseAuthorizationMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterReverseAuthorizationMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterReverseAuthorizationMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	created, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")

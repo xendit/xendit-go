@@ -81,7 +81,7 @@ func (c *Client) CreateDirectDebitPaymentWithContext(ctx context.Context, data *
 	}
 
 	response := &xendit.DirectDebitPayment{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -117,7 +117,7 @@ func (c *Client) ValidateOTPForDirectDebitPaymentWithContext(ctx context.Context
 	}
 
 	response := &xendit.DirectDebitPayment{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

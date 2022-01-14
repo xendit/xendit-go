@@ -114,7 +114,7 @@ func (c *Client) CreateRefundWithContext(ctx context.Context, data *CreateRefund
 	}
 
 	response := &xendit.CardRefund{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.IdempotencyKey != "" {
 		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)

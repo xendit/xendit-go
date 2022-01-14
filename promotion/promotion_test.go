@@ -25,7 +25,7 @@ type apiRequesterPromotionMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterPromotionMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterPromotionMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	mockTime, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
@@ -133,7 +133,7 @@ type apiRequesterGetPromotionsMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetPromotionsMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetPromotionsMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[
@@ -341,7 +341,7 @@ type apiRequesterDeletePromotionMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterDeletePromotionMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterDeletePromotionMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	result.(*xendit.PromotionDeletion).ID = "36ab1517-208a-4f22-b155-96fb101cb378"

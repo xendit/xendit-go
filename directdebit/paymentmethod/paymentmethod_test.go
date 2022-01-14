@@ -22,7 +22,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.PaymentMethod).ID = "pm-ebb1c863-c7b5-4f20-b116-b3071b1d3aef"
@@ -113,7 +113,7 @@ func TestCreatePaymentMethod(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/payment_methods",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.PaymentMethod{},
 			).Return(nil)
@@ -130,7 +130,7 @@ type apiRequesterMockGet struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{

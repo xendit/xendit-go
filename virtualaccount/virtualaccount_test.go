@@ -24,7 +24,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	expirationDate, _ := time.Parse(time.RFC3339, "2051-01-19T17:00:00.000Z")
@@ -99,7 +99,7 @@ func TestCreateFixedVA(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/callback_virtual_accounts",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -155,7 +155,7 @@ func TestGetFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header *http.Header
+			var header http.Header
 
 			apiRequesterMockObj.On(
 				"Call",
@@ -220,7 +220,7 @@ func TestUpdateFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header *http.Header
+			var header http.Header
 
 			apiRequesterMockObj.On(
 				"Call",
@@ -245,7 +245,7 @@ type apiRequesterGetAvailableBanksMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[
@@ -314,7 +314,7 @@ type apiRequesterGetPaymentMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetPaymentMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetPaymentMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	transactionTimestamp, _ := time.Parse(time.RFC3339, "2020-01-01T17:00:00.000Z")

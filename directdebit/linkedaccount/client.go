@@ -27,7 +27,7 @@ func (c *Client) InitializeLinkedAccountTokenizationWithContext(ctx context.Cont
 	}
 
 	response := &xendit.InitializedLinkedAccount{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -61,7 +61,7 @@ func (c *Client) ValidateOTPForLinkedAccountWithContext(ctx context.Context, dat
 	}
 
 	response := &xendit.ValidatedLinkedAccount{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -124,7 +124,7 @@ func (c *Client) UnbindLinkedAccountTokenWithContext(ctx context.Context, data *
 	}
 
 	response := &xendit.UnbindedLinkedAccount{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

@@ -27,7 +27,7 @@ func (c *Client) CreatePaymentWithContext(ctx context.Context, data *CreatePayme
 	}
 
 	response := &xendit.CardlessCredit{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	err := c.APIRequester.Call(
 		ctx,
