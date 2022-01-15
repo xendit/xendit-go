@@ -37,11 +37,13 @@ type CreateParams struct {
 
 // GetParams contains parameters for Get
 type GetParams struct {
-	ID string `json:"id" validate:"required"`
+	ForUserID string `json:"-"`
+	ID        string `json:"id" validate:"required"`
 }
 
 // GetAllParams contains parameters for GetAll
 type GetAllParams struct {
+	ForUserID          string    `json:"-"`
 	Statuses           []string  `json:"statuses,omitempty"`
 	Limit              int       `json:"limit,omitempty"`
 	CreatedAfter       time.Time `json:"created_after,omitempty"`
