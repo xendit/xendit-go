@@ -70,5 +70,10 @@ func main() {
 		wg.Done()
 	}()
 
+	go func() {
+		transactionTest()
+		wg.Done()
+	}()
+
 	wg.Wait()
 }

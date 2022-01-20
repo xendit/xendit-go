@@ -8,6 +8,7 @@ import (
 
 // CreateFixedPaymentCodeParams contains parameters for CreateFixedPaymentCode
 type CreateFixedPaymentCodeParams struct {
+	ForUserID        string                      `json:"-"`
 	ExternalID       string                      `json:"external_id" validate:"required"`
 	RetailOutletName xendit.RetailOutletNameEnum `json:"retail_outlet_name" validate:"required"`
 	Name             string                      `json:"name" validate:"required"`
@@ -19,16 +20,19 @@ type CreateFixedPaymentCodeParams struct {
 
 // GetFixedPaymentCodeParams contains parameters for GetFixedPaymentCode
 type GetFixedPaymentCodeParams struct {
+	ForUserID          string `json:"-"`
 	FixedPaymentCodeID string `json:"fixed_payment_code_id" validate:"required"`
 }
 
 // GetPaymentByFixedPaymentCodeParams contains parameters for GetFixedPaymentCode
 type GetPaymentByFixedPaymentCodeParams struct {
+	ForUserID          string `json:"-"`
 	FixedPaymentCodeID string `json:"fixed_payment_code_id" validate:"required"`
 }
 
 // UpdateFixedPaymentCodeParams contains parameters for UpdateFixedPaymentCode
 type UpdateFixedPaymentCodeParams struct {
+	ForUserID          string     `json:"-"`
 	FixedPaymentCodeID string     `json:"-" validate:"required"`
 	Name               string     `json:"name,omitempty"`
 	ExpectedAmount     float64    `json:"expected_amount,omitempty"`

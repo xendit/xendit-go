@@ -61,13 +61,18 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.I
 	}
 
 	response := &xendit.Invoice{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/v2/invoices/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)
@@ -94,6 +99,7 @@ func (c *Client) ExpireWithContext(ctx context.Context, data *ExpireParams) (*xe
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
+
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
@@ -120,8 +126,14 @@ func (c *Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]x
 	response := []xendit.Invoice{}
 	var queryString string
 
+	header := &http.Header{}
+
 	if data != nil {
 		queryString = data.QueryString()
+		if data.ForUserID != "" {
+			header.Add("for-user-id", data.ForUserID)
+		}
+
 	}
 
 	err := c.APIRequester.Call(
@@ -129,7 +141,7 @@ func (c *Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]x
 		"GET",
 		fmt.Sprintf("%s/v2/invoices?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		&response,
 	)

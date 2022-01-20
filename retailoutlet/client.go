@@ -3,6 +3,7 @@ package retailoutlet
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
@@ -26,13 +27,17 @@ func (c *Client) CreateFixedPaymentCodeWithContext(ctx context.Context, data *Cr
 	}
 
 	response := &xendit.RetailOutlet{}
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/fixed_payment_code", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
@@ -55,13 +60,17 @@ func (c *Client) GetFixedPaymentCodeWithContext(ctx context.Context, data *GetFi
 	}
 
 	response := &xendit.RetailOutlet{}
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/fixed_payment_code/%s", c.Opt.XenditURL, data.FixedPaymentCodeID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)
@@ -84,13 +93,17 @@ func (c *Client) GetPaymentByFixedPaymentCodeWithContext(ctx context.Context, da
 	}
 
 	response := &xendit.RetailOutletPayments{}
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/fixed_payment_code/%s/payments", c.Opt.XenditURL, data.FixedPaymentCodeID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)
@@ -113,13 +126,17 @@ func (c *Client) UpdateFixedPaymentCodeWithContext(ctx context.Context, data *Up
 	}
 
 	response := &xendit.RetailOutlet{}
+	header := &http.Header{}
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"PATCH",
 		fmt.Sprintf("%s/fixed_payment_code/%s", c.Opt.XenditURL, data.FixedPaymentCodeID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)

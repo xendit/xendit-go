@@ -27,13 +27,18 @@ func (c *Client) CreateChargeWithContext(ctx context.Context, data *CreateCharge
 	}
 
 	response := &xendit.CardCharge{}
+	header := &http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/credit_card_charges", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)

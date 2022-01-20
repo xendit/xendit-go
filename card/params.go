@@ -10,6 +10,7 @@ type Data struct {
 
 // CreateChargeParams contains parameters for CreateCharge
 type CreateChargeParams struct {
+	ForUserID        string  `json:"-"`
 	TokenID          string  `json:"token_id" validate:"required"`
 	ExternalID       string  `json:"external_id" validate:"required"`
 	Amount           float64 `json:"amount" validate:"required"`
