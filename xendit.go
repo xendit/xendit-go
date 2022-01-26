@@ -11,9 +11,10 @@ var Opt Option = Option{
 	XenditURL: "https://api.xendit.co",
 }
 
-var apiRequesterWrapper APIRequesterWrapper = APIRequesterWrapper{}
-
-var httpClient *http.Client = &http.Client{}
+var apiRequesterWrapper APIRequesterWrapper = APIRequesterWrapper{
+	mu:           new(sync.RWMutex),
+	apiRequester: &APIRequesterImplementation{HTTPClient: &http.Client{}},
+}
 
 // Option is the wrap of the parameters needed for the API call
 type Option struct {
@@ -24,20 +25,15 @@ type Option struct {
 // APIRequesterWrapper is the APIRequester with locker for setting the APIRequester
 type APIRequesterWrapper struct {
 	apiRequester APIRequester
-	mu           sync.RWMutex
+	mu           *sync.RWMutex
 }
 
 // GetAPIRequester returns the xendit APIRequester.
 // If it is already created, it will return the created one.
 // Else, it will create a default implementation.
 func GetAPIRequester() APIRequester {
-	if apiRequesterWrapper.apiRequester != nil {
-		return apiRequesterWrapper.apiRequester
-	}
-
-	apiRequesterWrapper.apiRequester = &APIRequesterImplementation{
-		HTTPClient: httpClient,
-	}
+	apiRequesterWrapper.mu.RLock()
+	defer apiRequesterWrapper.mu.RUnlock()
 
 	return apiRequesterWrapper.apiRequester
 }
@@ -52,5 +48,8 @@ func SetAPIRequester(apiRequester APIRequester) {
 
 // SetHTTPClient sets the httpClient for API call
 func SetHTTPClient(newHTTPClient *http.Client) {
-	httpClient = newHTTPClient
+	newAPIRequester := &APIRequesterImplementation{
+		HTTPClient: newHTTPClient,
+	}
+	SetAPIRequester(newAPIRequester)
 }
