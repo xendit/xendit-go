@@ -247,7 +247,7 @@ type apiRequesterGetPaymentByFixedPaymentCodeMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetPaymentByFixedPaymentCodeMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetPaymentByFixedPaymentCodeMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `{

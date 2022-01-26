@@ -27,7 +27,7 @@ func (c *Client) CreateChargeWithContext(ctx context.Context, data *CreateCharge
 	}
 
 	response := &xendit.CardCharge{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

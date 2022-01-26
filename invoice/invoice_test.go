@@ -136,7 +136,7 @@ func TestGet(t *testing.T) {
 				"GET",
 				xendit.Opt.XenditURL+"/v2/invoices/123",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				nil,
 				&xendit.Invoice{},
 			).Return(nil)
