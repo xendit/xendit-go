@@ -21,7 +21,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.EWallet).EWalletType = xendit.EWalletTypeDANA
@@ -79,7 +79,7 @@ func TestCreatePayment(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/ewallets",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.EWallet{},
 			).Return(nil)
@@ -96,7 +96,7 @@ type apiRequesterMockGet struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	result.(*getPaymentStatusResponse).EWalletType = xendit.EWalletTypeDANA
@@ -166,7 +166,7 @@ type apiRequesterMockPostCharge struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockPostCharge) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockPostCharge) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.EWalletCharge).ID = "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c"
@@ -267,7 +267,7 @@ func TestCreateEWalletCharge(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/ewallets/charges",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.EWalletCharge{},
 			).Return(nil)
@@ -284,7 +284,7 @@ type apiRequesterMockGetCharge struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockGetCharge) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockGetCharge) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	result.(*EWalletChargeResponse).ID = "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c"

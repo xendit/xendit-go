@@ -27,7 +27,7 @@ func (c *Client) CreateQRCodeWithContext(ctx context.Context, data *CreateQRCode
 	}
 
 	response := &xendit.QRCode{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -61,7 +61,7 @@ func (c *Client) GetQRCodeWithContext(ctx context.Context, data *GetQRCodeParams
 	}
 
 	response := &xendit.QRCode{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

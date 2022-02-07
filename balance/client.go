@@ -28,7 +28,7 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.B
 	}
 
 	response := &xendit.Balance{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

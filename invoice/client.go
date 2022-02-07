@@ -27,7 +27,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	}
 
 	response := &xendit.Invoice{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -61,7 +61,7 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.I
 	}
 
 	response := &xendit.Invoice{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -95,7 +95,7 @@ func (c *Client) ExpireWithContext(ctx context.Context, data *ExpireParams) (*xe
 	}
 
 	response := &xendit.Invoice{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -126,7 +126,7 @@ func (c *Client) GetAllWithContext(ctx context.Context, data *GetAllParams) ([]x
 	response := []xendit.Invoice{}
 	var queryString string
 
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data != nil {
 		queryString = data.QueryString()

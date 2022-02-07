@@ -27,7 +27,7 @@ func (c *Client) CreateFixedPaymentCodeWithContext(ctx context.Context, data *Cr
 	}
 
 	response := &xendit.RetailOutlet{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -60,7 +60,7 @@ func (c *Client) GetFixedPaymentCodeWithContext(ctx context.Context, data *GetFi
 	}
 
 	response := &xendit.RetailOutlet{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -93,7 +93,7 @@ func (c *Client) GetPaymentByFixedPaymentCodeWithContext(ctx context.Context, da
 	}
 
 	response := &xendit.RetailOutletPayments{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -126,7 +126,7 @@ func (c *Client) UpdateFixedPaymentCodeWithContext(ctx context.Context, data *Up
 	}
 
 	response := &xendit.RetailOutlet{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}

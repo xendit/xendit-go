@@ -22,7 +22,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.InitializedLinkedAccount).ID = "lat-f9dc34e7-153a-444e-b337-cd2599e7f670"
@@ -83,7 +83,7 @@ func TestInitializeLinkedAccountTokenization(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/linked_account_tokens/auth",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.InitializedLinkedAccount{},
 			).Return(nil)
@@ -100,7 +100,7 @@ type apiRequesterMockValidate struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockValidate) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockValidate) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.ValidatedLinkedAccount).ID = "lat-f9dc34e7-153a-444e-b337-cd2599e7f670"
@@ -153,7 +153,7 @@ func TestValidateOTPForLinkedAccount(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/linked_account_tokens/"+tC.data.LinkedAccountTokenID+"/validate_otp",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.ValidatedLinkedAccount{},
 			).Return(nil)
@@ -170,7 +170,7 @@ type apiRequesterMockRetrieve struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockRetrieve) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockRetrieve) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{
@@ -255,7 +255,7 @@ type apiRequesterMockUnbind struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockUnbind) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockUnbind) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.UnbindedLinkedAccount).ID = "lat-f9dc34e7-153a-444e-b337-cd2599e7f670"
@@ -301,7 +301,7 @@ func TestUnbindLinkedAccountToken(t *testing.T) {
 				"DELETE",
 				xendit.Opt.XenditURL+"/linked_account_tokens/"+tC.data.LinkedAccountTokenID,
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.UnbindedLinkedAccount{},
 			).Return(nil)
