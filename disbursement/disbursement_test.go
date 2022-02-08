@@ -24,7 +24,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.Disbursement).ID = "123"
@@ -93,7 +93,7 @@ func TestCreate(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/disbursements",
 				xendit.Opt.SecretKey,
-				mock.AnythingOfType("*http.Header"),
+				mock.AnythingOfType("http.Header"),
 				tC.data,
 				&xendit.Disbursement{},
 			).Return(nil)
@@ -149,7 +149,7 @@ func TestGetByID(t *testing.T) {
 				"GET",
 				xendit.Opt.XenditURL+"/disbursements/"+tC.data.DisbursementID,
 				xendit.Opt.SecretKey,
-				mock.AnythingOfType("*http.Header"),
+				mock.AnythingOfType("http.Header"),
 				nil,
 				&xendit.Disbursement{},
 			).Return(nil)
@@ -166,7 +166,7 @@ type apiRequesterGetByExternalIDMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetByExternalIDMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetByExternalIDMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{
@@ -267,7 +267,7 @@ type apiRequesterGetAvailableBanksMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[
@@ -344,7 +344,7 @@ type apiRequesterBatchMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterBatchMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterBatchMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	date, _ := time.Parse(time.RFC3339, "2050-01-01T00:00:00.000Z")
@@ -420,7 +420,7 @@ func TestCreateBatch(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/batch_disbursements",
 				xendit.Opt.SecretKey,
-				mock.AnythingOfType("*http.Header"),
+				mock.AnythingOfType("http.Header"),
 				tC.data,
 				&xendit.BatchDisbursement{},
 			).Return(nil)

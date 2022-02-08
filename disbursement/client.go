@@ -27,7 +27,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	}
 
 	response := &xendit.Disbursement{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.IdempotencyKey != "" {
 		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
@@ -64,7 +64,7 @@ func (c *Client) GetByIDWithContext(ctx context.Context, data *GetByIDParams) (*
 	}
 
 	response := &xendit.Disbursement{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -97,7 +97,7 @@ func (c *Client) GetByExternalIDWithContext(ctx context.Context, data *GetByExte
 	}
 
 	response := []xendit.Disbursement{}
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -155,7 +155,7 @@ func (c *Client) CreateBatchWithContext(ctx context.Context, data *CreateBatchPa
 	}
 
 	response := &xendit.BatchDisbursement{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.IdempotencyKey != "" {
 		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)

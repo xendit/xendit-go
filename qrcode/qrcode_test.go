@@ -25,7 +25,7 @@ type apiRequesterQRCodeMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterQRCodeMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterQRCodeMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	mockTime, _ := time.Parse(time.RFC3339, "2020-02-02T00:00:00.000Z")
@@ -172,7 +172,7 @@ type apiRequesterGetQRCodePaymentsMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterGetQRCodePaymentsMock) Call(ctx context.Context, method string, path string, secretKey string, headers *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterGetQRCodePaymentsMock) Call(ctx context.Context, method string, path string, secretKey string, headers http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[

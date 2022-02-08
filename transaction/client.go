@@ -29,7 +29,7 @@ func (c *Client) GetTransactionnWithContext(ctx context.Context, data *GetTransa
 
 	response := &xendit.Transaction{}
 
-	header := &http.Header{}
+	header := http.Header{}
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
@@ -62,7 +62,7 @@ func (c *Client) GetListTransactionWithContext(ctx context.Context, data *GetLis
 	}
 
 	response := &xendit.ListTransactions{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

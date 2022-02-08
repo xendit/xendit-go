@@ -27,7 +27,7 @@ func (c *Client) CreateChargeWithContext(ctx context.Context, data *CreateCharge
 	}
 
 	response := &xendit.CardCharge{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -119,7 +119,7 @@ func (c *Client) CreateRefundWithContext(ctx context.Context, data *CreateRefund
 	}
 
 	response := &xendit.CardRefund{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.IdempotencyKey != "" {
 		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)

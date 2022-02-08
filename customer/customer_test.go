@@ -22,7 +22,7 @@ type apiRequesterMock struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.Customer).ID = "791ac956-397a-400f-9fda-4958894e61b5"
@@ -117,7 +117,7 @@ func TestCreateCustomer(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/customers",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.Customer{},
 			).Return(nil)
@@ -134,7 +134,7 @@ type apiRequesterMockGet struct {
 	mock.Mock
 }
 
-func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header *http.Header, params interface{}, result interface{}) *xendit.Error {
+func (m *apiRequesterMockGet) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
 	resultString := `[{

@@ -27,7 +27,7 @@ func (c *Client) CreateCustomerWithContext(ctx context.Context, data *CreateCust
 	}
 
 	response := &xendit.Customer{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

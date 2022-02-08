@@ -27,7 +27,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	}
 
 	response := &xendit.RecurringPayment{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)

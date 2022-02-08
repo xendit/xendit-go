@@ -103,7 +103,7 @@ func (c *Client) CreatePaymentWithContext(ctx context.Context, data *CreatePayme
 	}
 
 	response := &xendit.EWallet{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -176,7 +176,7 @@ func (c *Client) CreateEWalletChargeWithContext(ctx context.Context, data *Creat
 	}
 
 	response := &xendit.EWalletCharge{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
@@ -213,7 +213,7 @@ func (c *Client) GetEWalletChargeStatusWithContext(ctx context.Context, data *Ge
 	}
 
 	tempResponse := &EWalletChargeResponse{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
