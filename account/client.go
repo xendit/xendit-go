@@ -27,7 +27,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	}
 
 	response := &xendit.Account{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	err := c.APIRequester.Call(
 		ctx,
@@ -57,7 +57,7 @@ func (c *Client) GetWithContext(ctx context.Context, data *GetParams) (*xendit.A
 	}
 
 	response := &xendit.Account{}
-	header := &http.Header{}
+	header := http.Header{}
 
 	err := c.APIRequester.Call(
 		ctx,

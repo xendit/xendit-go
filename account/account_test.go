@@ -24,7 +24,7 @@ type apiRequesterMock struct {
 }
 
 func (m *apiRequesterMock) Call(ctx context.Context, method string, path string, secretKey string,
-	header *http.Header, params interface{}, result interface{}) *xendit.Error {
+	header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, header, params, result)
 
 	result.(*xendit.Account).ID = "123"
@@ -75,7 +75,7 @@ func TestCreate(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/v2/accounts",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				tC.data,
 				&xendit.Account{},
 			).Return(nil)
@@ -127,7 +127,7 @@ func TestGet(t *testing.T) {
 				"GET",
 				xendit.Opt.XenditURL+"/v2/accounts/123",
 				xendit.Opt.SecretKey,
-				&http.Header{},
+				http.Header{},
 				nil,
 				&xendit.Account{},
 			).Return(nil)
