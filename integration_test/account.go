@@ -3,14 +3,17 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
+	"strconv"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/account"
 )
 
 func accountTest() {
+	email := strconv.Itoa(rand.Intn(100000000)) + "@example.com" //Generate more or less random email
 	data := account.CreateParams{
-		Email: "example@mail.com",
+		Email: email,
 		Type:  xendit.OWNED,
 		PublicProfile: xendit.PublicProfile{
 			BusinessName: "John Doe",
