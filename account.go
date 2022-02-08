@@ -28,4 +28,5 @@ type Account struct {
 	Email         string        `json:"email,omitempty"`
 	PublicProfile PublicProfile `json:"public_profile,omitempty"`
 	Country       string        `json:"country,omitempty"`
+	Status        Status        `json:"status,omitempty"`
 }

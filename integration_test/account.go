@@ -5,13 +5,16 @@ import (
 	"log"
 	"math/rand"
 	"strconv"
+	"time"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/account"
 )
 
 func accountTest() {
+	rand.Seed(time.Now().UnixNano())
 	email := strconv.Itoa(rand.Intn(100000000)) + "@example.com" //Generate more or less random email
+	// fmt.Println(email)
 	data := account.CreateParams{
 		Email: email,
 		Type:  xendit.OWNED,
@@ -36,5 +39,6 @@ func accountTest() {
 	if resp.Type != data.Type {
 		log.Panic("Type is not equal")
 	}
-	fmt.Println("Invoice integration tests done!")
+	fmt.Println(resp)
+	fmt.Println("Account integration tests done!")
 }
