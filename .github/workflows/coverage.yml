@@ -19,6 +19,7 @@ jobs:
       - run: >
           go test -race -covermode atomic -coverprofile=profile.cov \
             . \
+            ./account/... \
             ./balance/... \
             ./card/... \
             ./cardlesscredit/... \
