@@ -12,7 +12,7 @@ import (
 func ewalletTest() {
 	createPaymentData := ewallet.CreatePaymentParams{
 		ExternalID:  "ovo-" + time.Now().String(),
-		Amount:      1,
+		Amount:      3200,
 		Phone:       "08123123123",
 		EWalletType: xendit.EWalletTypeOVO,
 	}
