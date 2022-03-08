@@ -155,15 +155,13 @@ func TestGetFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header http.Header
-
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"GET",
 				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
-				header,
+				http.Header{},
 				nil,
 				&xendit.VirtualAccount{},
 			).Return(nil)
@@ -220,15 +218,13 @@ func TestUpdateFixedVA(t *testing.T) {
 
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			var header http.Header
-
 			apiRequesterMockObj.On(
 				"Call",
 				context.Background(),
 				"PATCH",
 				xendit.Opt.XenditURL+"/callback_virtual_accounts/"+tC.data.ID,
 				xendit.Opt.SecretKey,
-				header,
+				http.Header{},
 				tC.data,
 				&xendit.VirtualAccount{},
 			).Return(nil)
