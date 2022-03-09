@@ -19,11 +19,13 @@ type CreateFixedVAParams struct {
 
 // GetFixedVAParams contains parameters for GetFixedVA
 type GetFixedVAParams struct {
-	ID string `json:"id" validate:"required"`
+	ForUserID string `json:"-"`
+	ID        string `json:"id" validate:"required"`
 }
 
 // UpdateFixedVAParams contains parameters for UpdateFixedVA
 type UpdateFixedVAParams struct {
+	ForUserID       string     `json:"-"`
 	ID              string     `json:"-" validate:"required"`
 	IsSingleUse     *bool      `json:"is_single_use,omitempty"`
 	ExpirationDate  *time.Time `json:"expiration_date,omitempty"`
@@ -34,5 +36,6 @@ type UpdateFixedVAParams struct {
 
 // GetPaymentParams contains parameters for GetPayment
 type GetPaymentParams struct {
+	ForUserID string `json:"-"`
 	PaymentID string `json:"payment_id" validate:"required"`
 }

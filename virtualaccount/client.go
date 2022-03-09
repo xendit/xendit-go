@@ -61,13 +61,18 @@ func (c *Client) GetFixedVAWithContext(ctx context.Context, data *GetFixedVAPara
 	}
 
 	response := &xendit.VirtualAccount{}
+	header := http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/callback_virtual_accounts/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)
@@ -90,13 +95,18 @@ func (c *Client) UpdateFixedWithContext(ctx context.Context, data *UpdateFixedVA
 	}
 
 	response := &xendit.VirtualAccount{}
+	header := http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"PATCH",
 		fmt.Sprintf("%s/callback_virtual_accounts/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
@@ -144,13 +154,18 @@ func (c *Client) GetPaymentWithContext(ctx context.Context, data *GetPaymentPara
 	}
 
 	response := &xendit.VirtualAccountPayment{}
+	header := http.Header{}
+
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
 		fmt.Sprintf("%s/callback_virtual_account_payments/payment_id=%s", c.Opt.XenditURL, data.PaymentID),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		nil,
 		response,
 	)
