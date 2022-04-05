@@ -39,6 +39,5 @@ func accountTest() {
 	if resp.Type != data.Type {
 		log.Panic("Type is not equal")
 	}
-	fmt.Println(resp)
 	fmt.Println("Account integration tests done!")
 }
