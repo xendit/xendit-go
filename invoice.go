@@ -106,7 +106,7 @@ type InvoiceFee struct {
 	Value float64 `json:"value" validate:"required"`
 }
 
-// InvoiceFInvoicePaymentDetaile is data that contained in `Invoice` at PaymentDetail
+// InvoicePaymentDetaile is data that contained in `Invoice` at PaymentDetail
 type InvoicePaymentDetail struct {
 	ReceiptID string `json:"receipt_id,omitempty"`
 	Source    string `json:"source,omitempty"`
