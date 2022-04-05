@@ -108,6 +108,6 @@ type InvoiceFee struct {
 
 // InvoiceFInvoicePaymentDetaile is data that contained in `Invoice` at PaymentDetail
 type InvoicePaymentDetail struct {
-	Type  string  `json:"receipt_id,omitempty"`
-	Value float64 `json:"source,omitempty"`
+	ReceiptId string `json:"receipt_id,omitempty"`
+	Source    string `json:"source,omitempty"`
 }
