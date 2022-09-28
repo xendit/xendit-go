@@ -49,7 +49,9 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 			"xendit_withholding_tax": 0,
 			"third_party_withholding_tax": 0,
 			"status": "COMPLETED"
-		}
+		},
+		"settlement_status": "PENDING",
+		"estimated_settlement_time": "2021-06-23T02:42:15.601Z"
 	}`
 
 	_ = json.Unmarshal([]byte(resultString), &result)
@@ -63,6 +65,7 @@ func TestGetTransaction(t *testing.T) {
 
 	created := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
 	updated := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
+	estimatedSettlementTime := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
 
 	testCases := []struct {
 		desc        string
@@ -96,7 +99,10 @@ func TestGetTransaction(t *testing.T) {
 					XenditWithholdingTax:     0,
 					ThirdPartyWithholdingTax: 0,
 					Status:                   "COMPLETED",
-				}},
+				},
+				SettlementStatus:        "PENDING",
+				EstimatedSettlementTime: &estimatedSettlementTime,
+			},
 			expectedErr: nil,
 		},
 
@@ -153,7 +159,9 @@ func (m *apiRequesterGetListMock) Call(ctx context.Context, method string, path 
 				"cashflow": "MONEY_IN",
 				"business_id": "5fc9f5b246f820517e38c84d",
 				"created": "2021-06-23T02:42:15.601Z",
-				"updated": "2021-06-23T02:42:15.601Z"
+				"updated": "2021-06-23T02:42:15.601Z",
+				"settlement_status": "PENDING",
+				"estimated_settlement_time": "2021-06-23T02:42:15.601Z"
 			},
 			{
 				"id": "txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
@@ -169,7 +177,9 @@ func (m *apiRequesterGetListMock) Call(ctx context.Context, method string, path 
 				"cashflow": "MONEY_IN",
 				"business_id": "5fc9f5b246f820517e38c84d",
 				"created": "2021-06-23T02:39:23.176Z",
-				"updated": "2021-06-23T02:39:23.176Z"
+				"updated": "2021-06-23T02:39:23.176Z",
+				"settlement_status": "PENDING",
+				"estimated_settlement_time": "2021-06-23T02:42:15.601Z"
 			}
 		],
 		"links": [
@@ -192,9 +202,11 @@ func TestGetListTransaction(t *testing.T) {
 
 	created := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
 	updated := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
+	estimatedSettlementTime := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
 
 	created2 := time.Date(2021, 6, 23, 2, 39, 23, 176000000, time.UTC)
 	updated2 := time.Date(2021, 6, 23, 2, 39, 23, 176000000, time.UTC)
+	estimatedSettlementTime2 := time.Date(2021, 6, 23, 2, 42, 15, 601000000, time.UTC)
 
 	testCases := []struct {
 		desc        string
@@ -209,36 +221,40 @@ func TestGetListTransaction(t *testing.T) {
 				HasMore: true,
 				Data: []xendit.Transaction{
 					{
-						ID:                "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
-						ProductID:         "d290f1ee-6c54-4b01-90e6-d701748f0701",
-						Type:              "PAYMENT",
-						Status:            "SUCCESS",
-						ChannelCategory:   "RETAIL_OUTLET",
-						ChannelCode:       "ALFAMART",
-						ReferenceID:       "ref23244",
-						AccountIdentifier: "",
-						Currency:          "IDR",
-						Amount:            1,
-						Cashflow:          "MONEY_IN",
-						BusinessID:        "5fc9f5b246f820517e38c84d",
-						Created:           &created,
-						Updated:           &updated,
+						ID:                      "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
+						ProductID:               "d290f1ee-6c54-4b01-90e6-d701748f0701",
+						Type:                    "PAYMENT",
+						Status:                  "SUCCESS",
+						ChannelCategory:         "RETAIL_OUTLET",
+						ChannelCode:             "ALFAMART",
+						ReferenceID:             "ref23244",
+						AccountIdentifier:       "",
+						Currency:                "IDR",
+						Amount:                  1,
+						Cashflow:                "MONEY_IN",
+						BusinessID:              "5fc9f5b246f820517e38c84d",
+						Created:                 &created,
+						Updated:                 &updated,
+						SettlementStatus:        "PENDING",
+						EstimatedSettlementTime: &estimatedSettlementTime,
 					},
 					{
-						ID:                "txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
-						ProductID:         "d290f1ee-6c54-4b01-90e6-d701748f0700",
-						Type:              "PAYMENT",
-						Status:            "SUCCESS",
-						ChannelCategory:   "RETAIL_OUTLET",
-						ChannelCode:       "ALFAMART",
-						ReferenceID:       "ref242424",
-						AccountIdentifier: "",
-						Currency:          "IDR",
-						Amount:            1,
-						Cashflow:          "MONEY_IN",
-						BusinessID:        "5fc9f5b246f820517e38c84d",
-						Created:           &created2,
-						Updated:           &updated2,
+						ID:                      "txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
+						ProductID:               "d290f1ee-6c54-4b01-90e6-d701748f0700",
+						Type:                    "PAYMENT",
+						Status:                  "SUCCESS",
+						ChannelCategory:         "RETAIL_OUTLET",
+						ChannelCode:             "ALFAMART",
+						ReferenceID:             "ref242424",
+						AccountIdentifier:       "",
+						Currency:                "IDR",
+						Amount:                  1,
+						Cashflow:                "MONEY_IN",
+						BusinessID:              "5fc9f5b246f820517e38c84d",
+						Created:                 &created2,
+						Updated:                 &updated2,
+						SettlementStatus:        "PENDING",
+						EstimatedSettlementTime: &estimatedSettlementTime2,
 					},
 				},
 				Links: []xendit.ListTransactionsLinks{

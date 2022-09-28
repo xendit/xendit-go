@@ -6,22 +6,24 @@ import "time"
 // For more details see https://developers.xendit.co/api-reference/#transactions.
 // For documentation of subpackage payout, checkout https://pkg.go.dev/github.com/xendit/xendit-go/transaction
 type Transaction struct {
-	ID                string         `json:"id"`
-	ProductID         string         `json:"product_id"`
-	Type              string         `json:"type"`
-	ChannelCode       string         `json:"channel_code,omitempty"`
-	ReferenceID       string         `json:"reference_id"`
-	AccountIdentifier string         `json:"account_identifier,omitempty"`
-	Currency          string         `json:"currency,omitempty"`
-	Amount            float64        `json:"amount"`
-	NetAmount         float64        `json:"net_amount"`
-	Cashflow          string         `json:"cashflow"`
-	Status            string         `json:"status"`
-	ChannelCategory   string         `json:"channel_category"`
-	BusinessID        string         `json:"business_id"`
-	Created           *time.Time     `json:"created"`
-	Updated           *time.Time     `json:"updated"`
-	Fee               TransactionFee `json:"fee"`
+	ID                      string         `json:"id"`
+	ProductID               string         `json:"product_id"`
+	Type                    string         `json:"type"`
+	ChannelCode             string         `json:"channel_code,omitempty"`
+	ReferenceID             string         `json:"reference_id"`
+	AccountIdentifier       string         `json:"account_identifier,omitempty"`
+	Currency                string         `json:"currency,omitempty"`
+	Amount                  float64        `json:"amount"`
+	NetAmount               float64        `json:"net_amount"`
+	Cashflow                string         `json:"cashflow"`
+	Status                  string         `json:"status"`
+	ChannelCategory         string         `json:"channel_category"`
+	BusinessID              string         `json:"business_id"`
+	Created                 *time.Time     `json:"created"`
+	Updated                 *time.Time     `json:"updated"`
+	Fee                     TransactionFee `json:"fee"`
+	SettlementStatus        string         `json:"settlement_status"`
+	EstimatedSettlementTime *time.Time     `json:"estimated_settlement_time"`
 }
 
 type TransactionFee struct {
