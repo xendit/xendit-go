@@ -86,10 +86,20 @@ type InvoiceItem struct {
 
 // InvoiceCustomer is data that contained in `Invoice` at Customer
 type InvoiceCustomer struct {
-	GivenNames   string `json:"given_names,omitempty"`
-	Email        string `json:"email,omitempty"`
-	MobileNumber string `json:"mobile_number,omitempty"`
-	Address      string `json:"address,omitempty"`
+	GivenNames   string                   `json:"given_names,omitempty"`
+	Surname      string                   `json:"surname,omitempty"`
+	Email        string                   `json:"email,omitempty"`
+	MobileNumber string                   `json:"mobile_number,omitempty"`
+	Address      []InvoiceCustomerAddress `json:"addresses,omitempty"`
+}
+
+type InvoiceCustomerAddress struct {
+	City        string `json:"city,omitempty"`
+	Country     string `json:"country,omitempty"`
+	PostalCode  string `json:"postal_code,omitempty"`
+	State       string `json:"state,omitempty"`
+	StreetLine1 string `json:"street_line1,omitempty"`
+	StreetLine2 string `json:"street_line2,omitempty"`
 }
 
 // InvoiceCustomerNotificationPreference is data that contained in `Invoice` at CustomerNotificationPreference
