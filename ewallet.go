@@ -7,9 +7,13 @@ type EWalletTypeEnum string
 
 // This consists the values that EWalletTypeEnum can take
 const (
-	EWalletTypeOVO     EWalletTypeEnum = "OVO"
-	EWalletTypeDANA    EWalletTypeEnum = "DANA"
-	EWalletTypeLINKAJA EWalletTypeEnum = "LINKAJA"
+	EWalletTypeOVO       EWalletTypeEnum = "OVO"
+	EWalletTypeDANA      EWalletTypeEnum = "DANA"
+	EWalletTypeLINKAJA   EWalletTypeEnum = "LINKAJA"
+	EWalletTypeSHOPEEPAY EWalletTypeEnum = "SHOPEEPAY"
+	EWalletTypeGCASH     EWalletTypeEnum = "GCASH"
+	EWalletTypeGRABPAY   EWalletTypeEnum = "GRABPAY"
+	EWalletTypePAYMAYA   EWalletTypeEnum = "PAYMAYA"
 )
 
 // EWallet contains data from Xendit's API response of e-wallet related requests.
