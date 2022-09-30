@@ -8,24 +8,26 @@ import (
 
 // CreateParams contains parameters for Create
 type CreateParams struct {
-	ForUserID           string                              `json:"-"`
-	ExternalID          string                              `json:"external_id" validate:"required"`
-	PayerEmail          string                              `json:"payer_email" validate:"required"`
-	Description         string                              `json:"description" validate:"required"`
-	Amount              float64                             `json:"amount" validate:"required"`
-	Interval            xendit.RecurringPaymentIntervalEnum `json:"interval" validate:"required"`
-	IntervalCount       int                                 `json:"interval_count" validate:"required"`
-	TotalRecurrence     int                                 `json:"total_recurrence,omitempty"`
-	InvoiceDuration     int                                 `json:"invoice_duration,omitempty"`
-	ShouldSendEmail     *bool                               `json:"should_send_email,omitempty"`
-	MissedPaymentAction xendit.MissedPaymentActionEnum      `json:"missed_payment_action,omitempty"`
-	CreditCardToken     string                              `json:"credit_card_token,omitempty"`
-	StartDate           *time.Time                          `json:"start_date,omitempty"`
-	SuccessRedirectURL  string                              `json:"success_redirect_url,omitempty"`
-	FailureRedirectURL  string                              `json:"failure_redirect_url,omitempty"`
-	Recharge            *bool                               `json:"recharge,omitempty"`
-	ChargeImmediately   *bool                               `json:"charge_immediately,omitempty"`
-	Currency            string                              `json:"currency,omitempty"`
+	ForUserID                      string                                `json:"-"`
+	ExternalID                     string                                `json:"external_id" validate:"required"`
+	PayerEmail                     string                                `json:"payer_email" validate:"required"`
+	Description                    string                                `json:"description" validate:"required"`
+	Amount                         float64                               `json:"amount" validate:"required"`
+	Interval                       xendit.RecurringPaymentIntervalEnum   `json:"interval" validate:"required"`
+	IntervalCount                  int                                   `json:"interval_count" validate:"required"`
+	TotalRecurrence                int                                   `json:"total_recurrence,omitempty"`
+	InvoiceDuration                int                                   `json:"invoice_duration,omitempty"`
+	ShouldSendEmail                *bool                                 `json:"should_send_email,omitempty"`
+	Customer                       xendit.RecurringPaymentCustomer       `json:"customer,omitempty"`
+	CustomerNotificationPreference xendit.CustomerNotificationPreference `json:"customer_notification_preference,omitempty"`
+	MissedPaymentAction            xendit.MissedPaymentActionEnum        `json:"missed_payment_action,omitempty"`
+	CreditCardToken                string                                `json:"credit_card_token,omitempty"`
+	StartDate                      *time.Time                            `json:"start_date,omitempty"`
+	SuccessRedirectURL             string                                `json:"success_redirect_url,omitempty"`
+	FailureRedirectURL             string                                `json:"failure_redirect_url,omitempty"`
+	Recharge                       *bool                                 `json:"recharge,omitempty"`
+	ChargeImmediately              *bool                                 `json:"charge_immediately,omitempty"`
+	Currency                       string                                `json:"currency,omitempty"`
 }
 
 // GetParams contains parameters for Get
