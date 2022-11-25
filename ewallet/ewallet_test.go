@@ -172,26 +172,55 @@ func (m *apiRequesterMockPostCharge) Call(ctx context.Context, method string, pa
 	result.(*xendit.EWalletCharge).ID = "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c"
 	result.(*xendit.EWalletCharge).BusinessID = "business-id-example"
 	result.(*xendit.EWalletCharge).ReferenceID = "test-reference-id"
+	result.(*xendit.EWalletCharge).Status = "SUCCEEDED"
 	result.(*xendit.EWalletCharge).Currency = "IDR"
 	result.(*xendit.EWalletCharge).ChargeAmount = 10000
 	result.(*xendit.EWalletCharge).CaptureAmount = 10000
-	result.(*xendit.EWalletCharge).CheckoutMethod = "ONE_TIME_PAYMENT"
-	result.(*xendit.EWalletCharge).ChannelCode = "ID_SHOPEEPAY"
+	result.(*xendit.EWalletCharge).PayerChargedCurrency = "IDR"
+	result.(*xendit.EWalletCharge).PayerChargedAmount = 10000
+	result.(*xendit.EWalletCharge).RefundedAmount = 0
+	result.(*xendit.EWalletCharge).CheckoutMethod = "TOKENIZED_PAYMENT"
+	result.(*xendit.EWalletCharge).ChannelCode = "ID_OVO"
 	result.(*xendit.EWalletCharge).ChannelProperties = map[string]string{
 		"success_redirect_url": "https://yourwebsite.com/order/123",
+		"failure_redirect_url": "https://yourwebsite.com/failure",
+		"cancel_redirect_url":  "https://yourwebsite.com/cancel",
 	}
-	result.(*xendit.EWalletCharge).Actions = map[string]string{
-		"desktop_web_checkout_url":     "https://desktop.web.checkout.url",
-		"mobile_web_checkout_url":      "https://mobile.web.checkout.url",
-		"mobile_deeplink_checkout_url": "https://mobile.deeplink.checkout.url",
-		"qr_checkout_string":           "test-qr-string",
+	result.(*xendit.EWalletCharge).Actions = xendit.Actions{
+		DesktopWebCheckoutURL:     func(i string) *string { return &i }("https://desktop.web.checkout.url"),
+		MobileWebCheckoutURL:      func(i string) *string { return &i }("https://mobile.web.checkout.url"),
+		MobileDeeplinkCheckoutURL: func(i string) *string { return &i }("https://mobile.deeplink.checkout.url"),
+		QrCheckoutString:          func(i string) *string { return &i }("test-qr-string"),
 	}
 	result.(*xendit.EWalletCharge).IsRedirectRequired = true
 	result.(*xendit.EWalletCharge).CallbackURL = "https://yourwebsite.com/order/123"
 	result.(*xendit.EWalletCharge).Created = "2021-02-09T06:22:35.064408Z"
 	result.(*xendit.EWalletCharge).Updated = "2021-02-09T06:22:35.064408Z"
+	result.(*xendit.EWalletCharge).VoidStatus = ""
+	result.(*xendit.EWalletCharge).VoidedAt = ""
 	result.(*xendit.EWalletCharge).CaptureNow = true
-
+	result.(*xendit.EWalletCharge).CustomerID = "f3925450-5c54-4777-98c1-fcf22b0d1e1c"
+	result.(*xendit.EWalletCharge).Customer = &xendit.EwalletCustomer{
+		ReferenceId:            func(i string) *string { return &i }("sample_customer_reference_id"),
+		GivenNames:             func(i string) *string { return &i }("sample_given_name"),
+		Surname:                func(i string) *string { return &i }("sample_surname"),
+		Email:                  func(i string) *string { return &i }("sample_email"),
+		MobileNumber:           func(i string) *string { return &i }("sample_mobile_number"),
+		DomicileOfRegistration: func(i string) *string { return &i }("sample_domicile"),
+		DateOfRegistration:     func(i string) *string { return &i }("sample_dor"),
+	}
+	result.(*xendit.EWalletCharge).PaymentMethodID = "pm-f3925450-5c54-4777-98c1-fcf22b0d1e1c"
+	result.(*xendit.EWalletCharge).FailureCode = ""
+	result.(*xendit.EWalletCharge).Basket = []xendit.EWalletBasketItem{}
+	result.(*xendit.EWalletCharge).Metadata = map[string]interface{}{}
+	result.(*xendit.EWalletCharge).ShippingInformation = &xendit.ShippingInformation{
+		Country:       "ID",
+		StreetLine1:   "sample_street_line",
+		StreetLine2:   func(i string) *string { return &i }("sample_street_line_2"),
+		City:          "sample_city",
+		ProvinceState: "sample_province",
+		PostalCode:    "sample_postal_code",
+	}
 	return nil
 }
 
@@ -206,40 +235,97 @@ func TestCreateEWalletCharge(t *testing.T) {
 		expectedErr *xendit.Error
 	}{
 		{
-			desc: "should create an e-wallet charge",
+			desc: "should create an e-wallet charge with additional parameters",
 			data: &CreateEWalletChargeParams{
 				ReferenceID:    "test-reference-id",
 				Currency:       "IDR",
 				Amount:         10000,
-				CheckoutMethod: "ONE_TIME_PAYMENT",
-				ChannelCode:    "ID_SHOPEEPAY",
+				CheckoutMethod: "TOKENIZED_PAYMENT",
+				ChannelCode:    "ID_OVO",
 				ChannelProperties: map[string]string{
 					"success_redirect_url": "https://yourwebsite.com/order/123",
+					"failure_redirect_url": "https://yourwebsite.com/failure",
+					"cancel_redirect_url":  "https://yourwebsite.com/cancel",
 				},
+				CaptureNow:      true,
+				CustomerID:      "f3925450-5c54-4777-98c1-fcf22b0d1e1c",
+				PaymentMethodID: "pm-f3925450-5c54-4777-98c1-fcf22b0d1e1c",
+				Customer: xendit.EwalletCustomer{
+					ReferenceId:            func(i string) *string { return &i }("sample_customer_reference_id"),
+					GivenNames:             func(i string) *string { return &i }("sample_given_name"),
+					Surname:                func(i string) *string { return &i }("sample_surname"),
+					Email:                  func(i string) *string { return &i }("sample_email"),
+					MobileNumber:           func(i string) *string { return &i }("sample_mobile_number"),
+					DomicileOfRegistration: func(i string) *string { return &i }("sample_domicile"),
+					DateOfRegistration:     func(i string) *string { return &i }("sample_dor"),
+				},
+				ShippingInformation: xendit.ShippingInformation{
+					Country:       "ID",
+					StreetLine1:   "sample_street_line",
+					StreetLine2:   func(i string) *string { return &i }("sample_street_line_2"),
+					City:          "sample_city",
+					ProvinceState: "sample_province",
+					PostalCode:    "sample_postal_code",
+				},
+				Basket:   []xendit.EWalletBasketItem{},
+				Metadata: map[string]interface{}{},
 			},
 			expectedRes: &xendit.EWalletCharge{
-				ID:             "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c",
-				BusinessID:     "business-id-example",
-				ReferenceID:    "test-reference-id",
-				Currency:       "IDR",
-				ChargeAmount:   10000,
-				CaptureAmount:  10000,
-				CheckoutMethod: "ONE_TIME_PAYMENT",
-				ChannelCode:    "ID_SHOPEEPAY",
+				ID:                   "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c",
+				BusinessID:           "business-id-example",
+				ReferenceID:          "test-reference-id",
+				Status:               "SUCCEEDED",
+				Currency:             "IDR",
+				ChargeAmount:         10000,
+				CaptureAmount:        10000,
+				PayerChargedCurrency: "IDR",
+				PayerChargedAmount:   10000,
+				RefundedAmount:       0,
+				CheckoutMethod:       "TOKENIZED_PAYMENT",
+				ChannelCode:          "ID_OVO",
 				ChannelProperties: map[string]string{
 					"success_redirect_url": "https://yourwebsite.com/order/123",
+					"failure_redirect_url": "https://yourwebsite.com/failure",
+					"cancel_redirect_url":  "https://yourwebsite.com/cancel",
 				},
-				Actions: map[string]string{
-					"desktop_web_checkout_url":     "https://desktop.web.checkout.url",
-					"mobile_web_checkout_url":      "https://mobile.web.checkout.url",
-					"mobile_deeplink_checkout_url": "https://mobile.deeplink.checkout.url",
-					"qr_checkout_string":           "test-qr-string",
-				},
+				Actions: xendit.Actions{DesktopWebCheckoutURL: func(i string) *string {
+					return &i
+				}("https://desktop.web.checkout.url"), MobileWebCheckoutURL: func(i string) *string {
+					return &i
+				}("https://mobile.web.checkout.url"), MobileDeeplinkCheckoutURL: func(i string) *string {
+					return &i
+				}("https://mobile.deeplink.checkout.url"), QrCheckoutString: func(i string) *string {
+					return &i
+				}("test-qr-string")},
 				IsRedirectRequired: true,
 				CallbackURL:        "https://yourwebsite.com/order/123",
 				Created:            "2021-02-09T06:22:35.064408Z",
 				Updated:            "2021-02-09T06:22:35.064408Z",
+				VoidStatus:         "",
+				VoidedAt:           "",
 				CaptureNow:         true,
+				CustomerID:         "f3925450-5c54-4777-98c1-fcf22b0d1e1c",
+				Customer: &xendit.EwalletCustomer{
+					ReferenceId:            func(i string) *string { return &i }("sample_customer_reference_id"),
+					GivenNames:             func(i string) *string { return &i }("sample_given_name"),
+					Surname:                func(i string) *string { return &i }("sample_surname"),
+					Email:                  func(i string) *string { return &i }("sample_email"),
+					MobileNumber:           func(i string) *string { return &i }("sample_mobile_number"),
+					DomicileOfRegistration: func(i string) *string { return &i }("sample_domicile"),
+					DateOfRegistration:     func(i string) *string { return &i }("sample_dor"),
+				},
+				PaymentMethodID: "pm-f3925450-5c54-4777-98c1-fcf22b0d1e1c",
+				FailureCode:     "",
+				Basket:          []xendit.EWalletBasketItem{},
+				Metadata:        map[string]interface{}{},
+				ShippingInformation: &xendit.ShippingInformation{
+					Country:       "ID",
+					StreetLine1:   "sample_street_line",
+					StreetLine2:   func(i string) *string { return &i }("sample_street_line_2"),
+					City:          "sample_city",
+					ProvinceState: "sample_province",
+					PostalCode:    "sample_postal_code",
+				},
 			},
 			expectedErr: nil,
 		},
@@ -287,28 +373,30 @@ type apiRequesterMockGetCharge struct {
 func (m *apiRequesterMockGetCharge) Call(ctx context.Context, method string, path string, secretKey string, header http.Header, params interface{}, result interface{}) *xendit.Error {
 	m.Called(ctx, method, path, secretKey, nil, params, result)
 
-	result.(*EWalletChargeResponse).ID = "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c"
-	result.(*EWalletChargeResponse).BusinessID = "business-id-example"
-	result.(*EWalletChargeResponse).ReferenceID = "test-reference-id"
-	result.(*EWalletChargeResponse).Currency = "IDR"
-	result.(*EWalletChargeResponse).ChargeAmount = 10000
-	result.(*EWalletChargeResponse).CaptureAmount = 10000
-	result.(*EWalletChargeResponse).CheckoutMethod = "ONE_TIME_PAYMENT"
-	result.(*EWalletChargeResponse).ChannelCode = "ID_SHOPEEPAY"
-	result.(*EWalletChargeResponse).ChannelProperties = map[string]string{
+	result.(*xendit.EWalletCharge).ID = "ewc_f3925450-5c54-4777-98c1-fcf22b0d1e1c"
+	result.(*xendit.EWalletCharge).BusinessID = "business-id-example"
+	result.(*xendit.EWalletCharge).ReferenceID = "test-reference-id"
+	result.(*xendit.EWalletCharge).Currency = "IDR"
+	result.(*xendit.EWalletCharge).ChargeAmount = 10000
+	result.(*xendit.EWalletCharge).CaptureAmount = 10000
+	result.(*xendit.EWalletCharge).CheckoutMethod = "ONE_TIME_PAYMENT"
+	result.(*xendit.EWalletCharge).ChannelCode = "ID_SHOPEEPAY"
+	result.(*xendit.EWalletCharge).ChannelProperties = map[string]string{
 		"success_redirect_url": "https://yourwebsite.com/order/123",
 	}
-	result.(*EWalletChargeResponse).Actions = map[string]string{
-		"desktop_web_checkout_url":     "https://desktop.web.checkout.url",
-		"mobile_web_checkout_url":      "https://mobile.web.checkout.url",
-		"mobile_deeplink_checkout_url": "https://mobile.deeplink.checkout.url",
-		"qr_checkout_string":           "test-qr-string",
+
+	result.(*xendit.EWalletCharge).Actions = xendit.Actions{
+		DesktopWebCheckoutURL:     func(i string) *string { return &i }("https://desktop.web.checkout.url"),
+		MobileWebCheckoutURL:      func(i string) *string { return &i }("https://mobile.web.checkout.url"),
+		MobileDeeplinkCheckoutURL: func(i string) *string { return &i }("https://mobile.deeplink.checkout.url"),
+		QrCheckoutString:          func(i string) *string { return &i }("test-qr-string"),
 	}
-	result.(*EWalletChargeResponse).IsRedirectRequired = true
-	result.(*EWalletChargeResponse).CallbackURL = "https://yourwebsite.com/order/123"
-	result.(*EWalletChargeResponse).Created = "2021-02-09T06:22:35.064408Z"
-	result.(*EWalletChargeResponse).Updated = "2021-02-09T06:22:35.064408Z"
-	result.(*EWalletChargeResponse).CaptureNow = true
+
+	result.(*xendit.EWalletCharge).IsRedirectRequired = true
+	result.(*xendit.EWalletCharge).CallbackURL = "https://yourwebsite.com/order/123"
+	result.(*xendit.EWalletCharge).Created = "2021-02-09T06:22:35.064408Z"
+	result.(*xendit.EWalletCharge).Updated = "2021-02-09T06:22:35.064408Z"
+	result.(*xendit.EWalletCharge).CaptureNow = true
 
 	return nil
 }
@@ -340,11 +428,11 @@ func TestGetEWalletChargeStatus(t *testing.T) {
 				ChannelProperties: map[string]string{
 					"success_redirect_url": "https://yourwebsite.com/order/123",
 				},
-				Actions: map[string]string{
-					"desktop_web_checkout_url":     "https://desktop.web.checkout.url",
-					"mobile_web_checkout_url":      "https://mobile.web.checkout.url",
-					"mobile_deeplink_checkout_url": "https://mobile.deeplink.checkout.url",
-					"qr_checkout_string":           "test-qr-string",
+				Actions: xendit.Actions{
+					DesktopWebCheckoutURL:     func(i string) *string { return &i }("https://desktop.web.checkout.url"),
+					MobileWebCheckoutURL:      func(i string) *string { return &i }("https://mobile.web.checkout.url"),
+					MobileDeeplinkCheckoutURL: func(i string) *string { return &i }("https://mobile.deeplink.checkout.url"),
+					QrCheckoutString:          func(i string) *string { return &i }("test-qr-string"),
 				},
 				IsRedirectRequired: true,
 				CallbackURL:        "https://yourwebsite.com/order/123",
@@ -372,7 +460,7 @@ func TestGetEWalletChargeStatus(t *testing.T) {
 				xendit.Opt.SecretKey,
 				nil,
 				nil,
-				&EWalletChargeResponse{},
+				&xendit.EWalletCharge{},
 			).Return(nil)
 
 			resp, err := GetEWalletChargeStatus(tC.data)

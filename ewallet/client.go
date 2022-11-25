@@ -28,31 +28,6 @@ type getPaymentStatusResponse struct {
 	BusinessID      string                 `json:"business_id,omitempty"`
 }
 
-type EWalletChargeResponse struct {
-	ID                 string                     `json:"id"`
-	BusinessID         string                     `json:"business_id"`
-	ReferenceID        string                     `json:"reference_id"`
-	Status             string                     `json:"status"`
-	Currency           string                     `json:"currency"`
-	ChargeAmount       float64                    `json:"charge_amount"`
-	CaptureAmount      float64                    `json:"capture_amount"`
-	CheckoutMethod     string                     `json:"checkout_method"`
-	ChannelCode        string                     `json:"channel_code"`
-	ChannelProperties  map[string]string          `json:"channel_properties"`
-	Actions            map[string]string          `json:"actions"`
-	IsRedirectRequired bool                       `json:"is_redirect_required"`
-	CallbackURL        string                     `json:"callback_url"`
-	Created            string                     `json:"created"`
-	Updated            string                     `json:"updated"`
-	VoidedAt           string                     `json:"voided_at"`
-	CaptureNow         bool                       `json:"capture_now"`
-	CustomerID         string                     `json:"customer_id"`
-	PaymentMethodID    string                     `json:"payment_method_id"`
-	FailureCode        string                     `json:"failure_code"`
-	Basket             []xendit.EWalletBasketItem `json:"basket"`
-	Metadata           map[string]interface{}     `json:"metadata"`
-}
-
 func (r *getPaymentStatusResponse) toEwalletResponse() *xendit.EWallet {
 	return &xendit.EWallet{
 		EWalletType:     r.EWalletType,
@@ -61,33 +36,6 @@ func (r *getPaymentStatusResponse) toEwalletResponse() *xendit.EWallet {
 		TransactionDate: r.TransactionDate,
 		CheckoutURL:     r.CheckoutURL,
 		BusinessID:      r.BusinessID,
-	}
-}
-
-func (r *EWalletChargeResponse) toEWalletChargeResponse() *xendit.EWalletCharge {
-	return &xendit.EWalletCharge{
-		ID:                 r.ID,
-		BusinessID:         r.BusinessID,
-		ReferenceID:        r.ReferenceID,
-		Status:             r.Status,
-		Currency:           r.Currency,
-		ChargeAmount:       r.ChargeAmount,
-		CaptureAmount:      r.CaptureAmount,
-		CheckoutMethod:     r.CheckoutMethod,
-		ChannelCode:        r.ChannelCode,
-		ChannelProperties:  r.ChannelProperties,
-		Actions:            r.Actions,
-		IsRedirectRequired: r.IsRedirectRequired,
-		CallbackURL:        r.CallbackURL,
-		Created:            r.Created,
-		Updated:            r.Updated,
-		VoidedAt:           r.VoidedAt,
-		CaptureNow:         r.CaptureNow,
-		CustomerID:         r.CustomerID,
-		PaymentMethodID:    r.PaymentMethodID,
-		FailureCode:        r.FailureCode,
-		Basket:             r.Basket,
-		Metadata:           r.Metadata,
 	}
 }
 
@@ -212,7 +160,7 @@ func (c *Client) GetEWalletChargeStatusWithContext(ctx context.Context, data *Ge
 		return nil, validator.APIValidatorErr(err)
 	}
 
-	tempResponse := &EWalletChargeResponse{}
+	response := &xendit.EWalletCharge{}
 	header := http.Header{}
 
 	if data.ForUserID != "" {
@@ -226,13 +174,11 @@ func (c *Client) GetEWalletChargeStatusWithContext(ctx context.Context, data *Ge
 		c.Opt.SecretKey,
 		header,
 		nil,
-		tempResponse,
+		response,
 	)
 	if err != nil {
 		return nil, err
 	}
-
-	response := tempResponse.toEWalletChargeResponse()
 
 	return response, nil
 }
