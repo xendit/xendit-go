@@ -205,13 +205,27 @@ func (m *apiRequesterMockPostCharge) Call(ctx context.Context, method string, pa
 		GivenNames:             func(i string) *string { return &i }("sample_given_name"),
 		Surname:                func(i string) *string { return &i }("sample_surname"),
 		Email:                  func(i string) *string { return &i }("sample_email"),
-		MobileNumber:           func(i string) *string { return &i }("sample_mobile_number"),
-		DomicileOfRegistration: func(i string) *string { return &i }("sample_domicile"),
-		DateOfRegistration:     func(i string) *string { return &i }("sample_dor"),
+		MobileNumber:           func(i string) *string { return &i }("+6312345678"),
+		DomicileOfRegistration: func(i string) *string { return &i }("ID"),
+		DateOfRegistration:     func(i string) *string { return &i }("2022-01-01"),
 	}
 	result.(*xendit.EWalletCharge).PaymentMethodID = "pm-f3925450-5c54-4777-98c1-fcf22b0d1e1c"
 	result.(*xendit.EWalletCharge).FailureCode = ""
-	result.(*xendit.EWalletCharge).Basket = []xendit.EWalletBasketItem{}
+	result.(*xendit.EWalletCharge).Basket = []xendit.EWalletBasketItem{
+		{
+			ReferenceID: "sample_basket_ref_id",
+			Name:        "sample_basket_name",
+			Category:    "sample_category",
+			Currency:    "IDR",
+			Price:       10000,
+			Quantity:    1,
+			Type:        "sample_type",
+			Url:         "sample_url",
+			Description: "sample_desc",
+			SubCategory: "sample_subcat",
+			Metadata:    map[string]interface{}{},
+		},
+	}
 	result.(*xendit.EWalletCharge).Metadata = map[string]interface{}{}
 	result.(*xendit.EWalletCharge).ShippingInformation = &xendit.ShippingInformation{
 		Country:       "ID",
@@ -250,16 +264,16 @@ func TestCreateEWalletCharge(t *testing.T) {
 				CaptureNow:      true,
 				CustomerID:      "f3925450-5c54-4777-98c1-fcf22b0d1e1c",
 				PaymentMethodID: "pm-f3925450-5c54-4777-98c1-fcf22b0d1e1c",
-				Customer: xendit.EwalletCustomer{
+				Customer: &xendit.EwalletCustomer{
 					ReferenceId:            func(i string) *string { return &i }("sample_customer_reference_id"),
 					GivenNames:             func(i string) *string { return &i }("sample_given_name"),
 					Surname:                func(i string) *string { return &i }("sample_surname"),
 					Email:                  func(i string) *string { return &i }("sample_email"),
-					MobileNumber:           func(i string) *string { return &i }("sample_mobile_number"),
-					DomicileOfRegistration: func(i string) *string { return &i }("sample_domicile"),
-					DateOfRegistration:     func(i string) *string { return &i }("sample_dor"),
+					MobileNumber:           func(i string) *string { return &i }("+6312345678"),
+					DomicileOfRegistration: func(i string) *string { return &i }("ID"),
+					DateOfRegistration:     func(i string) *string { return &i }("2022-01-01"),
 				},
-				ShippingInformation: xendit.ShippingInformation{
+				ShippingInformation: &xendit.ShippingInformation{
 					Country:       "ID",
 					StreetLine1:   "sample_street_line",
 					StreetLine2:   func(i string) *string { return &i }("sample_street_line_2"),
@@ -267,7 +281,21 @@ func TestCreateEWalletCharge(t *testing.T) {
 					ProvinceState: "sample_province",
 					PostalCode:    "sample_postal_code",
 				},
-				Basket:   []xendit.EWalletBasketItem{},
+				Basket: []xendit.EWalletBasketItem{
+					{
+						ReferenceID: "sample_basket_ref_id",
+						Name:        "sample_basket_name",
+						Category:    "sample_category",
+						Currency:    "IDR",
+						Price:       10000,
+						Quantity:    1,
+						Type:        "sample_type",
+						Url:         "sample_url",
+						Description: "sample_desc",
+						SubCategory: "sample_subcat",
+						Metadata:    map[string]interface{}{},
+					},
+				},
 				Metadata: map[string]interface{}{},
 			},
 			expectedRes: &xendit.EWalletCharge{
@@ -310,14 +338,28 @@ func TestCreateEWalletCharge(t *testing.T) {
 					GivenNames:             func(i string) *string { return &i }("sample_given_name"),
 					Surname:                func(i string) *string { return &i }("sample_surname"),
 					Email:                  func(i string) *string { return &i }("sample_email"),
-					MobileNumber:           func(i string) *string { return &i }("sample_mobile_number"),
-					DomicileOfRegistration: func(i string) *string { return &i }("sample_domicile"),
-					DateOfRegistration:     func(i string) *string { return &i }("sample_dor"),
+					MobileNumber:           func(i string) *string { return &i }("+6312345678"),
+					DomicileOfRegistration: func(i string) *string { return &i }("ID"),
+					DateOfRegistration:     func(i string) *string { return &i }("2022-01-01"),
 				},
 				PaymentMethodID: "pm-f3925450-5c54-4777-98c1-fcf22b0d1e1c",
 				FailureCode:     "",
-				Basket:          []xendit.EWalletBasketItem{},
-				Metadata:        map[string]interface{}{},
+				Basket: []xendit.EWalletBasketItem{
+					{
+						ReferenceID: "sample_basket_ref_id",
+						Name:        "sample_basket_name",
+						Category:    "sample_category",
+						Currency:    "IDR",
+						Price:       10000,
+						Quantity:    1,
+						Type:        "sample_type",
+						Url:         "sample_url",
+						Description: "sample_desc",
+						SubCategory: "sample_subcat",
+						Metadata:    map[string]interface{}{},
+					},
+				},
+				Metadata: map[string]interface{}{},
 				ShippingInformation: &xendit.ShippingInformation{
 					Country:       "ID",
 					StreetLine1:   "sample_street_line",
