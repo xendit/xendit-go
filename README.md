@@ -165,6 +165,7 @@ The following is a list of pointers to documentations for sub-packages of [xendi
 - [Payout](https://pkg.go.dev/github.com/xendit/xendit-go/payout)
 - [Recurring Payment](https://pkg.go.dev/github.com/xendit/xendit-go/recurringpayment)
 - [Cardless Credit](https://pkg.go.dev/github.com/xendit/xendit-go/cardlesscredit)
+- [Customer](https://pkg.go.dev/github.com/xendit/xendit-go/customer)
 
 ## Contribute
 
