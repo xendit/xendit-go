@@ -1,9 +1,5 @@
 package card
 
-import (
-	"github.com/xendit/xendit-go/pmsv2/constant"
-)
-
 type CardOnFileType string
 
 const (
@@ -13,7 +9,7 @@ const (
 )
 
 type CreateMethod struct {
-	Currency          *constant.CurrencyEnum `json:"currency"`
+	Currency          *string                `json:"currency"`
 	ChannelProperties *CardChannelProperties `json:"channel_properties"`
 	CardInformation   *CardInformation       `json:"card_information"`
 }
@@ -25,19 +21,6 @@ type CardChannelProperties struct {
 	SuccessReturnURL *string `json:"success_return_url"`
 	FailureReturnURL *string `json:"failure_return_url"`
 	CardOnFileType   *string `json:"cardonfile_type"`
-}
-
-type Authentication struct {
-	ID            *string `json:"id"`
-	Status        *string `json:"status"`
-	ThreeDSResult *string `json:"three_ds_result"`
-}
-
-type Authorization struct {
-	ID      *string         `json:"id"`
-	Status  *string         `json:"status"`
-	Result  *string         `json:"result"`
-	CofType *CardOnFileType `json:"cof_type"`
 }
 
 type Device struct {

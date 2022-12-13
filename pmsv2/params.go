@@ -13,13 +13,16 @@ import (
 )
 
 type CreatePaymentMethodParams struct {
-	Type        constant.PaymentMethodTypeEnum `json:"type"`
-	Country     constant.CountryEnum           `json:"country"`
-	CustomerID  *string                        `json:"customer_id"`
-	ReferenceID string                         `json:"reference_id,omitempty"`
-	Reusability constant.ReusabilityEnum       `json:"reusability"`
-	Description *string                        `json:"description"`
-	Metadata    map[string]interface{}         `json:"metadata"`
+	Type               constant.PaymentMethodTypeEnum `json:"type"`
+	Country            constant.CountryEnum           `json:"country"`
+	CustomerID         *string                        `json:"customer_id"`
+	ReferenceID        string                         `json:"reference_id,omitempty"`
+	Reusability        constant.ReusabilityEnum       `json:"reusability"`
+	Description        *string                        `json:"description"`
+	Metadata           map[string]interface{}         `json:"metadata"`
+	BillingInformation *card.BillingInformation       `json:"billing_information"`
+
+	Device *card.Device `json:"device"`
 
 	Card           *card.CreateMethod           `json:"card"`
 	DirectDebit    *directdebit.CreateMethod    `json:"direct_debit"`
