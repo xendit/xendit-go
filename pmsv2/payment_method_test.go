@@ -28,7 +28,6 @@ func (m *apiRequesterMock) Call(ctx context.Context, method string, path string,
 	result.(*xendit.PaymentMethodResponse).Country = constant.CountryPH
 	result.(*xendit.PaymentMethodResponse).ReferenceID = "reference_id"
 	result.(*xendit.PaymentMethodResponse).Reusability = constant.ReusabilityMultipleUse
-	result.(*xendit.PaymentMethodResponse).MerchantID = "business_id"
 
 	ewallet := &xendit.EwalletMethod{
 		ChannelCode:       ewallet.Astrapay,
@@ -62,13 +61,9 @@ func TestCreatePaymentMethod(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &ewallet.CreateMethod{
-					LinkedAccountTokenID: "token_id",
-					LinkedAccountID:      "account_id",
-					ChannelCode:          ewallet.Astrapay,
-					ChannelProperties:    ewallet.ChannelProperties{},
-					AccessToken:          nil,
+					ChannelCode:       ewallet.Astrapay,
+					ChannelProperties: ewallet.ChannelProperties{},
 				},
 			},
 			expectedRes: &xendit.PaymentMethodResponse{
@@ -80,7 +75,6 @@ func TestCreatePaymentMethod(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},
@@ -125,9 +119,8 @@ func TestAuthPaymentMethod(t *testing.T) {
 		{
 			desc: "should auth",
 			data: &ValidateOTPRequest{
-				ID:         "id",
-				Code:       "auth",
-				MerchantID: "business_id",
+				ID:   "id",
+				Code: "auth",
 			},
 			expectedRes: &xendit.PaymentMethodResponse{
 				Type:        constant.PaymentMethodTypeEwallet,
@@ -138,7 +131,6 @@ func TestAuthPaymentMethod(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},
@@ -183,8 +175,7 @@ func TestExpirePaymentMethod(t *testing.T) {
 		{
 			desc: "should auth",
 			data: &ExpireRequest{
-				ID:         "id",
-				MerchantID: "business_id",
+				ID: "id",
 			},
 			expectedRes: &xendit.PaymentMethodResponse{
 				Type:        constant.PaymentMethodTypeEwallet,
@@ -195,7 +186,6 @@ func TestExpirePaymentMethod(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},
@@ -240,8 +230,7 @@ func TestGetPaymentMethod(t *testing.T) {
 		{
 			desc: "should get a payment method",
 			data: &RetrievePaymentMethodRequest{
-				ID:         "id",
-				MerchantID: "business_id",
+				ID: "id",
 			},
 			expectedRes: &xendit.PaymentMethodResponse{
 				Type:        constant.PaymentMethodTypeEwallet,
@@ -252,7 +241,6 @@ func TestGetPaymentMethod(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},
@@ -296,9 +284,7 @@ func TestGetPaymentMethods(t *testing.T) {
 	}{
 		{
 			desc: "should get payment methods",
-			data: &RetrieveAllPaymentMethodsRequest{
-				MerchantID: "business_id",
-			},
+			data: &RetrieveAllPaymentMethodsRequest{},
 			expectedRes: &xendit.PaymentMethodResponse{
 				Type:        constant.PaymentMethodTypeEwallet,
 				Country:     constant.CountryPH,
@@ -308,7 +294,6 @@ func TestGetPaymentMethods(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},
@@ -325,7 +310,7 @@ func TestGetPaymentMethods(t *testing.T) {
 				"Call",
 				context.Background(),
 				"GET",
-				xendit.Opt.XenditURL+"/v2/payment_method?business_id=business_id",
+				xendit.Opt.XenditURL+"/v2/payment_method?",
 				xendit.Opt.SecretKey,
 				mock.AnythingOfType("http.Header"),
 				nil,
@@ -353,9 +338,8 @@ func TestUpdatePaymentMethod(t *testing.T) {
 		{
 			desc: "should update",
 			data: &UpdateRequest{
-				ID:         "id",
-				Status:     constant.Active,
-				MerchantID: "business_id",
+				ID:     "id",
+				Status: constant.Active,
 			},
 			expectedRes: &xendit.PaymentMethodResponse{
 				Type:        constant.PaymentMethodTypeEwallet,
@@ -366,7 +350,6 @@ func TestUpdatePaymentMethod(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},
@@ -411,8 +394,7 @@ func TestRetrievePayments(t *testing.T) {
 		{
 			desc: "should get a payment method",
 			data: &RetrievePaymentsRequest{
-				ID:         "id",
-				MerchantID: "business_id",
+				ID: "id",
 				PaginationFilters: PaginationFilters{
 					Limit: 5,
 				},
@@ -426,7 +408,6 @@ func TestRetrievePayments(t *testing.T) {
 				Description: nil,
 				Metadata:    nil,
 
-				MerchantID: "business_id",
 				Ewallet: &xendit.EwalletMethod{
 					ChannelCode:       ewallet.Astrapay,
 					ChannelProperties: ewallet.ChannelProperties{},

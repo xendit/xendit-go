@@ -21,34 +21,37 @@ type CreatePaymentMethodParams struct {
 	Description *string                        `json:"description"`
 	Metadata    map[string]interface{}         `json:"metadata"`
 
-	XCallbackURL string `json:"-"`
-	MerchantID   string `json:"-"`
-
 	Card           *card.CreateMethod           `json:"card"`
 	DirectDebit    *directdebit.CreateMethod    `json:"direct_debit"`
 	Ewallet        *ewallet.CreateMethod        `json:"ewallet"`
 	OverTheCounter *overthecounter.CreateMethod `json:"over_the_counter"`
 	VirtualAccount *virtualaccount.CreateMethod `json:"virtual_account"`
 	QRCode         *qrcode.CreateMethod         `json:"qr_code"`
+
+	ForUserID      string `json:"-"`
+	IdempotencyKey string `json:"-"`
 }
 
 type ValidateOTPRequest struct {
 	ID   string `param:"id"`
 	Code string `json:"auth_code"`
 
-	MerchantID string `json:"-"`
+	ForUserID      string `json:"-"`
+	IdempotencyKey string `json:"-"`
 }
 
 type ExpireRequest struct {
 	ID                     string  `json:"-"`
 	UnlinkSuccessReturnURL *string `json:"unlink_success_return_url"`
 
-	MerchantID string `json:"-"`
+	ForUserID      string `json:"-"`
+	IdempotencyKey string `json:"-"`
 }
 
 type RetrievePaymentMethodRequest struct {
-	ID         string `json:"-"`
-	MerchantID string `json:"-"`
+	ID string `json:"-"`
+
+	ForUserID string `json:"-"`
 }
 
 type RetrieveAllPaymentMethodsRequest struct {
@@ -57,11 +60,13 @@ type RetrieveAllPaymentMethodsRequest struct {
 	Status      []constant.PaymentMethodStatusEnum `query:"status"`
 	Reusability constant.ReusabilityEnum           `query:"reusability"`
 	CustomerID  string                             `query:"customer_id"`
+	BusinessID  string                             `query:"business_id"`
 	ReferenceID string                             `query:"reference_id"`
-	MerchantID  string                             `query:"business_id" header:"business-id"`
 	AfterID     string                             `query:"after_id"`
 	BeforeID    string                             `query:"before_id"`
 	Limit       int                                `query:"limit"`
+
+	ForUserID string `json:"-"`
 }
 
 type UpdateRequest struct {
@@ -72,8 +77,10 @@ type UpdateRequest struct {
 	OverTheCounter *overthecounter.MutableMethod    `json:"over_the_counter"`
 	VirtualAccount *virtualaccount.MutableMethod    `json:"virtual_account"`
 
-	MerchantID string `json:"-"`
-	ID         string `json:"-"`
+	ID string `json:"-"`
+
+	ForUserID      string `json:"-"`
+	IdempotencyKey string `json:"-"`
 }
 
 type RetrievePaymentsRequest struct {
@@ -89,8 +96,9 @@ type RetrievePaymentsRequest struct {
 	Status            []string  `query:"status" url:"status,omitempty"`
 	Currency          []string  `query:"currency" url:"currency,omitempty"`
 	ReferenceID       []string  `query:"reference_id" url:"reference_id,omitempty"`
-	MerchantID        string    `header:"business_id" url:"-"`
 	PaginationFilters
+
+	ForUserID string `json:"-"`
 }
 
 type PaginationFilters struct {

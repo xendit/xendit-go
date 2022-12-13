@@ -24,11 +24,12 @@ func (c *Client) CreatePaymentMethodWithContext(ctx context.Context, data *Creat
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.XCallbackURL != "" {
-		header.Add("x-callback-url", data.XCallbackURL)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
 	}
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+
+	if data.IdempotencyKey != "" {
+		header.Add("idempotency-key", data.IdempotencyKey)
 	}
 
 	err := c.APIRequester.Call(
@@ -55,8 +56,12 @@ func (c *Client) AuthPaymentMethodWithContext(ctx context.Context, data *Validat
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
+
+	if data.IdempotencyKey != "" {
+		header.Add("idempotency-key", data.IdempotencyKey)
 	}
 
 	err := c.APIRequester.Call(
@@ -83,8 +88,12 @@ func (c *Client) ExpirePaymentMethodWithContext(ctx context.Context, data *Expir
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
+
+	if data.IdempotencyKey != "" {
+		header.Add("idempotency-key", data.IdempotencyKey)
 	}
 
 	err := c.APIRequester.Call(
@@ -112,8 +121,8 @@ func (c *Client) RetrievePaymentMethodWithContext(ctx context.Context, data *Ret
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
 	}
 
 	err := c.APIRequester.Call(
@@ -141,8 +150,8 @@ func (c *Client) RetrieveAllPaymentMethodsWithContext(ctx context.Context, data 
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
 	}
 
 	urlValues := &url.Values{}
@@ -155,7 +164,7 @@ func (c *Client) RetrieveAllPaymentMethodsWithContext(ctx context.Context, data 
 	addUrlValue(urlValues, "type", string(data.Type))
 	addUrlValue(urlValues, "reusability", string(data.Reusability))
 	addUrlValue(urlValues, "customer_id", data.CustomerID)
-	addUrlValue(urlValues, "business_id", data.MerchantID)
+	addUrlValue(urlValues, "business_id", data.BusinessID)
 	addUrlValue(urlValues, "after_id", data.AfterID)
 	addUrlValue(urlValues, "before_id", data.BeforeID)
 	if data.Limit != 0 {
@@ -187,8 +196,12 @@ func (c *Client) UpdatePaymentMethodWithContext(ctx context.Context, data *Updat
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
+	}
+
+	if data.IdempotencyKey != "" {
+		header.Add("idempotency-key", data.IdempotencyKey)
 	}
 
 	err := c.APIRequester.Call(
@@ -216,8 +229,8 @@ func (c *Client) RetrievePaymentsWithContext(ctx context.Context, data *Retrieve
 	response := &xendit.PaymentMethodResponse{}
 	header := http.Header{}
 
-	if data.MerchantID != "" {
-		header.Add("business-id", data.MerchantID)
+	if data.ForUserID != "" {
+		header.Add("for-user-id", data.ForUserID)
 	}
 
 	urlValues := &url.Values{}

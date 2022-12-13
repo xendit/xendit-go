@@ -19,11 +19,8 @@ const (
 )
 
 type CreateMethod struct {
-	LinkedAccountTokenID string            `json:"linked_account_token_id"`
-	LinkedAccountID      string            `json:"linked_account_id"`
-	ChannelCode          ChannelCode       `json:"channel_code"`
-	ChannelProperties    ChannelProperties `json:"channel_properties"`
-	AccessToken          *string           `json:"access_token"`
+	ChannelCode       ChannelCode       `json:"channel_code"`
+	ChannelProperties ChannelProperties `json:"channel_properties"`
 }
 
 type Account struct {

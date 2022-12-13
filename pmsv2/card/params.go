@@ -15,7 +15,7 @@ const (
 type CreateMethod struct {
 	Currency          *constant.CurrencyEnum `json:"currency"`
 	ChannelProperties *CardChannelProperties `json:"channel_properties"`
-	Token             *Token                 `json:"token"`
+	CardInformation   *CardInformation       `json:"card_information"`
 }
 
 type Method CreateMethod
@@ -25,23 +25,6 @@ type CardChannelProperties struct {
 	SuccessReturnURL *string `json:"success_return_url"`
 	FailureReturnURL *string `json:"failure_return_url"`
 	CardOnFileType   *string `json:"cardonfile_type"`
-}
-
-type Token struct {
-	ID               string                `json:"id"`
-	PaymentMethodID  string                `json:"payment_method_id"`
-	ReferenceID      string                `json:"reference_id"`
-	Status           constant.TokenStatus  `json:"status"`
-	Currency         constant.CurrencyEnum `json:"currency"`
-	Authentication   *Authentication       `json:"authentication"`
-	Authorization    *Authorization        `json:"authorization"`
-	RedirectURL      *string               `json:"redirect_url"`
-	MaskedCardNumber *string               `json:"masked_card_number"`
-	ExpiryMonth      *string               `json:"expiry_month"`
-	ExpiryYear       *string               `json:"expiry_year"`
-	CardInfo         *CardInfo             `json:"card_info"`
-	BillingDetails   *BillingDetails       `json:"billing_details"`
-	CofType          *CardOnFileType       `json:"cof_type"`
 }
 
 type Authentication struct {
@@ -57,19 +40,24 @@ type Authorization struct {
 	CofType *CardOnFileType `json:"cof_type"`
 }
 
-type CardInfo struct {
-	Bank        *string               `json:"bank"`
-	Country     *constant.CountryEnum `json:"country"`
-	Type        *string               `json:"type"`
-	Brand       *string               `json:"brand"`
-	Fingerprint *string               `json:"fingerprint"`
+type Device struct {
+	Fingerprint string `json:"fingerprint"`
 }
-type BillingDetails struct {
-	FirstName         *string `json:"first_name"`
-	AddressLine1      *string `json:"address_line_1,omitempty"`
-	AddressLine2      *string `json:"address_line_2,omitempty"`
-	AddressCity       *string `json:"address_city,omitempty"`
-	AddressCountry    *string `json:"address_country,omitempty"`
-	AddressPostalCode *string `json:"address_postal_code,omitempty"`
-	AddressState      *string `json:"address_state,omitempty"`
+
+type CardInformation struct {
+	CardNumber     string  `json:"card_number"`
+	ExpiryMonth    string  `json:"expiry_month"`
+	ExpiryYear     string  `json:"expiry_year"`
+	CardCVN        *string `json:"cvv"`
+	CardholderName *string `json:"cardholder_name"`
+}
+
+type BillingInformation struct {
+	Country       string  `json:"country"`
+	StreetLine1   *string `json:"street_line1"`
+	StreetLine2   *string `json:"street_line2"`
+	City          *string `json:"city"`
+	ProvinceState *string `json:"province_state"`
+	Province      *string `json:"province"`
+	PostalCode    *string `json:"postal_code"`
 }

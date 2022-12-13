@@ -57,13 +57,11 @@ type EwalletMethod struct {
 }
 
 type DirectDebitMethod struct {
-	LinkedAccountTokenID string                        `json:"-"`
-	LinkedAccountID      string                        `json:"-"`
-	ChannelCode          directdebit.ChannelCode       `json:"channel_code"`
-	ChannelProperties    directdebit.ChannelProperties `json:"channel_properties"`
-	Type                 directdebit.Type              `json:"type"`
-	BankAccount          *directdebit.BankAccount      `json:"bank_account"`
-	DebitCard            *directdebit.DebitCard        `json:"debit_card"`
+	ChannelCode       directdebit.ChannelCode       `json:"channel_code"`
+	ChannelProperties directdebit.ChannelProperties `json:"channel_properties"`
+	Type              directdebit.Type              `json:"type"`
+	BankAccount       *directdebit.BankAccount      `json:"bank_account"`
+	DebitCard         *directdebit.DebitCard        `json:"debit_card"`
 }
 
 type OverTheCounterMethod struct {
@@ -93,7 +91,7 @@ type PaymentMethodResponse struct {
 	ID                 string                           `json:"id"`
 	Type               constant.PaymentMethodTypeEnum   `json:"type"`
 	Country            constant.CountryEnum             `json:"country"`
-	MerchantID         string                           `json:"business_id"`
+	BusinessID         string                           `json:"business_id"`
 	CustomerID         *string                          `json:"customer_id"`
 	ReferenceID        string                           `json:"reference_id,omitempty"`
 	Reusability        constant.ReusabilityEnum         `json:"reusability"`
