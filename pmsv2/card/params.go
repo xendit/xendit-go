@@ -23,10 +23,6 @@ type CardChannelProperties struct {
 	CardOnFileType   *string `json:"cardonfile_type"`
 }
 
-type Device struct {
-	Fingerprint string `json:"fingerprint"`
-}
-
 type CardInformation struct {
 	CardNumber     string  `json:"card_number"`
 	ExpiryMonth    string  `json:"expiry_month"`

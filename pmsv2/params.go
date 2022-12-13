@@ -22,8 +22,6 @@ type CreatePaymentMethodParams struct {
 	Metadata           map[string]interface{}         `json:"metadata"`
 	BillingInformation *card.BillingInformation       `json:"billing_information"`
 
-	Device *card.Device `json:"device"`
-
 	Card           *card.CreateMethod           `json:"card"`
 	DirectDebit    *directdebit.CreateMethod    `json:"direct_debit"`
 	Ewallet        *ewallet.CreateMethod        `json:"ewallet"`
