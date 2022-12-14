@@ -20,9 +20,6 @@ const (
 	SCB ChannelCode = "SCB"
 	KTB ChannelCode = "KTB"
 	BAY ChannelCode = "BAY"
-
-	// bank redirect
-	BCAKlikpay ChannelCode = "BCA_KLIKPAY"
 )
 
 const (
