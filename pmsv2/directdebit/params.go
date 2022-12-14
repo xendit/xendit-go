@@ -6,16 +6,13 @@ type Type string
 
 const (
 	// debit card
-	BRI        ChannelCode = "BRI"
-	BCAOneklik ChannelCode = "BCA_ONEKLIK"
-	CIMBNIAGA  ChannelCode = "CIMBNIAGA"
+	BRI       ChannelCode = "BRI"
+	CIMBNIAGA ChannelCode = "CIMBNIAGA"
 
 	// bank account
 	BPI       ChannelCode = "BPI"
 	Unionbank ChannelCode = "UBP"
 	RCBC      ChannelCode = "RCBC"
-	BDO       ChannelCode = "BDO"
-	MTB       ChannelCode = "MTB"
 	CHINABANK ChannelCode = "CHINABANK"
 	Mandiri   ChannelCode = "MANDIRI"
 
