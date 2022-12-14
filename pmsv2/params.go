@@ -42,8 +42,7 @@ type ValidateOTPRequest struct {
 }
 
 type ExpireRequest struct {
-	ID                     string  `json:"-"`
-	UnlinkSuccessReturnURL *string `json:"unlink_success_return_url"`
+	ID string `json:"-"`
 
 	ForUserID      string `json:"-"`
 	IdempotencyKey string `json:"-"`
