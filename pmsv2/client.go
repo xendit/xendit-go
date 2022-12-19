@@ -35,12 +35,13 @@ func (c *Client) CreatePaymentMethodWithContext(ctx context.Context, data *Creat
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
-		fmt.Sprintf("%s/v2/payment_method", c.Opt.XenditURL),
+		fmt.Sprintf("%s/v2/payment_methods", c.Opt.XenditURL),
 		c.Opt.SecretKey,
 		header,
 		data,
 		response,
 	)
+
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +68,7 @@ func (c *Client) AuthPaymentMethodWithContext(ctx context.Context, data *Validat
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
-		fmt.Sprintf("%s/v2/payment_method/%s/auth", c.Opt.XenditURL, data.ID),
+		fmt.Sprintf("%s/v2/payment_methods/%s/auth", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
 		data,
@@ -99,7 +100,7 @@ func (c *Client) ExpirePaymentMethodWithContext(ctx context.Context, data *Expir
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
-		fmt.Sprintf("%s/v2/payment_method/%s/expire", c.Opt.XenditURL, data.ID),
+		fmt.Sprintf("%s/v2/payment_methods/%s/expire", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
 		data,
@@ -128,7 +129,7 @@ func (c *Client) RetrievePaymentMethodWithContext(ctx context.Context, data *Ret
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
-		fmt.Sprintf("%s/v2/payment_method/%s", c.Opt.XenditURL, data.ID),
+		fmt.Sprintf("%s/v2/payment_methods/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		header,
 		nil,
@@ -175,7 +176,7 @@ func (c *Client) RetrieveAllPaymentMethodsWithContext(ctx context.Context, data 
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
-		fmt.Sprintf("%s/v2/payment_method?%s", c.Opt.XenditURL, queryString),
+		fmt.Sprintf("%s/v2/payment_methods?%s", c.Opt.XenditURL, queryString),
 		c.Opt.SecretKey,
 		header,
 		nil,
@@ -207,7 +208,7 @@ func (c *Client) UpdatePaymentMethodWithContext(ctx context.Context, data *Updat
 	err := c.APIRequester.Call(
 		ctx,
 		"PATCH",
-		fmt.Sprintf("%s/v2/payment_method/%s", c.Opt.XenditURL, data.ID),
+		fmt.Sprintf("%s/v2/payment_methods/%s", c.Opt.XenditURL, data.ID),
 		c.Opt.SecretKey,
 		nil,
 		data,
@@ -279,7 +280,7 @@ func (c *Client) RetrievePaymentsWithContext(ctx context.Context, data *Retrieve
 	err := c.APIRequester.Call(
 		ctx,
 		"GET",
-		fmt.Sprintf("%s/v2/payment_method/%s/payments?%s", c.Opt.XenditURL, data.ID, queryString),
+		fmt.Sprintf("%s/v2/payment_methods/%s/payments?%s", c.Opt.XenditURL, data.ID, queryString),
 		c.Opt.SecretKey,
 		header,
 		nil,
