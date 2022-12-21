@@ -25,6 +25,7 @@ var testFunctions = []func(){
 	qrcodeTest,
 	transactionTest,
 	accountTest,
+	paymentmethodTest,
 }
 
 func main() {
