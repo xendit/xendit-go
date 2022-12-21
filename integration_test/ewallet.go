@@ -97,8 +97,8 @@ func ewalletTest() {
 			"cancel_redirect_url":  "https://yourwebsite.com/cancel",
 		},
 		CaptureNow:      true,
-		CustomerID:      "cust-d9630db4-0c3d-41b8-bf36-77d7cb0b5dee",
-		PaymentMethodID: "pm-d69f5d53-2f9c-43dd-a210-cc9c0cdc28d4",
+		CustomerID:      "d17cc20d-793b-4f9a-bd8c-2b1834b5b859",
+		PaymentMethodID: "pm-9da7fc6e-5cce-4bf5-827d-543fab8c2072",
 	}
 
 	createEWalletChargeTokenizedResponse, err := ewallet.CreateEWalletCharge(&createEWalletChargeTokenized)
