@@ -19,14 +19,16 @@ func disbursementTest() {
 		ExternalID:        "disbursement-external",
 		BankCode:          availableBanks[0].Code,
 		AccountHolderName: "Michael Jackson",
-		AccountNumber:     "1234567890",
+		AccountNumber:     "123124123",
 		Description:       "Disbursement from Go",
 		Amount:            200000,
 	}
+	fmt.Println("aaa")
 	resp, err := disbursement.Create(&createData)
 	if err != nil {
 		log.Panic(err)
 	}
+	fmt.Println("aaa")
 
 	getByIDData := disbursement.GetByIDParams{
 		DisbursementID: resp.ID,
