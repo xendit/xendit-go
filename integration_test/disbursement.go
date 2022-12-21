@@ -19,7 +19,7 @@ func disbursementTest() {
 		ExternalID:        "disbursement-external",
 		BankCode:          availableBanks[0].Code,
 		AccountHolderName: "Michael Jackson",
-		AccountNumber:     "1234567890",
+		AccountNumber:     "123124123",
 		Description:       "Disbursement from Go",
 		Amount:            200000,
 	}

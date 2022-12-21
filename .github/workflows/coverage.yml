@@ -32,6 +32,7 @@ jobs:
             ./retailoutlet/... \
             ./utils/... \
             ./virtualaccount/... \
+            ./pmsv2/... \
       - name: Send coverage
         env:
           COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}

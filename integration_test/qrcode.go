@@ -21,9 +21,8 @@ func qrcodeTest() {
 	if err != nil {
 		log.Panic(err)
 	}
-
 	_, err = qrcode.GetQRCode(&qrcode.GetQRCodeParams{
-		ExternalID: resp.ExternalID,
+		ExternalID: resp.ID,
 	})
 
 	if err != nil {
