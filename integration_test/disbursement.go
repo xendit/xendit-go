@@ -23,12 +23,10 @@ func disbursementTest() {
 		Description:       "Disbursement from Go",
 		Amount:            200000,
 	}
-	fmt.Println("aaa")
 	resp, err := disbursement.Create(&createData)
 	if err != nil {
 		log.Panic(err)
 	}
-	fmt.Println("aaa")
 
 	getByIDData := disbursement.GetByIDParams{
 		DisbursementID: resp.ID,
