@@ -32,24 +32,24 @@ const (
 
 type ChannelProperties struct {
 	CustomerName string     `json:"customer_name"`
-	PaymentCode  *string     `json:"payment_code,omitempty"`
+	PaymentCode  *string    `json:"payment_code,omitempty"`
 	ExpiresAt    *time.Time `json:"expires_at,omitempty"`
 }
 
 type CreateMethod struct {
 	Amount            *float64               `json:"amount,omitempty"`
 	Currency          *constant.CurrencyEnum `json:"currency,omitempty"`
-	ChannelCode       ChannelCode           `json:"channel_code"`
-	ChannelProperties ChannelProperties     `json:"channel_properties"`
+	ChannelCode       ChannelCode            `json:"channel_code"`
+	ChannelProperties ChannelProperties      `json:"channel_properties"`
 }
 
 type MutableMethod struct {
-	Amount            *float64                    `json:"amount,omitempty"`
+	Amount            *float64                  `json:"amount,omitempty"`
 	Currency          *string                   `json:"currency,omitempty"`
 	ChannelProperties *MutableChannelProperties `json:"channel_properties,omitempty"`
 }
 
 type MutableChannelProperties struct {
-	CustomerName *string     `json:"customer_name,omitempty"`
+	CustomerName *string    `json:"customer_name,omitempty"`
 	ExpiresAt    *time.Time `json:"expires_at,omitempty"`
 }
