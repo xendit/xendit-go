@@ -26,8 +26,8 @@ type ChannelProperties struct {
 }
 
 type CreateMethod struct {
-	Amount            float64               `json:"amount"`
-	Currency          constant.CurrencyEnum `json:"currency"`
+	Amount            *float64               `json:"amount,omitempty"`
+	Currency          *constant.CurrencyEnum `json:"currency,omitempty"`
 	ChannelCode       ChannelCode           `json:"channel_code"`
 	ChannelProperties ChannelProperties     `json:"channel_properties"`
 }
