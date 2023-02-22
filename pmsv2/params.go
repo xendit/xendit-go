@@ -16,7 +16,7 @@ type CreatePaymentMethodParams struct {
 	Type               constant.PaymentMethodTypeEnum `json:"type"`
 	Country            constant.CountryEnum           `json:"country,omitempty"`
 	CustomerID         *string                        `json:"customer_id,omitempty"`
-	ReferenceID        string                         `json:"reference_id,omitempty"`
+	ReferenceID        *string                        `json:"reference_id,omitempty"`
 	Reusability        constant.ReusabilityEnum       `json:"reusability"`
 	Description        *string                        `json:"description,omitempty"`
 	Metadata           map[string]interface{}         `json:"metadata,omitempty"`
@@ -70,12 +70,12 @@ type RetrieveAllPaymentMethodsRequest struct {
 }
 
 type UpdateRequest struct {
-	ReferenceID    string                           `json:"reference_id"`
-	Description    string                           `json:"description"`
-	Status         constant.PaymentMethodStatusEnum `json:"status"`
-	Reusability    constant.ReusabilityEnum         `json:"reusability"`
-	OverTheCounter *overthecounter.MutableMethod    `json:"over_the_counter"`
-	VirtualAccount *virtualaccount.MutableMethod    `json:"virtual_account"`
+	ReferenceID    *string                           `json:"reference_id,omitempty"`
+	Description    *string                           `json:"description,omitempty"`
+	Status         *constant.PaymentMethodStatusEnum `json:"status,omitempty"`
+	Reusability    *constant.ReusabilityEnum         `json:"reusability,omitempty"`
+	OverTheCounter *overthecounter.MutableMethod     `json:"over_the_counter,omitempty"`
+	VirtualAccount *virtualaccount.MutableMethod     `json:"virtual_account,omitempty"`
 
 	ID string `json:"-"`
 

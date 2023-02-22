@@ -44,6 +44,8 @@ func TestCreatePaymentMethod(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
+	referenceID := "reference_id"
+
 	testCases := []struct {
 		desc        string
 		data        *CreatePaymentMethodParams
@@ -56,7 +58,7 @@ func TestCreatePaymentMethod(t *testing.T) {
 				Type:        constant.PaymentMethodTypeEwallet,
 				Country:     constant.CountryPH,
 				CustomerID:  nil,
-				ReferenceID: "reference_id",
+				ReferenceID: &referenceID,
 				Reusability: constant.ReusabilityMultipleUse,
 				Description: nil,
 				Metadata:    nil,
@@ -329,6 +331,7 @@ func TestUpdatePaymentMethod(t *testing.T) {
 	apiRequesterMockObj := new(apiRequesterMock)
 	initTesting(apiRequesterMockObj)
 
+	status := constant.Active
 	testCases := []struct {
 		desc        string
 		data        *UpdateRequest
@@ -339,7 +342,7 @@ func TestUpdatePaymentMethod(t *testing.T) {
 			desc: "should update",
 			data: &UpdateRequest{
 				ID:     "id",
-				Status: constant.Active,
+				Status: &status,
 			},
 			expectedRes: &xendit.PaymentMethodResponse{
 				Type:        constant.PaymentMethodTypeEwallet,
