@@ -7,7 +7,7 @@ import (
 	"github.com/xendit/xendit-go"
 )
 
-//array of functions to test
+// array of functions to test
 var testFunctions = []func(){
 	balanceTest,
 	cardTest,
