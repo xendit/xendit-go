@@ -27,8 +27,11 @@ type VirtualAccount struct {
 
 // VirtualAccountBank contains data from Xendit's API response of Get Virtual Account Banks.
 type VirtualAccountBank struct {
-	Name string `json:"name"`
-	Code string `json:"code"`
+	Name        string `json:"name"`
+	Code        string `json:"code"`
+	Country     string `json:"country"`
+	Currency    string `json:"currency"`
+	IsActivated bool   `json:"is_activated"`
 }
 
 // VirtualAccountPayment contains data from Xendit's API response of Get Fixed Virtual Account Payment.
