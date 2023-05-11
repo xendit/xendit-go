@@ -247,11 +247,24 @@ func (m *apiRequesterGetAvailableBanksMock) Call(ctx context.Context, method str
 	resultString := `[
 		{
 			"name": "Bank Mandiri",
-			"code": "MANDIRI"
+			"code": "MANDIRI",
+			"country": "ID",
+			"currency": "IDR",
+			"is_activated": true
 		},
 		{
 			"name": "Bank Negara Indonesia",
-			"code": "BNI"
+			"code": "BNI",
+			"country": "ID",
+			"currency": "IDR",
+			"is_activated": true
+		},
+		{
+			"name": "Viet Capital Bank",
+			"code": "VIETCAPITAL",
+			"country": "VN",
+			"currency": "VND",
+			"is_activated": false
 		}
 	]`
 
@@ -273,12 +286,25 @@ func TestGetAvailableBanks(t *testing.T) {
 			desc: "should get available va banks",
 			expectedRes: []xendit.VirtualAccountBank{
 				{
-					Name: "Bank Mandiri",
-					Code: "MANDIRI",
+					Name:        "Bank Mandiri",
+					Code:        "MANDIRI",
+					Country:     "ID",
+					Currency:    "IDR",
+					IsActivated: true,
 				},
 				{
-					Name: "Bank Negara Indonesia",
-					Code: "BNI",
+					Name:        "Bank Negara Indonesia",
+					Code:        "BNI",
+					Country:     "ID",
+					Currency:    "IDR",
+					IsActivated: true,
+				},
+				{
+					Name:        "Viet Capital Bank",
+					Code:        "VIETCAPITAL",
+					Country:     "VN",
+					Currency:    "VND",
+					IsActivated: false,
 				},
 			},
 			expectedErr: nil,
