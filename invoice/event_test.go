@@ -9,6 +9,10 @@ import (
 	"github.com/xendit/xendit-go/invoice"
 )
 
+func toPointerString(v string) *string {
+	return &v
+}
+
 func TestInvoiceCallback_EWallet(t *testing.T) {
 	testPayload := `{
 		"id": "12345",
@@ -40,12 +44,12 @@ func TestInvoiceCallback_EWallet(t *testing.T) {
 	}`
 	expectedPayload := invoice.InvoiceCallback{
 		ID:             "12345",
-		Fees:           []xendit.InvoiceFee{{Type: "example fee", Value: 100}},
+		Fees:           &[]xendit.InvoiceFee{{Type: "example fee", Value: 100}},
 		Amount:         1000,
 		Status:         "PAID",
 		Created:        "2023-05-14T07:32:42.646Z",
 		IsHigh:         false,
-		PaidAt:         "2023-05-14T07:35:14.000Z",
+		PaidAt:         toPointerString("2023-05-14T07:35:14.000Z"),
 		Updated:        "2023-05-14T07:35:15.810Z",
 		UserID:         "example",
 		Currency:       "IDR",
@@ -99,7 +103,7 @@ func TestInvoiceCallback_Bank(t *testing.T) {
 		Amount:             2000000,
 		PaidAmount:         2000000,
 		BankCode:           "TESTBANK",
-		PaidAt:             "2020-01-14T02:32:50.912Z",
+		PaidAt:             toPointerString("2020-01-14T02:32:50.912Z"),
 		PayerEmail:         "test@xendit.co",
 		Description:        "Invoice callback test",
 		Created:            "2020-01-13T02:32:49.827Z",
@@ -144,7 +148,7 @@ func TestInvoiceCallback_RetailOutlet(t *testing.T) {
 		MerchantName:       "Xendit",
 		Amount:             2000000,
 		PaidAmount:         2000000,
-		PaidAt:             "2020-01-14T02:32:50.912Z",
+		PaidAt:             toPointerString("2020-01-14T02:32:50.912Z"),
 		PayerEmail:         "test@xendit.co",
 		Description:        "Invoice callback test",
 		Created:            "2020-01-13T02:32:49.827Z",
