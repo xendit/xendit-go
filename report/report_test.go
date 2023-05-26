@@ -80,8 +80,8 @@ func TestGenerateReport(t *testing.T) {
 				Url:        "https://transaction-report-files.s3-us-west-2.amazonaws.com/{report_name}",
 				Currency:   "IDR",
 				BusinessID: "5f34f60535ba7c1c0eed846a",
-				Created:    &created,
-				Updated:    &updated,
+				Created:    created,
+				Updated:    updated,
 			},
 		},
 		{
@@ -140,8 +140,8 @@ func TestGetReport(t *testing.T) {
 				Url:        "https://transaction-report-files.s3-us-west-2.amazonaws.com/{report_name}",
 				Currency:   "IDR",
 				BusinessID: "5f34f60535ba7c1c0eed846a",
-				Created:    &created,
-				Updated:    &updated,
+				Created:    created,
+				Updated:    updated,
 			},
 		},
 		{
