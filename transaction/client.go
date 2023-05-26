@@ -10,7 +10,7 @@ import (
 	"github.com/xendit/xendit-go/utils/validator"
 )
 
-// Client is the client used to invoke invoice API.
+// Client is the client used to invoke transaction API
 type Client struct {
 	Opt          *xendit.Option
 	APIRequester xendit.APIRequester
@@ -50,12 +50,12 @@ func (c *Client) GetTransactionnWithContext(ctx context.Context, data *GetTransa
 	return response, nil
 }
 
-// GetListTransaction gets list transaction
+// GetListTransaction gets list transactions
 func (c *Client) GetListTransaction(data *GetListTransactionParams) (*xendit.ListTransactions, *xendit.Error) {
 	return c.GetListTransactionWithContext(context.Background(), data)
 }
 
-// GetListTransactionWithContext gets list transaction with context
+// GetListTransactionWithContext gets list transactions with context
 func (c *Client) GetListTransactionWithContext(ctx context.Context, data *GetListTransactionParams) (*xendit.ListTransactions, *xendit.Error) {
 	if err := validator.ValidateRequired(ctx, data); err != nil {
 		return nil, validator.APIValidatorErr(err)
