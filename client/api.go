@@ -15,6 +15,7 @@ import (
 	"github.com/xendit/xendit-go/payout"
 	"github.com/xendit/xendit-go/qrcode"
 	"github.com/xendit/xendit-go/recurringpayment"
+	"github.com/xendit/xendit-go/report"
 	"github.com/xendit/xendit-go/retailoutlet"
 	"github.com/xendit/xendit-go/transaction"
 	"github.com/xendit/xendit-go/virtualaccount"
@@ -37,6 +38,7 @@ type API struct {
 	QRCode           *qrcode.Client
 	Customer         *customer.Client
 	Transaction      *transaction.Client
+	Report           *report.Client
 }
 
 func (a *API) init() {
@@ -53,6 +55,7 @@ func (a *API) init() {
 	a.QRCode = &qrcode.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 	a.Customer = &customer.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 	a.Transaction = &transaction.Client{Opt: &a.opt, APIRequester: a.apiRequester}
+	a.Report = &report.Client{Opt: &a.opt, APIRequester: a.apiRequester}
 }
 
 // New creates a new Xendit API client
