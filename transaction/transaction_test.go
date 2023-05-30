@@ -151,6 +151,8 @@ func (m *apiRequesterGetListMock) Call(ctx context.Context, method string, path 
 				"currency": "IDR",
 				"amount": 1,
 				"cashflow": "MONEY_IN",
+				"settlement_status" : "PENDING",
+				"estimated_settlement_time" : "2021-06-26T04:03:02.123Z",
 				"business_id": "5fc9f5b246f820517e38c84d",
 				"created": "2021-06-23T02:42:15.601Z",
 				"updated": "2021-06-23T02:42:15.601Z"
@@ -196,6 +198,8 @@ func TestGetListTransaction(t *testing.T) {
 	created2 := time.Date(2021, 6, 23, 2, 39, 23, 176000000, time.UTC)
 	updated2 := time.Date(2021, 6, 23, 2, 39, 23, 176000000, time.UTC)
 
+	estimatedSettlement := time.Date(2021, 6, 26, 4, 3, 2, 123000000, time.UTC)
+
 	testCases := []struct {
 		desc        string
 		data        *transaction.GetListTransactionParams
@@ -209,20 +213,22 @@ func TestGetListTransaction(t *testing.T) {
 				HasMore: true,
 				Data: []xendit.Transaction{
 					{
-						ID:                "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
-						ProductID:         "d290f1ee-6c54-4b01-90e6-d701748f0701",
-						Type:              "PAYMENT",
-						Status:            "SUCCESS",
-						ChannelCategory:   "RETAIL_OUTLET",
-						ChannelCode:       "ALFAMART",
-						ReferenceID:       "ref23244",
-						AccountIdentifier: "",
-						Currency:          "IDR",
-						Amount:            1,
-						Cashflow:          "MONEY_IN",
-						BusinessID:        "5fc9f5b246f820517e38c84d",
-						Created:           &created,
-						Updated:           &updated,
+						ID:                      "txn_13dd178d-41fa-40b7-8fd3-f83675d6f413",
+						ProductID:               "d290f1ee-6c54-4b01-90e6-d701748f0701",
+						Type:                    "PAYMENT",
+						Status:                  "SUCCESS",
+						ChannelCategory:         "RETAIL_OUTLET",
+						ChannelCode:             "ALFAMART",
+						ReferenceID:             "ref23244",
+						AccountIdentifier:       "",
+						Currency:                "IDR",
+						Amount:                  1,
+						Cashflow:                "MONEY_IN",
+						BusinessID:              "5fc9f5b246f820517e38c84d",
+						SettlementStatus:        "PENDING",
+						EstimatedSettlementTime: &estimatedSettlement,
+						Created:                 &created,
+						Updated:                 &updated,
 					},
 					{
 						ID:                "txn_a765a3f0-34c0-41ee-8686-bca11835ebdc",
