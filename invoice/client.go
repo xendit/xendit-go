@@ -32,6 +32,9 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	if data.ForUserID != "" {
 		header.Add("for-user-id", data.ForUserID)
 	}
+	if data.WithFeeRule != "" {
+		header.Add("with-fee-rule", data.WithFeeRule)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,

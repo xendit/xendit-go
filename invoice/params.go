@@ -12,6 +12,7 @@ import (
 // CreateParams contains parameters for Create
 type CreateParams struct {
 	ForUserID                      string                                       `json:"-"`
+	WithFeeRule                    string                                       `json:"-"`
 	ExternalID                     string                                       `json:"external_id" validate:"required"`
 	Amount                         float64                                      `json:"amount" validate:"required"`
 	Description                    string                                       `json:"description,omitempty"`
