@@ -29,7 +29,7 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	response := &xendit.Payout{}
 	header := http.Header{}
 	if data.IdempotencyKey != "" {
-		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
+		header.Add("x-idempotency-key", data.IdempotencyKey)
 	}
 
 	err := c.APIRequester.Call(
