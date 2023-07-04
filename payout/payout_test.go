@@ -55,6 +55,7 @@ func TestCreatePayout(t *testing.T) {
 		{
 			desc: "should create an payout",
 			data: &payout.CreateParams{
+				IdempotencyKey: "unique-idempotency-key",
 				ExternalID: "payout-external-id",
 				Amount:     200000,
 				Email:      "customer@customer.com",
@@ -89,7 +90,7 @@ func TestCreatePayout(t *testing.T) {
 				"POST",
 				xendit.Opt.XenditURL+"/payouts",
 				xendit.Opt.SecretKey,
-				nil,
+				mock.Anything,
 				tC.data,
 				&xendit.Payout{},
 			).Return(nil)

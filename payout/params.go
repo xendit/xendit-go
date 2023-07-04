@@ -2,9 +2,10 @@ package payout
 
 // CreateParams contains parameters for Create
 type CreateParams struct {
-	ExternalID string  `json:"external_id" validate:"required"`
-	Amount     float64 `json:"amount" validate:"required"`
-	Email      string  `json:"email" validate:"required"`
+	IdempotencyKey string  `json:"-"`
+	ExternalID     string  `json:"external_id" validate:"required"`
+	Amount         float64 `json:"amount" validate:"required"`
+	Email          string  `json:"email" validate:"required"`
 }
 
 // GetParams contains parameters for Get
