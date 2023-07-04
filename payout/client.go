@@ -3,6 +3,7 @@ package payout
 import (
 	"context"
 	"fmt"
+	"net/http"
 
 	"github.com/xendit/xendit-go"
 	"github.com/xendit/xendit-go/utils/validator"
@@ -26,13 +27,17 @@ func (c *Client) CreateWithContext(ctx context.Context, data *CreateParams) (*xe
 	}
 
 	response := &xendit.Payout{}
+	header := http.Header{}
+	if data.IdempotencyKey != "" {
+		header.Add("X-IDEMPOTENCY-KEY", data.IdempotencyKey)
+	}
 
 	err := c.APIRequester.Call(
 		ctx,
 		"POST",
 		fmt.Sprintf("%s/payouts", c.Opt.XenditURL),
 		c.Opt.SecretKey,
-		nil,
+		header,
 		data,
 		response,
 	)
