@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ChannelCode** | Pointer to [**NullableQRCodeChannelCode**](QRCodeChannelCode.md) |  | [optional] 
-**ChannelProperties** | Pointer to [**QRCodeChannelProperties**](QRCodeChannelProperties.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ChannelCode** | Pointer to [**NullableQRCodeChannelCode**](QRCodeChannelCode.md) |  | [optional]  |
+| **ChannelProperties** | Pointer to [**QRCodeChannelProperties**](QRCodeChannelProperties.md) |  | [optional]  |
 
 ## Methods
 

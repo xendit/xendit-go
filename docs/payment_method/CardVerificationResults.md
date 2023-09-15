@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ThreeDSecure** | [**NullableCardVerificationResultsThreeDSecure**](CardVerificationResultsThreeDSecure.md) |  | 
-**CvvResult** | Pointer to **NullableString** |  | [optional] 
-**AddressVerificationResult** | Pointer to **NullableString** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ThreeDSecure** | [**NullableCardVerificationResultsThreeDSecure**](CardVerificationResultsThreeDSecure.md) |  |  |
+| **CvvResult** | Pointer to **NullableString** |  | [optional]  |
+| **AddressVerificationResult** | Pointer to **NullableString** |  | [optional]  |
 
 ## Methods
 

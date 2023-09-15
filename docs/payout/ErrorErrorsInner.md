@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Path** | **string** | Precise location of the error | 
-**Message** | **string** | Specific description of the error | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Path** | **string** | Precise location of the error |  |
+| **Message** | **string** | Specific description of the error |  |
 
 ## Methods
 

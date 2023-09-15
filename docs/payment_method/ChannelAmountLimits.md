@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | Pointer to **string** | Currency supported by the payment channel | [optional] 
-**MinLimit** | Pointer to **float32** | The minimum allowed transaction amount for the payment channel | [optional] 
-**MaxLimit** | Pointer to **float32** | The minimum allowed transaction amount for the payment channel | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Currency** | Pointer to **string** | Currency supported by the payment channel | [optional]  |
+| **MinLimit** | Pointer to **float32** | The minimum allowed transaction amount for the payment channel | [optional]  |
+| **MaxLimit** | Pointer to **float32** | The minimum allowed transaction amount for the payment channel | [optional]  |
 
 ## Methods
 

@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | Pointer to **NullableFloat64** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
-**ChannelCode** | Pointer to [**NullableQRCodeChannelCode**](QRCodeChannelCode.md) |  | [optional] 
-**ChannelProperties** | Pointer to [**NullableQRCodeChannelProperties**](QRCodeChannelProperties.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **Currency** | Pointer to **string** |  | [optional]  |
+| **ChannelCode** | Pointer to [**NullableQRCodeChannelCode**](QRCodeChannelCode.md) |  | [optional]  |
+| **ChannelProperties** | Pointer to [**NullableQRCodeChannelProperties**](QRCodeChannelProperties.md) |  | [optional]  |
 
 ## Methods
 

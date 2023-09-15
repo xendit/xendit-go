@@ -23,12 +23,14 @@ type ChannelCategory string
 const (
 	CHANNELCATEGORY_BANK ChannelCategory = "BANK"
 	CHANNELCATEGORY_EWALLET ChannelCategory = "EWALLET"
+	CHANNELCATEGORY_OTC ChannelCategory = "OTC"
 )
 
 // All allowed values of ChannelCategory enum
 var AllowedChannelCategoryEnumValues = []ChannelCategory{
 	"BANK",
 	"EWALLET",
+	"OTC",
 }
 
 func (v *ChannelCategory) UnmarshalJSON(src []byte) error {

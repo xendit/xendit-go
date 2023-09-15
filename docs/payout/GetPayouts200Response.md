@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]GetPayouts200ResponseDataInner**](GetPayouts200ResponseDataInner.md) |  | [optional] 
-**HasMore** | Pointer to **bool** |  | [optional] 
-**Links** | Pointer to [**GetPayouts200ResponseLinks**](GetPayouts200ResponseLinks.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Data** | Pointer to [**GetPayouts200ResponseDataInner[]**](GetPayouts200ResponseDataInner.md) |  | [optional]  |
+| **HasMore** | Pointer to **bool** |  | [optional]  |
+| **Links** | Pointer to [**GetPayouts200ResponseLinks**](GetPayouts200ResponseLinks.md) |  | [optional]  |
 
 ## Methods
 

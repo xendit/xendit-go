@@ -31,6 +31,8 @@
 
 * `MSB` (value: `"MSB"`)
 
+* `STANDARD_CHARTERED` (value: `"STANDARD_CHARTERED"`)
+
 
 [[Back to README]](../../README.md)
 

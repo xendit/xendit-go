@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Minimum** | **float32** | Lowest amount supported for a payout to this channel | 
-**Maximum** | **float32** | Highest amount supported for a payout to this channel | 
-**MinimumIncrement** | **float32** | Supported increments | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Minimum** | **float32** | Lowest amount supported for a payout to this channel |  |
+| **Maximum** | **float32** | Highest amount supported for a payout to this channel |  |
+| **MinimumIncrement** | **float32** | Supported increments |  |
 
 ## Methods
 

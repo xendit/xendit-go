@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ThreeDSecureFlow** | Pointer to **NullableString** |  | [optional] 
-**EciCode** | Pointer to **NullableString** |  | [optional] 
-**ThreeDSecureResult** | Pointer to **NullableString** |  | [optional] 
-**ThreeDSecureResultReason** | Pointer to **NullableString** |  | [optional] 
-**ThreeDSecureVersion** | Pointer to **NullableString** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ThreeDSecureFlow** | Pointer to **NullableString** |  | [optional]  |
+| **EciCode** | Pointer to **NullableString** |  | [optional]  |
+| **ThreeDSecureResult** | Pointer to **NullableString** |  | [optional]  |
+| **ThreeDSecureResultReason** | Pointer to **NullableString** |  | [optional]  |
+| **ThreeDSecureVersion** | Pointer to **NullableString** |  | [optional]  |
 
 ## Methods
 

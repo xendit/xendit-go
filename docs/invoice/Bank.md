@@ -2,14 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**BankCode** | [**BankCode**](BankCode.md) |  | 
-**CollectionType** | **string** | The collection type for the bank details. | 
-**BankBranch** | Pointer to **string** | The branch of the bank. | [optional] 
-**BankAccountNumber** | Pointer to **string** | The bank account number. | [optional] 
-**AccountHolderName** | **string** | The name of the account holder. | 
-**TransferAmount** | Pointer to **float32** | The transfer amount. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **BankCode** | [**BankCode**](BankCode.md) |  |  |
+| **CollectionType** | **string** | The collection type for the bank details. |  |
+| **BankBranch** | Pointer to **string** | The branch of the bank. | [optional]  |
+| **BankAccountNumber** | Pointer to **string** | The bank account number. | [optional]  |
+| **AccountHolderName** | **string** | The name of the account holder. |  |
+| **TransferAmount** | Pointer to **float32** | The transfer amount. | [optional]  |
+| **AlternativeDisplays** | Pointer to [**AlternativeDisplayItem[]**](AlternativeDisplayItem.md) |  | [optional]  |
 
 ## Methods
 
@@ -164,6 +165,31 @@ SetTransferAmount sets TransferAmount field to given value.
 `func (o *Bank) HasTransferAmount() bool`
 
 HasTransferAmount returns a boolean if a field has been set.
+
+### GetAlternativeDisplays
+
+`func (o *Bank) GetAlternativeDisplays() []AlternativeDisplayItem`
+
+GetAlternativeDisplays returns the AlternativeDisplays field if non-nil, zero value otherwise.
+
+### GetAlternativeDisplaysOk
+
+`func (o *Bank) GetAlternativeDisplaysOk() (*[]AlternativeDisplayItem, bool)`
+
+GetAlternativeDisplaysOk returns a tuple with the AlternativeDisplays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlternativeDisplays
+
+`func (o *Bank) SetAlternativeDisplays(v []AlternativeDisplayItem)`
+
+SetAlternativeDisplays sets AlternativeDisplays field to given value.
+
+### HasAlternativeDisplays
+
+`func (o *Bank) HasAlternativeDisplays() bool`
+
+HasAlternativeDisplays returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

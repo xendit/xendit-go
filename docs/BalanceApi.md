@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**GetBalance**](BalanceApi.md#GetBalance) | **Get** /balance | Retrieves balances for a business, default to CASH type
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**GetBalance**](BalanceApi.md#GetBalance) | **Get** /balance | Retrieves balances for a business, default to CASH type |
 
 
 
@@ -67,11 +67,11 @@ func main() {
 Other parameters are passed through a pointer to a apiGetBalanceRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **accountType** | **string** | The selected balance type | [default to &quot;CASH&quot;]
- **currency** | **string** | Currency for filter for customers with multi currency accounts | 
- **forUserId** | **string** | The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **accountType** |**string**| The selected balance type | [default to &quot;CASH&quot;] | 
+|  **currency** |**string**| Currency for filter for customers with multi currency accounts |  | 
+|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information |  | 
 
 ### Return type
 

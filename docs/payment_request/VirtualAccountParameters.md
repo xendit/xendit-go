@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**MinAmount** | Pointer to **NullableFloat64** |  | [optional] 
-**MaxAmount** | Pointer to **NullableFloat64** |  | [optional] 
-**Amount** | Pointer to **NullableFloat64** |  | [optional] 
-**Currency** | Pointer to [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  | [optional] 
-**ChannelCode** | [**VirtualAccountChannelCode**](VirtualAccountChannelCode.md) |  | 
-**ChannelProperties** | [**VirtualAccountChannelProperties**](VirtualAccountChannelProperties.md) |  | 
-**AlternativeDisplayTypes** | Pointer to **[]string** | Alternative display requested for the virtual account | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **MinAmount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **MaxAmount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **Currency** | Pointer to [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  | [optional]  |
+| **ChannelCode** | [**VirtualAccountChannelCode**](VirtualAccountChannelCode.md) |  |  |
+| **ChannelProperties** | [**VirtualAccountChannelProperties**](VirtualAccountChannelProperties.md) |  |  |
+| **AlternativeDisplayTypes** | Pointer to **string[]** | Alternative display requested for the virtual account | [optional]  |
 
 ## Methods
 

@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | Pointer to **NullableFloat64** |  | [optional] 
-**ChannelProperties** | Pointer to [**OverTheCounterChannelPropertiesUpdate**](OverTheCounterChannelPropertiesUpdate.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **ChannelProperties** | Pointer to [**OverTheCounterChannelPropertiesUpdate**](OverTheCounterChannelPropertiesUpdate.md) |  | [optional]  |
 
 ## Methods
 

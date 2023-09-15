@@ -2,16 +2,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SuccessReturnUrl** | Pointer to **string** |  | [optional] 
-**FailureReturnUrl** | Pointer to **NullableString** |  | [optional] 
-**MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional] 
-**CardLastFour** | Pointer to **NullableString** | Last four digits of the debit card | [optional] 
-**CardExpiry** | Pointer to **NullableString** | Expiry month and year of the debit card (in MM/YY format) | [optional] 
-**Email** | Pointer to **NullableString** | Email address of the customer that is registered to the partner channel | [optional] 
-**IdentityDocumentNumber** | Pointer to **NullableString** | Identity number of the customer registered to the partner channel | [optional] 
-**RequireAuth** | Pointer to **NullableBool** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **SuccessReturnUrl** | Pointer to **string** |  | [optional]  |
+| **FailureReturnUrl** | Pointer to **NullableString** |  | [optional]  |
+| **MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional]  |
+| **CardLastFour** | Pointer to **NullableString** | Last four digits of the debit card | [optional]  |
+| **CardExpiry** | Pointer to **NullableString** | Expiry month and year of the debit card (in MM/YY format) | [optional]  |
+| **Email** | Pointer to **NullableString** | Email address of the customer that is registered to the partner channel | [optional]  |
+| **IdentityDocumentNumber** | Pointer to **NullableString** | Identity number of the customer registered to the partner channel | [optional]  |
+| **RequireAuth** | Pointer to **NullableBool** |  | [optional]  |
 
 ## Methods
 

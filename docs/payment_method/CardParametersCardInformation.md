@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**CardNumber** | **string** |  | 
-**ExpiryMonth** | **string** | Card expiry month in MM format | 
-**ExpiryYear** | **string** | Card expiry month in YY format | 
-**CardholderName** | Pointer to **NullableString** | Cardholder name | [optional] 
-**Cvv** | Pointer to **NullableString** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **CardNumber** | **string** |  |  |
+| **ExpiryMonth** | **string** | Card expiry month in MM format |  |
+| **ExpiryYear** | **string** | Card expiry month in YY format |  |
+| **CardholderName** | Pointer to **NullableString** | Cardholder name | [optional]  |
+| **Cvv** | Pointer to **NullableString** |  | [optional]  |
 
 ## Methods
 

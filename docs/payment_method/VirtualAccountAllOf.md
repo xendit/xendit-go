@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AlternativeDisplays** | Pointer to [**[]VirtualAccountAlternativeDisplay**](VirtualAccountAlternativeDisplay.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **AlternativeDisplays** | Pointer to [**VirtualAccountAlternativeDisplay[]**](VirtualAccountAlternativeDisplay.md) |  | [optional]  |
 
 ## Methods
 

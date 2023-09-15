@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **NullableString** |  | 
-**ChannelProperties** | [**NullableCardChannelProperties**](CardChannelProperties.md) |  | 
-**CardInformation** | Pointer to [**TokenizedCardInformation**](TokenizedCardInformation.md) |  | [optional] 
-**CardVerificationResults** | Pointer to [**NullableCardVerificationResults**](CardVerificationResults.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Currency** | **NullableString** |  |  |
+| **ChannelProperties** | [**NullableCardChannelProperties**](CardChannelProperties.md) |  |  |
+| **CardInformation** | Pointer to [**TokenizedCardInformation**](TokenizedCardInformation.md) |  | [optional]  |
+| **CardVerificationResults** | Pointer to [**NullableCardVerificationResults**](CardVerificationResults.md) |  | [optional]  |
 
 ## Methods
 

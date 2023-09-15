@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The corresponding parameter name | [optional] 
-**Type** | Pointer to **string** | Data type of the parameter | [optional] 
-**IsRequired** | Pointer to **bool** | Indicates whether or not the parameter is required | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Name** | Pointer to **string** | The corresponding parameter name | [optional]  |
+| **Type** | Pointer to **string** | Data type of the parameter | [optional]  |
+| **IsRequired** | Pointer to **bool** | Indicates whether or not the parameter is required | [optional]  |
 
 ## Methods
 

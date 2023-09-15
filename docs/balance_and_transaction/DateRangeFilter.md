@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Gte** | Pointer to **time.Time** | Start time of transaction. If not specified will list all dates. | [optional] 
-**Lte** | Pointer to **time.Time** | End time of transaction. If not specified will list all dates. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Gte** | Pointer to **time.Time** | Start time of transaction. If not specified will list all dates. | [optional]  |
+| **Lte** | Pointer to **time.Time** | End time of transaction. If not specified will list all dates. | [optional]  |
 
 ## Methods
 

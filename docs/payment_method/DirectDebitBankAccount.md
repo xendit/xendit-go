@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**MaskedBankAccountNumber** | Pointer to **NullableString** |  | [optional] 
-**BankAccountHash** | Pointer to **NullableString** |  | [optional] 
-**MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional] 
-**IdentityDocumentNumber** | Pointer to **NullableString** | Identity number of the customer registered to the partner channel | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **MaskedBankAccountNumber** | Pointer to **NullableString** |  | [optional]  |
+| **BankAccountHash** | Pointer to **NullableString** |  | [optional]  |
+| **MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional]  |
+| **IdentityDocumentNumber** | Pointer to **NullableString** | Identity number of the customer registered to the partner channel | [optional]  |
 
 ## Methods
 

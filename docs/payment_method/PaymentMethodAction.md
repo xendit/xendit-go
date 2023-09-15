@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Action** | Pointer to **string** |  | [optional] 
-**Method** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**UrlType** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Action** | Pointer to **string** |  | [optional]  |
+| **Method** | Pointer to **string** |  | [optional]  |
+| **Url** | Pointer to **string** |  | [optional]  |
+| **UrlType** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

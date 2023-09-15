@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**GetAllTransactions**](TransactionApi.md#GetAllTransactions) | **Get** /transactions | Get a list of transactions
-[**GetTransactionByID**](TransactionApi.md#GetTransactionByID) | **Get** /transactions/{id} | Get a transaction based on its id
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**GetAllTransactions**](TransactionApi.md#GetAllTransactions) | **Get** /transactions | Get a list of transactions |
+| [**GetTransactionByID**](TransactionApi.md#GetTransactionByID) | **Get** /transactions/{id} | Get a transaction based on its id |
 
 
 
@@ -115,22 +115,22 @@ func main() {
 Other parameters are passed through a pointer to a apiGetAllTransactionsRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **forUserId** | **string** | The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information | 
- **types** | [**[]TransactionTypes**](balance_and_transaction/TransactionTypes.md) | Transaction types that will be included in the result. Default is to include all transaction types | 
- **statuses** | [**[]TransactionStatuses**](balance_and_transaction/TransactionStatuses.md) | Status of the transaction. Default is to include all status. | 
- **channelCategories** | [**[]ChannelsCategories**](balance_and_transaction/ChannelsCategories.md) | Payment channels in which the transaction is carried out. Default is to include all channels. | 
- **referenceId** | **string** | To filter the result for transactions with matching reference given (case sensitive) | 
- **productId** | **string** | To filter the result for transactions with matching product_id (a.k.a payment_id) given (case sensitive) | 
- **accountIdentifier** | **string** | Account identifier of transaction. The format will be different from each channel. For example, on &#x60;BANK&#x60; channel it will be account number and on &#x60;CARD&#x60; it will be masked card number. | 
- **amount** | **float32** | Specific transaction amount to search for | 
- **currency** | [**Currency**](balance_and_transaction/Currency.md) |  | 
- **created** | [**DateRangeFilter**](balance_and_transaction/DateRangeFilter.md) | Filter time of transaction by created date. If not specified will list all dates. | 
- **updated** | [**DateRangeFilter**](balance_and_transaction/DateRangeFilter.md) | Filter time of transaction by updated date. If not specified will list all dates. | 
- **limit** | **float32** | number of items in the result per page. Another name for \&quot;results_per_page\&quot; | [default to 10]
- **afterId** | **string** |  | 
- **beforeId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information |  | 
+|  **types** |[**TransactionTypes[]**](balance_and_transaction/TransactionTypes.md)| Transaction types that will be included in the result. Default is to include all transaction types |  | 
+|  **statuses** |[**TransactionStatuses[]**](balance_and_transaction/TransactionStatuses.md)| Status of the transaction. Default is to include all status. |  | 
+|  **channelCategories** |[**ChannelsCategories[]**](balance_and_transaction/ChannelsCategories.md)| Payment channels in which the transaction is carried out. Default is to include all channels. |  | 
+|  **referenceId** |**string**| To filter the result for transactions with matching reference given (case sensitive) |  | 
+|  **productId** |**string**| To filter the result for transactions with matching product_id (a.k.a payment_id) given (case sensitive) |  | 
+|  **accountIdentifier** |**string**| Account identifier of transaction. The format will be different from each channel. For example, on &#x60;BANK&#x60; channel it will be account number and on &#x60;CARD&#x60; it will be masked card number. |  | 
+|  **amount** |**float32**| Specific transaction amount to search for |  | 
+|  **currency** |[**Currency**](balance_and_transaction/Currencybalance_and_transaction/.md)|  |  | 
+|  **created** |[**DateRangeFilter**](balance_and_transaction/DateRangeFilterbalance_and_transaction/.md)| Filter time of transaction by created date. If not specified will list all dates. |  | 
+|  **updated** |[**DateRangeFilter**](balance_and_transaction/DateRangeFilterbalance_and_transaction/.md)| Filter time of transaction by updated date. If not specified will list all dates. |  | 
+|  **limit** |**float32**| number of items in the result per page. Another name for \&quot;results_per_page\&quot; | [default to 10] | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
 
 ### Return type
 
@@ -191,20 +191,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **id** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTransactionByIDRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **forUserId** | **string** | The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information |  | 
 
 ### Return type
 

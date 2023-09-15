@@ -2,22 +2,22 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ReferenceId** | Pointer to **string** |  | [optional] 
-**Amount** | Pointer to **float64** |  | [optional] 
-**Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  | 
-**PaymentMethod** | Pointer to [**PaymentMethodParameters**](PaymentMethodParameters.md) |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**CaptureMethod** | Pointer to [**NullablePaymentRequestCaptureMethod**](PaymentRequestCaptureMethod.md) |  | [optional] 
-**Initiator** | Pointer to [**NullablePaymentRequestInitiator**](PaymentRequestInitiator.md) |  | [optional] 
-**PaymentMethodId** | Pointer to **string** |  | [optional] 
-**ChannelProperties** | Pointer to [**PaymentRequestParametersChannelProperties**](PaymentRequestParametersChannelProperties.md) |  | [optional] 
-**ShippingInformation** | Pointer to [**NullablePaymentRequestShippingInformation**](PaymentRequestShippingInformation.md) |  | [optional] 
-**Items** | Pointer to [**[]PaymentRequestBasketItem**](PaymentRequestBasketItem.md) |  | [optional] 
-**CustomerId** | Pointer to **NullableString** |  | [optional] 
-**Customer** | Pointer to **map[string]interface{}** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ReferenceId** | Pointer to **string** |  | [optional]  |
+| **Amount** | Pointer to **float64** |  | [optional]  |
+| **Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  |  |
+| **PaymentMethod** | Pointer to [**PaymentMethodParameters**](PaymentMethodParameters.md) |  | [optional]  |
+| **Description** | Pointer to **NullableString** |  | [optional]  |
+| **CaptureMethod** | Pointer to [**NullablePaymentRequestCaptureMethod**](PaymentRequestCaptureMethod.md) |  | [optional]  |
+| **Initiator** | Pointer to [**NullablePaymentRequestInitiator**](PaymentRequestInitiator.md) |  | [optional]  |
+| **PaymentMethodId** | Pointer to **string** |  | [optional]  |
+| **ChannelProperties** | Pointer to [**PaymentRequestParametersChannelProperties**](PaymentRequestParametersChannelProperties.md) |  | [optional]  |
+| **ShippingInformation** | Pointer to [**NullablePaymentRequestShippingInformation**](PaymentRequestShippingInformation.md) |  | [optional]  |
+| **Items** | Pointer to [**PaymentRequestBasketItem[]**](PaymentRequestBasketItem.md) |  | [optional]  |
+| **CustomerId** | Pointer to **NullableString** |  | [optional]  |
+| **Customer** | Pointer to **map[string]interface{}** |  | [optional]  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
 
 ## Methods
 

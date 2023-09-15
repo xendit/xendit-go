@@ -2,17 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Type** | [**PaymentMethodType**](PaymentMethodType.md) |  | 
-**Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) |  | 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**ReferenceId** | Pointer to **string** |  | [optional] 
-**DirectDebit** | Pointer to [**NullableDirectDebitParameters**](DirectDebitParameters.md) |  | [optional] 
-**Ewallet** | Pointer to [**NullableEWalletParameters**](EWalletParameters.md) |  | [optional] 
-**OverTheCounter** | Pointer to [**NullableOverTheCounterParameters**](OverTheCounterParameters.md) |  | [optional] 
-**VirtualAccount** | Pointer to [**NullableVirtualAccountParameters**](VirtualAccountParameters.md) |  | [optional] 
-**QrCode** | Pointer to [**NullableQRCodeParameters**](QRCodeParameters.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Type** | [**PaymentMethodType**](PaymentMethodType.md) |  |  |
+| **Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) |  |  |
+| **Description** | Pointer to **NullableString** |  | [optional]  |
+| **ReferenceId** | Pointer to **string** |  | [optional]  |
+| **DirectDebit** | Pointer to [**NullableDirectDebitParameters**](DirectDebitParameters.md) |  | [optional]  |
+| **Ewallet** | Pointer to [**NullableEWalletParameters**](EWalletParameters.md) |  | [optional]  |
+| **OverTheCounter** | Pointer to [**NullableOverTheCounterParameters**](OverTheCounterParameters.md) |  | [optional]  |
+| **VirtualAccount** | Pointer to [**NullableVirtualAccountParameters**](VirtualAccountParameters.md) |  | [optional]  |
+| **QrCode** | Pointer to [**NullableQRCodeParameters**](QRCodeParameters.md) |  | [optional]  |
 
 ## Methods
 

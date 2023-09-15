@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **string** | Xendit-generated unique identifier for each payout | 
-**Created** | **time.Time** | The time payout was created on Xendit&#39;s system, in ISO 8601 format | 
-**Updated** | **time.Time** | The time payout was last updated on Xendit&#39;s system, in ISO 8601 format | 
-**BusinessId** | **string** | Xendit Business ID | 
-**Status** | **string** | Status of payout | 
-**FailureCode** | Pointer to **string** | If the Payout failed, we include a failure code for more details on the failure. | [optional] 
-**EstimatedArrivalTime** | Pointer to **time.Time** | Our estimated time on to when your payout is reflected to the destination account | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Id** | **string** | Xendit-generated unique identifier for each payout |  |
+| **Created** | **time.Time** | The time payout was created on Xendit&#39;s system, in ISO 8601 format |  |
+| **Updated** | **time.Time** | The time payout was last updated on Xendit&#39;s system, in ISO 8601 format |  |
+| **BusinessId** | **string** | Xendit Business ID |  |
+| **Status** | **string** | Status of payout |  |
+| **FailureCode** | Pointer to **string** | If the Payout failed, we include a failure code for more details on the failure. | [optional]  |
+| **EstimatedArrivalTime** | Pointer to **time.Time** | Our estimated time on to when your payout is reflected to the destination account | [optional]  |
 
 ## Methods
 

@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Amount** | Pointer to **NullableFloat64** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
-**ChannelCode** | [**OverTheCounterChannelCode**](OverTheCounterChannelCode.md) |  | 
-**ChannelProperties** | [**OverTheCounterChannelProperties**](OverTheCounterChannelProperties.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **Currency** | Pointer to **string** |  | [optional]  |
+| **ChannelCode** | [**OverTheCounterChannelCode**](OverTheCounterChannelCode.md) |  |  |
+| **ChannelProperties** | [**OverTheCounterChannelProperties**](OverTheCounterChannelProperties.md) |  |  |
 
 ## Methods
 

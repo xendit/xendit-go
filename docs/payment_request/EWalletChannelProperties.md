@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SuccessReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization is successful | [optional] 
-**FailureReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization failed | [optional] 
-**CancelReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization cancelled | [optional] 
-**RedeemPoints** | Pointer to **string** | REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only. | [optional] 
-**Mobilenumber** | Pointer to **string** |  | [optional] 
-**Cashtag** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **SuccessReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization is successful | [optional]  |
+| **FailureReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization failed | [optional]  |
+| **CancelReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization cancelled | [optional]  |
+| **RedeemPoints** | Pointer to **string** | REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only. | [optional]  |
+| **Mobilenumber** | Pointer to **string** |  | [optional]  |
+| **Cashtag** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

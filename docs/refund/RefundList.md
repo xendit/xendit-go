@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Data** | [**[]Refund**](Refund.md) |  | 
-**HasMore** | Pointer to **bool** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Data** | [**Refund[]**](Refund.md) |  |  |
+| **HasMore** | Pointer to **bool** |  | [optional]  |
 
 ## Methods
 

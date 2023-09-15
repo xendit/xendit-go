@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ErrorCode** | **string** | The specific error code indicating that access to the invoice operation is suspended. | 
-**Message** | **string** | A human-readable error message providing additional context about the 403 Forbidden response. | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ErrorCode** | **string** | The specific error code indicating that access to the invoice operation is suspended. |  |
+| **Message** | **string** | A human-readable error message providing additional context about the 403 Forbidden response. |  |
 
 ## Methods
 

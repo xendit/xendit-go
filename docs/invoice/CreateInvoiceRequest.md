@@ -2,29 +2,28 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ExternalId** | **string** | The external ID of the invoice. | 
-**Amount** | **float32** | The invoice amount. | 
-**PayerEmail** | Pointer to **string** | The email address of the payer. | [optional] 
-**Description** | Pointer to **string** | A description of the payment. | [optional] 
-**ClientType** | Pointer to **string** | The client type (internal use). | [optional] 
-**InvoiceDuration** | Pointer to **string** | The duration of the invoice. | [optional] 
-**CallbackVirtualAccountId** | Pointer to **string** | The ID of the callback virtual account. | [optional] 
-**ShouldSendEmail** | Pointer to **bool** | Indicates whether email notifications should be sent. | [optional] 
-**Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  | [optional] 
-**CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  | [optional] 
-**SuccessRedirectUrl** | Pointer to **string** | The URL to redirect to on successful payment. | [optional] 
-**FailureRedirectUrl** | Pointer to **string** | The URL to redirect to on payment failure. | [optional] 
-**PaymentMethods** | Pointer to **[]string** | An array of available payment methods. | [optional] 
-**MidLabel** | Pointer to **string** | The middle label. | [optional] 
-**ShouldAuthenticateCreditCard** | Pointer to **bool** | Indicates whether credit card authentication is required. | [optional] 
-**Currency** | Pointer to **string** | The currency of the invoice. | [optional] 
-**ReminderTime** | Pointer to **float32** | The reminder time. | [optional] 
-**Local** | Pointer to **string** | The local. | [optional] 
-**ReminderTimeUnit** | Pointer to **string** | The unit of the reminder time. | [optional] 
-**Items** | Pointer to [**[]InvoiceItem**](InvoiceItem.md) | An array of items included in the invoice. | [optional] 
-**Fees** | Pointer to [**[]InvoiceFee**](InvoiceFee.md) | An array of fees associated with the invoice. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ExternalId** | **string** | The external ID of the invoice. |  |
+| **Amount** | **float32** | The invoice amount. |  |
+| **PayerEmail** | Pointer to **string** | The email address of the payer. | [optional]  |
+| **Description** | Pointer to **string** | A description of the payment. | [optional]  |
+| **InvoiceDuration** | Pointer to **string** | The duration of the invoice. | [optional]  |
+| **CallbackVirtualAccountId** | Pointer to **string** | The ID of the callback virtual account. | [optional]  |
+| **ShouldSendEmail** | Pointer to **bool** | Indicates whether email notifications should be sent. | [optional]  |
+| **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  | [optional]  |
+| **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  | [optional]  |
+| **SuccessRedirectUrl** | Pointer to **string** | The URL to redirect to on successful payment. | [optional]  |
+| **FailureRedirectUrl** | Pointer to **string** | The URL to redirect to on payment failure. | [optional]  |
+| **PaymentMethods** | Pointer to **string[]** | An array of available payment methods. | [optional]  |
+| **MidLabel** | Pointer to **string** | The middle label. | [optional]  |
+| **ShouldAuthenticateCreditCard** | Pointer to **bool** | Indicates whether credit card authentication is required. | [optional]  |
+| **Currency** | Pointer to **string** | The currency of the invoice. | [optional]  |
+| **ReminderTime** | Pointer to **float32** | The reminder time. | [optional]  |
+| **Local** | Pointer to **string** | The local. | [optional]  |
+| **ReminderTimeUnit** | Pointer to **string** | The unit of the reminder time. | [optional]  |
+| **Items** | Pointer to [**InvoiceItem[]**](InvoiceItem.md) | An array of items included in the invoice. | [optional]  |
+| **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) | An array of fees associated with the invoice. | [optional]  |
 
 ## Methods
 
@@ -134,31 +133,6 @@ SetDescription sets Description field to given value.
 `func (o *CreateInvoiceRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetClientType
-
-`func (o *CreateInvoiceRequest) GetClientType() string`
-
-GetClientType returns the ClientType field if non-nil, zero value otherwise.
-
-### GetClientTypeOk
-
-`func (o *CreateInvoiceRequest) GetClientTypeOk() (*string, bool)`
-
-GetClientTypeOk returns a tuple with the ClientType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientType
-
-`func (o *CreateInvoiceRequest) SetClientType(v string)`
-
-SetClientType sets ClientType field to given value.
-
-### HasClientType
-
-`func (o *CreateInvoiceRequest) HasClientType() bool`
-
-HasClientType returns a boolean if a field has been set.
 
 ### GetInvoiceDuration
 

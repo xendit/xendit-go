@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**PaymentCode** | Pointer to **string** | The payment code that you want to assign, e.g 12345. If you do not send one, one will be picked at random. | [optional] 
-**CustomerName** | **string** | Name of customer. | 
-**ExpiresAt** | Pointer to **time.Time** | The time when the payment code will be expired. The minimum is 2 hours and the maximum is 9 days for 7ELEVEN. Default expired date will be 2 days from payment code generated. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **PaymentCode** | Pointer to **string** | The payment code that you want to assign, e.g 12345. If you do not send one, one will be picked at random. | [optional]  |
+| **CustomerName** | **string** | Name of customer. |  |
+| **ExpiresAt** | Pointer to **time.Time** | The time when the payment code will be expired. The minimum is 2 hours and the maximum is 9 days for 7ELEVEN. Default expired date will be 2 days from payment code generated. | [optional]  |
 
 ## Methods
 

@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ChannelCode** | [**DirectDebitChannelCode**](DirectDebitChannelCode.md) |  | 
-**ChannelProperties** | [**NullableDirectDebitChannelProperties**](DirectDebitChannelProperties.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ChannelCode** | [**DirectDebitChannelCode**](DirectDebitChannelCode.md) |  |  |
+| **ChannelProperties** | [**NullableDirectDebitChannelProperties**](DirectDebitChannelProperties.md) |  |  |
 
 ## Methods
 

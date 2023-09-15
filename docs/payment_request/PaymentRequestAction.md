@@ -2,13 +2,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Action** | **string** |  | 
-**UrlType** | **string** |  | 
-**Method** | **NullableString** |  | 
-**Url** | **NullableString** |  | 
-**QrCode** | **NullableString** |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Action** | **string** |  |  |
+| **UrlType** | **string** |  |  |
+| **Method** | **NullableString** |  |  |
+| **Url** | **NullableString** |  |  |
+| **QrCode** | **NullableString** |  |  |
 
 ## Methods
 

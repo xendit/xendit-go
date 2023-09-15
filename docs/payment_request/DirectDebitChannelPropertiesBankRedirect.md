@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**MobileNumber** | Pointer to **string** | Mobile number of the customer that is registered to channel | [optional] 
-**SuccessReturnUrl** | Pointer to **string** |  | [optional] 
-**FailureReturnUrl** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **MobileNumber** | Pointer to **string** | Mobile number of the customer that is registered to channel | [optional]  |
+| **SuccessReturnUrl** | Pointer to **string** |  | [optional]  |
+| **FailureReturnUrl** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

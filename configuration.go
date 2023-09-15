@@ -79,7 +79,7 @@ var Default Configuration = *NewConfiguration()
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/3.0.0-beta.0/go",
+		UserAgent:        "OpenAPI-Generator/3.0.0-beta.2/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{

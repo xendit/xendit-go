@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Data** | [**[]PaymentRequest**](PaymentRequest.md) |  | 
-**HasMore** | **bool** |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Data** | [**PaymentRequest[]**](PaymentRequest.md) |  |  |
+| **HasMore** | **bool** |  |  |
 
 ## Methods
 

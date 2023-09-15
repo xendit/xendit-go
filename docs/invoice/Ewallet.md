@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**EwalletType** | [**EwalletType**](EwalletType.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **EwalletType** | [**EwalletType**](EwalletType.md) |  |  |
 
 ## Methods
 

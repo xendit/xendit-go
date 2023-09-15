@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**PaylaterType** | [**PaylaterType**](PaylaterType.md) |  | 
-**ShouldExclude** | Pointer to **bool** | Indicates whether this paylater option should be excluded. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **PaylaterType** | [**PaylaterType**](PaylaterType.md) |  |  |
+| **ShouldExclude** | Pointer to **bool** | Indicates whether this paylater option should be excluded. | [optional]  |
 
 ## Methods
 

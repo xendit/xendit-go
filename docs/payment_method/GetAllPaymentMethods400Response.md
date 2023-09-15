@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ErrorCode** | Pointer to **string** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ErrorCode** | Pointer to **string** |  | [optional]  |
+| **Message** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

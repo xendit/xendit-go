@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ReferenceId** | Pointer to **NullableString** |  | [optional] 
-**CaptureAmount** | **float64** |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ReferenceId** | Pointer to **NullableString** |  | [optional]  |
+| **CaptureAmount** | **float64** |  |  |
 
 ## Methods
 

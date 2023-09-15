@@ -2,30 +2,30 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**BusinessId** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**PaymentMethodType**](PaymentMethodType.md) |  | [optional] 
-**Country** | Pointer to [**PaymentMethodCountry**](PaymentMethodCountry.md) |  | [optional] 
-**CustomerId** | Pointer to **NullableString** |  | [optional] 
-**Customer** | Pointer to **map[string]interface{}** |  | [optional] 
-**ReferenceId** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**Status** | Pointer to [**PaymentMethodStatus**](PaymentMethodStatus.md) |  | [optional] 
-**Reusability** | Pointer to [**PaymentMethodReusability**](PaymentMethodReusability.md) |  | [optional] 
-**Actions** | Pointer to [**[]PaymentMethodAction**](PaymentMethodAction.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**BillingInformation** | Pointer to [**NullableBillingInformation**](BillingInformation.md) |  | [optional] 
-**FailureCode** | Pointer to **NullableString** |  | [optional] 
-**Created** | Pointer to **time.Time** |  | [optional] 
-**Updated** | Pointer to **time.Time** |  | [optional] 
-**Ewallet** | Pointer to [**NullableEWallet**](EWallet.md) |  | [optional] 
-**DirectDebit** | Pointer to [**NullableDirectDebit**](DirectDebit.md) |  | [optional] 
-**OverTheCounter** | Pointer to [**NullableOverTheCounter**](OverTheCounter.md) |  | [optional] 
-**Card** | Pointer to [**NullableCard**](Card.md) |  | [optional] 
-**QrCode** | Pointer to [**NullableQRCode**](QRCode.md) |  | [optional] 
-**VirtualAccount** | Pointer to [**NullableVirtualAccount**](VirtualAccount.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Id** | **string** |  |  |
+| **BusinessId** | Pointer to **string** |  | [optional]  |
+| **Type** | Pointer to [**PaymentMethodType**](PaymentMethodType.md) |  | [optional]  |
+| **Country** | Pointer to [**PaymentMethodCountry**](PaymentMethodCountry.md) |  | [optional]  |
+| **CustomerId** | Pointer to **NullableString** |  | [optional]  |
+| **Customer** | Pointer to **map[string]interface{}** |  | [optional]  |
+| **ReferenceId** | Pointer to **string** |  | [optional]  |
+| **Description** | Pointer to **NullableString** |  | [optional]  |
+| **Status** | Pointer to [**PaymentMethodStatus**](PaymentMethodStatus.md) |  | [optional]  |
+| **Reusability** | Pointer to [**PaymentMethodReusability**](PaymentMethodReusability.md) |  | [optional]  |
+| **Actions** | Pointer to [**PaymentMethodAction[]**](PaymentMethodAction.md) |  | [optional]  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
+| **BillingInformation** | Pointer to [**NullableBillingInformation**](BillingInformation.md) |  | [optional]  |
+| **FailureCode** | Pointer to **NullableString** |  | [optional]  |
+| **Created** | Pointer to **time.Time** |  | [optional]  |
+| **Updated** | Pointer to **time.Time** |  | [optional]  |
+| **Ewallet** | Pointer to [**NullableEWallet**](EWallet.md) |  | [optional]  |
+| **DirectDebit** | Pointer to [**NullableDirectDebit**](DirectDebit.md) |  | [optional]  |
+| **OverTheCounter** | Pointer to [**NullableOverTheCounter**](OverTheCounter.md) |  | [optional]  |
+| **Card** | Pointer to [**NullableCard**](Card.md) |  | [optional]  |
+| **QrCode** | Pointer to [**NullableQRCode**](QRCode.md) |  | [optional]  |
+| **VirtualAccount** | Pointer to [**NullableVirtualAccount**](VirtualAccount.md) |  | [optional]  |
 
 ## Methods
 

@@ -15,8 +15,6 @@
 
 * `MOBILE` (value: `"MOBILE"`)
 
-* `STOREFRONT` (value: `"STOREFRONT"`)
-
 
 [[Back to README]](../../README.md)
 

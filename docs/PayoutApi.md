@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CancelPayout**](PayoutApi.md#CancelPayout) | **Post** /v2/payouts/{id}/cancel | API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED.
-[**CreatePayout**](PayoutApi.md#CreatePayout) | **Post** /v2/payouts | API to send money at scale to bank accounts &amp; eWallets
-[**GetPayoutById**](PayoutApi.md#GetPayoutById) | **Get** /v2/payouts/{id} | API to fetch the current status, or details of the payout
-[**GetPayoutChannels**](PayoutApi.md#GetPayoutChannels) | **Get** /payouts_channels | API providing the current list of banks and e-wallets we support for payouts for both regions
-[**GetPayouts**](PayoutApi.md#GetPayouts) | **Get** /v2/payouts | API to retrieve all matching payouts with reference ID
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**CancelPayout**](PayoutApi.md#CancelPayout) | **Post** /v2/payouts/{id}/cancel | API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED. |
+| [**CreatePayout**](PayoutApi.md#CreatePayout) | **Post** /v2/payouts | API to send money at scale to bank accounts &amp; eWallets |
+| [**GetPayoutById**](PayoutApi.md#GetPayoutById) | **Get** /v2/payouts/{id} | API to fetch the current status, or details of the payout |
+| [**GetPayoutChannels**](PayoutApi.md#GetPayoutChannels) | **Get** /payouts_channels | API providing the current list of banks and e-wallets we support for payouts for both regions |
+| [**GetPayouts**](PayoutApi.md#GetPayouts) | **Get** /v2/payouts | API to retrieve all matching payouts with reference ID |
 
 
 
@@ -51,19 +51,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payout id returned from the response of /v2/payouts | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **id** | **string** | Payout id returned from the response of /v2/payouts |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCancelPayoutRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 
@@ -134,11 +134,11 @@ func main() {
 Other parameters are passed through a pointer to a apiCreatePayoutRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idempotencyKey** | **string** | A unique key to prevent duplicate requests from pushing through our system. No expiration. | 
- **forUserId** | **string** | The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. | 
- **createPayoutRequest** | [**CreatePayoutRequest**](CreatePayoutRequest.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **idempotencyKey** |**string**| A unique key to prevent duplicate requests from pushing through our system. No expiration. |  | 
+|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. |  | 
+|  **createPayoutRequest** |[**CreatePayoutRequest**](payout/CreatePayoutRequest.md)|  |  | 
 
 ### Return type
 
@@ -192,19 +192,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Payout id returned from the response of /v2/payouts | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **id** | **string** | Payout id returned from the response of /v2/payouts |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetPayoutByIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 
@@ -273,11 +273,11 @@ func main() {
 Other parameters are passed through a pointer to a apiGetPayoutChannelsRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **string** | Filter channels by currency from ISO-4217 values | 
- **channelCategory** | [**[]ChannelCategory**](payout/ChannelCategory.md) | Filter channels by category | 
- **channelCode** | **string** | Filter channels by channel code, prefixed by ISO-3166 country code | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **currency** |**string**| Filter channels by currency from ISO-4217 values |  | 
+|  **channelCategory** |[**ChannelCategory[]**](payout/ChannelCategory.md)| Filter channels by category |  | 
+|  **channelCode** |**string**| Filter channels by channel code, prefixed by ISO-3166 country code |  | 
 
 ### Return type
 
@@ -350,12 +350,12 @@ func main() {
 Other parameters are passed through a pointer to a apiGetPayoutsRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **referenceId** | **string** | Reference_id provided when creating the payout | 
- **limit** | **float32** | Number of records to fetch per API call | 
- **afterId** | **string** | Used to fetch record after this payout unique id | 
- **beforeId** | **string** | Used to fetch record before this payout unique id | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **referenceId** |**string**| Reference_id provided when creating the payout |  | 
+|  **limit** |**float32**| Number of records to fetch per API call |  | 
+|  **afterId** |**string**| Used to fetch record after this payout unique id |  | 
+|  **beforeId** |**string**| Used to fetch record before this payout unique id |  | 
 
 ### Return type
 

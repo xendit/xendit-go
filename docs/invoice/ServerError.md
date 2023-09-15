@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ErrorCode** | **string** |  | 
-**Message** | **string** |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ErrorCode** | **string** |  |  |
+| **Message** | **string** |  |  |
 
 ## Methods
 

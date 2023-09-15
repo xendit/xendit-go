@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Description** | Pointer to **string** |  | [optional] 
-**ReferenceId** | Pointer to **string** |  | [optional] 
-**Reusability** | Pointer to [**PaymentMethodReusability**](PaymentMethodReusability.md) |  | [optional] 
-**Status** | Pointer to [**PaymentMethodStatus**](PaymentMethodStatus.md) |  | [optional] 
-**OverTheCounter** | Pointer to [**OverTheCounterUpdateParameters**](OverTheCounterUpdateParameters.md) |  | [optional] 
-**VirtualAccount** | Pointer to [**VirtualAccountUpdateParameters**](VirtualAccountUpdateParameters.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Description** | Pointer to **string** |  | [optional]  |
+| **ReferenceId** | Pointer to **string** |  | [optional]  |
+| **Reusability** | Pointer to [**PaymentMethodReusability**](PaymentMethodReusability.md) |  | [optional]  |
+| **Status** | Pointer to [**PaymentMethodStatus**](PaymentMethodStatus.md) |  | [optional]  |
+| **OverTheCounter** | Pointer to [**OverTheCounterUpdateParameters**](OverTheCounterUpdateParameters.md) |  | [optional]  |
+| **VirtualAccount** | Pointer to [**VirtualAccountUpdateParameters**](VirtualAccountUpdateParameters.md) |  | [optional]  |
 
 ## Methods
 

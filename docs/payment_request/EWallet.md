@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ChannelCode** | Pointer to [**EWalletChannelCode**](EWalletChannelCode.md) |  | [optional] 
-**ChannelProperties** | Pointer to [**EWalletChannelProperties**](EWalletChannelProperties.md) |  | [optional] 
-**Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ChannelCode** | Pointer to [**EWalletChannelCode**](EWalletChannelCode.md) |  | [optional]  |
+| **ChannelProperties** | Pointer to [**EWalletChannelProperties**](EWalletChannelProperties.md) |  | [optional]  |
+| **Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  | [optional]  |
 
 ## Methods
 

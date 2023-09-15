@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ErrorCode** | Pointer to **NullableString** |  | [optional] 
-**Message** | Pointer to **NullableString** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ErrorCode** | Pointer to **NullableString** |  | [optional]  |
+| **Message** | Pointer to **NullableString** |  | [optional]  |
 
 ## Methods
 

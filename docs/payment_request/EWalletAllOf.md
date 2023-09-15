@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  | [optional]  |
 
 ## Methods
 

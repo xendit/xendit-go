@@ -35,6 +35,14 @@
 
 * `ZALOPAY` (value: `"ZALOPAY"`)
 
+* `WECHATPAY` (value: `"WECHATPAY"`)
+
+* `LINEPAY` (value: `"LINEPAY"`)
+
+* `TRUEMONEY` (value: `"TRUEMONEY"`)
+
+* `ALIPAY` (value: `"ALIPAY"`)
+
 
 [[Back to README]](../../README.md)
 

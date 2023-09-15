@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**QrString** | Pointer to **string** | QR string to be rendered for display to end users. QR string to image rendering are commonly available in software libraries (e.g Nodejs, PHP, Java) | [optional] 
-**ExpiresAt** | Pointer to **time.Time** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **QrString** | Pointer to **string** | QR string to be rendered for display to end users. QR string to image rendering are commonly available in software libraries (e.g Nodejs, PHP, Java) | [optional]  |
+| **ExpiresAt** | Pointer to **time.Time** |  | [optional]  |
 
 ## Methods
 

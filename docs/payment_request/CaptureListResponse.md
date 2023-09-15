@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Data** | [**[]Capture**](Capture.md) |  | 
-**HasMore** | **bool** |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Data** | [**Capture[]**](Capture.md) |  |  |
+| **HasMore** | **bool** |  |  |
 
 ## Methods
 

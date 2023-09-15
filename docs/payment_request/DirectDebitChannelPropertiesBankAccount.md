@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SuccessReturnUrl** | Pointer to **string** |  | [optional] 
-**FailureReturnUrl** | Pointer to **string** |  | [optional] 
-**MobileNumber** | Pointer to **string** |  | [optional] 
-**IdentityDocumentNumber** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **SuccessReturnUrl** | Pointer to **string** |  | [optional]  |
+| **FailureReturnUrl** | Pointer to **string** |  | [optional]  |
+| **MobileNumber** | Pointer to **string** |  | [optional]  |
+| **IdentityDocumentNumber** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**RetailOutletName** | [**RetailOutletName**](RetailOutletName.md) |  | 
-**PaymentCode** | Pointer to **string** | The payment code. | [optional] 
-**TransferAmount** | Pointer to **float32** | The transfer amount. | [optional] 
-**MerchantName** | Pointer to **string** | The name of the merchant. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **RetailOutletName** | [**RetailOutletName**](RetailOutletName.md) |  |  |
+| **PaymentCode** | Pointer to **string** | The payment code. | [optional]  |
+| **TransferAmount** | Pointer to **float32** | The transfer amount. | [optional]  |
+| **MerchantName** | Pointer to **string** | The name of the merchant. | [optional]  |
 
 ## Methods
 

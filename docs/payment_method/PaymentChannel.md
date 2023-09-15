@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ChannelCode** | Pointer to **string** | The specific Xendit code used to identify the partner channel | [optional] 
-**Type** | Pointer to **string** | The payment method type | [optional] 
-**Country** | Pointer to **string** | The country where the channel operates  in ISO 3166-2 country code | [optional] 
-**ChannelName** | Pointer to **string** | Official parter name of the payment channel | [optional] 
-**ChannelProperties** | Pointer to [**[]ChannelProperty**](ChannelProperty.md) |  | [optional] 
-**LogoUrl** | Pointer to **string** | If available, this contains a URL to the logo of the partner channel | [optional] 
-**AmountLimits** | Pointer to [**[]ChannelAmountLimits**](ChannelAmountLimits.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ChannelCode** | Pointer to **string** | The specific Xendit code used to identify the partner channel | [optional]  |
+| **Type** | Pointer to **string** | The payment method type | [optional]  |
+| **Country** | Pointer to **string** | The country where the channel operates  in ISO 3166-2 country code | [optional]  |
+| **ChannelName** | Pointer to **string** | Official parter name of the payment channel | [optional]  |
+| **ChannelProperties** | Pointer to [**ChannelProperty[]**](ChannelProperty.md) |  | [optional]  |
+| **LogoUrl** | Pointer to **string** | If available, this contains a URL to the logo of the partner channel | [optional]  |
+| **AmountLimits** | Pointer to [**ChannelAmountLimits[]**](ChannelAmountLimits.md) |  | [optional]  |
 
 ## Methods
 

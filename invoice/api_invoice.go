@@ -474,7 +474,7 @@ type ApiGetInvoicesRequest struct {
 	ctx context.Context
 	ApiService InvoiceApi
 	externalId *string
-	statuses *[]string
+	statuses *[]InvoiceStatus
 	limit *float32
 	createdAfter *time.Time
 	createdBefore *time.Time
@@ -483,7 +483,7 @@ type ApiGetInvoicesRequest struct {
 	expiredAfter *time.Time
 	expiredBefore *time.Time
 	lastInvoice *string
-	clientTypes *[]string
+	clientTypes *[]InvoiceClientType
 	paymentChannels *[]string
 	onDemandLink *string
 	recurringPaymentId *string
@@ -494,7 +494,7 @@ func (r ApiGetInvoicesRequest) ExternalId(externalId string) ApiGetInvoicesReque
 	return r
 }
 
-func (r ApiGetInvoicesRequest) Statuses(statuses []string) ApiGetInvoicesRequest {
+func (r ApiGetInvoicesRequest) Statuses(statuses []InvoiceStatus) ApiGetInvoicesRequest {
 	r.statuses = &statuses
 	return r
 }
@@ -539,7 +539,7 @@ func (r ApiGetInvoicesRequest) LastInvoice(lastInvoice string) ApiGetInvoicesReq
 	return r
 }
 
-func (r ApiGetInvoicesRequest) ClientTypes(clientTypes []string) ApiGetInvoicesRequest {
+func (r ApiGetInvoicesRequest) ClientTypes(clientTypes []InvoiceClientType) ApiGetInvoicesRequest {
 	r.clientTypes = &clientTypes
 	return r
 }

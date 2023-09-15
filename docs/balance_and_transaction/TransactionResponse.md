@@ -2,25 +2,25 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **string** | The unique id of a transaction. It will have &#x60;txn_&#x60; as prefix | 
-**ProductId** | **string** | The product_id of the transaction. Product id will have a different prefix for each product. You can use this id to match the transaction from this API to each product API. | 
-**Type** | [**TransactionResponseType**](TransactionResponseType.md) |  | 
-**Status** | [**TransactionStatuses**](TransactionStatuses.md) |  | 
-**ChannelCategory** | [**ChannelsCategories**](ChannelsCategories.md) |  | 
-**ChannelCode** | **NullableString** | The channel of the transaction that is used. See [channel codes](https://docs.xendit.co/xendisburse/channel-codes) for the list of available per channel categories. | 
-**AccountIdentifier** | **NullableString** | Account identifier of transaction. The format will be different from each channel. | 
-**ReferenceId** | **string** | customer supplied reference/external_id | 
-**Currency** | [**Currency**](Currency.md) |  | 
-**Amount** | **float32** | The transaction amount. The number of decimal places will be different for each currency according to ISO 4217. | 
-**Cashflow** | **string** | Representing whether the transaction is money in or money out For transfer, the transfer out side it will shows up as money out and on transfer in side in will shows up as money-in. Available values are &#x60;MONEY_IN&#x60; for money in and &#x60;MONEY_OUT&#x60; for money out. | 
-**SettlementStatus** | Pointer to **NullableString** | The settlement status of the transaction. &#x60;PENDING&#x60; - Transaction amount has not been settled to merchant&#39;s balance. &#x60;SETTLED&#x60; - Transaction has been settled to merchant&#39;s balance | [optional] 
-**EstimatedSettlementTime** | Pointer to **NullableTime** | Estimated settlement time will only apply to money-in transactions. For money-out transaction, the value will be &#x60;NULL&#x60;. Estimated settlement time in which transaction amount will be settled to merchant&#39;s balance. | [optional] 
-**BusinessId** | **string** | The id of business where this transaction belong to | 
-**Fee** | [**FeeResponse**](FeeResponse.md) |  | 
-**Created** | **time.Time** | Transaction created timestamp (UTC+0) | 
-**Updated** | **time.Time** | Transaction updated timestamp (UTC+0) | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Id** | **string** | The unique id of a transaction. It will have &#x60;txn_&#x60; as prefix |  |
+| **ProductId** | **string** | The product_id of the transaction. Product id will have a different prefix for each product. You can use this id to match the transaction from this API to each product API. |  |
+| **Type** | [**TransactionResponseType**](TransactionResponseType.md) |  |  |
+| **Status** | [**TransactionStatuses**](TransactionStatuses.md) |  |  |
+| **ChannelCategory** | [**ChannelsCategories**](ChannelsCategories.md) |  |  |
+| **ChannelCode** | **NullableString** | The channel of the transaction that is used. See [channel codes](https://docs.xendit.co/xendisburse/channel-codes) for the list of available per channel categories. |  |
+| **AccountIdentifier** | **NullableString** | Account identifier of transaction. The format will be different from each channel. |  |
+| **ReferenceId** | **string** | customer supplied reference/external_id |  |
+| **Currency** | [**Currency**](Currency.md) |  |  |
+| **Amount** | **float32** | The transaction amount. The number of decimal places will be different for each currency according to ISO 4217. |  |
+| **Cashflow** | **string** | Representing whether the transaction is money in or money out For transfer, the transfer out side it will shows up as money out and on transfer in side in will shows up as money-in. Available values are &#x60;MONEY_IN&#x60; for money in and &#x60;MONEY_OUT&#x60; for money out. |  |
+| **SettlementStatus** | Pointer to **NullableString** | The settlement status of the transaction. &#x60;PENDING&#x60; - Transaction amount has not been settled to merchant&#39;s balance. &#x60;SETTLED&#x60; - Transaction has been settled to merchant&#39;s balance | [optional]  |
+| **EstimatedSettlementTime** | Pointer to **NullableTime** | Estimated settlement time will only apply to money-in transactions. For money-out transaction, the value will be &#x60;NULL&#x60;. Estimated settlement time in which transaction amount will be settled to merchant&#39;s balance. | [optional]  |
+| **BusinessId** | **string** | The id of business where this transaction belong to |  |
+| **Fee** | [**FeeResponse**](FeeResponse.md) |  |  |
+| **Created** | **time.Time** | Transaction created timestamp (UTC+0) |  |
+| **Updated** | **time.Time** | Transaction updated timestamp (UTC+0) |  |
 
 ## Methods
 

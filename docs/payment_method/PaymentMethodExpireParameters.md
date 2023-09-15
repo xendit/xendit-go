@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**SuccessReturnUrl** | Pointer to **NullableString** | URL where the end customer is redirected if the unlinking authorization is successful. | [optional] 
-**FailureReturnUrl** | Pointer to **NullableString** | URL where the end customer is redirected if the unlinking authorization is failed. | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **SuccessReturnUrl** | Pointer to **NullableString** | URL where the end customer is redirected if the unlinking authorization is successful. | [optional]  |
+| **FailureReturnUrl** | Pointer to **NullableString** | URL where the end customer is redirected if the unlinking authorization is failed. | [optional]  |
 
 ## Methods
 

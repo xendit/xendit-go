@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**AccountHolderName** | Pointer to **NullableString** | Registered account name | [optional] 
-**AccountNumber** | **string** | Registered account number | 
-**AccountType** | Pointer to [**ChannelAccountType**](ChannelAccountType.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **AccountHolderName** | Pointer to **NullableString** | Registered account name | [optional]  |
+| **AccountNumber** | **string** | Registered account number |  |
+| **AccountType** | Pointer to [**ChannelAccountType**](ChannelAccountType.md) |  | [optional]  |
 
 ## Methods
 

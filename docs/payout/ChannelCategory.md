@@ -7,6 +7,8 @@
 
 * `EWALLET` (value: `"EWALLET"`)
 
+* `OTC` (value: `"OTC"`)
+
 
 [[Back to README]](../../README.md)
 

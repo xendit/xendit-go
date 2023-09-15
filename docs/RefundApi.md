@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CancelRefund**](RefundApi.md#CancelRefund) | **Post** /refunds/{refundID}/cancel | 
-[**CreateRefund**](RefundApi.md#CreateRefund) | **Post** /refunds | 
-[**GetAllRefunds**](RefundApi.md#GetAllRefunds) | **Get** /refunds/ | 
-[**GetRefund**](RefundApi.md#GetRefund) | **Get** /refunds/{refundID} | 
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**CancelRefund**](RefundApi.md#CancelRefund) | **Post** /refunds/{refundID}/cancel |  |
+| [**CreateRefund**](RefundApi.md#CreateRefund) | **Post** /refunds |  |
+| [**GetAllRefunds**](RefundApi.md#GetAllRefunds) | **Get** /refunds/ |  |
+| [**GetRefund**](RefundApi.md#GetRefund) | **Get** /refunds/{refundID} |  |
 
 
 
@@ -52,20 +52,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**refundID** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **refundID** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCancelRefundRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **idempotencyKey** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **idempotencyKey** |**string**|  |  | 
 
 ### Return type
 
@@ -128,10 +128,10 @@ func main() {
 Other parameters are passed through a pointer to a apiCreateRefundRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idempotencyKey** | **string** |  | 
- **createRefund** | [**CreateRefund**](CreateRefund.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **idempotencyKey** |**string**|  |  | 
+|  **createRefund** |[**CreateRefund**](refund/CreateRefund.md)|  |  | 
 
 ### Return type
 
@@ -242,20 +242,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**refundID** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **refundID** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetRefundRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **idempotencyKey** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **idempotencyKey** |**string**|  |  | 
 
 ### Return type
 

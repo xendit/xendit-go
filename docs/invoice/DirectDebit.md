@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**DirectDebitType** | [**DirectDebitType**](DirectDebitType.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **DirectDebitType** | [**DirectDebitType**](DirectDebitType.md) |  |  |
 
 ## Methods
 

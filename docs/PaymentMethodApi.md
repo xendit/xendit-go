@@ -2,17 +2,17 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**AuthPaymentMethod**](PaymentMethodApi.md#AuthPaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/auth | Validate a payment method&#39;s linking OTP
-[**CreatePaymentMethod**](PaymentMethodApi.md#CreatePaymentMethod) | **Post** /v2/payment_methods | Creates payment method
-[**ExpirePaymentMethod**](PaymentMethodApi.md#ExpirePaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/expire | Expires a payment method
-[**GetAllPaymentChannels**](PaymentMethodApi.md#GetAllPaymentChannels) | **Get** /v2/payment_methods/channels | Get all payment channels
-[**GetAllPaymentMethods**](PaymentMethodApi.md#GetAllPaymentMethods) | **Get** /v2/payment_methods | Get all payment methods by filters
-[**GetPaymentMethodByID**](PaymentMethodApi.md#GetPaymentMethodByID) | **Get** /v2/payment_methods/{paymentMethodId} | Get payment method by ID
-[**GetPaymentsByPaymentMethodId**](PaymentMethodApi.md#GetPaymentsByPaymentMethodId) | **Get** /v2/payment_methods/{paymentMethodId}/payments | Returns payments with matching PaymentMethodID.
-[**PatchPaymentMethod**](PaymentMethodApi.md#PatchPaymentMethod) | **Patch** /v2/payment_methods/{paymentMethodId} | Patch payment methods
-[**SimulatePayment**](PaymentMethodApi.md#SimulatePayment) | **Post** /v2/payment_methods/{paymentMethodId}/payments/simulate | Makes payment with matching PaymentMethodID.
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**AuthPaymentMethod**](PaymentMethodApi.md#AuthPaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/auth | Validate a payment method&#39;s linking OTP |
+| [**CreatePaymentMethod**](PaymentMethodApi.md#CreatePaymentMethod) | **Post** /v2/payment_methods | Creates payment method |
+| [**ExpirePaymentMethod**](PaymentMethodApi.md#ExpirePaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/expire | Expires a payment method |
+| [**GetAllPaymentChannels**](PaymentMethodApi.md#GetAllPaymentChannels) | **Get** /v2/payment_methods/channels | Get all payment channels |
+| [**GetAllPaymentMethods**](PaymentMethodApi.md#GetAllPaymentMethods) | **Get** /v2/payment_methods | Get all payment methods by filters |
+| [**GetPaymentMethodByID**](PaymentMethodApi.md#GetPaymentMethodByID) | **Get** /v2/payment_methods/{paymentMethodId} | Get payment method by ID |
+| [**GetPaymentsByPaymentMethodId**](PaymentMethodApi.md#GetPaymentsByPaymentMethodId) | **Get** /v2/payment_methods/{paymentMethodId}/payments | Returns payments with matching PaymentMethodID. |
+| [**PatchPaymentMethod**](PaymentMethodApi.md#PatchPaymentMethod) | **Patch** /v2/payment_methods/{paymentMethodId} | Patch payment methods |
+| [**SimulatePayment**](PaymentMethodApi.md#SimulatePayment) | **Post** /v2/payment_methods/{paymentMethodId}/payments/simulate | Makes payment with matching PaymentMethodID. |
 
 
 
@@ -59,20 +59,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentMethodId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentMethodId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAuthPaymentMethodRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **paymentMethodAuthParameters** | [**PaymentMethodAuthParameters**](PaymentMethodAuthParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **paymentMethodAuthParameters** |[**PaymentMethodAuthParameters**](payment_method/PaymentMethodAuthParameters.md)|  |  | 
 
 ### Return type
 
@@ -134,9 +134,9 @@ func main() {
 Other parameters are passed through a pointer to a apiCreatePaymentMethodRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **paymentMethodParameters** | [**PaymentMethodParameters**](PaymentMethodParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **paymentMethodParameters** |[**PaymentMethodParameters**](payment_method/PaymentMethodParameters.md)|  |  | 
 
 ### Return type
 
@@ -194,20 +194,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentMethodId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentMethodId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiExpirePaymentMethodRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **paymentMethodExpireParameters** | [**PaymentMethodExpireParameters**](PaymentMethodExpireParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **paymentMethodExpireParameters** |[**PaymentMethodExpireParameters**](payment_method/PaymentMethodExpireParameters.md)|  |  | 
 
 ### Return type
 
@@ -273,10 +273,10 @@ func main() {
 Other parameters are passed through a pointer to a apiGetAllPaymentChannelsRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **isActivated** | **bool** |  | [default to true]
- **type_** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **isActivated** |**bool**|  | [default to true] | 
+|  **type_** |**string**|  |  | 
 
 ### Return type
 
@@ -362,17 +362,17 @@ func main() {
 Other parameters are passed through a pointer to a apiGetAllPaymentMethodsRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **[]string** |  | 
- **type_** | **[]string** |  | 
- **status** | [**[]PaymentMethodStatus**](payment_method/PaymentMethodStatus.md) |  | 
- **reusability** | [**PaymentMethodReusability**](payment_method/PaymentMethodReusability.md) |  | 
- **customerId** | **string** |  | 
- **referenceId** | **string** |  | 
- **afterId** | **string** |  | 
- **beforeId** | **string** |  | 
- **limit** | **int32** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **id** |**string[]**|  |  | 
+|  **type_** |**string[]**|  |  | 
+|  **status** |[**PaymentMethodStatus[]**](payment_method/PaymentMethodStatus.md)|  |  | 
+|  **reusability** |[**PaymentMethodReusability**](payment_method/PaymentMethodReusabilitypayment_method/.md)|  |  | 
+|  **customerId** |**string**|  |  | 
+|  **referenceId** |**string**|  |  | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
+|  **limit** |**int32**|  |  | 
 
 ### Return type
 
@@ -427,19 +427,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentMethodId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentMethodId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetPaymentMethodByIDRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 
@@ -537,33 +537,33 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentMethodId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentMethodId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetPaymentsByPaymentMethodIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **paymentRequestId** | **[]string** |  | 
- **paymentMethodId2** | **[]string** |  | 
- **referenceId** | **[]string** |  | 
- **paymentMethodType** | [**[]PaymentMethodType**](payment_method/PaymentMethodType.md) |  | 
- **channelCode** | **[]string** |  | 
- **status** | **[]string** |  | 
- **currency** | **[]string** |  | 
- **createdGte** | **time.Time** |  | 
- **createdLte** | **time.Time** |  | 
- **updatedGte** | **time.Time** |  | 
- **updatedLte** | **time.Time** |  | 
- **limit** | **int32** |  | 
- **afterId** | **string** |  | 
- **beforeId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **paymentRequestId** |**string[]**|  |  | 
+|  **paymentMethodId2** |**string[]**|  |  | 
+|  **referenceId** |**string[]**|  |  | 
+|  **paymentMethodType** |[**PaymentMethodType[]**](payment_method/PaymentMethodType.md)|  |  | 
+|  **channelCode** |**string[]**|  |  | 
+|  **status** |**string[]**|  |  | 
+|  **currency** |**string[]**|  |  | 
+|  **createdGte** |**time.Time**|  |  | 
+|  **createdLte** |**time.Time**|  |  | 
+|  **updatedGte** |**time.Time**|  |  | 
+|  **updatedLte** |**time.Time**|  |  | 
+|  **limit** |**int32**|  |  | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
 
 ### Return type
 
@@ -621,20 +621,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentMethodId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentMethodId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPatchPaymentMethodRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **paymentMethodUpdateParameters** | [**PaymentMethodUpdateParameters**](PaymentMethodUpdateParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **paymentMethodUpdateParameters** |[**PaymentMethodUpdateParameters**](payment_method/PaymentMethodUpdateParameters.md)|  |  | 
 
 ### Return type
 
@@ -690,20 +690,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentMethodId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentMethodId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiSimulatePaymentRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **simulatePaymentRequest** | [**SimulatePaymentRequest**](SimulatePaymentRequest.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **simulatePaymentRequest** |[**SimulatePaymentRequest**](payment_method/SimulatePaymentRequest.md)|  |  | 
 
 ### Return type
 

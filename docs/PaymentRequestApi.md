@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**AuthorizePaymentRequest**](PaymentRequestApi.md#AuthorizePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/auth | Payment Request Authorize
-[**CapturePaymentRequest**](PaymentRequestApi.md#CapturePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/captures | Payment Request Capture
-[**CreatePaymentRequest**](PaymentRequestApi.md#CreatePaymentRequest) | **Post** /payment_requests | Create Payment Request
-[**GetAllPaymentRequests**](PaymentRequestApi.md#GetAllPaymentRequests) | **Get** /payment_requests | Get all payment requests by filter
-[**GetPaymentRequestByID**](PaymentRequestApi.md#GetPaymentRequestByID) | **Get** /payment_requests/{paymentRequestId} | Get payment request by ID
-[**GetPaymentRequestCaptures**](PaymentRequestApi.md#GetPaymentRequestCaptures) | **Get** /payment_requests/{paymentRequestId}/captures | Get Payment Request Capture
-[**ResendPaymentRequestAuth**](PaymentRequestApi.md#ResendPaymentRequestAuth) | **Post** /payment_requests/{paymentRequestId}/auth/resend | Payment Request Resend Auth
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**AuthorizePaymentRequest**](PaymentRequestApi.md#AuthorizePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/auth | Payment Request Authorize |
+| [**CapturePaymentRequest**](PaymentRequestApi.md#CapturePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/captures | Payment Request Capture |
+| [**CreatePaymentRequest**](PaymentRequestApi.md#CreatePaymentRequest) | **Post** /payment_requests | Create Payment Request |
+| [**GetAllPaymentRequests**](PaymentRequestApi.md#GetAllPaymentRequests) | **Get** /payment_requests | Get all payment requests by filter |
+| [**GetPaymentRequestByID**](PaymentRequestApi.md#GetPaymentRequestByID) | **Get** /payment_requests/{paymentRequestId} | Get payment request by ID |
+| [**GetPaymentRequestCaptures**](PaymentRequestApi.md#GetPaymentRequestCaptures) | **Get** /payment_requests/{paymentRequestId}/captures | Get Payment Request Capture |
+| [**ResendPaymentRequestAuth**](PaymentRequestApi.md#ResendPaymentRequestAuth) | **Post** /payment_requests/{paymentRequestId}/auth/resend | Payment Request Resend Auth |
 
 
 
@@ -57,20 +57,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentRequestId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAuthorizePaymentRequestRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **paymentRequestAuthParameters** | [**PaymentRequestAuthParameters**](PaymentRequestAuthParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **paymentRequestAuthParameters** |[**PaymentRequestAuthParameters**](payment_request/PaymentRequestAuthParameters.md)|  |  | 
 
 ### Return type
 
@@ -128,20 +128,20 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentRequestId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCapturePaymentRequestRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **captureParameters** | [**CaptureParameters**](CaptureParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **captureParameters** |[**CaptureParameters**](payment_request/CaptureParameters.md)|  |  | 
 
 ### Return type
 
@@ -206,10 +206,10 @@ func main() {
 Other parameters are passed through a pointer to a apiCreatePaymentRequestRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idempotencyKey** | **string** |  | 
- **paymentRequestParameters** | [**PaymentRequestParameters**](PaymentRequestParameters.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **idempotencyKey** |**string**|  |  | 
+|  **paymentRequestParameters** |[**PaymentRequestParameters**](payment_request/PaymentRequestParameters.md)|  |  | 
 
 ### Return type
 
@@ -286,14 +286,14 @@ func main() {
 Other parameters are passed through a pointer to a apiGetAllPaymentRequestsRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **referenceId** | **[]string** |  | 
- **id** | **[]string** |  | 
- **customerId** | **[]string** |  | 
- **limit** | **int32** |  | 
- **beforeId** | **string** |  | 
- **afterId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **referenceId** |**string[]**|  |  | 
+|  **id** |**string[]**|  |  | 
+|  **customerId** |**string[]**|  |  | 
+|  **limit** |**int32**|  |  | 
+|  **beforeId** |**string**|  |  | 
+|  **afterId** |**string**|  |  | 
 
 ### Return type
 
@@ -348,19 +348,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentRequestId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetPaymentRequestByIDRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 
@@ -424,22 +424,22 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentRequestId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetPaymentRequestCapturesRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **limit** | **int32** |  | 
- **afterId** | **string** |  | 
- **beforeId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **limit** |**int32**|  |  | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
 
 ### Return type
 
@@ -494,19 +494,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**paymentRequestId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiResendPaymentRequestAuthRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 

@@ -2,21 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ReferenceId** | Pointer to **string** |  | [optional] 
-**Name** | **string** |  | 
-**Description** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
-**Category** | **string** |  | 
-**SubCategory** | Pointer to **string** |  | [optional] 
-**Currency** | **string** |  | 
-**Quantity** | **float64** |  | 
-**Price** | **float64** |  | 
-**PayerChargedCurrency** | Pointer to **string** |  | [optional] 
-**PayerChargedPrice** | Pointer to **float64** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ReferenceId** | Pointer to **string** |  | [optional]  |
+| **Name** | **string** |  |  |
+| **Description** | Pointer to **string** |  | [optional]  |
+| **Type** | Pointer to **string** |  | [optional]  |
+| **Category** | **string** |  |  |
+| **SubCategory** | Pointer to **string** |  | [optional]  |
+| **Currency** | **string** |  |  |
+| **Quantity** | **float64** |  |  |
+| **Price** | **float64** |  |  |
+| **PayerChargedCurrency** | Pointer to **string** |  | [optional]  |
+| **PayerChargedPrice** | Pointer to **float64** |  | [optional]  |
+| **Url** | Pointer to **string** |  | [optional]  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
 
 ## Methods
 

@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  | 
-**ChannelProperties** | [**CardChannelProperties**](CardChannelProperties.md) |  | 
-**CardInformation** | [**CardInformation**](CardInformation.md) |  | 
-**CardVerificationResults** | Pointer to [**NullableCardVerificationResults**](CardVerificationResults.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  |  |
+| **ChannelProperties** | [**CardChannelProperties**](CardChannelProperties.md) |  |  |
+| **CardInformation** | [**CardInformation**](CardInformation.md) |  |  |
+| **CardVerificationResults** | Pointer to [**NullableCardVerificationResults**](CardVerificationResults.md) |  | [optional]  |
 
 ## Methods
 

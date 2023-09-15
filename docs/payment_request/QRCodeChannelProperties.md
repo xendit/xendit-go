@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**QrString** | Pointer to **string** |  | [optional] 
-**ExpiresAt** | Pointer to **time.Time** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **QrString** | Pointer to **string** |  | [optional]  |
+| **ExpiresAt** | Pointer to **time.Time** |  | [optional]  |
 
 ## Methods
 

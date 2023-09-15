@@ -2,10 +2,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**MaskedBankAccountNumber** | Pointer to **NullableString** |  | [optional] 
-**BankAccountHash** | Pointer to **NullableString** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **MaskedBankAccountNumber** | Pointer to **NullableString** |  | [optional]  |
+| **BankAccountHash** | Pointer to **NullableString** |  | [optional]  |
 
 ## Methods
 

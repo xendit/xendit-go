@@ -2,15 +2,15 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**PaymentRequestId** | Pointer to **string** |  | [optional] 
-**InvoiceId** | Pointer to **string** |  | [optional] 
-**ReferenceId** | Pointer to **string** |  | [optional] 
-**Amount** | Pointer to **float64** |  | [optional] 
-**Currency** | Pointer to **string** |  | [optional] 
-**Reason** | Pointer to **string** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **PaymentRequestId** | Pointer to **string** |  | [optional]  |
+| **InvoiceId** | Pointer to **string** |  | [optional]  |
+| **ReferenceId** | Pointer to **string** |  | [optional]  |
+| **Amount** | Pointer to **float64** |  | [optional]  |
+| **Currency** | Pointer to **string** |  | [optional]  |
+| **Reason** | Pointer to **string** |  | [optional]  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
 
 ## Methods
 

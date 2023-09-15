@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]PaymentChannel**](PaymentChannel.md) | Array of resources that match the provided filters | [optional] 
-**Links** | Pointer to [**[]PaymentChannelListLinksInner**](PaymentChannelListLinksInner.md) | Array of objects that can be used to assist on navigating through the data | [optional] 
-**HasMore** | Pointer to **bool** | Indicates whether there are more items in the list | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Data** | Pointer to [**PaymentChannel[]**](PaymentChannel.md) | Array of resources that match the provided filters | [optional]  |
+| **Links** | Pointer to [**PaymentChannelListLinksInner[]**](PaymentChannelListLinksInner.md) | Array of objects that can be used to assist on navigating through the data | [optional]  |
+| **HasMore** | Pointer to **bool** | Indicates whether there are more items in the list | [optional]  |
 
 ## Methods
 

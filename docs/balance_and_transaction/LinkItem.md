@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Href** | **string** | URI of target, this will be to the next link. | 
-**Rel** | **string** | The relationship between source and target. The value will be &#x60;next&#x60;. | 
-**Method** | **string** | The HTTP method, the value will be &#x60;GET&#x60;. | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Href** | **string** | URI of target, this will be to the next link. |  |
+| **Rel** | **string** | The relationship between source and target. The value will be &#x60;next&#x60;. |  |
+| **Method** | **string** | The HTTP method, the value will be &#x60;GET&#x60;. |  |
 
 ## Methods
 

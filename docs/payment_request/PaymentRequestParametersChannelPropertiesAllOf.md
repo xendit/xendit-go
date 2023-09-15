@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Cvv** | Pointer to **string** | Three digit code written on the back of the card (usually called CVV/CVN). | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Cvv** | Pointer to **string** | Three digit code written on the back of the card (usually called CVV/CVN). | [optional]  |
 
 ## Methods
 

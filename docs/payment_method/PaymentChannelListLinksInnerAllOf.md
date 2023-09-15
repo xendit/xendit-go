@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Href** | Pointer to **string** | Target URI that should contain a target to Internationalized Resource Identifiers (IRI) | [optional] 
-**Rel** | Pointer to **string** | The link relation type described how the current context (source) is related to target resource | [optional] 
-**Method** | Pointer to **string** | The HTTP method to be used to call &#x60;href&#x60; | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Href** | Pointer to **string** | Target URI that should contain a target to Internationalized Resource Identifiers (IRI) | [optional]  |
+| **Rel** | Pointer to **string** | The link relation type described how the current context (source) is related to target resource | [optional]  |
+| **Method** | Pointer to **string** | The HTTP method to be used to call &#x60;href&#x60; | [optional]  |
 
 ## Methods
 

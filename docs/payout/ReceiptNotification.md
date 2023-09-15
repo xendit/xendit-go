@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**EmailTo** | Pointer to **[]string** | Valid email address to send the payout receipt | [optional] 
-**EmailCc** | Pointer to **[]string** | Valid email address to cc the payout receipt | [optional] 
-**EmailBcc** | Pointer to **[]string** | Valid email address to bcc the payout receipt | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **EmailTo** | Pointer to **string[]** | Valid email address to send the payout receipt | [optional]  |
+| **EmailCc** | Pointer to **string[]** | Valid email address to cc the payout receipt | [optional]  |
+| **EmailBcc** | Pointer to **string[]** | Valid email address to bcc the payout receipt | [optional]  |
 
 ## Methods
 

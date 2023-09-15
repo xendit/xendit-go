@@ -2,31 +2,31 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Created** | **string** |  | 
-**Updated** | **string** |  | 
-**ReferenceId** | **string** |  | 
-**BusinessId** | **string** |  | 
-**CustomerId** | Pointer to **NullableString** |  | [optional] 
-**Customer** | Pointer to **map[string]interface{}** |  | [optional] 
-**Amount** | Pointer to **float64** |  | [optional] 
-**MinAmount** | Pointer to **NullableFloat64** |  | [optional] 
-**MaxAmount** | Pointer to **NullableFloat64** |  | [optional] 
-**Country** | Pointer to [**PaymentRequestCountry**](PaymentRequestCountry.md) |  | [optional] 
-**Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  | 
-**PaymentMethod** | [**PaymentMethod**](PaymentMethod.md) |  | 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**FailureCode** | Pointer to **NullableString** |  | [optional] 
-**CaptureMethod** | Pointer to [**NullablePaymentRequestCaptureMethod**](PaymentRequestCaptureMethod.md) |  | [optional] 
-**Initiator** | Pointer to [**NullablePaymentRequestInitiator**](PaymentRequestInitiator.md) |  | [optional] 
-**CardVerificationResults** | Pointer to [**NullablePaymentRequestCardVerificationResults**](PaymentRequestCardVerificationResults.md) |  | [optional] 
-**Status** | [**PaymentRequestStatus**](PaymentRequestStatus.md) |  | 
-**Actions** | Pointer to [**[]PaymentRequestAction**](PaymentRequestAction.md) |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
-**ShippingInformation** | Pointer to [**NullablePaymentRequestShippingInformation**](PaymentRequestShippingInformation.md) |  | [optional] 
-**Items** | Pointer to [**[]PaymentRequestBasketItem**](PaymentRequestBasketItem.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Id** | **string** |  |  |
+| **Created** | **string** |  |  |
+| **Updated** | **string** |  |  |
+| **ReferenceId** | **string** |  |  |
+| **BusinessId** | **string** |  |  |
+| **CustomerId** | Pointer to **NullableString** |  | [optional]  |
+| **Customer** | Pointer to **map[string]interface{}** |  | [optional]  |
+| **Amount** | Pointer to **float64** |  | [optional]  |
+| **MinAmount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **MaxAmount** | Pointer to **NullableFloat64** |  | [optional]  |
+| **Country** | Pointer to [**PaymentRequestCountry**](PaymentRequestCountry.md) |  | [optional]  |
+| **Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  |  |
+| **PaymentMethod** | [**PaymentMethod**](PaymentMethod.md) |  |  |
+| **Description** | Pointer to **NullableString** |  | [optional]  |
+| **FailureCode** | Pointer to **NullableString** |  | [optional]  |
+| **CaptureMethod** | Pointer to [**NullablePaymentRequestCaptureMethod**](PaymentRequestCaptureMethod.md) |  | [optional]  |
+| **Initiator** | Pointer to [**NullablePaymentRequestInitiator**](PaymentRequestInitiator.md) |  | [optional]  |
+| **CardVerificationResults** | Pointer to [**NullablePaymentRequestCardVerificationResults**](PaymentRequestCardVerificationResults.md) |  | [optional]  |
+| **Status** | [**PaymentRequestStatus**](PaymentRequestStatus.md) |  |  |
+| **Actions** | Pointer to [**PaymentRequestAction[]**](PaymentRequestAction.md) |  | [optional]  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
+| **ShippingInformation** | Pointer to [**NullablePaymentRequestShippingInformation**](PaymentRequestShippingInformation.md) |  | [optional]  |
+| **Items** | Pointer to [**PaymentRequestBasketItem[]**](PaymentRequestBasketItem.md) |  | [optional]  |
 
 ## Methods
 

@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://api.xendit.co*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**CreateInvoice**](InvoiceApi.md#CreateInvoice) | **Post** /v2/invoices/ | Create an invoice
-[**ExpireInvoice**](InvoiceApi.md#ExpireInvoice) | **Post** /invoices/{invoice_id}/expire! | Manually expire an invoice
-[**GetInvoiceById**](InvoiceApi.md#GetInvoiceById) | **Get** /v2/invoices/{invoice_id} | Get invoice by invoice id
-[**GetInvoices**](InvoiceApi.md#GetInvoices) | **Get** /v2/invoices | Get all Invoices
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**CreateInvoice**](InvoiceApi.md#CreateInvoice) | **Post** /v2/invoices/ | Create an invoice |
+| [**ExpireInvoice**](InvoiceApi.md#ExpireInvoice) | **Post** /invoices/{invoice_id}/expire! | Manually expire an invoice |
+| [**GetInvoiceById**](InvoiceApi.md#GetInvoiceById) | **Get** /v2/invoices/{invoice_id} | Get invoice by invoice id |
+| [**GetInvoices**](InvoiceApi.md#GetInvoices) | **Get** /v2/invoices | Get all Invoices |
 
 
 
@@ -56,9 +56,9 @@ func main() {
 Other parameters are passed through a pointer to a apiCreateInvoiceRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createInvoiceRequest** | [**CreateInvoiceRequest**](CreateInvoiceRequest.md) |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **createInvoiceRequest** |[**CreateInvoiceRequest**](invoice/CreateInvoiceRequest.md)|  |  | 
 
 ### Return type
 
@@ -112,19 +112,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**invoiceId** | **string** | Invoice ID to be expired | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **invoiceId** | **string** | Invoice ID to be expired |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiExpireInvoiceRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 
@@ -178,19 +178,19 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**invoiceId** | **string** | Invoice ID | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **invoiceId** | **string** | Invoice ID |  | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetInvoiceByIdRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
 
 ### Return type
 
@@ -227,7 +227,7 @@ func main() {
     
     externalId := "test-external" // [OPTIONAL] | string
 
-    statuses := []string{"Statuses_example"} // [OPTIONAL] | []string
+    statuses := []invoice.InvoiceStatus{invoice.InvoiceStatus("PENDING")} // [OPTIONAL] | []InvoiceStatus
 
     limit := float32(10) // [OPTIONAL] | float32
 
@@ -245,7 +245,7 @@ func main() {
 
     lastInvoice := "62efe4c33e45294d63f585f2" // [OPTIONAL] | string
 
-    clientTypes := []string{"ClientTypes_example"} // [OPTIONAL] | []string
+    clientTypes := []invoice.InvoiceClientType{invoice.InvoiceClientType("DASHBOARD")} // [OPTIONAL] | []InvoiceClientType
 
     paymentChannels := []string{"Inner_example"} // [OPTIONAL] | []string
 
@@ -290,22 +290,22 @@ func main() {
 Other parameters are passed through a pointer to a apiGetInvoicesRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **externalId** | **string** |  | 
- **statuses** | **[]string** |  | 
- **limit** | **float32** |  | 
- **createdAfter** | **time.Time** |  | 
- **createdBefore** | **time.Time** |  | 
- **paidAfter** | **time.Time** |  | 
- **paidBefore** | **time.Time** |  | 
- **expiredAfter** | **time.Time** |  | 
- **expiredBefore** | **time.Time** |  | 
- **lastInvoice** | **string** |  | 
- **clientTypes** | **[]string** |  | 
- **paymentChannels** | **[]string** |  | 
- **onDemandLink** | **string** |  | 
- **recurringPaymentId** | **string** |  | 
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **externalId** |**string**|  |  | 
+|  **statuses** |[**InvoiceStatus[]**](invoice/InvoiceStatus.md)|  |  | 
+|  **limit** |**float32**|  |  | 
+|  **createdAfter** |**time.Time**|  |  | 
+|  **createdBefore** |**time.Time**|  |  | 
+|  **paidAfter** |**time.Time**|  |  | 
+|  **paidBefore** |**time.Time**|  |  | 
+|  **expiredAfter** |**time.Time**|  |  | 
+|  **expiredBefore** |**time.Time**|  |  | 
+|  **lastInvoice** |**string**|  |  | 
+|  **clientTypes** |[**InvoiceClientType[]**](invoice/InvoiceClientType.md)|  |  | 
+|  **paymentChannels** |**string[]**|  |  | 
+|  **onDemandLink** |**string**|  |  | 
+|  **recurringPaymentId** |**string**|  |  | 
 
 ### Return type
 

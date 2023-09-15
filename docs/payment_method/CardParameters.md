@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Currency** | **string** |  | 
-**ChannelProperties** | Pointer to [**NullableCardChannelProperties**](CardChannelProperties.md) |  | [optional] 
-**CardInformation** | Pointer to [**CardParametersCardInformation**](CardParametersCardInformation.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Currency** | **string** |  |  |
+| **ChannelProperties** | Pointer to [**NullableCardChannelProperties**](CardChannelProperties.md) |  | [optional]  |
+| **CardInformation** | Pointer to [**CardParametersCardInformation**](CardParametersCardInformation.md) |  | [optional]  |
 
 ## Methods
 

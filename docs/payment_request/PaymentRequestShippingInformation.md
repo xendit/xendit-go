@@ -2,14 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Country** | **string** |  | 
-**StreetLine1** | Pointer to **string** |  | [optional] 
-**StreetLine2** | Pointer to **string** |  | [optional] 
-**City** | Pointer to **string** |  | [optional] 
-**ProvinceState** | Pointer to **string** |  | [optional] 
-**PostalCode** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Country** | **string** |  |  |
+| **StreetLine1** | Pointer to **string** |  | [optional]  |
+| **StreetLine2** | Pointer to **string** |  | [optional]  |
+| **City** | Pointer to **string** |  | [optional]  |
+| **ProvinceState** | Pointer to **string** |  | [optional]  |
+| **PostalCode** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

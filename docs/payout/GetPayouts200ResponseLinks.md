@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**Href** | Pointer to **string** |  | [optional] 
-**Rel** | Pointer to **string** |  | [optional] 
-**Method** | Pointer to **string** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **Href** | Pointer to **string** |  | [optional]  |
+| **Rel** | Pointer to **string** |  | [optional]  |
+| **Method** | Pointer to **string** |  | [optional]  |
 
 ## Methods
 

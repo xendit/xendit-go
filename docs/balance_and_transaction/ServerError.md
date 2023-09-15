@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**StatusCode** | **float32** |  | 
-**Error** | **string** |  | 
-**Message** | **string** |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **StatusCode** | **float32** |  |  |
+| **Error** | **string** |  |  |
+| **Message** | **string** |  |  |
 
 ## Methods
 

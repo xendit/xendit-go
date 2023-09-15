@@ -2,9 +2,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**QrCodeType** | [**QrCodeType**](QrCodeType.md) |  | 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **QrCodeType** | [**QrCodeType**](QrCodeType.md) |  |  |
 
 ## Methods
 

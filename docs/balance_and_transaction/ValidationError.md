@@ -2,12 +2,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**StatusCode** | **float32** |  | 
-**Error** | **string** |  | 
-**Message** | **string** |  | 
-**Validation** | Pointer to **map[string]interface{}** |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **StatusCode** | **float32** |  |  |
+| **Error** | **string** |  |  |
+| **Message** | **string** |  |  |
+| **Validation** | Pointer to **map[string]interface{}** |  | [optional]  |
 
 ## Methods
 

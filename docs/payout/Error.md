@@ -2,11 +2,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ErrorCode** | **string** | Specific error encountered when processing the request, can refer to the API documentation on proper handling of each available error code https://developers.xendit.co/api-reference/#payouts | 
-**Message** | **string** | Human readable error message | 
-**Errors** | Pointer to [**[]ErrorErrorsInner**](ErrorErrorsInner.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ------------ | ------------- | ------------- | ------------- |
+| **ErrorCode** | **string** | Specific error encountered when processing the request, can refer to the API documentation on proper handling of each available error code https://developers.xendit.co/api-reference/#payouts |  |
+| **Message** | **string** | Human readable error message |  |
+| **Errors** | Pointer to [**ErrorErrorsInner[]**](ErrorErrorsInner.md) |  | [optional]  |
 
 ## Methods
 
