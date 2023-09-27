@@ -49,7 +49,7 @@ func NewXenditSdkError(response *[]byte, paramStatus string, paramStatusText str
 		_rawResponse = map[string]interface{}{}
 	}
 
-	_status := ""
+	_status := paramStatus
 
 	if _status == "" {
 		if val, ok := _rawResponse["status"]; ok {
@@ -65,9 +65,6 @@ func NewXenditSdkError(response *[]byte, paramStatus string, paramStatusText str
 		if val, ok := _rawResponse["statusCode"]; ok {
 			_status = fmt.Sprintf("%v", val)
 		}
-	}
-	if _status == "" {
-		_status = paramStatus
 	}
 
 	_errorCode := ""

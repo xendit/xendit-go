@@ -34,6 +34,11 @@ const (
 	DIRECTDEBITTYPE_BA_BCA_KLIKPAY DirectDebitType = "BA_BCA_KLIKPAY"
 	DIRECTDEBITTYPE_DC_BCA_KLIKPAY DirectDebitType = "DC_BCA_KLIKPAY"
 	DIRECTDEBITTYPE_DD_BCA_KLIKPAY DirectDebitType = "DD_BCA_KLIKPAY"
+	DIRECTDEBITTYPE_DD_BDO_EPAY DirectDebitType = "DD_BDO_EPAY"
+	DIRECTDEBITTYPE_DD_RCBC DirectDebitType = "DD_RCBC"
+	DIRECTDEBITTYPE_DD_CHINABANK DirectDebitType = "DD_CHINABANK"
+	DIRECTDEBITTYPE_BA_CHINABANK DirectDebitType = "BA_CHINABANK"
+	DIRECTDEBITTYPE_DC_CHINABANK DirectDebitType = "DC_CHINABANK"
 )
 
 // All allowed values of DirectDebitType enum
@@ -52,6 +57,11 @@ var AllowedDirectDebitTypeEnumValues = []DirectDebitType{
 	"BA_BCA_KLIKPAY",
 	"DC_BCA_KLIKPAY",
 	"DD_BCA_KLIKPAY",
+	"DD_BDO_EPAY",
+	"DD_RCBC",
+	"DD_CHINABANK",
+	"BA_CHINABANK",
+	"DC_CHINABANK",
 }
 
 func (v *DirectDebitType) UnmarshalJSON(src []byte) error {

@@ -420,16 +420,10 @@ func main() {
 
     limit := int32(56) // [OPTIONAL] | int32
 
-    afterId := "afterId_example" // [OPTIONAL] | string
-
-    beforeId := "beforeId_example" // [OPTIONAL] | string
-
     xenditClient := xendit.NewClient("API-KEY")
 
     resp, r, err := xenditClient.PaymentRequestApi.GetPaymentRequestCaptures(context.Background(), paymentRequestId).
-        Limit(limit).
-        AfterId(afterId).
-        BeforeId(beforeId). // [OPTIONAL]
+        Limit(limit). // [OPTIONAL]
         Execute()
 
     if err != nil {
@@ -462,8 +456,6 @@ Other parameters are passed through a pointer to a apiGetPaymentRequestCapturesR
 | ------------- | ------------- | ------------- | ------------- |
 | 
 |  **limit** |**int32**|  |  | 
-|  **afterId** |**string**|  |  | 
-|  **beforeId** |**string**|  |  | 
 
 ### Return type
 

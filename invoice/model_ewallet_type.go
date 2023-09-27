@@ -27,6 +27,9 @@ const (
 	EWALLETTYPE_SHOPEEPAY EwalletType = "SHOPEEPAY"
 	EWALLETTYPE_GCASH EwalletType = "GCASH"
 	EWALLETTYPE_GRABPAY EwalletType = "GRABPAY"
+	EWALLETTYPE_ASTRAPAY EwalletType = "ASTRAPAY"
+	EWALLETTYPE_NEXCASH EwalletType = "NEXCASH"
+	EWALLETTYPE_JENIUSPAY EwalletType = "JENIUSPAY"
 )
 
 // All allowed values of EwalletType enum
@@ -38,6 +41,9 @@ var AllowedEwalletTypeEnumValues = []EwalletType{
 	"SHOPEEPAY",
 	"GCASH",
 	"GRABPAY",
+	"ASTRAPAY",
+	"NEXCASH",
+	"JENIUSPAY",
 }
 
 func (v *EwalletType) UnmarshalJSON(src []byte) error {

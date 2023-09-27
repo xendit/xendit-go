@@ -17,6 +17,12 @@
 
 * `GRABPAY` (value: `"GRABPAY"`)
 
+* `ASTRAPAY` (value: `"ASTRAPAY"`)
+
+* `NEXCASH` (value: `"NEXCASH"`)
+
+* `JENIUSPAY` (value: `"JENIUSPAY"`)
+
 
 [[Back to README]](../../README.md)
 

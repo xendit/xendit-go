@@ -27,6 +27,9 @@ const (
 	BANKCODE_PERMATA BankCode = "PERMATA"
 	BANKCODE_BSI BankCode = "BSI"
 	BANKCODE_BJB BankCode = "BJB"
+	BANKCODE_SAHABAT_SAMPOERNA BankCode = "SAHABAT_SAMPOERNA"
+	BANKCODE_CIMB BankCode = "CIMB"
+	BANKCODE_BNC BankCode = "BNC"
 )
 
 // All allowed values of BankCode enum
@@ -38,6 +41,9 @@ var AllowedBankCodeEnumValues = []BankCode{
 	"PERMATA",
 	"BSI",
 	"BJB",
+	"SAHABAT_SAMPOERNA",
+	"CIMB",
+	"BNC",
 }
 
 func (v *BankCode) UnmarshalJSON(src []byte) error {

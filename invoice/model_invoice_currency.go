@@ -22,6 +22,8 @@ type InvoiceCurrency string
 const (
 	INVOICECURRENCY_IDR InvoiceCurrency = "IDR"
 	INVOICECURRENCY_USD InvoiceCurrency = "USD"
+	INVOICECURRENCY_THB InvoiceCurrency = "THB"
+	INVOICECURRENCY_VND InvoiceCurrency = "VND"
 	INVOICECURRENCY_PHP InvoiceCurrency = "PHP"
 )
 
@@ -29,6 +31,8 @@ const (
 var AllowedInvoiceCurrencyEnumValues = []InvoiceCurrency{
 	"IDR",
 	"USD",
+	"THB",
+	"VND",
 	"PHP",
 }
 

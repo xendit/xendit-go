@@ -682,22 +682,10 @@ type ApiGetPaymentRequestCapturesRequest struct {
 	ApiService PaymentRequestApi
 	paymentRequestId string
 	limit *int32
-	afterId *string
-	beforeId *string
 }
 
 func (r ApiGetPaymentRequestCapturesRequest) Limit(limit int32) ApiGetPaymentRequestCapturesRequest {
 	r.limit = &limit
-	return r
-}
-
-func (r ApiGetPaymentRequestCapturesRequest) AfterId(afterId string) ApiGetPaymentRequestCapturesRequest {
-	r.afterId = &afterId
-	return r
-}
-
-func (r ApiGetPaymentRequestCapturesRequest) BeforeId(beforeId string) ApiGetPaymentRequestCapturesRequest {
-	r.beforeId = &beforeId
 	return r
 }
 
@@ -746,12 +734,6 @@ func (a *PaymentRequestApiService) GetPaymentRequestCapturesExecute(r ApiGetPaym
 
 	if r.limit != nil {
 		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	}
-	if r.afterId != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "after_id", r.afterId, "")
-	}
-	if r.beforeId != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "before_id", r.beforeId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

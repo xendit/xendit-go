@@ -17,6 +17,12 @@
 
 * `BJB` (value: `"BJB"`)
 
+* `SAHABAT_SAMPOERNA` (value: `"SAHABAT_SAMPOERNA"`)
+
+* `CIMB` (value: `"CIMB"`)
+
+* `BNC` (value: `"BNC"`)
+
 
 [[Back to README]](../../README.md)
 
