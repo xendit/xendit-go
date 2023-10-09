@@ -301,7 +301,7 @@ func (o CreateRefund) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	return toSerialize, nil
 }
 

@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -351,7 +351,7 @@ func (o PaymentRequestParametersChannelProperties) ToMap() (map[string]interface
 	}
 	if o.CardonfileType.IsSet() {
 		toSerialize["cardonfile_type"] = o.CardonfileType.Get()
-	}
+    }
 	if !utils.IsNil(o.Cvv) {
 		toSerialize["cvv"] = o.Cvv
 	}

@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -105,6 +105,7 @@ func (o DirectDebitParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["channel_code"] = o.ChannelCode
 	toSerialize["channel_properties"] = o.ChannelProperties.Get()
+
 	return toSerialize, nil
 }
 

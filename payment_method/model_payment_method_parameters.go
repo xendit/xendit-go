@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -541,17 +541,17 @@ func (o PaymentMethodParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	if o.Country.IsSet() {
 		toSerialize["country"] = o.Country.Get()
-	}
+    }
 	toSerialize["reusability"] = o.Reusability
 	if o.CustomerId.IsSet() {
 		toSerialize["customer_id"] = o.CustomerId.Get()
-	}
+    }
 	if !utils.IsNil(o.ReferenceId) {
 		toSerialize["reference_id"] = o.ReferenceId
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
-	}
+    }
 	if !utils.IsNil(o.Card) {
 		toSerialize["card"] = o.Card
 	}
@@ -572,10 +572,10 @@ func (o PaymentMethodParameters) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	if o.BillingInformation.IsSet() {
 		toSerialize["billing_information"] = o.BillingInformation.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

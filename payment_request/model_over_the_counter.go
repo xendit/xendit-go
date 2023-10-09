@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -179,7 +179,7 @@ func (o OverTheCounter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Amount.IsSet() {
 		toSerialize["amount"] = o.Amount.Get()
-	}
+    }
 	if !utils.IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}

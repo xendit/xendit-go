@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -852,19 +852,19 @@ func (o PaymentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["business_id"] = o.BusinessId
 	if o.CustomerId.IsSet() {
 		toSerialize["customer_id"] = o.CustomerId.Get()
-	}
+    }
 	if o.Customer != nil {
 		toSerialize["customer"] = o.Customer
-	}
+    }
 	if !utils.IsNil(o.Amount) {
 		toSerialize["amount"] = o.Amount
 	}
 	if o.MinAmount.IsSet() {
 		toSerialize["min_amount"] = o.MinAmount.Get()
-	}
+    }
 	if o.MaxAmount.IsSet() {
 		toSerialize["max_amount"] = o.MaxAmount.Get()
-	}
+    }
 	if !utils.IsNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}
@@ -872,32 +872,32 @@ func (o PaymentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["payment_method"] = o.PaymentMethod
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
-	}
+    }
 	if o.FailureCode.IsSet() {
 		toSerialize["failure_code"] = o.FailureCode.Get()
-	}
+    }
 	if o.CaptureMethod.IsSet() {
 		toSerialize["capture_method"] = o.CaptureMethod.Get()
-	}
+    }
 	if o.Initiator.IsSet() {
 		toSerialize["initiator"] = o.Initiator.Get()
-	}
+    }
 	if o.CardVerificationResults.IsSet() {
 		toSerialize["card_verification_results"] = o.CardVerificationResults.Get()
-	}
+    }
 	toSerialize["status"] = o.Status
 	if !utils.IsNil(o.Actions) {
 		toSerialize["actions"] = o.Actions
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	if o.ShippingInformation.IsSet() {
 		toSerialize["shipping_information"] = o.ShippingInformation.Get()
-	}
+    }
 	if o.Items != nil {
 		toSerialize["items"] = o.Items
-	}
+    }
 	return toSerialize, nil
 }
 

@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -164,12 +164,13 @@ func (o CardVerificationResults) MarshalJSON() ([]byte, error) {
 func (o CardVerificationResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["three_d_secure"] = o.ThreeDSecure.Get()
+
 	if o.CvvResult.IsSet() {
 		toSerialize["cvv_result"] = o.CvvResult.Get()
-	}
+    }
 	if o.AddressVerificationResult.IsSet() {
 		toSerialize["address_verification_result"] = o.AddressVerificationResult.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

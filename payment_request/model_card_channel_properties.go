@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -261,16 +261,16 @@ func (o CardChannelProperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.SkipThreeDSecure.IsSet() {
 		toSerialize["skip_three_d_secure"] = o.SkipThreeDSecure.Get()
-	}
+    }
 	if o.SuccessReturnUrl.IsSet() {
 		toSerialize["success_return_url"] = o.SuccessReturnUrl.Get()
-	}
+    }
 	if o.FailureReturnUrl.IsSet() {
 		toSerialize["failure_return_url"] = o.FailureReturnUrl.Get()
-	}
+    }
 	if o.CardonfileType.IsSet() {
 		toSerialize["cardonfile_type"] = o.CardonfileType.Get()
-	}
+    }
 	if !utils.IsNil(o.MerchantIdTag) {
 		toSerialize["merchant_id_tag"] = o.MerchantIdTag
 	}

@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -266,19 +266,23 @@ func (o CardVerificationResultsThreeDSecure) ToMap() (map[string]interface{}, er
 	toSerialize := map[string]interface{}{}
 	if o.ThreeDSecureFlow.IsSet() {
 		toSerialize["three_d_secure_flow"] = o.ThreeDSecureFlow.Get()
-	}
+        if o.ThreeDSecureFlow.Get() != nil && (*o.ThreeDSecureFlow.Get() != "CHALLENGE" && *o.ThreeDSecureFlow.Get() != "FRICTIONLESS") {
+            toSerialize["three_d_secure_flow"] = nil
+            return toSerialize, utils.NewError("invalid value for ThreeDSecureFlow when marshalling to JSON, must be one of CHALLENGE, FRICTIONLESS")
+        }
+    }
 	if o.EciCode.IsSet() {
 		toSerialize["eci_code"] = o.EciCode.Get()
-	}
+    }
 	if o.ThreeDSecureResult.IsSet() {
 		toSerialize["three_d_secure_result"] = o.ThreeDSecureResult.Get()
-	}
+    }
 	if o.ThreeDSecureResultReason.IsSet() {
 		toSerialize["three_d_secure_result_reason"] = o.ThreeDSecureResultReason.Get()
-	}
+    }
 	if o.ThreeDSecureVersion.IsSet() {
 		toSerialize["three_d_secure_version"] = o.ThreeDSecureVersion.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

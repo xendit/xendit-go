@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -883,16 +883,16 @@ func (o PaymentMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CustomerId.IsSet() {
 		toSerialize["customer_id"] = o.CustomerId.Get()
-	}
+    }
 	if o.Customer != nil {
 		toSerialize["customer"] = o.Customer
-	}
+    }
 	if !utils.IsNil(o.ReferenceId) {
 		toSerialize["reference_id"] = o.ReferenceId
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
-	}
+    }
 	if !utils.IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -904,13 +904,13 @@ func (o PaymentMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	if o.BillingInformation.IsSet() {
 		toSerialize["billing_information"] = o.BillingInformation.Get()
-	}
+    }
 	if o.FailureCode.IsSet() {
 		toSerialize["failure_code"] = o.FailureCode.Get()
-	}
+    }
 	if !utils.IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
@@ -919,22 +919,22 @@ func (o PaymentMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Ewallet.IsSet() {
 		toSerialize["ewallet"] = o.Ewallet.Get()
-	}
+    }
 	if o.DirectDebit.IsSet() {
 		toSerialize["direct_debit"] = o.DirectDebit.Get()
-	}
+    }
 	if o.OverTheCounter.IsSet() {
 		toSerialize["over_the_counter"] = o.OverTheCounter.Get()
-	}
+    }
 	if o.Card.IsSet() {
 		toSerialize["card"] = o.Card.Get()
-	}
+    }
 	if o.QrCode.IsSet() {
 		toSerialize["qr_code"] = o.QrCode.Get()
-	}
+    }
 	if o.VirtualAccount.IsSet() {
 		toSerialize["virtual_account"] = o.VirtualAccount.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

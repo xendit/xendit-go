@@ -5,7 +5,7 @@
 The official Xendit Go SDK provides a simple and convenient way to call Xendit's REST API
 in applications written in Go.
 
-* Package version: 3.2.0
+* Package version: 3.3.0
 
 # Getting Started
 
@@ -43,6 +43,7 @@ xnd := xendit.NewClient("API-KEY")
 Find detailed API information and examples for each of our product's by clicking the links below,
 
 * [Balance](docs/BalanceApi.md)
+* [Customer](docs/CustomerApi.md)
 * [Invoice](docs/InvoiceApi.md)
 * [PaymentMethod](docs/PaymentMethodApi.md)
 * [PaymentRequest](docs/PaymentRequestApi.md)

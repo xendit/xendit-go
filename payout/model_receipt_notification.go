@@ -156,13 +156,13 @@ func (o ReceiptNotification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.EmailTo != nil {
 		toSerialize["email_to"] = o.EmailTo
-	}
+    }
 	if o.EmailCc != nil {
 		toSerialize["email_cc"] = o.EmailCc
-	}
+    }
 	if o.EmailBcc != nil {
 		toSerialize["email_bcc"] = o.EmailBcc
-	}
+    }
 	return toSerialize, nil
 }
 

@@ -7,7 +7,6 @@ All URIs are relative to *https://api.xendit.co*
 | [**AuthPaymentMethod**](PaymentMethodApi.md#AuthPaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/auth | Validate a payment method&#39;s linking OTP |
 | [**CreatePaymentMethod**](PaymentMethodApi.md#CreatePaymentMethod) | **Post** /v2/payment_methods | Creates payment method |
 | [**ExpirePaymentMethod**](PaymentMethodApi.md#ExpirePaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/expire | Expires a payment method |
-| [**GetAllPaymentChannels**](PaymentMethodApi.md#GetAllPaymentChannels) | **Get** /v2/payment_methods/channels | Get all payment channels |
 | [**GetAllPaymentMethods**](PaymentMethodApi.md#GetAllPaymentMethods) | **Get** /v2/payment_methods | Get all payment methods by filters |
 | [**GetPaymentMethodByID**](PaymentMethodApi.md#GetPaymentMethodByID) | **Get** /v2/payment_methods/{paymentMethodId} | Get payment method by ID |
 | [**GetPaymentsByPaymentMethodId**](PaymentMethodApi.md#GetPaymentsByPaymentMethodId) | **Get** /v2/payment_methods/{paymentMethodId}/payments | Returns payments with matching PaymentMethodID. |
@@ -228,79 +227,6 @@ Other parameters are passed through a pointer to a apiExpirePaymentMethodRequest
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetAllPaymentChannels
-
-Get all payment channels
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
-)
-
-func main() {
-    
-    // (default to true)
-    isActivated := true // [OPTIONAL] | bool
-
-    type_ := "DIRECT_DEBIT" // [OPTIONAL] | string
-
-    xenditClient := xendit.NewClient("API-KEY")
-
-    resp, r, err := xenditClient.PaymentMethodApi.GetAllPaymentChannels(context.Background()).
-        IsActivated(isActivated).
-        Type_(type_). // [OPTIONAL]
-        Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PaymentMethodApi.GetAllPaymentChannels``: %v\n", err.Error())
-
-        b, _ := json.Marshal(err.FullError())
-        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
-
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAllPaymentChannels`: PaymentChannelList
-    fmt.Fprintf(os.Stdout, "Response from `PaymentMethodApi.GetAllPaymentChannels`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAllPaymentChannelsRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **isActivated** |**bool**|  | [default to true] | 
-|  **type_** |**string**|  |  | 
-
-### Return type
-
-[**PaymentChannelList**](payment_method/PaymentChannelList.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#)

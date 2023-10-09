@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -569,13 +569,13 @@ func (o PaymentRequestParameters) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
-	}
+    }
 	if o.CaptureMethod.IsSet() {
 		toSerialize["capture_method"] = o.CaptureMethod.Get()
-	}
+    }
 	if o.Initiator.IsSet() {
 		toSerialize["initiator"] = o.Initiator.Get()
-	}
+    }
 	if !utils.IsNil(o.PaymentMethodId) {
 		toSerialize["payment_method_id"] = o.PaymentMethodId
 	}
@@ -584,19 +584,19 @@ func (o PaymentRequestParameters) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ShippingInformation.IsSet() {
 		toSerialize["shipping_information"] = o.ShippingInformation.Get()
-	}
+    }
 	if o.Items != nil {
 		toSerialize["items"] = o.Items
-	}
+    }
 	if o.CustomerId.IsSet() {
 		toSerialize["customer_id"] = o.CustomerId.Get()
-	}
+    }
 	if o.Customer != nil {
 		toSerialize["customer"] = o.Customer
-	}
+    }
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	return toSerialize, nil
 }
 

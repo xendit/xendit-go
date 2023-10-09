@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -28,7 +28,7 @@ type EWalletChannelProperties struct {
 	CancelReturnUrl *string `json:"cancel_return_url,omitempty"`
 	// REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only.
 	RedeemPoints *string `json:"redeem_points,omitempty"`
-	Mobilenumber *string `json:"mobile:number,omitempty"`
+	MobileNumber *string `json:"mobile_number,omitempty"`
 	Cashtag *string `json:"cashtag,omitempty"`
 }
 
@@ -177,36 +177,36 @@ func (o *EWalletChannelProperties) SetRedeemPoints(v string) {
 	o.RedeemPoints = &v
 }
 
-// GetMobilenumber returns the Mobilenumber field value if set, zero value otherwise.
-func (o *EWalletChannelProperties) GetMobilenumber() string {
-	if o == nil || utils.IsNil(o.Mobilenumber) {
+// GetMobileNumber returns the MobileNumber field value if set, zero value otherwise.
+func (o *EWalletChannelProperties) GetMobileNumber() string {
+	if o == nil || utils.IsNil(o.MobileNumber) {
 		var ret string
 		return ret
 	}
-	return *o.Mobilenumber
+	return *o.MobileNumber
 }
 
-// GetMobilenumberOk returns a tuple with the Mobilenumber field value if set, nil otherwise
+// GetMobileNumberOk returns a tuple with the MobileNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EWalletChannelProperties) GetMobilenumberOk() (*string, bool) {
-	if o == nil || utils.IsNil(o.Mobilenumber) {
+func (o *EWalletChannelProperties) GetMobileNumberOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.MobileNumber) {
 		return nil, false
 	}
-	return o.Mobilenumber, true
+	return o.MobileNumber, true
 }
 
-// HasMobilenumber returns a boolean if a field has been set.
-func (o *EWalletChannelProperties) HasMobilenumber() bool {
-	if o != nil && !utils.IsNil(o.Mobilenumber) {
+// HasMobileNumber returns a boolean if a field has been set.
+func (o *EWalletChannelProperties) HasMobileNumber() bool {
+	if o != nil && !utils.IsNil(o.MobileNumber) {
 		return true
 	}
 
 	return false
 }
 
-// SetMobilenumber gets a reference to the given string and assigns it to the Mobilenumber field.
-func (o *EWalletChannelProperties) SetMobilenumber(v string) {
-	o.Mobilenumber = &v
+// SetMobileNumber gets a reference to the given string and assigns it to the MobileNumber field.
+func (o *EWalletChannelProperties) SetMobileNumber(v string) {
+	o.MobileNumber = &v
 }
 
 // GetCashtag returns the Cashtag field value if set, zero value otherwise.
@@ -263,8 +263,8 @@ func (o EWalletChannelProperties) ToMap() (map[string]interface{}, error) {
 	if !utils.IsNil(o.RedeemPoints) {
 		toSerialize["redeem_points"] = o.RedeemPoints
 	}
-	if !utils.IsNil(o.Mobilenumber) {
-		toSerialize["mobile:number"] = o.Mobilenumber
+	if !utils.IsNil(o.MobileNumber) {
+		toSerialize["mobile_number"] = o.MobileNumber
 	}
 	if !utils.IsNil(o.Cashtag) {
 		toSerialize["cashtag"] = o.Cashtag

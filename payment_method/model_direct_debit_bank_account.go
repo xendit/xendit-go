@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -225,16 +225,16 @@ func (o DirectDebitBankAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.MaskedBankAccountNumber.IsSet() {
 		toSerialize["masked_bank_account_number"] = o.MaskedBankAccountNumber.Get()
-	}
+    }
 	if o.BankAccountHash.IsSet() {
 		toSerialize["bank_account_hash"] = o.BankAccountHash.Get()
-	}
+    }
 	if o.MobileNumber.IsSet() {
 		toSerialize["mobile_number"] = o.MobileNumber.Get()
-	}
+    }
 	if o.IdentityDocumentNumber.IsSet() {
 		toSerialize["identity_document_number"] = o.IdentityDocumentNumber.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

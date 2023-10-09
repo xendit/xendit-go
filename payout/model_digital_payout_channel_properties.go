@@ -155,7 +155,7 @@ func (o DigitalPayoutChannelProperties) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	if o.AccountHolderName.IsSet() {
 		toSerialize["account_holder_name"] = o.AccountHolderName.Get()
-	}
+    }
 	toSerialize["account_number"] = o.AccountNumber
 	if !utils.IsNil(o.AccountType) {
 		toSerialize["account_type"] = o.AccountType

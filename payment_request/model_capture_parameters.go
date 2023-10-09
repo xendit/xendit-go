@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -120,7 +120,7 @@ func (o CaptureParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ReferenceId.IsSet() {
 		toSerialize["reference_id"] = o.ReferenceId.Get()
-	}
+    }
 	toSerialize["capture_amount"] = o.CaptureAmount
 	return toSerialize, nil
 }

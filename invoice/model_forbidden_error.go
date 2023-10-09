@@ -104,6 +104,10 @@ func (o ForbiddenError) MarshalJSON() ([]byte, error) {
 func (o ForbiddenError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error_code"] = o.ErrorCode
+    if o.ErrorCode != "ACCESS_SUSPENDED" {
+        toSerialize["error_code"] = nil
+        return toSerialize, utils.NewError("invalid value for ErrorCode when marshalling to JSON, must be one of ACCESS_SUSPENDED")
+    }
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }

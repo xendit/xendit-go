@@ -104,6 +104,10 @@ func (o InvoiceNotFoundError) MarshalJSON() ([]byte, error) {
 func (o InvoiceNotFoundError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error_code"] = o.ErrorCode
+    if o.ErrorCode != "CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR" && o.ErrorCode != "UNIQUE_ACCOUNT_NUMBER_UNAVAILABLE_ERROR" && o.ErrorCode != "PAYMENT_CODE_NOT_AVAILABLE_ERROR" {
+        toSerialize["error_code"] = nil
+        return toSerialize, utils.NewError("invalid value for ErrorCode when marshalling to JSON, must be one of CALLBACK_VIRTUAL_ACCOUNT_NOT_FOUND_ERROR, UNIQUE_ACCOUNT_NUMBER_UNAVAILABLE_ERROR, PAYMENT_CODE_NOT_AVAILABLE_ERROR")
+    }
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }

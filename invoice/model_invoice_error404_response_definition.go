@@ -104,6 +104,10 @@ func (o InvoiceError404ResponseDefinition) MarshalJSON() ([]byte, error) {
 func (o InvoiceError404ResponseDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error_code"] = o.ErrorCode
+    if o.ErrorCode != "INVOICE_NOT_FOUND_ERROR" {
+        toSerialize["error_code"] = nil
+        return toSerialize, utils.NewError("invalid value for ErrorCode when marshalling to JSON, must be one of INVOICE_NOT_FOUND_ERROR")
+    }
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }

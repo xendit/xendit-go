@@ -102,6 +102,10 @@ func (o ServerError) MarshalJSON() ([]byte, error) {
 func (o ServerError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error_code"] = o.ErrorCode
+    if o.ErrorCode != "SERVER_ERROR" {
+        toSerialize["error_code"] = nil
+        return toSerialize, utils.NewError("invalid value for ErrorCode when marshalling to JSON, must be one of SERVER_ERROR")
+    }
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }

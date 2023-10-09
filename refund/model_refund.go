@@ -496,13 +496,13 @@ func (o Refund) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ReferenceId.IsSet() {
 		toSerialize["reference_id"] = o.ReferenceId.Get()
-	}
+    }
 	if o.FailureCode.IsSet() {
 		toSerialize["failure_code"] = o.FailureCode.Get()
-	}
+    }
 	if o.RefundFeeAmount.IsSet() {
 		toSerialize["refund_fee_amount"] = o.RefundFeeAmount.Get()
-	}
+    }
 	if !utils.IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
@@ -511,7 +511,7 @@ func (o Refund) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	return toSerialize, nil
 }
 

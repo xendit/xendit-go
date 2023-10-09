@@ -8,7 +8,7 @@
 | **FailureReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization failed | [optional]  |
 | **CancelReturnUrl** | Pointer to **string** | URL where the end-customer is redirected if the authorization cancelled | [optional]  |
 | **RedeemPoints** | Pointer to **string** | REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only. | [optional]  |
-| **Mobilenumber** | Pointer to **string** |  | [optional]  |
+| **MobileNumber** | Pointer to **string** |  | [optional]  |
 | **Cashtag** | Pointer to **string** |  | [optional]  |
 
 ## Methods
@@ -130,30 +130,30 @@ SetRedeemPoints sets RedeemPoints field to given value.
 
 HasRedeemPoints returns a boolean if a field has been set.
 
-### GetMobilenumber
+### GetMobileNumber
 
-`func (o *EWalletChannelProperties) GetMobilenumber() string`
+`func (o *EWalletChannelProperties) GetMobileNumber() string`
 
-GetMobilenumber returns the Mobilenumber field if non-nil, zero value otherwise.
+GetMobileNumber returns the MobileNumber field if non-nil, zero value otherwise.
 
-### GetMobilenumberOk
+### GetMobileNumberOk
 
-`func (o *EWalletChannelProperties) GetMobilenumberOk() (*string, bool)`
+`func (o *EWalletChannelProperties) GetMobileNumberOk() (*string, bool)`
 
-GetMobilenumberOk returns a tuple with the Mobilenumber field if it's non-nil, zero value otherwise
+GetMobileNumberOk returns a tuple with the MobileNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMobilenumber
+### SetMobileNumber
 
-`func (o *EWalletChannelProperties) SetMobilenumber(v string)`
+`func (o *EWalletChannelProperties) SetMobileNumber(v string)`
 
-SetMobilenumber sets Mobilenumber field to given value.
+SetMobileNumber sets MobileNumber field to given value.
 
-### HasMobilenumber
+### HasMobileNumber
 
-`func (o *EWalletChannelProperties) HasMobilenumber() bool`
+`func (o *EWalletChannelProperties) HasMobileNumber() bool`
 
-HasMobilenumber returns a boolean if a field has been set.
+HasMobileNumber returns a boolean if a field has been set.
 
 ### GetCashtag
 

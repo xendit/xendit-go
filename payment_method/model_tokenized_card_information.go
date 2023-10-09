@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -339,7 +339,7 @@ func (o TokenizedCardInformation) ToMap() (map[string]interface{}, error) {
 	toSerialize["masked_card_number"] = o.MaskedCardNumber
 	if o.CardholderName.IsSet() {
 		toSerialize["cardholder_name"] = o.CardholderName.Get()
-	}
+    }
 	toSerialize["expiry_month"] = o.ExpiryMonth
 	toSerialize["expiry_year"] = o.ExpiryYear
 	toSerialize["fingerprint"] = o.Fingerprint

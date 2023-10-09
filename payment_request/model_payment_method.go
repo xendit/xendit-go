@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -597,33 +597,33 @@ func (o PaymentMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
-	}
+    }
 	if !utils.IsNil(o.ReferenceId) {
 		toSerialize["reference_id"] = o.ReferenceId
 	}
 	if o.Card.IsSet() {
 		toSerialize["card"] = o.Card.Get()
-	}
+    }
 	if o.DirectDebit.IsSet() {
 		toSerialize["direct_debit"] = o.DirectDebit.Get()
-	}
+    }
 	if o.Ewallet.IsSet() {
 		toSerialize["ewallet"] = o.Ewallet.Get()
-	}
+    }
 	if o.OverTheCounter.IsSet() {
 		toSerialize["over_the_counter"] = o.OverTheCounter.Get()
-	}
+    }
 	if o.VirtualAccount.IsSet() {
 		toSerialize["virtual_account"] = o.VirtualAccount.Get()
-	}
+    }
 	if o.QrCode.IsSet() {
 		toSerialize["qr_code"] = o.QrCode.Get()
-	}
+    }
 	toSerialize["reusability"] = o.Reusability
 	toSerialize["status"] = o.Status
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	return toSerialize, nil
 }
 

@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -221,10 +221,10 @@ func (o CardParametersCardInformation) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiry_year"] = o.ExpiryYear
 	if o.CardholderName.IsSet() {
 		toSerialize["cardholder_name"] = o.CardholderName.Get()
-	}
+    }
 	if o.Cvv.IsSet() {
 		toSerialize["cvv"] = o.Cvv.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

@@ -507,6 +507,10 @@ func (o Payout) ToMap() (map[string]interface{}, error) {
 	toSerialize["updated"] = o.Updated
 	toSerialize["business_id"] = o.BusinessId
 	toSerialize["status"] = o.Status
+    if o.Status != "SUCCEEDED" && o.Status != "FAILED" && o.Status != "ACCEPTED" && o.Status != "REQUESTED" && o.Status != "LOCKED" && o.Status != "CANCELLED" && o.Status != "REVERSED" {
+        toSerialize["status"] = nil
+        return toSerialize, utils.NewError("invalid value for Status when marshalling to JSON, must be one of SUCCEEDED, FAILED, ACCEPTED, REQUESTED, LOCKED, CANCELLED, REVERSED")
+    }
 	if !utils.IsNil(o.FailureCode) {
 		toSerialize["failure_code"] = o.FailureCode
 	}

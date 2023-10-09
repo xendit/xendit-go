@@ -63,20 +63,6 @@ type PaymentMethodApi interface {
 	ExpirePaymentMethodExecute(r ApiExpirePaymentMethodRequest) (*PaymentMethod, *http.Response, *common.XenditSdkError)
 
 	/*
-	GetAllPaymentChannels Get all payment channels
-
-	Get all payment channels
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAllPaymentChannelsRequest
-	*/
-	GetAllPaymentChannels(ctx context.Context) ApiGetAllPaymentChannelsRequest
-
-	// GetAllPaymentChannelsExecute executes the request
-	//  @return PaymentChannelList
-	GetAllPaymentChannelsExecute(r ApiGetAllPaymentChannelsRequest) (*PaymentChannelList, *http.Response, *common.XenditSdkError)
-
-	/*
 	GetAllPaymentMethods Get all payment methods by filters
 
 	Get all payment methods by filters
@@ -428,108 +414,6 @@ func (a *PaymentMethodApiService) ExpirePaymentMethodExecute(r ApiExpirePaymentM
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentMethodApiService.ExpirePaymentMethodExecute")
-	}
-
-	localVarHTTPResponse, err := a.client.CallAPI(req)
-
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-
-    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-
-	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
-		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
-
-		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetAllPaymentChannelsRequest struct {
-	ctx context.Context
-	ApiService PaymentMethodApi
-	isActivated *bool
-	type_ *string
-}
-
-func (r ApiGetAllPaymentChannelsRequest) IsActivated(isActivated bool) ApiGetAllPaymentChannelsRequest {
-	r.isActivated = &isActivated
-	return r
-}
-
-func (r ApiGetAllPaymentChannelsRequest) Type_(type_ string) ApiGetAllPaymentChannelsRequest {
-	r.type_ = &type_
-	return r
-}
-
-func (r ApiGetAllPaymentChannelsRequest) Execute() (*PaymentChannelList, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.GetAllPaymentChannelsExecute(r)
-}
-
-/*
-GetAllPaymentChannels Get all payment channels
-
-Get all payment channels
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetAllPaymentChannelsRequest
-*/
-func (a *PaymentMethodApiService) GetAllPaymentChannels(ctx context.Context) ApiGetAllPaymentChannelsRequest {
-	return ApiGetAllPaymentChannelsRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return PaymentChannelList
-func (a *PaymentMethodApiService) GetAllPaymentChannelsExecute(r ApiGetAllPaymentChannelsRequest) (*PaymentChannelList, *http.Response, *common.XenditSdkError) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []common.FormFile
-		localVarReturnValue  *PaymentChannelList
-	)
-
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentMethodApiService.GetAllPaymentChannels")
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentMethodApiService.GetAllPaymentChannelsExecute")
-	}
-
-	localVarPath := localBasePath + "/v2/payment_methods/channels"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.isActivated != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "is_activated", r.isActivated, "")
-	}
-	if r.type_ != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentMethodApiService.GetAllPaymentChannelsExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)

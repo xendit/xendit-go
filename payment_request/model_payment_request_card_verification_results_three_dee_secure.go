@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -235,7 +235,7 @@ func (o PaymentRequestCardVerificationResultsThreeDeeSecure) ToMap() (map[string
 	}
 	if o.ThreeDSecureResultReason.IsSet() {
 		toSerialize["three_d_secure_result_reason"] = o.ThreeDSecureResultReason.Get()
-	}
+    }
 	if !utils.IsNil(o.ThreeDSecureVersion) {
 		toSerialize["three_d_secure_version"] = o.ThreeDSecureVersion
 	}

@@ -23,6 +23,7 @@ import (
 	common "github.com/xendit/xendit-go/v3/common"
 	
 	balance "github.com/xendit/xendit-go/v3/balance_and_transaction"
+	customer "github.com/xendit/xendit-go/v3/customer"
 	invoice "github.com/xendit/xendit-go/v3/invoice"
 	paymentmethod "github.com/xendit/xendit-go/v3/payment_method"
 	paymentrequest "github.com/xendit/xendit-go/v3/payment_request"
@@ -47,6 +48,7 @@ type APIClient struct {
 
 	// API Services
 	BalanceApi balance.BalanceApi
+	CustomerApi customer.CustomerApi
 	InvoiceApi invoice.InvoiceApi
 	PaymentMethodApi paymentmethod.PaymentMethodApi
 	PaymentRequestApi paymentrequest.PaymentRequestApi
@@ -73,6 +75,7 @@ func NewClient(apiKey string) *APIClient {
 	c.apiKey = apiKey
 	
 	c.BalanceApi = balance.NewBalanceApi(c)
+	c.CustomerApi = customer.NewCustomerApi(c)
 	c.InvoiceApi = invoice.NewInvoiceApi(c)
 	c.PaymentMethodApi = paymentmethod.NewPaymentMethodApi(c)
 	c.PaymentRequestApi = paymentrequest.NewPaymentRequestApi(c)
@@ -151,7 +154,7 @@ func (c *APIClient) PrepareRequest(
 	headerParams["xendit-lib"] = "go"
 
 	// TODO: overwrite this line from buddy pipeline
-	headerParams["xendit-lib-ver"] = "3.2.0"
+	headerParams["xendit-lib-ver"] = "3.3.0"
 
 	var body *bytes.Buffer
 

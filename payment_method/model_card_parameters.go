@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -154,7 +154,7 @@ func (o CardParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize["currency"] = o.Currency
 	if o.ChannelProperties.IsSet() {
 		toSerialize["channel_properties"] = o.ChannelProperties.Get()
-	}
+    }
 	if !utils.IsNil(o.CardInformation) {
 		toSerialize["card_information"] = o.CardInformation
 	}

@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -299,13 +299,13 @@ func (o VirtualAccountParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.MinAmount.IsSet() {
 		toSerialize["min_amount"] = o.MinAmount.Get()
-	}
+    }
 	if o.MaxAmount.IsSet() {
 		toSerialize["max_amount"] = o.MaxAmount.Get()
-	}
+    }
 	if o.Amount.IsSet() {
 		toSerialize["amount"] = o.Amount.Get()
-	}
+    }
 	if !utils.IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}

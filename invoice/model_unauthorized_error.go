@@ -104,6 +104,10 @@ func (o UnauthorizedError) MarshalJSON() ([]byte, error) {
 func (o UnauthorizedError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error_code"] = o.ErrorCode
+    if o.ErrorCode != "INVALID_API_KEY" {
+        toSerialize["error_code"] = nil
+        return toSerialize, utils.NewError("invalid value for ErrorCode when marshalling to JSON, must be one of INVALID_API_KEY")
+    }
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }

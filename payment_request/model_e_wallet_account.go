@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -227,16 +227,16 @@ func (o EWalletAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
-	}
+    }
 	if o.AccountDetails.IsSet() {
 		toSerialize["account_details"] = o.AccountDetails.Get()
-	}
+    }
 	if o.Balance.IsSet() {
 		toSerialize["balance"] = o.Balance.Get()
-	}
+    }
 	if o.PointBalance.IsSet() {
 		toSerialize["point_balance"] = o.PointBalance.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

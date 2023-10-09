@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -164,12 +164,13 @@ func (o PaymentRequestCardVerificationResults) MarshalJSON() ([]byte, error) {
 func (o PaymentRequestCardVerificationResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["three_d_secure"] = o.ThreeDSecure.Get()
+
 	if o.CvvResult.IsSet() {
 		toSerialize["cvv_result"] = o.CvvResult.Get()
-	}
+    }
 	if o.AddressVerificationResult.IsSet() {
 		toSerialize["address_verification_result"] = o.AddressVerificationResult.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

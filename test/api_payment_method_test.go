@@ -63,16 +63,6 @@ func Test_xendit_PaymentMethodApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PaymentMethodApiService GetAllPaymentChannels", func(t *testing.T) {
-
-		resp, httpRes, err := apiClient.PaymentMethodApi.GetAllPaymentChannels(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PaymentMethodApiService GetAllPaymentMethods", func(t *testing.T) {
 
 		resp, httpRes, err := apiClient.PaymentMethodApi.GetAllPaymentMethods(context.Background()).Execute()

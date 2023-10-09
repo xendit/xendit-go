@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -127,7 +127,7 @@ func (o QRCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ChannelCode.IsSet() {
 		toSerialize["channel_code"] = o.ChannelCode.Get()
-	}
+    }
 	if !utils.IsNil(o.ChannelProperties) {
 		toSerialize["channel_properties"] = o.ChannelProperties
 	}

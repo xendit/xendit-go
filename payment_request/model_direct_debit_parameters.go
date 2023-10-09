@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -138,6 +138,7 @@ func (o DirectDebitParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["channel_code"] = o.ChannelCode
 	toSerialize["channel_properties"] = o.ChannelProperties.Get()
+
 	if !utils.IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}

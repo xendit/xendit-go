@@ -104,6 +104,10 @@ func (o BadRequestError) MarshalJSON() ([]byte, error) {
 func (o BadRequestError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error_code"] = o.ErrorCode
+    if o.ErrorCode != "MAXIMUM_TRANSFER_AMOUNT_ERROR" && o.ErrorCode != "NO_COLLECTION_METHODS_ERROR" && o.ErrorCode != "EMAIL_FORMAT_ERROR" && o.ErrorCode != "UNAVAILABLE_PAYMENT_METHOD_ERROR" && o.ErrorCode != "UNSUPPORTED_CURRENCY" && o.ErrorCode != "MISMATCH_CURRENCY_ERROR" && o.ErrorCode != "INVALID_REMINDER_TIME" {
+        toSerialize["error_code"] = nil
+        return toSerialize, utils.NewError("invalid value for ErrorCode when marshalling to JSON, must be one of MAXIMUM_TRANSFER_AMOUNT_ERROR, NO_COLLECTION_METHODS_ERROR, EMAIL_FORMAT_ERROR, UNAVAILABLE_PAYMENT_METHOD_ERROR, UNSUPPORTED_CURRENCY, MISMATCH_CURRENCY_ERROR, INVALID_REMINDER_TIME")
+    }
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
 }

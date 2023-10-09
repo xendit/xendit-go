@@ -6,6 +6,7 @@ import (
     "reflect"
     "time"
     "unicode/utf8"
+    "fmt"
 )
 
 // PtrBool is a helper routine that returns a pointer to given boolean value.
@@ -35,7 +36,6 @@ func PtrTime(v time.Time) *time.Time { return &v }
 // NewStrictDecoder is a wrapper for strict JSON decoding
 func NewStrictDecoder(data []byte) *json.Decoder {
     dec := json.NewDecoder(bytes.NewBuffer(data))
-    dec.DisallowUnknownFields()
     return dec
 }
 
@@ -44,6 +44,9 @@ func Strlen(s string) int {
     return utf8.RuneCountInString(s)
 }
 
+func NewError(s string) error {
+    return fmt.Errorf(s)
+}
 
 // IsNil checks if an input is nil
 func IsNil(i interface{}) bool {

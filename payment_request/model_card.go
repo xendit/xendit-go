@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -175,7 +175,7 @@ func (o Card) ToMap() (map[string]interface{}, error) {
 	toSerialize["card_information"] = o.CardInformation
 	if o.CardVerificationResults.IsSet() {
 		toSerialize["card_verification_results"] = o.CardVerificationResults.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

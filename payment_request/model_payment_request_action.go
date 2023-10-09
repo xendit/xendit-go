@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -186,10 +186,21 @@ func (o PaymentRequestAction) MarshalJSON() ([]byte, error) {
 func (o PaymentRequestAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["action"] = o.Action
+    if o.Action != "AUTH" && o.Action != "RESEND_AUTH" && o.Action != "CAPTURE" && o.Action != "CANCEL" && o.Action != "PRESENT_TO_CUSTOMER" {
+        toSerialize["action"] = nil
+        return toSerialize, utils.NewError("invalid value for Action when marshalling to JSON, must be one of AUTH, RESEND_AUTH, CAPTURE, CANCEL, PRESENT_TO_CUSTOMER")
+    }
 	toSerialize["url_type"] = o.UrlType
+    if o.UrlType != "API" && o.UrlType != "WEB" && o.UrlType != "MOBILE" && o.UrlType != "DEEPLINK" {
+        toSerialize["url_type"] = nil
+        return toSerialize, utils.NewError("invalid value for UrlType when marshalling to JSON, must be one of API, WEB, MOBILE, DEEPLINK")
+    }
 	toSerialize["method"] = o.Method.Get()
+
 	toSerialize["url"] = o.Url.Get()
+
 	toSerialize["qr_code"] = o.QrCode.Get()
+
 	return toSerialize, nil
 }
 

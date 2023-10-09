@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -247,13 +247,13 @@ func (o VirtualAccountUpdateParameters) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	if o.Amount.IsSet() {
 		toSerialize["amount"] = o.Amount.Get()
-	}
+    }
 	if o.MinAmount.IsSet() {
 		toSerialize["min_amount"] = o.MinAmount.Get()
-	}
+    }
 	if o.MaxAmount.IsSet() {
 		toSerialize["max_amount"] = o.MaxAmount.Get()
-	}
+    }
 	if !utils.IsNil(o.ChannelProperties) {
 		toSerialize["channel_properties"] = o.ChannelProperties
 	}

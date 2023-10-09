@@ -394,28 +394,28 @@ func (o CustomerObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id.IsSet() {
 		toSerialize["id"] = o.Id.Get()
-	}
+    }
 	if o.PhoneNumber.IsSet() {
 		toSerialize["phone_number"] = o.PhoneNumber.Get()
-	}
+    }
 	if o.GivenNames.IsSet() {
 		toSerialize["given_names"] = o.GivenNames.Get()
-	}
+    }
 	if o.Surname.IsSet() {
 		toSerialize["surname"] = o.Surname.Get()
-	}
+    }
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
-	}
+    }
 	if o.MobileNumber.IsSet() {
 		toSerialize["mobile_number"] = o.MobileNumber.Get()
-	}
+    }
 	if o.CustomerId.IsSet() {
 		toSerialize["customer_id"] = o.CustomerId.Get()
-	}
+    }
 	if o.Addresses != nil {
 		toSerialize["addresses"] = o.Addresses
-	}
+    }
 	return toSerialize, nil
 }
 

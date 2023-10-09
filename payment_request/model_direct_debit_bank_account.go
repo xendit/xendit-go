@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -137,10 +137,10 @@ func (o DirectDebitBankAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.MaskedBankAccountNumber.IsSet() {
 		toSerialize["masked_bank_account_number"] = o.MaskedBankAccountNumber.Get()
-	}
+    }
 	if o.BankAccountHash.IsSet() {
 		toSerialize["bank_account_hash"] = o.BankAccountHash.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

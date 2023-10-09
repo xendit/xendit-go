@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -227,16 +227,16 @@ func (o EWalletAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
-	}
+    }
 	if o.AccountDetails.IsSet() {
 		toSerialize["account_details"] = o.AccountDetails.Get()
-	}
+    }
 	if o.Balance.IsSet() {
 		toSerialize["balance"] = o.Balance.Get()
-	}
+    }
 	if o.PointBalance.IsSet() {
 		toSerialize["point_balance"] = o.PointBalance.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

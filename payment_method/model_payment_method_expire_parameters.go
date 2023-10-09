@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -139,10 +139,10 @@ func (o PaymentMethodExpireParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.SuccessReturnUrl.IsSet() {
 		toSerialize["success_return_url"] = o.SuccessReturnUrl.Get()
-	}
+    }
 	if o.FailureReturnUrl.IsSet() {
 		toSerialize["failure_return_url"] = o.FailureReturnUrl.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

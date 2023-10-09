@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -393,25 +393,25 @@ func (o DirectDebitChannelProperties) ToMap() (map[string]interface{}, error) {
 	}
 	if o.FailureReturnUrl.IsSet() {
 		toSerialize["failure_return_url"] = o.FailureReturnUrl.Get()
-	}
+    }
 	if o.MobileNumber.IsSet() {
 		toSerialize["mobile_number"] = o.MobileNumber.Get()
-	}
+    }
 	if o.CardLastFour.IsSet() {
 		toSerialize["card_last_four"] = o.CardLastFour.Get()
-	}
+    }
 	if o.CardExpiry.IsSet() {
 		toSerialize["card_expiry"] = o.CardExpiry.Get()
-	}
+    }
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
-	}
+    }
 	if o.IdentityDocumentNumber.IsSet() {
 		toSerialize["identity_document_number"] = o.IdentityDocumentNumber.Get()
-	}
+    }
 	if o.RequireAuth.IsSet() {
 		toSerialize["require_auth"] = o.RequireAuth.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

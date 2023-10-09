@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -213,16 +213,16 @@ func (o QRCodeParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Amount.IsSet() {
 		toSerialize["amount"] = o.Amount.Get()
-	}
+    }
 	if !utils.IsNil(o.Currency) {
 		toSerialize["currency"] = o.Currency
 	}
 	if o.ChannelCode.IsSet() {
 		toSerialize["channel_code"] = o.ChannelCode.Get()
-	}
+    }
 	if o.ChannelProperties.IsSet() {
 		toSerialize["channel_properties"] = o.ChannelProperties.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

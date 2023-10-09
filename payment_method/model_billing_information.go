@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -293,19 +293,19 @@ func (o BillingInformation) ToMap() (map[string]interface{}, error) {
 	toSerialize["country"] = o.Country
 	if o.StreetLine1.IsSet() {
 		toSerialize["street_line1"] = o.StreetLine1.Get()
-	}
+    }
 	if o.StreetLine2.IsSet() {
 		toSerialize["street_line2"] = o.StreetLine2.Get()
-	}
+    }
 	if o.City.IsSet() {
 		toSerialize["city"] = o.City.Get()
-	}
+    }
 	if o.ProvinceState.IsSet() {
 		toSerialize["province_state"] = o.ProvinceState.Get()
-	}
+    }
 	if o.PostalCode.IsSet() {
 		toSerialize["postal_code"] = o.PostalCode.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

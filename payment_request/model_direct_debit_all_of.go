@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -164,10 +164,10 @@ func (o DirectDebitAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	if o.BankAccount.IsSet() {
 		toSerialize["bank_account"] = o.BankAccount.Get()
-	}
+    }
 	if o.DebitCard.IsSet() {
 		toSerialize["debit_card"] = o.DebitCard.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

@@ -359,25 +359,25 @@ func (o AddressObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Country.IsSet() {
 		toSerialize["country"] = o.Country.Get()
-	}
+    }
 	if o.StreetLine1.IsSet() {
 		toSerialize["street_line1"] = o.StreetLine1.Get()
-	}
+    }
 	if o.StreetLine2.IsSet() {
 		toSerialize["street_line2"] = o.StreetLine2.Get()
-	}
+    }
 	if o.City.IsSet() {
 		toSerialize["city"] = o.City.Get()
-	}
+    }
 	if o.Province.IsSet() {
 		toSerialize["province"] = o.Province.Get()
-	}
+    }
 	if o.State.IsSet() {
 		toSerialize["state"] = o.State.Get()
-	}
+    }
 	if o.PostalCode.IsSet() {
 		toSerialize["postal_code"] = o.PostalCode.Get()
-	}
+    }
 	return toSerialize, nil
 }
 

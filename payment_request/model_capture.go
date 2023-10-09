@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -455,15 +455,21 @@ func (o Capture) ToMap() (map[string]interface{}, error) {
 	toSerialize["authorized_amount"] = o.AuthorizedAmount
 	toSerialize["captured_amount"] = o.CapturedAmount
 	toSerialize["status"] = o.Status
+    if o.Status != "SUCCEEDED" && o.Status != "FAILED" {
+        toSerialize["status"] = nil
+        return toSerialize, utils.NewError("invalid value for Status when marshalling to JSON, must be one of SUCCEEDED, FAILED")
+    }
 	toSerialize["payment_method"] = o.PaymentMethod
 	toSerialize["failure_code"] = o.FailureCode.Get()
+
 	toSerialize["customer_id"] = o.CustomerId.Get()
+
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
-	}
+    }
 	if o.ChannelProperties != nil {
 		toSerialize["channel_properties"] = o.ChannelProperties
-	}
+    }
 	toSerialize["created"] = o.Created
 	toSerialize["updated"] = o.Updated
 	return toSerialize, nil

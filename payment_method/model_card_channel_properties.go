@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.87.2
+API version: 2.89.1
 */
 
 
@@ -227,16 +227,20 @@ func (o CardChannelProperties) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.SkipThreeDSecure.IsSet() {
 		toSerialize["skip_three_d_secure"] = o.SkipThreeDSecure.Get()
-	}
+    }
 	if o.SuccessReturnUrl.IsSet() {
 		toSerialize["success_return_url"] = o.SuccessReturnUrl.Get()
-	}
+    }
 	if o.FailureReturnUrl.IsSet() {
 		toSerialize["failure_return_url"] = o.FailureReturnUrl.Get()
-	}
+    }
 	if o.CardonfileType.IsSet() {
 		toSerialize["cardonfile_type"] = o.CardonfileType.Get()
-	}
+        if o.CardonfileType.Get() != nil && (*o.CardonfileType.Get() != "MERCHANT_UNSCHEDULED" && *o.CardonfileType.Get() != "CUSTOMER_UNSCHEDULED" && *o.CardonfileType.Get() != "RECURRING") {
+            toSerialize["cardonfile_type"] = nil
+            return toSerialize, utils.NewError("invalid value for CardonfileType when marshalling to JSON, must be one of MERCHANT_UNSCHEDULED, CUSTOMER_UNSCHEDULED, RECURRING")
+        }
+    }
 	return toSerialize, nil
 }
 

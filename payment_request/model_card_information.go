@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.0
+API version: 1.44.1
 */
 
 
@@ -371,7 +371,7 @@ func (o CardInformation) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiry_year"] = o.ExpiryYear
 	if o.CardholderName.IsSet() {
 		toSerialize["cardholder_name"] = o.CardholderName.Get()
-	}
+    }
 	if !utils.IsNil(o.Fingerprint) {
 		toSerialize["fingerprint"] = o.Fingerprint
 	}
