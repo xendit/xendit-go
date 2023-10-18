@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.1
+API version: 2.89.2
 */
 
 
@@ -25,6 +25,7 @@ const (
 	PAYMENTMETHODCOUNTRY_VN PaymentMethodCountry = "VN"
 	PAYMENTMETHODCOUNTRY_TH PaymentMethodCountry = "TH"
 	PAYMENTMETHODCOUNTRY_MY PaymentMethodCountry = "MY"
+    PAYMENTMETHODCOUNTRY_XENDIT_ENUM_DEFAULT_FALLBACK PaymentMethodCountry = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentMethodCountry enum
@@ -34,6 +35,7 @@ var AllowedPaymentMethodCountryEnumValues = []PaymentMethodCountry{
 	"VN",
 	"TH",
 	"MY",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentMethodCountry) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *PaymentMethodCountry) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentMethodCountry", value)
+    *v = PAYMENTMETHODCOUNTRY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentMethodCountryFromValue returns a pointer to a valid PaymentMethodCountry

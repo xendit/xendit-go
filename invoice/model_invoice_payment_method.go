@@ -30,6 +30,7 @@ const (
 	INVOICEPAYMENTMETHOD_DIRECT_DEBIT InvoicePaymentMethod = "DIRECT_DEBIT"
 	INVOICEPAYMENTMETHOD_BANK_TRANSFER InvoicePaymentMethod = "BANK_TRANSFER"
 	INVOICEPAYMENTMETHOD_PAYLATER InvoicePaymentMethod = "PAYLATER"
+    INVOICEPAYMENTMETHOD_XENDIT_ENUM_DEFAULT_FALLBACK InvoicePaymentMethod = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of InvoicePaymentMethod enum
@@ -44,6 +45,7 @@ var AllowedInvoicePaymentMethodEnumValues = []InvoicePaymentMethod{
 	"DIRECT_DEBIT",
 	"BANK_TRANSFER",
 	"PAYLATER",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *InvoicePaymentMethod) UnmarshalJSON(src []byte) error {
@@ -60,7 +62,8 @@ func (v *InvoicePaymentMethod) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InvoicePaymentMethod", value)
+    *v = INVOICEPAYMENTMETHOD_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewInvoicePaymentMethodFromValue returns a pointer to a valid InvoicePaymentMethod

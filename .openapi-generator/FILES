@@ -15,7 +15,7 @@ docs/refund/CreateRefund403Response.md
 docs/refund/CreateRefund404Response.md
 docs/refund/CreateRefund409Response.md
 docs/refund/CreateRefund503Response.md
-docs/refund/CreateRefundDefaultResponse.md
+docs/refund/GetAllRefundsDefaultResponse.md
 docs/refund/Refund.md
 docs/refund/RefundList.md
 go.mod
@@ -27,7 +27,7 @@ refund/model_create_refund_403_response.go
 refund/model_create_refund_404_response.go
 refund/model_create_refund_409_response.go
 refund/model_create_refund_503_response.go
-refund/model_create_refund_default_response.go
+refund/model_get_all_refunds_default_response.go
 refund/model_refund.go
 refund/model_refund_list.go
 refund/nullable.go

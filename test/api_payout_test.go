@@ -29,18 +29,6 @@ func Test_xendit_PayoutApiService(t *testing.T) {
 	
 	apiClient := xendit.NewClient(apiKey)
 
-	t.Run("Test PayoutApiService CancelPayout", func(t *testing.T) {
-
-		var id string
-
-		resp, httpRes, err := apiClient.PayoutApi.CancelPayout(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PayoutApiService CreatePayout", func(t *testing.T) {
 
 		resp, httpRes, err := apiClient.PayoutApi.CreatePayout(context.Background()).Execute()
@@ -76,6 +64,18 @@ func Test_xendit_PayoutApiService(t *testing.T) {
 	t.Run("Test PayoutApiService GetPayouts", func(t *testing.T) {
 
 		resp, httpRes, err := apiClient.PayoutApi.GetPayouts(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PayoutApiService CancelPayout", func(t *testing.T) {
+
+		var id string
+
+		resp, httpRes, err := apiClient.PayoutApi.CancelPayout(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

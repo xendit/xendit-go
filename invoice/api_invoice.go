@@ -31,19 +31,6 @@ type InvoiceApi interface {
 	CreateInvoiceExecute(r ApiCreateInvoiceRequest) (*Invoice, *http.Response, *common.XenditSdkError)
 
 	/*
-	ExpireInvoice Manually expire an invoice
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param invoiceId Invoice ID to be expired
-	@return ApiExpireInvoiceRequest
-	*/
-	ExpireInvoice(ctx context.Context, invoiceId string) ApiExpireInvoiceRequest
-
-	// ExpireInvoiceExecute executes the request
-	//  @return Invoice
-	ExpireInvoiceExecute(r ApiExpireInvoiceRequest) (*Invoice, *http.Response, *common.XenditSdkError)
-
-	/*
 	GetInvoiceById Get invoice by invoice id
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -67,6 +54,19 @@ type InvoiceApi interface {
 	// GetInvoicesExecute executes the request
 	//  @return []Invoice
 	GetInvoicesExecute(r ApiGetInvoicesRequest) ([]Invoice, *http.Response, *common.XenditSdkError)
+
+	/*
+	ExpireInvoice Manually expire an invoice
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param invoiceId Invoice ID to be expired
+	@return ApiExpireInvoiceRequest
+	*/
+	ExpireInvoice(ctx context.Context, invoiceId string) ApiExpireInvoiceRequest
+
+	// ExpireInvoiceExecute executes the request
+	//  @return Invoice
+	ExpireInvoiceExecute(r ApiExpireInvoiceRequest) (*Invoice, *http.Response, *common.XenditSdkError)
 }
 
 // InvoiceApiService InvoiceApi service
@@ -86,10 +86,17 @@ type ApiCreateInvoiceRequest struct {
 	ctx context.Context
 	ApiService InvoiceApi
 	createInvoiceRequest *CreateInvoiceRequest
+	forUserId *string
 }
 
 func (r ApiCreateInvoiceRequest) CreateInvoiceRequest(createInvoiceRequest CreateInvoiceRequest) ApiCreateInvoiceRequest {
 	r.createInvoiceRequest = &createInvoiceRequest
+	return r
+}
+
+// Business ID of the sub-account merchant (XP feature)
+func (r ApiCreateInvoiceRequest) ForUserId(forUserId string) ApiCreateInvoiceRequest {
+	r.forUserId = &forUserId
 	return r
 }
 
@@ -151,6 +158,9 @@ func (a *InvoiceApiService) CreateInvoiceExecute(r ApiCreateInvoiceRequest) (*In
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	// body params
 	localVarPostBody = r.createInvoiceRequest
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -175,96 +185,17 @@ func (a *InvoiceApiService) CreateInvoiceExecute(r ApiCreateInvoiceRequest) (*In
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiExpireInvoiceRequest struct {
-	ctx context.Context
-	ApiService InvoiceApi
-	invoiceId string
-}
-
-func (r ApiExpireInvoiceRequest) Execute() (*Invoice, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.ExpireInvoiceExecute(r)
-}
-
-/*
-ExpireInvoice Manually expire an invoice
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param invoiceId Invoice ID to be expired
- @return ApiExpireInvoiceRequest
-*/
-func (a *InvoiceApiService) ExpireInvoice(ctx context.Context, invoiceId string) ApiExpireInvoiceRequest {
-	return ApiExpireInvoiceRequest{
-		ApiService: a,
-		ctx: ctx,
-		invoiceId: invoiceId,
-	}
-}
-
-// Execute executes the request
-//  @return Invoice
-func (a *InvoiceApiService) ExpireInvoiceExecute(r ApiExpireInvoiceRequest) (*Invoice, *http.Response, *common.XenditSdkError) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []common.FormFile
-		localVarReturnValue  *Invoice
-	)
-
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "InvoiceApiService.ExpireInvoice")
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: InvoiceApiService.ExpireInvoiceExecute")
-	}
-
-	localVarPath := localBasePath + "/invoices/{invoice_id}/expire!"
-	localVarPath = strings.Replace(localVarPath, "{"+"invoice_id"+"}", url.PathEscape(utils.ParameterValueToString(r.invoiceId, "invoiceId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: InvoiceApiService.ExpireInvoiceExecute")
-	}
-
-	localVarHTTPResponse, err := a.client.CallAPI(req)
-
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-
-    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-
-	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
-		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
-
-		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetInvoiceByIdRequest struct {
 	ctx context.Context
 	ApiService InvoiceApi
 	invoiceId string
+	forUserId *string
+}
+
+// Business ID of the sub-account merchant (XP feature)
+func (r ApiGetInvoiceByIdRequest) ForUserId(forUserId string) ApiGetInvoiceByIdRequest {
+	r.forUserId = &forUserId
+	return r
 }
 
 func (r ApiGetInvoiceByIdRequest) Execute() (*Invoice, *http.Response, *common.XenditSdkError) {
@@ -325,6 +256,9 @@ func (a *InvoiceApiService) GetInvoiceByIdExecute(r ApiGetInvoiceByIdRequest) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: InvoiceApiService.GetInvoiceByIdExecute")
@@ -350,6 +284,7 @@ func (a *InvoiceApiService) GetInvoiceByIdExecute(r ApiGetInvoiceByIdRequest) (*
 type ApiGetInvoicesRequest struct {
 	ctx context.Context
 	ApiService InvoiceApi
+	forUserId *string
 	externalId *string
 	statuses *[]InvoiceStatus
 	limit *float32
@@ -364,6 +299,12 @@ type ApiGetInvoicesRequest struct {
 	paymentChannels *[]string
 	onDemandLink *string
 	recurringPaymentId *string
+}
+
+// Business ID of the sub-account merchant (XP feature)
+func (r ApiGetInvoicesRequest) ForUserId(forUserId string) ApiGetInvoicesRequest {
+	r.forUserId = &forUserId
+	return r
 }
 
 func (r ApiGetInvoicesRequest) ExternalId(externalId string) ApiGetInvoicesRequest {
@@ -557,9 +498,108 @@ func (a *InvoiceApiService) GetInvoicesExecute(r ApiGetInvoicesRequest) ([]Invoi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: InvoiceApiService.GetInvoicesExecute")
+	}
+
+	localVarHTTPResponse, err := a.client.CallAPI(req)
+
+	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+
+    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+
+	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
+		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
+
+		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiExpireInvoiceRequest struct {
+	ctx context.Context
+	ApiService InvoiceApi
+	invoiceId string
+	forUserId *string
+}
+
+// Business ID of the sub-account merchant (XP feature)
+func (r ApiExpireInvoiceRequest) ForUserId(forUserId string) ApiExpireInvoiceRequest {
+	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiExpireInvoiceRequest) Execute() (*Invoice, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.ExpireInvoiceExecute(r)
+}
+
+/*
+ExpireInvoice Manually expire an invoice
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param invoiceId Invoice ID to be expired
+ @return ApiExpireInvoiceRequest
+*/
+func (a *InvoiceApiService) ExpireInvoice(ctx context.Context, invoiceId string) ApiExpireInvoiceRequest {
+	return ApiExpireInvoiceRequest{
+		ApiService: a,
+		ctx: ctx,
+		invoiceId: invoiceId,
+	}
+}
+
+// Execute executes the request
+//  @return Invoice
+func (a *InvoiceApiService) ExpireInvoiceExecute(r ApiExpireInvoiceRequest) (*Invoice, *http.Response, *common.XenditSdkError) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []common.FormFile
+		localVarReturnValue  *Invoice
+	)
+
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "InvoiceApiService.ExpireInvoice")
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: InvoiceApiService.ExpireInvoiceExecute")
+	}
+
+	localVarPath := localBasePath + "/invoices/{invoice_id}/expire!"
+	localVarPath = strings.Replace(localVarPath, "{"+"invoice_id"+"}", url.PathEscape(utils.ParameterValueToString(r.invoiceId, "invoiceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: InvoiceApiService.ExpireInvoiceExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)

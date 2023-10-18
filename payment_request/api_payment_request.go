@@ -18,36 +18,6 @@ import (
 type PaymentRequestApi interface {
 
 	/*
-	AuthorizePaymentRequest Payment Request Authorize
-
-	Payment Request Authorize
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param paymentRequestId
-	@return ApiAuthorizePaymentRequestRequest
-	*/
-	AuthorizePaymentRequest(ctx context.Context, paymentRequestId string) ApiAuthorizePaymentRequestRequest
-
-	// AuthorizePaymentRequestExecute executes the request
-	//  @return PaymentRequest
-	AuthorizePaymentRequestExecute(r ApiAuthorizePaymentRequestRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError)
-
-	/*
-	CapturePaymentRequest Payment Request Capture
-
-	Payment Request Capture
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param paymentRequestId
-	@return ApiCapturePaymentRequestRequest
-	*/
-	CapturePaymentRequest(ctx context.Context, paymentRequestId string) ApiCapturePaymentRequestRequest
-
-	// CapturePaymentRequestExecute executes the request
-	//  @return Capture
-	CapturePaymentRequestExecute(r ApiCapturePaymentRequestRequest) (*Capture, *http.Response, *common.XenditSdkError)
-
-	/*
 	CreatePaymentRequest Create Payment Request
 
 	Create Payment Request
@@ -60,20 +30,6 @@ type PaymentRequestApi interface {
 	// CreatePaymentRequestExecute executes the request
 	//  @return PaymentRequest
 	CreatePaymentRequestExecute(r ApiCreatePaymentRequestRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError)
-
-	/*
-	GetAllPaymentRequests Get all payment requests by filter
-
-	Get all payment requests by filter
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAllPaymentRequestsRequest
-	*/
-	GetAllPaymentRequests(ctx context.Context) ApiGetAllPaymentRequestsRequest
-
-	// GetAllPaymentRequestsExecute executes the request
-	//  @return PaymentRequestListResponse
-	GetAllPaymentRequestsExecute(r ApiGetAllPaymentRequestsRequest) (*PaymentRequestListResponse, *http.Response, *common.XenditSdkError)
 
 	/*
 	GetPaymentRequestByID Get payment request by ID
@@ -106,6 +62,50 @@ type PaymentRequestApi interface {
 	GetPaymentRequestCapturesExecute(r ApiGetPaymentRequestCapturesRequest) (*CaptureListResponse, *http.Response, *common.XenditSdkError)
 
 	/*
+	GetAllPaymentRequests Get all payment requests by filter
+
+	Get all payment requests by filter
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAllPaymentRequestsRequest
+	*/
+	GetAllPaymentRequests(ctx context.Context) ApiGetAllPaymentRequestsRequest
+
+	// GetAllPaymentRequestsExecute executes the request
+	//  @return PaymentRequestListResponse
+	GetAllPaymentRequestsExecute(r ApiGetAllPaymentRequestsRequest) (*PaymentRequestListResponse, *http.Response, *common.XenditSdkError)
+
+	/*
+	CapturePaymentRequest Payment Request Capture
+
+	Payment Request Capture
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param paymentRequestId
+	@return ApiCapturePaymentRequestRequest
+	*/
+	CapturePaymentRequest(ctx context.Context, paymentRequestId string) ApiCapturePaymentRequestRequest
+
+	// CapturePaymentRequestExecute executes the request
+	//  @return Capture
+	CapturePaymentRequestExecute(r ApiCapturePaymentRequestRequest) (*Capture, *http.Response, *common.XenditSdkError)
+
+	/*
+	AuthorizePaymentRequest Payment Request Authorize
+
+	Payment Request Authorize
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param paymentRequestId
+	@return ApiAuthorizePaymentRequestRequest
+	*/
+	AuthorizePaymentRequest(ctx context.Context, paymentRequestId string) ApiAuthorizePaymentRequestRequest
+
+	// AuthorizePaymentRequestExecute executes the request
+	//  @return PaymentRequest
+	AuthorizePaymentRequestExecute(r ApiAuthorizePaymentRequestRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError)
+
+	/*
 	ResendPaymentRequestAuth Payment Request Resend Auth
 
 	Payment Request Resend Auth
@@ -134,207 +134,21 @@ func NewPaymentRequestApi (client common.IClient) PaymentRequestApi {
 }
 
 
-type ApiAuthorizePaymentRequestRequest struct {
-	ctx context.Context
-	ApiService PaymentRequestApi
-	paymentRequestId string
-	paymentRequestAuthParameters *PaymentRequestAuthParameters
-}
-
-func (r ApiAuthorizePaymentRequestRequest) PaymentRequestAuthParameters(paymentRequestAuthParameters PaymentRequestAuthParameters) ApiAuthorizePaymentRequestRequest {
-	r.paymentRequestAuthParameters = &paymentRequestAuthParameters
-	return r
-}
-
-func (r ApiAuthorizePaymentRequestRequest) Execute() (*PaymentRequest, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.AuthorizePaymentRequestExecute(r)
-}
-
-/*
-AuthorizePaymentRequest Payment Request Authorize
-
-Payment Request Authorize
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param paymentRequestId
- @return ApiAuthorizePaymentRequestRequest
-*/
-func (a *PaymentRequestApiService) AuthorizePaymentRequest(ctx context.Context, paymentRequestId string) ApiAuthorizePaymentRequestRequest {
-	return ApiAuthorizePaymentRequestRequest{
-		ApiService: a,
-		ctx: ctx,
-		paymentRequestId: paymentRequestId,
-	}
-}
-
-// Execute executes the request
-//  @return PaymentRequest
-func (a *PaymentRequestApiService) AuthorizePaymentRequestExecute(r ApiAuthorizePaymentRequestRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []common.FormFile
-		localVarReturnValue  *PaymentRequest
-	)
-
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.AuthorizePaymentRequest")
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.AuthorizePaymentRequestExecute")
-	}
-
-	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/auth"
-	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.paymentRequestAuthParameters
-	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.AuthorizePaymentRequestExecute")
-	}
-
-	localVarHTTPResponse, err := a.client.CallAPI(req)
-
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-
-    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-
-	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
-		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
-
-		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiCapturePaymentRequestRequest struct {
-	ctx context.Context
-	ApiService PaymentRequestApi
-	paymentRequestId string
-	captureParameters *CaptureParameters
-}
-
-func (r ApiCapturePaymentRequestRequest) CaptureParameters(captureParameters CaptureParameters) ApiCapturePaymentRequestRequest {
-	r.captureParameters = &captureParameters
-	return r
-}
-
-func (r ApiCapturePaymentRequestRequest) Execute() (*Capture, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.CapturePaymentRequestExecute(r)
-}
-
-/*
-CapturePaymentRequest Payment Request Capture
-
-Payment Request Capture
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param paymentRequestId
- @return ApiCapturePaymentRequestRequest
-*/
-func (a *PaymentRequestApiService) CapturePaymentRequest(ctx context.Context, paymentRequestId string) ApiCapturePaymentRequestRequest {
-	return ApiCapturePaymentRequestRequest{
-		ApiService: a,
-		ctx: ctx,
-		paymentRequestId: paymentRequestId,
-	}
-}
-
-// Execute executes the request
-//  @return Capture
-func (a *PaymentRequestApiService) CapturePaymentRequestExecute(r ApiCapturePaymentRequestRequest) (*Capture, *http.Response, *common.XenditSdkError) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []common.FormFile
-		localVarReturnValue  *Capture
-	)
-
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.CapturePaymentRequest")
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.CapturePaymentRequestExecute")
-	}
-
-	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/captures"
-	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.captureParameters
-	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.CapturePaymentRequestExecute")
-	}
-
-	localVarHTTPResponse, err := a.client.CallAPI(req)
-
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-
-    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-
-	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
-		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
-
-		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiCreatePaymentRequestRequest struct {
 	ctx context.Context
 	ApiService PaymentRequestApi
 	idempotencyKey *string
+	forUserId *string
 	paymentRequestParameters *PaymentRequestParameters
 }
 
 func (r ApiCreatePaymentRequestRequest) IdempotencyKey(idempotencyKey string) ApiCreatePaymentRequestRequest {
 	r.idempotencyKey = &idempotencyKey
+	return r
+}
+
+func (r ApiCreatePaymentRequestRequest) ForUserId(forUserId string) ApiCreatePaymentRequestRequest {
+	r.forUserId = &forUserId
 	return r
 }
 
@@ -403,6 +217,9 @@ func (a *PaymentRequestApiService) CreatePaymentRequestExecute(r ApiCreatePaymen
 	if r.idempotencyKey != nil {
 		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "idempotency-key", r.idempotencyKey, "")
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	// body params
 	localVarPostBody = r.paymentRequestParameters
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -427,15 +244,224 @@ func (a *PaymentRequestApiService) CreatePaymentRequestExecute(r ApiCreatePaymen
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetPaymentRequestByIDRequest struct {
+	ctx context.Context
+	ApiService PaymentRequestApi
+	paymentRequestId string
+	forUserId *string
+}
+
+func (r ApiGetPaymentRequestByIDRequest) ForUserId(forUserId string) ApiGetPaymentRequestByIDRequest {
+	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiGetPaymentRequestByIDRequest) Execute() (*PaymentRequest, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.GetPaymentRequestByIDExecute(r)
+}
+
+/*
+GetPaymentRequestByID Get payment request by ID
+
+Get payment request by ID
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param paymentRequestId
+ @return ApiGetPaymentRequestByIDRequest
+*/
+func (a *PaymentRequestApiService) GetPaymentRequestByID(ctx context.Context, paymentRequestId string) ApiGetPaymentRequestByIDRequest {
+	return ApiGetPaymentRequestByIDRequest{
+		ApiService: a,
+		ctx: ctx,
+		paymentRequestId: paymentRequestId,
+	}
+}
+
+// Execute executes the request
+//  @return PaymentRequest
+func (a *PaymentRequestApiService) GetPaymentRequestByIDExecute(r ApiGetPaymentRequestByIDRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []common.FormFile
+		localVarReturnValue  *PaymentRequest
+	)
+
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.GetPaymentRequestByID")
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestByIDExecute")
+	}
+
+	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestByIDExecute")
+	}
+
+	localVarHTTPResponse, err := a.client.CallAPI(req)
+
+	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+
+    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+
+	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
+		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
+
+		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetPaymentRequestCapturesRequest struct {
+	ctx context.Context
+	ApiService PaymentRequestApi
+	paymentRequestId string
+	forUserId *string
+	limit *int32
+}
+
+func (r ApiGetPaymentRequestCapturesRequest) ForUserId(forUserId string) ApiGetPaymentRequestCapturesRequest {
+	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiGetPaymentRequestCapturesRequest) Limit(limit int32) ApiGetPaymentRequestCapturesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiGetPaymentRequestCapturesRequest) Execute() (*CaptureListResponse, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.GetPaymentRequestCapturesExecute(r)
+}
+
+/*
+GetPaymentRequestCaptures Get Payment Request Capture
+
+Get Payment Request Capture
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param paymentRequestId
+ @return ApiGetPaymentRequestCapturesRequest
+*/
+func (a *PaymentRequestApiService) GetPaymentRequestCaptures(ctx context.Context, paymentRequestId string) ApiGetPaymentRequestCapturesRequest {
+	return ApiGetPaymentRequestCapturesRequest{
+		ApiService: a,
+		ctx: ctx,
+		paymentRequestId: paymentRequestId,
+	}
+}
+
+// Execute executes the request
+//  @return CaptureListResponse
+func (a *PaymentRequestApiService) GetPaymentRequestCapturesExecute(r ApiGetPaymentRequestCapturesRequest) (*CaptureListResponse, *http.Response, *common.XenditSdkError) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []common.FormFile
+		localVarReturnValue  *CaptureListResponse
+	)
+
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.GetPaymentRequestCaptures")
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestCapturesExecute")
+	}
+
+	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/captures"
+	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestCapturesExecute")
+	}
+
+	localVarHTTPResponse, err := a.client.CallAPI(req)
+
+	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+
+    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+
+	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
+		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
+
+		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetAllPaymentRequestsRequest struct {
 	ctx context.Context
 	ApiService PaymentRequestApi
+	forUserId *string
 	referenceId *[]string
 	id *[]string
 	customerId *[]string
 	limit *int32
 	beforeId *string
 	afterId *string
+}
+
+func (r ApiGetAllPaymentRequestsRequest) ForUserId(forUserId string) ApiGetAllPaymentRequestsRequest {
+	r.forUserId = &forUserId
+	return r
 }
 
 func (r ApiGetAllPaymentRequestsRequest) ReferenceId(referenceId []string) ApiGetAllPaymentRequestsRequest {
@@ -567,6 +593,9 @@ func (a *PaymentRequestApiService) GetAllPaymentRequestsExecute(r ApiGetAllPayme
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetAllPaymentRequestsExecute")
@@ -589,27 +618,39 @@ func (a *PaymentRequestApiService) GetAllPaymentRequestsExecute(r ApiGetAllPayme
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetPaymentRequestByIDRequest struct {
+type ApiCapturePaymentRequestRequest struct {
 	ctx context.Context
 	ApiService PaymentRequestApi
 	paymentRequestId string
+	forUserId *string
+	captureParameters *CaptureParameters
 }
 
-func (r ApiGetPaymentRequestByIDRequest) Execute() (*PaymentRequest, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.GetPaymentRequestByIDExecute(r)
+func (r ApiCapturePaymentRequestRequest) ForUserId(forUserId string) ApiCapturePaymentRequestRequest {
+	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiCapturePaymentRequestRequest) CaptureParameters(captureParameters CaptureParameters) ApiCapturePaymentRequestRequest {
+	r.captureParameters = &captureParameters
+	return r
+}
+
+func (r ApiCapturePaymentRequestRequest) Execute() (*Capture, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.CapturePaymentRequestExecute(r)
 }
 
 /*
-GetPaymentRequestByID Get payment request by ID
+CapturePaymentRequest Payment Request Capture
 
-Get payment request by ID
+Payment Request Capture
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param paymentRequestId
- @return ApiGetPaymentRequestByIDRequest
+ @return ApiCapturePaymentRequestRequest
 */
-func (a *PaymentRequestApiService) GetPaymentRequestByID(ctx context.Context, paymentRequestId string) ApiGetPaymentRequestByIDRequest {
-	return ApiGetPaymentRequestByIDRequest{
+func (a *PaymentRequestApiService) CapturePaymentRequest(ctx context.Context, paymentRequestId string) ApiCapturePaymentRequestRequest {
+	return ApiCapturePaymentRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		paymentRequestId: paymentRequestId,
@@ -617,21 +658,21 @@ func (a *PaymentRequestApiService) GetPaymentRequestByID(ctx context.Context, pa
 }
 
 // Execute executes the request
-//  @return PaymentRequest
-func (a *PaymentRequestApiService) GetPaymentRequestByIDExecute(r ApiGetPaymentRequestByIDRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError) {
+//  @return Capture
+func (a *PaymentRequestApiService) CapturePaymentRequestExecute(r ApiCapturePaymentRequestRequest) (*Capture, *http.Response, *common.XenditSdkError) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []common.FormFile
-		localVarReturnValue  *PaymentRequest
+		localVarReturnValue  *Capture
 	)
 
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.GetPaymentRequestByID")
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.CapturePaymentRequest")
 	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestByIDExecute")
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.CapturePaymentRequestExecute")
 	}
 
-	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}"
+	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/captures"
 	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -639,7 +680,7 @@ func (a *PaymentRequestApiService) GetPaymentRequestByIDExecute(r ApiGetPaymentR
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
@@ -655,9 +696,14 @@ func (a *PaymentRequestApiService) GetPaymentRequestByIDExecute(r ApiGetPaymentR
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	// body params
+	localVarPostBody = r.captureParameters
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestByIDExecute")
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.CapturePaymentRequestExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
@@ -677,33 +723,39 @@ func (a *PaymentRequestApiService) GetPaymentRequestByIDExecute(r ApiGetPaymentR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetPaymentRequestCapturesRequest struct {
+type ApiAuthorizePaymentRequestRequest struct {
 	ctx context.Context
 	ApiService PaymentRequestApi
 	paymentRequestId string
-	limit *int32
+	forUserId *string
+	paymentRequestAuthParameters *PaymentRequestAuthParameters
 }
 
-func (r ApiGetPaymentRequestCapturesRequest) Limit(limit int32) ApiGetPaymentRequestCapturesRequest {
-	r.limit = &limit
+func (r ApiAuthorizePaymentRequestRequest) ForUserId(forUserId string) ApiAuthorizePaymentRequestRequest {
+	r.forUserId = &forUserId
 	return r
 }
 
-func (r ApiGetPaymentRequestCapturesRequest) Execute() (*CaptureListResponse, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.GetPaymentRequestCapturesExecute(r)
+func (r ApiAuthorizePaymentRequestRequest) PaymentRequestAuthParameters(paymentRequestAuthParameters PaymentRequestAuthParameters) ApiAuthorizePaymentRequestRequest {
+	r.paymentRequestAuthParameters = &paymentRequestAuthParameters
+	return r
+}
+
+func (r ApiAuthorizePaymentRequestRequest) Execute() (*PaymentRequest, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.AuthorizePaymentRequestExecute(r)
 }
 
 /*
-GetPaymentRequestCaptures Get Payment Request Capture
+AuthorizePaymentRequest Payment Request Authorize
 
-Get Payment Request Capture
+Payment Request Authorize
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param paymentRequestId
- @return ApiGetPaymentRequestCapturesRequest
+ @return ApiAuthorizePaymentRequestRequest
 */
-func (a *PaymentRequestApiService) GetPaymentRequestCaptures(ctx context.Context, paymentRequestId string) ApiGetPaymentRequestCapturesRequest {
-	return ApiGetPaymentRequestCapturesRequest{
+func (a *PaymentRequestApiService) AuthorizePaymentRequest(ctx context.Context, paymentRequestId string) ApiAuthorizePaymentRequestRequest {
+	return ApiAuthorizePaymentRequestRequest{
 		ApiService: a,
 		ctx: ctx,
 		paymentRequestId: paymentRequestId,
@@ -711,32 +763,29 @@ func (a *PaymentRequestApiService) GetPaymentRequestCaptures(ctx context.Context
 }
 
 // Execute executes the request
-//  @return CaptureListResponse
-func (a *PaymentRequestApiService) GetPaymentRequestCapturesExecute(r ApiGetPaymentRequestCapturesRequest) (*CaptureListResponse, *http.Response, *common.XenditSdkError) {
+//  @return PaymentRequest
+func (a *PaymentRequestApiService) AuthorizePaymentRequestExecute(r ApiAuthorizePaymentRequestRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []common.FormFile
-		localVarReturnValue  *CaptureListResponse
+		localVarReturnValue  *PaymentRequest
 	)
 
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.GetPaymentRequestCaptures")
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.AuthorizePaymentRequest")
 	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestCapturesExecute")
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.AuthorizePaymentRequestExecute")
 	}
 
-	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/captures"
+	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/auth"
 	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
@@ -752,9 +801,14 @@ func (a *PaymentRequestApiService) GetPaymentRequestCapturesExecute(r ApiGetPaym
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	// body params
+	localVarPostBody = r.paymentRequestAuthParameters
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.GetPaymentRequestCapturesExecute")
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.AuthorizePaymentRequestExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
@@ -778,6 +832,12 @@ type ApiResendPaymentRequestAuthRequest struct {
 	ctx context.Context
 	ApiService PaymentRequestApi
 	paymentRequestId string
+	forUserId *string
+}
+
+func (r ApiResendPaymentRequestAuthRequest) ForUserId(forUserId string) ApiResendPaymentRequestAuthRequest {
+	r.forUserId = &forUserId
+	return r
 }
 
 func (r ApiResendPaymentRequestAuthRequest) Execute() (*PaymentRequest, *http.Response, *common.XenditSdkError) {
@@ -839,6 +899,9 @@ func (a *PaymentRequestApiService) ResendPaymentRequestAuthExecute(r ApiResendPa
 	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
 	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

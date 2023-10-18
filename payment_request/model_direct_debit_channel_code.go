@@ -83,6 +83,7 @@ const (
 	DIRECTDEBITCHANNELCODE_RHB_FPX_BUSINESS DirectDebitChannelCode = "RHB_FPX_BUSINESS"
 	DIRECTDEBITCHANNELCODE_SCH_FPX_BUSINESS DirectDebitChannelCode = "SCH_FPX_BUSINESS"
 	DIRECTDEBITCHANNELCODE_UOB_FPX_BUSINESS DirectDebitChannelCode = "UOB_FPX_BUSINESS"
+    DIRECTDEBITCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK DirectDebitChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of DirectDebitChannelCode enum
@@ -150,6 +151,7 @@ var AllowedDirectDebitChannelCodeEnumValues = []DirectDebitChannelCode{
 	"RHB_FPX_BUSINESS",
 	"SCH_FPX_BUSINESS",
 	"UOB_FPX_BUSINESS",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *DirectDebitChannelCode) UnmarshalJSON(src []byte) error {
@@ -166,7 +168,8 @@ func (v *DirectDebitChannelCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DirectDebitChannelCode", value)
+    *v = DIRECTDEBITCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewDirectDebitChannelCodeFromValue returns a pointer to a valid DirectDebitChannelCode

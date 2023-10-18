@@ -23,6 +23,7 @@ const (
 	CHANNELCATEGORY_BANK ChannelCategory = "BANK"
 	CHANNELCATEGORY_EWALLET ChannelCategory = "EWALLET"
 	CHANNELCATEGORY_OTC ChannelCategory = "OTC"
+    CHANNELCATEGORY_XENDIT_ENUM_DEFAULT_FALLBACK ChannelCategory = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of ChannelCategory enum
@@ -30,6 +31,7 @@ var AllowedChannelCategoryEnumValues = []ChannelCategory{
 	"BANK",
 	"EWALLET",
 	"OTC",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *ChannelCategory) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *ChannelCategory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ChannelCategory", value)
+    *v = CHANNELCATEGORY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewChannelCategoryFromValue returns a pointer to a valid ChannelCategory

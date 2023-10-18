@@ -30,6 +30,7 @@ const (
 	EWALLETTYPE_ASTRAPAY EwalletType = "ASTRAPAY"
 	EWALLETTYPE_NEXCASH EwalletType = "NEXCASH"
 	EWALLETTYPE_JENIUSPAY EwalletType = "JENIUSPAY"
+    EWALLETTYPE_XENDIT_ENUM_DEFAULT_FALLBACK EwalletType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of EwalletType enum
@@ -44,6 +45,7 @@ var AllowedEwalletTypeEnumValues = []EwalletType{
 	"ASTRAPAY",
 	"NEXCASH",
 	"JENIUSPAY",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *EwalletType) UnmarshalJSON(src []byte) error {
@@ -60,7 +62,8 @@ func (v *EwalletType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EwalletType", value)
+    *v = EWALLETTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewEwalletTypeFromValue returns a pointer to a valid EwalletType

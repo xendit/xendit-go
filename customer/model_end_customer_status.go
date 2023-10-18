@@ -25,6 +25,7 @@ const (
 	ENDCUSTOMERSTATUS_PENDING EndCustomerStatus = "PENDING"
 	ENDCUSTOMERSTATUS_BLOCKED EndCustomerStatus = "BLOCKED"
 	ENDCUSTOMERSTATUS_DELETED EndCustomerStatus = "DELETED"
+    ENDCUSTOMERSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK EndCustomerStatus = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of EndCustomerStatus enum
@@ -34,6 +35,7 @@ var AllowedEndCustomerStatusEnumValues = []EndCustomerStatus{
 	"PENDING",
 	"BLOCKED",
 	"DELETED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *EndCustomerStatus) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *EndCustomerStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EndCustomerStatus", value)
+    *v = ENDCUSTOMERSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewEndCustomerStatusFromValue returns a pointer to a valid EndCustomerStatus

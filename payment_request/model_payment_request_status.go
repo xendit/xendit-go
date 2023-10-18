@@ -28,6 +28,7 @@ const (
 	PAYMENTREQUESTSTATUS_VOIDED PaymentRequestStatus = "VOIDED"
 	PAYMENTREQUESTSTATUS_UNKNOWN PaymentRequestStatus = "UNKNOWN"
 	PAYMENTREQUESTSTATUS_AWAITING_CAPTURE PaymentRequestStatus = "AWAITING_CAPTURE"
+    PAYMENTREQUESTSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestStatus = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentRequestStatus enum
@@ -40,6 +41,7 @@ var AllowedPaymentRequestStatusEnumValues = []PaymentRequestStatus{
 	"VOIDED",
 	"UNKNOWN",
 	"AWAITING_CAPTURE",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentRequestStatus) UnmarshalJSON(src []byte) error {
@@ -56,7 +58,8 @@ func (v *PaymentRequestStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentRequestStatus", value)
+    *v = PAYMENTREQUESTSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentRequestStatusFromValue returns a pointer to a valid PaymentRequestStatus

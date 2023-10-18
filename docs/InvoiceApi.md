@@ -5,9 +5,9 @@ All URIs are relative to *https://api.xendit.co*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**CreateInvoice**](InvoiceApi.md#CreateInvoice) | **Post** /v2/invoices/ | Create an invoice |
-| [**ExpireInvoice**](InvoiceApi.md#ExpireInvoice) | **Post** /invoices/{invoice_id}/expire! | Manually expire an invoice |
 | [**GetInvoiceById**](InvoiceApi.md#GetInvoiceById) | **Get** /v2/invoices/{invoice_id} | Get invoice by invoice id |
 | [**GetInvoices**](InvoiceApi.md#GetInvoices) | **Get** /v2/invoices | Get all Invoices |
+| [**ExpireInvoice**](InvoiceApi.md#ExpireInvoice) | **Post** /invoices/{invoice_id}/expire! | Manually expire an invoice |
 
 
 
@@ -32,10 +32,14 @@ func main() {
     
     createInvoiceRequest := *invoice.NewCreateInvoiceRequest("ExternalId_example", float32(123)) // [REQUIRED] | CreateInvoiceRequest
 
+    // Business ID of the sub-account merchant (XP feature)
+    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+
     xenditClient := xendit.NewClient("API-KEY")
 
     resp, r, err := xenditClient.InvoiceApi.CreateInvoice(context.Background()).
-        CreateInvoiceRequest(createInvoiceRequest). // [OPTIONAL]
+        CreateInvoiceRequest(createInvoiceRequest).
+        ForUserId(forUserId). // [OPTIONAL]
         Execute()
 
     if err != nil {
@@ -63,6 +67,7 @@ Other parameters are passed through a pointer to a apiCreateInvoiceRequest struc
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 |  **createInvoiceRequest** |[**CreateInvoiceRequest**](invoice/CreateInvoiceRequest.md)|  |  | 
+|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
 
 ### Return type
 
@@ -71,76 +76,6 @@ Other parameters are passed through a pointer to a apiCreateInvoiceRequest struc
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## ExpireInvoice
-
-Manually expire an invoice
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    invoice "github.com/xendit/xendit-go/v3/invoice"
-)
-
-func main() {
-    
-    // Invoice ID to be expired
-    invoiceId := "5f4708b7bd394b0400b96276" // [REQUIRED] | string
-
-    xenditClient := xendit.NewClient("API-KEY")
-
-    resp, r, err := xenditClient.InvoiceApi.ExpireInvoice(context.Background(), invoiceId). // [OPTIONAL]
-        Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InvoiceApi.ExpireInvoice``: %v\n", err.Error())
-
-        b, _ := json.Marshal(err.FullError())
-        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
-
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExpireInvoice`: Invoice
-    fmt.Fprintf(os.Stdout, "Response from `InvoiceApi.ExpireInvoice`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **invoiceId** | **string** | Invoice ID to be expired |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiExpireInvoiceRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-
-### Return type
-
-[**Invoice**](invoice/Invoice.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#)
@@ -169,9 +104,13 @@ func main() {
     // Invoice ID
     invoiceId := "62efe4c33e45294d63f585f2" // [REQUIRED] | string
 
+    // Business ID of the sub-account merchant (XP feature)
+    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+
     xenditClient := xendit.NewClient("API-KEY")
 
-    resp, r, err := xenditClient.InvoiceApi.GetInvoiceById(context.Background(), invoiceId). // [OPTIONAL]
+    resp, r, err := xenditClient.InvoiceApi.GetInvoiceById(context.Background(), invoiceId).
+        ForUserId(forUserId). // [OPTIONAL]
         Execute()
 
     if err != nil {
@@ -203,6 +142,7 @@ Other parameters are passed through a pointer to a apiGetInvoiceByIdRequest stru
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | 
+|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
 
 ### Return type
 
@@ -237,6 +177,9 @@ import (
 
 func main() {
     
+    // Business ID of the sub-account merchant (XP feature)
+    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+
     externalId := "test-external" // [OPTIONAL] | string
 
     statuses := []invoice.InvoiceStatus{invoice.InvoiceStatus("PENDING")} // [OPTIONAL] | []InvoiceStatus
@@ -268,6 +211,7 @@ func main() {
     xenditClient := xendit.NewClient("API-KEY")
 
     resp, r, err := xenditClient.InvoiceApi.GetInvoices(context.Background()).
+        ForUserId(forUserId).
         ExternalId(externalId).
         Statuses(statuses).
         Limit(limit).
@@ -308,6 +252,7 @@ Other parameters are passed through a pointer to a apiGetInvoicesRequest struct 
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
 |  **externalId** |**string**|  |  | 
 |  **statuses** |[**InvoiceStatus[]**](invoice/InvoiceStatus.md)|  |  | 
 |  **limit** |**float32**|  |  | 
@@ -326,6 +271,81 @@ Other parameters are passed through a pointer to a apiGetInvoicesRequest struct 
 ### Return type
 
 [**[]Invoice**](invoice/Invoice.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#)
+[[Back to README]](../README.md)
+
+
+## ExpireInvoice
+
+Manually expire an invoice
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+    invoice "github.com/xendit/xendit-go/v3/invoice"
+)
+
+func main() {
+    
+    // Invoice ID to be expired
+    invoiceId := "5f4708b7bd394b0400b96276" // [REQUIRED] | string
+
+    // Business ID of the sub-account merchant (XP feature)
+    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+
+    xenditClient := xendit.NewClient("API-KEY")
+
+    resp, r, err := xenditClient.InvoiceApi.ExpireInvoice(context.Background(), invoiceId).
+        ForUserId(forUserId). // [OPTIONAL]
+        Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoiceApi.ExpireInvoice``: %v\n", err.Error())
+
+        b, _ := json.Marshal(err.FullError())
+        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
+
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ExpireInvoice`: Invoice
+    fmt.Fprintf(os.Stdout, "Response from `InvoiceApi.ExpireInvoice`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **invoiceId** | **string** | Invoice ID to be expired |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiExpireInvoiceRequest struct via the builder pattern
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
+
+### Return type
+
+[**Invoice**](invoice/Invoice.md)
 
 ### HTTP request headers
 

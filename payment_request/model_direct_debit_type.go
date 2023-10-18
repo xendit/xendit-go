@@ -23,6 +23,7 @@ const (
 	DIRECTDEBITTYPE_DEBIT_CARD DirectDebitType = "DEBIT_CARD"
 	DIRECTDEBITTYPE_BANK_ACCOUNT DirectDebitType = "BANK_ACCOUNT"
 	DIRECTDEBITTYPE_BANK_REDIRECT DirectDebitType = "BANK_REDIRECT"
+    DIRECTDEBITTYPE_XENDIT_ENUM_DEFAULT_FALLBACK DirectDebitType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of DirectDebitType enum
@@ -30,6 +31,7 @@ var AllowedDirectDebitTypeEnumValues = []DirectDebitType{
 	"DEBIT_CARD",
 	"BANK_ACCOUNT",
 	"BANK_REDIRECT",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *DirectDebitType) UnmarshalJSON(src []byte) error {
@@ -46,7 +48,8 @@ func (v *DirectDebitType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DirectDebitType", value)
+    *v = DIRECTDEBITTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewDirectDebitTypeFromValue returns a pointer to a valid DirectDebitType

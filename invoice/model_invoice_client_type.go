@@ -26,6 +26,7 @@ const (
 	INVOICECLIENTTYPE_ON_DEMAND InvoiceClientType = "ON_DEMAND"
 	INVOICECLIENTTYPE_RECURRING InvoiceClientType = "RECURRING"
 	INVOICECLIENTTYPE_MOBILE InvoiceClientType = "MOBILE"
+    INVOICECLIENTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK InvoiceClientType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of InvoiceClientType enum
@@ -36,6 +37,7 @@ var AllowedInvoiceClientTypeEnumValues = []InvoiceClientType{
 	"ON_DEMAND",
 	"RECURRING",
 	"MOBILE",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *InvoiceClientType) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *InvoiceClientType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InvoiceClientType", value)
+    *v = INVOICECLIENTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewInvoiceClientTypeFromValue returns a pointer to a valid InvoiceClientType

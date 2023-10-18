@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.1
+API version: 2.89.2
 */
 
 
@@ -28,6 +28,7 @@ const (
 	PAYMENTMETHODTYPE_OVER_THE_COUNTER PaymentMethodType = "OVER_THE_COUNTER"
 	PAYMENTMETHODTYPE_QR_CODE PaymentMethodType = "QR_CODE"
 	PAYMENTMETHODTYPE_VIRTUAL_ACCOUNT PaymentMethodType = "VIRTUAL_ACCOUNT"
+    PAYMENTMETHODTYPE_XENDIT_ENUM_DEFAULT_FALLBACK PaymentMethodType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentMethodType enum
@@ -40,6 +41,7 @@ var AllowedPaymentMethodTypeEnumValues = []PaymentMethodType{
 	"OVER_THE_COUNTER",
 	"QR_CODE",
 	"VIRTUAL_ACCOUNT",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentMethodType) UnmarshalJSON(src []byte) error {
@@ -56,7 +58,8 @@ func (v *PaymentMethodType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentMethodType", value)
+    *v = PAYMENTMETHODTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentMethodTypeFromValue returns a pointer to a valid PaymentMethodType

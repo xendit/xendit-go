@@ -22,12 +22,14 @@ type QrCodeType string
 const (
 	QRCODETYPE_QRIS QrCodeType = "QRIS"
 	QRCODETYPE_PROMPTPAY QrCodeType = "PROMPTPAY"
+    QRCODETYPE_XENDIT_ENUM_DEFAULT_FALLBACK QrCodeType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of QrCodeType enum
 var AllowedQrCodeTypeEnumValues = []QrCodeType{
 	"QRIS",
 	"PROMPTPAY",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *QrCodeType) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *QrCodeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid QrCodeType", value)
+    *v = QRCODETYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewQrCodeTypeFromValue returns a pointer to a valid QrCodeType

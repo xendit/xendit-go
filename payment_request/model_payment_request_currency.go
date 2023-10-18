@@ -25,6 +25,7 @@ const (
 	PAYMENTREQUESTCURRENCY_VND PaymentRequestCurrency = "VND"
 	PAYMENTREQUESTCURRENCY_THB PaymentRequestCurrency = "THB"
 	PAYMENTREQUESTCURRENCY_MYR PaymentRequestCurrency = "MYR"
+    PAYMENTREQUESTCURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestCurrency = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentRequestCurrency enum
@@ -34,6 +35,7 @@ var AllowedPaymentRequestCurrencyEnumValues = []PaymentRequestCurrency{
 	"VND",
 	"THB",
 	"MYR",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentRequestCurrency) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *PaymentRequestCurrency) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentRequestCurrency", value)
+    *v = PAYMENTREQUESTCURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentRequestCurrencyFromValue returns a pointer to a valid PaymentRequestCurrency

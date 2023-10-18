@@ -22,12 +22,14 @@ type PaymentMethodReusability string
 const (
 	PAYMENTMETHODREUSABILITY_MULTIPLE_USE PaymentMethodReusability = "MULTIPLE_USE"
 	PAYMENTMETHODREUSABILITY_ONE_TIME_USE PaymentMethodReusability = "ONE_TIME_USE"
+    PAYMENTMETHODREUSABILITY_XENDIT_ENUM_DEFAULT_FALLBACK PaymentMethodReusability = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentMethodReusability enum
 var AllowedPaymentMethodReusabilityEnumValues = []PaymentMethodReusability{
 	"MULTIPLE_USE",
 	"ONE_TIME_USE",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentMethodReusability) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PaymentMethodReusability) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentMethodReusability", value)
+    *v = PAYMENTMETHODREUSABILITY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentMethodReusabilityFromValue returns a pointer to a valid PaymentMethodReusability

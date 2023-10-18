@@ -39,6 +39,7 @@ const (
 	EWALLETCHANNELCODE_LINEPAY EWalletChannelCode = "LINEPAY"
 	EWALLETCHANNELCODE_TRUEMONEY EWalletChannelCode = "TRUEMONEY"
 	EWALLETCHANNELCODE_ALIPAY EWalletChannelCode = "ALIPAY"
+    EWALLETCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK EWalletChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of EWalletChannelCode enum
@@ -62,6 +63,7 @@ var AllowedEWalletChannelCodeEnumValues = []EWalletChannelCode{
 	"LINEPAY",
 	"TRUEMONEY",
 	"ALIPAY",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *EWalletChannelCode) UnmarshalJSON(src []byte) error {
@@ -78,7 +80,8 @@ func (v *EWalletChannelCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EWalletChannelCode", value)
+    *v = EWALLETCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewEWalletChannelCodeFromValue returns a pointer to a valid EWalletChannelCode

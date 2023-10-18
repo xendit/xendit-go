@@ -25,6 +25,7 @@ const (
 	CHANNELACCOUNTTYPE_PASSPORT ChannelAccountType = "PASSPORT"
 	CHANNELACCOUNTTYPE_BUSINESS_REGISTRATION ChannelAccountType = "BUSINESS_REGISTRATION"
 	CHANNELACCOUNTTYPE_BANK_ACCOUNT ChannelAccountType = "BANK_ACCOUNT"
+    CHANNELACCOUNTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK ChannelAccountType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of ChannelAccountType enum
@@ -34,6 +35,7 @@ var AllowedChannelAccountTypeEnumValues = []ChannelAccountType{
 	"PASSPORT",
 	"BUSINESS_REGISTRATION",
 	"BANK_ACCOUNT",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *ChannelAccountType) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *ChannelAccountType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ChannelAccountType", value)
+    *v = CHANNELACCOUNTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewChannelAccountTypeFromValue returns a pointer to a valid ChannelAccountType

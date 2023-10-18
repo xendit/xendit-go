@@ -1,4 +1,4 @@
-# CreateRefundDefaultResponse
+# GetAllRefundsDefaultResponse
 
 ## Properties
 
@@ -9,70 +9,70 @@
 
 ## Methods
 
-### NewCreateRefundDefaultResponse
+### NewGetAllRefundsDefaultResponse
 
-`func NewCreateRefundDefaultResponse() *CreateRefundDefaultResponse`
+`func NewGetAllRefundsDefaultResponse() *GetAllRefundsDefaultResponse`
 
-NewCreateRefundDefaultResponse instantiates a new CreateRefundDefaultResponse object
+NewGetAllRefundsDefaultResponse instantiates a new GetAllRefundsDefaultResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateRefundDefaultResponseWithDefaults
+### NewGetAllRefundsDefaultResponseWithDefaults
 
-`func NewCreateRefundDefaultResponseWithDefaults() *CreateRefundDefaultResponse`
+`func NewGetAllRefundsDefaultResponseWithDefaults() *GetAllRefundsDefaultResponse`
 
-NewCreateRefundDefaultResponseWithDefaults instantiates a new CreateRefundDefaultResponse object
+NewGetAllRefundsDefaultResponseWithDefaults instantiates a new GetAllRefundsDefaultResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetErrorCode
 
-`func (o *CreateRefundDefaultResponse) GetErrorCode() string`
+`func (o *GetAllRefundsDefaultResponse) GetErrorCode() string`
 
 GetErrorCode returns the ErrorCode field if non-nil, zero value otherwise.
 
 ### GetErrorCodeOk
 
-`func (o *CreateRefundDefaultResponse) GetErrorCodeOk() (*string, bool)`
+`func (o *GetAllRefundsDefaultResponse) GetErrorCodeOk() (*string, bool)`
 
 GetErrorCodeOk returns a tuple with the ErrorCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorCode
 
-`func (o *CreateRefundDefaultResponse) SetErrorCode(v string)`
+`func (o *GetAllRefundsDefaultResponse) SetErrorCode(v string)`
 
 SetErrorCode sets ErrorCode field to given value.
 
 ### HasErrorCode
 
-`func (o *CreateRefundDefaultResponse) HasErrorCode() bool`
+`func (o *GetAllRefundsDefaultResponse) HasErrorCode() bool`
 
 HasErrorCode returns a boolean if a field has been set.
 
 ### GetMessage
 
-`func (o *CreateRefundDefaultResponse) GetMessage() string`
+`func (o *GetAllRefundsDefaultResponse) GetMessage() string`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *CreateRefundDefaultResponse) GetMessageOk() (*string, bool)`
+`func (o *GetAllRefundsDefaultResponse) GetMessageOk() (*string, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *CreateRefundDefaultResponse) SetMessage(v string)`
+`func (o *GetAllRefundsDefaultResponse) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *CreateRefundDefaultResponse) HasMessage() bool`
+`func (o *GetAllRefundsDefaultResponse) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 

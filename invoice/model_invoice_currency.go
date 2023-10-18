@@ -25,6 +25,7 @@ const (
 	INVOICECURRENCY_THB InvoiceCurrency = "THB"
 	INVOICECURRENCY_VND InvoiceCurrency = "VND"
 	INVOICECURRENCY_PHP InvoiceCurrency = "PHP"
+    INVOICECURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK InvoiceCurrency = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of InvoiceCurrency enum
@@ -34,6 +35,7 @@ var AllowedInvoiceCurrencyEnumValues = []InvoiceCurrency{
 	"THB",
 	"VND",
 	"PHP",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *InvoiceCurrency) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *InvoiceCurrency) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InvoiceCurrency", value)
+    *v = INVOICECURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewInvoiceCurrencyFromValue returns a pointer to a valid InvoiceCurrency

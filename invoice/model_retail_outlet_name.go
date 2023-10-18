@@ -29,6 +29,7 @@ const (
 	RETAILOUTLETNAME_DP_PALAWAN RetailOutletName = "DP_PALAWAN"
 	RETAILOUTLETNAME_DP_ECPAY_SCHOOL RetailOutletName = "DP_ECPAY_SCHOOL"
 	RETAILOUTLETNAME_LBC RetailOutletName = "LBC"
+    RETAILOUTLETNAME_XENDIT_ENUM_DEFAULT_FALLBACK RetailOutletName = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of RetailOutletName enum
@@ -42,6 +43,7 @@ var AllowedRetailOutletNameEnumValues = []RetailOutletName{
 	"DP_PALAWAN",
 	"DP_ECPAY_SCHOOL",
 	"LBC",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *RetailOutletName) UnmarshalJSON(src []byte) error {
@@ -58,7 +60,8 @@ func (v *RetailOutletName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RetailOutletName", value)
+    *v = RETAILOUTLETNAME_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewRetailOutletNameFromValue returns a pointer to a valid RetailOutletName

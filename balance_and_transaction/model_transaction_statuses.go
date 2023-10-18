@@ -25,6 +25,7 @@ const (
 	TRANSACTIONSTATUSES_FAILED TransactionStatuses = "FAILED"
 	TRANSACTIONSTATUSES_REVERSED TransactionStatuses = "REVERSED"
 	TRANSACTIONSTATUSES_VOIDED TransactionStatuses = "VOIDED"
+    TRANSACTIONSTATUSES_XENDIT_ENUM_DEFAULT_FALLBACK TransactionStatuses = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of TransactionStatuses enum
@@ -34,6 +35,7 @@ var AllowedTransactionStatusesEnumValues = []TransactionStatuses{
 	"FAILED",
 	"REVERSED",
 	"VOIDED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *TransactionStatuses) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *TransactionStatuses) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TransactionStatuses", value)
+    *v = TRANSACTIONSTATUSES_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewTransactionStatusesFromValue returns a pointer to a valid TransactionStatuses

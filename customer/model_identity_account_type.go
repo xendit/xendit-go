@@ -26,6 +26,7 @@ const (
 	IDENTITYACCOUNTTYPE_PAY_LATER IdentityAccountType = "PAY_LATER"
 	IDENTITYACCOUNTTYPE_OTC IdentityAccountType = "OTC"
 	IDENTITYACCOUNTTYPE_QR_CODE IdentityAccountType = "QR_CODE"
+    IDENTITYACCOUNTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK IdentityAccountType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of IdentityAccountType enum
@@ -36,6 +37,7 @@ var AllowedIdentityAccountTypeEnumValues = []IdentityAccountType{
 	"PAY_LATER",
 	"OTC",
 	"QR_CODE",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *IdentityAccountType) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *IdentityAccountType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid IdentityAccountType", value)
+    *v = IDENTITYACCOUNTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewIdentityAccountTypeFromValue returns a pointer to a valid IdentityAccountType

@@ -4,9 +4,87 @@ All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**GetAllTransactions**](TransactionApi.md#GetAllTransactions) | **Get** /transactions | Get a list of transactions |
 | [**GetTransactionByID**](TransactionApi.md#GetTransactionByID) | **Get** /transactions/{id} | Get a transaction based on its id |
+| [**GetAllTransactions**](TransactionApi.md#GetAllTransactions) | **Get** /transactions | Get a list of transactions |
 
+
+
+## GetTransactionByID
+
+Get a transaction based on its id
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+    balance_and_transaction "github.com/xendit/xendit-go/v3/balance_and_transaction"
+)
+
+func main() {
+    
+    id := "id_example" // [REQUIRED] | string
+
+    // The sub-account user-id that you want to make this transaction for. This header
+    // is only used if you have access to xenPlatform. See xenPlatform for more
+    // information
+    forUserId := "5dbf20d7c8eb0c0896f811b6" // [OPTIONAL] | string
+
+    xenditClient := xendit.NewClient("API-KEY")
+
+    resp, r, err := xenditClient.TransactionApi.GetTransactionByID(context.Background(), id).
+        ForUserId(forUserId). // [OPTIONAL]
+        Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TransactionApi.GetTransactionByID``: %v\n", err.Error())
+
+        b, _ := json.Marshal(err.FullError())
+        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
+
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTransactionByID`: TransactionResponse
+    fmt.Fprintf(os.Stdout, "Response from `TransactionApi.GetTransactionByID`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **id** | **string** |  |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTransactionByIDRequest struct via the builder pattern
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information |  | 
+
+### Return type
+
+[**TransactionResponse**](balance_and_transaction/TransactionResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#)
+[[Back to README]](../README.md)
 
 
 ## GetAllTransactions
@@ -139,84 +217,6 @@ Other parameters are passed through a pointer to a apiGetAllTransactionsRequest 
 ### Return type
 
 [**TransactionsResponse**](balance_and_transaction/TransactionsResponse.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetTransactionByID
-
-Get a transaction based on its id
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    balance_and_transaction "github.com/xendit/xendit-go/v3/balance_and_transaction"
-)
-
-func main() {
-    
-    id := "id_example" // [REQUIRED] | string
-
-    // The sub-account user-id that you want to make this transaction for. This header
-    // is only used if you have access to xenPlatform. See xenPlatform for more
-    // information
-    forUserId := "5dbf20d7c8eb0c0896f811b6" // [OPTIONAL] | string
-
-    xenditClient := xendit.NewClient("API-KEY")
-
-    resp, r, err := xenditClient.TransactionApi.GetTransactionByID(context.Background(), id).
-        ForUserId(forUserId). // [OPTIONAL]
-        Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransactionApi.GetTransactionByID``: %v\n", err.Error())
-
-        b, _ := json.Marshal(err.FullError())
-        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
-
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetTransactionByID`: TransactionResponse
-    fmt.Fprintf(os.Stdout, "Response from `TransactionApi.GetTransactionByID`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **id** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetTransactionByIDRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information |  | 
-
-### Return type
-
-[**TransactionResponse**](balance_and_transaction/TransactionResponse.md)
 
 ### HTTP request headers
 

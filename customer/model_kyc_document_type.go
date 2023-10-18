@@ -28,6 +28,7 @@ const (
 	KYCDOCUMENTTYPE_VISA KYCDocumentType = "VISA"
 	KYCDOCUMENTTYPE_BUSINESS_REGISTRATION KYCDocumentType = "BUSINESS_REGISTRATION"
 	KYCDOCUMENTTYPE_BUSINESS_LICENSE KYCDocumentType = "BUSINESS_LICENSE"
+    KYCDOCUMENTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK KYCDocumentType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of KYCDocumentType enum
@@ -40,6 +41,7 @@ var AllowedKYCDocumentTypeEnumValues = []KYCDocumentType{
 	"VISA",
 	"BUSINESS_REGISTRATION",
 	"BUSINESS_LICENSE",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *KYCDocumentType) UnmarshalJSON(src []byte) error {
@@ -56,7 +58,8 @@ func (v *KYCDocumentType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid KYCDocumentType", value)
+    *v = KYCDOCUMENTTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewKYCDocumentTypeFromValue returns a pointer to a valid KYCDocumentType

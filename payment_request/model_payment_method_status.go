@@ -25,6 +25,7 @@ const (
 	PAYMENTMETHODSTATUS_PENDING PaymentMethodStatus = "PENDING"
 	PAYMENTMETHODSTATUS_EXPIRED PaymentMethodStatus = "EXPIRED"
 	PAYMENTMETHODSTATUS_FAILED PaymentMethodStatus = "FAILED"
+    PAYMENTMETHODSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK PaymentMethodStatus = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentMethodStatus enum
@@ -34,6 +35,7 @@ var AllowedPaymentMethodStatusEnumValues = []PaymentMethodStatus{
 	"PENDING",
 	"EXPIRED",
 	"FAILED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentMethodStatus) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *PaymentMethodStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentMethodStatus", value)
+    *v = PAYMENTMETHODSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentMethodStatusFromValue returns a pointer to a valid PaymentMethodStatus

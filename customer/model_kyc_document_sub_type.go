@@ -30,6 +30,7 @@ const (
 	KYCDOCUMENTSUBTYPE_MILITARY_ID KYCDocumentSubType = "MILITARY_ID"
 	KYCDOCUMENTSUBTYPE_MEDICAL_ID KYCDocumentSubType = "MEDICAL_ID"
 	KYCDOCUMENTSUBTYPE_OTHERS KYCDocumentSubType = "OTHERS"
+    KYCDOCUMENTSUBTYPE_XENDIT_ENUM_DEFAULT_FALLBACK KYCDocumentSubType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of KYCDocumentSubType enum
@@ -44,6 +45,7 @@ var AllowedKYCDocumentSubTypeEnumValues = []KYCDocumentSubType{
 	"MILITARY_ID",
 	"MEDICAL_ID",
 	"OTHERS",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *KYCDocumentSubType) UnmarshalJSON(src []byte) error {
@@ -60,7 +62,8 @@ func (v *KYCDocumentSubType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid KYCDocumentSubType", value)
+    *v = KYCDOCUMENTSUBTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewKYCDocumentSubTypeFromValue returns a pointer to a valid KYCDocumentSubType

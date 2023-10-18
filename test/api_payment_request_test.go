@@ -29,43 +29,9 @@ func Test_xendit_PaymentRequestApiService(t *testing.T) {
 	
 	apiClient := xendit.NewClient(apiKey)
 
-	t.Run("Test PaymentRequestApiService AuthorizePaymentRequest", func(t *testing.T) {
-
-		var paymentRequestId string
-
-		resp, httpRes, err := apiClient.PaymentRequestApi.AuthorizePaymentRequest(context.Background(), paymentRequestId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PaymentRequestApiService CapturePaymentRequest", func(t *testing.T) {
-
-		var paymentRequestId string
-
-		resp, httpRes, err := apiClient.PaymentRequestApi.CapturePaymentRequest(context.Background(), paymentRequestId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PaymentRequestApiService CreatePaymentRequest", func(t *testing.T) {
 
 		resp, httpRes, err := apiClient.PaymentRequestApi.CreatePaymentRequest(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PaymentRequestApiService GetAllPaymentRequests", func(t *testing.T) {
-
-		resp, httpRes, err := apiClient.PaymentRequestApi.GetAllPaymentRequests(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,6 +56,40 @@ func Test_xendit_PaymentRequestApiService(t *testing.T) {
 		var paymentRequestId string
 
 		resp, httpRes, err := apiClient.PaymentRequestApi.GetPaymentRequestCaptures(context.Background(), paymentRequestId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PaymentRequestApiService GetAllPaymentRequests", func(t *testing.T) {
+
+		resp, httpRes, err := apiClient.PaymentRequestApi.GetAllPaymentRequests(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PaymentRequestApiService CapturePaymentRequest", func(t *testing.T) {
+
+		var paymentRequestId string
+
+		resp, httpRes, err := apiClient.PaymentRequestApi.CapturePaymentRequest(context.Background(), paymentRequestId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PaymentRequestApiService AuthorizePaymentRequest", func(t *testing.T) {
+
+		var paymentRequestId string
+
+		resp, httpRes, err := apiClient.PaymentRequestApi.AuthorizePaymentRequest(context.Background(), paymentRequestId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

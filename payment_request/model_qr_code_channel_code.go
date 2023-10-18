@@ -24,6 +24,7 @@ const (
 	QRCODECHANNELCODE_RCBC QRCodeChannelCode = "RCBC"
 	QRCODECHANNELCODE_LINKAJA QRCodeChannelCode = "LINKAJA"
 	QRCODECHANNELCODE_PROMPTPAY QRCodeChannelCode = "PROMPTPAY"
+    QRCODECHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK QRCodeChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of QRCodeChannelCode enum
@@ -32,6 +33,7 @@ var AllowedQRCodeChannelCodeEnumValues = []QRCodeChannelCode{
 	"RCBC",
 	"LINKAJA",
 	"PROMPTPAY",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *QRCodeChannelCode) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *QRCodeChannelCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid QRCodeChannelCode", value)
+    *v = QRCODECHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewQRCodeChannelCodeFromValue returns a pointer to a valid QRCodeChannelCode

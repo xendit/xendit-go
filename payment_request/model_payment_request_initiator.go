@@ -22,12 +22,14 @@ type PaymentRequestInitiator string
 const (
 	PAYMENTREQUESTINITIATOR_CUSTOMER PaymentRequestInitiator = "CUSTOMER"
 	PAYMENTREQUESTINITIATOR_MERCHANT PaymentRequestInitiator = "MERCHANT"
+    PAYMENTREQUESTINITIATOR_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestInitiator = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentRequestInitiator enum
 var AllowedPaymentRequestInitiatorEnumValues = []PaymentRequestInitiator{
 	"CUSTOMER",
 	"MERCHANT",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentRequestInitiator) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PaymentRequestInitiator) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentRequestInitiator", value)
+    *v = PAYMENTREQUESTINITIATOR_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentRequestInitiatorFromValue returns a pointer to a valid PaymentRequestInitiator

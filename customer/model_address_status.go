@@ -22,12 +22,14 @@ type AddressStatus string
 const (
 	ADDRESSSTATUS_ACTIVE AddressStatus = "ACTIVE"
 	ADDRESSSTATUS_DELETED AddressStatus = "DELETED"
+    ADDRESSSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK AddressStatus = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of AddressStatus enum
 var AllowedAddressStatusEnumValues = []AddressStatus{
 	"ACTIVE",
 	"DELETED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *AddressStatus) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *AddressStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AddressStatus", value)
+    *v = ADDRESSSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewAddressStatusFromValue returns a pointer to a valid AddressStatus

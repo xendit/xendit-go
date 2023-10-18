@@ -29,9 +29,11 @@ func Test_xendit_TransactionApiService(t *testing.T) {
 	
 	apiClient := xendit.NewClient(apiKey)
 
-	t.Run("Test TransactionApiService GetAllTransactions", func(t *testing.T) {
+	t.Run("Test TransactionApiService GetTransactionByID", func(t *testing.T) {
 
-		resp, httpRes, err := apiClient.TransactionApi.GetAllTransactions(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.TransactionApi.GetTransactionByID(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -39,11 +41,9 @@ func Test_xendit_TransactionApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TransactionApiService GetTransactionByID", func(t *testing.T) {
+	t.Run("Test TransactionApiService GetAllTransactions", func(t *testing.T) {
 
-		var id string
-
-		resp, httpRes, err := apiClient.TransactionApi.GetTransactionByID(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TransactionApi.GetAllTransactions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -33,6 +33,7 @@ const (
 	TRANSACTIONTYPES_TOPUP TransactionTypes = "TOPUP"
 	TRANSACTIONTYPES_WITHDRAWAL TransactionTypes = "WITHDRAWAL"
 	TRANSACTIONTYPES_OTHER TransactionTypes = "OTHER"
+    TRANSACTIONTYPES_XENDIT_ENUM_DEFAULT_FALLBACK TransactionTypes = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of TransactionTypes enum
@@ -50,6 +51,7 @@ var AllowedTransactionTypesEnumValues = []TransactionTypes{
 	"TOPUP",
 	"WITHDRAWAL",
 	"OTHER",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *TransactionTypes) UnmarshalJSON(src []byte) error {
@@ -66,7 +68,8 @@ func (v *TransactionTypes) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TransactionTypes", value)
+    *v = TRANSACTIONTYPES_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewTransactionTypesFromValue returns a pointer to a valid TransactionTypes

@@ -17,19 +17,6 @@ import (
 type PayoutApi interface {
 
 	/*
-	CancelPayout API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Payout id returned from the response of /v2/payouts
-	@return ApiCancelPayoutRequest
-	*/
-	CancelPayout(ctx context.Context, id string) ApiCancelPayoutRequest
-
-	// CancelPayoutExecute executes the request
-	//  @return GetPayouts200ResponseDataInner
-	CancelPayoutExecute(r ApiCancelPayoutRequest) (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError)
-
-	/*
 	CreatePayout API to send money at scale to bank accounts & eWallets
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -77,6 +64,19 @@ type PayoutApi interface {
 	// GetPayoutsExecute executes the request
 	//  @return GetPayouts200Response
 	GetPayoutsExecute(r ApiGetPayoutsRequest) (*GetPayouts200Response, *http.Response, *common.XenditSdkError)
+
+	/*
+	CancelPayout API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Payout id returned from the response of /v2/payouts
+	@return ApiCancelPayoutRequest
+	*/
+	CancelPayout(ctx context.Context, id string) ApiCancelPayoutRequest
+
+	// CancelPayoutExecute executes the request
+	//  @return GetPayouts200ResponseDataInner
+	CancelPayoutExecute(r ApiCancelPayoutRequest) (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError)
 }
 
 // PayoutApiService PayoutApi service
@@ -91,92 +91,6 @@ func NewPayoutApi (client common.IClient) PayoutApi {
 	}
 }
 
-
-type ApiCancelPayoutRequest struct {
-	ctx context.Context
-	ApiService PayoutApi
-	id string
-}
-
-func (r ApiCancelPayoutRequest) Execute() (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.CancelPayoutExecute(r)
-}
-
-/*
-CancelPayout API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Payout id returned from the response of /v2/payouts
- @return ApiCancelPayoutRequest
-*/
-func (a *PayoutApiService) CancelPayout(ctx context.Context, id string) ApiCancelPayoutRequest {
-	return ApiCancelPayoutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return GetPayouts200ResponseDataInner
-func (a *PayoutApiService) CancelPayoutExecute(r ApiCancelPayoutRequest) (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []common.FormFile
-		localVarReturnValue  *GetPayouts200ResponseDataInner
-	)
-
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PayoutApiService.CancelPayout")
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.CancelPayoutExecute")
-	}
-
-	localVarPath := localBasePath + "/v2/payouts/{id}/cancel"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(utils.ParameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.CancelPayoutExecute")
-	}
-
-	localVarHTTPResponse, err := a.client.CallAPI(req)
-
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-
-    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-
-	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
-		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
-
-		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
 
 type ApiCreatePayoutRequest struct {
 	ctx context.Context
@@ -293,6 +207,13 @@ type ApiGetPayoutByIdRequest struct {
 	ctx context.Context
 	ApiService PayoutApi
 	id string
+	forUserId *string
+}
+
+// The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information.
+func (r ApiGetPayoutByIdRequest) ForUserId(forUserId string) ApiGetPayoutByIdRequest {
+	r.forUserId = &forUserId
+	return r
 }
 
 func (r ApiGetPayoutByIdRequest) Execute() (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError) {
@@ -353,6 +274,9 @@ func (a *PayoutApiService) GetPayoutByIdExecute(r ApiGetPayoutByIdRequest) (*Get
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.GetPayoutByIdExecute")
@@ -381,6 +305,7 @@ type ApiGetPayoutChannelsRequest struct {
 	currency *string
 	channelCategory *[]ChannelCategory
 	channelCode *string
+	forUserId *string
 }
 
 // Filter channels by currency from ISO-4217 values
@@ -398,6 +323,12 @@ func (r ApiGetPayoutChannelsRequest) ChannelCategory(channelCategory []ChannelCa
 // Filter channels by channel code, prefixed by ISO-3166 country code
 func (r ApiGetPayoutChannelsRequest) ChannelCode(channelCode string) ApiGetPayoutChannelsRequest {
 	r.channelCode = &channelCode
+	return r
+}
+
+// The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information.
+func (r ApiGetPayoutChannelsRequest) ForUserId(forUserId string) ApiGetPayoutChannelsRequest {
+	r.forUserId = &forUserId
 	return r
 }
 
@@ -465,6 +396,9 @@ func (a *PayoutApiService) GetPayoutChannelsExecute(r ApiGetPayoutChannelsReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.GetPayoutChannelsExecute")
@@ -494,6 +428,7 @@ type ApiGetPayoutsRequest struct {
 	limit *float32
 	afterId *string
 	beforeId *string
+	forUserId *string
 }
 
 // Reference_id provided when creating the payout
@@ -517,6 +452,12 @@ func (r ApiGetPayoutsRequest) AfterId(afterId string) ApiGetPayoutsRequest {
 // Used to fetch record before this payout unique id
 func (r ApiGetPayoutsRequest) BeforeId(beforeId string) ApiGetPayoutsRequest {
 	r.beforeId = &beforeId
+	return r
+}
+
+// The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information.
+func (r ApiGetPayoutsRequest) ForUserId(forUserId string) ApiGetPayoutsRequest {
+	r.forUserId = &forUserId
 	return r
 }
 
@@ -588,9 +529,108 @@ func (a *PayoutApiService) GetPayoutsExecute(r ApiGetPayoutsRequest) (*GetPayout
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.GetPayoutsExecute")
+	}
+
+	localVarHTTPResponse, err := a.client.CallAPI(req)
+
+	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+
+    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+
+	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
+		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
+
+		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiCancelPayoutRequest struct {
+	ctx context.Context
+	ApiService PayoutApi
+	id string
+	forUserId *string
+}
+
+// The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information.
+func (r ApiCancelPayoutRequest) ForUserId(forUserId string) ApiCancelPayoutRequest {
+	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiCancelPayoutRequest) Execute() (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.CancelPayoutExecute(r)
+}
+
+/*
+CancelPayout API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Payout id returned from the response of /v2/payouts
+ @return ApiCancelPayoutRequest
+*/
+func (a *PayoutApiService) CancelPayout(ctx context.Context, id string) ApiCancelPayoutRequest {
+	return ApiCancelPayoutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return GetPayouts200ResponseDataInner
+func (a *PayoutApiService) CancelPayoutExecute(r ApiCancelPayoutRequest) (*GetPayouts200ResponseDataInner, *http.Response, *common.XenditSdkError) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []common.FormFile
+		localVarReturnValue  *GetPayouts200ResponseDataInner
+	)
+
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PayoutApiService.CancelPayout")
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.CancelPayoutExecute")
+	}
+
+	localVarPath := localBasePath + "/v2/payouts/{id}/cancel"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(utils.ParameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PayoutApiService.CancelPayoutExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)

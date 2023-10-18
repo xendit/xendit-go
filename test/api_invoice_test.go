@@ -39,18 +39,6 @@ func Test_xendit_InvoiceApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test InvoiceApiService ExpireInvoice", func(t *testing.T) {
-
-		var invoiceId string
-
-		resp, httpRes, err := apiClient.InvoiceApi.ExpireInvoice(context.Background(), invoiceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test InvoiceApiService GetInvoiceById", func(t *testing.T) {
 
 		var invoiceId string
@@ -66,6 +54,18 @@ func Test_xendit_InvoiceApiService(t *testing.T) {
 	t.Run("Test InvoiceApiService GetInvoices", func(t *testing.T) {
 
 		resp, httpRes, err := apiClient.InvoiceApi.GetInvoices(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test InvoiceApiService ExpireInvoice", func(t *testing.T) {
+
+		var invoiceId string
+
+		resp, httpRes, err := apiClient.InvoiceApi.ExpireInvoice(context.Background(), invoiceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

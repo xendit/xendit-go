@@ -182,6 +182,7 @@ const (
 	CURRENCY_ZAR Currency = "ZAR"
 	CURRENCY_ZMW Currency = "ZMW"
 	CURRENCY_ZWD Currency = "ZWD"
+    CURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK Currency = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of Currency enum
@@ -348,6 +349,7 @@ var AllowedCurrencyEnumValues = []Currency{
 	"ZAR",
 	"ZMW",
 	"ZWD",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *Currency) UnmarshalJSON(src []byte) error {
@@ -364,7 +366,8 @@ func (v *Currency) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Currency", value)
+    *v = CURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewCurrencyFromValue returns a pointer to a valid Currency

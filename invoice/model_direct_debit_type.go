@@ -39,6 +39,7 @@ const (
 	DIRECTDEBITTYPE_DD_CHINABANK DirectDebitType = "DD_CHINABANK"
 	DIRECTDEBITTYPE_BA_CHINABANK DirectDebitType = "BA_CHINABANK"
 	DIRECTDEBITTYPE_DC_CHINABANK DirectDebitType = "DC_CHINABANK"
+    DIRECTDEBITTYPE_XENDIT_ENUM_DEFAULT_FALLBACK DirectDebitType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of DirectDebitType enum
@@ -62,6 +63,7 @@ var AllowedDirectDebitTypeEnumValues = []DirectDebitType{
 	"DD_CHINABANK",
 	"BA_CHINABANK",
 	"DC_CHINABANK",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *DirectDebitType) UnmarshalJSON(src []byte) error {
@@ -78,7 +80,8 @@ func (v *DirectDebitType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DirectDebitType", value)
+    *v = DIRECTDEBITTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewDirectDebitTypeFromValue returns a pointer to a valid DirectDebitType

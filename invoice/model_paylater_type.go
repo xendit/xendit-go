@@ -26,6 +26,7 @@ const (
 	PAYLATERTYPE_BILLEASE PaylaterType = "BILLEASE"
 	PAYLATERTYPE_CASHALO PaylaterType = "CASHALO"
 	PAYLATERTYPE_ATOME PaylaterType = "ATOME"
+    PAYLATERTYPE_XENDIT_ENUM_DEFAULT_FALLBACK PaylaterType = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaylaterType enum
@@ -36,6 +37,7 @@ var AllowedPaylaterTypeEnumValues = []PaylaterType{
 	"BILLEASE",
 	"CASHALO",
 	"ATOME",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaylaterType) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *PaylaterType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaylaterType", value)
+    *v = PAYLATERTYPE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaylaterTypeFromValue returns a pointer to a valid PaylaterType

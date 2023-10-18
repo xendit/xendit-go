@@ -4,164 +4,14 @@ All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**AuthorizePaymentRequest**](PaymentRequestApi.md#AuthorizePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/auth | Payment Request Authorize |
-| [**CapturePaymentRequest**](PaymentRequestApi.md#CapturePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/captures | Payment Request Capture |
 | [**CreatePaymentRequest**](PaymentRequestApi.md#CreatePaymentRequest) | **Post** /payment_requests | Create Payment Request |
-| [**GetAllPaymentRequests**](PaymentRequestApi.md#GetAllPaymentRequests) | **Get** /payment_requests | Get all payment requests by filter |
 | [**GetPaymentRequestByID**](PaymentRequestApi.md#GetPaymentRequestByID) | **Get** /payment_requests/{paymentRequestId} | Get payment request by ID |
 | [**GetPaymentRequestCaptures**](PaymentRequestApi.md#GetPaymentRequestCaptures) | **Get** /payment_requests/{paymentRequestId}/captures | Get Payment Request Capture |
+| [**GetAllPaymentRequests**](PaymentRequestApi.md#GetAllPaymentRequests) | **Get** /payment_requests | Get all payment requests by filter |
+| [**CapturePaymentRequest**](PaymentRequestApi.md#CapturePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/captures | Payment Request Capture |
+| [**AuthorizePaymentRequest**](PaymentRequestApi.md#AuthorizePaymentRequest) | **Post** /payment_requests/{paymentRequestId}/auth | Payment Request Authorize |
 | [**ResendPaymentRequestAuth**](PaymentRequestApi.md#ResendPaymentRequestAuth) | **Post** /payment_requests/{paymentRequestId}/auth/resend | Payment Request Resend Auth |
 
-
-
-## AuthorizePaymentRequest
-
-Payment Request Authorize
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_request "github.com/xendit/xendit-go/v3/payment_request"
-)
-
-func main() {
-    
-    paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
-
-    paymentRequestAuthParameters := *payment_request.NewPaymentRequestAuthParameters("AuthCode_example") // [OPTIONAL] | PaymentRequestAuthParameters
-
-    xenditClient := xendit.NewClient("API-KEY")
-
-    resp, r, err := xenditClient.PaymentRequestApi.AuthorizePaymentRequest(context.Background(), paymentRequestId).
-        PaymentRequestAuthParameters(paymentRequestAuthParameters). // [OPTIONAL]
-        Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.AuthorizePaymentRequest``: %v\n", err.Error())
-
-        b, _ := json.Marshal(err.FullError())
-        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
-
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthorizePaymentRequest`: PaymentRequest
-    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.AuthorizePaymentRequest`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentRequestId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAuthorizePaymentRequestRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **paymentRequestAuthParameters** |[**PaymentRequestAuthParameters**](payment_request/PaymentRequestAuthParameters.md)|  |  | 
-
-### Return type
-
-[**PaymentRequest**](payment_request/PaymentRequest.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## CapturePaymentRequest
-
-Payment Request Capture
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_request "github.com/xendit/xendit-go/v3/payment_request"
-)
-
-func main() {
-    
-    paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
-
-    captureParameters := *payment_request.NewCaptureParameters(float64(123)) // [OPTIONAL] | CaptureParameters
-
-    xenditClient := xendit.NewClient("API-KEY")
-
-    resp, r, err := xenditClient.PaymentRequestApi.CapturePaymentRequest(context.Background(), paymentRequestId).
-        CaptureParameters(captureParameters). // [OPTIONAL]
-        Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.CapturePaymentRequest``: %v\n", err.Error())
-
-        b, _ := json.Marshal(err.FullError())
-        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
-
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CapturePaymentRequest`: Capture
-    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.CapturePaymentRequest`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentRequestId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCapturePaymentRequestRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **captureParameters** |[**CaptureParameters**](payment_request/CaptureParameters.md)|  |  | 
-
-### Return type
-
-[**Capture**](payment_request/Capture.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
 
 
 ## CreatePaymentRequest
@@ -187,12 +37,15 @@ func main() {
     
     idempotencyKey := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
 
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
     paymentRequestParameters := *payment_request.NewPaymentRequestParameters(payment_request.PaymentRequestCurrency("IDR")) // [OPTIONAL] | PaymentRequestParameters
 
     xenditClient := xendit.NewClient("API-KEY")
 
     resp, r, err := xenditClient.PaymentRequestApi.CreatePaymentRequest(context.Background()).
         IdempotencyKey(idempotencyKey).
+        ForUserId(forUserId).
         PaymentRequestParameters(paymentRequestParameters). // [OPTIONAL]
         Execute()
 
@@ -221,6 +74,7 @@ Other parameters are passed through a pointer to a apiCreatePaymentRequestReques
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 |  **idempotencyKey** |**string**|  |  | 
+|  **forUserId** |**string**|  |  | 
 |  **paymentRequestParameters** |[**PaymentRequestParameters**](payment_request/PaymentRequestParameters.md)|  |  | 
 
 ### Return type
@@ -230,94 +84,6 @@ Other parameters are passed through a pointer to a apiCreatePaymentRequestReques
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetAllPaymentRequests
-
-Get all payment requests by filter
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_request "github.com/xendit/xendit-go/v3/payment_request"
-)
-
-func main() {
-    
-    referenceId := []string{"Inner_example"} // [OPTIONAL] | []string
-
-    id := []string{"Inner_example"} // [OPTIONAL] | []string
-
-    customerId := []string{"Inner_example"} // [OPTIONAL] | []string
-
-    limit := int32(56) // [OPTIONAL] | int32
-
-    beforeId := "beforeId_example" // [OPTIONAL] | string
-
-    afterId := "afterId_example" // [OPTIONAL] | string
-
-    xenditClient := xendit.NewClient("API-KEY")
-
-    resp, r, err := xenditClient.PaymentRequestApi.GetAllPaymentRequests(context.Background()).
-        ReferenceId(referenceId).
-        Id(id).
-        CustomerId(customerId).
-        Limit(limit).
-        BeforeId(beforeId).
-        AfterId(afterId). // [OPTIONAL]
-        Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.GetAllPaymentRequests``: %v\n", err.Error())
-
-        b, _ := json.Marshal(err.FullError())
-        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
-
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAllPaymentRequests`: PaymentRequestListResponse
-    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.GetAllPaymentRequests`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAllPaymentRequestsRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **referenceId** |**string[]**|  |  | 
-|  **id** |**string[]**|  |  | 
-|  **customerId** |**string[]**|  |  | 
-|  **limit** |**int32**|  |  | 
-|  **beforeId** |**string**|  |  | 
-|  **afterId** |**string**|  |  | 
-
-### Return type
-
-[**PaymentRequestListResponse**](payment_request/PaymentRequestListResponse.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#)
@@ -347,9 +113,12 @@ func main() {
     
     paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
     xenditClient := xendit.NewClient("API-KEY")
 
-    resp, r, err := xenditClient.PaymentRequestApi.GetPaymentRequestByID(context.Background(), paymentRequestId). // [OPTIONAL]
+    resp, r, err := xenditClient.PaymentRequestApi.GetPaymentRequestByID(context.Background(), paymentRequestId).
+        ForUserId(forUserId). // [OPTIONAL]
         Execute()
 
     if err != nil {
@@ -381,6 +150,7 @@ Other parameters are passed through a pointer to a apiGetPaymentRequestByIDReque
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | 
+|  **forUserId** |**string**|  |  | 
 
 ### Return type
 
@@ -418,11 +188,14 @@ func main() {
     
     paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
     limit := int32(56) // [OPTIONAL] | int32
 
     xenditClient := xendit.NewClient("API-KEY")
 
     resp, r, err := xenditClient.PaymentRequestApi.GetPaymentRequestCaptures(context.Background(), paymentRequestId).
+        ForUserId(forUserId).
         Limit(limit). // [OPTIONAL]
         Execute()
 
@@ -455,6 +228,7 @@ Other parameters are passed through a pointer to a apiGetPaymentRequestCapturesR
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | 
+|  **forUserId** |**string**|  |  | 
 |  **limit** |**int32**|  |  | 
 
 ### Return type
@@ -464,6 +238,256 @@ Other parameters are passed through a pointer to a apiGetPaymentRequestCapturesR
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#)
+[[Back to README]](../README.md)
+
+
+## GetAllPaymentRequests
+
+Get all payment requests by filter
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+    payment_request "github.com/xendit/xendit-go/v3/payment_request"
+)
+
+func main() {
+    
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
+    referenceId := []string{"Inner_example"} // [OPTIONAL] | []string
+
+    id := []string{"Inner_example"} // [OPTIONAL] | []string
+
+    customerId := []string{"Inner_example"} // [OPTIONAL] | []string
+
+    limit := int32(56) // [OPTIONAL] | int32
+
+    beforeId := "beforeId_example" // [OPTIONAL] | string
+
+    afterId := "afterId_example" // [OPTIONAL] | string
+
+    xenditClient := xendit.NewClient("API-KEY")
+
+    resp, r, err := xenditClient.PaymentRequestApi.GetAllPaymentRequests(context.Background()).
+        ForUserId(forUserId).
+        ReferenceId(referenceId).
+        Id(id).
+        CustomerId(customerId).
+        Limit(limit).
+        BeforeId(beforeId).
+        AfterId(afterId). // [OPTIONAL]
+        Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.GetAllPaymentRequests``: %v\n", err.Error())
+
+        b, _ := json.Marshal(err.FullError())
+        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
+
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAllPaymentRequests`: PaymentRequestListResponse
+    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.GetAllPaymentRequests`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAllPaymentRequestsRequest struct via the builder pattern
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+|  **forUserId** |**string**|  |  | 
+|  **referenceId** |**string[]**|  |  | 
+|  **id** |**string[]**|  |  | 
+|  **customerId** |**string[]**|  |  | 
+|  **limit** |**int32**|  |  | 
+|  **beforeId** |**string**|  |  | 
+|  **afterId** |**string**|  |  | 
+
+### Return type
+
+[**PaymentRequestListResponse**](payment_request/PaymentRequestListResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#)
+[[Back to README]](../README.md)
+
+
+## CapturePaymentRequest
+
+Payment Request Capture
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+    payment_request "github.com/xendit/xendit-go/v3/payment_request"
+)
+
+func main() {
+    
+    paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
+
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
+    captureParameters := *payment_request.NewCaptureParameters(float64(123)) // [OPTIONAL] | CaptureParameters
+
+    xenditClient := xendit.NewClient("API-KEY")
+
+    resp, r, err := xenditClient.PaymentRequestApi.CapturePaymentRequest(context.Background(), paymentRequestId).
+        ForUserId(forUserId).
+        CaptureParameters(captureParameters). // [OPTIONAL]
+        Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.CapturePaymentRequest``: %v\n", err.Error())
+
+        b, _ := json.Marshal(err.FullError())
+        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
+
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CapturePaymentRequest`: Capture
+    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.CapturePaymentRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCapturePaymentRequestRequest struct via the builder pattern
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **forUserId** |**string**|  |  | 
+|  **captureParameters** |[**CaptureParameters**](payment_request/CaptureParameters.md)|  |  | 
+
+### Return type
+
+[**Capture**](payment_request/Capture.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#)
+[[Back to README]](../README.md)
+
+
+## AuthorizePaymentRequest
+
+Payment Request Authorize
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+    payment_request "github.com/xendit/xendit-go/v3/payment_request"
+)
+
+func main() {
+    
+    paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
+
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
+    paymentRequestAuthParameters := *payment_request.NewPaymentRequestAuthParameters("AuthCode_example") // [OPTIONAL] | PaymentRequestAuthParameters
+
+    xenditClient := xendit.NewClient("API-KEY")
+
+    resp, r, err := xenditClient.PaymentRequestApi.AuthorizePaymentRequest(context.Background(), paymentRequestId).
+        ForUserId(forUserId).
+        PaymentRequestAuthParameters(paymentRequestAuthParameters). // [OPTIONAL]
+        Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.AuthorizePaymentRequest``: %v\n", err.Error())
+
+        b, _ := json.Marshal(err.FullError())
+        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
+
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthorizePaymentRequest`: PaymentRequest
+    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.AuthorizePaymentRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | -------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
+| **paymentRequestId** | **string** |  |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthorizePaymentRequestRequest struct via the builder pattern
+
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| 
+|  **forUserId** |**string**|  |  | 
+|  **paymentRequestAuthParameters** |[**PaymentRequestAuthParameters**](payment_request/PaymentRequestAuthParameters.md)|  |  | 
+
+### Return type
+
+[**PaymentRequest**](payment_request/PaymentRequest.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#)
@@ -493,9 +517,12 @@ func main() {
     
     paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
+    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+
     xenditClient := xendit.NewClient("API-KEY")
 
-    resp, r, err := xenditClient.PaymentRequestApi.ResendPaymentRequestAuth(context.Background(), paymentRequestId). // [OPTIONAL]
+    resp, r, err := xenditClient.PaymentRequestApi.ResendPaymentRequestAuth(context.Background(), paymentRequestId).
+        ForUserId(forUserId). // [OPTIONAL]
         Execute()
 
     if err != nil {
@@ -527,6 +554,7 @@ Other parameters are passed through a pointer to a apiResendPaymentRequestAuthRe
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | 
+|  **forUserId** |**string**|  |  | 
 
 ### Return type
 

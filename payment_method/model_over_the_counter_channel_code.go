@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.1
+API version: 2.89.2
 */
 
 
@@ -36,6 +36,7 @@ const (
 	OVERTHECOUNTERCHANNELCODE_ROBINSONS_BILLS OverTheCounterChannelCode = "ROBINSONS_BILLS"
 	OVERTHECOUNTERCHANNELCODE_ALFAMART OverTheCounterChannelCode = "ALFAMART"
 	OVERTHECOUNTERCHANNELCODE_INDOMARET OverTheCounterChannelCode = "INDOMARET"
+    OVERTHECOUNTERCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK OverTheCounterChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of OverTheCounterChannelCode enum
@@ -56,6 +57,7 @@ var AllowedOverTheCounterChannelCodeEnumValues = []OverTheCounterChannelCode{
 	"ROBINSONS_BILLS",
 	"ALFAMART",
 	"INDOMARET",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *OverTheCounterChannelCode) UnmarshalJSON(src []byte) error {
@@ -72,7 +74,8 @@ func (v *OverTheCounterChannelCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid OverTheCounterChannelCode", value)
+    *v = OVERTHECOUNTERCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewOverTheCounterChannelCodeFromValue returns a pointer to a valid OverTheCounterChannelCode

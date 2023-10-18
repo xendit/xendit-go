@@ -91,14 +91,14 @@ func NewCustomerApi (client common.IClient) CustomerApi {
 type ApiCreateCustomerRequest struct {
 	ctx context.Context
 	ApiService CustomerApi
-	iDEMPOTENCYKEY *string
+	idempotencyKey *string
 	forUserId *string
 	customerRequest *CustomerRequest
 }
 
 // A unique key to prevent processing duplicate requests.
-func (r ApiCreateCustomerRequest) IDEMPOTENCYKEY(iDEMPOTENCYKEY string) ApiCreateCustomerRequest {
-	r.iDEMPOTENCYKEY = &iDEMPOTENCYKEY
+func (r ApiCreateCustomerRequest) IdempotencyKey(idempotencyKey string) ApiCreateCustomerRequest {
+	r.idempotencyKey = &idempotencyKey
 	return r
 }
 
@@ -171,8 +171,8 @@ func (a *CustomerApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.iDEMPOTENCYKEY != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "IDEMPOTENCY-KEY", r.iDEMPOTENCYKEY, "")
+	if r.idempotencyKey != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "idempotency-key", r.idempotencyKey, "")
 	}
 	if r.forUserId != nil {
 		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")

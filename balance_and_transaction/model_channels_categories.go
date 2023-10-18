@@ -34,6 +34,7 @@ const (
 	CHANNELSCATEGORIES_XENPLATFORM ChannelsCategories = "XENPLATFORM"
 	CHANNELSCATEGORIES_DIRECT_BANK_TRANSFER ChannelsCategories = "DIRECT_BANK_TRANSFER"
 	CHANNELSCATEGORIES_OTHER ChannelsCategories = "OTHER"
+    CHANNELSCATEGORIES_XENDIT_ENUM_DEFAULT_FALLBACK ChannelsCategories = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of ChannelsCategories enum
@@ -52,6 +53,7 @@ var AllowedChannelsCategoriesEnumValues = []ChannelsCategories{
 	"XENPLATFORM",
 	"DIRECT_BANK_TRANSFER",
 	"OTHER",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *ChannelsCategories) UnmarshalJSON(src []byte) error {
@@ -68,7 +70,8 @@ func (v *ChannelsCategories) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ChannelsCategories", value)
+    *v = CHANNELSCATEGORIES_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewChannelsCategoriesFromValue returns a pointer to a valid ChannelsCategories

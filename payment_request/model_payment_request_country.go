@@ -25,6 +25,7 @@ const (
 	PAYMENTREQUESTCOUNTRY_VN PaymentRequestCountry = "VN"
 	PAYMENTREQUESTCOUNTRY_TH PaymentRequestCountry = "TH"
 	PAYMENTREQUESTCOUNTRY_MY PaymentRequestCountry = "MY"
+    PAYMENTREQUESTCOUNTRY_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestCountry = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentRequestCountry enum
@@ -34,6 +35,7 @@ var AllowedPaymentRequestCountryEnumValues = []PaymentRequestCountry{
 	"VN",
 	"TH",
 	"MY",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentRequestCountry) UnmarshalJSON(src []byte) error {
@@ -50,7 +52,8 @@ func (v *PaymentRequestCountry) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentRequestCountry", value)
+    *v = PAYMENTREQUESTCOUNTRY_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentRequestCountryFromValue returns a pointer to a valid PaymentRequestCountry

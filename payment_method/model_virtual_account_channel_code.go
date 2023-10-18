@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.1
+API version: 2.89.2
 */
 
 
@@ -35,6 +35,7 @@ const (
 	VIRTUALACCOUNTCHANNELCODE_WOORI VirtualAccountChannelCode = "WOORI"
 	VIRTUALACCOUNTCHANNELCODE_MSB VirtualAccountChannelCode = "MSB"
 	VIRTUALACCOUNTCHANNELCODE_STANDARD_CHARTERED VirtualAccountChannelCode = "STANDARD_CHARTERED"
+    VIRTUALACCOUNTCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK VirtualAccountChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of VirtualAccountChannelCode enum
@@ -54,6 +55,7 @@ var AllowedVirtualAccountChannelCodeEnumValues = []VirtualAccountChannelCode{
 	"WOORI",
 	"MSB",
 	"STANDARD_CHARTERED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *VirtualAccountChannelCode) UnmarshalJSON(src []byte) error {
@@ -70,7 +72,8 @@ func (v *VirtualAccountChannelCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid VirtualAccountChannelCode", value)
+    *v = VIRTUALACCOUNTCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewVirtualAccountChannelCodeFromValue returns a pointer to a valid VirtualAccountChannelCode

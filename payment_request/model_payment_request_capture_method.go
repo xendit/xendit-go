@@ -22,12 +22,14 @@ type PaymentRequestCaptureMethod string
 const (
 	PAYMENTREQUESTCAPTUREMETHOD_AUTOMATIC PaymentRequestCaptureMethod = "AUTOMATIC"
 	PAYMENTREQUESTCAPTUREMETHOD_MANUAL PaymentRequestCaptureMethod = "MANUAL"
+    PAYMENTREQUESTCAPTUREMETHOD_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestCaptureMethod = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentRequestCaptureMethod enum
 var AllowedPaymentRequestCaptureMethodEnumValues = []PaymentRequestCaptureMethod{
 	"AUTOMATIC",
 	"MANUAL",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentRequestCaptureMethod) UnmarshalJSON(src []byte) error {
@@ -44,7 +46,8 @@ func (v *PaymentRequestCaptureMethod) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentRequestCaptureMethod", value)
+    *v = PAYMENTREQUESTCAPTUREMETHOD_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentRequestCaptureMethodFromValue returns a pointer to a valid PaymentRequestCaptureMethod

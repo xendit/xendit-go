@@ -22,14 +22,14 @@ import (
 
 	common "github.com/xendit/xendit-go/v3/common"
 	
-	balance "github.com/xendit/xendit-go/v3/balance_and_transaction"
-	customer "github.com/xendit/xendit-go/v3/customer"
 	invoice "github.com/xendit/xendit-go/v3/invoice"
-	paymentmethod "github.com/xendit/xendit-go/v3/payment_method"
 	paymentrequest "github.com/xendit/xendit-go/v3/payment_request"
-	payout "github.com/xendit/xendit-go/v3/payout"
+	paymentmethod "github.com/xendit/xendit-go/v3/payment_method"
 	refund "github.com/xendit/xendit-go/v3/refund"
+	balance "github.com/xendit/xendit-go/v3/balance_and_transaction"
 	transaction "github.com/xendit/xendit-go/v3/balance_and_transaction"
+	customer "github.com/xendit/xendit-go/v3/customer"
+	payout "github.com/xendit/xendit-go/v3/payout"
 
 )
 
@@ -47,14 +47,14 @@ type APIClient struct {
 	apiKey string
 
 	// API Services
-	BalanceApi balance.BalanceApi
-	CustomerApi customer.CustomerApi
 	InvoiceApi invoice.InvoiceApi
-	PaymentMethodApi paymentmethod.PaymentMethodApi
 	PaymentRequestApi paymentrequest.PaymentRequestApi
-	PayoutApi payout.PayoutApi
+	PaymentMethodApi paymentmethod.PaymentMethodApi
 	RefundApi refund.RefundApi
+	BalanceApi balance.BalanceApi
 	TransactionApi transaction.TransactionApi
+	CustomerApi customer.CustomerApi
+	PayoutApi payout.PayoutApi
 }
 
 type service struct {
@@ -74,14 +74,14 @@ func NewClient(apiKey string) *APIClient {
 	c.cfg = cfg
 	c.apiKey = apiKey
 	
-	c.BalanceApi = balance.NewBalanceApi(c)
-	c.CustomerApi = customer.NewCustomerApi(c)
 	c.InvoiceApi = invoice.NewInvoiceApi(c)
-	c.PaymentMethodApi = paymentmethod.NewPaymentMethodApi(c)
 	c.PaymentRequestApi = paymentrequest.NewPaymentRequestApi(c)
-	c.PayoutApi = payout.NewPayoutApi(c)
+	c.PaymentMethodApi = paymentmethod.NewPaymentMethodApi(c)
 	c.RefundApi = refund.NewRefundApi(c)
+	c.BalanceApi = balance.NewBalanceApi(c)
 	c.TransactionApi = transaction.NewTransactionApi(c)
+	c.CustomerApi = customer.NewCustomerApi(c)
+	c.PayoutApi = payout.NewPayoutApi(c)
 
 	return c
 }
@@ -154,7 +154,7 @@ func (c *APIClient) PrepareRequest(
 	headerParams["xendit-lib"] = "go"
 
 	// TODO: overwrite this line from buddy pipeline
-	headerParams["xendit-lib-ver"] = "3.3.0"
+	headerParams["xendit-lib-ver"] = "3.4.0"
 
 	var body *bytes.Buffer
 

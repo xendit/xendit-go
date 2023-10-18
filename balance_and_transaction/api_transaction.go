@@ -18,20 +18,6 @@ import (
 type TransactionApi interface {
 
 	/*
-	GetAllTransactions Get a list of transactions
-
-	Get a list of all transactions based on filter and search parameters.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAllTransactionsRequest
-	*/
-	GetAllTransactions(ctx context.Context) ApiGetAllTransactionsRequest
-
-	// GetAllTransactionsExecute executes the request
-	//  @return TransactionsResponse
-	GetAllTransactionsExecute(r ApiGetAllTransactionsRequest) (*TransactionsResponse, *http.Response, *common.XenditSdkError)
-
-	/*
 	GetTransactionByID Get a transaction based on its id
 
 	Get single specific transaction by transaction id.
@@ -45,6 +31,20 @@ type TransactionApi interface {
 	// GetTransactionByIDExecute executes the request
 	//  @return TransactionResponse
 	GetTransactionByIDExecute(r ApiGetTransactionByIDRequest) (*TransactionResponse, *http.Response, *common.XenditSdkError)
+
+	/*
+	GetAllTransactions Get a list of transactions
+
+	Get a list of all transactions based on filter and search parameters.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetAllTransactionsRequest
+	*/
+	GetAllTransactions(ctx context.Context) ApiGetAllTransactionsRequest
+
+	// GetAllTransactionsExecute executes the request
+	//  @return TransactionsResponse
+	GetAllTransactionsExecute(r ApiGetAllTransactionsRequest) (*TransactionsResponse, *http.Response, *common.XenditSdkError)
 }
 
 // TransactionApiService TransactionApi service
@@ -59,6 +59,104 @@ func NewTransactionApi (client common.IClient) TransactionApi {
 	}
 }
 
+
+type ApiGetTransactionByIDRequest struct {
+	ctx context.Context
+	ApiService TransactionApi
+	id string
+	forUserId *string
+}
+
+// The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information
+func (r ApiGetTransactionByIDRequest) ForUserId(forUserId string) ApiGetTransactionByIDRequest {
+	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiGetTransactionByIDRequest) Execute() (*TransactionResponse, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.GetTransactionByIDExecute(r)
+}
+
+/*
+GetTransactionByID Get a transaction based on its id
+
+Get single specific transaction by transaction id.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiGetTransactionByIDRequest
+*/
+func (a *TransactionApiService) GetTransactionByID(ctx context.Context, id string) ApiGetTransactionByIDRequest {
+	return ApiGetTransactionByIDRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return TransactionResponse
+func (a *TransactionApiService) GetTransactionByIDExecute(r ApiGetTransactionByIDRequest) (*TransactionResponse, *http.Response, *common.XenditSdkError) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []common.FormFile
+		localVarReturnValue  *TransactionResponse
+	)
+
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "TransactionApiService.GetTransactionByID")
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: TransactionApiService.GetTransactionByIDExecute")
+	}
+
+	localVarPath := localBasePath + "/transactions/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(utils.ParameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.forUserId != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: TransactionApiService.GetTransactionByIDExecute")
+	}
+
+	localVarHTTPResponse, err := a.client.CallAPI(req)
+
+	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+
+    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+
+	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
+		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
+
+		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiGetAllTransactionsRequest struct {
 	ctx context.Context
@@ -286,104 +384,6 @@ func (a *TransactionApiService) GetAllTransactionsExecute(r ApiGetAllTransaction
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: TransactionApiService.GetAllTransactionsExecute")
-	}
-
-	localVarHTTPResponse, err := a.client.CallAPI(req)
-
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-
-    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-
-	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
-		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
-
-		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetTransactionByIDRequest struct {
-	ctx context.Context
-	ApiService TransactionApi
-	id string
-	forUserId *string
-}
-
-// The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information
-func (r ApiGetTransactionByIDRequest) ForUserId(forUserId string) ApiGetTransactionByIDRequest {
-	r.forUserId = &forUserId
-	return r
-}
-
-func (r ApiGetTransactionByIDRequest) Execute() (*TransactionResponse, *http.Response, *common.XenditSdkError) {
-	return r.ApiService.GetTransactionByIDExecute(r)
-}
-
-/*
-GetTransactionByID Get a transaction based on its id
-
-Get single specific transaction by transaction id.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiGetTransactionByIDRequest
-*/
-func (a *TransactionApiService) GetTransactionByID(ctx context.Context, id string) ApiGetTransactionByIDRequest {
-	return ApiGetTransactionByIDRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return TransactionResponse
-func (a *TransactionApiService) GetTransactionByIDExecute(r ApiGetTransactionByIDRequest) (*TransactionResponse, *http.Response, *common.XenditSdkError) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []common.FormFile
-		localVarReturnValue  *TransactionResponse
-	)
-
-	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "TransactionApiService.GetTransactionByID")
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: TransactionApiService.GetTransactionByIDExecute")
-	}
-
-	localVarPath := localBasePath + "/transactions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(utils.ParameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.forUserId != nil {
-		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
-	}
-	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: TransactionApiService.GetTransactionByIDExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)

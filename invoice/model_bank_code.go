@@ -30,6 +30,7 @@ const (
 	BANKCODE_SAHABAT_SAMPOERNA BankCode = "SAHABAT_SAMPOERNA"
 	BANKCODE_CIMB BankCode = "CIMB"
 	BANKCODE_BNC BankCode = "BNC"
+    BANKCODE_XENDIT_ENUM_DEFAULT_FALLBACK BankCode = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of BankCode enum
@@ -44,6 +45,7 @@ var AllowedBankCodeEnumValues = []BankCode{
 	"SAHABAT_SAMPOERNA",
 	"CIMB",
 	"BNC",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *BankCode) UnmarshalJSON(src []byte) error {
@@ -60,7 +62,8 @@ func (v *BankCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid BankCode", value)
+    *v = BANKCODE_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewBankCodeFromValue returns a pointer to a valid BankCode

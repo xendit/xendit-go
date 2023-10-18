@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.1
+API version: 2.89.2
 */
 
 
@@ -26,6 +26,7 @@ const (
 	PAYMENTMETHODSTATUS_PENDING PaymentMethodStatus = "PENDING"
 	PAYMENTMETHODSTATUS_REQUIRES_ACTION PaymentMethodStatus = "REQUIRES_ACTION"
 	PAYMENTMETHODSTATUS_FAILED PaymentMethodStatus = "FAILED"
+    PAYMENTMETHODSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK PaymentMethodStatus = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of PaymentMethodStatus enum
@@ -36,6 +37,7 @@ var AllowedPaymentMethodStatusEnumValues = []PaymentMethodStatus{
 	"PENDING",
 	"REQUIRES_ACTION",
 	"FAILED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *PaymentMethodStatus) UnmarshalJSON(src []byte) error {
@@ -52,7 +54,8 @@ func (v *PaymentMethodStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid PaymentMethodStatus", value)
+    *v = PAYMENTMETHODSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewPaymentMethodStatusFromValue returns a pointer to a valid PaymentMethodStatus

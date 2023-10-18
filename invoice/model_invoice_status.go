@@ -24,6 +24,7 @@ const (
 	INVOICESTATUS_PAID InvoiceStatus = "PAID"
 	INVOICESTATUS_SETTLED InvoiceStatus = "SETTLED"
 	INVOICESTATUS_EXPIRED InvoiceStatus = "EXPIRED"
+    INVOICESTATUS_XENDIT_ENUM_DEFAULT_FALLBACK InvoiceStatus = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of InvoiceStatus enum
@@ -32,6 +33,7 @@ var AllowedInvoiceStatusEnumValues = []InvoiceStatus{
 	"PAID",
 	"SETTLED",
 	"EXPIRED",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *InvoiceStatus) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *InvoiceStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid InvoiceStatus", value)
+    *v = INVOICESTATUS_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewInvoiceStatusFromValue returns a pointer to a valid InvoiceStatus

@@ -24,6 +24,7 @@ const (
 	NOTIFICATIONCHANNEL_SMS NotificationChannel = "sms"
 	NOTIFICATIONCHANNEL_WHATSAPP NotificationChannel = "whatsapp"
 	NOTIFICATIONCHANNEL_VIBER NotificationChannel = "viber"
+    NOTIFICATIONCHANNEL_XENDIT_ENUM_DEFAULT_FALLBACK NotificationChannel = "UNKNOWN_ENUM_VALUE"
 )
 
 // All allowed values of NotificationChannel enum
@@ -32,6 +33,7 @@ var AllowedNotificationChannelEnumValues = []NotificationChannel{
 	"sms",
 	"whatsapp",
 	"viber",
+    "UNKNOWN_ENUM_VALUE",
 }
 
 func (v *NotificationChannel) UnmarshalJSON(src []byte) error {
@@ -48,7 +50,8 @@ func (v *NotificationChannel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid NotificationChannel", value)
+    *v = NOTIFICATIONCHANNEL_XENDIT_ENUM_DEFAULT_FALLBACK
+    return nil
 }
 
 // NewNotificationChannelFromValue returns a pointer to a valid NotificationChannel

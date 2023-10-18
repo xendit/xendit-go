@@ -29,11 +29,9 @@ func Test_xendit_RefundApiService(t *testing.T) {
 	
 	apiClient := xendit.NewClient(apiKey)
 
-	t.Run("Test RefundApiService CancelRefund", func(t *testing.T) {
+	t.Run("Test RefundApiService CreateRefund", func(t *testing.T) {
 
-		var refundID string
-
-		resp, httpRes, err := apiClient.RefundApi.CancelRefund(context.Background(), refundID).Execute()
+		resp, httpRes, err := apiClient.RefundApi.CreateRefund(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -41,9 +39,11 @@ func Test_xendit_RefundApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test RefundApiService CreateRefund", func(t *testing.T) {
+	t.Run("Test RefundApiService GetRefund", func(t *testing.T) {
 
-		resp, httpRes, err := apiClient.RefundApi.CreateRefund(context.Background()).Execute()
+		var refundID string
+
+		resp, httpRes, err := apiClient.RefundApi.GetRefund(context.Background(), refundID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,11 +61,11 @@ func Test_xendit_RefundApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test RefundApiService GetRefund", func(t *testing.T) {
+	t.Run("Test RefundApiService CancelRefund", func(t *testing.T) {
 
 		var refundID string
 
-		resp, httpRes, err := apiClient.RefundApi.GetRefund(context.Background(), refundID).Execute()
+		resp, httpRes, err := apiClient.RefundApi.CancelRefund(context.Background(), refundID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

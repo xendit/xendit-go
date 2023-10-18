@@ -33,7 +33,7 @@ import (
 func main() {
     
     // A unique key to prevent processing duplicate requests.
-    iDEMPOTENCYKEY := "idempotency-123" // [OPTIONAL] | string
+    idempotencyKey := "idempotency-123" // [OPTIONAL] | string
 
     // The sub-account user-id that you want to make this transaction for.
     forUserId := "user-1" // [OPTIONAL] | string
@@ -44,7 +44,7 @@ func main() {
     xenditClient := xendit.NewClient("API-KEY")
 
     resp, r, err := xenditClient.CustomerApi.CreateCustomer(context.Background()).
-        IDEMPOTENCYKEY(iDEMPOTENCYKEY).
+        IdempotencyKey(idempotencyKey).
         ForUserId(forUserId).
         CustomerRequest(customerRequest). // [OPTIONAL]
         Execute()
@@ -73,7 +73,7 @@ Other parameters are passed through a pointer to a apiCreateCustomerRequest stru
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-|  **iDEMPOTENCYKEY** |**string**| A unique key to prevent processing duplicate requests. |  | 
+|  **idempotencyKey** |**string**| A unique key to prevent processing duplicate requests. |  | 
 |  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. |  | 
 |  **customerRequest** |[**CustomerRequest**](customer/CustomerRequest.md)| Request object for end customer object |  | 
 
