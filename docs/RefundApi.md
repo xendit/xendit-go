@@ -1,21 +1,61 @@
-# xendit\RefundApi
+# RefundApi
+
+
+You can use the APIs below to interface with Xendit's `RefundApi`.
+To start using the API, you need to configure the secret key and initiate the client instance.
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+)
+
+func main() {
+    xenditClient := xendit.NewClient("API-KEY")
+}
+```
 
 All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**CreateRefund**](RefundApi.md#CreateRefund) | **Post** /refunds |  |
-| [**GetRefund**](RefundApi.md#GetRefund) | **Get** /refunds/{refundID} |  |
-| [**GetAllRefunds**](RefundApi.md#GetAllRefunds) | **Get** /refunds |  |
-| [**CancelRefund**](RefundApi.md#CancelRefund) | **Post** /refunds/{refundID}/cancel |  |
+| [**CreateRefund**](RefundApi.md#createrefund-function) | **Post** /refunds |  |
+| [**GetRefund**](RefundApi.md#getrefund-function) | **Get** /refunds/{refundID} |  |
+| [**GetAllRefunds**](RefundApi.md#getallrefunds-function) | **Get** /refunds |  |
+| [**CancelRefund**](RefundApi.md#cancelrefund-function) | **Post** /refunds/{refundID}/cancel |  |
 
 
 
-## CreateRefund
+## `CreateRefund()` Function
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CreateRefund` |
+| Path Parameters  |  [CreateRefundPathParams](#request-parameters--CreateRefundPathParams)	 |
+| Request Parameters  |  [CreateRefundRequestParams](#request-parameters--CreateRefundRequestParams)	 |
+| Return Type  | [**Refund**](refund/Refund.md) |
+
+### Path Parameters - CreateRefundPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - CreateRefundRequestParams
+
+Parameters that are passed through a pointer to a apiCreateRefundRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **idempotencyKey** |**string**|  |  | 
+|  **forUserId** |**string**|  |  | 
+|  **createRefund** |[**CreateRefund**](refund/CreateRefund.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -57,39 +97,36 @@ func main() {
 }
 ```
 
-### Path Parameters
+## `GetRefund()` Function
 
 
 
-### Other Parameters
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetRefund` |
+| Path Parameters  |  [GetRefundPathParams](#request-parameters--GetRefundPathParams)	 |
+| Request Parameters  |  [GetRefundRequestParams](#request-parameters--GetRefundRequestParams)	 |
+| Return Type  | [**Refund**](refund/Refund.md) |
 
-Other parameters are passed through a pointer to a apiCreateRefundRequest struct via the builder pattern
+### Path Parameters - GetRefundPathParams
 
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **refundID** | **string** |  | ☑️ |  | 
+
+### Request Parameters - GetRefundRequestParams
+
+Parameters that are passed through a pointer to a apiGetRefundRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
 |  **idempotencyKey** |**string**|  |  | 
 |  **forUserId** |**string**|  |  | 
-|  **createRefund** |[**CreateRefund**](refund/CreateRefund.md)|  |  | 
 
-### Return type
-
-[**Refund**](refund/Refund.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetRefund
-
-
-
-### Example
+### Usage Example
 
 ```go
 package main
@@ -130,43 +167,37 @@ func main() {
 }
 ```
 
-### Path Parameters
+## `GetAllRefunds()` Function
 
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **refundID** | **string** |  |  | 
 
-### Other Parameters
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetAllRefunds` |
+| Path Parameters  |  [GetAllRefundsPathParams](#request-parameters--GetAllRefundsPathParams)	 |
+| Request Parameters  |  [GetAllRefundsRequestParams](#request-parameters--GetAllRefundsRequestParams)	 |
+| Return Type  | [**RefundList**](refund/RefundList.md) |
 
-Other parameters are passed through a pointer to a apiGetRefundRequest struct via the builder pattern
+### Path Parameters - GetAllRefundsPathParams
+This endpoint does not need any path parameter.
 
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **idempotencyKey** |**string**|  |  | 
+### Request Parameters - GetAllRefundsRequestParams
+
+Parameters that are passed through a pointer to a apiGetAllRefundsRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
 |  **forUserId** |**string**|  |  | 
+|  **paymentRequestId** |**string**|  |  | 
+|  **invoiceId** |**string**|  |  | 
+|  **paymentMethodType** |**string**|  |  | 
+|  **channelCode** |**string**|  |  | 
+|  **limit** |**float32**|  |  | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
 
-### Return type
-
-[**Refund**](refund/Refund.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetAllRefunds
-
-
-
-### Example
+### Usage Example
 
 ```go
 package main
@@ -223,44 +254,36 @@ func main() {
 }
 ```
 
-### Path Parameters
+## `CancelRefund()` Function
 
 
 
-### Other Parameters
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CancelRefund` |
+| Path Parameters  |  [CancelRefundPathParams](#request-parameters--CancelRefundPathParams)	 |
+| Request Parameters  |  [CancelRefundRequestParams](#request-parameters--CancelRefundRequestParams)	 |
+| Return Type  | [**Refund**](refund/Refund.md) |
 
-Other parameters are passed through a pointer to a apiGetAllRefundsRequest struct via the builder pattern
+### Path Parameters - CancelRefundPathParams
 
 
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **refundID** | **string** |  | ☑️ |  | 
+
+### Request Parameters - CancelRefundRequestParams
+
+Parameters that are passed through a pointer to a apiCancelRefundRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **idempotencyKey** |**string**|  |  | 
 |  **forUserId** |**string**|  |  | 
-|  **paymentRequestId** |**string**|  |  | 
-|  **invoiceId** |**string**|  |  | 
-|  **paymentMethodType** |**string**|  |  | 
-|  **channelCode** |**string**|  |  | 
-|  **limit** |**float32**|  |  | 
-|  **afterId** |**string**|  |  | 
-|  **beforeId** |**string**|  |  | 
 
-### Return type
-
-[**RefundList**](refund/RefundList.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## CancelRefund
-
-
-
-### Example
+### Usage Example
 
 ```go
 package main
@@ -301,34 +324,4 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **refundID** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCancelRefundRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **idempotencyKey** |**string**|  |  | 
-|  **forUserId** |**string**|  |  | 
-
-### Return type
-
-[**Refund**](refund/Refund.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
 [[Back to README]](../README.md)
-

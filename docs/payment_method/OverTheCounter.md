@@ -1,13 +1,13 @@
 # OverTheCounter
+Over The Counter Payment Method Details
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
-| **ChannelCode** | [**OverTheCounterChannelCode**](OverTheCounterChannelCode.md) |  |  |
-| **ChannelProperties** | [**OverTheCounterChannelProperties**](OverTheCounterChannelProperties.md) |  |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Amount** | Pointer to **NullableFloat64** |  |  |  |
+| **Currency** | Pointer to **string** |  |  |  |
+| **ChannelCode** | [**OverTheCounterChannelCode**](OverTheCounterChannelCode.md) | ☑️ |  |  |
+| **ChannelProperties** | [**OverTheCounterChannelProperties**](OverTheCounterChannelProperties.md) | ☑️ |  |  |
 
 ## Methods
 

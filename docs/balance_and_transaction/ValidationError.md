@@ -1,13 +1,13 @@
 # ValidationError
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **StatusCode** | **float32** |  |  |
-| **Error** | **string** |  |  |
-| **Message** | **string** |  |  |
-| **Validation** | Pointer to **map[string]interface{}** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **StatusCode** | **float32** | ☑️ |  |  |
+| **Error** | **string** | ☑️ |  |  |
+| **Message** | **string** | ☑️ |  |  |
+| **Validation** | Pointer to **map[string]interface{}** |  |  |  |
 
 ## Methods
 

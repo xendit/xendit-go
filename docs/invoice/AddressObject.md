@@ -1,16 +1,16 @@
 # AddressObject
+An object representing an address with various properties.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Country** | Pointer to **NullableString** | The country where the address is located. | [optional]  |
-| **StreetLine1** | Pointer to **NullableString** | The first line of the street address. | [optional]  |
-| **StreetLine2** | Pointer to **NullableString** | The second line of the street address. | [optional]  |
-| **City** | Pointer to **NullableString** | The city or locality within the address. | [optional]  |
-| **Province** | Pointer to **NullableString** | The province or region within the country. | [optional]  |
-| **State** | Pointer to **NullableString** | The state or administrative division within the country. | [optional]  |
-| **PostalCode** | Pointer to **NullableString** | The postal code or ZIP code for the address. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Country** | Pointer to **NullableString** |  | The country where the address is located. |  |
+| **StreetLine1** | Pointer to **NullableString** |  | The first line of the street address. |  |
+| **StreetLine2** | Pointer to **NullableString** |  | The second line of the street address. |  |
+| **City** | Pointer to **NullableString** |  | The city or locality within the address. |  |
+| **Province** | Pointer to **NullableString** |  | The province or region within the country. |  |
+| **State** | Pointer to **NullableString** |  | The state or administrative division within the country. |  |
+| **PostalCode** | Pointer to **NullableString** |  | The postal code or ZIP code for the address. |  |
 
 ## Methods
 

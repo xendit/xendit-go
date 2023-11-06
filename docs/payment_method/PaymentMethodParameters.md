@@ -1,23 +1,23 @@
 # PaymentMethodParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Type** | [**PaymentMethodType**](PaymentMethodType.md) |  |  |
-| **Country** | Pointer to **NullableString** |  | [optional]  |
-| **Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) |  |  |
-| **CustomerId** | Pointer to **NullableString** |  | [optional]  |
-| **ReferenceId** | Pointer to **string** |  | [optional]  |
-| **Description** | Pointer to **NullableString** |  | [optional]  |
-| **Card** | Pointer to [**CardParameters**](CardParameters.md) |  | [optional]  |
-| **DirectDebit** | Pointer to [**DirectDebitParameters**](DirectDebitParameters.md) |  | [optional]  |
-| **Ewallet** | Pointer to [**EWalletParameters**](EWalletParameters.md) |  | [optional]  |
-| **OverTheCounter** | Pointer to [**OverTheCounterParameters**](OverTheCounterParameters.md) |  | [optional]  |
-| **VirtualAccount** | Pointer to [**VirtualAccountParameters**](VirtualAccountParameters.md) |  | [optional]  |
-| **QrCode** | Pointer to [**QRCodeParameters**](QRCodeParameters.md) |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
-| **BillingInformation** | Pointer to [**NullableBillingInformation**](BillingInformation.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Type** | [**PaymentMethodType**](PaymentMethodType.md) | ☑️ |  |  |
+| **Country** | Pointer to **NullableString** |  |  |  |
+| **Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) | ☑️ |  |  |
+| **CustomerId** | Pointer to **NullableString** |  |  |  |
+| **ReferenceId** | Pointer to **string** |  |  |  |
+| **Description** | Pointer to **NullableString** |  |  |  |
+| **Card** | Pointer to [**CardParameters**](CardParameters.md) |  |  |  |
+| **DirectDebit** | Pointer to [**DirectDebitParameters**](DirectDebitParameters.md) |  |  |  |
+| **Ewallet** | Pointer to [**EWalletParameters**](EWalletParameters.md) |  |  |  |
+| **OverTheCounter** | Pointer to [**OverTheCounterParameters**](OverTheCounterParameters.md) |  |  |  |
+| **VirtualAccount** | Pointer to [**VirtualAccountParameters**](VirtualAccountParameters.md) |  |  |  |
+| **QrCode** | Pointer to [**QRCodeParameters**](QRCodeParameters.md) |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
+| **BillingInformation** | Pointer to [**NullableBillingInformation**](BillingInformation.md) |  |  |  |
 
 ## Methods
 

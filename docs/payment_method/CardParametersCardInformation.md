@@ -1,14 +1,14 @@
 # CardParametersCardInformation
+Card Information
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **CardNumber** | **string** |  |  |
-| **ExpiryMonth** | **string** | Card expiry month in MM format |  |
-| **ExpiryYear** | **string** | Card expiry month in YY format |  |
-| **CardholderName** | Pointer to **NullableString** | Cardholder name | [optional]  |
-| **Cvv** | Pointer to **NullableString** |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **CardNumber** | **string** | ☑️ |  |  |
+| **ExpiryMonth** | **string** | ☑️ | Card expiry month in MM format |  |
+| **ExpiryYear** | **string** | ☑️ | Card expiry month in YY format |  |
+| **CardholderName** | Pointer to **NullableString** |  | Cardholder name |  |
+| **Cvv** | Pointer to **NullableString** |  |  |  |
 
 ## Methods
 

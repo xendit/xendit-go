@@ -1,25 +1,25 @@
 # Customer
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Type** | **string** |  | [default to "INDIVIDUAL"] |
-| **ReferenceId** | **string** | Merchant&#39;s reference of this end customer, eg Merchant&#39;s user&#39;s id. Must be unique. |  |
-| **IndividualDetail** | [**NullableIndividualDetail**](IndividualDetail.md) |  |  |
-| **BusinessDetail** | [**NullableBusinessDetail**](BusinessDetail.md) |  |  |
-| **Description** | **NullableString** |  |  |
-| **Email** | **NullableString** |  |  |
-| **MobileNumber** | **NullableString** |  |  |
-| **PhoneNumber** | **NullableString** |  |  |
-| **Addresses** | [**Address[]**](Address.md) |  |  |
-| **IdentityAccounts** | [**IdentityAccountResponse[]**](IdentityAccountResponse.md) |  |  |
-| **KycDocuments** | [**KYCDocumentResponse[]**](KYCDocumentResponse.md) |  |  |
-| **Metadata** | **map[string]interface{}** |  |  |
-| **Status** | Pointer to [**NullableEndCustomerStatus**](EndCustomerStatus.md) |  | [optional]  |
-| **Id** | **string** |  |  |
-| **Created** | **time.Time** |  |  |
-| **Updated** | **time.Time** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Type** | **string** | ☑️ |  | ["INDIVIDUAL"] |
+| **ReferenceId** | **string** | ☑️ | Merchant&#39;s reference of this end customer, eg Merchant&#39;s user&#39;s id. Must be unique. |  |
+| **IndividualDetail** | [**NullableIndividualDetail**](IndividualDetail.md) | ☑️ |  |  |
+| **BusinessDetail** | [**NullableBusinessDetail**](BusinessDetail.md) | ☑️ |  |  |
+| **Description** | **NullableString** | ☑️ |  |  |
+| **Email** | **NullableString** | ☑️ |  |  |
+| **MobileNumber** | **NullableString** | ☑️ |  |  |
+| **PhoneNumber** | **NullableString** | ☑️ |  |  |
+| **Addresses** | [**Address[]**](Address.md) | ☑️ |  |  |
+| **IdentityAccounts** | [**IdentityAccountResponse[]**](IdentityAccountResponse.md) | ☑️ |  |  |
+| **KycDocuments** | [**KYCDocumentResponse[]**](KYCDocumentResponse.md) | ☑️ |  |  |
+| **Metadata** | **map[string]interface{}** | ☑️ |  |  |
+| **Status** | Pointer to [**NullableEndCustomerStatus**](EndCustomerStatus.md) |  |  |  |
+| **Id** | **string** | ☑️ |  |  |
+| **Created** | **time.Time** | ☑️ |  |  |
+| **Updated** | **time.Time** | ☑️ |  |  |
 
 ## Methods
 

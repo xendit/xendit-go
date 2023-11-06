@@ -1,13 +1,13 @@
 # RetailOutlet
+An object representing retail outlet details for invoices.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **RetailOutletName** | [**RetailOutletName**](RetailOutletName.md) |  |  |
-| **PaymentCode** | Pointer to **string** | The payment code. | [optional]  |
-| **TransferAmount** | Pointer to **float32** | The transfer amount. | [optional]  |
-| **MerchantName** | Pointer to **string** | The name of the merchant. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **RetailOutletName** | [**RetailOutletName**](RetailOutletName.md) | ☑️ |  |  |
+| **PaymentCode** | Pointer to **string** |  | The payment code. |  |
+| **TransferAmount** | Pointer to **float32** |  | The transfer amount. |  |
+| **MerchantName** | Pointer to **string** |  | The name of the merchant. |  |
 
 ## Methods
 

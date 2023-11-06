@@ -1,11 +1,11 @@
 # InvoiceFee
+An object representing internal details for a fee associated with an invoice.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Type** | **string** | The type of fee. |  |
-| **Value** | **float32** | The value or amount of the fee. |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Type** | **string** | ☑️ | The type of fee. |  |
+| **Value** | **float32** | ☑️ | The value or amount of the fee. |  |
 
 ## Methods
 

@@ -1,11 +1,11 @@
 # PaymentRequestListResponse
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Data** | [**PaymentRequest[]**](PaymentRequest.md) |  |  |
-| **HasMore** | **bool** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Data** | [**PaymentRequest[]**](PaymentRequest.md) | ☑️ |  |  |
+| **HasMore** | **bool** | ☑️ |  |  |
 
 ## Methods
 

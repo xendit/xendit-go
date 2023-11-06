@@ -1,22 +1,22 @@
 # CustomerRequest
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ClientName** | Pointer to **string** | Entity&#39;s name for this client | [optional]  |
-| **ReferenceId** | **string** | Merchant&#39;s reference of this end customer, eg Merchant&#39;s user&#39;s id. Must be unique. |  |
-| **Type** | Pointer to **string** |  | [optional] [default to "INDIVIDUAL"] |
-| **IndividualDetail** | Pointer to [**NullableIndividualDetail**](IndividualDetail.md) |  | [optional]  |
-| **BusinessDetail** | Pointer to [**NullableBusinessDetail**](BusinessDetail.md) |  | [optional]  |
-| **Description** | Pointer to **NullableString** |  | [optional]  |
-| **Email** | Pointer to **string** |  | [optional]  |
-| **MobileNumber** | Pointer to **string** |  | [optional]  |
-| **PhoneNumber** | Pointer to **string** |  | [optional]  |
-| **Addresses** | Pointer to [**AddressRequest[]**](AddressRequest.md) |  | [optional]  |
-| **IdentityAccounts** | Pointer to [**IdentityAccountRequest[]**](IdentityAccountRequest.md) |  | [optional]  |
-| **KycDocuments** | Pointer to [**KYCDocumentRequest[]**](KYCDocumentRequest.md) |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ClientName** | Pointer to **string** |  | Entity&#39;s name for this client |  |
+| **ReferenceId** | **string** | ☑️ | Merchant&#39;s reference of this end customer, eg Merchant&#39;s user&#39;s id. Must be unique. |  |
+| **Type** | Pointer to **string** |  |  | ["INDIVIDUAL"] |
+| **IndividualDetail** | Pointer to [**NullableIndividualDetail**](IndividualDetail.md) |  |  |  |
+| **BusinessDetail** | Pointer to [**NullableBusinessDetail**](BusinessDetail.md) |  |  |  |
+| **Description** | Pointer to **NullableString** |  |  |  |
+| **Email** | Pointer to **string** |  |  |  |
+| **MobileNumber** | Pointer to **string** |  |  |  |
+| **PhoneNumber** | Pointer to **string** |  |  |  |
+| **Addresses** | Pointer to [**AddressRequest[]**](AddressRequest.md) |  |  |  |
+| **IdentityAccounts** | Pointer to [**IdentityAccountRequest[]**](IdentityAccountRequest.md) |  |  |  |
+| **KycDocuments** | Pointer to [**KYCDocumentRequest[]**](KYCDocumentRequest.md) |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
 
 ## Methods
 

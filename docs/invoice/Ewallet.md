@@ -1,10 +1,10 @@
 # Ewallet
+An object representing e-wallet details for invoices.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **EwalletType** | [**EwalletType**](EwalletType.md) |  |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **EwalletType** | [**EwalletType**](EwalletType.md) | ☑️ |  |  |
 
 ## Methods
 

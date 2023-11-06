@@ -1,14 +1,14 @@
 # IdentityAccountRequest
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Type** | Pointer to [**IdentityAccountType**](IdentityAccountType.md) |  | [optional]  |
-| **Company** | Pointer to **string** | The issuing institution associated with the account (e.g., OCBC, GOPAY, 7-11). If adding financial accounts that Xendit supports, we recommend you use the channel_name found at https://xendit.github.io/apireference/#payment-channels for this field | [optional]  |
-| **Description** | Pointer to **string** | Free text description of this account | [optional]  |
-| **Country** | Pointer to **NullableString** | ISO3166-2 country code | [optional]  |
-| **Properties** | Pointer to [**IdentityAccountRequestProperties**](IdentityAccountRequestProperties.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Type** | Pointer to [**IdentityAccountType**](IdentityAccountType.md) |  |  |  |
+| **Company** | Pointer to **string** |  | The issuing institution associated with the account (e.g., OCBC, GOPAY, 7-11). If adding financial accounts that Xendit supports, we recommend you use the channel_name found at https://xendit.github.io/apireference/#payment-channels for this field |  |
+| **Description** | Pointer to **string** |  | Free text description of this account |  |
+| **Country** | Pointer to **NullableString** |  | ISO3166-2 country code |  |
+| **Properties** | Pointer to [**IdentityAccountRequestProperties**](IdentityAccountRequestProperties.md) |  |  |  |
 
 ## Methods
 

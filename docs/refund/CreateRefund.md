@@ -1,16 +1,16 @@
 # CreateRefund
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **PaymentRequestId** | Pointer to **string** |  | [optional]  |
-| **InvoiceId** | Pointer to **string** |  | [optional]  |
-| **ReferenceId** | Pointer to **string** |  | [optional]  |
-| **Amount** | Pointer to **float64** |  | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
-| **Reason** | Pointer to **string** |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **PaymentRequestId** | Pointer to **string** |  |  |  |
+| **InvoiceId** | Pointer to **string** |  |  |  |
+| **ReferenceId** | Pointer to **string** |  |  |  |
+| **Amount** | Pointer to **float64** |  |  |  |
+| **Currency** | Pointer to **string** |  |  |  |
+| **Reason** | Pointer to **string** |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
 
 ## Methods
 

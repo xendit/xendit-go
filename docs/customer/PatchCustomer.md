@@ -1,22 +1,22 @@
 # PatchCustomer
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ClientName** | Pointer to **NullableString** | Entity&#39;s name for this client | [optional]  |
-| **ReferenceId** | Pointer to **NullableString** | Merchant&#39;s reference of this end customer, eg Merchant&#39;s user&#39;s id. Must be unique. | [optional]  |
-| **IndividualDetail** | Pointer to [**NullableIndividualDetail**](IndividualDetail.md) |  | [optional]  |
-| **BusinessDetail** | Pointer to [**NullableBusinessDetail**](BusinessDetail.md) |  | [optional]  |
-| **Description** | Pointer to **NullableString** |  | [optional]  |
-| **Email** | Pointer to **NullableString** |  | [optional]  |
-| **MobileNumber** | Pointer to **NullableString** |  | [optional]  |
-| **PhoneNumber** | Pointer to **NullableString** |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
-| **Addresses** | Pointer to [**AddressRequest[]**](AddressRequest.md) |  | [optional]  |
-| **IdentityAccounts** | Pointer to [**IdentityAccountRequest[]**](IdentityAccountRequest.md) |  | [optional]  |
-| **KycDocuments** | Pointer to [**KYCDocumentRequest[]**](KYCDocumentRequest.md) |  | [optional]  |
-| **Status** | Pointer to [**NullableEndCustomerStatus**](EndCustomerStatus.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ClientName** | Pointer to **NullableString** |  | Entity&#39;s name for this client |  |
+| **ReferenceId** | Pointer to **NullableString** |  | Merchant&#39;s reference of this end customer, eg Merchant&#39;s user&#39;s id. Must be unique. |  |
+| **IndividualDetail** | Pointer to [**NullableIndividualDetail**](IndividualDetail.md) |  |  |  |
+| **BusinessDetail** | Pointer to [**NullableBusinessDetail**](BusinessDetail.md) |  |  |  |
+| **Description** | Pointer to **NullableString** |  |  |  |
+| **Email** | Pointer to **NullableString** |  |  |  |
+| **MobileNumber** | Pointer to **NullableString** |  |  |  |
+| **PhoneNumber** | Pointer to **NullableString** |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
+| **Addresses** | Pointer to [**AddressRequest[]**](AddressRequest.md) |  |  |  |
+| **IdentityAccounts** | Pointer to [**IdentityAccountRequest[]**](IdentityAccountRequest.md) |  |  |  |
+| **KycDocuments** | Pointer to [**KYCDocumentRequest[]**](KYCDocumentRequest.md) |  |  |  |
+| **Status** | Pointer to [**NullableEndCustomerStatus**](EndCustomerStatus.md) |  |  |  |
 
 ## Methods
 

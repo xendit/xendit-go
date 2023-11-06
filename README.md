@@ -1,11 +1,11 @@
-![Xendit PHP SDK](docs/header.jpg "Xendit Go SDK")
+![Xendit Go SDK](images/header.jpg "Xendit Go SDK")
 
 # Xendit Go SDK
 
 The official Xendit Go SDK provides a simple and convenient way to call Xendit's REST API
 in applications written in Go.
 
-* Package version: 3.4.0
+* Package version: 3.6.0
 
 # Getting Started
 

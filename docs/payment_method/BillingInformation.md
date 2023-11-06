@@ -1,15 +1,15 @@
 # BillingInformation
+Billing Information
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Country** | **string** |  |  |
-| **StreetLine1** | Pointer to **NullableString** |  | [optional]  |
-| **StreetLine2** | Pointer to **NullableString** |  | [optional]  |
-| **City** | Pointer to **NullableString** |  | [optional]  |
-| **ProvinceState** | Pointer to **NullableString** |  | [optional]  |
-| **PostalCode** | Pointer to **NullableString** |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Country** | **string** | ☑️ |  |  |
+| **StreetLine1** | Pointer to **NullableString** |  |  |  |
+| **StreetLine2** | Pointer to **NullableString** |  |  |  |
+| **City** | Pointer to **NullableString** |  |  |  |
+| **ProvinceState** | Pointer to **NullableString** |  |  |  |
+| **PostalCode** | Pointer to **NullableString** |  |  |  |
 
 ## Methods
 

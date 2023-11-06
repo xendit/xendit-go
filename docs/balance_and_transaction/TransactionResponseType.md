@@ -1,9 +1,9 @@
 # TransactionResponseType
+The type of the transactions.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
 
 ## Methods
 

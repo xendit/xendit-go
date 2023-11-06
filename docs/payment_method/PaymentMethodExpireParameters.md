@@ -1,11 +1,11 @@
 # PaymentMethodExpireParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **SuccessReturnUrl** | Pointer to **NullableString** | URL where the end customer is redirected if the unlinking authorization is successful. | [optional]  |
-| **FailureReturnUrl** | Pointer to **NullableString** | URL where the end customer is redirected if the unlinking authorization is failed. | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **SuccessReturnUrl** | Pointer to **NullableString** |  | URL where the end customer is redirected if the unlinking authorization is successful. |  |
+| **FailureReturnUrl** | Pointer to **NullableString** |  | URL where the end customer is redirected if the unlinking authorization is failed. |  |
 
 ## Methods
 

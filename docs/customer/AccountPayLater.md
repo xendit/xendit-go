@@ -1,12 +1,12 @@
 # AccountPayLater
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AccountId** | Pointer to **string** | Alphanumeric string identifying this account. Usually an email address or phone number. | [optional]  |
-| **AccountHolderName** | Pointer to **NullableString** | Name of account holder as per the cardless credit account. | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AccountId** | Pointer to **string** |  | Alphanumeric string identifying this account. Usually an email address or phone number. |  |
+| **AccountHolderName** | Pointer to **NullableString** |  | Name of account holder as per the cardless credit account. |  |
+| **Currency** | Pointer to **string** |  |  |  |
 
 ## Methods
 

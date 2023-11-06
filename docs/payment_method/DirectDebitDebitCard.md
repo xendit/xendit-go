@@ -1,13 +1,14 @@
 # DirectDebitDebitCard
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional]  |
-| **CardLastFour** | Pointer to **NullableString** | Last four digits of the debit card | [optional]  |
-| **CardExpiry** | Pointer to **NullableString** | Expiry month and year of the debit card (in MM/YY format) | [optional]  |
-| **Email** | Pointer to **NullableString** | Email address of the customer that is registered to the partner channel | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **MobileNumber** | Pointer to **NullableString** |  | Mobile number of the customer registered to the partner channel |  |
+| **CardLastFour** | Pointer to **NullableString** |  | Last four digits of the debit card |  |
+| **CardExpiry** | Pointer to **NullableString** |  | Expiry month and year of the debit card (in MM/YY format) |  |
+| **Email** | Pointer to **NullableString** |  | Email address of the customer that is registered to the partner channel |  |
+| **AccountNumber** | Pointer to **NullableString** |  | Account number of the customer |  |
 
 ## Methods
 
@@ -168,6 +169,41 @@ HasEmail returns a boolean if a field has been set.
 `func (o *DirectDebitDebitCard) UnsetEmail()`
 
 UnsetEmail ensures that no value is present for Email, not even an explicit nil
+### GetAccountNumber
+
+`func (o *DirectDebitDebitCard) GetAccountNumber() string`
+
+GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
+
+### GetAccountNumberOk
+
+`func (o *DirectDebitDebitCard) GetAccountNumberOk() (*string, bool)`
+
+GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountNumber
+
+`func (o *DirectDebitDebitCard) SetAccountNumber(v string)`
+
+SetAccountNumber sets AccountNumber field to given value.
+
+### HasAccountNumber
+
+`func (o *DirectDebitDebitCard) HasAccountNumber() bool`
+
+HasAccountNumber returns a boolean if a field has been set.
+
+### SetAccountNumberNil
+
+`func (o *DirectDebitDebitCard) SetAccountNumberNil(b bool)`
+
+ SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
+
+### UnsetAccountNumber
+`func (o *DirectDebitDebitCard) UnsetAccountNumber()`
+
+UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
 
 [[Back to README]](../../README.md)
 

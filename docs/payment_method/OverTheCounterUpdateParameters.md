@@ -1,11 +1,11 @@
 # OverTheCounterUpdateParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **ChannelProperties** | Pointer to [**OverTheCounterChannelPropertiesUpdate**](OverTheCounterChannelPropertiesUpdate.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Amount** | Pointer to **NullableFloat64** |  |  |  |
+| **ChannelProperties** | Pointer to [**OverTheCounterChannelPropertiesUpdate**](OverTheCounterChannelPropertiesUpdate.md) |  |  |  |
 
 ## Methods
 

@@ -1,11 +1,11 @@
 # CaptureParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ReferenceId** | Pointer to **NullableString** |  | [optional]  |
-| **CaptureAmount** | **float64** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ReferenceId** | Pointer to **NullableString** |  |  |  |
+| **CaptureAmount** | **float64** | ☑️ |  |  |
 
 ## Methods
 

@@ -1,14 +1,14 @@
 # DirectDebit
+Direct Debit Payment Method Details
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ChannelCode** | [**DirectDebitChannelCode**](DirectDebitChannelCode.md) |  |  |
-| **ChannelProperties** | [**NullableDirectDebitChannelProperties**](DirectDebitChannelProperties.md) |  |  |
-| **Type** | [**DirectDebitType**](DirectDebitType.md) |  |  |
-| **BankAccount** | Pointer to [**NullableDirectDebitBankAccount**](DirectDebitBankAccount.md) |  | [optional]  |
-| **DebitCard** | Pointer to [**NullableDirectDebitDebitCard**](DirectDebitDebitCard.md) |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ChannelCode** | [**DirectDebitChannelCode**](DirectDebitChannelCode.md) | ☑️ |  |  |
+| **ChannelProperties** | [**NullableDirectDebitChannelProperties**](DirectDebitChannelProperties.md) | ☑️ |  |  |
+| **Type** | [**DirectDebitType**](DirectDebitType.md) | ☑️ |  |  |
+| **BankAccount** | Pointer to [**NullableDirectDebitBankAccount**](DirectDebitBankAccount.md) |  |  |  |
+| **DebitCard** | Pointer to [**NullableDirectDebitDebitCard**](DirectDebitDebitCard.md) |  |  |  |
 
 ## Methods
 

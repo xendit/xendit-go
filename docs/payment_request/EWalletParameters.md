@@ -1,11 +1,11 @@
 # EWalletParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ChannelCode** | Pointer to [**EWalletChannelCode**](EWalletChannelCode.md) |  | [optional]  |
-| **ChannelProperties** | Pointer to [**EWalletChannelProperties**](EWalletChannelProperties.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ChannelCode** | Pointer to [**EWalletChannelCode**](EWalletChannelCode.md) |  |  |  |
+| **ChannelProperties** | Pointer to [**EWalletChannelProperties**](EWalletChannelProperties.md) |  |  |  |
 
 ## Methods
 

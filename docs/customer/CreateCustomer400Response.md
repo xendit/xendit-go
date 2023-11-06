@@ -1,12 +1,12 @@
 # CreateCustomer400Response
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ErrorCode** | **string** |  |  |
-| **Message** | **interface{}** |  |  |
-| **Errors** | Pointer to **map[string]interface{}[]** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ErrorCode** | **string** | ☑️ |  |  |
+| **Message** | **interface{}** | ☑️ |  |  |
+| **Errors** | Pointer to **map[string]interface{}[]** |  |  |  |
 
 ## Methods
 

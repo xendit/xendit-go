@@ -1,12 +1,12 @@
 # DigitalPayoutChannelProperties
+Channel information for digital destinations (banks, e-wallets)
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AccountHolderName** | Pointer to **NullableString** | Registered account name | [optional]  |
-| **AccountNumber** | **string** | Registered account number |  |
-| **AccountType** | Pointer to [**ChannelAccountType**](ChannelAccountType.md) |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AccountHolderName** | Pointer to **NullableString** |  | Registered account name |  |
+| **AccountNumber** | **string** | ☑️ | Registered account number |  |
+| **AccountType** | Pointer to [**ChannelAccountType**](ChannelAccountType.md) |  |  |  |
 
 ## Methods
 

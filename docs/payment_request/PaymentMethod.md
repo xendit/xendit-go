@@ -1,24 +1,24 @@
 # PaymentMethod
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | **string** |  |  |
-| **Type** | [**PaymentMethodType**](PaymentMethodType.md) |  |  |
-| **Created** | Pointer to **string** |  | [optional]  |
-| **Updated** | Pointer to **string** |  | [optional]  |
-| **Description** | Pointer to **NullableString** |  | [optional]  |
-| **ReferenceId** | Pointer to **string** |  | [optional]  |
-| **Card** | Pointer to [**NullableCard**](Card.md) |  | [optional]  |
-| **DirectDebit** | Pointer to [**NullableDirectDebit**](DirectDebit.md) |  | [optional]  |
-| **Ewallet** | Pointer to [**NullableEWallet**](EWallet.md) |  | [optional]  |
-| **OverTheCounter** | Pointer to [**NullableOverTheCounter**](OverTheCounter.md) |  | [optional]  |
-| **VirtualAccount** | Pointer to [**NullableVirtualAccount**](VirtualAccount.md) |  | [optional]  |
-| **QrCode** | Pointer to [**NullableQRCode**](QRCode.md) |  | [optional]  |
-| **Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) |  |  |
-| **Status** | [**PaymentMethodStatus**](PaymentMethodStatus.md) |  |  |
-| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | **string** | ☑️ |  |  |
+| **Type** | [**PaymentMethodType**](PaymentMethodType.md) | ☑️ |  |  |
+| **Created** | Pointer to **string** |  |  |  |
+| **Updated** | Pointer to **string** |  |  |  |
+| **Description** | Pointer to **NullableString** |  |  |  |
+| **ReferenceId** | Pointer to **string** |  |  |  |
+| **Card** | Pointer to [**NullableCard**](Card.md) |  |  |  |
+| **DirectDebit** | Pointer to [**NullableDirectDebit**](DirectDebit.md) |  |  |  |
+| **Ewallet** | Pointer to [**NullableEWallet**](EWallet.md) |  |  |  |
+| **OverTheCounter** | Pointer to [**NullableOverTheCounter**](OverTheCounter.md) |  |  |  |
+| **VirtualAccount** | Pointer to [**NullableVirtualAccount**](VirtualAccount.md) |  |  |  |
+| **QrCode** | Pointer to [**NullableQRCode**](QRCode.md) |  |  |  |
+| **Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) | ☑️ |  |  |
+| **Status** | [**PaymentMethodStatus**](PaymentMethodStatus.md) | ☑️ |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
 
 ## Methods
 

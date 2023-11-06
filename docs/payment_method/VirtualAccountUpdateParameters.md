@@ -1,14 +1,14 @@
 # VirtualAccountUpdateParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **MinAmount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **MaxAmount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **ChannelProperties** | Pointer to [**VirtualAccountChannelPropertiesPatch**](VirtualAccountChannelPropertiesPatch.md) |  | [optional]  |
-| **AlternativeDisplayTypes** | Pointer to **string[]** | For payments in Vietnam only, alternative display requested for the virtual account | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Amount** | Pointer to **NullableFloat64** |  |  |  |
+| **MinAmount** | Pointer to **NullableFloat64** |  |  |  |
+| **MaxAmount** | Pointer to **NullableFloat64** |  |  |  |
+| **ChannelProperties** | Pointer to [**VirtualAccountChannelPropertiesPatch**](VirtualAccountChannelPropertiesPatch.md) |  |  |  |
+| **AlternativeDisplayTypes** | Pointer to **string[]** |  | For payments in Vietnam only, alternative display requested for the virtual account |  |
 
 ## Methods
 

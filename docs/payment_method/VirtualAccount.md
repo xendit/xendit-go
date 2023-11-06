@@ -1,17 +1,17 @@
 # VirtualAccount
+Virtual Account Payment Method Details
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **MinAmount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **MaxAmount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
-| **ChannelCode** | [**VirtualAccountChannelCode**](VirtualAccountChannelCode.md) |  |  |
-| **ChannelProperties** | [**VirtualAccountChannelProperties**](VirtualAccountChannelProperties.md) |  |  |
-| **AlternativeDisplayTypes** | Pointer to **string[]** | For payments in Vietnam only, alternative display requested for the virtual account | [optional]  |
-| **AlternativeDisplays** | Pointer to [**VirtualAccountAlternativeDisplay[]**](VirtualAccountAlternativeDisplay.md) |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Amount** | Pointer to **NullableFloat64** |  |  |  |
+| **MinAmount** | Pointer to **NullableFloat64** |  |  |  |
+| **MaxAmount** | Pointer to **NullableFloat64** |  |  |  |
+| **Currency** | Pointer to **string** |  |  |  |
+| **ChannelCode** | [**VirtualAccountChannelCode**](VirtualAccountChannelCode.md) | ☑️ |  |  |
+| **ChannelProperties** | [**VirtualAccountChannelProperties**](VirtualAccountChannelProperties.md) | ☑️ |  |  |
+| **AlternativeDisplayTypes** | Pointer to **string[]** |  | For payments in Vietnam only, alternative display requested for the virtual account |  |
+| **AlternativeDisplays** | Pointer to [**VirtualAccountAlternativeDisplay[]**](VirtualAccountAlternativeDisplay.md) |  |  |  |
 
 ## Methods
 

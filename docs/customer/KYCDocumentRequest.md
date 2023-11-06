@@ -1,17 +1,17 @@
 # KYCDocumentRequest
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Country** | Pointer to **NullableString** | ISO3166-2 country code | [optional]  |
-| **Type** | Pointer to [**KYCDocumentType**](KYCDocumentType.md) |  | [optional]  |
-| **SubType** | Pointer to [**NullableKYCDocumentSubType**](KYCDocumentSubType.md) |  | [optional]  |
-| **DocumentName** | Pointer to **string** |  | [optional]  |
-| **DocumentNumber** | Pointer to **string** |  | [optional]  |
-| **ExpiresAt** | Pointer to **string** |  | [optional]  |
-| **HolderName** | Pointer to **string** |  | [optional]  |
-| **DocumentImages** | Pointer to **string[]** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Country** | Pointer to **NullableString** |  | ISO3166-2 country code |  |
+| **Type** | Pointer to [**KYCDocumentType**](KYCDocumentType.md) |  |  |  |
+| **SubType** | Pointer to [**NullableKYCDocumentSubType**](KYCDocumentSubType.md) |  |  |  |
+| **DocumentName** | Pointer to **string** |  |  |  |
+| **DocumentNumber** | Pointer to **string** |  |  |  |
+| **ExpiresAt** | Pointer to **string** |  |  |  |
+| **HolderName** | Pointer to **string** |  |  |  |
+| **DocumentImages** | Pointer to **string[]** |  |  |  |
 
 ## Methods
 

@@ -1,13 +1,13 @@
 # DirectDebitBankAccount
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **MaskedBankAccountNumber** | Pointer to **NullableString** |  | [optional]  |
-| **BankAccountHash** | Pointer to **NullableString** |  | [optional]  |
-| **MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional]  |
-| **IdentityDocumentNumber** | Pointer to **NullableString** | Identity number of the customer registered to the partner channel | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **MaskedBankAccountNumber** | Pointer to **NullableString** |  |  |  |
+| **BankAccountHash** | Pointer to **NullableString** |  |  |  |
+| **MobileNumber** | Pointer to **NullableString** |  | Mobile number of the customer registered to the partner channel |  |
+| **IdentityDocumentNumber** | Pointer to **NullableString** |  | Identity number of the customer registered to the partner channel |  |
 
 ## Methods
 

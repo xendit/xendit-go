@@ -1,17 +1,17 @@
 # CreatePayoutRequest
+Information needed by Xendit to send money to the destination channel provided
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ReferenceId** | **string** | A client defined payout identifier |  |
-| **ChannelCode** | **string** | Channel code of selected destination bank or e-wallet |  |
-| **ChannelProperties** | [**DigitalPayoutChannelProperties**](DigitalPayoutChannelProperties.md) |  |  |
-| **Amount** | **float32** | Amount to be sent to the destination account and should be a multiple of the minimum increment for the selected channel |  |
-| **Description** | Pointer to **string** | Description to send with the payout, the recipient may see this e.g., in their bank statement (if supported) or in email receipts we send on your behalf | [optional]  |
-| **Currency** | **string** | Currency of the destination channel using ISO-4217 currency code |  |
-| **ReceiptNotification** | Pointer to [**ReceiptNotification**](ReceiptNotification.md) |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** | Object of additional information you may use | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ReferenceId** | **string** | ☑️ | A client defined payout identifier |  |
+| **ChannelCode** | **string** | ☑️ | Channel code of selected destination bank or e-wallet |  |
+| **ChannelProperties** | [**DigitalPayoutChannelProperties**](DigitalPayoutChannelProperties.md) | ☑️ |  |  |
+| **Amount** | **float32** | ☑️ | Amount to be sent to the destination account and should be a multiple of the minimum increment for the selected channel |  |
+| **Description** | Pointer to **string** |  | Description to send with the payout, the recipient may see this e.g., in their bank statement (if supported) or in email receipts we send on your behalf |  |
+| **Currency** | **string** | ☑️ | Currency of the destination channel using ISO-4217 currency code |  |
+| **ReceiptNotification** | Pointer to [**ReceiptNotification**](ReceiptNotification.md) |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | Object of additional information you may use |  |
 
 ## Methods
 

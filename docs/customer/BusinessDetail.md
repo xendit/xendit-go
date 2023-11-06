@@ -1,14 +1,14 @@
 # BusinessDetail
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **BusinessName** | Pointer to **string** |  | [optional]  |
-| **BusinessType** | Pointer to **NullableString** |  | [optional]  |
-| **DateOfRegistration** | Pointer to **NullableString** |  | [optional]  |
-| **NatureOfBusiness** | Pointer to **NullableString** |  | [optional]  |
-| **BusinessDomicile** | Pointer to **NullableString** | ISO3166-2 country code | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **BusinessName** | Pointer to **string** |  |  |  |
+| **BusinessType** | Pointer to **NullableString** |  |  |  |
+| **DateOfRegistration** | Pointer to **NullableString** |  |  |  |
+| **NatureOfBusiness** | Pointer to **NullableString** |  |  |  |
+| **BusinessDomicile** | Pointer to **NullableString** |  | ISO3166-2 country code |  |
 
 ## Methods
 

@@ -1,19 +1,19 @@
 # AddressRequest
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Category** | Pointer to **string** | Home, work or provincial | [optional]  |
-| **CountryCode** | Pointer to **NullableString** | ISO3166-2 country code | [optional]  |
-| **ProvinceState** | Pointer to **string** |  | [optional]  |
-| **City** | Pointer to **string** |  | [optional]  |
-| **Suburb** | Pointer to **string** |  | [optional]  |
-| **PostalCode** | Pointer to **string** |  | [optional]  |
-| **Line1** | Pointer to **string** |  | [optional]  |
-| **Line2** | Pointer to **string** |  | [optional]  |
-| **Status** | Pointer to [**NullableAddressStatus**](AddressStatus.md) |  | [optional]  |
-| **IsPrimary** | Pointer to **bool** |  | [optional] [default to false] |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Category** | Pointer to **string** |  | Home, work or provincial |  |
+| **CountryCode** | Pointer to **NullableString** |  | ISO3166-2 country code |  |
+| **ProvinceState** | Pointer to **string** |  |  |  |
+| **City** | Pointer to **string** |  |  |  |
+| **Suburb** | Pointer to **string** |  |  |  |
+| **PostalCode** | Pointer to **string** |  |  |  |
+| **Line1** | Pointer to **string** |  |  |  |
+| **Line2** | Pointer to **string** |  |  |  |
+| **Status** | Pointer to [**NullableAddressStatus**](AddressStatus.md) |  |  |  |
+| **IsPrimary** | Pointer to **bool** |  |  | [false] |
 
 ## Methods
 

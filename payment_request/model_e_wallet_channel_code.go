@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.1
+API version: 1.45.1
 */
 
 
@@ -39,6 +39,7 @@ const (
 	EWALLETCHANNELCODE_LINEPAY EWalletChannelCode = "LINEPAY"
 	EWALLETCHANNELCODE_TRUEMONEY EWalletChannelCode = "TRUEMONEY"
 	EWALLETCHANNELCODE_ALIPAY EWalletChannelCode = "ALIPAY"
+	EWALLETCHANNELCODE_TOUCHANDGO EWalletChannelCode = "TOUCHANDGO"
     EWALLETCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK EWalletChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -63,6 +64,7 @@ var AllowedEWalletChannelCodeEnumValues = []EWalletChannelCode{
 	"LINEPAY",
 	"TRUEMONEY",
 	"ALIPAY",
+	"TOUCHANDGO",
     "UNKNOWN_ENUM_VALUE",
 }
 

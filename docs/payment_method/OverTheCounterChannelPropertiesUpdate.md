@@ -1,11 +1,11 @@
 # OverTheCounterChannelPropertiesUpdate
+Over The Counter Channel properties that can be updated
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **CustomerName** | Pointer to **string** | Name of customer. | [optional]  |
-| **ExpiresAt** | Pointer to **time.Time** | The time when the payment code will be expired. The minimum is 2 hours and the maximum is 9 days for 7ELEVEN. Default expired date will be 2 days from payment code generated. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **CustomerName** | Pointer to **string** |  | Name of customer. |  |
+| **ExpiresAt** | Pointer to **time.Time** |  | The time when the payment code will be expired. The minimum is 2 hours and the maximum is 9 days for 7ELEVEN. Default expired date will be 2 days from payment code generated. |  |
 
 ## Methods
 

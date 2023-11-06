@@ -1,11 +1,11 @@
 # QRCodeParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ChannelCode** | Pointer to [**NullableQRCodeChannelCode**](QRCodeChannelCode.md) |  | [optional]  |
-| **ChannelProperties** | Pointer to [**QRCodeChannelProperties**](QRCodeChannelProperties.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ChannelCode** | Pointer to [**NullableQRCodeChannelCode**](QRCodeChannelCode.md) |  |  |  |
+| **ChannelProperties** | Pointer to [**QRCodeChannelProperties**](QRCodeChannelProperties.md) |  |  |  |
 
 ## Methods
 

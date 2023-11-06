@@ -1,11 +1,11 @@
 # Paylater
+An object representing paylater details for invoices.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **PaylaterType** | [**PaylaterType**](PaylaterType.md) |  |  |
-| **ShouldExclude** | Pointer to **bool** | Indicates whether this paylater option should be excluded. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **PaylaterType** | [**PaylaterType**](PaylaterType.md) | ☑️ |  |  |
+| **ShouldExclude** | Pointer to **bool** |  | Indicates whether this paylater option should be excluded. |  |
 
 ## Methods
 

@@ -1,21 +1,60 @@
-# xendit\InvoiceApi
+# InvoiceApi
+
+
+You can use the APIs below to interface with Xendit's `InvoiceApi`.
+To start using the API, you need to configure the secret key and initiate the client instance.
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+)
+
+func main() {
+    xenditClient := xendit.NewClient("API-KEY")
+}
+```
 
 All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**CreateInvoice**](InvoiceApi.md#CreateInvoice) | **Post** /v2/invoices/ | Create an invoice |
-| [**GetInvoiceById**](InvoiceApi.md#GetInvoiceById) | **Get** /v2/invoices/{invoice_id} | Get invoice by invoice id |
-| [**GetInvoices**](InvoiceApi.md#GetInvoices) | **Get** /v2/invoices | Get all Invoices |
-| [**ExpireInvoice**](InvoiceApi.md#ExpireInvoice) | **Post** /invoices/{invoice_id}/expire! | Manually expire an invoice |
+| [**CreateInvoice**](InvoiceApi.md#createinvoice-function) | **Post** /v2/invoices/ | Create an invoice |
+| [**GetInvoiceById**](InvoiceApi.md#getinvoicebyid-function) | **Get** /v2/invoices/{invoice_id} | Get invoice by invoice id |
+| [**GetInvoices**](InvoiceApi.md#getinvoices-function) | **Get** /v2/invoices | Get all Invoices |
+| [**ExpireInvoice**](InvoiceApi.md#expireinvoice-function) | **Post** /invoices/{invoice_id}/expire! | Manually expire an invoice |
 
 
 
-## CreateInvoice
+## `CreateInvoice()` Function
 
 Create an invoice
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CreateInvoice` |
+| Path Parameters  |  [CreateInvoicePathParams](#request-parameters--CreateInvoicePathParams)	 |
+| Request Parameters  |  [CreateInvoiceRequestParams](#request-parameters--CreateInvoiceRequestParams)	 |
+| Return Type  | [**Invoice**](invoice/Invoice.md) |
+
+### Path Parameters - CreateInvoicePathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - CreateInvoiceRequestParams
+
+Parameters that are passed through a pointer to a apiCreateInvoiceRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **createInvoiceRequest** |[**CreateInvoiceRequest**](invoice/CreateInvoiceRequest.md)| ☑️ |  | 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -55,38 +94,35 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateInvoiceRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **createInvoiceRequest** |[**CreateInvoiceRequest**](invoice/CreateInvoiceRequest.md)|  |  | 
-|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
-
-### Return type
-
-[**Invoice**](invoice/Invoice.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetInvoiceById
+## `GetInvoiceById()` Function
 
 Get invoice by invoice id
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetInvoiceById` |
+| Path Parameters  |  [GetInvoiceByIdPathParams](#request-parameters--GetInvoiceByIdPathParams)	 |
+| Request Parameters  |  [GetInvoiceByIdRequestParams](#request-parameters--GetInvoiceByIdRequestParams)	 |
+| Return Type  | [**Invoice**](invoice/Invoice.md) |
+
+### Path Parameters - GetInvoiceByIdPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **invoiceId** | **string** | Invoice ID | ☑️ |  | 
+
+### Request Parameters - GetInvoiceByIdRequestParams
+
+Parameters that are passed through a pointer to a apiGetInvoiceByIdRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -126,42 +162,44 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **invoiceId** | **string** | Invoice ID |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetInvoiceByIdRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
-
-### Return type
-
-[**Invoice**](invoice/Invoice.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetInvoices
+## `GetInvoices()` Function
 
 Get all Invoices
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetInvoices` |
+| Path Parameters  |  [GetInvoicesPathParams](#request-parameters--GetInvoicesPathParams)	 |
+| Request Parameters  |  [GetInvoicesRequestParams](#request-parameters--GetInvoicesRequestParams)	 |
+| Return Type  | [**[]Invoice**](invoice/Invoice.md) |
+
+### Path Parameters - GetInvoicesPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - GetInvoicesRequestParams
+
+Parameters that are passed through a pointer to a apiGetInvoicesRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **forUserId** |**string**|  |  | 
+|  **externalId** |**string**|  |  | 
+|  **statuses** |[**InvoiceStatus[]**](invoice/InvoiceStatus.md)|  |  | 
+|  **limit** |**float32**|  |  | 
+|  **createdAfter** |**time.Time**|  |  | 
+|  **createdBefore** |**time.Time**|  |  | 
+|  **paidAfter** |**time.Time**|  |  | 
+|  **paidBefore** |**time.Time**|  |  | 
+|  **expiredAfter** |**time.Time**|  |  | 
+|  **expiredBefore** |**time.Time**|  |  | 
+|  **lastInvoice** |**string**|  |  | 
+|  **clientTypes** |[**InvoiceClientType[]**](invoice/InvoiceClientType.md)|  |  | 
+|  **paymentChannels** |**string[]**|  |  | 
+|  **onDemandLink** |**string**|  |  | 
+|  **recurringPaymentId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -170,7 +208,7 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
+        "time"
     xendit "github.com/xendit/xendit-go/v3"
     invoice "github.com/xendit/xendit-go/v3/invoice"
 )
@@ -241,51 +279,35 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetInvoicesRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
-|  **externalId** |**string**|  |  | 
-|  **statuses** |[**InvoiceStatus[]**](invoice/InvoiceStatus.md)|  |  | 
-|  **limit** |**float32**|  |  | 
-|  **createdAfter** |**time.Time**|  |  | 
-|  **createdBefore** |**time.Time**|  |  | 
-|  **paidAfter** |**time.Time**|  |  | 
-|  **paidBefore** |**time.Time**|  |  | 
-|  **expiredAfter** |**time.Time**|  |  | 
-|  **expiredBefore** |**time.Time**|  |  | 
-|  **lastInvoice** |**string**|  |  | 
-|  **clientTypes** |[**InvoiceClientType[]**](invoice/InvoiceClientType.md)|  |  | 
-|  **paymentChannels** |**string[]**|  |  | 
-|  **onDemandLink** |**string**|  |  | 
-|  **recurringPaymentId** |**string**|  |  | 
-
-### Return type
-
-[**[]Invoice**](invoice/Invoice.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## ExpireInvoice
+## `ExpireInvoice()` Function
 
 Manually expire an invoice
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `ExpireInvoice` |
+| Path Parameters  |  [ExpireInvoicePathParams](#request-parameters--ExpireInvoicePathParams)	 |
+| Request Parameters  |  [ExpireInvoiceRequestParams](#request-parameters--ExpireInvoiceRequestParams)	 |
+| Return Type  | [**Invoice**](invoice/Invoice.md) |
+
+### Path Parameters - ExpireInvoicePathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **invoiceId** | **string** | Invoice ID to be expired | ☑️ |  | 
+
+### Request Parameters - ExpireInvoiceRequestParams
+
+Parameters that are passed through a pointer to a apiExpireInvoiceRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -325,33 +347,4 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **invoiceId** | **string** | Invoice ID to be expired |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiExpireInvoiceRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| Business ID of the sub-account merchant (XP feature) |  | 
-
-### Return type
-
-[**Invoice**](invoice/Invoice.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
 [[Back to README]](../README.md)
-

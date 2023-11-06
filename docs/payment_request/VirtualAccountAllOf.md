@@ -1,10 +1,10 @@
 # VirtualAccountAllOf
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AlternativeDisplays** | Pointer to [**VirtualAccountAlternativeDisplay[]**](VirtualAccountAlternativeDisplay.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AlternativeDisplays** | Pointer to [**VirtualAccountAlternativeDisplay[]**](VirtualAccountAlternativeDisplay.md) |  |  |  |
 
 ## Methods
 

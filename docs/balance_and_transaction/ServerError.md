@@ -1,12 +1,12 @@
 # ServerError
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **StatusCode** | **float32** |  |  |
-| **Error** | **string** |  |  |
-| **Message** | **string** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **StatusCode** | **float32** | ☑️ |  |  |
+| **Error** | **string** | ☑️ |  |  |
+| **Message** | **string** | ☑️ |  |  |
 
 ## Methods
 

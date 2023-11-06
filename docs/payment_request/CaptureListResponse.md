@@ -1,11 +1,11 @@
 # CaptureListResponse
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Data** | [**Capture[]**](Capture.md) |  |  |
-| **HasMore** | **bool** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Data** | [**Capture[]**](Capture.md) | ☑️ |  |  |
+| **HasMore** | **bool** | ☑️ |  |  |
 
 ## Methods
 

@@ -1,20 +1,60 @@
-# xendit\BalanceApi
+# BalanceApi
+
+
+You can use the APIs below to interface with Xendit's `BalanceApi`.
+To start using the API, you need to configure the secret key and initiate the client instance.
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+)
+
+func main() {
+    xenditClient := xendit.NewClient("API-KEY")
+}
+```
 
 All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**GetBalance**](BalanceApi.md#GetBalance) | **Get** /balance | Retrieves balances for a business, default to CASH type |
+| [**GetBalance**](BalanceApi.md#getbalance-function) | **Get** /balance | Retrieves balances for a business, default to CASH type |
 
 
 
-## GetBalance
+## `GetBalance()` Function
 
 Retrieves balances for a business, default to CASH type
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetBalance` |
+| Path Parameters  |  [GetBalancePathParams](#request-parameters--GetBalancePathParams)	 |
+| Request Parameters  |  [GetBalanceRequestParams](#request-parameters--GetBalanceRequestParams)	 |
+| Return Type  | [**Balance**](balance_and_transaction/Balance.md) |
+
+### Path Parameters - GetBalancePathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - GetBalanceRequestParams
+
+Parameters that are passed through a pointer to a apiGetBalanceRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **accountType** |**string**|  | [&quot;CASH&quot;] | 
+|  **currency** |**string**|  |  | 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -62,30 +102,4 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetBalanceRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **accountType** |**string**| The selected balance type | [default to &quot;CASH&quot;] | 
-|  **currency** |**string**| Currency for filter for customers with multi currency accounts |  | 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information |  | 
-
-### Return type
-
-[**Balance**](balance_and_transaction/Balance.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
 [[Back to README]](../README.md)
-

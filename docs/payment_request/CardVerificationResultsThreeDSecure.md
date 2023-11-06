@@ -1,14 +1,14 @@
 # CardVerificationResultsThreeDSecure
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ThreeDSecureFlow** | Pointer to **NullableString** |  | [optional]  |
-| **EciCode** | Pointer to **NullableString** |  | [optional]  |
-| **ThreeDSecureResult** | Pointer to **NullableString** |  | [optional]  |
-| **ThreeDSecureResultReason** | Pointer to **NullableString** |  | [optional]  |
-| **ThreeDSecureVersion** | Pointer to **NullableString** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ThreeDSecureFlow** | Pointer to **NullableString** |  |  |  |
+| **EciCode** | Pointer to **NullableString** |  |  |  |
+| **ThreeDSecureResult** | Pointer to **NullableString** |  |  |  |
+| **ThreeDSecureResultReason** | Pointer to **NullableString** |  |  |  |
+| **ThreeDSecureVersion** | Pointer to **NullableString** |  |  |  |
 
 ## Methods
 

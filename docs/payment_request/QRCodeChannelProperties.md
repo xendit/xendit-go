@@ -1,11 +1,11 @@
 # QRCodeChannelProperties
+QR Code Channel Properties
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **QrString** | Pointer to **string** |  | [optional]  |
-| **ExpiresAt** | Pointer to **time.Time** |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **QrString** | Pointer to **string** |  |  |  |
+| **ExpiresAt** | Pointer to **time.Time** |  |  |  |
 
 ## Methods
 

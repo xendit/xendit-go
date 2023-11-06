@@ -1,12 +1,12 @@
 # DirectDebitChannelPropertiesBankRedirect
+Direct Debit Bank Account Channel Properties
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **MobileNumber** | Pointer to **string** | Mobile number of the customer that is registered to channel | [optional]  |
-| **SuccessReturnUrl** | Pointer to **string** |  | [optional]  |
-| **FailureReturnUrl** | Pointer to **string** |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **MobileNumber** | Pointer to **string** |  | Mobile number of the customer that is registered to channel |  |
+| **SuccessReturnUrl** | Pointer to **string** |  |  |  |
+| **FailureReturnUrl** | Pointer to **string** |  |  |  |
 
 ## Methods
 

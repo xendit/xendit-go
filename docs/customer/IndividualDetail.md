@@ -1,20 +1,20 @@
 # IndividualDetail
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **GivenNames** | Pointer to **string** |  | [optional]  |
-| **GivenNamesNonRoman** | Pointer to **NullableString** |  | [optional]  |
-| **MiddleName** | Pointer to **NullableString** |  | [optional]  |
-| **Surname** | Pointer to **NullableString** |  | [optional]  |
-| **SurnameNonRoman** | Pointer to **NullableString** |  | [optional]  |
-| **MotherMaidenName** | Pointer to **NullableString** |  | [optional]  |
-| **Gender** | Pointer to **NullableString** |  | [optional]  |
-| **DateOfBirth** | Pointer to **NullableString** |  | [optional]  |
-| **Nationality** | Pointer to **NullableString** | ISO3166-2 country code | [optional]  |
-| **PlaceOfBirth** | Pointer to **NullableString** |  | [optional]  |
-| **Employment** | Pointer to [**NullableEmploymentDetail**](EmploymentDetail.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **GivenNames** | Pointer to **string** |  |  |  |
+| **GivenNamesNonRoman** | Pointer to **NullableString** |  |  |  |
+| **MiddleName** | Pointer to **NullableString** |  |  |  |
+| **Surname** | Pointer to **NullableString** |  |  |  |
+| **SurnameNonRoman** | Pointer to **NullableString** |  |  |  |
+| **MotherMaidenName** | Pointer to **NullableString** |  |  |  |
+| **Gender** | Pointer to **NullableString** |  |  |  |
+| **DateOfBirth** | Pointer to **NullableString** |  |  |  |
+| **Nationality** | Pointer to **NullableString** |  | ISO3166-2 country code |  |
+| **PlaceOfBirth** | Pointer to **NullableString** |  |  |  |
+| **Employment** | Pointer to [**NullableEmploymentDetail**](EmploymentDetail.md) |  |  |  |
 
 ## Methods
 

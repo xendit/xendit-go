@@ -1,14 +1,14 @@
 # PaymentRequestCardVerificationResultsThreeDeeSecure
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ThreeDSecureFlow** | Pointer to **string** |  | [optional]  |
-| **EciCode** | Pointer to **string** |  | [optional]  |
-| **ThreeDSecureResult** | Pointer to **string** |  | [optional]  |
-| **ThreeDSecureResultReason** | Pointer to **NullableString** |  | [optional]  |
-| **ThreeDSecureVersion** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ThreeDSecureFlow** | Pointer to **string** |  |  |  |
+| **EciCode** | Pointer to **string** |  |  |  |
+| **ThreeDSecureResult** | Pointer to **string** |  |  |  |
+| **ThreeDSecureResultReason** | Pointer to **NullableString** |  |  |  |
+| **ThreeDSecureVersion** | Pointer to **string** |  |  |  |
 
 ## Methods
 

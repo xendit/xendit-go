@@ -1,11 +1,11 @@
 # ServerError
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ErrorCode** | **string** |  |  |
-| **Message** | **string** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ErrorCode** | **string** | ☑️ |  |  |
+| **Message** | **string** | ☑️ |  |  |
 
 ## Methods
 

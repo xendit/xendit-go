@@ -1,12 +1,12 @@
 # AccountEwallet
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AccountNumber** | Pointer to **string** | Unique account identifier as per the bank records. | [optional]  |
-| **AccountHolderName** | Pointer to **NullableString** | Name of account holder as per the bank records. Needs to match the registered account name exactly. | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AccountNumber** | Pointer to **string** |  | Unique account identifier as per the bank records. |  |
+| **AccountHolderName** | Pointer to **NullableString** |  | Name of account holder as per the bank records. Needs to match the registered account name exactly. |  |
+| **Currency** | Pointer to **string** |  |  |  |
 
 ## Methods
 

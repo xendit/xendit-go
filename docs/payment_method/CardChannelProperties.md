@@ -1,13 +1,13 @@
 # CardChannelProperties
+Card Channel Properties
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **SkipThreeDSecure** | Pointer to **NullableBool** | This field value is only being used for reusability &#x3D; MULTIPLE_USE. To indicate whether to perform 3DS during the linking phase. Defaults to false. | [optional]  |
-| **SuccessReturnUrl** | Pointer to **NullableString** | URL where the end-customer is redirected if the authorization is successful | [optional]  |
-| **FailureReturnUrl** | Pointer to **NullableString** | URL where the end-customer is redirected if the authorization failed | [optional]  |
-| **CardonfileType** | Pointer to **NullableString** | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **SkipThreeDSecure** | Pointer to **NullableBool** |  | This field value is only being used for reusability &#x3D; MULTIPLE_USE. To indicate whether to perform 3DS during the linking phase. Defaults to false. |  |
+| **SuccessReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization is successful |  |
+| **FailureReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization failed |  |
+| **CardonfileType** | Pointer to **NullableString** |  | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. |  |
 
 ## Methods
 

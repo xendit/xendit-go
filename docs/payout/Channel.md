@@ -1,14 +1,14 @@
 # Channel
+Channel information where you can send the money to
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ChannelCode** | **string** | Destination channel to send the money to, prefixed by ISO-3166 country code |  |
-| **ChannelCategory** | [**ChannelCategory**](ChannelCategory.md) |  |  |
-| **Currency** | **string** | Currency of the destination channel using ISO-4217 currency code |  |
-| **ChannelName** | **string** | Name of the destination channel |  |
-| **AmountLimits** | [**ChannelAmountLimits**](ChannelAmountLimits.md) |  |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ChannelCode** | **string** | ☑️ | Destination channel to send the money to, prefixed by ISO-3166 country code |  |
+| **ChannelCategory** | [**ChannelCategory**](ChannelCategory.md) | ☑️ |  |  |
+| **Currency** | **string** | ☑️ | Currency of the destination channel using ISO-4217 currency code |  |
+| **ChannelName** | **string** | ☑️ | Name of the destination channel |  |
+| **AmountLimits** | [**ChannelAmountLimits**](ChannelAmountLimits.md) | ☑️ |  |  |
 
 ## Methods
 

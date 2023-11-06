@@ -1,10 +1,10 @@
 # AccountCard
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **TokenId** | Pointer to **string** | The token id returned in tokenisation | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **TokenId** | Pointer to **string** |  | The token id returned in tokenisation |  |
 
 ## Methods
 

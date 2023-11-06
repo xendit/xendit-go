@@ -1,12 +1,12 @@
 # ChannelAmountLimits
+Supported amount ranges for payouts to this channel
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Minimum** | **float32** | Lowest amount supported for a payout to this channel |  |
-| **Maximum** | **float32** | Highest amount supported for a payout to this channel |  |
-| **MinimumIncrement** | **float32** | Supported increments |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Minimum** | **float32** | ☑️ | Lowest amount supported for a payout to this channel |  |
+| **Maximum** | **float32** | ☑️ | Highest amount supported for a payout to this channel |  |
+| **MinimumIncrement** | **float32** | ☑️ | Supported increments |  |
 
 ## Methods
 

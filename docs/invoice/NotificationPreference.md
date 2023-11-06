@@ -1,13 +1,13 @@
 # NotificationPreference
+An object representing notification preferences for different invoice events.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **InvoiceCreated** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) | Notification channels for when an invoice is created. | [optional]  |
-| **InvoiceReminder** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) | Notification channels for invoice reminders. | [optional]  |
-| **InvoiceExpired** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) | Notification channels for expired invoices. | [optional]  |
-| **InvoicePaid** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) | Notification channels for when an invoice is paid. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **InvoiceCreated** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for when an invoice is created. |  |
+| **InvoiceReminder** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for invoice reminders. |  |
+| **InvoiceExpired** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for expired invoices. |  |
+| **InvoicePaid** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for when an invoice is paid. |  |
 
 ## Methods
 

@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.2
+API version: 2.91.2
 */
 
 
@@ -25,6 +25,7 @@ const (
 	PAYMENTMETHODCOUNTRY_VN PaymentMethodCountry = "VN"
 	PAYMENTMETHODCOUNTRY_TH PaymentMethodCountry = "TH"
 	PAYMENTMETHODCOUNTRY_MY PaymentMethodCountry = "MY"
+	PAYMENTMETHODCOUNTRY_US PaymentMethodCountry = "US"
     PAYMENTMETHODCOUNTRY_XENDIT_ENUM_DEFAULT_FALLBACK PaymentMethodCountry = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -35,6 +36,7 @@ var AllowedPaymentMethodCountryEnumValues = []PaymentMethodCountry{
 	"VN",
 	"TH",
 	"MY",
+	"US",
     "UNKNOWN_ENUM_VALUE",
 }
 

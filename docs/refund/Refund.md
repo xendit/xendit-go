@@ -1,21 +1,21 @@
 # Refund
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | Pointer to **string** |  | [optional]  |
-| **PaymentRequestId** | Pointer to **string** |  | [optional]  |
-| **Amount** | Pointer to **float64** |  | [optional]  |
-| **ChannelCode** | Pointer to **string** |  | [optional]  |
-| **Country** | Pointer to **string** |  | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
-| **ReferenceId** | Pointer to **NullableString** |  | [optional]  |
-| **FailureCode** | Pointer to **NullableString** |  | [optional]  |
-| **RefundFeeAmount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **Created** | Pointer to **string** |  | [optional]  |
-| **Updated** | Pointer to **string** |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | Pointer to **string** |  |  |  |
+| **PaymentRequestId** | Pointer to **string** |  |  |  |
+| **Amount** | Pointer to **float64** |  |  |  |
+| **ChannelCode** | Pointer to **string** |  |  |  |
+| **Country** | Pointer to **string** |  |  |  |
+| **Currency** | Pointer to **string** |  |  |  |
+| **ReferenceId** | Pointer to **NullableString** |  |  |  |
+| **FailureCode** | Pointer to **NullableString** |  |  |  |
+| **RefundFeeAmount** | Pointer to **NullableFloat64** |  |  |  |
+| **Created** | Pointer to **string** |  |  |  |
+| **Updated** | Pointer to **string** |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
 
 ## Methods
 

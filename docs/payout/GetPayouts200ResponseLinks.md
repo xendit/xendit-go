@@ -1,12 +1,12 @@
 # GetPayouts200ResponseLinks
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Href** | Pointer to **string** |  | [optional]  |
-| **Rel** | Pointer to **string** |  | [optional]  |
-| **Method** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Href** | Pointer to **string** |  |  |  |
+| **Rel** | Pointer to **string** |  |  |  |
+| **Method** | Pointer to **string** |  |  |  |
 
 ## Methods
 

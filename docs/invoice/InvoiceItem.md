@@ -1,15 +1,15 @@
 # InvoiceItem
+An object representing an item within an invoice.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Name** | **string** | The name of the item. |  |
-| **Price** | **float32** | The price of the item. |  |
-| **Quantity** | **float32** | The quantity of the item. Must be greater than or equal to 0. |  |
-| **ReferenceId** | Pointer to **string** | The reference ID of the item. | [optional]  |
-| **Url** | Pointer to **string** | The URL associated with the item. | [optional]  |
-| **Category** | Pointer to **string** | The category of the item. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Name** | **string** | ☑️ | The name of the item. |  |
+| **Price** | **float32** | ☑️ | The price of the item. |  |
+| **Quantity** | **float32** | ☑️ | The quantity of the item. Must be greater than or equal to 0. |  |
+| **ReferenceId** | Pointer to **string** |  | The reference ID of the item. |  |
+| **Url** | Pointer to **string** |  | The URL associated with the item. |  |
+| **Category** | Pointer to **string** |  | The category of the item. |  |
 
 ## Methods
 

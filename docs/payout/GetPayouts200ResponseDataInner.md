@@ -1,24 +1,24 @@
 # GetPayouts200ResponseDataInner
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ReferenceId** | **string** | A client defined payout identifier |  |
-| **ChannelCode** | **string** | Channel code of selected destination bank or e-wallet |  |
-| **ChannelProperties** | [**DigitalPayoutChannelProperties**](DigitalPayoutChannelProperties.md) |  |  |
-| **Amount** | **float32** | Amount to be sent to the destination account and should be a multiple of the minimum increment for the selected channel |  |
-| **Description** | Pointer to **string** | Description to send with the payout, the recipient may see this e.g., in their bank statement (if supported) or in email receipts we send on your behalf | [optional]  |
-| **Currency** | **string** | Currency of the destination channel using ISO-4217 currency code |  |
-| **ReceiptNotification** | Pointer to [**ReceiptNotification**](ReceiptNotification.md) |  | [optional]  |
-| **Metadata** | Pointer to **map[string]interface{}** | Object of additional information you may use | [optional]  |
-| **Id** | **string** | Xendit-generated unique identifier for each payout |  |
-| **Created** | **time.Time** | The time payout was created on Xendit&#39;s system, in ISO 8601 format |  |
-| **Updated** | **time.Time** | The time payout was last updated on Xendit&#39;s system, in ISO 8601 format |  |
-| **BusinessId** | **string** | Xendit Business ID |  |
-| **Status** | **string** | Status of payout |  |
-| **FailureCode** | Pointer to **string** | If the Payout failed, we include a failure code for more details on the failure. | [optional]  |
-| **EstimatedArrivalTime** | Pointer to **time.Time** | Our estimated time on to when your payout is reflected to the destination account | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ReferenceId** | **string** | ☑️ | A client defined payout identifier |  |
+| **ChannelCode** | **string** | ☑️ | Channel code of selected destination bank or e-wallet |  |
+| **ChannelProperties** | [**DigitalPayoutChannelProperties**](DigitalPayoutChannelProperties.md) | ☑️ |  |  |
+| **Amount** | **float32** | ☑️ | Amount to be sent to the destination account and should be a multiple of the minimum increment for the selected channel |  |
+| **Description** | Pointer to **string** |  | Description to send with the payout, the recipient may see this e.g., in their bank statement (if supported) or in email receipts we send on your behalf |  |
+| **Currency** | **string** | ☑️ | Currency of the destination channel using ISO-4217 currency code |  |
+| **ReceiptNotification** | Pointer to [**ReceiptNotification**](ReceiptNotification.md) |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | Object of additional information you may use |  |
+| **Id** | **string** | ☑️ | Xendit-generated unique identifier for each payout |  |
+| **Created** | **time.Time** | ☑️ | The time payout was created on Xendit&#39;s system, in ISO 8601 format |  |
+| **Updated** | **time.Time** | ☑️ | The time payout was last updated on Xendit&#39;s system, in ISO 8601 format |  |
+| **BusinessId** | **string** | ☑️ | Xendit Business ID |  |
+| **Status** | **string** | ☑️ | Status of payout |  |
+| **FailureCode** | Pointer to **string** |  | If the Payout failed, we include a failure code for more details on the failure. |  |
+| **EstimatedArrivalTime** | Pointer to **time.Time** |  | Our estimated time on to when your payout is reflected to the destination account |  |
 
 ## Methods
 

@@ -1,12 +1,12 @@
 # EmploymentDetail
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **EmployerName** | Pointer to **NullableString** | Name of employer | [optional]  |
-| **NatureOfBusiness** | Pointer to **NullableString** | Industry or nature of business | [optional]  |
-| **RoleDescription** | Pointer to **NullableString** | Occupation or title | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **EmployerName** | Pointer to **NullableString** |  | Name of employer |  |
+| **NatureOfBusiness** | Pointer to **NullableString** |  | Industry or nature of business |  |
+| **RoleDescription** | Pointer to **NullableString** |  | Occupation or title |  |
 
 ## Methods
 

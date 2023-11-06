@@ -7,8 +7,6 @@ client.go
 common/common.go
 configuration.go
 docs/RefundApi.md
-docs/header.jpg
-docs/refund.yaml
 docs/refund/CreateRefund.md
 docs/refund/CreateRefund400Response.md
 docs/refund/CreateRefund403Response.md
@@ -20,6 +18,7 @@ docs/refund/Refund.md
 docs/refund/RefundList.md
 go.mod
 go.sum
+images/header.jpg
 refund/api_refund.go
 refund/model_create_refund.go
 refund/model_create_refund_400_response.go

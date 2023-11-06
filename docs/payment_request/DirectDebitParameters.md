@@ -1,12 +1,12 @@
 # DirectDebitParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ChannelCode** | [**DirectDebitChannelCode**](DirectDebitChannelCode.md) |  |  |
-| **ChannelProperties** | [**NullableDirectDebitChannelProperties**](DirectDebitChannelProperties.md) |  |  |
-| **Type** | Pointer to [**DirectDebitType**](DirectDebitType.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ChannelCode** | [**DirectDebitChannelCode**](DirectDebitChannelCode.md) | ☑️ |  |  |
+| **ChannelProperties** | [**NullableDirectDebitChannelProperties**](DirectDebitChannelProperties.md) | ☑️ |  |  |
+| **Type** | Pointer to [**DirectDebitType**](DirectDebitType.md) |  |  |  |
 
 ## Methods
 

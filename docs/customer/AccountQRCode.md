@@ -1,10 +1,10 @@
 # AccountQRCode
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **QrString** | Pointer to **string** | String representation of the QR Code image | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **QrString** | Pointer to **string** |  | String representation of the QR Code image |  |
 
 ## Methods
 

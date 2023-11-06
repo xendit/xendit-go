@@ -1,11 +1,11 @@
 # VirtualAccountAlternativeDisplay
+Alternative Display Object
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Type** | Pointer to **string** | Type of the alternative display | [optional] [readonly]  |
-| **Data** | Pointer to **string** | Data payload of the given alternative display | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Type** | Pointer to **string** |  | Type of the alternative display |  |
+| **Data** | Pointer to **string** |  | Data payload of the given alternative display |  |
 
 ## Methods
 

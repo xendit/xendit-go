@@ -1,11 +1,11 @@
 # ErrorErrorsInner
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Path** | **string** | Precise location of the error |  |
-| **Message** | **string** | Specific description of the error |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Path** | **string** | ☑️ | Precise location of the error |  |
+| **Message** | **string** | ☑️ | Specific description of the error |  |
 
 ## Methods
 

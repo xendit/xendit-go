@@ -1,16 +1,16 @@
 # Bank
+An object representing bank details for invoices.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **BankCode** | [**BankCode**](BankCode.md) |  |  |
-| **CollectionType** | **string** | The collection type for the bank details. |  |
-| **BankBranch** | Pointer to **string** | The branch of the bank. | [optional]  |
-| **BankAccountNumber** | Pointer to **string** | The bank account number. | [optional]  |
-| **AccountHolderName** | **string** | The name of the account holder. |  |
-| **TransferAmount** | Pointer to **float32** | The transfer amount. | [optional]  |
-| **AlternativeDisplays** | Pointer to [**AlternativeDisplayItem[]**](AlternativeDisplayItem.md) |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **BankCode** | [**BankCode**](BankCode.md) | ☑️ |  |  |
+| **CollectionType** | **string** | ☑️ | The collection type for the bank details. |  |
+| **BankBranch** | Pointer to **string** |  | The branch of the bank. |  |
+| **BankAccountNumber** | Pointer to **string** |  | The bank account number. |  |
+| **AccountHolderName** | **string** | ☑️ | The name of the account holder. |  |
+| **TransferAmount** | Pointer to **float32** |  | The transfer amount. |  |
+| **AlternativeDisplays** | Pointer to [**AlternativeDisplayItem[]**](AlternativeDisplayItem.md) |  |  |  |
 
 ## Methods
 

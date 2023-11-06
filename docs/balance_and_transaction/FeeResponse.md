@@ -1,14 +1,14 @@
 # FeeResponse
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **XenditFee** | **float32** | Amount of the Xendit fee for this transaction. |  |
-| **ValueAddedTax** | **float32** | Amount of the VAT for this transaction. |  |
-| **XenditWithholdingTax** | Pointer to **float32** | Amount of the Xendit Withholding Tax for this transaction if applicable. See [Tax Documentation](https://docs.xendit.co/fees-and-vat#vat) for more information. | [optional]  |
-| **ThirdPartyWithholdingTax** | Pointer to **float32** | Amount of the 3rd Party Withholding Tax for this transaction if applicable. 3rd party example: Bank  | [optional]  |
-| **Status** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **XenditFee** | **float32** | ☑️ | Amount of the Xendit fee for this transaction. |  |
+| **ValueAddedTax** | **float32** | ☑️ | Amount of the VAT for this transaction. |  |
+| **XenditWithholdingTax** | Pointer to **float32** |  | Amount of the Xendit Withholding Tax for this transaction if applicable. See [Tax Documentation](https://docs.xendit.co/fees-and-vat#vat) for more information. |  |
+| **ThirdPartyWithholdingTax** | Pointer to **float32** |  | Amount of the 3rd Party Withholding Tax for this transaction if applicable. 3rd party example: Bank  |  |
+| **Status** | Pointer to **string** |  |  |  |
 
 ## Methods
 

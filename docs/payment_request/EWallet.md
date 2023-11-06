@@ -1,12 +1,12 @@
 # EWallet
+Ewallet Payment Method Details
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ChannelCode** | Pointer to [**EWalletChannelCode**](EWalletChannelCode.md) |  | [optional]  |
-| **ChannelProperties** | Pointer to [**EWalletChannelProperties**](EWalletChannelProperties.md) |  | [optional]  |
-| **Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ChannelCode** | Pointer to [**EWalletChannelCode**](EWalletChannelCode.md) |  |  |  |
+| **ChannelProperties** | Pointer to [**EWalletChannelProperties**](EWalletChannelProperties.md) |  |  |  |
+| **Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  |  |  |
 
 ## Methods
 

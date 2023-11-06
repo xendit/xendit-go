@@ -1,20 +1,20 @@
 # IdentityAccountRequestProperties
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AccountNumber** | Pointer to **string** | Unique account identifier as per the bank records. | [optional]  |
-| **AccountHolderName** | Pointer to **NullableString** | Name of account holder as per the cardless credit account. | [optional]  |
-| **SwiftCode** | Pointer to **NullableString** | The SWIFT code for international payments | [optional]  |
-| **AccountType** | Pointer to **NullableString** | Free text account type, e.g., Savings, Transaction, Virtual Account. | [optional]  |
-| **AccountDetails** | Pointer to **NullableString** | Potentially masked account detail, for display purposes only. | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
-| **TokenId** | Pointer to **string** | The token id returned in tokenisation | [optional]  |
-| **AccountId** | Pointer to **string** | Alphanumeric string identifying this account. Usually an email address or phone number. | [optional]  |
-| **PaymentCode** | Pointer to **string** | Complete fixed payment code (including prefix) | [optional]  |
-| **ExpiresAt** | Pointer to **NullableString** | YYYY-MM-DD string with expiry date for the payment code | [optional]  |
-| **QrString** | Pointer to **string** | String representation of the QR Code image | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AccountNumber** | Pointer to **string** |  | Unique account identifier as per the bank records. |  |
+| **AccountHolderName** | Pointer to **NullableString** |  | Name of account holder as per the cardless credit account. |  |
+| **SwiftCode** | Pointer to **NullableString** |  | The SWIFT code for international payments |  |
+| **AccountType** | Pointer to **NullableString** |  | Free text account type, e.g., Savings, Transaction, Virtual Account. |  |
+| **AccountDetails** | Pointer to **NullableString** |  | Potentially masked account detail, for display purposes only. |  |
+| **Currency** | Pointer to **string** |  |  |  |
+| **TokenId** | Pointer to **string** |  | The token id returned in tokenisation |  |
+| **AccountId** | Pointer to **string** |  | Alphanumeric string identifying this account. Usually an email address or phone number. |  |
+| **PaymentCode** | Pointer to **string** |  | Complete fixed payment code (including prefix) |  |
+| **ExpiresAt** | Pointer to **NullableString** |  | YYYY-MM-DD string with expiry date for the payment code |  |
+| **QrString** | Pointer to **string** |  | String representation of the QR Code image |  |
 
 ## Methods
 

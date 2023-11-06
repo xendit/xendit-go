@@ -1,11 +1,11 @@
 # ForbiddenError
+An error object used to indicate a 403 Forbidden response related to invoice operations.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ErrorCode** | **string** | The specific error code indicating that access to the invoice operation is suspended. |  |
-| **Message** | **string** | A human-readable error message providing additional context about the 403 Forbidden response. |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ErrorCode** | **string** | ☑️ | The specific error code indicating that access to the invoice operation is suspended. |  |
+| **Message** | **string** | ☑️ | A human-readable error message providing additional context about the 403 Forbidden response. |  |
 
 ## Methods
 

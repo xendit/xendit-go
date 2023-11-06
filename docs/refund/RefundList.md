@@ -1,11 +1,11 @@
 # RefundList
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Data** | [**Refund[]**](Refund.md) |  |  |
-| **HasMore** | Pointer to **bool** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Data** | [**Refund[]**](Refund.md) | ☑️ |  |  |
+| **HasMore** | Pointer to **bool** |  |  |  |
 
 ## Methods
 

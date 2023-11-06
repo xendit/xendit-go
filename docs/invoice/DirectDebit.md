@@ -1,10 +1,10 @@
 # DirectDebit
+An object representing direct debit details for invoices.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **DirectDebitType** | [**DirectDebitType**](DirectDebitType.md) |  |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **DirectDebitType** | [**DirectDebitType**](DirectDebitType.md) | ☑️ |  |  |
 
 ## Methods
 

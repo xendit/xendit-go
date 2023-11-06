@@ -1,11 +1,11 @@
 # GetCustomerByReferenceID200Response
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **HasMore** | Pointer to **bool** |  | [optional]  |
-| **Data** | Pointer to [**Customer[]**](Customer.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **HasMore** | Pointer to **bool** |  |  |  |
+| **Data** | Pointer to [**Customer[]**](Customer.md) |  |  |  |
 
 ## Methods
 

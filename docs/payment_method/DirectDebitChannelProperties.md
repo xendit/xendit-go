@@ -1,17 +1,18 @@
 # DirectDebitChannelProperties
+Direct Debit Channel Properties
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **SuccessReturnUrl** | Pointer to **string** |  | [optional]  |
-| **FailureReturnUrl** | Pointer to **NullableString** |  | [optional]  |
-| **MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional]  |
-| **CardLastFour** | Pointer to **NullableString** | Last four digits of the debit card | [optional]  |
-| **CardExpiry** | Pointer to **NullableString** | Expiry month and year of the debit card (in MM/YY format) | [optional]  |
-| **Email** | Pointer to **NullableString** | Email address of the customer that is registered to the partner channel | [optional]  |
-| **IdentityDocumentNumber** | Pointer to **NullableString** | Identity number of the customer registered to the partner channel | [optional]  |
-| **RequireAuth** | Pointer to **NullableBool** |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **SuccessReturnUrl** | Pointer to **string** |  |  |  |
+| **FailureReturnUrl** | Pointer to **NullableString** |  |  |  |
+| **MobileNumber** | Pointer to **NullableString** |  | Mobile number of the customer registered to the partner channel |  |
+| **CardLastFour** | Pointer to **NullableString** |  | Last four digits of the debit card |  |
+| **CardExpiry** | Pointer to **NullableString** |  | Expiry month and year of the debit card (in MM/YY format) |  |
+| **Email** | Pointer to **NullableString** |  | Email address of the customer that is registered to the partner channel |  |
+| **IdentityDocumentNumber** | Pointer to **NullableString** |  | Identity number of the customer registered to the partner channel |  |
+| **RequireAuth** | Pointer to **NullableBool** |  |  |  |
+| **AccountNumber** | Pointer to **NullableString** |  | Account number of the customer |  |
 
 ## Methods
 
@@ -302,6 +303,41 @@ HasRequireAuth returns a boolean if a field has been set.
 `func (o *DirectDebitChannelProperties) UnsetRequireAuth()`
 
 UnsetRequireAuth ensures that no value is present for RequireAuth, not even an explicit nil
+### GetAccountNumber
+
+`func (o *DirectDebitChannelProperties) GetAccountNumber() string`
+
+GetAccountNumber returns the AccountNumber field if non-nil, zero value otherwise.
+
+### GetAccountNumberOk
+
+`func (o *DirectDebitChannelProperties) GetAccountNumberOk() (*string, bool)`
+
+GetAccountNumberOk returns a tuple with the AccountNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountNumber
+
+`func (o *DirectDebitChannelProperties) SetAccountNumber(v string)`
+
+SetAccountNumber sets AccountNumber field to given value.
+
+### HasAccountNumber
+
+`func (o *DirectDebitChannelProperties) HasAccountNumber() bool`
+
+HasAccountNumber returns a boolean if a field has been set.
+
+### SetAccountNumberNil
+
+`func (o *DirectDebitChannelProperties) SetAccountNumberNil(b bool)`
+
+ SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
+
+### UnsetAccountNumber
+`func (o *DirectDebitChannelProperties) UnsetAccountNumber()`
+
+UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
 
 [[Back to README]](../../README.md)
 

@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.2
+API version: 2.91.2
 */
 
 
@@ -33,6 +33,8 @@ type DirectDebitChannelProperties struct {
 	// Identity number of the customer registered to the partner channel
 	IdentityDocumentNumber NullableString `json:"identity_document_number,omitempty"`
 	RequireAuth NullableBool `json:"require_auth,omitempty"`
+	// Account number of the customer
+	AccountNumber NullableString `json:"account_number,omitempty"`
 }
 
 // NewDirectDebitChannelProperties instantiates a new DirectDebitChannelProperties object
@@ -378,6 +380,48 @@ func (o *DirectDebitChannelProperties) UnsetRequireAuth() {
 	o.RequireAuth.Unset()
 }
 
+// GetAccountNumber returns the AccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DirectDebitChannelProperties) GetAccountNumber() string {
+	if o == nil || utils.IsNil(o.AccountNumber.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AccountNumber.Get()
+}
+
+// GetAccountNumberOk returns a tuple with the AccountNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DirectDebitChannelProperties) GetAccountNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountNumber.Get(), o.AccountNumber.IsSet()
+}
+
+// HasAccountNumber returns a boolean if a field has been set.
+func (o *DirectDebitChannelProperties) HasAccountNumber() bool {
+	if o != nil && o.AccountNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountNumber gets a reference to the given NullableString and assigns it to the AccountNumber field.
+func (o *DirectDebitChannelProperties) SetAccountNumber(v string) {
+	o.AccountNumber.Set(&v)
+}
+// SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
+func (o *DirectDebitChannelProperties) SetAccountNumberNil() {
+	o.AccountNumber.Set(nil)
+}
+
+// UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
+func (o *DirectDebitChannelProperties) UnsetAccountNumber() {
+	o.AccountNumber.Unset()
+}
+
 func (o DirectDebitChannelProperties) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -411,6 +455,9 @@ func (o DirectDebitChannelProperties) ToMap() (map[string]interface{}, error) {
     }
 	if o.RequireAuth.IsSet() {
 		toSerialize["require_auth"] = o.RequireAuth.Get()
+    }
+	if o.AccountNumber.IsSet() {
+		toSerialize["account_number"] = o.AccountNumber.Get()
     }
 	return toSerialize, nil
 }

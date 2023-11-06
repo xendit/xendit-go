@@ -1,10 +1,10 @@
 # EWalletAllOf
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Account** | Pointer to [**EWalletAccount**](EWalletAccount.md) |  |  |  |
 
 ## Methods
 

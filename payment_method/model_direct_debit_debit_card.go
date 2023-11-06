@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.2
+API version: 2.91.2
 */
 
 
@@ -28,6 +28,8 @@ type DirectDebitDebitCard struct {
 	CardExpiry NullableString `json:"card_expiry,omitempty"`
 	// Email address of the customer that is registered to the partner channel
 	Email NullableString `json:"email,omitempty"`
+	// Account number of the customer
+	AccountNumber NullableString `json:"account_number,omitempty"`
 }
 
 // NewDirectDebitDebitCard instantiates a new DirectDebitDebitCard object
@@ -215,6 +217,48 @@ func (o *DirectDebitDebitCard) UnsetEmail() {
 	o.Email.Unset()
 }
 
+// GetAccountNumber returns the AccountNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DirectDebitDebitCard) GetAccountNumber() string {
+	if o == nil || utils.IsNil(o.AccountNumber.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AccountNumber.Get()
+}
+
+// GetAccountNumberOk returns a tuple with the AccountNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DirectDebitDebitCard) GetAccountNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AccountNumber.Get(), o.AccountNumber.IsSet()
+}
+
+// HasAccountNumber returns a boolean if a field has been set.
+func (o *DirectDebitDebitCard) HasAccountNumber() bool {
+	if o != nil && o.AccountNumber.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountNumber gets a reference to the given NullableString and assigns it to the AccountNumber field.
+func (o *DirectDebitDebitCard) SetAccountNumber(v string) {
+	o.AccountNumber.Set(&v)
+}
+// SetAccountNumberNil sets the value for AccountNumber to be an explicit nil
+func (o *DirectDebitDebitCard) SetAccountNumberNil() {
+	o.AccountNumber.Set(nil)
+}
+
+// UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
+func (o *DirectDebitDebitCard) UnsetAccountNumber() {
+	o.AccountNumber.Unset()
+}
+
 func (o DirectDebitDebitCard) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -236,6 +280,9 @@ func (o DirectDebitDebitCard) ToMap() (map[string]interface{}, error) {
     }
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
+    }
+	if o.AccountNumber.IsSet() {
+		toSerialize["account_number"] = o.AccountNumber.Get()
     }
 	return toSerialize, nil
 }

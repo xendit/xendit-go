@@ -1,11 +1,11 @@
 # Error
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ErrorCode** | Pointer to **NullableString** |  | [optional]  |
-| **Message** | Pointer to **NullableString** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ErrorCode** | Pointer to **NullableString** |  |  |  |
+| **Message** | Pointer to **NullableString** |  |  |  |
 
 ## Methods
 

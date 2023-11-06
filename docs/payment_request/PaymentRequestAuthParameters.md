@@ -1,10 +1,10 @@
 # PaymentRequestAuthParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AuthCode** | **string** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AuthCode** | **string** | ☑️ |  |  |
 
 ## Methods
 

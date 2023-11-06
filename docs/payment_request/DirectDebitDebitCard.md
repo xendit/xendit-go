@@ -1,14 +1,14 @@
 # DirectDebitDebitCard
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **MobileNumber** | Pointer to **NullableString** | Mobile number of the customer registered to the partner channel | [optional]  |
-| **AccountNumber** | Pointer to **string** |  | [optional]  |
-| **CardLastFour** | Pointer to **NullableString** | Last four digits of the debit card | [optional]  |
-| **CardExpiry** | Pointer to **NullableString** | Expiry month and year of the debit card (in MM/YY format) | [optional]  |
-| **Email** | Pointer to **NullableString** | Email address of the customer that is registered to the partner channel | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **MobileNumber** | Pointer to **NullableString** |  | Mobile number of the customer registered to the partner channel |  |
+| **AccountNumber** | Pointer to **string** |  |  |  |
+| **CardLastFour** | Pointer to **NullableString** |  | Last four digits of the debit card |  |
+| **CardExpiry** | Pointer to **NullableString** |  | Expiry month and year of the debit card (in MM/YY format) |  |
+| **Email** | Pointer to **NullableString** |  | Email address of the customer that is registered to the partner channel |  |
 
 ## Methods
 

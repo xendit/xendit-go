@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.1
+API version: 1.45.1
 */
 
 
@@ -25,6 +25,7 @@ const (
 	PAYMENTREQUESTCURRENCY_VND PaymentRequestCurrency = "VND"
 	PAYMENTREQUESTCURRENCY_THB PaymentRequestCurrency = "THB"
 	PAYMENTREQUESTCURRENCY_MYR PaymentRequestCurrency = "MYR"
+	PAYMENTREQUESTCURRENCY_USD PaymentRequestCurrency = "USD"
     PAYMENTREQUESTCURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestCurrency = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -35,6 +36,7 @@ var AllowedPaymentRequestCurrencyEnumValues = []PaymentRequestCurrency{
 	"VND",
 	"THB",
 	"MYR",
+	"USD",
     "UNKNOWN_ENUM_VALUE",
 }
 

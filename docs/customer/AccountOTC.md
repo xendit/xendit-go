@@ -1,11 +1,11 @@
 # AccountOTC
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **PaymentCode** | Pointer to **string** | Complete fixed payment code (including prefix) | [optional]  |
-| **ExpiresAt** | Pointer to **NullableString** | YYYY-MM-DD string with expiry date for the payment code | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **PaymentCode** | Pointer to **string** |  | Complete fixed payment code (including prefix) |  |
+| **ExpiresAt** | Pointer to **NullableString** |  | YYYY-MM-DD string with expiry date for the payment code |  |
 
 ## Methods
 

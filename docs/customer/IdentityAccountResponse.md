@@ -1,18 +1,18 @@
 # IdentityAccountResponse
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | Pointer to **string** |  | [optional]  |
-| **Code** | Pointer to **NullableString** |  | [optional]  |
-| **Company** | **NullableString** |  |  |
-| **Description** | **NullableString** |  |  |
-| **Country** | **NullableString** | ISO3166-2 country code |  |
-| **HolderName** | Pointer to **NullableString** |  | [optional]  |
-| **Type** | **NullableString** |  |  |
-| **Properties** | [**IdentityAccountResponseProperties**](IdentityAccountResponseProperties.md) |  |  |
-| **Created** | Pointer to **time.Time** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | Pointer to **string** |  |  |  |
+| **Code** | Pointer to **NullableString** |  |  |  |
+| **Company** | **NullableString** | ☑️ |  |  |
+| **Description** | **NullableString** | ☑️ |  |  |
+| **Country** | **NullableString** | ☑️ | ISO3166-2 country code |  |
+| **HolderName** | Pointer to **NullableString** |  |  |  |
+| **Type** | **NullableString** | ☑️ |  |  |
+| **Properties** | [**IdentityAccountResponseProperties**](IdentityAccountResponseProperties.md) | ☑️ |  |  |
+| **Created** | Pointer to **time.Time** |  |  |  |
 
 ## Methods
 

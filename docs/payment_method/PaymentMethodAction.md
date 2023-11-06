@@ -1,13 +1,13 @@
 # PaymentMethodAction
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Action** | Pointer to **string** |  | [optional]  |
-| **Method** | Pointer to **string** |  | [optional]  |
-| **Url** | Pointer to **string** |  | [optional]  |
-| **UrlType** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Action** | Pointer to **string** |  |  |  |
+| **Method** | Pointer to **string** |  |  |  |
+| **Url** | Pointer to **string** |  |  |  |
+| **UrlType** | Pointer to **string** |  |  |  |
 
 ## Methods
 

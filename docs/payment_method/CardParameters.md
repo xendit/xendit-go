@@ -1,12 +1,12 @@
 # CardParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Currency** | **string** |  |  |
-| **ChannelProperties** | Pointer to [**NullableCardChannelProperties**](CardChannelProperties.md) |  | [optional]  |
-| **CardInformation** | Pointer to [**CardParametersCardInformation**](CardParametersCardInformation.md) |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Currency** | **string** | ☑️ |  |  |
+| **ChannelProperties** | Pointer to [**NullableCardChannelProperties**](CardChannelProperties.md) |  |  |  |
+| **CardInformation** | Pointer to [**CardParametersCardInformation**](CardParametersCardInformation.md) |  |  |  |
 
 ## Methods
 

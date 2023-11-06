@@ -1,17 +1,17 @@
 # KYCDocumentResponse
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Country** | **string** |  |  |
-| **Type** | [**KYCDocumentType**](KYCDocumentType.md) |  |  |
-| **SubType** | [**KYCDocumentSubType**](KYCDocumentSubType.md) |  |  |
-| **DocumentName** | **NullableString** |  |  |
-| **DocumentNumber** | **NullableString** |  |  |
-| **ExpiresAt** | **NullableString** |  |  |
-| **HolderName** | **NullableString** |  |  |
-| **DocumentImages** | **string[]** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Country** | **string** | ☑️ |  |  |
+| **Type** | [**KYCDocumentType**](KYCDocumentType.md) | ☑️ |  |  |
+| **SubType** | [**KYCDocumentSubType**](KYCDocumentSubType.md) | ☑️ |  |  |
+| **DocumentName** | **NullableString** | ☑️ |  |  |
+| **DocumentNumber** | **NullableString** | ☑️ |  |  |
+| **ExpiresAt** | **NullableString** | ☑️ |  |  |
+| **HolderName** | **NullableString** | ☑️ |  |  |
+| **DocumentImages** | **string[]** | ☑️ |  |  |
 
 ## Methods
 

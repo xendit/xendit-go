@@ -1,13 +1,13 @@
 # OverTheCounterParameters
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Amount** | Pointer to **NullableFloat64** |  | [optional]  |
-| **Currency** | Pointer to [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  | [optional]  |
-| **ChannelCode** | [**OverTheCounterChannelCode**](OverTheCounterChannelCode.md) |  |  |
-| **ChannelProperties** | [**OverTheCounterChannelProperties**](OverTheCounterChannelProperties.md) |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Amount** | Pointer to **NullableFloat64** |  |  |  |
+| **Currency** | Pointer to [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  |  |  |
+| **ChannelCode** | [**OverTheCounterChannelCode**](OverTheCounterChannelCode.md) | ☑️ |  |  |
+| **ChannelProperties** | [**OverTheCounterChannelProperties**](OverTheCounterChannelProperties.md) | ☑️ |  |  |
 
 ## Methods
 

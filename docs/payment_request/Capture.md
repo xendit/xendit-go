@@ -1,24 +1,24 @@
 # Capture
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | **string** |  |  |
-| **PaymentRequestId** | **string** |  |  |
-| **PaymentId** | **string** |  |  |
-| **ReferenceId** | **string** |  |  |
-| **Currency** | **string** |  |  |
-| **AuthorizedAmount** | **float64** |  |  |
-| **CapturedAmount** | **float64** |  |  |
-| **Status** | **string** |  |  |
-| **PaymentMethod** | [**PaymentMethod**](PaymentMethod.md) |  |  |
-| **FailureCode** | **NullableString** |  |  |
-| **CustomerId** | **NullableString** |  |  |
-| **Metadata** | **map[string]interface{}** |  |  |
-| **ChannelProperties** | **map[string]interface{}** |  |  |
-| **Created** | **string** |  |  |
-| **Updated** | **string** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | **string** | ☑️ |  |  |
+| **PaymentRequestId** | **string** | ☑️ |  |  |
+| **PaymentId** | **string** | ☑️ |  |  |
+| **ReferenceId** | **string** | ☑️ |  |  |
+| **Currency** | **string** | ☑️ |  |  |
+| **AuthorizedAmount** | **float64** | ☑️ |  |  |
+| **CapturedAmount** | **float64** | ☑️ |  |  |
+| **Status** | **string** | ☑️ |  |  |
+| **PaymentMethod** | [**PaymentMethod**](PaymentMethod.md) | ☑️ |  |  |
+| **FailureCode** | **NullableString** | ☑️ |  |  |
+| **CustomerId** | **NullableString** | ☑️ |  |  |
+| **Metadata** | **map[string]interface{}** | ☑️ |  |  |
+| **ChannelProperties** | **map[string]interface{}** | ☑️ |  |  |
+| **Created** | **string** | ☑️ |  |  |
+| **Updated** | **string** | ☑️ |  |  |
 
 ## Methods
 

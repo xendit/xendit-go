@@ -1,22 +1,62 @@
-# xendit\PayoutApi
+# PayoutApi
+
+
+You can use the APIs below to interface with Xendit's `PayoutApi`.
+To start using the API, you need to configure the secret key and initiate the client instance.
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+)
+
+func main() {
+    xenditClient := xendit.NewClient("API-KEY")
+}
+```
 
 All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**CreatePayout**](PayoutApi.md#CreatePayout) | **Post** /v2/payouts | API to send money at scale to bank accounts &amp; eWallets |
-| [**GetPayoutById**](PayoutApi.md#GetPayoutById) | **Get** /v2/payouts/{id} | API to fetch the current status, or details of the payout |
-| [**GetPayoutChannels**](PayoutApi.md#GetPayoutChannels) | **Get** /payouts_channels | API providing the current list of banks and e-wallets we support for payouts for both regions |
-| [**GetPayouts**](PayoutApi.md#GetPayouts) | **Get** /v2/payouts | API to retrieve all matching payouts with reference ID |
-| [**CancelPayout**](PayoutApi.md#CancelPayout) | **Post** /v2/payouts/{id}/cancel | API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED. |
+| [**CreatePayout**](PayoutApi.md#createpayout-function) | **Post** /v2/payouts | API to send money at scale to bank accounts &amp; eWallets |
+| [**GetPayoutById**](PayoutApi.md#getpayoutbyid-function) | **Get** /v2/payouts/{id} | API to fetch the current status, or details of the payout |
+| [**GetPayoutChannels**](PayoutApi.md#getpayoutchannels-function) | **Get** /payouts_channels | API providing the current list of banks and e-wallets we support for payouts for both regions |
+| [**GetPayouts**](PayoutApi.md#getpayouts-function) | **Get** /v2/payouts | API to retrieve all matching payouts with reference ID |
+| [**CancelPayout**](PayoutApi.md#cancelpayout-function) | **Post** /v2/payouts/{id}/cancel | API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED. |
 
 
 
-## CreatePayout
+## `CreatePayout()` Function
 
 API to send money at scale to bank accounts & eWallets
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CreatePayout` |
+| Path Parameters  |  [CreatePayoutPathParams](#request-parameters--CreatePayoutPathParams)	 |
+| Request Parameters  |  [CreatePayoutRequestParams](#request-parameters--CreatePayoutRequestParams)	 |
+| Return Type  | [**GetPayouts200ResponseDataInner**](payout/GetPayouts200ResponseDataInner.md) |
+
+### Path Parameters - CreatePayoutPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - CreatePayoutRequestParams
+
+Parameters that are passed through a pointer to a apiCreatePayoutRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **idempotencyKey** |**string**| ☑️ |  | 
+|  **forUserId** |**string**|  |  | 
+|  **createPayoutRequest** |[**CreatePayoutRequest**](payout/CreatePayoutRequest.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -63,39 +103,35 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreatePayoutRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **idempotencyKey** |**string**| A unique key to prevent duplicate requests from pushing through our system. No expiration. |  | 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. |  | 
-|  **createPayoutRequest** |[**CreatePayoutRequest**](payout/CreatePayoutRequest.md)|  |  | 
-
-### Return type
-
-[**GetPayouts200ResponseDataInner**](payout/GetPayouts200ResponseDataInner.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetPayoutById
+## `GetPayoutById()` Function
 
 API to fetch the current status, or details of the payout
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetPayoutById` |
+| Path Parameters  |  [GetPayoutByIdPathParams](#request-parameters--GetPayoutByIdPathParams)	 |
+| Request Parameters  |  [GetPayoutByIdRequestParams](#request-parameters--GetPayoutByIdRequestParams)	 |
+| Return Type  | [**GetPayouts200ResponseDataInner**](payout/GetPayouts200ResponseDataInner.md) |
+
+### Path Parameters - GetPayoutByIdPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **id** | **string** | Payout id returned from the response of /v2/payouts | ☑️ |  | 
+
+### Request Parameters - GetPayoutByIdRequestParams
+
+Parameters that are passed through a pointer to a apiGetPayoutByIdRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -137,42 +173,33 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **id** | **string** | Payout id returned from the response of /v2/payouts |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPayoutByIdRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. |  | 
-
-### Return type
-
-[**GetPayouts200ResponseDataInner**](payout/GetPayouts200ResponseDataInner.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetPayoutChannels
+## `GetPayoutChannels()` Function
 
 API providing the current list of banks and e-wallets we support for payouts for both regions
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetPayoutChannels` |
+| Path Parameters  |  [GetPayoutChannelsPathParams](#request-parameters--GetPayoutChannelsPathParams)	 |
+| Request Parameters  |  [GetPayoutChannelsRequestParams](#request-parameters--GetPayoutChannelsRequestParams)	 |
+| Return Type  | [**[]Channel**](payout/Channel.md) |
+
+### Path Parameters - GetPayoutChannelsPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - GetPayoutChannelsRequestParams
+
+Parameters that are passed through a pointer to a apiGetPayoutChannelsRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **currency** |**string**|  |  | 
+|  **channelCategory** |[**ChannelCategory[]**](payout/ChannelCategory.md)|  |  | 
+|  **channelCode** |**string**|  |  | 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -223,40 +250,34 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPayoutChannelsRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **currency** |**string**| Filter channels by currency from ISO-4217 values |  | 
-|  **channelCategory** |[**ChannelCategory[]**](payout/ChannelCategory.md)| Filter channels by category |  | 
-|  **channelCode** |**string**| Filter channels by channel code, prefixed by ISO-3166 country code |  | 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. |  | 
-
-### Return type
-
-[**[]Channel**](payout/Channel.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetPayouts
+## `GetPayouts()` Function
 
 API to retrieve all matching payouts with reference ID
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetPayouts` |
+| Path Parameters  |  [GetPayoutsPathParams](#request-parameters--GetPayoutsPathParams)	 |
+| Request Parameters  |  [GetPayoutsRequestParams](#request-parameters--GetPayoutsRequestParams)	 |
+| Return Type  | [**GetPayouts200Response**](payout/GetPayouts200Response.md) |
+
+### Path Parameters - GetPayoutsPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - GetPayoutsRequestParams
+
+Parameters that are passed through a pointer to a apiGetPayoutsRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **referenceId** |**string**| ☑️ |  | 
+|  **limit** |**float32**|  |  | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -311,41 +332,35 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPayoutsRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **referenceId** |**string**| Reference_id provided when creating the payout |  | 
-|  **limit** |**float32**| Number of records to fetch per API call |  | 
-|  **afterId** |**string**| Used to fetch record after this payout unique id |  | 
-|  **beforeId** |**string**| Used to fetch record before this payout unique id |  | 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. |  | 
-
-### Return type
-
-[**GetPayouts200Response**](payout/GetPayouts200Response.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## CancelPayout
+## `CancelPayout()` Function
 
 API to cancel requested payouts that have not yet been sent to partner banks and e-wallets. Cancellation is possible if the payout has not been sent out via our partner and when payout status is ACCEPTED.
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CancelPayout` |
+| Path Parameters  |  [CancelPayoutPathParams](#request-parameters--CancelPayoutPathParams)	 |
+| Request Parameters  |  [CancelPayoutRequestParams](#request-parameters--CancelPayoutRequestParams)	 |
+| Return Type  | [**GetPayouts200ResponseDataInner**](payout/GetPayouts200ResponseDataInner.md) |
+
+### Path Parameters - CancelPayoutPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **id** | **string** | Payout id returned from the response of /v2/payouts | ☑️ |  | 
+
+### Request Parameters - CancelPayoutRequestParams
+
+Parameters that are passed through a pointer to a apiCancelPayoutRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -387,33 +402,4 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **id** | **string** | Payout id returned from the response of /v2/payouts |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCancelPayoutRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. This header is only used if you have access to xenPlatform. See xenPlatform for more information. |  | 
-
-### Return type
-
-[**GetPayouts200ResponseDataInner**](payout/GetPayouts200ResponseDataInner.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
 [[Back to README]](../README.md)
-

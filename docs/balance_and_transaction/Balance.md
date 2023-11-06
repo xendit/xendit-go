@@ -1,10 +1,10 @@
 # Balance
+The balance remaining in your account
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Balance** | **float32** |  |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Balance** | **float32** | ☑️ |  |  |
 
 ## Methods
 

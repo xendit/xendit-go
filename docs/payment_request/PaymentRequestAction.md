@@ -1,14 +1,14 @@
 # PaymentRequestAction
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Action** | **string** |  |  |
-| **UrlType** | **string** |  |  |
-| **Method** | **NullableString** |  |  |
-| **Url** | **NullableString** |  |  |
-| **QrCode** | **NullableString** |  |  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Action** | **string** | ☑️ |  |  |
+| **UrlType** | **string** | ☑️ |  |  |
+| **Method** | **NullableString** | ☑️ |  |  |
+| **Url** | **NullableString** | ☑️ |  |  |
+| **QrCode** | **NullableString** | ☑️ |  |  |
 
 ## Methods
 

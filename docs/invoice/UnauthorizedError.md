@@ -1,11 +1,11 @@
 # UnauthorizedError
+An error object used to indicate unauthorized access to an invoice-related resource.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ErrorCode** | **string** | The specific error code associated with the unauthorized access. |  |
-| **Message** | **string** | A human-readable error message providing additional context about the unauthorized access. |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ErrorCode** | **string** | ☑️ | The specific error code associated with the unauthorized access. |  |
+| **Message** | **string** | ☑️ | A human-readable error message providing additional context about the unauthorized access. |  |
 
 ## Methods
 

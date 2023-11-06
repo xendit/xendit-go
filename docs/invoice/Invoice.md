@@ -1,42 +1,42 @@
 # Invoice
+An object representing details for an invoice.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | Pointer to **string** | The unique identifier for the invoice. | [optional]  |
-| **ExternalId** | **string** | The external identifier for the invoice. |  |
-| **UserId** | **string** | The user ID associated with the invoice. |  |
-| **PayerEmail** | Pointer to **string** | The email address of the payer. | [optional]  |
-| **Description** | Pointer to **string** | A description of the invoice. | [optional]  |
-| **PaymentMethod** | Pointer to [**InvoicePaymentMethod**](InvoicePaymentMethod.md) |  | [optional]  |
-| **Status** | [**InvoiceStatus**](InvoiceStatus.md) |  |  |
-| **MerchantName** | **string** | The name of the merchant. |  |
-| **MerchantProfilePictureUrl** | **string** | The URL of the merchant&#39;s profile picture. |  |
-| **Locale** | Pointer to **string** | The locale or language used for the invoice. | [optional]  |
-| **Amount** | **float32** | The total amount of the invoice. |  |
-| **ExpiryDate** | **time.Time** | Representing a date and time in ISO 8601 format. |  |
-| **InvoiceUrl** | **string** | The URL to view the invoice. |  |
-| **AvailableBanks** | [**Bank[]**](Bank.md) | An array of available banks for payment. |  |
-| **AvailableRetailOutlets** | [**RetailOutlet[]**](RetailOutlet.md) | An array of available retail outlets for payment. |  |
-| **AvailableEwallets** | [**Ewallet[]**](Ewallet.md) | An array of available e-wallets for payment. |  |
-| **AvailableQrCodes** | [**QrCode[]**](QrCode.md) | An array of available QR codes for payment. |  |
-| **AvailableDirectDebits** | [**DirectDebit[]**](DirectDebit.md) | An array of available direct debit options for payment. |  |
-| **AvailablePaylaters** | [**Paylater[]**](Paylater.md) | An array of available pay-later options for payment. |  |
-| **ShouldExcludeCreditCard** | Pointer to **bool** | Indicates whether credit card payments should be excluded. | [optional]  |
-| **ShouldSendEmail** | **bool** | Indicates whether email notifications should be sent. |  |
-| **Created** | **time.Time** | Representing a date and time in ISO 8601 format. |  |
-| **Updated** | **time.Time** | Representing a date and time in ISO 8601 format. |  |
-| **SuccessRedirectUrl** | Pointer to **string** | The URL to redirect to on successful payment. | [optional]  |
-| **FailureRedirectUrl** | Pointer to **string** | The URL to redirect to on payment failure. | [optional]  |
-| **ShouldAuthenticateCreditCard** | Pointer to **bool** | Indicates whether credit card authentication is required. | [optional]  |
-| **Currency** | Pointer to [**InvoiceCurrency**](InvoiceCurrency.md) |  | [optional]  |
-| **Items** | Pointer to [**InvoiceItem[]**](InvoiceItem.md) | An array of items included in the invoice. | [optional]  |
-| **FixedVa** | Pointer to **bool** | Indicates whether the virtual account is fixed. | [optional]  |
-| **ReminderDate** | Pointer to **time.Time** | Representing a date and time in ISO 8601 format. | [optional]  |
-| **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  | [optional]  |
-| **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  | [optional]  |
-| **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) | An array of fees associated with the invoice. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | Pointer to **string** |  | The unique identifier for the invoice. |  |
+| **ExternalId** | **string** | ☑️ | The external identifier for the invoice. |  |
+| **UserId** | **string** | ☑️ | The user ID associated with the invoice. |  |
+| **PayerEmail** | Pointer to **string** |  | The email address of the payer. |  |
+| **Description** | Pointer to **string** |  | A description of the invoice. |  |
+| **PaymentMethod** | Pointer to [**InvoicePaymentMethod**](InvoicePaymentMethod.md) |  |  |  |
+| **Status** | [**InvoiceStatus**](InvoiceStatus.md) | ☑️ |  |  |
+| **MerchantName** | **string** | ☑️ | The name of the merchant. |  |
+| **MerchantProfilePictureUrl** | **string** | ☑️ | The URL of the merchant&#39;s profile picture. |  |
+| **Locale** | Pointer to **string** |  | The locale or language used for the invoice. |  |
+| **Amount** | **float32** | ☑️ | The total amount of the invoice. |  |
+| **ExpiryDate** | **time.Time** | ☑️ | Representing a date and time in ISO 8601 format. |  |
+| **InvoiceUrl** | **string** | ☑️ | The URL to view the invoice. |  |
+| **AvailableBanks** | [**Bank[]**](Bank.md) | ☑️ | An array of available banks for payment. |  |
+| **AvailableRetailOutlets** | [**RetailOutlet[]**](RetailOutlet.md) | ☑️ | An array of available retail outlets for payment. |  |
+| **AvailableEwallets** | [**Ewallet[]**](Ewallet.md) | ☑️ | An array of available e-wallets for payment. |  |
+| **AvailableQrCodes** | [**QrCode[]**](QrCode.md) | ☑️ | An array of available QR codes for payment. |  |
+| **AvailableDirectDebits** | [**DirectDebit[]**](DirectDebit.md) | ☑️ | An array of available direct debit options for payment. |  |
+| **AvailablePaylaters** | [**Paylater[]**](Paylater.md) | ☑️ | An array of available pay-later options for payment. |  |
+| **ShouldExcludeCreditCard** | Pointer to **bool** |  | Indicates whether credit card payments should be excluded. |  |
+| **ShouldSendEmail** | **bool** | ☑️ | Indicates whether email notifications should be sent. |  |
+| **Created** | **time.Time** | ☑️ | Representing a date and time in ISO 8601 format. |  |
+| **Updated** | **time.Time** | ☑️ | Representing a date and time in ISO 8601 format. |  |
+| **SuccessRedirectUrl** | Pointer to **string** |  | The URL to redirect to on successful payment. |  |
+| **FailureRedirectUrl** | Pointer to **string** |  | The URL to redirect to on payment failure. |  |
+| **ShouldAuthenticateCreditCard** | Pointer to **bool** |  | Indicates whether credit card authentication is required. |  |
+| **Currency** | Pointer to [**InvoiceCurrency**](InvoiceCurrency.md) |  |  |  |
+| **Items** | Pointer to [**InvoiceItem[]**](InvoiceItem.md) |  | An array of items included in the invoice. |  |
+| **FixedVa** | Pointer to **bool** |  | Indicates whether the virtual account is fixed. |  |
+| **ReminderDate** | Pointer to **time.Time** |  | Representing a date and time in ISO 8601 format. |  |
+| **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  |  |  |
+| **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  |  |  |
+| **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) |  | An array of fees associated with the invoice. |  |
 
 ## Methods
 

@@ -1,11 +1,11 @@
 # AlternativeDisplayItem
+An object representing alternative display of a VA.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Type** | Pointer to **string** | Represent type of alternative display. | [optional]  |
-| **Value** | Pointer to **string** | Represent value of alternative display value. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Type** | Pointer to **string** |  | Represent type of alternative display. |  |
+| **Value** | Pointer to **string** |  | Represent value of alternative display value. |  |
 
 ## Methods
 

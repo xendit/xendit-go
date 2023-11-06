@@ -1,11 +1,11 @@
 # GetAllRefundsDefaultResponse
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ErrorCode** | Pointer to **string** |  | [optional]  |
-| **Message** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ErrorCode** | Pointer to **string** |  |  |  |
+| **Message** | Pointer to **string** |  |  |  |
 
 ## Methods
 

@@ -1,14 +1,14 @@
 # CardChannelProperties
+Card Channel Properties
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **SkipThreeDSecure** | Pointer to **NullableBool** | To indicate whether to perform 3DS during the linking phase | [optional]  |
-| **SuccessReturnUrl** | Pointer to **NullableString** | URL where the end-customer is redirected if the authorization is successful | [optional]  |
-| **FailureReturnUrl** | Pointer to **NullableString** | URL where the end-customer is redirected if the authorization failed | [optional]  |
-| **CardonfileType** | Pointer to **NullableString** | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. | [optional]  |
-| **MerchantIdTag** | Pointer to **string** | Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **SkipThreeDSecure** | Pointer to **NullableBool** |  | To indicate whether to perform 3DS during the linking phase |  |
+| **SuccessReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization is successful |  |
+| **FailureReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization failed |  |
+| **CardonfileType** | Pointer to **NullableString** |  | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. |  |
+| **MerchantIdTag** | Pointer to **string** |  | Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use |  |
 
 ## Methods
 

@@ -1,11 +1,11 @@
 # PaymentMethodList
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Data** | [**PaymentMethod[]**](PaymentMethod.md) |  |  |
-| **HasMore** | Pointer to **bool** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Data** | [**PaymentMethod[]**](PaymentMethod.md) | ☑️ |  |  |
+| **HasMore** | Pointer to **bool** |  |  |  |
 
 ## Methods
 

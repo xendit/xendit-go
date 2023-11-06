@@ -1,15 +1,15 @@
 # AccountBank
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **AccountNumber** | Pointer to **string** | Unique account identifier as per the bank records. | [optional]  |
-| **AccountHolderName** | Pointer to **NullableString** | Name of account holder as per the bank records. Needs to match the registered account name exactly. . | [optional]  |
-| **SwiftCode** | Pointer to **NullableString** | The SWIFT code for international payments | [optional]  |
-| **AccountType** | Pointer to **NullableString** | Free text account type, e.g., Savings, Transaction, Virtual Account. | [optional]  |
-| **AccountDetails** | Pointer to **NullableString** | Potentially masked account detail, for display purposes only. | [optional]  |
-| **Currency** | Pointer to **string** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **AccountNumber** | Pointer to **string** |  | Unique account identifier as per the bank records. |  |
+| **AccountHolderName** | Pointer to **NullableString** |  | Name of account holder as per the bank records. Needs to match the registered account name exactly. . |  |
+| **SwiftCode** | Pointer to **NullableString** |  | The SWIFT code for international payments |  |
+| **AccountType** | Pointer to **NullableString** |  | Free text account type, e.g., Savings, Transaction, Virtual Account. |  |
+| **AccountDetails** | Pointer to **NullableString** |  | Potentially masked account detail, for display purposes only. |  |
+| **Currency** | Pointer to **string** |  |  |  |
 
 ## Methods
 

@@ -1,17 +1,17 @@
 # CustomerObject
+An object representing a customer with various properties, including addresses.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | Pointer to **NullableString** | The unique identifier for the customer. | [optional]  |
-| **PhoneNumber** | Pointer to **NullableString** | The customer&#39;s phone number. | [optional]  |
-| **GivenNames** | Pointer to **NullableString** | The customer&#39;s given names or first names. | [optional]  |
-| **Surname** | Pointer to **NullableString** | The customer&#39;s surname or last name. | [optional]  |
-| **Email** | Pointer to **NullableString** | The customer&#39;s email address. | [optional]  |
-| **MobileNumber** | Pointer to **NullableString** | The customer&#39;s mobile phone number. | [optional]  |
-| **CustomerId** | Pointer to **NullableString** | An additional identifier for the customer. | [optional]  |
-| **Addresses** | Pointer to [**AddressObject[]**](AddressObject.md) | An array of addresses associated with the customer. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | Pointer to **NullableString** |  | The unique identifier for the customer. |  |
+| **PhoneNumber** | Pointer to **NullableString** |  | The customer&#39;s phone number. |  |
+| **GivenNames** | Pointer to **NullableString** |  | The customer&#39;s given names or first names. |  |
+| **Surname** | Pointer to **NullableString** |  | The customer&#39;s surname or last name. |  |
+| **Email** | Pointer to **NullableString** |  | The customer&#39;s email address. |  |
+| **MobileNumber** | Pointer to **NullableString** |  | The customer&#39;s mobile phone number. |  |
+| **CustomerId** | Pointer to **NullableString** |  | An additional identifier for the customer. |  |
+| **Addresses** | Pointer to [**AddressObject[]**](AddressObject.md) |  | An array of addresses associated with the customer. |  |
 
 ## Methods
 

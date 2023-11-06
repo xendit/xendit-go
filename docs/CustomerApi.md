@@ -1,23 +1,63 @@
-# xendit\CustomerApi
+# CustomerApi
+
+
+You can use the APIs below to interface with Xendit's `CustomerApi`.
+To start using the API, you need to configure the secret key and initiate the client instance.
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+)
+
+func main() {
+    xenditClient := xendit.NewClient("API-KEY")
+}
+```
 
 All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**CreateCustomer**](CustomerApi.md#CreateCustomer) | **Post** /customers | Create Customer |
-| [**GetCustomer**](CustomerApi.md#GetCustomer) | **Get** /customers/{id} | Get Customer By ID |
-| [**GetCustomerByReferenceID**](CustomerApi.md#GetCustomerByReferenceID) | **Get** /customers | GET customers by reference id |
-| [**UpdateCustomer**](CustomerApi.md#UpdateCustomer) | **Patch** /customers/{id} | Update End Customer Resource |
+| [**CreateCustomer**](CustomerApi.md#createcustomer-function) | **Post** /customers | Create Customer |
+| [**GetCustomer**](CustomerApi.md#getcustomer-function) | **Get** /customers/{id} | Get Customer By ID |
+| [**GetCustomerByReferenceID**](CustomerApi.md#getcustomerbyreferenceid-function) | **Get** /customers | GET customers by reference id |
+| [**UpdateCustomer**](CustomerApi.md#updatecustomer-function) | **Patch** /customers/{id} | Update End Customer Resource |
 
 
 
-## CreateCustomer
+## `CreateCustomer()` Function
 
 Create Customer
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CreateCustomer` |
+| Path Parameters  |  [CreateCustomerPathParams](#request-parameters--CreateCustomerPathParams)	 |
+| Request Parameters  |  [CreateCustomerRequestParams](#request-parameters--CreateCustomerRequestParams)	 |
+| Return Type  | [**Customer**](customer/Customer.md) |
+
+### Path Parameters - CreateCustomerPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - CreateCustomerRequestParams
+
+Parameters that are passed through a pointer to a apiCreateCustomerRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **idempotencyKey** |**string**|  |  | 
+|  **forUserId** |**string**|  |  | 
+|  **customerRequest** |[**CustomerRequest**](customer/CustomerRequest.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -62,41 +102,37 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateCustomerRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **idempotencyKey** |**string**| A unique key to prevent processing duplicate requests. |  | 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. |  | 
-|  **customerRequest** |[**CustomerRequest**](customer/CustomerRequest.md)| Request object for end customer object |  | 
-
-### Return type
-
-[**Customer**](customer/Customer.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetCustomer
+## `GetCustomer()` Function
 
 Get Customer By ID
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetCustomer` |
+| Path Parameters  |  [GetCustomerPathParams](#request-parameters--GetCustomerPathParams)	 |
+| Request Parameters  |  [GetCustomerRequestParams](#request-parameters--GetCustomerRequestParams)	 |
+| Return Type  | [**Customer**](customer/Customer.md) |
+
+### Path Parameters - GetCustomerPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **id** | **string** | End customer resource id | ☑️ |  | 
+
+### Request Parameters - GetCustomerRequestParams
+
+Parameters that are passed through a pointer to a apiGetCustomerRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -136,44 +172,33 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **id** | **string** | End customer resource id |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCustomerRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. |  | 
-
-### Return type
-
-[**Customer**](customer/Customer.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetCustomerByReferenceID
+## `GetCustomerByReferenceID()` Function
 
 GET customers by reference id
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetCustomerByReferenceID` |
+| Path Parameters  |  [GetCustomerByReferenceIDPathParams](#request-parameters--GetCustomerByReferenceIDPathParams)	 |
+| Request Parameters  |  [GetCustomerByReferenceIDRequestParams](#request-parameters--GetCustomerByReferenceIDRequestParams)	 |
+| Return Type  | [**GetCustomerByReferenceID200Response**](customer/GetCustomerByReferenceID200Response.md) |
+
+### Path Parameters - GetCustomerByReferenceIDPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - GetCustomerByReferenceIDRequestParams
+
+Parameters that are passed through a pointer to a apiGetCustomerByReferenceIDRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **referenceId** |**string**| ☑️ |  | 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -214,40 +239,38 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCustomerByReferenceIDRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **referenceId** |**string**| Merchant&#39;s reference of end customer |  | 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. |  | 
-
-### Return type
-
-[**GetCustomerByReferenceID200Response**](customer/GetCustomerByReferenceID200Response.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## UpdateCustomer
+## `UpdateCustomer()` Function
 
 Update End Customer Resource
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `UpdateCustomer` |
+| Path Parameters  |  [UpdateCustomerPathParams](#request-parameters--UpdateCustomerPathParams)	 |
+| Request Parameters  |  [UpdateCustomerRequestParams](#request-parameters--UpdateCustomerRequestParams)	 |
+| Return Type  | [**Customer**](customer/Customer.md) |
+
+### Path Parameters - UpdateCustomerPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **id** | **string** | End customer resource id | ☑️ |  | 
+
+### Request Parameters - UpdateCustomerRequestParams
+
+Parameters that are passed through a pointer to a apiUpdateCustomerRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+|  **patchCustomer** |[**PatchCustomer**](customer/PatchCustomer.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -291,34 +314,4 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **id** | **string** | End customer resource id |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateCustomerRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**| The sub-account user-id that you want to make this transaction for. |  | 
-|  **patchCustomer** |[**PatchCustomer**](customer/PatchCustomer.md)| Update Request for end customer object |  | 
-
-### Return type
-
-[**Customer**](customer/Customer.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
 [[Back to README]](../README.md)
-

@@ -1,29 +1,29 @@
 # CreateInvoiceRequest
+An object representing for an invoice creation request.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ExternalId** | **string** | The external ID of the invoice. |  |
-| **Amount** | **float32** | The invoice amount. |  |
-| **PayerEmail** | Pointer to **string** | The email address of the payer. | [optional]  |
-| **Description** | Pointer to **string** | A description of the payment. | [optional]  |
-| **InvoiceDuration** | Pointer to **string** | The duration of the invoice. | [optional]  |
-| **CallbackVirtualAccountId** | Pointer to **string** | The ID of the callback virtual account. | [optional]  |
-| **ShouldSendEmail** | Pointer to **bool** | Indicates whether email notifications should be sent. | [optional]  |
-| **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  | [optional]  |
-| **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  | [optional]  |
-| **SuccessRedirectUrl** | Pointer to **string** | The URL to redirect to on successful payment. | [optional]  |
-| **FailureRedirectUrl** | Pointer to **string** | The URL to redirect to on payment failure. | [optional]  |
-| **PaymentMethods** | Pointer to **string[]** | An array of available payment methods. | [optional]  |
-| **MidLabel** | Pointer to **string** | The middle label. | [optional]  |
-| **ShouldAuthenticateCreditCard** | Pointer to **bool** | Indicates whether credit card authentication is required. | [optional]  |
-| **Currency** | Pointer to **string** | The currency of the invoice. | [optional]  |
-| **ReminderTime** | Pointer to **float32** | The reminder time. | [optional]  |
-| **Local** | Pointer to **string** | The local. | [optional]  |
-| **ReminderTimeUnit** | Pointer to **string** | The unit of the reminder time. | [optional]  |
-| **Items** | Pointer to [**InvoiceItem[]**](InvoiceItem.md) | An array of items included in the invoice. | [optional]  |
-| **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) | An array of fees associated with the invoice. | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ExternalId** | **string** | ☑️ | The external ID of the invoice. |  |
+| **Amount** | **float32** | ☑️ | The invoice amount. |  |
+| **PayerEmail** | Pointer to **string** |  | The email address of the payer. |  |
+| **Description** | Pointer to **string** |  | A description of the payment. |  |
+| **InvoiceDuration** | Pointer to **string** |  | The duration of the invoice. |  |
+| **CallbackVirtualAccountId** | Pointer to **string** |  | The ID of the callback virtual account. |  |
+| **ShouldSendEmail** | Pointer to **bool** |  | Indicates whether email notifications should be sent. |  |
+| **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  |  |  |
+| **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  |  |  |
+| **SuccessRedirectUrl** | Pointer to **string** |  | The URL to redirect to on successful payment. |  |
+| **FailureRedirectUrl** | Pointer to **string** |  | The URL to redirect to on payment failure. |  |
+| **PaymentMethods** | Pointer to **string[]** |  | An array of available payment methods. |  |
+| **MidLabel** | Pointer to **string** |  | The middle label. |  |
+| **ShouldAuthenticateCreditCard** | Pointer to **bool** |  | Indicates whether credit card authentication is required. |  |
+| **Currency** | Pointer to **string** |  | The currency of the invoice. |  |
+| **ReminderTime** | Pointer to **float32** |  | The reminder time. |  |
+| **Local** | Pointer to **string** |  | The local. |  |
+| **ReminderTimeUnit** | Pointer to **string** |  | The unit of the reminder time. |  |
+| **Items** | Pointer to [**InvoiceItem[]**](InvoiceItem.md) |  | An array of items included in the invoice. |  |
+| **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) |  | An array of fees associated with the invoice. |  |
 
 ## Methods
 

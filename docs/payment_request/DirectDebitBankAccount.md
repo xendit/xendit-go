@@ -1,11 +1,11 @@
 # DirectDebitBankAccount
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **MaskedBankAccountNumber** | Pointer to **NullableString** |  | [optional]  |
-| **BankAccountHash** | Pointer to **NullableString** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **MaskedBankAccountNumber** | Pointer to **NullableString** |  |  |  |
+| **BankAccountHash** | Pointer to **NullableString** |  |  |  |
 
 ## Methods
 

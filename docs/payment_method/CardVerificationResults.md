@@ -1,12 +1,12 @@
 # CardVerificationResults
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **ThreeDSecure** | [**NullableCardVerificationResultsThreeDSecure**](CardVerificationResultsThreeDSecure.md) |  |  |
-| **CvvResult** | Pointer to **NullableString** |  | [optional]  |
-| **AddressVerificationResult** | Pointer to **NullableString** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **ThreeDSecure** | [**NullableCardVerificationResultsThreeDSecure**](CardVerificationResultsThreeDSecure.md) | ☑️ |  |  |
+| **CvvResult** | Pointer to **NullableString** |  |  |  |
+| **AddressVerificationResult** | Pointer to **NullableString** |  |  |  |
 
 ## Methods
 

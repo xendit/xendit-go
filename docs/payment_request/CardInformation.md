@@ -1,19 +1,19 @@
 # CardInformation
+Card Information
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **TokenId** | **string** |  |  |
-| **MaskedCardNumber** | **string** | 1st 6 and last 4 digits of the card |  |
-| **ExpiryMonth** | **string** | Card expiry month in MM format |  |
-| **ExpiryYear** | **string** | Card expiry month in YY format |  |
-| **CardholderName** | Pointer to **NullableString** | Cardholder name | [optional]  |
-| **Fingerprint** | Pointer to **string** |  | [optional]  |
-| **Type** | Pointer to **string** |  | [optional]  |
-| **Network** | Pointer to **string** |  | [optional]  |
-| **Country** | Pointer to **string** |  | [optional]  |
-| **Issuer** | Pointer to **string** |  | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **TokenId** | **string** | ☑️ |  |  |
+| **MaskedCardNumber** | **string** | ☑️ | 1st 6 and last 4 digits of the card |  |
+| **ExpiryMonth** | **string** | ☑️ | Card expiry month in MM format |  |
+| **ExpiryYear** | **string** | ☑️ | Card expiry month in YY format |  |
+| **CardholderName** | Pointer to **NullableString** |  | Cardholder name |  |
+| **Fingerprint** | Pointer to **string** |  |  |  |
+| **Type** | Pointer to **string** |  |  |  |
+| **Network** | Pointer to **string** |  |  |  |
+| **Country** | Pointer to **string** |  |  |  |
+| **Issuer** | Pointer to **string** |  |  |  |
 
 ## Methods
 

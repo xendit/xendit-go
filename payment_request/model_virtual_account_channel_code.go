@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.44.1
+API version: 1.45.1
 */
 
 
@@ -35,6 +35,7 @@ const (
 	VIRTUALACCOUNTCHANNELCODE_WOORI VirtualAccountChannelCode = "WOORI"
 	VIRTUALACCOUNTCHANNELCODE_MSB VirtualAccountChannelCode = "MSB"
 	VIRTUALACCOUNTCHANNELCODE_STANDARD_CHARTERED VirtualAccountChannelCode = "STANDARD_CHARTERED"
+	VIRTUALACCOUNTCHANNELCODE_AMBANK VirtualAccountChannelCode = "AMBANK"
     VIRTUALACCOUNTCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK VirtualAccountChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -55,6 +56,7 @@ var AllowedVirtualAccountChannelCodeEnumValues = []VirtualAccountChannelCode{
 	"WOORI",
 	"MSB",
 	"STANDARD_CHARTERED",
+	"AMBANK",
     "UNKNOWN_ENUM_VALUE",
 }
 

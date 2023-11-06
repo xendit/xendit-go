@@ -1,22 +1,22 @@
 # Address
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Id** | Pointer to **string** |  | [optional]  |
-| **Category** | **NullableString** |  |  |
-| **Country** | **string** |  |  |
-| **ProvinceState** | **NullableString** |  |  |
-| **City** | **NullableString** |  |  |
-| **PostalCode** | **NullableString** |  |  |
-| **StreetLine1** | **NullableString** |  |  |
-| **StreetLine2** | **NullableString** |  |  |
-| **Status** | Pointer to [**NullableAddressStatus**](AddressStatus.md) |  | [optional]  |
-| **IsPrimary** | **NullableBool** |  |  |
-| **Meta** | Pointer to **map[string]interface{}** |  | [optional]  |
-| **Created** | Pointer to **time.Time** |  | [optional]  |
-| **Updated** | Pointer to **time.Time** |  | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Id** | Pointer to **string** |  |  |  |
+| **Category** | **NullableString** | ☑️ |  |  |
+| **Country** | **string** | ☑️ |  |  |
+| **ProvinceState** | **NullableString** | ☑️ |  |  |
+| **City** | **NullableString** | ☑️ |  |  |
+| **PostalCode** | **NullableString** | ☑️ |  |  |
+| **StreetLine1** | **NullableString** | ☑️ |  |  |
+| **StreetLine2** | **NullableString** | ☑️ |  |  |
+| **Status** | Pointer to [**NullableAddressStatus**](AddressStatus.md) |  |  |  |
+| **IsPrimary** | **NullableBool** | ☑️ |  |  |
+| **Meta** | Pointer to **map[string]interface{}** |  |  |  |
+| **Created** | Pointer to **time.Time** |  |  |  |
+| **Updated** | Pointer to **time.Time** |  |  |  |
 
 ## Methods
 

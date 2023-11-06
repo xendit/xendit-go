@@ -1,10 +1,10 @@
 # QrCode
+An object representing QR code details for invoices.
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **QrCodeType** | [**QrCodeType**](QrCodeType.md) |  |  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **QrCodeType** | [**QrCodeType**](QrCodeType.md) | ☑️ |  |  |
 
 ## Methods
 

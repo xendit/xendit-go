@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.89.2
+API version: 2.91.2
 */
 
 
@@ -40,6 +40,7 @@ const (
 	EWALLETCHANNELCODE_LINEPAY EWalletChannelCode = "LINEPAY"
 	EWALLETCHANNELCODE_TRUEMONEY EWalletChannelCode = "TRUEMONEY"
 	EWALLETCHANNELCODE_ALIPAY EWalletChannelCode = "ALIPAY"
+	EWALLETCHANNELCODE_TOUCHANDGO EWalletChannelCode = "TOUCHANDGO"
     EWALLETCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK EWalletChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -65,6 +66,7 @@ var AllowedEWalletChannelCodeEnumValues = []EWalletChannelCode{
 	"LINEPAY",
 	"TRUEMONEY",
 	"ALIPAY",
+	"TOUCHANDGO",
     "UNKNOWN_ENUM_VALUE",
 }
 

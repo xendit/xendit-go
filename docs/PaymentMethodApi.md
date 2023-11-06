@@ -1,27 +1,66 @@
-# xendit\PaymentMethodApi
+# PaymentMethodApi
+
+
+You can use the APIs below to interface with Xendit's `PaymentMethodApi`.
+To start using the API, you need to configure the secret key and initiate the client instance.
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+)
+
+func main() {
+    xenditClient := xendit.NewClient("API-KEY")
+}
+```
 
 All URIs are relative to *https://api.xendit.co*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**CreatePaymentMethod**](PaymentMethodApi.md#CreatePaymentMethod) | **Post** /v2/payment_methods | Creates payment method |
-| [**GetPaymentMethodByID**](PaymentMethodApi.md#GetPaymentMethodByID) | **Get** /v2/payment_methods/{paymentMethodId} | Get payment method by ID |
-| [**GetPaymentsByPaymentMethodId**](PaymentMethodApi.md#GetPaymentsByPaymentMethodId) | **Get** /v2/payment_methods/{paymentMethodId}/payments | Returns payments with matching PaymentMethodID. |
-| [**PatchPaymentMethod**](PaymentMethodApi.md#PatchPaymentMethod) | **Patch** /v2/payment_methods/{paymentMethodId} | Patch payment methods |
-| [**GetAllPaymentMethods**](PaymentMethodApi.md#GetAllPaymentMethods) | **Get** /v2/payment_methods | Get all payment methods by filters |
-| [**ExpirePaymentMethod**](PaymentMethodApi.md#ExpirePaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/expire | Expires a payment method |
-| [**AuthPaymentMethod**](PaymentMethodApi.md#AuthPaymentMethod) | **Post** /v2/payment_methods/{paymentMethodId}/auth | Validate a payment method&#39;s linking OTP |
-| [**SimulatePayment**](PaymentMethodApi.md#SimulatePayment) | **Post** /v2/payment_methods/{paymentMethodId}/payments/simulate | Makes payment with matching PaymentMethodID. |
+| [**CreatePaymentMethod**](PaymentMethodApi.md#createpaymentmethod-function) | **Post** /v2/payment_methods | Creates payment method |
+| [**GetPaymentMethodByID**](PaymentMethodApi.md#getpaymentmethodbyid-function) | **Get** /v2/payment_methods/{paymentMethodId} | Get payment method by ID |
+| [**GetPaymentsByPaymentMethodId**](PaymentMethodApi.md#getpaymentsbypaymentmethodid-function) | **Get** /v2/payment_methods/{paymentMethodId}/payments | Returns payments with matching PaymentMethodID. |
+| [**PatchPaymentMethod**](PaymentMethodApi.md#patchpaymentmethod-function) | **Patch** /v2/payment_methods/{paymentMethodId} | Patch payment methods |
+| [**GetAllPaymentMethods**](PaymentMethodApi.md#getallpaymentmethods-function) | **Get** /v2/payment_methods | Get all payment methods by filters |
+| [**ExpirePaymentMethod**](PaymentMethodApi.md#expirepaymentmethod-function) | **Post** /v2/payment_methods/{paymentMethodId}/expire | Expires a payment method |
+| [**AuthPaymentMethod**](PaymentMethodApi.md#authpaymentmethod-function) | **Post** /v2/payment_methods/{paymentMethodId}/auth | Validate a payment method&#39;s linking OTP |
+| [**SimulatePayment**](PaymentMethodApi.md#simulatepayment-function) | **Post** /v2/payment_methods/{paymentMethodId}/payments/simulate | Makes payment with matching PaymentMethodID. |
 
 
 
-## CreatePaymentMethod
+## `CreatePaymentMethod()` Function
 
 Creates payment method
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `CreatePaymentMethod` |
+| Path Parameters  |  [CreatePaymentMethodPathParams](#request-parameters--CreatePaymentMethodPathParams)	 |
+| Request Parameters  |  [CreatePaymentMethodRequestParams](#request-parameters--CreatePaymentMethodRequestParams)	 |
+| Return Type  | [**PaymentMethod**](payment_method/PaymentMethod.md) |
+
+### Path Parameters - CreatePaymentMethodPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - CreatePaymentMethodRequestParams
+
+Parameters that are passed through a pointer to a apiCreatePaymentMethodRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **forUserId** |**string**|  |  | 
+|  **paymentMethodParameters** |[**PaymentMethodParameters**](payment_method/PaymentMethodParameters.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -36,7 +75,7 @@ import (
 
 func main() {
     
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     paymentMethodParameters := *payment_method.NewPaymentMethodParameters(payment_method.PaymentMethodType("CARD"), payment_method.PaymentMethodReusability("MULTIPLE_USE")) // [OPTIONAL] | PaymentMethodParameters
 
@@ -60,40 +99,37 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreatePaymentMethodRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **forUserId** |**string**|  |  | 
-|  **paymentMethodParameters** |[**PaymentMethodParameters**](payment_method/PaymentMethodParameters.md)|  |  | 
-
-### Return type
-
-[**PaymentMethod**](payment_method/PaymentMethod.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetPaymentMethodByID
+## `GetPaymentMethodByID()` Function
 
 Get payment method by ID
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetPaymentMethodByID` |
+| Path Parameters  |  [GetPaymentMethodByIDPathParams](#request-parameters--GetPaymentMethodByIDPathParams)	 |
+| Request Parameters  |  [GetPaymentMethodByIDRequestParams](#request-parameters--GetPaymentMethodByIDRequestParams)	 |
+| Return Type  | [**PaymentMethod**](payment_method/PaymentMethod.md) |
+
+### Path Parameters - GetPaymentMethodByIDPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentMethodId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - GetPaymentMethodByIDRequestParams
+
+Parameters that are passed through a pointer to a apiGetPaymentMethodByIDRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -110,7 +146,7 @@ func main() {
     
     paymentMethodId := "pm-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     xenditClient := xendit.NewClient("API-KEY")
 
@@ -131,44 +167,49 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentMethodId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPaymentMethodByIDRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**|  |  | 
-
-### Return type
-
-[**PaymentMethod**](payment_method/PaymentMethod.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetPaymentsByPaymentMethodId
+## `GetPaymentsByPaymentMethodId()` Function
 
 Returns payments with matching PaymentMethodID.
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetPaymentsByPaymentMethodId` |
+| Path Parameters  |  [GetPaymentsByPaymentMethodIdPathParams](#request-parameters--GetPaymentsByPaymentMethodIdPathParams)	 |
+| Request Parameters  |  [GetPaymentsByPaymentMethodIdRequestParams](#request-parameters--GetPaymentsByPaymentMethodIdRequestParams)	 |
+| Return Type  | **map[string]interface{}** |
+
+### Path Parameters - GetPaymentsByPaymentMethodIdPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentMethodId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - GetPaymentsByPaymentMethodIdRequestParams
+
+Parameters that are passed through a pointer to a apiGetPaymentsByPaymentMethodIdRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+|  **paymentRequestId** |**string[]**|  |  | 
+|  **paymentMethodId2** |**string[]**|  |  | 
+|  **referenceId** |**string[]**|  |  | 
+|  **paymentMethodType** |[**PaymentMethodType[]**](payment_method/PaymentMethodType.md)|  |  | 
+|  **channelCode** |**string[]**|  |  | 
+|  **status** |**string[]**|  |  | 
+|  **currency** |**string[]**|  |  | 
+|  **createdGte** |**time.Time**|  |  | 
+|  **createdLte** |**time.Time**|  |  | 
+|  **updatedGte** |**time.Time**|  |  | 
+|  **updatedLte** |**time.Time**|  |  | 
+|  **limit** |**int32**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -177,7 +218,7 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
+        "time"
     xendit "github.com/xendit/xendit-go/v3"
     payment_method "github.com/xendit/xendit-go/v3/payment_method"
 )
@@ -186,7 +227,7 @@ func main() {
     
     paymentMethodId := "pm-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     paymentRequestId := []string{"Inner_example"} // [OPTIONAL] | []string
 
@@ -243,56 +284,38 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentMethodId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPaymentsByPaymentMethodIdRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**|  |  | 
-|  **paymentRequestId** |**string[]**|  |  | 
-|  **paymentMethodId2** |**string[]**|  |  | 
-|  **referenceId** |**string[]**|  |  | 
-|  **paymentMethodType** |[**PaymentMethodType[]**](payment_method/PaymentMethodType.md)|  |  | 
-|  **channelCode** |**string[]**|  |  | 
-|  **status** |**string[]**|  |  | 
-|  **currency** |**string[]**|  |  | 
-|  **createdGte** |**time.Time**|  |  | 
-|  **createdLte** |**time.Time**|  |  | 
-|  **updatedGte** |**time.Time**|  |  | 
-|  **updatedLte** |**time.Time**|  |  | 
-|  **limit** |**int32**|  |  | 
-
-### Return type
-
-**map[string]interface{}**
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## PatchPaymentMethod
+## `PatchPaymentMethod()` Function
 
 Patch payment methods
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `PatchPaymentMethod` |
+| Path Parameters  |  [PatchPaymentMethodPathParams](#request-parameters--PatchPaymentMethodPathParams)	 |
+| Request Parameters  |  [PatchPaymentMethodRequestParams](#request-parameters--PatchPaymentMethodRequestParams)	 |
+| Return Type  | [**PaymentMethod**](payment_method/PaymentMethod.md) |
+
+### Path Parameters - PatchPaymentMethodPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentMethodId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - PatchPaymentMethodRequestParams
+
+Parameters that are passed through a pointer to a apiPatchPaymentMethodRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+|  **paymentMethodUpdateParameters** |[**PaymentMethodUpdateParameters**](payment_method/PaymentMethodUpdateParameters.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -309,7 +332,7 @@ func main() {
     
     paymentMethodId := "pm-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     paymentMethodUpdateParameters := *payment_method.NewPaymentMethodUpdateParameters() // [OPTIONAL] | PaymentMethodUpdateParameters
 
@@ -333,45 +356,41 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentMethodId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPatchPaymentMethodRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**|  |  | 
-|  **paymentMethodUpdateParameters** |[**PaymentMethodUpdateParameters**](payment_method/PaymentMethodUpdateParameters.md)|  |  | 
-
-### Return type
-
-[**PaymentMethod**](payment_method/PaymentMethod.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## GetAllPaymentMethods
+## `GetAllPaymentMethods()` Function
 
 Get all payment methods by filters
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `GetAllPaymentMethods` |
+| Path Parameters  |  [GetAllPaymentMethodsPathParams](#request-parameters--GetAllPaymentMethodsPathParams)	 |
+| Request Parameters  |  [GetAllPaymentMethodsRequestParams](#request-parameters--GetAllPaymentMethodsRequestParams)	 |
+| Return Type  | [**PaymentMethodList**](payment_method/PaymentMethodList.md) |
+
+### Path Parameters - GetAllPaymentMethodsPathParams
+This endpoint does not need any path parameter.
+
+
+### Request Parameters - GetAllPaymentMethodsRequestParams
+
+Parameters that are passed through a pointer to a apiGetAllPaymentMethodsRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+|  **forUserId** |**string**|  |  | 
+|  **id** |**string[]**|  |  | 
+|  **type_** |**string[]**|  |  | 
+|  **status** |[**PaymentMethodStatus[]**](payment_method/PaymentMethodStatus.md)|  |  | 
+|  **reusability** |[**PaymentMethodReusability**](payment_method/PaymentMethodReusabilitypayment_method/.md)|  |  | 
+|  **customerId** |**string**|  |  | 
+|  **referenceId** |**string**|  |  | 
+|  **afterId** |**string**|  |  | 
+|  **beforeId** |**string**|  |  | 
+|  **limit** |**int32**|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -386,7 +405,7 @@ import (
 
 func main() {
     
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     id := []string{"Inner_example"} // [OPTIONAL] | []string
 
@@ -434,48 +453,38 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAllPaymentMethodsRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-|  **forUserId** |**string**|  |  | 
-|  **id** |**string[]**|  |  | 
-|  **type_** |**string[]**|  |  | 
-|  **status** |[**PaymentMethodStatus[]**](payment_method/PaymentMethodStatus.md)|  |  | 
-|  **reusability** |[**PaymentMethodReusability**](payment_method/PaymentMethodReusabilitypayment_method/.md)|  |  | 
-|  **customerId** |**string**|  |  | 
-|  **referenceId** |**string**|  |  | 
-|  **afterId** |**string**|  |  | 
-|  **beforeId** |**string**|  |  | 
-|  **limit** |**int32**|  |  | 
-
-### Return type
-
-[**PaymentMethodList**](payment_method/PaymentMethodList.md)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## ExpirePaymentMethod
+## `ExpirePaymentMethod()` Function
 
 Expires a payment method
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `ExpirePaymentMethod` |
+| Path Parameters  |  [ExpirePaymentMethodPathParams](#request-parameters--ExpirePaymentMethodPathParams)	 |
+| Request Parameters  |  [ExpirePaymentMethodRequestParams](#request-parameters--ExpirePaymentMethodRequestParams)	 |
+| Return Type  | [**PaymentMethod**](payment_method/PaymentMethod.md) |
+
+### Path Parameters - ExpirePaymentMethodPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentMethodId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - ExpirePaymentMethodRequestParams
+
+Parameters that are passed through a pointer to a apiExpirePaymentMethodRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+|  **paymentMethodExpireParameters** |[**PaymentMethodExpireParameters**](payment_method/PaymentMethodExpireParameters.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -492,7 +501,7 @@ func main() {
     
     paymentMethodId := "pm-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     paymentMethodExpireParameters := *payment_method.NewPaymentMethodExpireParameters() // [OPTIONAL] | PaymentMethodExpireParameters
 
@@ -516,45 +525,38 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentMethodId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiExpirePaymentMethodRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**|  |  | 
-|  **paymentMethodExpireParameters** |[**PaymentMethodExpireParameters**](payment_method/PaymentMethodExpireParameters.md)|  |  | 
-
-### Return type
-
-[**PaymentMethod**](payment_method/PaymentMethod.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## AuthPaymentMethod
+## `AuthPaymentMethod()` Function
 
 Validate a payment method's linking OTP
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `AuthPaymentMethod` |
+| Path Parameters  |  [AuthPaymentMethodPathParams](#request-parameters--AuthPaymentMethodPathParams)	 |
+| Request Parameters  |  [AuthPaymentMethodRequestParams](#request-parameters--AuthPaymentMethodRequestParams)	 |
+| Return Type  | [**PaymentMethod**](payment_method/PaymentMethod.md) |
+
+### Path Parameters - AuthPaymentMethodPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentMethodId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - AuthPaymentMethodRequestParams
+
+Parameters that are passed through a pointer to a apiAuthPaymentMethodRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **forUserId** |**string**|  |  | 
+|  **paymentMethodAuthParameters** |[**PaymentMethodAuthParameters**](payment_method/PaymentMethodAuthParameters.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -571,7 +573,7 @@ func main() {
     
     paymentMethodId := "pm-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
 
-    forUserId := "5f9a3fbd571a1c4068aa40ce" // [OPTIONAL] | string
+    forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
     paymentMethodAuthParameters := *payment_method.NewPaymentMethodAuthParameters("AuthCode_example") // [OPTIONAL] | PaymentMethodAuthParameters
 
@@ -595,45 +597,37 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentMethodId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAuthPaymentMethodRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **forUserId** |**string**|  |  | 
-|  **paymentMethodAuthParameters** |[**PaymentMethodAuthParameters**](payment_method/PaymentMethodAuthParameters.md)|  |  | 
-
-### Return type
-
-[**PaymentMethod**](payment_method/PaymentMethod.md)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
-[[Back to README]](../README.md)
-
-
-## SimulatePayment
+## `SimulatePayment()` Function
 
 Makes payment with matching PaymentMethodID.
 
 
 
-### Example
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `SimulatePayment` |
+| Path Parameters  |  [SimulatePaymentPathParams](#request-parameters--SimulatePaymentPathParams)	 |
+| Request Parameters  |  [SimulatePaymentRequestParams](#request-parameters--SimulatePaymentRequestParams)	 |
+| Return Type  |  (empty response body) |
+
+### Path Parameters - SimulatePaymentPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentMethodId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - SimulatePaymentRequestParams
+
+Parameters that are passed through a pointer to a apiSimulatePaymentRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+|  **simulatePaymentRequest** |[**SimulatePaymentRequest**](payment_method/SimulatePaymentRequest.md)|  |  | 
+
+### Usage Example
 
 ```go
 package main
@@ -669,33 +663,4 @@ func main() {
 }
 ```
 
-### Path Parameters
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | -------------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| | 
-| **paymentMethodId** | **string** |  |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSimulatePaymentRequest struct via the builder pattern
-
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| 
-|  **simulatePaymentRequest** |[**SimulatePaymentRequest**](payment_method/SimulatePaymentRequest.md)|  |  | 
-
-### Return type
-
- (empty response body)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#)
 [[Back to README]](../README.md)
-

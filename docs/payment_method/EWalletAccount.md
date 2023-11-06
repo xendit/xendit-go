@@ -1,13 +1,13 @@
 # EWalletAccount
+EWallet Account Properties
 
 ## Properties
-
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Name** | Pointer to **NullableString** | Name of the eWallet account holder. The value is null if unavailableName of the eWallet account holder. The value is null if unavailable | [optional]  |
-| **AccountDetails** | Pointer to **NullableString** | Identifier from eWallet provider e.g. phone number. The value is null if unavailable | [optional]  |
-| **Balance** | Pointer to **NullableFloat64** | The main balance amount on eWallet account provided from eWallet provider. The value is null if unavailable | [optional]  |
-| **PointBalance** | Pointer to **NullableFloat64** | The point balance amount on eWallet account. Applicable only on some eWallet provider that has point system. The value is null if unavailabl | [optional]  |
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Name** | Pointer to **NullableString** |  | Name of the eWallet account holder. The value is null if unavailableName of the eWallet account holder. The value is null if unavailable |  |
+| **AccountDetails** | Pointer to **NullableString** |  | Identifier from eWallet provider e.g. phone number. The value is null if unavailable |  |
+| **Balance** | Pointer to **NullableFloat64** |  | The main balance amount on eWallet account provided from eWallet provider. The value is null if unavailable |  |
+| **PointBalance** | Pointer to **NullableFloat64** |  | The point balance amount on eWallet account. Applicable only on some eWallet provider that has point system. The value is null if unavailabl |  |
 
 ## Methods
 

@@ -1,10 +1,10 @@
 # PaymentRequestParametersChannelPropertiesAllOf
 
-## Properties
 
-| Name | Type | Description | Notes |
-| ------------ | ------------- | ------------- | ------------- |
-| **Cvv** | Pointer to **string** | Three digit code written on the back of the card (usually called CVV/CVN). | [optional]  |
+## Properties
+| Name | Type | Required | Description | Examples |
+|------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Cvv** | Pointer to **string** |  | Three digit code written on the back of the card (usually called CVV/CVN). |  |
 
 ## Methods
 
