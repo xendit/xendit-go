@@ -18,8 +18,6 @@ import (
 )
 
 func Test_xendit_InvoiceApiService(t *testing.T) {
-
-	t.Skip()
 	err := godotenv.Load(".env.api_test")
 	if err != nil {
 		log.Fatal("Error loading .env.api_test file")
