@@ -1,6 +1,29 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
 version: 2
+registries:
+  xendit-ecr:
+    url: https://420361828844.dkr.ecr.ap-southeast-1.amazonaws.com
+    type: docker-registry
+    username: ${{secrets.ECR_AWS_ACCESS_KEY_ID}}
+    password: ${{secrets.ECR_AWS_SECRET_ACCESS_KEY}}
 updates:
-  - package-ecosystem: "gomod" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'gomod' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: fix
+      prefix-development: chore
+      include: scope
+  - package-ecosystem: 'docker'
+    directory: '/'
+    registries:
+      - xendit-ecr
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 10
