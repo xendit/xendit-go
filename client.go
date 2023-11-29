@@ -154,7 +154,7 @@ func (c *APIClient) PrepareRequest(
 	headerParams["xendit-lib"] = "go"
 
 	// TODO: overwrite this line from buddy pipeline
-	headerParams["xendit-lib-ver"] = "3.6.0"
+	headerParams["xendit-lib-ver"] = "3.7.0"
 
 	var body *bytes.Buffer
 

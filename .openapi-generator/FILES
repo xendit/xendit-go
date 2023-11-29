@@ -15,6 +15,8 @@ docs/refund/CreateRefund409Response.md
 docs/refund/CreateRefund503Response.md
 docs/refund/GetAllRefundsDefaultResponse.md
 docs/refund/Refund.md
+docs/refund/RefundCallback.md
+docs/refund/RefundCallbackData.md
 docs/refund/RefundList.md
 go.mod
 go.sum
@@ -28,6 +30,8 @@ refund/model_create_refund_409_response.go
 refund/model_create_refund_503_response.go
 refund/model_get_all_refunds_default_response.go
 refund/model_refund.go
+refund/model_refund_callback.go
+refund/model_refund_callback_data.go
 refund/model_refund_list.go
 refund/nullable.go
 response.go

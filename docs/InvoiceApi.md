@@ -72,7 +72,7 @@ func main() {
     createInvoiceRequest := *invoice.NewCreateInvoiceRequest("ExternalId_example", float32(123)) // [REQUIRED] | CreateInvoiceRequest
 
     // Business ID of the sub-account merchant (XP feature)
-    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+    forUserId := "62efe4c33e45694d63f585f0" // [OPTIONAL] | string
 
     xenditClient := xendit.NewClient("API-KEY")
 
@@ -141,7 +141,7 @@ func main() {
     invoiceId := "62efe4c33e45294d63f585f2" // [REQUIRED] | string
 
     // Business ID of the sub-account merchant (XP feature)
-    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+    forUserId := "62efe4c33e45694d63f585f0" // [OPTIONAL] | string
 
     xenditClient := xendit.NewClient("API-KEY")
 
@@ -216,7 +216,7 @@ import (
 func main() {
     
     // Business ID of the sub-account merchant (XP feature)
-    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+    forUserId := "62efe4c33e45694d63f585f0" // [OPTIONAL] | string
 
     externalId := "test-external" // [OPTIONAL] | string
 
@@ -326,7 +326,7 @@ func main() {
     invoiceId := "5f4708b7bd394b0400b96276" // [REQUIRED] | string
 
     // Business ID of the sub-account merchant (XP feature)
-    forUserId := "62efe4c33e45694d63f585f8" // [OPTIONAL] | string
+    forUserId := "62efe4c33e45694d63f585f0" // [OPTIONAL] | string
 
     xenditClient := xendit.NewClient("API-KEY")
 
@@ -344,6 +344,62 @@ func main() {
     }
     // response from `ExpireInvoice`: Invoice
     fmt.Fprintf(os.Stdout, "Response from `InvoiceApi.ExpireInvoice`: %v\n", resp)
+}
+```
+
+## Callback Objects
+Use the following callback objects provided by Xendit to receive callbacks (also known as webhooks) that Xendit sends you on events, such as successful payments. Note that the example is meant to illustrate the contents of the callback object -- you will not need to instantiate these objects in practice
+### InvoiceCallback Object
+>Invoice Callback Object
+
+Model Documentation: [InvoiceCallback](/InvoiceCallback.md)
+#### Usage Example
+Note that the example is meant to illustrate the contents of the callback object -- you will not need to instantiate these objects in practice
+```go
+InvoiceCallbackJson := map[string]interface{}{
+  "id" : "593f4ed1c3d3bb7f39733d83",
+  "external_id" : "testing-invoice",
+  "user_id" : "5848fdf860053555135587e7",
+  "payment_method" : "RETAIL_OUTLET",
+  "status" : "PAID",
+  "merchant_name" : "Xendit",
+  "amount" : 2000000,
+  "paid_amount" : 2000000,
+  "paid_at" : "2020-01-14T02:32:50.912Z",
+  "payer_email" : "test@xendit.co",
+  "description" : "Invoice webhook test",
+  "created" : "2020-01-13T02:32:49.827Z",
+  "updated" : "2020-01-13T02:32:50.912Z",
+  "currency" : "IDR",
+  "payment_channel" : "ALFAMART",
+  "payment_destination" : "TEST815"
+}
+jsonData, _ := json.Marshal(InvoiceCallbackJson)
+```
+
+You may then use the callback object in your webhook or callback handler like so,
+```go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v3"
+    invoice "github.com/xendit/xendit-go/v3/invoice"
+)
+
+func main() {
+    // get callback object here
+    // define jsonData
+
+    // unmarshal callback object jsonData
+    var InvoiceCallback invoice.InvoiceCallback
+    err := json.Unmarshal(jsonData, &InvoiceCallback)
+    if err == nil {
+        fmt.Fprintf(os.Stdout, "Callback Object ID: %v\n", InvoiceCallback.GetId())
+        // do things here with the callback
+    }
 }
 ```
 
