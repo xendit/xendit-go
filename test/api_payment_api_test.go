@@ -12,9 +12,9 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/joho/godotenv"
-	xendit "github.com/xendit/xendit-go/v3"
-	payment_method "github.com/xendit/xendit-go/v3/payment_method"
-	"github.com/xendit/xendit-go/v3/payment_request"
+	xendit "github.com/xendit/xendit-go/v4"
+	payment_method "github.com/xendit/xendit-go/v4/payment_method"
+	"github.com/xendit/xendit-go/v4/payment_request"
 )
 
 func Test_xendit_PaymentAPIService(t *testing.T) {
@@ -44,17 +44,16 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		cardParams := payment_method.CardParameters{
 			Currency: "IDR",
 			CardInformation: &payment_method.CardParametersCardInformation{
-				CardNumber: "4000000000001091",
-				ExpiryMonth: "12",
-				ExpiryYear: "2027",
+				CardNumber:     "4000000000001091",
+				ExpiryMonth:    "12",
+				ExpiryYear:     "2027",
 				CardholderName: *payment_method.NewNullableString(&cardHolderName),
-				Cvv: *payment_method.NewNullableString(&cvv),
+				Cvv:            *payment_method.NewNullableString(&cvv),
 			},
 			ChannelProperties: *payment_method.NewNullableCardChannelProperties(&payment_method.CardChannelProperties{
 				SuccessReturnUrl: *payment_method.NewNullableString(&successReturnUrl),
 				FailureReturnUrl: *payment_method.NewNullableString(&failureReturnUrl),
 			}),
-
 		}
 
 		paymentMethodParameters.SetDescription("This is a description")
@@ -79,9 +78,9 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		referenceId := time.Now().Format("20060102150405")
 		amount := float64(10000)
 		paymentRequestParameters := payment_request.PaymentRequestParameters{
-			ReferenceId: &referenceId,
-			Amount: &amount,
-			Currency: "IDR",
+			ReferenceId:     &referenceId,
+			Amount:          &amount,
+			Currency:        "IDR",
 			PaymentMethodId: &createPMResp.Id,
 		}
 
@@ -119,8 +118,8 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 			ChannelProperties: *payment_method.NewNullableDirectDebitChannelProperties(&payment_method.DirectDebitChannelProperties{
 				MobileNumber: *payment_method.NewNullableString(&mobileNumber),
 				CardLastFour: *payment_method.NewNullableString(&cardlastFour),
-				CardExpiry: *payment_method.NewNullableString(&cardExpiry),
-				Email: *payment_method.NewNullableString(&email),
+				CardExpiry:   *payment_method.NewNullableString(&cardExpiry),
+				Email:        *payment_method.NewNullableString(&email),
 			}),
 		}
 
@@ -147,10 +146,10 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		// Authenticate Payment Method
 		paymentMethodAuthParameters := *payment_method.NewPaymentMethodAuthParameters("333000")
 		authPMResp, authPMHttpResp, authPMErr := apiClient.PaymentMethodApi.AuthPaymentMethod(context.Background(), createPMResp.Id).
-        	PaymentMethodAuthParameters(paymentMethodAuthParameters).
-        	Execute()
+			PaymentMethodAuthParameters(paymentMethodAuthParameters).
+			Execute()
 
-		fmt.Println(authPMResp, authPMHttpResp,authPMErr)
+		fmt.Println(authPMResp, authPMHttpResp, authPMErr)
 		if authPMErr != nil {
 			fmt.Fprintf(os.Stdout, "Authenticate DIRECT DEBIT Payment Method Err`: %v\n", authPMErr)
 		} else {
@@ -165,9 +164,9 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		referenceId := time.Now().Format("20060102150405")
 		amount := float64(10000)
 		paymentRequestParameters := payment_request.PaymentRequestParameters{
-			ReferenceId: &referenceId,
-			Amount: &amount,
-			Currency: "IDR",
+			ReferenceId:     &referenceId,
+			Amount:          &amount,
+			Currency:        "IDR",
 			PaymentMethodId: &createPMResp.Id,
 		}
 
@@ -205,8 +204,8 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 			ChannelProperties: &payment_method.EWalletChannelProperties{
 				SuccessReturnUrl: &successReturnUrl,
 				FailureReturnUrl: &failureReturnUrl,
-				CancelReturnUrl: &cancelReturnUrl,
-				MobileNumber: &mobileNumber,
+				CancelReturnUrl:  &cancelReturnUrl,
+				MobileNumber:     &mobileNumber,
 			},
 		}
 
@@ -233,9 +232,9 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		referenceId := time.Now().Format("20060102150405")
 		amount := float64(10000)
 		paymentRequestParameters := payment_request.PaymentRequestParameters{
-			ReferenceId: &referenceId,
-			Amount: &amount,
-			Currency: "IDR",
+			ReferenceId:     &referenceId,
+			Amount:          &amount,
+			Currency:        "IDR",
 			PaymentMethodId: &createPMResp.Id,
 		}
 
@@ -259,19 +258,19 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		// Create Payment Request with Bunddled Payment Method
 		amount := float64(10000)
 		overTheCounter := payment_request.OverTheCounterParameters{
-			ChannelCode: payment_request.OVERTHECOUNTERCHANNELCODE_ALFAMART,
+			ChannelCode:       payment_request.OVERTHECOUNTERCHANNELCODE_ALFAMART,
 			ChannelProperties: *payment_request.NewOverTheCounterChannelProperties("John Doe"),
 		}
 		nullableOverTheCounter := payment_request.NewNullableOverTheCounterParameters(&overTheCounter)
 
 		paymentMethod := payment_request.PaymentMethodParameters{
-			Type: payment_request.PAYMENTMETHODTYPE_OVER_THE_COUNTER,
-			Reusability: payment_request.PAYMENTMETHODREUSABILITY_ONE_TIME_USE,
+			Type:           payment_request.PAYMENTMETHODTYPE_OVER_THE_COUNTER,
+			Reusability:    payment_request.PAYMENTMETHODREUSABILITY_ONE_TIME_USE,
 			OverTheCounter: *nullableOverTheCounter,
 		}
 		paymentRequestParameters := payment_request.PaymentRequestParameters{
-			Amount: &amount,
-			Currency: "IDR",
+			Amount:        &amount,
+			Currency:      "IDR",
 			PaymentMethod: &paymentMethod,
 		}
 
@@ -300,13 +299,13 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		}
 
 		paymentMethod := payment_request.PaymentMethodParameters{
-			Type: payment_request.PAYMENTMETHODTYPE_QR_CODE,
+			Type:        payment_request.PAYMENTMETHODTYPE_QR_CODE,
 			Reusability: payment_request.PAYMENTMETHODREUSABILITY_ONE_TIME_USE,
-			QrCode: *payment_request.NewNullableQRCodeParameters(&qrCode),
+			QrCode:      *payment_request.NewNullableQRCodeParameters(&qrCode),
 		}
 		paymentRequestParameters := payment_request.PaymentRequestParameters{
-			Amount: &amount,
-			Currency: "IDR",
+			Amount:        &amount,
+			Currency:      "IDR",
 			PaymentMethod: &paymentMethod,
 		}
 
@@ -330,18 +329,18 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		// Create Payment Request with Bunddled Payment Method
 		amount := float64(10000)
 		virtualAccount := payment_request.VirtualAccountParameters{
-			ChannelCode: payment_request.VIRTUALACCOUNTCHANNELCODE_BRI,
+			ChannelCode:       payment_request.VIRTUALACCOUNTCHANNELCODE_BRI,
 			ChannelProperties: *payment_request.NewVirtualAccountChannelProperties("John Doe"),
 		}
 
 		paymentMethod := payment_request.PaymentMethodParameters{
-			Type: payment_request.PAYMENTMETHODTYPE_QR_CODE,
-			Reusability: payment_request.PAYMENTMETHODREUSABILITY_ONE_TIME_USE,
+			Type:           payment_request.PAYMENTMETHODTYPE_QR_CODE,
+			Reusability:    payment_request.PAYMENTMETHODREUSABILITY_ONE_TIME_USE,
 			VirtualAccount: *payment_request.NewNullableVirtualAccountParameters(&virtualAccount),
 		}
 		paymentRequestParameters := payment_request.PaymentRequestParameters{
-			Amount: &amount,
-			Currency: "IDR",
+			Amount:        &amount,
+			Currency:      "IDR",
 			PaymentMethod: &paymentMethod,
 		}
 
@@ -361,7 +360,7 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		}
 	})
 
-	t.Run("Get Payment Method By Id", func (t *testing.T){
+	t.Run("Get Payment Method By Id", func(t *testing.T) {
 		resp, httpResp, err := apiClient.PaymentMethodApi.GetPaymentMethodByID(
 			context.Background(),
 			"pm-89a09e44-3a9f-4bf3-903e-3f68ec170723",
@@ -377,7 +376,7 @@ func Test_xendit_PaymentAPIService(t *testing.T) {
 		}
 	})
 
-	t.Run("Get Payment Request By Id", func (t *testing.T){
+	t.Run("Get Payment Request By Id", func(t *testing.T) {
 		resp, httpResp, err := apiClient.PaymentRequestApi.GetPaymentRequestByID(
 			context.Background(),
 			"pr-6fd4595a-d6da-4939-9b65-b9f57ebf78dc",

@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	xendit "github.com/xendit/xendit-go/v3"
-	"github.com/xendit/xendit-go/v3/invoice"
+	xendit "github.com/xendit/xendit-go/v4"
+	"github.com/xendit/xendit-go/v4/invoice"
 )
 
 func Test_xendit_InvoiceApiService(t *testing.T) {
