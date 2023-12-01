@@ -31,7 +31,7 @@ func Test_xendit_InvoiceApiService(t *testing.T) {
 	apiClient := xendit.NewClient(apiKey)
 
 	t.Run("Test InvoiceApiService CreateInvoice", func(t *testing.T) {
-		createInvoiceRequest := *invoice.NewCreateInvoiceRequest(time.Now().Format("20060102150405"), float32(10000))
+		createInvoiceRequest := *invoice.NewCreateInvoiceRequest(time.Now().Format("20060102150405"), float64(10000))
 		resp, httpRes, err := apiClient.InvoiceApi.
 			CreateInvoice(context.Background()).
 			CreateInvoiceRequest(createInvoiceRequest).
@@ -40,7 +40,8 @@ func Test_xendit_InvoiceApiService(t *testing.T) {
 		if err != nil {
 			fmt.Fprintf(os.Stdout, "CreateInvoice Err`: %v\n", err)
 		} else {
-			fmt.Fprintf(os.Stdout, "CreateInvoice Res`: %v\n", resp)
+			r, _ := resp.MarshalJSON()
+			fmt.Fprintf(os.Stdout, "CreateInvoice Res`: %v\n", string(r))
 
 			require.NotNil(t, resp)
 			assert.Equal(t, 200, httpRes.StatusCode)
@@ -57,7 +58,8 @@ func Test_xendit_InvoiceApiService(t *testing.T) {
 		if err != nil {
 			fmt.Fprintf(os.Stdout, "GetInvoiceById Err`: %v\n", err)
 		} else {
-			fmt.Fprintf(os.Stdout, "GetInvoiceById Res`: %v\n", resp)
+			r, _ := resp.MarshalJSON()
+			fmt.Fprintf(os.Stdout, "GetInvoiceById Res`: %v\n", string(r))
 
 			require.NotNil(t, resp)
 			assert.Equal(t, 200, httpRes.StatusCode)
