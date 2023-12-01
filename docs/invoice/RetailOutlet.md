@@ -6,7 +6,7 @@ An object representing retail outlet details for invoices.
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **RetailOutletName** | [**RetailOutletName**](RetailOutletName.md) | ☑️ |  |  |
 | **PaymentCode** | Pointer to **string** |  | The payment code. |  |
-| **TransferAmount** | Pointer to **float32** |  | The transfer amount. |  |
+| **TransferAmount** | Pointer to **float64** |  | The transfer amount. |  |
 | **MerchantName** | Pointer to **string** |  | The name of the merchant. |  |
 
 ## Methods
@@ -75,20 +75,20 @@ HasPaymentCode returns a boolean if a field has been set.
 
 ### GetTransferAmount
 
-`func (o *RetailOutlet) GetTransferAmount() float32`
+`func (o *RetailOutlet) GetTransferAmount() float64`
 
 GetTransferAmount returns the TransferAmount field if non-nil, zero value otherwise.
 
 ### GetTransferAmountOk
 
-`func (o *RetailOutlet) GetTransferAmountOk() (*float32, bool)`
+`func (o *RetailOutlet) GetTransferAmountOk() (*float64, bool)`
 
 GetTransferAmountOk returns a tuple with the TransferAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransferAmount
 
-`func (o *RetailOutlet) SetTransferAmount(v float32)`
+`func (o *RetailOutlet) SetTransferAmount(v float64)`
 
 SetTransferAmount sets TransferAmount field to given value.
 

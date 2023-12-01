@@ -12,7 +12,7 @@ package invoice
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v3/utils"
+	utils "github.com/xendit/xendit-go/v4/utils"
 )
 
 // checks if the CreateInvoiceRequest type satisfies the MappedNullable interface at compile time
@@ -23,7 +23,7 @@ type CreateInvoiceRequest struct {
 	// The external ID of the invoice.
 	ExternalId string `json:"external_id"`
 	// The invoice amount.
-	Amount float32 `json:"amount"`
+	Amount float64 `json:"amount"`
 	// The email address of the payer.
 	PayerEmail *string `json:"payer_email,omitempty"`
 	// A description of the payment.
@@ -64,7 +64,7 @@ type CreateInvoiceRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateInvoiceRequest(externalId string, amount float32) *CreateInvoiceRequest {
+func NewCreateInvoiceRequest(externalId string, amount float64) *CreateInvoiceRequest {
 	this := CreateInvoiceRequest{}
 	this.ExternalId = externalId
 	this.Amount = amount
@@ -104,9 +104,9 @@ func (o *CreateInvoiceRequest) SetExternalId(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *CreateInvoiceRequest) GetAmount() float32 {
+func (o *CreateInvoiceRequest) GetAmount() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *CreateInvoiceRequest) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *CreateInvoiceRequest) GetAmountOk() (*float32, bool) {
+func (o *CreateInvoiceRequest) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *CreateInvoiceRequest) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *CreateInvoiceRequest) SetAmount(v float32) {
+func (o *CreateInvoiceRequest) SetAmount(v float64) {
 	o.Amount = v
 }
 

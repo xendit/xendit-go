@@ -14,7 +14,7 @@ An object representing details for an invoice.
 | **MerchantName** | **string** | ☑️ | The name of the merchant. |  |
 | **MerchantProfilePictureUrl** | **string** | ☑️ | The URL of the merchant&#39;s profile picture. |  |
 | **Locale** | Pointer to **string** |  | The locale or language used for the invoice. |  |
-| **Amount** | **float32** | ☑️ | The total amount of the invoice. |  |
+| **Amount** | **float64** | ☑️ | The total amount of the invoice. |  |
 | **ExpiryDate** | **time.Time** | ☑️ | Representing a date and time in ISO 8601 format. |  |
 | **InvoiceUrl** | **string** | ☑️ | The URL to view the invoice. |  |
 | **AvailableBanks** | [**Bank[]**](Bank.md) | ☑️ | An array of available banks for payment. |  |
@@ -42,7 +42,7 @@ An object representing details for an invoice.
 
 ### NewInvoice
 
-`func NewInvoice(externalId string, userId string, status InvoiceStatus, merchantName string, merchantProfilePictureUrl string, amount float32, expiryDate time.Time, invoiceUrl string, availableBanks []Bank, availableRetailOutlets []RetailOutlet, availableEwallets []Ewallet, availableQrCodes []QrCode, availableDirectDebits []DirectDebit, availablePaylaters []Paylater, shouldSendEmail bool, created time.Time, updated time.Time, ) *Invoice`
+`func NewInvoice(externalId string, userId string, status InvoiceStatus, merchantName string, merchantProfilePictureUrl string, amount float64, expiryDate time.Time, invoiceUrl string, availableBanks []Bank, availableRetailOutlets []RetailOutlet, availableEwallets []Ewallet, availableQrCodes []QrCode, availableDirectDebits []DirectDebit, availablePaylaters []Paylater, shouldSendEmail bool, created time.Time, updated time.Time, ) *Invoice`
 
 NewInvoice instantiates a new Invoice object
 This constructor will assign default values to properties that have it defined,
@@ -284,20 +284,20 @@ HasLocale returns a boolean if a field has been set.
 
 ### GetAmount
 
-`func (o *Invoice) GetAmount() float32`
+`func (o *Invoice) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *Invoice) GetAmountOk() (*float32, bool)`
+`func (o *Invoice) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *Invoice) SetAmount(v float32)`
+`func (o *Invoice) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

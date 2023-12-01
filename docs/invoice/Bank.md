@@ -9,7 +9,7 @@ An object representing bank details for invoices.
 | **BankBranch** | Pointer to **string** |  | The branch of the bank. |  |
 | **BankAccountNumber** | Pointer to **string** |  | The bank account number. |  |
 | **AccountHolderName** | **string** | ☑️ | The name of the account holder. |  |
-| **TransferAmount** | Pointer to **float32** |  | The transfer amount. |  |
+| **TransferAmount** | Pointer to **float64** |  | The transfer amount. |  |
 | **AlternativeDisplays** | Pointer to [**AlternativeDisplayItem[]**](AlternativeDisplayItem.md) |  |  |  |
 
 ## Methods
@@ -143,20 +143,20 @@ SetAccountHolderName sets AccountHolderName field to given value.
 
 ### GetTransferAmount
 
-`func (o *Bank) GetTransferAmount() float32`
+`func (o *Bank) GetTransferAmount() float64`
 
 GetTransferAmount returns the TransferAmount field if non-nil, zero value otherwise.
 
 ### GetTransferAmountOk
 
-`func (o *Bank) GetTransferAmountOk() (*float32, bool)`
+`func (o *Bank) GetTransferAmountOk() (*float64, bool)`
 
 GetTransferAmountOk returns a tuple with the TransferAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTransferAmount
 
-`func (o *Bank) SetTransferAmount(v float32)`
+`func (o *Bank) SetTransferAmount(v float64)`
 
 SetTransferAmount sets TransferAmount field to given value.
 

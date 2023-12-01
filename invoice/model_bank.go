@@ -12,7 +12,7 @@ package invoice
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v3/utils"
+	utils "github.com/xendit/xendit-go/v4/utils"
 )
 
 // checks if the Bank type satisfies the MappedNullable interface at compile time
@@ -30,7 +30,7 @@ type Bank struct {
 	// The name of the account holder.
 	AccountHolderName string `json:"account_holder_name"`
 	// The transfer amount.
-	TransferAmount *float32 `json:"transfer_amount,omitempty"`
+	TransferAmount *float64 `json:"transfer_amount,omitempty"`
 	AlternativeDisplays []AlternativeDisplayItem `json:"alternative_displays,omitempty"`
 }
 
@@ -191,9 +191,9 @@ func (o *Bank) SetAccountHolderName(v string) {
 }
 
 // GetTransferAmount returns the TransferAmount field value if set, zero value otherwise.
-func (o *Bank) GetTransferAmount() float32 {
+func (o *Bank) GetTransferAmount() float64 {
 	if o == nil || utils.IsNil(o.TransferAmount) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.TransferAmount
@@ -201,7 +201,7 @@ func (o *Bank) GetTransferAmount() float32 {
 
 // GetTransferAmountOk returns a tuple with the TransferAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Bank) GetTransferAmountOk() (*float32, bool) {
+func (o *Bank) GetTransferAmountOk() (*float64, bool) {
 	if o == nil || utils.IsNil(o.TransferAmount) {
 		return nil, false
 	}
@@ -217,8 +217,8 @@ func (o *Bank) HasTransferAmount() bool {
 	return false
 }
 
-// SetTransferAmount gets a reference to the given float32 and assigns it to the TransferAmount field.
-func (o *Bank) SetTransferAmount(v float32) {
+// SetTransferAmount gets a reference to the given float64 and assigns it to the TransferAmount field.
+func (o *Bank) SetTransferAmount(v float64) {
 	o.TransferAmount = &v
 }
 

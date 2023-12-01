@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
+    xendit "github.com/xendit/xendit-go/v4"
 )
 
 func main() {
@@ -64,8 +64,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    refund "github.com/xendit/xendit-go/v3/refund"
+    xendit "github.com/xendit/xendit-go/v4"
+    refund "github.com/xendit/xendit-go/v4/refund"
 )
 
 func main() {
@@ -135,8 +135,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    refund "github.com/xendit/xendit-go/v3/refund"
+    xendit "github.com/xendit/xendit-go/v4"
+    refund "github.com/xendit/xendit-go/v4/refund"
 )
 
 func main() {
@@ -206,8 +206,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    refund "github.com/xendit/xendit-go/v3/refund"
+    xendit "github.com/xendit/xendit-go/v4"
+    refund "github.com/xendit/xendit-go/v4/refund"
 )
 
 func main() {
@@ -292,8 +292,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    refund "github.com/xendit/xendit-go/v3/refund"
+    xendit "github.com/xendit/xendit-go/v4"
+    refund "github.com/xendit/xendit-go/v4/refund"
 )
 
 func main() {
@@ -366,8 +366,8 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    refund "github.com/xendit/xendit-go/v3/refund"
+    xendit "github.com/xendit/xendit-go/v4"
+    refund "github.com/xendit/xendit-go/v4/refund"
 )
 
 func main() {

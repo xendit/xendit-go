@@ -9,10 +9,10 @@ Invoice Callback Object
 | **UserId** | **string** | ☑️ | Xendit Business ID |  |
 | **Status** | **string** | ☑️ | The status of the invoice. |  |
 | **MerchantName** | **string** | ☑️ | The name of company or website |  |
-| **Amount** | **float32** | ☑️ | Nominal amount for the invoice |  |
+| **Amount** | **float64** | ☑️ | Nominal amount for the invoice |  |
 | **PayerEmail** | Pointer to **string** |  | Email of the payer |  |
 | **Description** | Pointer to **string** |  | Description for the invoice |  |
-| **PaidAmount** | Pointer to **float32** |  | Total amount paid for the invoice |  |
+| **PaidAmount** | Pointer to **float64** |  | Total amount paid for the invoice |  |
 | **Created** | **string** | ☑️ | The date and time when the invoice was created. |  |
 | **Updated** | **string** | ☑️ | The date and time when the invoice was last updated. |  |
 | **Currency** | **string** | ☑️ | The currency of the invoice. |  |
@@ -37,7 +37,7 @@ Invoice Callback Object
 
 ### NewInvoiceCallback
 
-`func NewInvoiceCallback(id string, externalId string, userId string, status string, merchantName string, amount float32, created string, updated string, currency string, ) *InvoiceCallback`
+`func NewInvoiceCallback(id string, externalId string, userId string, status string, merchantName string, amount float64, created string, updated string, currency string, ) *InvoiceCallback`
 
 NewInvoiceCallback instantiates a new InvoiceCallback object
 This constructor will assign default values to properties that have it defined,
@@ -154,20 +154,20 @@ SetMerchantName sets MerchantName field to given value.
 
 ### GetAmount
 
-`func (o *InvoiceCallback) GetAmount() float32`
+`func (o *InvoiceCallback) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *InvoiceCallback) GetAmountOk() (*float32, bool)`
+`func (o *InvoiceCallback) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *InvoiceCallback) SetAmount(v float32)`
+`func (o *InvoiceCallback) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 
@@ -224,20 +224,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetPaidAmount
 
-`func (o *InvoiceCallback) GetPaidAmount() float32`
+`func (o *InvoiceCallback) GetPaidAmount() float64`
 
 GetPaidAmount returns the PaidAmount field if non-nil, zero value otherwise.
 
 ### GetPaidAmountOk
 
-`func (o *InvoiceCallback) GetPaidAmountOk() (*float32, bool)`
+`func (o *InvoiceCallback) GetPaidAmountOk() (*float64, bool)`
 
 GetPaidAmountOk returns a tuple with the PaidAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaidAmount
 
-`func (o *InvoiceCallback) SetPaidAmount(v float32)`
+`func (o *InvoiceCallback) SetPaidAmount(v float64)`
 
 SetPaidAmount sets PaidAmount field to given value.
 

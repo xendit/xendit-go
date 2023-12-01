@@ -5,7 +5,7 @@ An object representing for an invoice creation request.
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **ExternalId** | **string** | ☑️ | The external ID of the invoice. |  |
-| **Amount** | **float32** | ☑️ | The invoice amount. |  |
+| **Amount** | **float64** | ☑️ | The invoice amount. |  |
 | **PayerEmail** | Pointer to **string** |  | The email address of the payer. |  |
 | **Description** | Pointer to **string** |  | A description of the payment. |  |
 | **InvoiceDuration** | Pointer to **string** |  | The duration of the invoice. |  |
@@ -29,7 +29,7 @@ An object representing for an invoice creation request.
 
 ### NewCreateInvoiceRequest
 
-`func NewCreateInvoiceRequest(externalId string, amount float32, ) *CreateInvoiceRequest`
+`func NewCreateInvoiceRequest(externalId string, amount float64, ) *CreateInvoiceRequest`
 
 NewCreateInvoiceRequest instantiates a new CreateInvoiceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,20 +66,20 @@ SetExternalId sets ExternalId field to given value.
 
 ### GetAmount
 
-`func (o *CreateInvoiceRequest) GetAmount() float32`
+`func (o *CreateInvoiceRequest) GetAmount() float64`
 
 GetAmount returns the Amount field if non-nil, zero value otherwise.
 
 ### GetAmountOk
 
-`func (o *CreateInvoiceRequest) GetAmountOk() (*float32, bool)`
+`func (o *CreateInvoiceRequest) GetAmountOk() (*float64, bool)`
 
 GetAmountOk returns a tuple with the Amount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAmount
 
-`func (o *CreateInvoiceRequest) SetAmount(v float32)`
+`func (o *CreateInvoiceRequest) SetAmount(v float64)`
 
 SetAmount sets Amount field to given value.
 

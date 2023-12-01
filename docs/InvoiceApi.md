@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
+    xendit "github.com/xendit/xendit-go/v4"
 )
 
 func main() {
@@ -63,13 +63,13 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    invoice "github.com/xendit/xendit-go/v3/invoice"
+    xendit "github.com/xendit/xendit-go/v4"
+    invoice "github.com/xendit/xendit-go/v4/invoice"
 )
 
 func main() {
     
-    createInvoiceRequest := *invoice.NewCreateInvoiceRequest("ExternalId_example", float32(123)) // [REQUIRED] | CreateInvoiceRequest
+    createInvoiceRequest := *invoice.NewCreateInvoiceRequest("ExternalId_example", float64(123)) // [REQUIRED] | CreateInvoiceRequest
 
     // Business ID of the sub-account merchant (XP feature)
     forUserId := "62efe4c33e45694d63f585f0" // [OPTIONAL] | string
@@ -131,8 +131,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    invoice "github.com/xendit/xendit-go/v3/invoice"
+    xendit "github.com/xendit/xendit-go/v4"
+    invoice "github.com/xendit/xendit-go/v4/invoice"
 )
 
 func main() {
@@ -209,8 +209,8 @@ import (
     "fmt"
     "os"
         "time"
-    xendit "github.com/xendit/xendit-go/v3"
-    invoice "github.com/xendit/xendit-go/v3/invoice"
+    xendit "github.com/xendit/xendit-go/v4"
+    invoice "github.com/xendit/xendit-go/v4/invoice"
 )
 
 func main() {
@@ -316,8 +316,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    invoice "github.com/xendit/xendit-go/v3/invoice"
+    xendit "github.com/xendit/xendit-go/v4"
+    invoice "github.com/xendit/xendit-go/v4/invoice"
 )
 
 func main() {
@@ -385,8 +385,8 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    invoice "github.com/xendit/xendit-go/v3/invoice"
+    xendit "github.com/xendit/xendit-go/v4"
+    invoice "github.com/xendit/xendit-go/v4/invoice"
 )
 
 func main() {

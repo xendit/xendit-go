@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
+    xendit "github.com/xendit/xendit-go/v4"
 )
 
 func main() {
@@ -69,8 +69,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -138,8 +138,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -219,8 +219,8 @@ import (
     "fmt"
     "os"
         "time"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -324,8 +324,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -399,8 +399,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -493,8 +493,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -565,8 +565,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -636,8 +636,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {
@@ -722,8 +722,8 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    payment_method "github.com/xendit/xendit-go/v3/payment_method"
+    xendit "github.com/xendit/xendit-go/v4"
+    payment_method "github.com/xendit/xendit-go/v4/payment_method"
 )
 
 func main() {

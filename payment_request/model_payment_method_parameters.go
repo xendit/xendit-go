@@ -12,7 +12,7 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v3/utils"
+	utils "github.com/xendit/xendit-go/v4/utils"
 )
 
 // checks if the PaymentMethodParameters type satisfies the MappedNullable interface at compile time

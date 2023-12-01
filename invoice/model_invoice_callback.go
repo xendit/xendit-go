@@ -12,7 +12,7 @@ package invoice
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v3/utils"
+	utils "github.com/xendit/xendit-go/v4/utils"
 )
 
 // checks if the InvoiceCallback type satisfies the MappedNullable interface at compile time
@@ -31,13 +31,13 @@ type InvoiceCallback struct {
 	// The name of company or website
 	MerchantName string `json:"merchant_name"`
 	// Nominal amount for the invoice
-	Amount float32 `json:"amount"`
+	Amount float64 `json:"amount"`
 	// Email of the payer
 	PayerEmail *string `json:"payer_email,omitempty"`
 	// Description for the invoice
 	Description *string `json:"description,omitempty"`
 	// Total amount paid for the invoice
-	PaidAmount *float32 `json:"paid_amount,omitempty"`
+	PaidAmount *float64 `json:"paid_amount,omitempty"`
 	// The date and time when the invoice was created.
 	Created string `json:"created"`
 	// The date and time when the invoice was last updated.
@@ -80,7 +80,7 @@ type InvoiceCallback struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvoiceCallback(id string, externalId string, userId string, status string, merchantName string, amount float32, created string, updated string, currency string) *InvoiceCallback {
+func NewInvoiceCallback(id string, externalId string, userId string, status string, merchantName string, amount float64, created string, updated string, currency string) *InvoiceCallback {
 	this := InvoiceCallback{}
 	this.Id = id
 	this.ExternalId = externalId
@@ -223,9 +223,9 @@ func (o *InvoiceCallback) SetMerchantName(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *InvoiceCallback) GetAmount() float32 {
+func (o *InvoiceCallback) GetAmount() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -234,7 +234,7 @@ func (o *InvoiceCallback) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *InvoiceCallback) GetAmountOk() (*float32, bool) {
+func (o *InvoiceCallback) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -242,7 +242,7 @@ func (o *InvoiceCallback) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *InvoiceCallback) SetAmount(v float32) {
+func (o *InvoiceCallback) SetAmount(v float64) {
 	o.Amount = v
 }
 
@@ -311,9 +311,9 @@ func (o *InvoiceCallback) SetDescription(v string) {
 }
 
 // GetPaidAmount returns the PaidAmount field value if set, zero value otherwise.
-func (o *InvoiceCallback) GetPaidAmount() float32 {
+func (o *InvoiceCallback) GetPaidAmount() float64 {
 	if o == nil || utils.IsNil(o.PaidAmount) {
-		var ret float32
+		var ret float64
 		return ret
 	}
 	return *o.PaidAmount
@@ -321,7 +321,7 @@ func (o *InvoiceCallback) GetPaidAmount() float32 {
 
 // GetPaidAmountOk returns a tuple with the PaidAmount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InvoiceCallback) GetPaidAmountOk() (*float32, bool) {
+func (o *InvoiceCallback) GetPaidAmountOk() (*float64, bool) {
 	if o == nil || utils.IsNil(o.PaidAmount) {
 		return nil, false
 	}
@@ -337,8 +337,8 @@ func (o *InvoiceCallback) HasPaidAmount() bool {
 	return false
 }
 
-// SetPaidAmount gets a reference to the given float32 and assigns it to the PaidAmount field.
-func (o *InvoiceCallback) SetPaidAmount(v float32) {
+// SetPaidAmount gets a reference to the given float64 and assigns it to the PaidAmount field.
+func (o *InvoiceCallback) SetPaidAmount(v float64) {
 	o.PaidAmount = &v
 }
 

@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
+    xendit "github.com/xendit/xendit-go/v4"
 )
 
 func main() {
@@ -63,8 +63,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v3"
-    balance_and_transaction "github.com/xendit/xendit-go/v3/balance_and_transaction"
+    xendit "github.com/xendit/xendit-go/v4"
+    balance_and_transaction "github.com/xendit/xendit-go/v4/balance_and_transaction"
 )
 
 func main() {

@@ -12,7 +12,7 @@ package invoice
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v3/utils"
+	utils "github.com/xendit/xendit-go/v4/utils"
 	"time"
 )
 
@@ -40,7 +40,7 @@ type Invoice struct {
 	// The locale or language used for the invoice.
 	Locale *string `json:"locale,omitempty"`
 	// The total amount of the invoice.
-	Amount float32 `json:"amount"`
+	Amount float64 `json:"amount"`
 	// Representing a date and time in ISO 8601 format.
 	ExpiryDate time.Time `json:"expiry_date"`
 	// The URL to view the invoice.
@@ -88,7 +88,7 @@ type Invoice struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvoice(externalId string, userId string, status InvoiceStatus, merchantName string, merchantProfilePictureUrl string, amount float32, expiryDate time.Time, invoiceUrl string, availableBanks []Bank, availableRetailOutlets []RetailOutlet, availableEwallets []Ewallet, availableQrCodes []QrCode, availableDirectDebits []DirectDebit, availablePaylaters []Paylater, shouldSendEmail bool, created time.Time, updated time.Time) *Invoice {
+func NewInvoice(externalId string, userId string, status InvoiceStatus, merchantName string, merchantProfilePictureUrl string, amount float64, expiryDate time.Time, invoiceUrl string, availableBanks []Bank, availableRetailOutlets []RetailOutlet, availableEwallets []Ewallet, availableQrCodes []QrCode, availableDirectDebits []DirectDebit, availablePaylaters []Paylater, shouldSendEmail bool, created time.Time, updated time.Time) *Invoice {
 	this := Invoice{}
 	this.ExternalId = externalId
 	this.UserId = userId
@@ -399,9 +399,9 @@ func (o *Invoice) SetLocale(v string) {
 }
 
 // GetAmount returns the Amount field value
-func (o *Invoice) GetAmount() float32 {
+func (o *Invoice) GetAmount() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -410,7 +410,7 @@ func (o *Invoice) GetAmount() float32 {
 
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *Invoice) GetAmountOk() (*float32, bool) {
+func (o *Invoice) GetAmountOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -418,7 +418,7 @@ func (o *Invoice) GetAmountOk() (*float32, bool) {
 }
 
 // SetAmount sets field value
-func (o *Invoice) SetAmount(v float32) {
+func (o *Invoice) SetAmount(v float64) {
 	o.Amount = v
 }
 
