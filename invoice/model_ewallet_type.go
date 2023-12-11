@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.5.0
+API version: 1.6.0
 */
 
 
@@ -30,6 +30,11 @@ const (
 	EWALLETTYPE_ASTRAPAY EwalletType = "ASTRAPAY"
 	EWALLETTYPE_NEXCASH EwalletType = "NEXCASH"
 	EWALLETTYPE_JENIUSPAY EwalletType = "JENIUSPAY"
+	EWALLETTYPE_MOMO EwalletType = "MOMO"
+	EWALLETTYPE_ZALOPAY EwalletType = "ZALOPAY"
+	EWALLETTYPE_VIETTELPAY EwalletType = "VIETTELPAY"
+	EWALLETTYPE_VNPTWALLET EwalletType = "VNPTWALLET"
+	EWALLETTYPE_APPOTA EwalletType = "APPOTA"
     EWALLETTYPE_XENDIT_ENUM_DEFAULT_FALLBACK EwalletType = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -45,6 +50,11 @@ var AllowedEwalletTypeEnumValues = []EwalletType{
 	"ASTRAPAY",
 	"NEXCASH",
 	"JENIUSPAY",
+	"MOMO",
+	"ZALOPAY",
+	"VIETTELPAY",
+	"VNPTWALLET",
+	"APPOTA",
     "UNKNOWN_ENUM_VALUE",
 }
 

@@ -31,7 +31,7 @@ type PaymentCallbackData struct {
 	PaymentMethod PaymentMethod `json:"payment_method"`
 	ChannelProperties NullablePaymentRequestChannelProperties `json:"channel_properties,omitempty"`
 	PaymentDetail map[string]interface{} `json:"payment_detail,omitempty"`
-	FailureCode map[string]interface{} `json:"failure_code,omitempty"`
+	FailureCode NullableString `json:"failure_code,omitempty"`
 	Created string `json:"created"`
 	Updated string `json:"updated"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
@@ -391,36 +391,45 @@ func (o *PaymentCallbackData) SetPaymentDetail(v map[string]interface{}) {
 }
 
 // GetFailureCode returns the FailureCode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PaymentCallbackData) GetFailureCode() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+func (o *PaymentCallbackData) GetFailureCode() string {
+	if o == nil || utils.IsNil(o.FailureCode.Get()) {
+		var ret string
 		return ret
 	}
-	return o.FailureCode
+	return *o.FailureCode.Get()
 }
 
 // GetFailureCodeOk returns a tuple with the FailureCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PaymentCallbackData) GetFailureCodeOk() (map[string]interface{}, bool) {
-	if o == nil || utils.IsNil(o.FailureCode) {
-		return map[string]interface{}{}, false
+func (o *PaymentCallbackData) GetFailureCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.FailureCode, true
+	return o.FailureCode.Get(), o.FailureCode.IsSet()
 }
 
 // HasFailureCode returns a boolean if a field has been set.
 func (o *PaymentCallbackData) HasFailureCode() bool {
-	if o != nil && utils.IsNil(o.FailureCode) {
+	if o != nil && o.FailureCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFailureCode gets a reference to the given map[string]interface{} and assigns it to the FailureCode field.
-func (o *PaymentCallbackData) SetFailureCode(v map[string]interface{}) {
-	o.FailureCode = v
+// SetFailureCode gets a reference to the given NullableString and assigns it to the FailureCode field.
+func (o *PaymentCallbackData) SetFailureCode(v string) {
+	o.FailureCode.Set(&v)
+}
+// SetFailureCodeNil sets the value for FailureCode to be an explicit nil
+func (o *PaymentCallbackData) SetFailureCodeNil() {
+	o.FailureCode.Set(nil)
+}
+
+// UnsetFailureCode ensures that no value is present for FailureCode, not even an explicit nil
+func (o *PaymentCallbackData) UnsetFailureCode() {
+	o.FailureCode.Unset()
 }
 
 // GetCreated returns the Created field value
@@ -533,8 +542,8 @@ func (o PaymentCallbackData) ToMap() (map[string]interface{}, error) {
 	if o.PaymentDetail != nil {
 		toSerialize["payment_detail"] = o.PaymentDetail
     }
-	if o.FailureCode != nil {
-		toSerialize["failure_code"] = o.FailureCode
+	if o.FailureCode.IsSet() {
+		toSerialize["failure_code"] = o.FailureCode.Get()
     }
 	toSerialize["created"] = o.Created
 	toSerialize["updated"] = o.Updated

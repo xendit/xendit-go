@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.5.0
+API version: 1.6.0
 */
 
 

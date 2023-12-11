@@ -15,7 +15,7 @@ Represents the actual funds transaction/attempt made to a payment method
 | **PaymentMethod** | [**PaymentMethod**](PaymentMethod.md) | ☑️ |  |  |
 | **ChannelProperties** | Pointer to [**NullablePaymentRequestChannelProperties**](PaymentRequestChannelProperties.md) |  |  |  |
 | **PaymentDetail** | Pointer to **map[string]interface{}** |  |  |  |
-| **FailureCode** | Pointer to **map[string]interface{}** |  |  |  |
+| **FailureCode** | Pointer to **NullableString** |  |  |  |
 | **Created** | **string** | ☑️ |  |  |
 | **Updated** | **string** | ☑️ |  |  |
 | **Metadata** | Pointer to **map[string]interface{}** |  |  |  |
@@ -321,20 +321,20 @@ HasPaymentDetail returns a boolean if a field has been set.
 UnsetPaymentDetail ensures that no value is present for PaymentDetail, not even an explicit nil
 ### GetFailureCode
 
-`func (o *PaymentCallbackData) GetFailureCode() map[string]interface{}`
+`func (o *PaymentCallbackData) GetFailureCode() string`
 
 GetFailureCode returns the FailureCode field if non-nil, zero value otherwise.
 
 ### GetFailureCodeOk
 
-`func (o *PaymentCallbackData) GetFailureCodeOk() (*map[string]interface{}, bool)`
+`func (o *PaymentCallbackData) GetFailureCodeOk() (*string, bool)`
 
 GetFailureCodeOk returns a tuple with the FailureCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFailureCode
 
-`func (o *PaymentCallbackData) SetFailureCode(v map[string]interface{})`
+`func (o *PaymentCallbackData) SetFailureCode(v string)`
 
 SetFailureCode sets FailureCode field to given value.
 

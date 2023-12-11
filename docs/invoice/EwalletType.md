@@ -23,6 +23,16 @@ Representing the available eWallet channels used for invoice-related transaction
     
     * `JENIUSPAY` (value: `"JENIUSPAY"`)
     
+    * `MOMO` (value: `"MOMO"`)
+    
+    * `ZALOPAY` (value: `"ZALOPAY"`)
+    
+    * `VIETTELPAY` (value: `"VIETTELPAY"`)
+    
+    * `VNPTWALLET` (value: `"VNPTWALLET"`)
+    
+    * `APPOTA` (value: `"APPOTA"`)
+    
     * `XENDIT_ENUM_DEFAULT_FALLBACK` (value: `UNKNOWN_ENUM_VALUE`)
 
 If you encounter `UNKNOWN_ENUM_VALUE`, it means that this ENUM is unavailable in your current SDK version. Please upgrade to get the newest ENUM.

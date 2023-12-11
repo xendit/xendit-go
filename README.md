@@ -5,7 +5,7 @@
 The official Xendit Go SDK provides a simple and convenient way to call Xendit's REST API
 in applications written in Go.
 
-* Package version: 4.0.0
+* Package version: 4.1.0
 
 # Getting Started
 

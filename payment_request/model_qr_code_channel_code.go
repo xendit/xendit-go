@@ -20,6 +20,7 @@ type QRCodeChannelCode string
 
 // List of QRCodeChannelCode
 const (
+	QRCODECHANNELCODE_QRIS QRCodeChannelCode = "QRIS"
 	QRCODECHANNELCODE_DANA QRCodeChannelCode = "DANA"
 	QRCODECHANNELCODE_RCBC QRCodeChannelCode = "RCBC"
 	QRCODECHANNELCODE_LINKAJA QRCodeChannelCode = "LINKAJA"
@@ -29,6 +30,7 @@ const (
 
 // All allowed values of QRCodeChannelCode enum
 var AllowedQRCodeChannelCodeEnumValues = []QRCodeChannelCode{
+	"QRIS",
 	"DANA",
 	"RCBC",
 	"LINKAJA",
