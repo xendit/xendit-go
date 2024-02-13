@@ -5,7 +5,7 @@
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **Id** | **string** | ☑️ |  |  |
-| **PaymentRequestId** | **string** | ☑️ |  |  |
+| **PaymentId** | **string** | ☑️ |  |  |
 | **InvoiceId** | Pointer to **NullableString** |  |  |  |
 | **PaymentMethodType** | **string** | ☑️ |  |  |
 | **Amount** | **float64** | ☑️ |  |  |
@@ -25,7 +25,7 @@
 
 ### NewRefundCallbackData
 
-`func NewRefundCallbackData(id string, paymentRequestId string, paymentMethodType string, amount float64, channelCode string, status string, reason string, country string, currency string, created string, updated string, ) *RefundCallbackData`
+`func NewRefundCallbackData(id string, paymentId string, paymentMethodType string, amount float64, channelCode string, status string, reason string, country string, currency string, created string, updated string, ) *RefundCallbackData`
 
 NewRefundCallbackData instantiates a new RefundCallbackData object
 This constructor will assign default values to properties that have it defined,
@@ -60,24 +60,24 @@ and a boolean to check if the value has been set.
 SetId sets Id field to given value.
 
 
-### GetPaymentRequestId
+### GetPaymentId
 
-`func (o *RefundCallbackData) GetPaymentRequestId() string`
+`func (o *RefundCallbackData) GetPaymentId() string`
 
-GetPaymentRequestId returns the PaymentRequestId field if non-nil, zero value otherwise.
+GetPaymentId returns the PaymentId field if non-nil, zero value otherwise.
 
-### GetPaymentRequestIdOk
+### GetPaymentIdOk
 
-`func (o *RefundCallbackData) GetPaymentRequestIdOk() (*string, bool)`
+`func (o *RefundCallbackData) GetPaymentIdOk() (*string, bool)`
 
-GetPaymentRequestIdOk returns a tuple with the PaymentRequestId field if it's non-nil, zero value otherwise
+GetPaymentIdOk returns a tuple with the PaymentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPaymentRequestId
+### SetPaymentId
 
-`func (o *RefundCallbackData) SetPaymentRequestId(v string)`
+`func (o *RefundCallbackData) SetPaymentId(v string)`
 
-SetPaymentRequestId sets PaymentRequestId field to given value.
+SetPaymentId sets PaymentId field to given value.
 
 
 ### GetInvoiceId

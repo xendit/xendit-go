@@ -21,7 +21,7 @@ var _ utils.MappedNullable = &RefundCallbackData{}
 // RefundCallbackData struct for RefundCallbackData
 type RefundCallbackData struct {
 	Id string `json:"id"`
-	PaymentRequestId string `json:"payment_request_id"`
+	PaymentId string `json:"payment_id"`
 	InvoiceId NullableString `json:"invoice_id,omitempty"`
 	PaymentMethodType string `json:"payment_method_type"`
 	Amount float64 `json:"amount"`
@@ -42,10 +42,10 @@ type RefundCallbackData struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRefundCallbackData(id string, paymentRequestId string, paymentMethodType string, amount float64, channelCode string, status string, reason string, country string, currency string, created string, updated string) *RefundCallbackData {
+func NewRefundCallbackData(id string, paymentId string, paymentMethodType string, amount float64, channelCode string, status string, reason string, country string, currency string, created string, updated string) *RefundCallbackData {
 	this := RefundCallbackData{}
 	this.Id = id
-	this.PaymentRequestId = paymentRequestId
+	this.PaymentId = paymentId
 	this.PaymentMethodType = paymentMethodType
 	this.Amount = amount
 	this.ChannelCode = channelCode
@@ -90,28 +90,28 @@ func (o *RefundCallbackData) SetId(v string) {
 	o.Id = v
 }
 
-// GetPaymentRequestId returns the PaymentRequestId field value
-func (o *RefundCallbackData) GetPaymentRequestId() string {
+// GetPaymentId returns the PaymentId field value
+func (o *RefundCallbackData) GetPaymentId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PaymentRequestId
+	return o.PaymentId
 }
 
-// GetPaymentRequestIdOk returns a tuple with the PaymentRequestId field value
+// GetPaymentIdOk returns a tuple with the PaymentId field value
 // and a boolean to check if the value has been set.
-func (o *RefundCallbackData) GetPaymentRequestIdOk() (*string, bool) {
+func (o *RefundCallbackData) GetPaymentIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PaymentRequestId, true
+	return &o.PaymentId, true
 }
 
-// SetPaymentRequestId sets field value
-func (o *RefundCallbackData) SetPaymentRequestId(v string) {
-	o.PaymentRequestId = v
+// SetPaymentId sets field value
+func (o *RefundCallbackData) SetPaymentId(v string) {
+	o.PaymentId = v
 }
 
 // GetInvoiceId returns the InvoiceId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -542,7 +542,7 @@ func (o RefundCallbackData) MarshalJSON() ([]byte, error) {
 func (o RefundCallbackData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["payment_request_id"] = o.PaymentRequestId
+	toSerialize["payment_id"] = o.PaymentId
 	if o.InvoiceId.IsSet() {
 		toSerialize["invoice_id"] = o.InvoiceId.Get()
     }

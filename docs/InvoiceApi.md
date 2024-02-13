@@ -356,7 +356,7 @@ Model Documentation: [InvoiceCallback](invoice/InvoiceCallback.md)
 #### Usage Example
 Note that the example is meant to illustrate the contents of the callback object -- you will not need to instantiate these objects in practice
 ```go
-InvoiceCallbackJson := map[string]interface{}{
+InvoiceCallbackJson := `{
   "id" : "593f4ed1c3d3bb7f39733d83",
   "external_id" : "testing-invoice",
   "user_id" : "5848fdf860053555135587e7",
@@ -373,8 +373,7 @@ InvoiceCallbackJson := map[string]interface{}{
   "currency" : "IDR",
   "payment_channel" : "ALFAMART",
   "payment_destination" : "TEST815"
-}
-jsonData, _ := json.Marshal(InvoiceCallbackJson)
+}`
 ```
 
 You may then use the callback object in your webhook or callback handler like so,
@@ -395,7 +394,7 @@ func main() {
 
     // unmarshal callback object jsonData
     var InvoiceCallback invoice.InvoiceCallback
-    err := json.Unmarshal(jsonData, &InvoiceCallback)
+    err := json.Unmarshal([]byte(InvoiceCallbackJson), &InvoiceCallback)
     if err == nil {
         fmt.Fprintf(os.Stdout, "Callback Object ID: %v\n", InvoiceCallback.GetId())
         // do things here with the callback

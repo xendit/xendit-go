@@ -672,7 +672,7 @@ Model Documentation: [PaymentMethodCallback](payment_method/PaymentMethodCallbac
 #### Usage Example
 Note that the example is meant to illustrate the contents of the callback object -- you will not need to instantiate these objects in practice
 ```go
-PaymentMethodCallbackJson := map[string]interface{}{
+PaymentMethodCallbackJson := `{
   "event" : "payment_method.activated",
   "data" : {
     "id" : "pm-6ff0b6f2-f5de-457f-b08f-bc98fbae485a",
@@ -710,8 +710,7 @@ PaymentMethodCallbackJson := map[string]interface{}{
   },
   "created" : "2022-08-12T13:30:59.074277334Z",
   "business_id" : "5f27a14a9bf05c73dd040bc8"
-}
-jsonData, _ := json.Marshal(PaymentMethodCallbackJson)
+}`
 ```
 
 You may then use the callback object in your webhook or callback handler like so,
@@ -732,7 +731,7 @@ func main() {
 
     // unmarshal callback object jsonData
     var PaymentMethodCallback payment_method.PaymentMethodCallback
-    err := json.Unmarshal(jsonData, &PaymentMethodCallback)
+    err := json.Unmarshal([]byte(PaymentMethodCallbackJson), &PaymentMethodCallback)
     if err == nil {
         fmt.Fprintf(os.Stdout, "Callback Object ID: %v\n", PaymentMethodCallback.GetId())
         // do things here with the callback

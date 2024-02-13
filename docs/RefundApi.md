@@ -333,7 +333,7 @@ Model Documentation: [RefundCallback](refund/RefundCallback.md)
 #### Usage Example
 Note that the example is meant to illustrate the contents of the callback object -- you will not need to instantiate these objects in practice
 ```go
-RefundCallbackJson := map[string]interface{}{
+RefundCallbackJson := `{
   "event" : "refund.succeeded",
   "business_id" : "5f27a14a9bf05c73dd040bc8",
   "created" : "2020-08-29T09:12:33.001Z",
@@ -354,8 +354,7 @@ RefundCallbackJson := map[string]interface{}{
     "updated" : "2020-08-30T09:12:33.001Z",
     "metadata" : null
   }
-}
-jsonData, _ := json.Marshal(RefundCallbackJson)
+}`
 ```
 
 You may then use the callback object in your webhook or callback handler like so,
@@ -376,7 +375,7 @@ func main() {
 
     // unmarshal callback object jsonData
     var RefundCallback refund.RefundCallback
-    err := json.Unmarshal(jsonData, &RefundCallback)
+    err := json.Unmarshal([]byte(RefundCallbackJson), &RefundCallback)
     if err == nil {
         fmt.Fprintf(os.Stdout, "Callback Object ID: %v\n", RefundCallback.GetId())
         // do things here with the callback
