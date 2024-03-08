@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.6.0
+API version: 1.7.6
 */
 
 
@@ -30,6 +30,7 @@ const (
 	INVOICEPAYMENTMETHOD_DIRECT_DEBIT InvoicePaymentMethod = "DIRECT_DEBIT"
 	INVOICEPAYMENTMETHOD_BANK_TRANSFER InvoicePaymentMethod = "BANK_TRANSFER"
 	INVOICEPAYMENTMETHOD_PAYLATER InvoicePaymentMethod = "PAYLATER"
+	INVOICEPAYMENTMETHOD_CRYPTOCURRENCY InvoicePaymentMethod = "CRYPTOCURRENCY"
     INVOICEPAYMENTMETHOD_XENDIT_ENUM_DEFAULT_FALLBACK InvoicePaymentMethod = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -45,6 +46,7 @@ var AllowedInvoicePaymentMethodEnumValues = []InvoicePaymentMethod{
 	"DIRECT_DEBIT",
 	"BANK_TRANSFER",
 	"PAYLATER",
+	"CRYPTOCURRENCY",
     "UNKNOWN_ENUM_VALUE",
 }
 

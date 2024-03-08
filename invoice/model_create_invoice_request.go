@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.6.0
+API version: 1.7.6
 */
 
 
@@ -58,6 +58,7 @@ type CreateInvoiceRequest struct {
 	Items []InvoiceItem `json:"items,omitempty"`
 	// An array of fees associated with the invoice.
 	Fees []InvoiceFee `json:"fees,omitempty"`
+	ChannelProperties *ChannelProperties `json:"channel_properties,omitempty"`
 }
 
 // NewCreateInvoiceRequest instantiates a new CreateInvoiceRequest object
@@ -703,6 +704,38 @@ func (o *CreateInvoiceRequest) SetFees(v []InvoiceFee) {
 	o.Fees = v
 }
 
+// GetChannelProperties returns the ChannelProperties field value if set, zero value otherwise.
+func (o *CreateInvoiceRequest) GetChannelProperties() ChannelProperties {
+	if o == nil || utils.IsNil(o.ChannelProperties) {
+		var ret ChannelProperties
+		return ret
+	}
+	return *o.ChannelProperties
+}
+
+// GetChannelPropertiesOk returns a tuple with the ChannelProperties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateInvoiceRequest) GetChannelPropertiesOk() (*ChannelProperties, bool) {
+	if o == nil || utils.IsNil(o.ChannelProperties) {
+		return nil, false
+	}
+	return o.ChannelProperties, true
+}
+
+// HasChannelProperties returns a boolean if a field has been set.
+func (o *CreateInvoiceRequest) HasChannelProperties() bool {
+	if o != nil && !utils.IsNil(o.ChannelProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelProperties gets a reference to the given ChannelProperties and assigns it to the ChannelProperties field.
+func (o *CreateInvoiceRequest) SetChannelProperties(v ChannelProperties) {
+	o.ChannelProperties = &v
+}
+
 func (o CreateInvoiceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -768,6 +801,9 @@ func (o CreateInvoiceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.Fees) {
 		toSerialize["fees"] = o.Fees
+	}
+	if !utils.IsNil(o.ChannelProperties) {
+		toSerialize["channel_properties"] = o.ChannelProperties
 	}
 	return toSerialize, nil
 }

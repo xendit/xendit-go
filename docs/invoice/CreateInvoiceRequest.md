@@ -24,6 +24,7 @@ An object representing for an invoice creation request.
 | **ReminderTimeUnit** | Pointer to **string** |  | The unit of the reminder time. |  |
 | **Items** | Pointer to [**InvoiceItem[]**](InvoiceItem.md) |  | An array of items included in the invoice. |  |
 | **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) |  | An array of fees associated with the invoice. |  |
+| **ChannelProperties** | Pointer to [**ChannelProperties**](ChannelProperties.md) |  |  |  |
 
 ## Methods
 
@@ -533,6 +534,31 @@ SetFees sets Fees field to given value.
 `func (o *CreateInvoiceRequest) HasFees() bool`
 
 HasFees returns a boolean if a field has been set.
+
+### GetChannelProperties
+
+`func (o *CreateInvoiceRequest) GetChannelProperties() ChannelProperties`
+
+GetChannelProperties returns the ChannelProperties field if non-nil, zero value otherwise.
+
+### GetChannelPropertiesOk
+
+`func (o *CreateInvoiceRequest) GetChannelPropertiesOk() (*ChannelProperties, bool)`
+
+GetChannelPropertiesOk returns a tuple with the ChannelProperties field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChannelProperties
+
+`func (o *CreateInvoiceRequest) SetChannelProperties(v ChannelProperties)`
+
+SetChannelProperties sets ChannelProperties field to given value.
+
+### HasChannelProperties
+
+`func (o *CreateInvoiceRequest) HasChannelProperties() bool`
+
+HasChannelProperties returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

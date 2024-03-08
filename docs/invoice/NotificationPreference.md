@@ -6,7 +6,6 @@ An object representing notification preferences for different invoice events.
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **InvoiceCreated** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for when an invoice is created. |  |
 | **InvoiceReminder** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for invoice reminders. |  |
-| **InvoiceExpired** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for expired invoices. |  |
 | **InvoicePaid** | Pointer to [**NotificationChannel[]**](NotificationChannel.md) |  | Notification channels for when an invoice is paid. |  |
 
 ## Methods
@@ -77,31 +76,6 @@ SetInvoiceReminder sets InvoiceReminder field to given value.
 `func (o *NotificationPreference) HasInvoiceReminder() bool`
 
 HasInvoiceReminder returns a boolean if a field has been set.
-
-### GetInvoiceExpired
-
-`func (o *NotificationPreference) GetInvoiceExpired() []NotificationChannel`
-
-GetInvoiceExpired returns the InvoiceExpired field if non-nil, zero value otherwise.
-
-### GetInvoiceExpiredOk
-
-`func (o *NotificationPreference) GetInvoiceExpiredOk() (*[]NotificationChannel, bool)`
-
-GetInvoiceExpiredOk returns a tuple with the InvoiceExpired field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvoiceExpired
-
-`func (o *NotificationPreference) SetInvoiceExpired(v []NotificationChannel)`
-
-SetInvoiceExpired sets InvoiceExpired field to given value.
-
-### HasInvoiceExpired
-
-`func (o *NotificationPreference) HasInvoiceExpired() bool`
-
-HasInvoiceExpired returns a boolean if a field has been set.
 
 ### GetInvoicePaid
 

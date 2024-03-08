@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.6.0
+API version: 1.7.6
 */
 
 
@@ -82,6 +82,7 @@ type Invoice struct {
 	CustomerNotificationPreference *NotificationPreference `json:"customer_notification_preference,omitempty"`
 	// An array of fees associated with the invoice.
 	Fees []InvoiceFee `json:"fees,omitempty"`
+	ChannelProperties *ChannelProperties `json:"channel_properties,omitempty"`
 }
 
 // NewInvoice instantiates a new Invoice object
@@ -1038,6 +1039,38 @@ func (o *Invoice) SetFees(v []InvoiceFee) {
 	o.Fees = v
 }
 
+// GetChannelProperties returns the ChannelProperties field value if set, zero value otherwise.
+func (o *Invoice) GetChannelProperties() ChannelProperties {
+	if o == nil || utils.IsNil(o.ChannelProperties) {
+		var ret ChannelProperties
+		return ret
+	}
+	return *o.ChannelProperties
+}
+
+// GetChannelPropertiesOk returns a tuple with the ChannelProperties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetChannelPropertiesOk() (*ChannelProperties, bool) {
+	if o == nil || utils.IsNil(o.ChannelProperties) {
+		return nil, false
+	}
+	return o.ChannelProperties, true
+}
+
+// HasChannelProperties returns a boolean if a field has been set.
+func (o *Invoice) HasChannelProperties() bool {
+	if o != nil && !utils.IsNil(o.ChannelProperties) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelProperties gets a reference to the given ChannelProperties and assigns it to the ChannelProperties field.
+func (o *Invoice) SetChannelProperties(v ChannelProperties) {
+	o.ChannelProperties = &v
+}
+
 func (o Invoice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1112,6 +1145,9 @@ func (o Invoice) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.Fees) {
 		toSerialize["fees"] = o.Fees
+	}
+	if !utils.IsNil(o.ChannelProperties) {
+		toSerialize["channel_properties"] = o.ChannelProperties
 	}
 	return toSerialize, nil
 }

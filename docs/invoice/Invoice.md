@@ -37,6 +37,7 @@ An object representing details for an invoice.
 | **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  |  |  |
 | **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  |  |  |
 | **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) |  | An array of fees associated with the invoice. |  |
+| **ChannelProperties** | Pointer to [**ChannelProperties**](ChannelProperties.md) |  |  |  |
 
 ## Methods
 
@@ -796,6 +797,31 @@ SetFees sets Fees field to given value.
 `func (o *Invoice) HasFees() bool`
 
 HasFees returns a boolean if a field has been set.
+
+### GetChannelProperties
+
+`func (o *Invoice) GetChannelProperties() ChannelProperties`
+
+GetChannelProperties returns the ChannelProperties field if non-nil, zero value otherwise.
+
+### GetChannelPropertiesOk
+
+`func (o *Invoice) GetChannelPropertiesOk() (*ChannelProperties, bool)`
+
+GetChannelPropertiesOk returns a tuple with the ChannelProperties field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChannelProperties
+
+`func (o *Invoice) SetChannelProperties(v ChannelProperties)`
+
+SetChannelProperties sets ChannelProperties field to given value.
+
+### HasChannelProperties
+
+`func (o *Invoice) HasChannelProperties() bool`
+
+HasChannelProperties returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

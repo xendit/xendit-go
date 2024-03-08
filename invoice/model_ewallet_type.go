@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.6.0
+API version: 1.7.6
 */
 
 
@@ -35,6 +35,10 @@ const (
 	EWALLETTYPE_VIETTELPAY EwalletType = "VIETTELPAY"
 	EWALLETTYPE_VNPTWALLET EwalletType = "VNPTWALLET"
 	EWALLETTYPE_APPOTA EwalletType = "APPOTA"
+	EWALLETTYPE_LINEPAY EwalletType = "LINEPAY"
+	EWALLETTYPE_TRUEMONEY EwalletType = "TRUEMONEY"
+	EWALLETTYPE_WECHATPAY EwalletType = "WECHATPAY"
+	EWALLETTYPE_TOUCHNGO EwalletType = "TOUCHNGO"
     EWALLETTYPE_XENDIT_ENUM_DEFAULT_FALLBACK EwalletType = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -55,6 +59,10 @@ var AllowedEwalletTypeEnumValues = []EwalletType{
 	"VIETTELPAY",
 	"VNPTWALLET",
 	"APPOTA",
+	"LINEPAY",
+	"TRUEMONEY",
+	"WECHATPAY",
+	"TOUCHNGO",
     "UNKNOWN_ENUM_VALUE",
 }
 

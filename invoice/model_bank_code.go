@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.6.0
+API version: 1.7.6
 */
 
 
@@ -30,6 +30,8 @@ const (
 	BANKCODE_SAHABAT_SAMPOERNA BankCode = "SAHABAT_SAMPOERNA"
 	BANKCODE_CIMB BankCode = "CIMB"
 	BANKCODE_BNC BankCode = "BNC"
+	BANKCODE_HANA BankCode = "HANA"
+	BANKCODE_MUAMALAT BankCode = "MUAMALAT"
     BANKCODE_XENDIT_ENUM_DEFAULT_FALLBACK BankCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -45,6 +47,8 @@ var AllowedBankCodeEnumValues = []BankCode{
 	"SAHABAT_SAMPOERNA",
 	"CIMB",
 	"BNC",
+	"HANA",
+	"MUAMALAT",
     "UNKNOWN_ENUM_VALUE",
 }
 

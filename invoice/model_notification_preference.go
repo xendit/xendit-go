@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.6.0
+API version: 1.7.6
 */
 
 
@@ -24,8 +24,6 @@ type NotificationPreference struct {
 	InvoiceCreated []NotificationChannel `json:"invoice_created,omitempty"`
 	// Notification channels for invoice reminders.
 	InvoiceReminder []NotificationChannel `json:"invoice_reminder,omitempty"`
-	// Notification channels for expired invoices.
-	InvoiceExpired []NotificationChannel `json:"invoice_expired,omitempty"`
 	// Notification channels for when an invoice is paid.
 	InvoicePaid []NotificationChannel `json:"invoice_paid,omitempty"`
 }
@@ -111,38 +109,6 @@ func (o *NotificationPreference) SetInvoiceReminder(v []NotificationChannel) {
 	o.InvoiceReminder = v
 }
 
-// GetInvoiceExpired returns the InvoiceExpired field value if set, zero value otherwise.
-func (o *NotificationPreference) GetInvoiceExpired() []NotificationChannel {
-	if o == nil || utils.IsNil(o.InvoiceExpired) {
-		var ret []NotificationChannel
-		return ret
-	}
-	return o.InvoiceExpired
-}
-
-// GetInvoiceExpiredOk returns a tuple with the InvoiceExpired field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationPreference) GetInvoiceExpiredOk() ([]NotificationChannel, bool) {
-	if o == nil || utils.IsNil(o.InvoiceExpired) {
-		return nil, false
-	}
-	return o.InvoiceExpired, true
-}
-
-// HasInvoiceExpired returns a boolean if a field has been set.
-func (o *NotificationPreference) HasInvoiceExpired() bool {
-	if o != nil && !utils.IsNil(o.InvoiceExpired) {
-		return true
-	}
-
-	return false
-}
-
-// SetInvoiceExpired gets a reference to the given []NotificationChannel and assigns it to the InvoiceExpired field.
-func (o *NotificationPreference) SetInvoiceExpired(v []NotificationChannel) {
-	o.InvoiceExpired = v
-}
-
 // GetInvoicePaid returns the InvoicePaid field value if set, zero value otherwise.
 func (o *NotificationPreference) GetInvoicePaid() []NotificationChannel {
 	if o == nil || utils.IsNil(o.InvoicePaid) {
@@ -190,9 +156,6 @@ func (o NotificationPreference) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.InvoiceReminder) {
 		toSerialize["invoice_reminder"] = o.InvoiceReminder
-	}
-	if !utils.IsNil(o.InvoiceExpired) {
-		toSerialize["invoice_expired"] = o.InvoiceExpired
 	}
 	if !utils.IsNil(o.InvoicePaid) {
 		toSerialize["invoice_paid"] = o.InvoicePaid
