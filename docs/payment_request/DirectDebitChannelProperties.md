@@ -4,6 +4,7 @@
 ## Properties
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Email** | Pointer to **string** |  | Email address of the customer that is registered to the partner channel |  |
 | **MobileNumber** | Pointer to **string** |  | Mobile number of the customer registered to the partner channel |  |
 | **SuccessReturnUrl** | Pointer to **string** |  |  |  |
 | **FailureReturnUrl** | Pointer to **string** |  |  |  |
@@ -11,7 +12,6 @@
 | **AccountNumber** | Pointer to **string** |  |  |  |
 | **CardLastFour** | Pointer to **string** |  | Last four digits of the debit card |  |
 | **CardExpiry** | Pointer to **string** |  | Expiry month and year of the debit card (in MM/YY format) |  |
-| **Email** | Pointer to **string** |  | Email address of the customer that is registered to the partner channel |  |
 
 ## Methods
 
@@ -31,6 +31,31 @@ will change when the set of required properties is changed
 NewDirectDebitChannelPropertiesWithDefaults instantiates a new DirectDebitChannelProperties object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEmail
+
+`func (o *DirectDebitChannelProperties) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *DirectDebitChannelProperties) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *DirectDebitChannelProperties) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *DirectDebitChannelProperties) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 ### GetMobileNumber
 
@@ -206,31 +231,6 @@ SetCardExpiry sets CardExpiry field to given value.
 `func (o *DirectDebitChannelProperties) HasCardExpiry() bool`
 
 HasCardExpiry returns a boolean if a field has been set.
-
-### GetEmail
-
-`func (o *DirectDebitChannelProperties) GetEmail() string`
-
-GetEmail returns the Email field if non-nil, zero value otherwise.
-
-### GetEmailOk
-
-`func (o *DirectDebitChannelProperties) GetEmailOk() (*string, bool)`
-
-GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmail
-
-`func (o *DirectDebitChannelProperties) SetEmail(v string)`
-
-SetEmail sets Email field to given value.
-
-### HasEmail
-
-`func (o *DirectDebitChannelProperties) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -39,6 +39,7 @@ const (
 	VIRTUALACCOUNTCHANNELCODE_BNC VirtualAccountChannelCode = "BNC"
 	VIRTUALACCOUNTCHANNELCODE_HANA VirtualAccountChannelCode = "HANA"
 	VIRTUALACCOUNTCHANNELCODE_MUAMALAT VirtualAccountChannelCode = "MUAMALAT"
+	VIRTUALACCOUNTCHANNELCODE_BANK_TRANSFER VirtualAccountChannelCode = "BANK_TRANSFER"
     VIRTUALACCOUNTCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK VirtualAccountChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -63,6 +64,7 @@ var AllowedVirtualAccountChannelCodeEnumValues = []VirtualAccountChannelCode{
 	"BNC",
 	"HANA",
 	"MUAMALAT",
+	"BANK_TRANSFER",
     "UNKNOWN_ENUM_VALUE",
 }
 

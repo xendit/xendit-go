@@ -41,7 +41,7 @@ Ewallet Channel Code
     
     * `ALIPAY` (value: `"ALIPAY"`)
     
-    * `TOUCHANDGO` (value: `"TOUCHANDGO"`)
+    * `TOUCHNGO` (value: `"TOUCHNGO"`)
     
     * `XENDIT_ENUM_DEFAULT_FALLBACK` (value: `UNKNOWN_ENUM_VALUE`)
 

@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
+    xendit "github.com/xendit/xendit-go/v5"
 )
 
 func main() {
@@ -52,6 +52,7 @@ Parameters that are passed through a pointer to a apiGetBalanceRequest struct vi
 |-------------|:-------------:|:-------------:|-------------|
 |  **accountType** |**string**|  | [&quot;CASH&quot;] | 
 |  **currency** |**string**|  |  | 
+|  **atTimestamp** |**time.Time**|  |  | 
 |  **forUserId** |**string**|  |  | 
 
 ### Usage Example
@@ -63,8 +64,9 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    balance_and_transaction "github.com/xendit/xendit-go/v4/balance_and_transaction"
+        "time"
+    xendit "github.com/xendit/xendit-go/v5"
+    balance_and_transaction "github.com/xendit/xendit-go/v5/balance_and_transaction"
 )
 
 func main() {
@@ -76,6 +78,9 @@ func main() {
     // Currency for filter for customers with multi currency accounts
     currency := "IDR" // [OPTIONAL] | string
 
+    // The timestamp you want to use as the limit for balance retrieval
+    atTimestamp := time.Now() // [OPTIONAL] | time.Time
+
     // The sub-account user-id that you want to make this transaction for. This header
     // is only used if you have access to xenPlatform. See xenPlatform for more
     // information
@@ -86,6 +91,7 @@ func main() {
     resp, r, err := xenditClient.BalanceApi.GetBalance(context.Background()).
         AccountType(accountType).
         Currency(currency).
+        AtTimestamp(atTimestamp).
         ForUserId(forUserId). // [OPTIONAL]
         Execute()
 

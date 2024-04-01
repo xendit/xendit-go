@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.91.2
+API version: 2.99.0
 */
 
 
@@ -24,6 +24,8 @@ const (
 	DIRECTDEBITCHANNELCODE_BCA_ONEKLIK DirectDebitChannelCode = "BCA_ONEKLIK"
 	DIRECTDEBITCHANNELCODE_BDO DirectDebitChannelCode = "BDO"
 	DIRECTDEBITCHANNELCODE_BPI DirectDebitChannelCode = "BPI"
+	DIRECTDEBITCHANNELCODE_AUTODEBIT_BPI DirectDebitChannelCode = "AUTODEBIT_BPI"
+	DIRECTDEBITCHANNELCODE_BPI_RECURRING DirectDebitChannelCode = "BPI_RECURRING"
 	DIRECTDEBITCHANNELCODE_BRI DirectDebitChannelCode = "BRI"
 	DIRECTDEBITCHANNELCODE_BNI DirectDebitChannelCode = "BNI"
 	DIRECTDEBITCHANNELCODE_CHINABANK DirectDebitChannelCode = "CHINABANK"
@@ -43,6 +45,7 @@ const (
 	DIRECTDEBITCHANNELCODE_SCB_MB DirectDebitChannelCode = "SCB_MB"
 	DIRECTDEBITCHANNELCODE_BDO_EPAY DirectDebitChannelCode = "BDO_EPAY"
 	DIRECTDEBITCHANNELCODE_AUTODEBIT_UBP DirectDebitChannelCode = "AUTODEBIT_UBP"
+	DIRECTDEBITCHANNELCODE_UBP_DEBIT_PULL DirectDebitChannelCode = "UBP_DEBIT_PULL"
 	DIRECTDEBITCHANNELCODE_AFFIN_FPX DirectDebitChannelCode = "AFFIN_FPX"
 	DIRECTDEBITCHANNELCODE_AGRO_FPX DirectDebitChannelCode = "AGRO_FPX"
 	DIRECTDEBITCHANNELCODE_ALLIANCE_FPX DirectDebitChannelCode = "ALLIANCE_FPX"
@@ -92,6 +95,8 @@ var AllowedDirectDebitChannelCodeEnumValues = []DirectDebitChannelCode{
 	"BCA_ONEKLIK",
 	"BDO",
 	"BPI",
+	"AUTODEBIT_BPI",
+	"BPI_RECURRING",
 	"BRI",
 	"BNI",
 	"CHINABANK",
@@ -111,6 +116,7 @@ var AllowedDirectDebitChannelCodeEnumValues = []DirectDebitChannelCode{
 	"SCB_MB",
 	"BDO_EPAY",
 	"AUTODEBIT_UBP",
+	"UBP_DEBIT_PULL",
 	"AFFIN_FPX",
 	"AGRO_FPX",
 	"ALLIANCE_FPX",

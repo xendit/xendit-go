@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
 )
 
 // checks if the PaymentRequestParametersChannelProperties type satisfies the MappedNullable interface at compile time

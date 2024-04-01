@@ -8,8 +8,9 @@ import (
 	"net/url"
 	"strconv"
 
-	common "github.com/xendit/xendit-go/v4/common"
-	utils "github.com/xendit/xendit-go/v4/utils"
+	common "github.com/xendit/xendit-go/v5/common"
+	utils "github.com/xendit/xendit-go/v5/utils"
+	"time"
 )
 
 
@@ -48,6 +49,7 @@ type ApiGetBalanceRequest struct {
 	ApiService BalanceApi
 	accountType *string
 	currency *string
+	atTimestamp *time.Time
 	forUserId *string
 }
 
@@ -60,6 +62,12 @@ func (r ApiGetBalanceRequest) AccountType(accountType string) ApiGetBalanceReque
 // Currency for filter for customers with multi currency accounts
 func (r ApiGetBalanceRequest) Currency(currency string) ApiGetBalanceRequest {
 	r.currency = &currency
+	return r
+}
+
+// The timestamp you want to use as the limit for balance retrieval
+func (r ApiGetBalanceRequest) AtTimestamp(atTimestamp time.Time) ApiGetBalanceRequest {
+	r.atTimestamp = &atTimestamp
 	return r
 }
 
@@ -114,6 +122,9 @@ func (a *BalanceApiService) GetBalanceExecute(r ApiGetBalanceRequest) (*Balance,
 	}
 	if r.currency != nil {
 		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "currency", r.currency, "")
+	}
+	if r.atTimestamp != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarQueryParams, "at_timestamp", r.atTimestamp, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

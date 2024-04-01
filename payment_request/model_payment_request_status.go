@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -28,6 +28,7 @@ const (
 	PAYMENTREQUESTSTATUS_VOIDED PaymentRequestStatus = "VOIDED"
 	PAYMENTREQUESTSTATUS_UNKNOWN PaymentRequestStatus = "UNKNOWN"
 	PAYMENTREQUESTSTATUS_AWAITING_CAPTURE PaymentRequestStatus = "AWAITING_CAPTURE"
+	PAYMENTREQUESTSTATUS_EXPIRED PaymentRequestStatus = "EXPIRED"
     PAYMENTREQUESTSTATUS_XENDIT_ENUM_DEFAULT_FALLBACK PaymentRequestStatus = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -41,6 +42,7 @@ var AllowedPaymentRequestStatusEnumValues = []PaymentRequestStatus{
 	"VOIDED",
 	"UNKNOWN",
 	"AWAITING_CAPTURE",
+	"EXPIRED",
     "UNKNOWN_ENUM_VALUE",
 }
 

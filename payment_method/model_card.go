@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.91.2
+API version: 2.99.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_method
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
 )
 
 // checks if the Card type satisfies the MappedNullable interface at compile time
@@ -20,7 +20,8 @@ var _ utils.MappedNullable = &Card{}
 
 // Card Card Payment Method Details
 type Card struct {
-	Currency NullableString `json:"currency"`
+	ChannelCode *CardChannelCode `json:"channel_code,omitempty"`
+	Currency NullableString `json:"currency,omitempty"`
 	ChannelProperties NullableCardChannelProperties `json:"channel_properties"`
 	CardInformation *TokenizedCardInformation `json:"card_information,omitempty"`
 	CardVerificationResults NullableCardVerificationResults `json:"card_verification_results,omitempty"`
@@ -30,9 +31,8 @@ type Card struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCard(currency NullableString, channelProperties NullableCardChannelProperties) *Card {
+func NewCard(channelProperties NullableCardChannelProperties) *Card {
 	this := Card{}
-	this.Currency = currency
 	this.ChannelProperties = channelProperties
 	return &this
 }
@@ -45,18 +45,48 @@ func NewCardWithDefaults() *Card {
 	return &this
 }
 
-// GetCurrency returns the Currency field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetChannelCode returns the ChannelCode field value if set, zero value otherwise.
+func (o *Card) GetChannelCode() CardChannelCode {
+	if o == nil || utils.IsNil(o.ChannelCode) {
+		var ret CardChannelCode
+		return ret
+	}
+	return *o.ChannelCode
+}
+
+// GetChannelCodeOk returns a tuple with the ChannelCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Card) GetChannelCodeOk() (*CardChannelCode, bool) {
+	if o == nil || utils.IsNil(o.ChannelCode) {
+		return nil, false
+	}
+	return o.ChannelCode, true
+}
+
+// HasChannelCode returns a boolean if a field has been set.
+func (o *Card) HasChannelCode() bool {
+	if o != nil && !utils.IsNil(o.ChannelCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelCode gets a reference to the given CardChannelCode and assigns it to the ChannelCode field.
+func (o *Card) SetChannelCode(v CardChannelCode) {
+	o.ChannelCode = &v
+}
+
+// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Card) GetCurrency() string {
-	if o == nil || o.Currency.Get() == nil {
+	if o == nil || utils.IsNil(o.Currency.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Currency.Get()
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value
+// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Card) GetCurrencyOk() (*string, bool) {
@@ -66,9 +96,27 @@ func (o *Card) GetCurrencyOk() (*string, bool) {
 	return o.Currency.Get(), o.Currency.IsSet()
 }
 
-// SetCurrency sets field value
+// HasCurrency returns a boolean if a field has been set.
+func (o *Card) HasCurrency() bool {
+	if o != nil && o.Currency.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
 func (o *Card) SetCurrency(v string) {
 	o.Currency.Set(&v)
+}
+// SetCurrencyNil sets the value for Currency to be an explicit nil
+func (o *Card) SetCurrencyNil() {
+	o.Currency.Set(nil)
+}
+
+// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
+func (o *Card) UnsetCurrency() {
+	o.Currency.Unset()
 }
 
 // GetChannelProperties returns the ChannelProperties field value
@@ -181,8 +229,12 @@ func (o Card) MarshalJSON() ([]byte, error) {
 
 func (o Card) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["currency"] = o.Currency.Get()
-
+	if !utils.IsNil(o.ChannelCode) {
+		toSerialize["channel_code"] = o.ChannelCode
+	}
+	if o.Currency.IsSet() {
+		toSerialize["currency"] = o.Currency.Get()
+    }
 	toSerialize["channel_properties"] = o.ChannelProperties.Get()
 
 	if !utils.IsNil(o.CardInformation) {

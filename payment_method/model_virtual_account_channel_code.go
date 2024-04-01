@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.91.2
+API version: 2.99.0
 */
 
 
@@ -36,6 +36,9 @@ const (
 	VIRTUALACCOUNTCHANNELCODE_MSB VirtualAccountChannelCode = "MSB"
 	VIRTUALACCOUNTCHANNELCODE_STANDARD_CHARTERED VirtualAccountChannelCode = "STANDARD_CHARTERED"
 	VIRTUALACCOUNTCHANNELCODE_AMBANK VirtualAccountChannelCode = "AMBANK"
+	VIRTUALACCOUNTCHANNELCODE_BNC VirtualAccountChannelCode = "BNC"
+	VIRTUALACCOUNTCHANNELCODE_HANA VirtualAccountChannelCode = "HANA"
+	VIRTUALACCOUNTCHANNELCODE_MUAMALAT VirtualAccountChannelCode = "MUAMALAT"
     VIRTUALACCOUNTCHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK VirtualAccountChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -57,6 +60,9 @@ var AllowedVirtualAccountChannelCodeEnumValues = []VirtualAccountChannelCode{
 	"MSB",
 	"STANDARD_CHARTERED",
 	"AMBANK",
+	"BNC",
+	"HANA",
+	"MUAMALAT",
     "UNKNOWN_ENUM_VALUE",
 }
 

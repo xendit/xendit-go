@@ -4,22 +4,24 @@ Tokenized Card Information
 ## Properties
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
-| **TokenId** | **string** | ☑️ |  |  |
-| **MaskedCardNumber** | **string** | ☑️ | 1st 6 and last 4 digits of the card |  |
+| **TokenId** | Pointer to **string** |  |  |  |
+| **MaskedCardNumber** | Pointer to **string** |  | 1st 6 and last 4 digits of the card |  |
 | **CardholderName** | Pointer to **NullableString** |  | Cardholder name is optional but recommended for 3DS 2 / AVS verification |  |
-| **ExpiryMonth** | **string** | ☑️ | Card expiry month in MM format |  |
-| **ExpiryYear** | **string** | ☑️ | Card expiry month in YY format |  |
-| **Fingerprint** | **string** | ☑️ | Xendit-generated identifier for the unique card number. Multiple payment method objects can be created for the same account - e.g. if the user first creates a one-time payment request, and then later on creates a multiple-use payment method using the same account.   The fingerprint helps to identify the unique account being used. |  |
-| **Type** | **string** | ☑️ | Whether the card is a credit or debit card |  |
-| **Network** | **string** | ☑️ | Card network - VISA, MASTERCARD, JCB, AMEX, DISCOVER, BCA |  |
-| **Country** | **string** | ☑️ | Country where the card was issued ISO 3166-1 Alpha-2 |  |
-| **Issuer** | **string** | ☑️ | Issuer of the card, most often an issuing bank For example, “BCA”, “MANDIRI” |  |
+| **ExpiryMonth** | Pointer to **string** |  | Card expiry month in MM format |  |
+| **ExpiryYear** | Pointer to **string** |  | Card expiry month in YY format |  |
+| **Fingerprint** | Pointer to **string** |  | Xendit-generated identifier for the unique card number. Multiple payment method objects can be created for the same account - e.g. if the user first creates a one-time payment request, and then later on creates a multiple-use payment method using the same account.   The fingerprint helps to identify the unique account being used. |  |
+| **Type** | Pointer to **string** |  | Whether the card is a credit or debit card |  |
+| **Network** | Pointer to **string** |  | Card network - VISA, MASTERCARD, JCB, AMEX, DISCOVER, BCA |  |
+| **Country** | Pointer to **string** |  | Country where the card was issued ISO 3166-1 Alpha-2 |  |
+| **Issuer** | Pointer to **string** |  | Issuer of the card, most often an issuing bank For example, “BCA”, “MANDIRI” |  |
+| **CardNumber** | Pointer to **string** |  |  |  |
+| **OneTimeToken** | Pointer to **string** |  |  |  |
 
 ## Methods
 
 ### NewTokenizedCardInformation
 
-`func NewTokenizedCardInformation(tokenId string, maskedCardNumber string, expiryMonth string, expiryYear string, fingerprint string, type_ string, network string, country string, issuer string, ) *TokenizedCardInformation`
+`func NewTokenizedCardInformation() *TokenizedCardInformation`
 
 NewTokenizedCardInformation instantiates a new TokenizedCardInformation object
 This constructor will assign default values to properties that have it defined,
@@ -53,6 +55,11 @@ and a boolean to check if the value has been set.
 
 SetTokenId sets TokenId field to given value.
 
+### HasTokenId
+
+`func (o *TokenizedCardInformation) HasTokenId() bool`
+
+HasTokenId returns a boolean if a field has been set.
 
 ### GetMaskedCardNumber
 
@@ -73,6 +80,11 @@ and a boolean to check if the value has been set.
 
 SetMaskedCardNumber sets MaskedCardNumber field to given value.
 
+### HasMaskedCardNumber
+
+`func (o *TokenizedCardInformation) HasMaskedCardNumber() bool`
+
+HasMaskedCardNumber returns a boolean if a field has been set.
 
 ### GetCardholderName
 
@@ -128,6 +140,11 @@ and a boolean to check if the value has been set.
 
 SetExpiryMonth sets ExpiryMonth field to given value.
 
+### HasExpiryMonth
+
+`func (o *TokenizedCardInformation) HasExpiryMonth() bool`
+
+HasExpiryMonth returns a boolean if a field has been set.
 
 ### GetExpiryYear
 
@@ -148,6 +165,11 @@ and a boolean to check if the value has been set.
 
 SetExpiryYear sets ExpiryYear field to given value.
 
+### HasExpiryYear
+
+`func (o *TokenizedCardInformation) HasExpiryYear() bool`
+
+HasExpiryYear returns a boolean if a field has been set.
 
 ### GetFingerprint
 
@@ -168,6 +190,11 @@ and a boolean to check if the value has been set.
 
 SetFingerprint sets Fingerprint field to given value.
 
+### HasFingerprint
+
+`func (o *TokenizedCardInformation) HasFingerprint() bool`
+
+HasFingerprint returns a boolean if a field has been set.
 
 ### GetType
 
@@ -188,6 +215,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *TokenizedCardInformation) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetNetwork
 
@@ -208,6 +240,11 @@ and a boolean to check if the value has been set.
 
 SetNetwork sets Network field to given value.
 
+### HasNetwork
+
+`func (o *TokenizedCardInformation) HasNetwork() bool`
+
+HasNetwork returns a boolean if a field has been set.
 
 ### GetCountry
 
@@ -228,6 +265,11 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
+### HasCountry
+
+`func (o *TokenizedCardInformation) HasCountry() bool`
+
+HasCountry returns a boolean if a field has been set.
 
 ### GetIssuer
 
@@ -248,6 +290,61 @@ and a boolean to check if the value has been set.
 
 SetIssuer sets Issuer field to given value.
 
+### HasIssuer
+
+`func (o *TokenizedCardInformation) HasIssuer() bool`
+
+HasIssuer returns a boolean if a field has been set.
+
+### GetCardNumber
+
+`func (o *TokenizedCardInformation) GetCardNumber() string`
+
+GetCardNumber returns the CardNumber field if non-nil, zero value otherwise.
+
+### GetCardNumberOk
+
+`func (o *TokenizedCardInformation) GetCardNumberOk() (*string, bool)`
+
+GetCardNumberOk returns a tuple with the CardNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardNumber
+
+`func (o *TokenizedCardInformation) SetCardNumber(v string)`
+
+SetCardNumber sets CardNumber field to given value.
+
+### HasCardNumber
+
+`func (o *TokenizedCardInformation) HasCardNumber() bool`
+
+HasCardNumber returns a boolean if a field has been set.
+
+### GetOneTimeToken
+
+`func (o *TokenizedCardInformation) GetOneTimeToken() string`
+
+GetOneTimeToken returns the OneTimeToken field if non-nil, zero value otherwise.
+
+### GetOneTimeTokenOk
+
+`func (o *TokenizedCardInformation) GetOneTimeTokenOk() (*string, bool)`
+
+GetOneTimeTokenOk returns a tuple with the OneTimeToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOneTimeToken
+
+`func (o *TokenizedCardInformation) SetOneTimeToken(v string)`
+
+SetOneTimeToken sets OneTimeToken field to given value.
+
+### HasOneTimeToken
+
+`func (o *TokenizedCardInformation) HasOneTimeToken() bool`
+
+HasOneTimeToken returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

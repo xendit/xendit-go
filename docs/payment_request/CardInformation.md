@@ -4,22 +4,24 @@ Card Information
 ## Properties
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
-| **TokenId** | **string** | ☑️ |  |  |
-| **MaskedCardNumber** | **string** | ☑️ | 1st 6 and last 4 digits of the card |  |
-| **ExpiryMonth** | **string** | ☑️ | Card expiry month in MM format |  |
-| **ExpiryYear** | **string** | ☑️ | Card expiry month in YY format |  |
+| **TokenId** | Pointer to **string** |  |  |  |
+| **MaskedCardNumber** | Pointer to **string** |  | 1st 6 and last 4 digits of the card |  |
+| **ExpiryMonth** | Pointer to **string** |  | Card expiry month in MM format |  |
+| **ExpiryYear** | Pointer to **string** |  | Card expiry month in YY format |  |
 | **CardholderName** | Pointer to **NullableString** |  | Cardholder name |  |
 | **Fingerprint** | Pointer to **string** |  |  |  |
 | **Type** | Pointer to **string** |  |  |  |
 | **Network** | Pointer to **string** |  |  |  |
 | **Country** | Pointer to **string** |  |  |  |
 | **Issuer** | Pointer to **string** |  |  |  |
+| **CardNumber** | Pointer to **string** |  |  |  |
+| **OneTimeToken** | Pointer to **string** |  |  |  |
 
 ## Methods
 
 ### NewCardInformation
 
-`func NewCardInformation(tokenId string, maskedCardNumber string, expiryMonth string, expiryYear string, ) *CardInformation`
+`func NewCardInformation() *CardInformation`
 
 NewCardInformation instantiates a new CardInformation object
 This constructor will assign default values to properties that have it defined,
@@ -53,6 +55,11 @@ and a boolean to check if the value has been set.
 
 SetTokenId sets TokenId field to given value.
 
+### HasTokenId
+
+`func (o *CardInformation) HasTokenId() bool`
+
+HasTokenId returns a boolean if a field has been set.
 
 ### GetMaskedCardNumber
 
@@ -73,6 +80,11 @@ and a boolean to check if the value has been set.
 
 SetMaskedCardNumber sets MaskedCardNumber field to given value.
 
+### HasMaskedCardNumber
+
+`func (o *CardInformation) HasMaskedCardNumber() bool`
+
+HasMaskedCardNumber returns a boolean if a field has been set.
 
 ### GetExpiryMonth
 
@@ -93,6 +105,11 @@ and a boolean to check if the value has been set.
 
 SetExpiryMonth sets ExpiryMonth field to given value.
 
+### HasExpiryMonth
+
+`func (o *CardInformation) HasExpiryMonth() bool`
+
+HasExpiryMonth returns a boolean if a field has been set.
 
 ### GetExpiryYear
 
@@ -113,6 +130,11 @@ and a boolean to check if the value has been set.
 
 SetExpiryYear sets ExpiryYear field to given value.
 
+### HasExpiryYear
+
+`func (o *CardInformation) HasExpiryYear() bool`
+
+HasExpiryYear returns a boolean if a field has been set.
 
 ### GetCardholderName
 
@@ -273,6 +295,56 @@ SetIssuer sets Issuer field to given value.
 `func (o *CardInformation) HasIssuer() bool`
 
 HasIssuer returns a boolean if a field has been set.
+
+### GetCardNumber
+
+`func (o *CardInformation) GetCardNumber() string`
+
+GetCardNumber returns the CardNumber field if non-nil, zero value otherwise.
+
+### GetCardNumberOk
+
+`func (o *CardInformation) GetCardNumberOk() (*string, bool)`
+
+GetCardNumberOk returns a tuple with the CardNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardNumber
+
+`func (o *CardInformation) SetCardNumber(v string)`
+
+SetCardNumber sets CardNumber field to given value.
+
+### HasCardNumber
+
+`func (o *CardInformation) HasCardNumber() bool`
+
+HasCardNumber returns a boolean if a field has been set.
+
+### GetOneTimeToken
+
+`func (o *CardInformation) GetOneTimeToken() string`
+
+GetOneTimeToken returns the OneTimeToken field if non-nil, zero value otherwise.
+
+### GetOneTimeTokenOk
+
+`func (o *CardInformation) GetOneTimeTokenOk() (*string, bool)`
+
+GetOneTimeTokenOk returns a tuple with the OneTimeToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOneTimeToken
+
+`func (o *CardInformation) SetOneTimeToken(v string)`
+
+SetOneTimeToken sets OneTimeToken field to given value.
+
+### HasOneTimeToken
+
+`func (o *CardInformation) HasOneTimeToken() bool`
+
+HasOneTimeToken returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

@@ -12,7 +12,7 @@ package payout
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
 	"time"
 )
 

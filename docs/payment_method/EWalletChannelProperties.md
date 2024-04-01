@@ -7,6 +7,7 @@ EWallet Channel Properties
 | **SuccessReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization is successful |  |
 | **FailureReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization failed |  |
 | **CancelReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization cancelled |  |
+| **PendingReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization is pending |  |
 | **MobileNumber** | Pointer to **string** |  | Mobile number of customer in E.164 format (e.g. +628123123123). For OVO one time payment use only. |  |
 | **RedeemPoints** | Pointer to **string** |  | REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only. |  |
 | **Cashtag** | Pointer to **string** |  | Available for JENIUSPAY only |  |
@@ -104,6 +105,31 @@ SetCancelReturnUrl sets CancelReturnUrl field to given value.
 `func (o *EWalletChannelProperties) HasCancelReturnUrl() bool`
 
 HasCancelReturnUrl returns a boolean if a field has been set.
+
+### GetPendingReturnUrl
+
+`func (o *EWalletChannelProperties) GetPendingReturnUrl() string`
+
+GetPendingReturnUrl returns the PendingReturnUrl field if non-nil, zero value otherwise.
+
+### GetPendingReturnUrlOk
+
+`func (o *EWalletChannelProperties) GetPendingReturnUrlOk() (*string, bool)`
+
+GetPendingReturnUrlOk returns a tuple with the PendingReturnUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingReturnUrl
+
+`func (o *EWalletChannelProperties) SetPendingReturnUrl(v string)`
+
+SetPendingReturnUrl sets PendingReturnUrl field to given value.
+
+### HasPendingReturnUrl
+
+`func (o *EWalletChannelProperties) HasPendingReturnUrl() bool`
+
+HasPendingReturnUrl returns a boolean if a field has been set.
 
 ### GetMobileNumber
 

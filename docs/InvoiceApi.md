@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
+    xendit "github.com/xendit/xendit-go/v5"
 )
 
 func main() {
@@ -63,8 +63,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    invoice "github.com/xendit/xendit-go/v4/invoice"
+    xendit "github.com/xendit/xendit-go/v5"
+    invoice "github.com/xendit/xendit-go/v5/invoice"
 )
 
 func main() {
@@ -131,8 +131,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    invoice "github.com/xendit/xendit-go/v4/invoice"
+    xendit "github.com/xendit/xendit-go/v5"
+    invoice "github.com/xendit/xendit-go/v5/invoice"
 )
 
 func main() {
@@ -209,8 +209,8 @@ import (
     "fmt"
     "os"
         "time"
-    xendit "github.com/xendit/xendit-go/v4"
-    invoice "github.com/xendit/xendit-go/v4/invoice"
+    xendit "github.com/xendit/xendit-go/v5"
+    invoice "github.com/xendit/xendit-go/v5/invoice"
 )
 
 func main() {
@@ -316,8 +316,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    invoice "github.com/xendit/xendit-go/v4/invoice"
+    xendit "github.com/xendit/xendit-go/v5"
+    invoice "github.com/xendit/xendit-go/v5/invoice"
 )
 
 func main() {
@@ -384,8 +384,8 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    invoice "github.com/xendit/xendit-go/v4/invoice"
+    xendit "github.com/xendit/xendit-go/v5"
+    invoice "github.com/xendit/xendit-go/v5/invoice"
 )
 
 func main() {

@@ -8,6 +8,7 @@ Card Channel Properties
 | **SuccessReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization is successful |  |
 | **FailureReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization failed |  |
 | **CardonfileType** | Pointer to **NullableString** |  | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. |  |
+| **ExpiresAt** | Pointer to **time.Time** |  |  |  |
 
 ## Methods
 
@@ -168,6 +169,31 @@ HasCardonfileType returns a boolean if a field has been set.
 `func (o *CardChannelProperties) UnsetCardonfileType()`
 
 UnsetCardonfileType ensures that no value is present for CardonfileType, not even an explicit nil
+### GetExpiresAt
+
+`func (o *CardChannelProperties) GetExpiresAt() time.Time`
+
+GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
+
+### GetExpiresAtOk
+
+`func (o *CardChannelProperties) GetExpiresAtOk() (*time.Time, bool)`
+
+GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiresAt
+
+`func (o *CardChannelProperties) SetExpiresAt(v time.Time)`
+
+SetExpiresAt sets ExpiresAt field to given value.
+
+### HasExpiresAt
+
+`func (o *CardChannelProperties) HasExpiresAt() bool`
+
+HasExpiresAt returns a boolean if a field has been set.
+
 
 [[Back to README]](../../README.md)
 

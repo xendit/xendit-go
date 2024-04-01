@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.91.2
+API version: 2.99.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_method
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
 	"time"
 )
 

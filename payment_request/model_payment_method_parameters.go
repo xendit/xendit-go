@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
 )
 
 // checks if the PaymentMethodParameters type satisfies the MappedNullable interface at compile time
@@ -24,6 +24,7 @@ type PaymentMethodParameters struct {
 	Reusability PaymentMethodReusability `json:"reusability"`
 	Description NullableString `json:"description,omitempty"`
 	ReferenceId *string `json:"reference_id,omitempty"`
+	Card NullableCardParameters `json:"card,omitempty"`
 	DirectDebit NullableDirectDebitParameters `json:"direct_debit,omitempty"`
 	Ewallet NullableEWalletParameters `json:"ewallet,omitempty"`
 	OverTheCounter NullableOverTheCounterParameters `json:"over_the_counter,omitempty"`
@@ -170,6 +171,48 @@ func (o *PaymentMethodParameters) HasReferenceId() bool {
 // SetReferenceId gets a reference to the given string and assigns it to the ReferenceId field.
 func (o *PaymentMethodParameters) SetReferenceId(v string) {
 	o.ReferenceId = &v
+}
+
+// GetCard returns the Card field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PaymentMethodParameters) GetCard() CardParameters {
+	if o == nil || utils.IsNil(o.Card.Get()) {
+		var ret CardParameters
+		return ret
+	}
+	return *o.Card.Get()
+}
+
+// GetCardOk returns a tuple with the Card field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PaymentMethodParameters) GetCardOk() (*CardParameters, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Card.Get(), o.Card.IsSet()
+}
+
+// HasCard returns a boolean if a field has been set.
+func (o *PaymentMethodParameters) HasCard() bool {
+	if o != nil && o.Card.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCard gets a reference to the given NullableCardParameters and assigns it to the Card field.
+func (o *PaymentMethodParameters) SetCard(v CardParameters) {
+	o.Card.Set(&v)
+}
+// SetCardNil sets the value for Card to be an explicit nil
+func (o *PaymentMethodParameters) SetCardNil() {
+	o.Card.Set(nil)
+}
+
+// UnsetCard ensures that no value is present for Card, not even an explicit nil
+func (o *PaymentMethodParameters) UnsetCard() {
+	o.Card.Unset()
 }
 
 // GetDirectDebit returns the DirectDebit field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -400,6 +443,9 @@ func (o PaymentMethodParameters) ToMap() (map[string]interface{}, error) {
 	if !utils.IsNil(o.ReferenceId) {
 		toSerialize["reference_id"] = o.ReferenceId
 	}
+	if o.Card.IsSet() {
+		toSerialize["card"] = o.Card.Get()
+    }
 	if o.DirectDebit.IsSet() {
 		toSerialize["direct_debit"] = o.DirectDebit.Get()
     }

@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -12,7 +12,8 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
+	"time"
 )
 
 // checks if the CardChannelProperties type satisfies the MappedNullable interface at compile time
@@ -30,6 +31,7 @@ type CardChannelProperties struct {
 	CardonfileType NullableString `json:"cardonfile_type,omitempty"`
 	// Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use
 	MerchantIdTag *string `json:"merchant_id_tag,omitempty"`
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
 }
 
 // NewCardChannelProperties instantiates a new CardChannelProperties object
@@ -249,6 +251,38 @@ func (o *CardChannelProperties) SetMerchantIdTag(v string) {
 	o.MerchantIdTag = &v
 }
 
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+func (o *CardChannelProperties) GetExpiresAt() time.Time {
+	if o == nil || utils.IsNil(o.ExpiresAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpiresAt
+}
+
+// GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardChannelProperties) GetExpiresAtOk() (*time.Time, bool) {
+	if o == nil || utils.IsNil(o.ExpiresAt) {
+		return nil, false
+	}
+	return o.ExpiresAt, true
+}
+
+// HasExpiresAt returns a boolean if a field has been set.
+func (o *CardChannelProperties) HasExpiresAt() bool {
+	if o != nil && !utils.IsNil(o.ExpiresAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
+func (o *CardChannelProperties) SetExpiresAt(v time.Time) {
+	o.ExpiresAt = &v
+}
+
 func (o CardChannelProperties) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -273,6 +307,9 @@ func (o CardChannelProperties) ToMap() (map[string]interface{}, error) {
     }
 	if !utils.IsNil(o.MerchantIdTag) {
 		toSerialize["merchant_id_tag"] = o.MerchantIdTag
+	}
+	if !utils.IsNil(o.ExpiresAt) {
+		toSerialize["expires_at"] = o.ExpiresAt
 	}
 	return toSerialize, nil
 }

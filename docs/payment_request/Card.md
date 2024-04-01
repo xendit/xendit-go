@@ -4,16 +4,17 @@
 ## Properties
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
-| **Currency** | [**PaymentRequestCurrency**](PaymentRequestCurrency.md) | ☑️ |  |  |
+| **ChannelCode** | Pointer to [**CardChannelCode**](CardChannelCode.md) |  |  |  |
+| **Currency** | Pointer to [**PaymentRequestCurrency**](PaymentRequestCurrency.md) |  |  |  |
 | **ChannelProperties** | [**CardChannelProperties**](CardChannelProperties.md) | ☑️ |  |  |
-| **CardInformation** | [**CardInformation**](CardInformation.md) | ☑️ |  |  |
+| **CardInformation** | Pointer to [**CardInformation**](CardInformation.md) |  |  |  |
 | **CardVerificationResults** | Pointer to [**NullableCardVerificationResults**](CardVerificationResults.md) |  |  |  |
 
 ## Methods
 
 ### NewCard
 
-`func NewCard(currency PaymentRequestCurrency, channelProperties CardChannelProperties, cardInformation CardInformation, ) *Card`
+`func NewCard(channelProperties CardChannelProperties, ) *Card`
 
 NewCard instantiates a new Card object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewCardWithDefaults instantiates a new Card object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetChannelCode
+
+`func (o *Card) GetChannelCode() CardChannelCode`
+
+GetChannelCode returns the ChannelCode field if non-nil, zero value otherwise.
+
+### GetChannelCodeOk
+
+`func (o *Card) GetChannelCodeOk() (*CardChannelCode, bool)`
+
+GetChannelCodeOk returns a tuple with the ChannelCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChannelCode
+
+`func (o *Card) SetChannelCode(v CardChannelCode)`
+
+SetChannelCode sets ChannelCode field to given value.
+
+### HasChannelCode
+
+`func (o *Card) HasChannelCode() bool`
+
+HasChannelCode returns a boolean if a field has been set.
 
 ### GetCurrency
 
@@ -47,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetCurrency sets Currency field to given value.
 
+### HasCurrency
+
+`func (o *Card) HasCurrency() bool`
+
+HasCurrency returns a boolean if a field has been set.
 
 ### GetChannelProperties
 
@@ -87,6 +118,11 @@ and a boolean to check if the value has been set.
 
 SetCardInformation sets CardInformation field to given value.
 
+### HasCardInformation
+
+`func (o *Card) HasCardInformation() bool`
+
+HasCardInformation returns a boolean if a field has been set.
 
 ### GetCardVerificationResults
 

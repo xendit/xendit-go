@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
+    xendit "github.com/xendit/xendit-go/v5"
 )
 
 func main() {
@@ -30,6 +30,7 @@ All URIs are relative to *https://api.xendit.co*
 | [**CapturePaymentRequest**](PaymentRequestApi.md#capturepaymentrequest-function) | **Post** /payment_requests/{paymentRequestId}/captures | Payment Request Capture |
 | [**AuthorizePaymentRequest**](PaymentRequestApi.md#authorizepaymentrequest-function) | **Post** /payment_requests/{paymentRequestId}/auth | Payment Request Authorize |
 | [**ResendPaymentRequestAuth**](PaymentRequestApi.md#resendpaymentrequestauth-function) | **Post** /payment_requests/{paymentRequestId}/auth/resend | Payment Request Resend Auth |
+| [**SimulatePaymentRequestPayment**](PaymentRequestApi.md#simulatepaymentrequestpayment-function) | **Post** /payment_requests/{paymentRequestId}/payments/simulate | Payment Request Simulate Payment |
 
 
 
@@ -69,8 +70,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -141,8 +142,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -210,8 +211,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -282,8 +283,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -367,8 +368,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -439,8 +440,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -510,8 +511,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {
@@ -536,6 +537,70 @@ func main() {
     }
     // response from `ResendPaymentRequestAuth`: PaymentRequest
     fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.ResendPaymentRequestAuth`: %v\n", resp)
+}
+```
+
+## `SimulatePaymentRequestPayment()` Function
+
+Payment Request Simulate Payment
+
+
+
+| Name          |    Value 	     |
+|--------------------|:-------------:|
+| Function Name | `SimulatePaymentRequestPayment` |
+| Path Parameters  |  [SimulatePaymentRequestPaymentPathParams](#request-parameters--SimulatePaymentRequestPaymentPathParams)	 |
+| Request Parameters  |  [SimulatePaymentRequestPaymentRequestParams](#request-parameters--SimulatePaymentRequestPaymentRequestParams)	 |
+| Return Type  | [**PaymentSimulation**](payment_request/PaymentSimulation.md) |
+
+### Path Parameters - SimulatePaymentRequestPaymentPathParams
+
+
+| Name | Type | Description | Required  | Default |
+| ------------- |:-------------:| ------------- |:-------------:|-------------|
+| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.| ☑️ |  | 
+| **paymentRequestId** | **string** |  | ☑️ |  | 
+
+### Request Parameters - SimulatePaymentRequestPaymentRequestParams
+
+Parameters that are passed through a pointer to a apiSimulatePaymentRequestPaymentRequest struct via the builder pattern
+
+|Name | Type | Required |Default |
+|-------------|:-------------:|:-------------:|-------------|
+| 
+
+### Usage Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+)
+
+func main() {
+    
+    paymentRequestId := "pr-1fdaf346-dd2e-4b6c-b938-124c7167a822" // [REQUIRED] | string
+
+    xenditClient := xendit.NewClient("API-KEY")
+
+    resp, r, err := xenditClient.PaymentRequestApi.SimulatePaymentRequestPayment(context.Background(), paymentRequestId). // [OPTIONAL]
+        Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PaymentRequestApi.SimulatePaymentRequestPayment``: %v\n", err.Error())
+
+        b, _ := json.Marshal(err.FullError())
+        fmt.Fprintf(os.Stderr, "Full Error Struct: %v\n", string(b))
+
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SimulatePaymentRequestPayment`: PaymentSimulation
+    fmt.Fprintf(os.Stdout, "Response from `PaymentRequestApi.SimulatePaymentRequestPayment`: %v\n", resp)
 }
 ```
 
@@ -615,8 +680,8 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payment_request "github.com/xendit/xendit-go/v4/payment_request"
+    xendit "github.com/xendit/xendit-go/v5"
+    payment_request "github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func main() {

@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -25,6 +25,8 @@ const (
 	QRCODECHANNELCODE_RCBC QRCodeChannelCode = "RCBC"
 	QRCODECHANNELCODE_LINKAJA QRCodeChannelCode = "LINKAJA"
 	QRCODECHANNELCODE_PROMPTPAY QRCodeChannelCode = "PROMPTPAY"
+	QRCODECHANNELCODE_XENDIT QRCodeChannelCode = "XENDIT"
+	QRCODECHANNELCODE_QRPH QRCodeChannelCode = "QRPH"
     QRCODECHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK QRCodeChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -35,6 +37,8 @@ var AllowedQRCodeChannelCodeEnumValues = []QRCodeChannelCode{
 	"RCBC",
 	"LINKAJA",
 	"PROMPTPAY",
+	"XENDIT",
+	"QRPH",
     "UNKNOWN_ENUM_VALUE",
 }
 

@@ -9,6 +9,7 @@ Card Channel Properties
 | **FailureReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization failed |  |
 | **CardonfileType** | Pointer to **NullableString** |  | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. |  |
 | **MerchantIdTag** | Pointer to **string** |  | Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use |  |
+| **ExpiresAt** | Pointer to **time.Time** |  |  |  |
 
 ## Methods
 
@@ -193,6 +194,31 @@ SetMerchantIdTag sets MerchantIdTag field to given value.
 `func (o *CardChannelProperties) HasMerchantIdTag() bool`
 
 HasMerchantIdTag returns a boolean if a field has been set.
+
+### GetExpiresAt
+
+`func (o *CardChannelProperties) GetExpiresAt() time.Time`
+
+GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
+
+### GetExpiresAtOk
+
+`func (o *CardChannelProperties) GetExpiresAtOk() (*time.Time, bool)`
+
+GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiresAt
+
+`func (o *CardChannelProperties) SetExpiresAt(v time.Time)`
+
+SetExpiresAt sets ExpiresAt field to given value.
+
+### HasExpiresAt
+
+`func (o *CardChannelProperties) HasExpiresAt() bool`
+
+HasExpiresAt returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

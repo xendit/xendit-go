@@ -8,6 +8,7 @@
 | **Reusability** | [**PaymentMethodReusability**](PaymentMethodReusability.md) | ☑️ |  |  |
 | **Description** | Pointer to **NullableString** |  |  |  |
 | **ReferenceId** | Pointer to **string** |  |  |  |
+| **Card** | Pointer to [**NullableCardParameters**](CardParameters.md) |  |  |  |
 | **DirectDebit** | Pointer to [**NullableDirectDebitParameters**](DirectDebitParameters.md) |  |  |  |
 | **Ewallet** | Pointer to [**NullableEWalletParameters**](EWalletParameters.md) |  |  |  |
 | **OverTheCounter** | Pointer to [**NullableOverTheCounterParameters**](OverTheCounterParameters.md) |  |  |  |
@@ -133,6 +134,41 @@ SetReferenceId sets ReferenceId field to given value.
 
 HasReferenceId returns a boolean if a field has been set.
 
+### GetCard
+
+`func (o *PaymentMethodParameters) GetCard() CardParameters`
+
+GetCard returns the Card field if non-nil, zero value otherwise.
+
+### GetCardOk
+
+`func (o *PaymentMethodParameters) GetCardOk() (*CardParameters, bool)`
+
+GetCardOk returns a tuple with the Card field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCard
+
+`func (o *PaymentMethodParameters) SetCard(v CardParameters)`
+
+SetCard sets Card field to given value.
+
+### HasCard
+
+`func (o *PaymentMethodParameters) HasCard() bool`
+
+HasCard returns a boolean if a field has been set.
+
+### SetCardNil
+
+`func (o *PaymentMethodParameters) SetCardNil(b bool)`
+
+ SetCardNil sets the value for Card to be an explicit nil
+
+### UnsetCard
+`func (o *PaymentMethodParameters) UnsetCard()`
+
+UnsetCard ensures that no value is present for Card, not even an explicit nil
 ### GetDirectDebit
 
 `func (o *PaymentMethodParameters) GetDirectDebit() DirectDebitParameters`

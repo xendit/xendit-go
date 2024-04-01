@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.45.2
+API version: 1.59.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v4/utils"
+	utils "github.com/xendit/xendit-go/v5/utils"
 )
 
 // checks if the DirectDebitChannelPropertiesBankRedirect type satisfies the MappedNullable interface at compile time
@@ -20,6 +20,7 @@ var _ utils.MappedNullable = &DirectDebitChannelPropertiesBankRedirect{}
 
 // DirectDebitChannelPropertiesBankRedirect Direct Debit Bank Account Channel Properties
 type DirectDebitChannelPropertiesBankRedirect struct {
+	Email *string `json:"email,omitempty"`
 	// Mobile number of the customer that is registered to channel
 	MobileNumber *string `json:"mobile_number,omitempty"`
 	SuccessReturnUrl *string `json:"success_return_url,omitempty"`
@@ -41,6 +42,38 @@ func NewDirectDebitChannelPropertiesBankRedirect() *DirectDebitChannelProperties
 func NewDirectDebitChannelPropertiesBankRedirectWithDefaults() *DirectDebitChannelPropertiesBankRedirect {
 	this := DirectDebitChannelPropertiesBankRedirect{}
 	return &this
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *DirectDebitChannelPropertiesBankRedirect) GetEmail() string {
+	if o == nil || utils.IsNil(o.Email) {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DirectDebitChannelPropertiesBankRedirect) GetEmailOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.Email) {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *DirectDebitChannelPropertiesBankRedirect) HasEmail() bool {
+	if o != nil && !utils.IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *DirectDebitChannelPropertiesBankRedirect) SetEmail(v string) {
+	o.Email = &v
 }
 
 // GetMobileNumber returns the MobileNumber field value if set, zero value otherwise.
@@ -149,6 +182,9 @@ func (o DirectDebitChannelPropertiesBankRedirect) MarshalJSON() ([]byte, error) 
 
 func (o DirectDebitChannelPropertiesBankRedirect) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !utils.IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
 	if !utils.IsNil(o.MobileNumber) {
 		toSerialize["mobile_number"] = o.MobileNumber
 	}

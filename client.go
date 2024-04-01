@@ -20,16 +20,16 @@ import (
 	"strings"
 	"time"
 
-	common "github.com/xendit/xendit-go/v4/common"
+	common "github.com/xendit/xendit-go/v5/common"
 	
-	invoice "github.com/xendit/xendit-go/v4/invoice"
-	paymentrequest "github.com/xendit/xendit-go/v4/payment_request"
-	paymentmethod "github.com/xendit/xendit-go/v4/payment_method"
-	refund "github.com/xendit/xendit-go/v4/refund"
-	balance "github.com/xendit/xendit-go/v4/balance_and_transaction"
-	transaction "github.com/xendit/xendit-go/v4/balance_and_transaction"
-	customer "github.com/xendit/xendit-go/v4/customer"
-	payout "github.com/xendit/xendit-go/v4/payout"
+	invoice "github.com/xendit/xendit-go/v5/invoice"
+	paymentrequest "github.com/xendit/xendit-go/v5/payment_request"
+	paymentmethod "github.com/xendit/xendit-go/v5/payment_method"
+	refund "github.com/xendit/xendit-go/v5/refund"
+	balance "github.com/xendit/xendit-go/v5/balance_and_transaction"
+	transaction "github.com/xendit/xendit-go/v5/balance_and_transaction"
+	customer "github.com/xendit/xendit-go/v5/customer"
+	payout "github.com/xendit/xendit-go/v5/payout"
 
 )
 
@@ -154,7 +154,7 @@ func (c *APIClient) PrepareRequest(
 	headerParams["xendit-lib"] = "go"
 
 	// TODO: overwrite this line from buddy pipeline
-	headerParams["xendit-lib-ver"] = "4.3.0"
+	headerParams["xendit-lib-ver"] = "5.0.0"
 
 	var body *bytes.Buffer
 

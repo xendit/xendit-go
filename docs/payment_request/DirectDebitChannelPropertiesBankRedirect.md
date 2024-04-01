@@ -4,6 +4,7 @@ Direct Debit Bank Account Channel Properties
 ## Properties
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
+| **Email** | Pointer to **string** |  |  |  |
 | **MobileNumber** | Pointer to **string** |  | Mobile number of the customer that is registered to channel |  |
 | **SuccessReturnUrl** | Pointer to **string** |  |  |  |
 | **FailureReturnUrl** | Pointer to **string** |  |  |  |
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewDirectDebitChannelPropertiesBankRedirectWithDefaults instantiates a new DirectDebitChannelPropertiesBankRedirect object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEmail
+
+`func (o *DirectDebitChannelPropertiesBankRedirect) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *DirectDebitChannelPropertiesBankRedirect) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *DirectDebitChannelPropertiesBankRedirect) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *DirectDebitChannelPropertiesBankRedirect) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 ### GetMobileNumber
 

@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
+    xendit "github.com/xendit/xendit-go/v5"
 )
 
 func main() {
@@ -65,8 +65,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payout "github.com/xendit/xendit-go/v4/payout"
+    xendit "github.com/xendit/xendit-go/v5"
+    payout "github.com/xendit/xendit-go/v5/payout"
 )
 
 func main() {
@@ -140,8 +140,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payout "github.com/xendit/xendit-go/v4/payout"
+    xendit "github.com/xendit/xendit-go/v5"
+    payout "github.com/xendit/xendit-go/v5/payout"
 )
 
 func main() {
@@ -208,8 +208,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payout "github.com/xendit/xendit-go/v4/payout"
+    xendit "github.com/xendit/xendit-go/v5"
+    payout "github.com/xendit/xendit-go/v5/payout"
 )
 
 func main() {
@@ -286,8 +286,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payout "github.com/xendit/xendit-go/v4/payout"
+    xendit "github.com/xendit/xendit-go/v5"
+    payout "github.com/xendit/xendit-go/v5/payout"
 )
 
 func main() {
@@ -369,8 +369,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v4"
-    payout "github.com/xendit/xendit-go/v4/payout"
+    xendit "github.com/xendit/xendit-go/v5"
+    payout "github.com/xendit/xendit-go/v5/payout"
 )
 
 func main() {

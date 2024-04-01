@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strconv"
 
-	common "github.com/xendit/xendit-go/v4/common"
-	utils "github.com/xendit/xendit-go/v4/utils"
+	common "github.com/xendit/xendit-go/v5/common"
+	utils "github.com/xendit/xendit-go/v5/utils"
 	"strings"
 	"reflect"
 	"time"

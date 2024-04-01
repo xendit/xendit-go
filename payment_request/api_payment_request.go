@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strconv"
 
-	common "github.com/xendit/xendit-go/v4/common"
-	utils "github.com/xendit/xendit-go/v4/utils"
+	common "github.com/xendit/xendit-go/v5/common"
+	utils "github.com/xendit/xendit-go/v5/utils"
 	"strings"
 	"reflect"
 )
@@ -119,6 +119,21 @@ type PaymentRequestApi interface {
 	// ResendPaymentRequestAuthExecute executes the request
 	//  @return PaymentRequest
 	ResendPaymentRequestAuthExecute(r ApiResendPaymentRequestAuthRequest) (*PaymentRequest, *http.Response, *common.XenditSdkError)
+
+	/*
+	SimulatePaymentRequestPayment Payment Request Simulate Payment
+
+	Payment Request Simulate Payment
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param paymentRequestId
+	@return ApiSimulatePaymentRequestPaymentRequest
+	*/
+	SimulatePaymentRequestPayment(ctx context.Context, paymentRequestId string) ApiSimulatePaymentRequestPaymentRequest
+
+	// SimulatePaymentRequestPaymentExecute executes the request
+	//  @return PaymentSimulation
+	SimulatePaymentRequestPaymentExecute(r ApiSimulatePaymentRequestPaymentRequest) (*PaymentSimulation, *http.Response, *common.XenditSdkError)
 }
 
 // PaymentRequestApiService PaymentRequestApi service
@@ -906,6 +921,94 @@ func (a *PaymentRequestApiService) ResendPaymentRequestAuthExecute(r ApiResendPa
 	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.ResendPaymentRequestAuthExecute")
+	}
+
+	localVarHTTPResponse, err := a.client.CallAPI(req)
+
+	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+
+    err = a.client.Decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+
+	if err != nil || localVarHTTPResponse.StatusCode < 200 || localVarHTTPResponse.StatusCode >= 300 {
+		xenditSdkError := common.NewXenditSdkError(&localVarBody, strconv.Itoa(localVarHTTPResponse.StatusCode), localVarHTTPResponse.Status)
+
+		return localVarReturnValue, localVarHTTPResponse, xenditSdkError
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSimulatePaymentRequestPaymentRequest struct {
+	ctx context.Context
+	ApiService PaymentRequestApi
+	paymentRequestId string
+}
+
+func (r ApiSimulatePaymentRequestPaymentRequest) Execute() (*PaymentSimulation, *http.Response, *common.XenditSdkError) {
+	return r.ApiService.SimulatePaymentRequestPaymentExecute(r)
+}
+
+/*
+SimulatePaymentRequestPayment Payment Request Simulate Payment
+
+Payment Request Simulate Payment
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param paymentRequestId
+ @return ApiSimulatePaymentRequestPaymentRequest
+*/
+func (a *PaymentRequestApiService) SimulatePaymentRequestPayment(ctx context.Context, paymentRequestId string) ApiSimulatePaymentRequestPaymentRequest {
+	return ApiSimulatePaymentRequestPaymentRequest{
+		ApiService: a,
+		ctx: ctx,
+		paymentRequestId: paymentRequestId,
+	}
+}
+
+// Execute executes the request
+//  @return PaymentSimulation
+func (a *PaymentRequestApiService) SimulatePaymentRequestPaymentExecute(r ApiSimulatePaymentRequestPaymentRequest) (*PaymentSimulation, *http.Response, *common.XenditSdkError) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []common.FormFile
+		localVarReturnValue  *PaymentSimulation
+	)
+
+	localBasePath, err := a.client.GetConfig().ServerURLWithContext(r.ctx, "PaymentRequestApiService.SimulatePaymentRequestPayment")
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.SimulatePaymentRequestPaymentExecute")
+	}
+
+	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/payments/simulate"
+	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := utils.SelectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := utils.SelectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.PrepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.SimulatePaymentRequestPaymentExecute")
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
