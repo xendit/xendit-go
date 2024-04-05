@@ -12,9 +12,9 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/joho/godotenv"
-	xendit "github.com/xendit/xendit-go/v4"
-	payment_method "github.com/xendit/xendit-go/v4/payment_method"
-	"github.com/xendit/xendit-go/v4/payment_request"
+	xendit "github.com/xendit/xendit-go/v5"
+	payment_method "github.com/xendit/xendit-go/v5/payment_method"
+	"github.com/xendit/xendit-go/v5/payment_request"
 )
 
 func Test_xendit_PaymentAPIService(t *testing.T) {
