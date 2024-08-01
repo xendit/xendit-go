@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
+    xendit "github.com/xendit/xendit-go/v6"
 )
 
 func main() {
@@ -59,6 +59,7 @@ Parameters that are passed through a pointer to a apiCreatePaymentRequestRequest
 |-------------|:-------------:|:-------------:|-------------|
 |  **idempotencyKey** |**string**|  |  | 
 |  **forUserId** |**string**|  |  | 
+|  **withSplitRule** |**string**|  |  | 
 |  **paymentRequestParameters** |[**PaymentRequestParameters**](payment_request/PaymentRequestParameters.md)|  |  | 
 
 ### Usage Example
@@ -70,8 +71,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -80,6 +81,8 @@ func main() {
 
     forUserId := "5f9a3fbd571a1c4068aa40cf" // [OPTIONAL] | string
 
+    withSplitRule := "splitru_c676f55d-a9e0-47f2-b672-77564d57a40b" // [OPTIONAL] | string
+
     paymentRequestParameters := *payment_request.NewPaymentRequestParameters(payment_request.PaymentRequestCurrency("IDR")) // [OPTIONAL] | PaymentRequestParameters
 
     xenditClient := xendit.NewClient("API-KEY")
@@ -87,6 +90,7 @@ func main() {
     resp, r, err := xenditClient.PaymentRequestApi.CreatePaymentRequest(context.Background()).
         IdempotencyKey(idempotencyKey).
         ForUserId(forUserId).
+        WithSplitRule(withSplitRule).
         PaymentRequestParameters(paymentRequestParameters). // [OPTIONAL]
         Execute()
 
@@ -142,8 +146,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -211,8 +215,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -283,8 +287,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -368,8 +372,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -440,8 +444,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -511,8 +515,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -578,8 +582,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {
@@ -680,8 +684,8 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v5"
-    payment_request "github.com/xendit/xendit-go/v5/payment_request"
+    xendit "github.com/xendit/xendit-go/v6"
+    payment_request "github.com/xendit/xendit-go/v6/payment_request"
 )
 
 func main() {

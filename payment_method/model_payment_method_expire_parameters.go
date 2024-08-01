@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.99.0
+API version: 2.128.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_method
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v5/utils"
+	utils "github.com/xendit/xendit-go/v6/utils"
 )
 
 // checks if the PaymentMethodExpireParameters type satisfies the MappedNullable interface at compile time

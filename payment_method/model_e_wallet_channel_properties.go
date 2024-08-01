@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.99.0
+API version: 2.128.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_method
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v5/utils"
+	utils "github.com/xendit/xendit-go/v6/utils"
 )
 
 // checks if the EWalletChannelProperties type satisfies the MappedNullable interface at compile time
@@ -24,16 +24,18 @@ type EWalletChannelProperties struct {
 	SuccessReturnUrl *string `json:"success_return_url,omitempty"`
 	// URL where the end-customer is redirected if the authorization failed
 	FailureReturnUrl *string `json:"failure_return_url,omitempty"`
-	// URL where the end-customer is redirected if the authorization cancelled
-	CancelReturnUrl *string `json:"cancel_return_url,omitempty"`
 	// URL where the end-customer is redirected if the authorization is pending
 	PendingReturnUrl *string `json:"pending_return_url,omitempty"`
+	// URL where the end-customer is redirected if the authorization cancelled
+	CancelReturnUrl *string `json:"cancel_return_url,omitempty"`
 	// Mobile number of customer in E.164 format (e.g. +628123123123). For OVO one time payment use only.
 	MobileNumber *string `json:"mobile_number,omitempty"`
 	// REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only.
 	RedeemPoints *string `json:"redeem_points,omitempty"`
 	// Available for JENIUSPAY only
 	Cashtag *string `json:"cashtag,omitempty"`
+	// Available only for OVO
+	PromotionLabel *string `json:"promotion_label,omitempty"`
 }
 
 // NewEWalletChannelProperties instantiates a new EWalletChannelProperties object
@@ -117,38 +119,6 @@ func (o *EWalletChannelProperties) SetFailureReturnUrl(v string) {
 	o.FailureReturnUrl = &v
 }
 
-// GetCancelReturnUrl returns the CancelReturnUrl field value if set, zero value otherwise.
-func (o *EWalletChannelProperties) GetCancelReturnUrl() string {
-	if o == nil || utils.IsNil(o.CancelReturnUrl) {
-		var ret string
-		return ret
-	}
-	return *o.CancelReturnUrl
-}
-
-// GetCancelReturnUrlOk returns a tuple with the CancelReturnUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EWalletChannelProperties) GetCancelReturnUrlOk() (*string, bool) {
-	if o == nil || utils.IsNil(o.CancelReturnUrl) {
-		return nil, false
-	}
-	return o.CancelReturnUrl, true
-}
-
-// HasCancelReturnUrl returns a boolean if a field has been set.
-func (o *EWalletChannelProperties) HasCancelReturnUrl() bool {
-	if o != nil && !utils.IsNil(o.CancelReturnUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetCancelReturnUrl gets a reference to the given string and assigns it to the CancelReturnUrl field.
-func (o *EWalletChannelProperties) SetCancelReturnUrl(v string) {
-	o.CancelReturnUrl = &v
-}
-
 // GetPendingReturnUrl returns the PendingReturnUrl field value if set, zero value otherwise.
 func (o *EWalletChannelProperties) GetPendingReturnUrl() string {
 	if o == nil || utils.IsNil(o.PendingReturnUrl) {
@@ -179,6 +149,38 @@ func (o *EWalletChannelProperties) HasPendingReturnUrl() bool {
 // SetPendingReturnUrl gets a reference to the given string and assigns it to the PendingReturnUrl field.
 func (o *EWalletChannelProperties) SetPendingReturnUrl(v string) {
 	o.PendingReturnUrl = &v
+}
+
+// GetCancelReturnUrl returns the CancelReturnUrl field value if set, zero value otherwise.
+func (o *EWalletChannelProperties) GetCancelReturnUrl() string {
+	if o == nil || utils.IsNil(o.CancelReturnUrl) {
+		var ret string
+		return ret
+	}
+	return *o.CancelReturnUrl
+}
+
+// GetCancelReturnUrlOk returns a tuple with the CancelReturnUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EWalletChannelProperties) GetCancelReturnUrlOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.CancelReturnUrl) {
+		return nil, false
+	}
+	return o.CancelReturnUrl, true
+}
+
+// HasCancelReturnUrl returns a boolean if a field has been set.
+func (o *EWalletChannelProperties) HasCancelReturnUrl() bool {
+	if o != nil && !utils.IsNil(o.CancelReturnUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetCancelReturnUrl gets a reference to the given string and assigns it to the CancelReturnUrl field.
+func (o *EWalletChannelProperties) SetCancelReturnUrl(v string) {
+	o.CancelReturnUrl = &v
 }
 
 // GetMobileNumber returns the MobileNumber field value if set, zero value otherwise.
@@ -277,6 +279,38 @@ func (o *EWalletChannelProperties) SetCashtag(v string) {
 	o.Cashtag = &v
 }
 
+// GetPromotionLabel returns the PromotionLabel field value if set, zero value otherwise.
+func (o *EWalletChannelProperties) GetPromotionLabel() string {
+	if o == nil || utils.IsNil(o.PromotionLabel) {
+		var ret string
+		return ret
+	}
+	return *o.PromotionLabel
+}
+
+// GetPromotionLabelOk returns a tuple with the PromotionLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EWalletChannelProperties) GetPromotionLabelOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.PromotionLabel) {
+		return nil, false
+	}
+	return o.PromotionLabel, true
+}
+
+// HasPromotionLabel returns a boolean if a field has been set.
+func (o *EWalletChannelProperties) HasPromotionLabel() bool {
+	if o != nil && !utils.IsNil(o.PromotionLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromotionLabel gets a reference to the given string and assigns it to the PromotionLabel field.
+func (o *EWalletChannelProperties) SetPromotionLabel(v string) {
+	o.PromotionLabel = &v
+}
+
 func (o EWalletChannelProperties) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -293,11 +327,11 @@ func (o EWalletChannelProperties) ToMap() (map[string]interface{}, error) {
 	if !utils.IsNil(o.FailureReturnUrl) {
 		toSerialize["failure_return_url"] = o.FailureReturnUrl
 	}
-	if !utils.IsNil(o.CancelReturnUrl) {
-		toSerialize["cancel_return_url"] = o.CancelReturnUrl
-	}
 	if !utils.IsNil(o.PendingReturnUrl) {
 		toSerialize["pending_return_url"] = o.PendingReturnUrl
+	}
+	if !utils.IsNil(o.CancelReturnUrl) {
+		toSerialize["cancel_return_url"] = o.CancelReturnUrl
 	}
 	if !utils.IsNil(o.MobileNumber) {
 		toSerialize["mobile_number"] = o.MobileNumber
@@ -307,6 +341,9 @@ func (o EWalletChannelProperties) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.Cashtag) {
 		toSerialize["cashtag"] = o.Cashtag
+	}
+	if !utils.IsNil(o.PromotionLabel) {
+		toSerialize["promotion_label"] = o.PromotionLabel
 	}
 	return toSerialize, nil
 }

@@ -1,4 +1,4 @@
-module github.com/xendit/xendit-go/v5
+module github.com/xendit/xendit-go/v6
 
 go 1.18
 

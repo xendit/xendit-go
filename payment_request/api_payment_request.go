@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strconv"
 
-	common "github.com/xendit/xendit-go/v5/common"
-	utils "github.com/xendit/xendit-go/v5/utils"
+	common "github.com/xendit/xendit-go/v6/common"
+	utils "github.com/xendit/xendit-go/v6/utils"
 	"strings"
 	"reflect"
 )
@@ -154,6 +154,7 @@ type ApiCreatePaymentRequestRequest struct {
 	ApiService PaymentRequestApi
 	idempotencyKey *string
 	forUserId *string
+	withSplitRule *string
 	paymentRequestParameters *PaymentRequestParameters
 }
 
@@ -164,6 +165,11 @@ func (r ApiCreatePaymentRequestRequest) IdempotencyKey(idempotencyKey string) Ap
 
 func (r ApiCreatePaymentRequestRequest) ForUserId(forUserId string) ApiCreatePaymentRequestRequest {
 	r.forUserId = &forUserId
+	return r
+}
+
+func (r ApiCreatePaymentRequestRequest) WithSplitRule(withSplitRule string) ApiCreatePaymentRequestRequest {
+	r.withSplitRule = &withSplitRule
 	return r
 }
 
@@ -234,6 +240,9 @@ func (a *PaymentRequestApiService) CreatePaymentRequestExecute(r ApiCreatePaymen
 	}
 	if r.forUserId != nil {
 		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "for-user-id", r.forUserId, "")
+	}
+	if r.withSplitRule != nil {
+		utils.ParameterAddToHeaderOrQuery(localVarHeaderParams, "with-split-rule", r.withSplitRule, "")
 	}
 	// body params
 	localVarPostBody = r.paymentRequestParameters

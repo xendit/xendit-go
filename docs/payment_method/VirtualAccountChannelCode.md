@@ -31,15 +31,25 @@ Virtual Account Channel Code
     
     * `MSB` (value: `"MSB"`)
     
+    * `VPB` (value: `"VPB"`)
+    
+    * `BIDV` (value: `"BIDV"`)
+    
+    * `CAKE` (value: `"CAKE"`)
+    
     * `STANDARD_CHARTERED` (value: `"STANDARD_CHARTERED"`)
     
     * `AMBANK` (value: `"AMBANK"`)
+    
+    * `UOB` (value: `"UOB"`)
     
     * `BNC` (value: `"BNC"`)
     
     * `HANA` (value: `"HANA"`)
     
     * `MUAMALAT` (value: `"MUAMALAT"`)
+    
+    * `BANK_TRANSFER` (value: `"BANK_TRANSFER"`)
     
     * `XENDIT_ENUM_DEFAULT_FALLBACK` (value: `UNKNOWN_ENUM_VALUE`)
 

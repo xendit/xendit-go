@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.99.0
+API version: 2.128.0
 */
 
 
@@ -26,6 +26,7 @@ const (
 	QRCODECHANNELCODE_PROMPTPAY QRCodeChannelCode = "PROMPTPAY"
 	QRCODECHANNELCODE_LINKAJA QRCodeChannelCode = "LINKAJA"
 	QRCODECHANNELCODE_XENDIT QRCodeChannelCode = "XENDIT"
+	QRCODECHANNELCODE_QRPH QRCodeChannelCode = "QRPH"
     QRCODECHANNELCODE_XENDIT_ENUM_DEFAULT_FALLBACK QRCodeChannelCode = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -37,6 +38,7 @@ var AllowedQRCodeChannelCodeEnumValues = []QRCodeChannelCode{
 	"PROMPTPAY",
 	"LINKAJA",
 	"XENDIT",
+	"QRPH",
     "UNKNOWN_ENUM_VALUE",
 }
 

@@ -13,6 +13,7 @@ Direct Debit Channel Properties
 | **IdentityDocumentNumber** | Pointer to **NullableString** |  | Identity number of the customer registered to the partner channel |  |
 | **RequireAuth** | Pointer to **NullableBool** |  |  |  |
 | **AccountNumber** | Pointer to **NullableString** |  | Account number of the customer |  |
+| **DestinationAccountId** | Pointer to **NullableString** |  | Destination Account ID for BaaS topups |  |
 
 ## Methods
 
@@ -338,6 +339,41 @@ HasAccountNumber returns a boolean if a field has been set.
 `func (o *DirectDebitChannelProperties) UnsetAccountNumber()`
 
 UnsetAccountNumber ensures that no value is present for AccountNumber, not even an explicit nil
+### GetDestinationAccountId
+
+`func (o *DirectDebitChannelProperties) GetDestinationAccountId() string`
+
+GetDestinationAccountId returns the DestinationAccountId field if non-nil, zero value otherwise.
+
+### GetDestinationAccountIdOk
+
+`func (o *DirectDebitChannelProperties) GetDestinationAccountIdOk() (*string, bool)`
+
+GetDestinationAccountIdOk returns a tuple with the DestinationAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDestinationAccountId
+
+`func (o *DirectDebitChannelProperties) SetDestinationAccountId(v string)`
+
+SetDestinationAccountId sets DestinationAccountId field to given value.
+
+### HasDestinationAccountId
+
+`func (o *DirectDebitChannelProperties) HasDestinationAccountId() bool`
+
+HasDestinationAccountId returns a boolean if a field has been set.
+
+### SetDestinationAccountIdNil
+
+`func (o *DirectDebitChannelProperties) SetDestinationAccountIdNil(b bool)`
+
+ SetDestinationAccountIdNil sets the value for DestinationAccountId to be an explicit nil
+
+### UnsetDestinationAccountId
+`func (o *DirectDebitChannelProperties) UnsetDestinationAccountId()`
+
+UnsetDestinationAccountId ensures that no value is present for DestinationAccountId, not even an explicit nil
 
 [[Back to README]](../../README.md)
 

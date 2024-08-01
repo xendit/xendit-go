@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.59.0
+API version: 1.70.0
 */
 
 
@@ -23,7 +23,7 @@ const (
 	DIRECTDEBITCHANNELCODE_BCA_KLIKPAY DirectDebitChannelCode = "BCA_KLIKPAY"
 	DIRECTDEBITCHANNELCODE_BCA_ONEKLIK DirectDebitChannelCode = "BCA_ONEKLIK"
 	DIRECTDEBITCHANNELCODE_BRI DirectDebitChannelCode = "BRI"
-	DIRECTDEBITCHANNELCODE_BNI DirectDebitChannelCode = "BNI"
+	DIRECTDEBITCHANNELCODE_BNI_AUTOPAY DirectDebitChannelCode = "BNI_AUTOPAY"
 	DIRECTDEBITCHANNELCODE_MANDIRI DirectDebitChannelCode = "MANDIRI"
 	DIRECTDEBITCHANNELCODE_BPI DirectDebitChannelCode = "BPI"
 	DIRECTDEBITCHANNELCODE_BPI_RECURRING DirectDebitChannelCode = "BPI_RECURRING"
@@ -108,7 +108,7 @@ var AllowedDirectDebitChannelCodeEnumValues = []DirectDebitChannelCode{
 	"BCA_KLIKPAY",
 	"BCA_ONEKLIK",
 	"BRI",
-	"BNI",
+	"BNI_AUTOPAY",
 	"MANDIRI",
 	"BPI",
 	"BPI_RECURRING",

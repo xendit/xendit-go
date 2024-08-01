@@ -6,11 +6,12 @@ EWallet Channel Properties
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **SuccessReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization is successful |  |
 | **FailureReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization failed |  |
-| **CancelReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization cancelled |  |
 | **PendingReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization is pending |  |
+| **CancelReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization cancelled |  |
 | **MobileNumber** | Pointer to **string** |  | Mobile number of customer in E.164 format (e.g. +628123123123). For OVO one time payment use only. |  |
 | **RedeemPoints** | Pointer to **string** |  | REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only. |  |
 | **Cashtag** | Pointer to **string** |  | Available for JENIUSPAY only |  |
+| **PromotionLabel** | Pointer to **string** |  | Available only for OVO |  |
 
 ## Methods
 
@@ -81,31 +82,6 @@ SetFailureReturnUrl sets FailureReturnUrl field to given value.
 
 HasFailureReturnUrl returns a boolean if a field has been set.
 
-### GetCancelReturnUrl
-
-`func (o *EWalletChannelProperties) GetCancelReturnUrl() string`
-
-GetCancelReturnUrl returns the CancelReturnUrl field if non-nil, zero value otherwise.
-
-### GetCancelReturnUrlOk
-
-`func (o *EWalletChannelProperties) GetCancelReturnUrlOk() (*string, bool)`
-
-GetCancelReturnUrlOk returns a tuple with the CancelReturnUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCancelReturnUrl
-
-`func (o *EWalletChannelProperties) SetCancelReturnUrl(v string)`
-
-SetCancelReturnUrl sets CancelReturnUrl field to given value.
-
-### HasCancelReturnUrl
-
-`func (o *EWalletChannelProperties) HasCancelReturnUrl() bool`
-
-HasCancelReturnUrl returns a boolean if a field has been set.
-
 ### GetPendingReturnUrl
 
 `func (o *EWalletChannelProperties) GetPendingReturnUrl() string`
@@ -130,6 +106,31 @@ SetPendingReturnUrl sets PendingReturnUrl field to given value.
 `func (o *EWalletChannelProperties) HasPendingReturnUrl() bool`
 
 HasPendingReturnUrl returns a boolean if a field has been set.
+
+### GetCancelReturnUrl
+
+`func (o *EWalletChannelProperties) GetCancelReturnUrl() string`
+
+GetCancelReturnUrl returns the CancelReturnUrl field if non-nil, zero value otherwise.
+
+### GetCancelReturnUrlOk
+
+`func (o *EWalletChannelProperties) GetCancelReturnUrlOk() (*string, bool)`
+
+GetCancelReturnUrlOk returns a tuple with the CancelReturnUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCancelReturnUrl
+
+`func (o *EWalletChannelProperties) SetCancelReturnUrl(v string)`
+
+SetCancelReturnUrl sets CancelReturnUrl field to given value.
+
+### HasCancelReturnUrl
+
+`func (o *EWalletChannelProperties) HasCancelReturnUrl() bool`
+
+HasCancelReturnUrl returns a boolean if a field has been set.
 
 ### GetMobileNumber
 
@@ -205,6 +206,31 @@ SetCashtag sets Cashtag field to given value.
 `func (o *EWalletChannelProperties) HasCashtag() bool`
 
 HasCashtag returns a boolean if a field has been set.
+
+### GetPromotionLabel
+
+`func (o *EWalletChannelProperties) GetPromotionLabel() string`
+
+GetPromotionLabel returns the PromotionLabel field if non-nil, zero value otherwise.
+
+### GetPromotionLabelOk
+
+`func (o *EWalletChannelProperties) GetPromotionLabelOk() (*string, bool)`
+
+GetPromotionLabelOk returns a tuple with the PromotionLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromotionLabel
+
+`func (o *EWalletChannelProperties) SetPromotionLabel(v string)`
+
+SetPromotionLabel sets PromotionLabel field to given value.
+
+### HasPromotionLabel
+
+`func (o *EWalletChannelProperties) HasPromotionLabel() bool`
+
+HasPromotionLabel returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

@@ -7,6 +7,7 @@
 | **SuccessReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization is successful |  |
 | **FailureReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization failed |  |
 | **CancelReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization cancelled |  |
+| **PendingReturnUrl** | Pointer to **string** |  | URL where the end-customer is redirected if the authorization is pending |  |
 | **RedeemPoints** | Pointer to **string** |  | REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only. |  |
 | **RequireAuth** | Pointer to **bool** |  | Toggle used to require end-customer to input undergo OTP validation before completing a payment. OTP will always be required for transactions greater than 1,000,000 IDR. For BRI tokenized payment use only. |  |
 | **MerchantIdTag** | Pointer to **string** |  | Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use  |  |
@@ -105,6 +106,31 @@ SetCancelReturnUrl sets CancelReturnUrl field to given value.
 `func (o *PaymentRequestChannelProperties) HasCancelReturnUrl() bool`
 
 HasCancelReturnUrl returns a boolean if a field has been set.
+
+### GetPendingReturnUrl
+
+`func (o *PaymentRequestChannelProperties) GetPendingReturnUrl() string`
+
+GetPendingReturnUrl returns the PendingReturnUrl field if non-nil, zero value otherwise.
+
+### GetPendingReturnUrlOk
+
+`func (o *PaymentRequestChannelProperties) GetPendingReturnUrlOk() (*string, bool)`
+
+GetPendingReturnUrlOk returns a tuple with the PendingReturnUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingReturnUrl
+
+`func (o *PaymentRequestChannelProperties) SetPendingReturnUrl(v string)`
+
+SetPendingReturnUrl sets PendingReturnUrl field to given value.
+
+### HasPendingReturnUrl
+
+`func (o *PaymentRequestChannelProperties) HasPendingReturnUrl() bool`
+
+HasPendingReturnUrl returns a boolean if a field has been set.
 
 ### GetRedeemPoints
 

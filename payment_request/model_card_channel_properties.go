@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.59.0
+API version: 1.70.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v5/utils"
+	utils "github.com/xendit/xendit-go/v6/utils"
 	"time"
 )
 
@@ -32,6 +32,9 @@ type CardChannelProperties struct {
 	// Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use
 	MerchantIdTag *string `json:"merchant_id_tag,omitempty"`
 	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	InstallmentConfiguration NullableCardInstallmentConfiguration `json:"installment_configuration,omitempty"`
+	// To indicate whether to skip the authorization phase
+	SkipAuthorization *bool `json:"skip_authorization,omitempty"`
 }
 
 // NewCardChannelProperties instantiates a new CardChannelProperties object
@@ -283,6 +286,80 @@ func (o *CardChannelProperties) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
+// GetInstallmentConfiguration returns the InstallmentConfiguration field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CardChannelProperties) GetInstallmentConfiguration() CardInstallmentConfiguration {
+	if o == nil || utils.IsNil(o.InstallmentConfiguration.Get()) {
+		var ret CardInstallmentConfiguration
+		return ret
+	}
+	return *o.InstallmentConfiguration.Get()
+}
+
+// GetInstallmentConfigurationOk returns a tuple with the InstallmentConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CardChannelProperties) GetInstallmentConfigurationOk() (*CardInstallmentConfiguration, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstallmentConfiguration.Get(), o.InstallmentConfiguration.IsSet()
+}
+
+// HasInstallmentConfiguration returns a boolean if a field has been set.
+func (o *CardChannelProperties) HasInstallmentConfiguration() bool {
+	if o != nil && o.InstallmentConfiguration.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentConfiguration gets a reference to the given NullableCardInstallmentConfiguration and assigns it to the InstallmentConfiguration field.
+func (o *CardChannelProperties) SetInstallmentConfiguration(v CardInstallmentConfiguration) {
+	o.InstallmentConfiguration.Set(&v)
+}
+// SetInstallmentConfigurationNil sets the value for InstallmentConfiguration to be an explicit nil
+func (o *CardChannelProperties) SetInstallmentConfigurationNil() {
+	o.InstallmentConfiguration.Set(nil)
+}
+
+// UnsetInstallmentConfiguration ensures that no value is present for InstallmentConfiguration, not even an explicit nil
+func (o *CardChannelProperties) UnsetInstallmentConfiguration() {
+	o.InstallmentConfiguration.Unset()
+}
+
+// GetSkipAuthorization returns the SkipAuthorization field value if set, zero value otherwise.
+func (o *CardChannelProperties) GetSkipAuthorization() bool {
+	if o == nil || utils.IsNil(o.SkipAuthorization) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipAuthorization
+}
+
+// GetSkipAuthorizationOk returns a tuple with the SkipAuthorization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardChannelProperties) GetSkipAuthorizationOk() (*bool, bool) {
+	if o == nil || utils.IsNil(o.SkipAuthorization) {
+		return nil, false
+	}
+	return o.SkipAuthorization, true
+}
+
+// HasSkipAuthorization returns a boolean if a field has been set.
+func (o *CardChannelProperties) HasSkipAuthorization() bool {
+	if o != nil && !utils.IsNil(o.SkipAuthorization) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipAuthorization gets a reference to the given bool and assigns it to the SkipAuthorization field.
+func (o *CardChannelProperties) SetSkipAuthorization(v bool) {
+	o.SkipAuthorization = &v
+}
+
 func (o CardChannelProperties) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -310,6 +387,12 @@ func (o CardChannelProperties) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.ExpiresAt) {
 		toSerialize["expires_at"] = o.ExpiresAt
+	}
+	if o.InstallmentConfiguration.IsSet() {
+		toSerialize["installment_configuration"] = o.InstallmentConfiguration.Get()
+    }
+	if !utils.IsNil(o.SkipAuthorization) {
+		toSerialize["skip_authorization"] = o.SkipAuthorization
 	}
 	return toSerialize, nil
 }

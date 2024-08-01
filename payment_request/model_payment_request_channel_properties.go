@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.59.0
+API version: 1.70.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_request
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v5/utils"
+	utils "github.com/xendit/xendit-go/v6/utils"
 )
 
 // checks if the PaymentRequestChannelProperties type satisfies the MappedNullable interface at compile time
@@ -26,6 +26,8 @@ type PaymentRequestChannelProperties struct {
 	FailureReturnUrl *string `json:"failure_return_url,omitempty"`
 	// URL where the end-customer is redirected if the authorization cancelled
 	CancelReturnUrl *string `json:"cancel_return_url,omitempty"`
+	// URL where the end-customer is redirected if the authorization is pending
+	PendingReturnUrl *string `json:"pending_return_url,omitempty"`
 	// REDEEM_NONE will not use any point, REDEEM_ALL will use all available points before cash balance is used. For OVO and ShopeePay tokenized payment use only.
 	RedeemPoints *string `json:"redeem_points,omitempty"`
 	// Toggle used to require end-customer to input undergo OTP validation before completing a payment. OTP will always be required for transactions greater than 1,000,000 IDR. For BRI tokenized payment use only.
@@ -147,6 +149,38 @@ func (o *PaymentRequestChannelProperties) HasCancelReturnUrl() bool {
 // SetCancelReturnUrl gets a reference to the given string and assigns it to the CancelReturnUrl field.
 func (o *PaymentRequestChannelProperties) SetCancelReturnUrl(v string) {
 	o.CancelReturnUrl = &v
+}
+
+// GetPendingReturnUrl returns the PendingReturnUrl field value if set, zero value otherwise.
+func (o *PaymentRequestChannelProperties) GetPendingReturnUrl() string {
+	if o == nil || utils.IsNil(o.PendingReturnUrl) {
+		var ret string
+		return ret
+	}
+	return *o.PendingReturnUrl
+}
+
+// GetPendingReturnUrlOk returns a tuple with the PendingReturnUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentRequestChannelProperties) GetPendingReturnUrlOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.PendingReturnUrl) {
+		return nil, false
+	}
+	return o.PendingReturnUrl, true
+}
+
+// HasPendingReturnUrl returns a boolean if a field has been set.
+func (o *PaymentRequestChannelProperties) HasPendingReturnUrl() bool {
+	if o != nil && !utils.IsNil(o.PendingReturnUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetPendingReturnUrl gets a reference to the given string and assigns it to the PendingReturnUrl field.
+func (o *PaymentRequestChannelProperties) SetPendingReturnUrl(v string) {
+	o.PendingReturnUrl = &v
 }
 
 // GetRedeemPoints returns the RedeemPoints field value if set, zero value otherwise.
@@ -305,6 +339,9 @@ func (o PaymentRequestChannelProperties) ToMap() (map[string]interface{}, error)
 	}
 	if !utils.IsNil(o.CancelReturnUrl) {
 		toSerialize["cancel_return_url"] = o.CancelReturnUrl
+	}
+	if !utils.IsNil(o.PendingReturnUrl) {
+		toSerialize["pending_return_url"] = o.PendingReturnUrl
 	}
 	if !utils.IsNil(o.RedeemPoints) {
 		toSerialize["redeem_points"] = o.RedeemPoints

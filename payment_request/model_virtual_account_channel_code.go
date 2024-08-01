@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.59.0
+API version: 1.70.0
 */
 
 
@@ -34,8 +34,11 @@ const (
 	VIRTUALACCOUNTCHANNELCODE_VIETCAPITAL VirtualAccountChannelCode = "VIETCAPITAL"
 	VIRTUALACCOUNTCHANNELCODE_WOORI VirtualAccountChannelCode = "WOORI"
 	VIRTUALACCOUNTCHANNELCODE_MSB VirtualAccountChannelCode = "MSB"
+	VIRTUALACCOUNTCHANNELCODE_VPB VirtualAccountChannelCode = "VPB"
+	VIRTUALACCOUNTCHANNELCODE_BIDV VirtualAccountChannelCode = "BIDV"
 	VIRTUALACCOUNTCHANNELCODE_STANDARD_CHARTERED VirtualAccountChannelCode = "STANDARD_CHARTERED"
 	VIRTUALACCOUNTCHANNELCODE_AMBANK VirtualAccountChannelCode = "AMBANK"
+	VIRTUALACCOUNTCHANNELCODE_UOB VirtualAccountChannelCode = "UOB"
 	VIRTUALACCOUNTCHANNELCODE_BNC VirtualAccountChannelCode = "BNC"
 	VIRTUALACCOUNTCHANNELCODE_HANA VirtualAccountChannelCode = "HANA"
 	VIRTUALACCOUNTCHANNELCODE_MUAMALAT VirtualAccountChannelCode = "MUAMALAT"
@@ -59,8 +62,11 @@ var AllowedVirtualAccountChannelCodeEnumValues = []VirtualAccountChannelCode{
 	"VIETCAPITAL",
 	"WOORI",
 	"MSB",
+	"VPB",
+	"BIDV",
 	"STANDARD_CHARTERED",
 	"AMBANK",
+	"UOB",
 	"BNC",
 	"HANA",
 	"MUAMALAT",

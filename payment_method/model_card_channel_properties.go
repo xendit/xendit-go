@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.99.0
+API version: 2.128.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_method
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v5/utils"
+	utils "github.com/xendit/xendit-go/v6/utils"
 	"time"
 )
 
@@ -30,6 +30,9 @@ type CardChannelProperties struct {
 	// Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging.
 	CardonfileType NullableString `json:"cardonfile_type,omitempty"`
 	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	InstallmentConfiguration NullableCardInstallmentConfiguration `json:"installment_configuration,omitempty"`
+	// Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use
+	MerchantIdTag *string `json:"merchant_id_tag,omitempty"`
 }
 
 // NewCardChannelProperties instantiates a new CardChannelProperties object
@@ -249,6 +252,80 @@ func (o *CardChannelProperties) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
+// GetInstallmentConfiguration returns the InstallmentConfiguration field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CardChannelProperties) GetInstallmentConfiguration() CardInstallmentConfiguration {
+	if o == nil || utils.IsNil(o.InstallmentConfiguration.Get()) {
+		var ret CardInstallmentConfiguration
+		return ret
+	}
+	return *o.InstallmentConfiguration.Get()
+}
+
+// GetInstallmentConfigurationOk returns a tuple with the InstallmentConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CardChannelProperties) GetInstallmentConfigurationOk() (*CardInstallmentConfiguration, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstallmentConfiguration.Get(), o.InstallmentConfiguration.IsSet()
+}
+
+// HasInstallmentConfiguration returns a boolean if a field has been set.
+func (o *CardChannelProperties) HasInstallmentConfiguration() bool {
+	if o != nil && o.InstallmentConfiguration.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentConfiguration gets a reference to the given NullableCardInstallmentConfiguration and assigns it to the InstallmentConfiguration field.
+func (o *CardChannelProperties) SetInstallmentConfiguration(v CardInstallmentConfiguration) {
+	o.InstallmentConfiguration.Set(&v)
+}
+// SetInstallmentConfigurationNil sets the value for InstallmentConfiguration to be an explicit nil
+func (o *CardChannelProperties) SetInstallmentConfigurationNil() {
+	o.InstallmentConfiguration.Set(nil)
+}
+
+// UnsetInstallmentConfiguration ensures that no value is present for InstallmentConfiguration, not even an explicit nil
+func (o *CardChannelProperties) UnsetInstallmentConfiguration() {
+	o.InstallmentConfiguration.Unset()
+}
+
+// GetMerchantIdTag returns the MerchantIdTag field value if set, zero value otherwise.
+func (o *CardChannelProperties) GetMerchantIdTag() string {
+	if o == nil || utils.IsNil(o.MerchantIdTag) {
+		var ret string
+		return ret
+	}
+	return *o.MerchantIdTag
+}
+
+// GetMerchantIdTagOk returns a tuple with the MerchantIdTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardChannelProperties) GetMerchantIdTagOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.MerchantIdTag) {
+		return nil, false
+	}
+	return o.MerchantIdTag, true
+}
+
+// HasMerchantIdTag returns a boolean if a field has been set.
+func (o *CardChannelProperties) HasMerchantIdTag() bool {
+	if o != nil && !utils.IsNil(o.MerchantIdTag) {
+		return true
+	}
+
+	return false
+}
+
+// SetMerchantIdTag gets a reference to the given string and assigns it to the MerchantIdTag field.
+func (o *CardChannelProperties) SetMerchantIdTag(v string) {
+	o.MerchantIdTag = &v
+}
+
 func (o CardChannelProperties) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -277,6 +354,12 @@ func (o CardChannelProperties) ToMap() (map[string]interface{}, error) {
     }
 	if !utils.IsNil(o.ExpiresAt) {
 		toSerialize["expires_at"] = o.ExpiresAt
+	}
+	if o.InstallmentConfiguration.IsSet() {
+		toSerialize["installment_configuration"] = o.InstallmentConfiguration.Get()
+    }
+	if !utils.IsNil(o.MerchantIdTag) {
+		toSerialize["merchant_id_tag"] = o.MerchantIdTag
 	}
 	return toSerialize, nil
 }

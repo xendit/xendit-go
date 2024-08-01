@@ -3,7 +3,7 @@ Payment Requests
 
 This API is used for Payment Requests
 
-API version: 1.59.0
+API version: 1.70.0
 */
 
 

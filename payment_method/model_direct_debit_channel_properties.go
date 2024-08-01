@@ -3,7 +3,7 @@ Payment Method Service v2
 
 This API is used for Payment Method Service v2
 
-API version: 2.99.0
+API version: 2.128.0
 */
 
 
@@ -12,7 +12,7 @@ package payment_method
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v5/utils"
+	utils "github.com/xendit/xendit-go/v6/utils"
 )
 
 // checks if the DirectDebitChannelProperties type satisfies the MappedNullable interface at compile time
@@ -35,6 +35,8 @@ type DirectDebitChannelProperties struct {
 	RequireAuth NullableBool `json:"require_auth,omitempty"`
 	// Account number of the customer
 	AccountNumber NullableString `json:"account_number,omitempty"`
+	// Destination Account ID for BaaS topups
+	DestinationAccountId NullableString `json:"destination_account_id,omitempty"`
 }
 
 // NewDirectDebitChannelProperties instantiates a new DirectDebitChannelProperties object
@@ -422,6 +424,48 @@ func (o *DirectDebitChannelProperties) UnsetAccountNumber() {
 	o.AccountNumber.Unset()
 }
 
+// GetDestinationAccountId returns the DestinationAccountId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DirectDebitChannelProperties) GetDestinationAccountId() string {
+	if o == nil || utils.IsNil(o.DestinationAccountId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DestinationAccountId.Get()
+}
+
+// GetDestinationAccountIdOk returns a tuple with the DestinationAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DirectDebitChannelProperties) GetDestinationAccountIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DestinationAccountId.Get(), o.DestinationAccountId.IsSet()
+}
+
+// HasDestinationAccountId returns a boolean if a field has been set.
+func (o *DirectDebitChannelProperties) HasDestinationAccountId() bool {
+	if o != nil && o.DestinationAccountId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDestinationAccountId gets a reference to the given NullableString and assigns it to the DestinationAccountId field.
+func (o *DirectDebitChannelProperties) SetDestinationAccountId(v string) {
+	o.DestinationAccountId.Set(&v)
+}
+// SetDestinationAccountIdNil sets the value for DestinationAccountId to be an explicit nil
+func (o *DirectDebitChannelProperties) SetDestinationAccountIdNil() {
+	o.DestinationAccountId.Set(nil)
+}
+
+// UnsetDestinationAccountId ensures that no value is present for DestinationAccountId, not even an explicit nil
+func (o *DirectDebitChannelProperties) UnsetDestinationAccountId() {
+	o.DestinationAccountId.Unset()
+}
+
 func (o DirectDebitChannelProperties) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -458,6 +502,9 @@ func (o DirectDebitChannelProperties) ToMap() (map[string]interface{}, error) {
     }
 	if o.AccountNumber.IsSet() {
 		toSerialize["account_number"] = o.AccountNumber.Get()
+    }
+	if o.DestinationAccountId.IsSet() {
+		toSerialize["destination_account_id"] = o.DestinationAccountId.Get()
     }
 	return toSerialize, nil
 }

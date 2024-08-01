@@ -9,6 +9,8 @@ Card Channel Properties
 | **FailureReturnUrl** | Pointer to **NullableString** |  | URL where the end-customer is redirected if the authorization failed |  |
 | **CardonfileType** | Pointer to **NullableString** |  | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. |  |
 | **ExpiresAt** | Pointer to **time.Time** |  |  |  |
+| **InstallmentConfiguration** | Pointer to [**NullableCardInstallmentConfiguration**](CardInstallmentConfiguration.md) |  |  |  |
+| **MerchantIdTag** | Pointer to **string** |  | Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use |  |
 
 ## Methods
 
@@ -193,6 +195,66 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *CardChannelProperties) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### GetInstallmentConfiguration
+
+`func (o *CardChannelProperties) GetInstallmentConfiguration() CardInstallmentConfiguration`
+
+GetInstallmentConfiguration returns the InstallmentConfiguration field if non-nil, zero value otherwise.
+
+### GetInstallmentConfigurationOk
+
+`func (o *CardChannelProperties) GetInstallmentConfigurationOk() (*CardInstallmentConfiguration, bool)`
+
+GetInstallmentConfigurationOk returns a tuple with the InstallmentConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstallmentConfiguration
+
+`func (o *CardChannelProperties) SetInstallmentConfiguration(v CardInstallmentConfiguration)`
+
+SetInstallmentConfiguration sets InstallmentConfiguration field to given value.
+
+### HasInstallmentConfiguration
+
+`func (o *CardChannelProperties) HasInstallmentConfiguration() bool`
+
+HasInstallmentConfiguration returns a boolean if a field has been set.
+
+### SetInstallmentConfigurationNil
+
+`func (o *CardChannelProperties) SetInstallmentConfigurationNil(b bool)`
+
+ SetInstallmentConfigurationNil sets the value for InstallmentConfiguration to be an explicit nil
+
+### UnsetInstallmentConfiguration
+`func (o *CardChannelProperties) UnsetInstallmentConfiguration()`
+
+UnsetInstallmentConfiguration ensures that no value is present for InstallmentConfiguration, not even an explicit nil
+### GetMerchantIdTag
+
+`func (o *CardChannelProperties) GetMerchantIdTag() string`
+
+GetMerchantIdTag returns the MerchantIdTag field if non-nil, zero value otherwise.
+
+### GetMerchantIdTagOk
+
+`func (o *CardChannelProperties) GetMerchantIdTagOk() (*string, bool)`
+
+GetMerchantIdTagOk returns a tuple with the MerchantIdTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMerchantIdTag
+
+`func (o *CardChannelProperties) SetMerchantIdTag(v string)`
+
+SetMerchantIdTag sets MerchantIdTag field to given value.
+
+### HasMerchantIdTag
+
+`func (o *CardChannelProperties) HasMerchantIdTag() bool`
+
+HasMerchantIdTag returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

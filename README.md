@@ -5,7 +5,7 @@
 The official Xendit Go SDK provides a simple and convenient way to call Xendit's REST API
 in applications written in Go.
 
-* Package version: 5.0.0
+* Package version: 6.0.0
 
 # Getting Started
 
@@ -14,13 +14,13 @@ in applications written in Go.
 Install xendit-go with:
 
 ```shell
-go get github.com/xendit/xendit-go/v5
+go get github.com/xendit/xendit-go/v6
 ```
 
 Put the package under your project folder and add the following in import:
 
 ```golang
-import xendit "github.com/xendit/xendit-go/v5"
+import xendit "github.com/xendit/xendit-go/v6"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
