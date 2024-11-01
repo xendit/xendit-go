@@ -50,8 +50,8 @@ type CreateInvoiceRequest struct {
 	Currency *string `json:"currency,omitempty"`
 	// The reminder time.
 	ReminderTime *float32 `json:"reminder_time,omitempty"`
-	// The local.
-	Local *string `json:"local,omitempty"`
+	// Default local language ex: ("id" or "en").
+	Locale *string `json:"locale,omitempty"`
 	// The unit of the reminder time.
 	ReminderTimeUnit *string `json:"reminder_time_unit,omitempty"`
 	// An array of items included in the invoice.
@@ -577,26 +577,26 @@ func (o *CreateInvoiceRequest) SetReminderTime(v float32) {
 }
 
 // GetLocal returns the Local field value if set, zero value otherwise.
-func (o *CreateInvoiceRequest) GetLocal() string {
-	if o == nil || utils.IsNil(o.Local) {
+func (o *CreateInvoiceRequest) GetLocale() string {
+	if o == nil || utils.IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
-	return *o.Local
+	return *o.Locale
 }
 
 // GetLocalOk returns a tuple with the Local field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateInvoiceRequest) GetLocalOk() (*string, bool) {
-	if o == nil || utils.IsNil(o.Local) {
+	if o == nil || utils.IsNil(o.Locale) {
 		return nil, false
 	}
-	return o.Local, true
+	return o.Locale, true
 }
 
 // HasLocal returns a boolean if a field has been set.
 func (o *CreateInvoiceRequest) HasLocal() bool {
-	if o != nil && !utils.IsNil(o.Local) {
+	if o != nil && !utils.IsNil(o.Locale) {
 		return true
 	}
 
@@ -605,7 +605,7 @@ func (o *CreateInvoiceRequest) HasLocal() bool {
 
 // SetLocal gets a reference to the given string and assigns it to the Local field.
 func (o *CreateInvoiceRequest) SetLocal(v string) {
-	o.Local = &v
+	o.Locale = &v
 }
 
 // GetReminderTimeUnit returns the ReminderTimeUnit field value if set, zero value otherwise.
@@ -790,8 +790,8 @@ func (o CreateInvoiceRequest) ToMap() (map[string]interface{}, error) {
 	if !utils.IsNil(o.ReminderTime) {
 		toSerialize["reminder_time"] = o.ReminderTime
 	}
-	if !utils.IsNil(o.Local) {
-		toSerialize["local"] = o.Local
+	if !utils.IsNil(o.Locale) {
+		toSerialize["locale"] = o.Locale
 	}
 	if !utils.IsNil(o.ReminderTimeUnit) {
 		toSerialize["reminder_time_unit"] = o.ReminderTimeUnit
