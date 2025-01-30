@@ -3,6 +3,7 @@ package customer
 import (
 	"bytes"
 	"context"
+    "fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -186,7 +187,10 @@ func (a *CustomerApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) (
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.CreateCustomerExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -284,7 +288,10 @@ func (a *CustomerApiService) GetCustomerExecute(r ApiGetCustomerRequest) (*Custo
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.GetCustomerExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -392,7 +399,10 @@ func (a *CustomerApiService) GetCustomerByReferenceIDExecute(r ApiGetCustomerByR
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.GetCustomerByReferenceIDExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -499,7 +509,10 @@ func (a *CustomerApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) (
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.UpdateCustomerExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

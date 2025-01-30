@@ -3,6 +3,7 @@ package balance_and_transaction
 import (
 	"bytes"
 	"context"
+    "fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -153,7 +154,10 @@ func (a *BalanceApiService) GetBalanceExecute(r ApiGetBalanceRequest) (*Balance,
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: BalanceApiService.GetBalanceExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

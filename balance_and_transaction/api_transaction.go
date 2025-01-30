@@ -3,6 +3,7 @@ package balance_and_transaction
 import (
 	"bytes"
 	"context"
+    "fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -143,7 +144,10 @@ func (a *TransactionApiService) GetTransactionByIDExecute(r ApiGetTransactionByI
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: TransactionApiService.GetTransactionByIDExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -388,7 +392,10 @@ func (a *TransactionApiService) GetAllTransactionsExecute(r ApiGetAllTransaction
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: TransactionApiService.GetAllTransactionsExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

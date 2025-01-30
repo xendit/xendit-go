@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.7.6
+API version: 1.8.7
 */
 
 
@@ -22,6 +22,7 @@ var _ utils.MappedNullable = &ChannelPropertiesCards{}
 type ChannelPropertiesCards struct {
 	// An array of allowed BINs (6 or 8 digits) for credit card payments.
 	AllowedBins []string `json:"allowed_bins,omitempty"`
+	InstallmentConfiguration *ChannelPropertiesCardsInstallmentConfiguration `json:"installment_configuration,omitempty"`
 }
 
 // NewChannelPropertiesCards instantiates a new ChannelPropertiesCards object
@@ -73,6 +74,38 @@ func (o *ChannelPropertiesCards) SetAllowedBins(v []string) {
 	o.AllowedBins = v
 }
 
+// GetInstallmentConfiguration returns the InstallmentConfiguration field value if set, zero value otherwise.
+func (o *ChannelPropertiesCards) GetInstallmentConfiguration() ChannelPropertiesCardsInstallmentConfiguration {
+	if o == nil || utils.IsNil(o.InstallmentConfiguration) {
+		var ret ChannelPropertiesCardsInstallmentConfiguration
+		return ret
+	}
+	return *o.InstallmentConfiguration
+}
+
+// GetInstallmentConfigurationOk returns a tuple with the InstallmentConfiguration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChannelPropertiesCards) GetInstallmentConfigurationOk() (*ChannelPropertiesCardsInstallmentConfiguration, bool) {
+	if o == nil || utils.IsNil(o.InstallmentConfiguration) {
+		return nil, false
+	}
+	return o.InstallmentConfiguration, true
+}
+
+// HasInstallmentConfiguration returns a boolean if a field has been set.
+func (o *ChannelPropertiesCards) HasInstallmentConfiguration() bool {
+	if o != nil && !utils.IsNil(o.InstallmentConfiguration) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentConfiguration gets a reference to the given ChannelPropertiesCardsInstallmentConfiguration and assigns it to the InstallmentConfiguration field.
+func (o *ChannelPropertiesCards) SetInstallmentConfiguration(v ChannelPropertiesCardsInstallmentConfiguration) {
+	o.InstallmentConfiguration = &v
+}
+
 func (o ChannelPropertiesCards) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -85,6 +118,9 @@ func (o ChannelPropertiesCards) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !utils.IsNil(o.AllowedBins) {
 		toSerialize["allowed_bins"] = o.AllowedBins
+	}
+	if !utils.IsNil(o.InstallmentConfiguration) {
+		toSerialize["installment_configuration"] = o.InstallmentConfiguration
 	}
 	return toSerialize, nil
 }

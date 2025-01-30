@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.7.6
+API version: 1.8.7
 */
 
 
@@ -22,6 +22,7 @@ type QrCodeType string
 const (
 	QRCODETYPE_QRIS QrCodeType = "QRIS"
 	QRCODETYPE_PROMPTPAY QrCodeType = "PROMPTPAY"
+	QRCODETYPE_QRPH QrCodeType = "QRPH"
     QRCODETYPE_XENDIT_ENUM_DEFAULT_FALLBACK QrCodeType = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -29,6 +30,7 @@ const (
 var AllowedQrCodeTypeEnumValues = []QrCodeType{
 	"QRIS",
 	"PROMPTPAY",
+	"QRPH",
     "UNKNOWN_ENUM_VALUE",
 }
 

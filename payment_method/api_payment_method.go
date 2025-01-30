@@ -3,6 +3,7 @@ package payment_method
 import (
 	"bytes"
 	"context"
+    "fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -235,7 +236,10 @@ func (a *PaymentMethodApiService) CreatePaymentMethodExecute(r ApiCreatePaymentM
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.CreatePaymentMethodExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -332,7 +336,10 @@ func (a *PaymentMethodApiService) GetPaymentMethodByIDExecute(r ApiGetPaymentMet
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.GetPaymentMethodByIDExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -593,7 +600,10 @@ func (a *PaymentMethodApiService) GetPaymentsByPaymentMethodIdExecute(r ApiGetPa
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.GetPaymentsByPaymentMethodIdExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -698,7 +708,10 @@ func (a *PaymentMethodApiService) PatchPaymentMethodExecute(r ApiPatchPaymentMet
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.PatchPaymentMethodExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -896,7 +909,10 @@ func (a *PaymentMethodApiService) GetAllPaymentMethodsExecute(r ApiGetAllPayment
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.GetAllPaymentMethodsExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -1001,7 +1017,10 @@ func (a *PaymentMethodApiService) ExpirePaymentMethodExecute(r ApiExpirePaymentM
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.ExpirePaymentMethodExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -1106,7 +1125,10 @@ func (a *PaymentMethodApiService) AuthPaymentMethodExecute(r ApiAuthPaymentMetho
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.AuthPaymentMethodExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -1200,7 +1222,10 @@ func (a *PaymentMethodApiService) SimulatePaymentExecute(r ApiSimulatePaymentReq
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PaymentMethodApiService.SimulatePaymentExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

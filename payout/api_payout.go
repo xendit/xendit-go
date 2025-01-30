@@ -3,6 +3,7 @@ package payout
 import (
 	"bytes"
 	"context"
+    "fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -188,7 +189,10 @@ func (a *PayoutApiService) CreatePayoutExecute(r ApiCreatePayoutRequest) (*GetPa
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.CreatePayoutExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -284,7 +288,10 @@ func (a *PayoutApiService) GetPayoutByIdExecute(r ApiGetPayoutByIdRequest) (*Get
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.GetPayoutByIdExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -406,7 +413,10 @@ func (a *PayoutApiService) GetPayoutChannelsExecute(r ApiGetPayoutChannelsReques
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.GetPayoutChannelsExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -539,7 +549,10 @@ func (a *PayoutApiService) GetPayoutsExecute(r ApiGetPayoutsRequest) (*GetPayout
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.GetPayoutsExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -635,7 +648,10 @@ func (a *PayoutApiService) CancelPayoutExecute(r ApiCancelPayoutRequest) (*GetPa
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
 
-	localVarBody, _ := io.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+    if err != nil {
+        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.CancelPayoutExecute: %v", err))
+    }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

@@ -38,6 +38,7 @@ An object representing details for an invoice.
 | **CustomerNotificationPreference** | Pointer to [**NotificationPreference**](NotificationPreference.md) |  |  |  |
 | **Fees** | Pointer to [**InvoiceFee[]**](InvoiceFee.md) |  | An array of fees associated with the invoice. |  |
 | **ChannelProperties** | Pointer to [**ChannelProperties**](ChannelProperties.md) |  |  |  |
+| **Metadata** | Pointer to **map[string]interface{}** |  | A free-format JSON for additional information that you may use. Object can be up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. |  |
 
 ## Methods
 
@@ -822,6 +823,31 @@ SetChannelProperties sets ChannelProperties field to given value.
 `func (o *Invoice) HasChannelProperties() bool`
 
 HasChannelProperties returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *Invoice) GetMetadata() map[string]interface{}`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *Invoice) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *Invoice) SetMetadata(v map[string]interface{})`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *Invoice) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

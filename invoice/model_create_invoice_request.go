@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.7.6
+API version: 1.8.7
 */
 
 
@@ -50,8 +50,8 @@ type CreateInvoiceRequest struct {
 	Currency *string `json:"currency,omitempty"`
 	// The reminder time.
 	ReminderTime *float32 `json:"reminder_time,omitempty"`
-	// The local.
-	Local *string `json:"local,omitempty"`
+	// The default language to display.
+	Locale *string `json:"locale,omitempty"`
 	// The unit of the reminder time.
 	ReminderTimeUnit *string `json:"reminder_time_unit,omitempty"`
 	// An array of items included in the invoice.
@@ -59,6 +59,8 @@ type CreateInvoiceRequest struct {
 	// An array of fees associated with the invoice.
 	Fees []InvoiceFee `json:"fees,omitempty"`
 	ChannelProperties *ChannelProperties `json:"channel_properties,omitempty"`
+	// A free-format JSON for additional information that you may use. Object can be up to 50 keys, with key names up to 40 characters long and values up to 500 characters long.
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // NewCreateInvoiceRequest instantiates a new CreateInvoiceRequest object
@@ -576,36 +578,36 @@ func (o *CreateInvoiceRequest) SetReminderTime(v float32) {
 	o.ReminderTime = &v
 }
 
-// GetLocal returns the Local field value if set, zero value otherwise.
-func (o *CreateInvoiceRequest) GetLocal() string {
-	if o == nil || utils.IsNil(o.Local) {
+// GetLocale returns the Locale field value if set, zero value otherwise.
+func (o *CreateInvoiceRequest) GetLocale() string {
+	if o == nil || utils.IsNil(o.Locale) {
 		var ret string
 		return ret
 	}
-	return *o.Local
+	return *o.Locale
 }
 
-// GetLocalOk returns a tuple with the Local field value if set, nil otherwise
+// GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateInvoiceRequest) GetLocalOk() (*string, bool) {
-	if o == nil || utils.IsNil(o.Local) {
+func (o *CreateInvoiceRequest) GetLocaleOk() (*string, bool) {
+	if o == nil || utils.IsNil(o.Locale) {
 		return nil, false
 	}
-	return o.Local, true
+	return o.Locale, true
 }
 
-// HasLocal returns a boolean if a field has been set.
-func (o *CreateInvoiceRequest) HasLocal() bool {
-	if o != nil && !utils.IsNil(o.Local) {
+// HasLocale returns a boolean if a field has been set.
+func (o *CreateInvoiceRequest) HasLocale() bool {
+	if o != nil && !utils.IsNil(o.Locale) {
 		return true
 	}
 
 	return false
 }
 
-// SetLocal gets a reference to the given string and assigns it to the Local field.
-func (o *CreateInvoiceRequest) SetLocal(v string) {
-	o.Local = &v
+// SetLocale gets a reference to the given string and assigns it to the Locale field.
+func (o *CreateInvoiceRequest) SetLocale(v string) {
+	o.Locale = &v
 }
 
 // GetReminderTimeUnit returns the ReminderTimeUnit field value if set, zero value otherwise.
@@ -736,6 +738,38 @@ func (o *CreateInvoiceRequest) SetChannelProperties(v ChannelProperties) {
 	o.ChannelProperties = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *CreateInvoiceRequest) GetMetadata() map[string]interface{} {
+	if o == nil || utils.IsNil(o.Metadata) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateInvoiceRequest) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || utils.IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *CreateInvoiceRequest) HasMetadata() bool {
+	if o != nil && !utils.IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *CreateInvoiceRequest) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
+}
+
 func (o CreateInvoiceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -790,8 +824,8 @@ func (o CreateInvoiceRequest) ToMap() (map[string]interface{}, error) {
 	if !utils.IsNil(o.ReminderTime) {
 		toSerialize["reminder_time"] = o.ReminderTime
 	}
-	if !utils.IsNil(o.Local) {
-		toSerialize["local"] = o.Local
+	if !utils.IsNil(o.Locale) {
+		toSerialize["locale"] = o.Locale
 	}
 	if !utils.IsNil(o.ReminderTimeUnit) {
 		toSerialize["reminder_time_unit"] = o.ReminderTimeUnit
@@ -804,6 +838,9 @@ func (o CreateInvoiceRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.ChannelProperties) {
 		toSerialize["channel_properties"] = o.ChannelProperties
+	}
+	if !utils.IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

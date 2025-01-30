@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.7.6
+API version: 1.8.7
 */
 
 
@@ -83,6 +83,8 @@ type Invoice struct {
 	// An array of fees associated with the invoice.
 	Fees []InvoiceFee `json:"fees,omitempty"`
 	ChannelProperties *ChannelProperties `json:"channel_properties,omitempty"`
+	// A free-format JSON for additional information that you may use. Object can be up to 50 keys, with key names up to 40 characters long and values up to 500 characters long.
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // NewInvoice instantiates a new Invoice object
@@ -1071,6 +1073,38 @@ func (o *Invoice) SetChannelProperties(v ChannelProperties) {
 	o.ChannelProperties = &v
 }
 
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *Invoice) GetMetadata() map[string]interface{} {
+	if o == nil || utils.IsNil(o.Metadata) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invoice) GetMetadataOk() (map[string]interface{}, bool) {
+	if o == nil || utils.IsNil(o.Metadata) {
+		return map[string]interface{}{}, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *Invoice) HasMetadata() bool {
+	if o != nil && !utils.IsNil(o.Metadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *Invoice) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
+}
+
 func (o Invoice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1148,6 +1182,9 @@ func (o Invoice) ToMap() (map[string]interface{}, error) {
 	}
 	if !utils.IsNil(o.ChannelProperties) {
 		toSerialize["channel_properties"] = o.ChannelProperties
+	}
+	if !utils.IsNil(o.Metadata) {
+		toSerialize["metadata"] = o.Metadata
 	}
 	return toSerialize, nil
 }

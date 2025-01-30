@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.7.6
+API version: 1.8.7
 */
 
 
@@ -29,6 +29,13 @@ const (
 	BANKCODE_BJB BankCode = "BJB"
 	BANKCODE_SAHABAT_SAMPOERNA BankCode = "SAHABAT_SAMPOERNA"
 	BANKCODE_CIMB BankCode = "CIMB"
+	BANKCODE_VIETCAPITAL BankCode = "VIETCAPITAL"
+	BANKCODE_WOORI BankCode = "WOORI"
+	BANKCODE_PV BankCode = "PV"
+	BANKCODE_MSB BankCode = "MSB"
+	BANKCODE_VPB BankCode = "VPB"
+	BANKCODE_BIDV BankCode = "BIDV"
+	BANKCODE_CAKE BankCode = "CAKE"
 	BANKCODE_BNC BankCode = "BNC"
 	BANKCODE_HANA BankCode = "HANA"
 	BANKCODE_MUAMALAT BankCode = "MUAMALAT"
@@ -46,6 +53,13 @@ var AllowedBankCodeEnumValues = []BankCode{
 	"BJB",
 	"SAHABAT_SAMPOERNA",
 	"CIMB",
+	"VIETCAPITAL",
+	"WOORI",
+	"PV",
+	"MSB",
+	"VPB",
+	"BIDV",
+	"CAKE",
 	"BNC",
 	"HANA",
 	"MUAMALAT",

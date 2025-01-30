@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.7.6
+API version: 1.8.7
 */
 
 
@@ -25,6 +25,7 @@ const (
 	INVOICECURRENCY_THB InvoiceCurrency = "THB"
 	INVOICECURRENCY_VND InvoiceCurrency = "VND"
 	INVOICECURRENCY_PHP InvoiceCurrency = "PHP"
+	INVOICECURRENCY_MYR InvoiceCurrency = "MYR"
     INVOICECURRENCY_XENDIT_ENUM_DEFAULT_FALLBACK InvoiceCurrency = "UNKNOWN_ENUM_VALUE"
 )
 
@@ -35,6 +36,7 @@ var AllowedInvoiceCurrencyEnumValues = []InvoiceCurrency{
 	"THB",
 	"VND",
 	"PHP",
+	"MYR",
     "UNKNOWN_ENUM_VALUE",
 }
 

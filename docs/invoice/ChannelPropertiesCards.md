@@ -5,6 +5,7 @@ An object representing properties specific for credit card payment method.
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **AllowedBins** | Pointer to **string[]** |  | An array of allowed BINs (6 or 8 digits) for credit card payments. |  |
+| **InstallmentConfiguration** | Pointer to [**ChannelPropertiesCardsInstallmentConfiguration**](ChannelPropertiesCardsInstallmentConfiguration.md) |  |  |  |
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetAllowedBins sets AllowedBins field to given value.
 `func (o *ChannelPropertiesCards) HasAllowedBins() bool`
 
 HasAllowedBins returns a boolean if a field has been set.
+
+### GetInstallmentConfiguration
+
+`func (o *ChannelPropertiesCards) GetInstallmentConfiguration() ChannelPropertiesCardsInstallmentConfiguration`
+
+GetInstallmentConfiguration returns the InstallmentConfiguration field if non-nil, zero value otherwise.
+
+### GetInstallmentConfigurationOk
+
+`func (o *ChannelPropertiesCards) GetInstallmentConfigurationOk() (*ChannelPropertiesCardsInstallmentConfiguration, bool)`
+
+GetInstallmentConfigurationOk returns a tuple with the InstallmentConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstallmentConfiguration
+
+`func (o *ChannelPropertiesCards) SetInstallmentConfiguration(v ChannelPropertiesCardsInstallmentConfiguration)`
+
+SetInstallmentConfiguration sets InstallmentConfiguration field to given value.
+
+### HasInstallmentConfiguration
+
+`func (o *ChannelPropertiesCards) HasInstallmentConfiguration() bool`
+
+HasInstallmentConfiguration returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)
