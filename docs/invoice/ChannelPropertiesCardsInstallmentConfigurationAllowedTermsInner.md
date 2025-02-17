@@ -5,7 +5,7 @@
 | Name | Type | Required | Description | Examples |
 |------------|:-------------:|:-------------:|-------------|:-------------:|
 | **Issuer** | Pointer to **string** |  | The bank code of the installment provider / issuer |  |
-| **AllowedTerms** | Pointer to **float32[]** |  | An array containing list of installment tenor available to choose |  |
+| **Terms** | Pointer to **float32[]** |  | An array containing list of installment tenor available to choose |  |
 
 ## Methods
 
@@ -51,30 +51,30 @@ SetIssuer sets Issuer field to given value.
 
 HasIssuer returns a boolean if a field has been set.
 
-### GetAllowedTerms
+### GetTerms
 
-`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetAllowedTerms() []float32`
+`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetTerms() []float32`
 
-GetAllowedTerms returns the AllowedTerms field if non-nil, zero value otherwise.
+GetTerms returns the Terms field if non-nil, zero value otherwise.
 
-### GetAllowedTermsOk
+### GetTermsOk
 
-`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetAllowedTermsOk() (*[]float32, bool)`
+`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetTermsOk() (*[]float32, bool)`
 
-GetAllowedTermsOk returns a tuple with the AllowedTerms field if it's non-nil, zero value otherwise
+GetTermsOk returns a tuple with the Terms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowedTerms
+### SetTerms
 
-`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) SetAllowedTerms(v []float32)`
+`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) SetTerms(v []float32)`
 
-SetAllowedTerms sets AllowedTerms field to given value.
+SetTerms sets Terms field to given value.
 
-### HasAllowedTerms
+### HasTerms
 
-`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) HasAllowedTerms() bool`
+`func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) HasTerms() bool`
 
-HasAllowedTerms returns a boolean if a field has been set.
+HasTerms returns a boolean if a field has been set.
 
 
 [[Back to README]](../../README.md)

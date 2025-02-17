@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.8.7
+API version: 1.8.8
 */
 
 
@@ -23,7 +23,7 @@ type ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner struct {
 	// The bank code of the installment provider / issuer
 	Issuer *string `json:"issuer,omitempty"`
 	// An array containing list of installment tenor available to choose
-	AllowedTerms []float32 `json:"allowed_terms,omitempty"`
+	Terms []float32 `json:"terms,omitempty"`
 }
 
 // NewChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner instantiates a new ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner object
@@ -75,36 +75,36 @@ func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) SetIss
 	o.Issuer = &v
 }
 
-// GetAllowedTerms returns the AllowedTerms field value if set, zero value otherwise.
-func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetAllowedTerms() []float32 {
-	if o == nil || utils.IsNil(o.AllowedTerms) {
+// GetTerms returns the Terms field value if set, zero value otherwise.
+func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetTerms() []float32 {
+	if o == nil || utils.IsNil(o.Terms) {
 		var ret []float32
 		return ret
 	}
-	return o.AllowedTerms
+	return o.Terms
 }
 
-// GetAllowedTermsOk returns a tuple with the AllowedTerms field value if set, nil otherwise
+// GetTermsOk returns a tuple with the Terms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetAllowedTermsOk() ([]float32, bool) {
-	if o == nil || utils.IsNil(o.AllowedTerms) {
+func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) GetTermsOk() ([]float32, bool) {
+	if o == nil || utils.IsNil(o.Terms) {
 		return nil, false
 	}
-	return o.AllowedTerms, true
+	return o.Terms, true
 }
 
-// HasAllowedTerms returns a boolean if a field has been set.
-func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) HasAllowedTerms() bool {
-	if o != nil && !utils.IsNil(o.AllowedTerms) {
+// HasTerms returns a boolean if a field has been set.
+func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) HasTerms() bool {
+	if o != nil && !utils.IsNil(o.Terms) {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowedTerms gets a reference to the given []float32 and assigns it to the AllowedTerms field.
-func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) SetAllowedTerms(v []float32) {
-	o.AllowedTerms = v
+// SetTerms gets a reference to the given []float32 and assigns it to the Terms field.
+func (o *ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) SetTerms(v []float32) {
+	o.Terms = v
 }
 
 func (o ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) MarshalJSON() ([]byte, error) {
@@ -120,8 +120,8 @@ func (o ChannelPropertiesCardsInstallmentConfigurationAllowedTermsInner) ToMap()
 	if !utils.IsNil(o.Issuer) {
 		toSerialize["issuer"] = o.Issuer
 	}
-	if !utils.IsNil(o.AllowedTerms) {
-		toSerialize["allowed_terms"] = o.AllowedTerms
+	if !utils.IsNil(o.Terms) {
+		toSerialize["terms"] = o.Terms
 	}
 	return toSerialize, nil
 }
