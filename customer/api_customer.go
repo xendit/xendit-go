@@ -186,11 +186,14 @@ func (a *CustomerApiService) CreateCustomerExecute(r ApiCreateCustomerRequest) (
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: CustomerApiService.CreateCustomerExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.CreateCustomerExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: CustomerApiService.CreateCustomerExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -287,11 +290,14 @@ func (a *CustomerApiService) GetCustomerExecute(r ApiGetCustomerRequest) (*Custo
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: CustomerApiService.GetCustomerExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.GetCustomerExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: CustomerApiService.GetCustomerExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -398,11 +404,14 @@ func (a *CustomerApiService) GetCustomerByReferenceIDExecute(r ApiGetCustomerByR
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: CustomerApiService.GetCustomerByReferenceIDExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.GetCustomerByReferenceIDExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: CustomerApiService.GetCustomerByReferenceIDExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -508,11 +517,14 @@ func (a *CustomerApiService) UpdateCustomerExecute(r ApiUpdateCustomerRequest) (
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: CustomerApiService.UpdateCustomerExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: CustomerApiService.UpdateCustomerExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: CustomerApiService.UpdateCustomerExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

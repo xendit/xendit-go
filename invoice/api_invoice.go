@@ -170,11 +170,14 @@ func (a *InvoiceApiService) CreateInvoiceExecute(r ApiCreateInvoiceRequest) (*In
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: InvoiceApiService.CreateInvoiceExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: InvoiceApiService.CreateInvoiceExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: InvoiceApiService.CreateInvoiceExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -269,11 +272,14 @@ func (a *InvoiceApiService) GetInvoiceByIdExecute(r ApiGetInvoiceByIdRequest) (*
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: InvoiceApiService.GetInvoiceByIdExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: InvoiceApiService.GetInvoiceByIdExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: InvoiceApiService.GetInvoiceByIdExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -514,11 +520,14 @@ func (a *InvoiceApiService) GetInvoicesExecute(r ApiGetInvoicesRequest) ([]Invoi
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: InvoiceApiService.GetInvoicesExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: InvoiceApiService.GetInvoicesExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: InvoiceApiService.GetInvoicesExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -613,11 +622,14 @@ func (a *InvoiceApiService) ExpireInvoiceExecute(r ApiExpireInvoiceRequest) (*In
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: InvoiceApiService.ExpireInvoiceExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: InvoiceApiService.ExpireInvoiceExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: InvoiceApiService.ExpireInvoiceExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

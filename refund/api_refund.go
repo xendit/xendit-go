@@ -173,11 +173,14 @@ func (a *RefundApiService) CreateRefundExecute(r ApiCreateRefundRequest) (*Refun
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: RefundApiService.CreateRefundExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: RefundApiService.CreateRefundExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: RefundApiService.CreateRefundExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -280,11 +283,14 @@ func (a *RefundApiService) GetRefundExecute(r ApiGetRefundRequest) (*Refund, *ht
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: RefundApiService.GetRefundExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: RefundApiService.GetRefundExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: RefundApiService.GetRefundExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -437,11 +443,14 @@ func (a *RefundApiService) GetAllRefundsExecute(r ApiGetAllRefundsRequest) (*Ref
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: RefundApiService.GetAllRefundsExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: RefundApiService.GetAllRefundsExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: RefundApiService.GetAllRefundsExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -544,11 +553,14 @@ func (a *RefundApiService) CancelRefundExecute(r ApiCancelRefundRequest) (*Refun
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: RefundApiService.CancelRefundExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: RefundApiService.CancelRefundExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: RefundApiService.CancelRefundExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

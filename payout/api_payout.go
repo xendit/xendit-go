@@ -188,11 +188,14 @@ func (a *PayoutApiService) CreatePayoutExecute(r ApiCreatePayoutRequest) (*GetPa
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: PayoutApiService.CreatePayoutExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.CreatePayoutExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: PayoutApiService.CreatePayoutExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -287,11 +290,14 @@ func (a *PayoutApiService) GetPayoutByIdExecute(r ApiGetPayoutByIdRequest) (*Get
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: PayoutApiService.GetPayoutByIdExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.GetPayoutByIdExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: PayoutApiService.GetPayoutByIdExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -412,11 +418,14 @@ func (a *PayoutApiService) GetPayoutChannelsExecute(r ApiGetPayoutChannelsReques
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: PayoutApiService.GetPayoutChannelsExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.GetPayoutChannelsExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: PayoutApiService.GetPayoutChannelsExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -548,11 +557,14 @@ func (a *PayoutApiService) GetPayoutsExecute(r ApiGetPayoutsRequest) (*GetPayout
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: PayoutApiService.GetPayoutsExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.GetPayoutsExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: PayoutApiService.GetPayoutsExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -647,11 +659,14 @@ func (a *PayoutApiService) CancelPayoutExecute(r ApiCancelPayoutRequest) (*GetPa
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: PayoutApiService.CancelPayoutExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: PayoutApiService.CancelPayoutExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: PayoutApiService.CancelPayoutExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 

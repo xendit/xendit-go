@@ -143,11 +143,14 @@ func (a *TransactionApiService) GetTransactionByIDExecute(r ApiGetTransactionByI
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: TransactionApiService.GetTransactionByIDExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: TransactionApiService.GetTransactionByIDExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: TransactionApiService.GetTransactionByIDExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
@@ -391,11 +394,14 @@ func (a *TransactionApiService) GetAllTransactionsExecute(r ApiGetAllTransaction
 	}
 
 	localVarHTTPResponse, err := a.client.CallAPI(req)
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error calling API: TransactionApiService.GetAllTransactionsExecute: %v", err))
+        }
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-    if err != nil {
-        return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error creating HTTP request: TransactionApiService.GetAllTransactionsExecute: %v", err))
-    }
+        if err != nil {
+            return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", fmt.Sprintf("Error parsing HTTP response: TransactionApiService.GetAllTransactionsExecute: %v", err))
+        }
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 
