@@ -3,7 +3,7 @@ xendit-invoice-service
 
 xendit-invoice-service descriptions
 
-API version: 1.8.8
+API version: 1.9.0
 */
 
 
@@ -21,6 +21,7 @@ type EwalletType string
 // List of EwalletType
 const (
 	EWALLETTYPE_OVO EwalletType = "OVO"
+	EWALLETTYPE_GOPAY EwalletType = "GOPAY"
 	EWALLETTYPE_DANA EwalletType = "DANA"
 	EWALLETTYPE_LINKAJA EwalletType = "LINKAJA"
 	EWALLETTYPE_PAYMAYA EwalletType = "PAYMAYA"
@@ -45,6 +46,7 @@ const (
 // All allowed values of EwalletType enum
 var AllowedEwalletTypeEnumValues = []EwalletType{
 	"OVO",
+	"GOPAY",
 	"DANA",
 	"LINKAJA",
 	"PAYMAYA",
