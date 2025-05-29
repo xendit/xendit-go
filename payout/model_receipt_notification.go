@@ -12,7 +12,7 @@ package payout
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v6/utils"
+	utils "github.com/xendit/xendit-go/v7/utils"
 )
 
 // checks if the ReceiptNotification type satisfies the MappedNullable interface at compile time

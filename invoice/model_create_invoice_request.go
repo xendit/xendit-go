@@ -12,7 +12,7 @@ package invoice
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v6/utils"
+	utils "github.com/xendit/xendit-go/v7/utils"
 )
 
 // checks if the CreateInvoiceRequest type satisfies the MappedNullable interface at compile time
@@ -28,8 +28,8 @@ type CreateInvoiceRequest struct {
 	PayerEmail *string `json:"payer_email,omitempty"`
 	// A description of the payment.
 	Description *string `json:"description,omitempty"`
-	// The duration of the invoice.
-	InvoiceDuration *string `json:"invoice_duration,omitempty"`
+	// The duration of the invoice in seconds.
+	InvoiceDuration *float32 `json:"invoice_duration,omitempty"`
 	// The ID of the callback virtual account.
 	CallbackVirtualAccountId *string `json:"callback_virtual_account_id,omitempty"`
 	// Indicates whether email notifications should be sent.
@@ -195,9 +195,9 @@ func (o *CreateInvoiceRequest) SetDescription(v string) {
 }
 
 // GetInvoiceDuration returns the InvoiceDuration field value if set, zero value otherwise.
-func (o *CreateInvoiceRequest) GetInvoiceDuration() string {
+func (o *CreateInvoiceRequest) GetInvoiceDuration() float32 {
 	if o == nil || utils.IsNil(o.InvoiceDuration) {
-		var ret string
+		var ret float32
 		return ret
 	}
 	return *o.InvoiceDuration
@@ -205,7 +205,7 @@ func (o *CreateInvoiceRequest) GetInvoiceDuration() string {
 
 // GetInvoiceDurationOk returns a tuple with the InvoiceDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateInvoiceRequest) GetInvoiceDurationOk() (*string, bool) {
+func (o *CreateInvoiceRequest) GetInvoiceDurationOk() (*float32, bool) {
 	if o == nil || utils.IsNil(o.InvoiceDuration) {
 		return nil, false
 	}
@@ -221,8 +221,8 @@ func (o *CreateInvoiceRequest) HasInvoiceDuration() bool {
 	return false
 }
 
-// SetInvoiceDuration gets a reference to the given string and assigns it to the InvoiceDuration field.
-func (o *CreateInvoiceRequest) SetInvoiceDuration(v string) {
+// SetInvoiceDuration gets a reference to the given float32 and assigns it to the InvoiceDuration field.
+func (o *CreateInvoiceRequest) SetInvoiceDuration(v float32) {
 	o.InvoiceDuration = &v
 }
 

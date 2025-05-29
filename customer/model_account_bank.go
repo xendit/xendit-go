@@ -12,7 +12,7 @@ package customer
 import (
 	"encoding/json"
 	
-	utils "github.com/xendit/xendit-go/v6/utils"
+	utils "github.com/xendit/xendit-go/v7/utils"
 )
 
 // checks if the AccountBank type satisfies the MappedNullable interface at compile time

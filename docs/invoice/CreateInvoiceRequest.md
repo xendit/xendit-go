@@ -8,7 +8,7 @@ An object representing for an invoice creation request.
 | **Amount** | **float64** | ☑️ | The invoice amount. |  |
 | **PayerEmail** | Pointer to **string** |  | The email address of the payer. |  |
 | **Description** | Pointer to **string** |  | A description of the payment. |  |
-| **InvoiceDuration** | Pointer to **string** |  | The duration of the invoice. |  |
+| **InvoiceDuration** | Pointer to **float32** |  | The duration of the invoice in seconds. |  |
 | **CallbackVirtualAccountId** | Pointer to **string** |  | The ID of the callback virtual account. |  |
 | **ShouldSendEmail** | Pointer to **bool** |  | Indicates whether email notifications should be sent. |  |
 | **Customer** | Pointer to [**CustomerObject**](CustomerObject.md) |  |  |  |
@@ -138,20 +138,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetInvoiceDuration
 
-`func (o *CreateInvoiceRequest) GetInvoiceDuration() string`
+`func (o *CreateInvoiceRequest) GetInvoiceDuration() float32`
 
 GetInvoiceDuration returns the InvoiceDuration field if non-nil, zero value otherwise.
 
 ### GetInvoiceDurationOk
 
-`func (o *CreateInvoiceRequest) GetInvoiceDurationOk() (*string, bool)`
+`func (o *CreateInvoiceRequest) GetInvoiceDurationOk() (*float32, bool)`
 
 GetInvoiceDurationOk returns a tuple with the InvoiceDuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInvoiceDuration
 
-`func (o *CreateInvoiceRequest) SetInvoiceDuration(v string)`
+`func (o *CreateInvoiceRequest) SetInvoiceDuration(v float32)`
 
 SetInvoiceDuration sets InvoiceDuration field to given value.
 

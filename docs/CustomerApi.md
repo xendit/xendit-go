@@ -11,7 +11,7 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v6"
+    xendit "github.com/xendit/xendit-go/v7"
 )
 
 func main() {
@@ -66,8 +66,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v6"
-    customer "github.com/xendit/xendit-go/v6/customer"
+    xendit "github.com/xendit/xendit-go/v7"
+    customer "github.com/xendit/xendit-go/v7/customer"
 )
 
 func main() {
@@ -141,8 +141,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v6"
-    customer "github.com/xendit/xendit-go/v6/customer"
+    xendit "github.com/xendit/xendit-go/v7"
+    customer "github.com/xendit/xendit-go/v7/customer"
 )
 
 func main() {
@@ -207,8 +207,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v6"
-    customer "github.com/xendit/xendit-go/v6/customer"
+    xendit "github.com/xendit/xendit-go/v7"
+    customer "github.com/xendit/xendit-go/v7/customer"
 )
 
 func main() {
@@ -279,8 +279,8 @@ import (
     "context"
     "fmt"
     "os"
-    xendit "github.com/xendit/xendit-go/v6"
-    customer "github.com/xendit/xendit-go/v6/customer"
+    xendit "github.com/xendit/xendit-go/v7"
+    customer "github.com/xendit/xendit-go/v7/customer"
 )
 
 func main() {

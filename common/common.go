@@ -44,10 +44,14 @@ type XenditSdkError struct {
 func NewXenditSdkError(response *[]byte, paramStatus string, paramStatusText string) *XenditSdkError {
 	var _rawResponse map[string]interface{};
 
-	err := json.Unmarshal(*response,&_rawResponse)
-	if err != nil {
-		_rawResponse = map[string]interface{}{}
-	}
+    if response != nil {
+        err := json.Unmarshal(*response, &_rawResponse)
+        if err != nil {
+            _rawResponse = map[string]interface{}{}
+        }
+    } else {
+        _rawResponse = map[string]interface{}{}
+    }
 
 	_status := paramStatus
 

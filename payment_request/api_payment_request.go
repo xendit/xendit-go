@@ -9,8 +9,8 @@ import (
 	"net/url"
 	"strconv"
 
-	common "github.com/xendit/xendit-go/v6/common"
-	utils "github.com/xendit/xendit-go/v6/utils"
+	common "github.com/xendit/xendit-go/v7/common"
+	utils "github.com/xendit/xendit-go/v7/utils"
 	"strings"
 	"reflect"
 )
