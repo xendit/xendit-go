@@ -1034,7 +1034,7 @@ func (a *PaymentRequestApiService) SimulatePaymentRequestPaymentExecute(r ApiSim
 		return localVarReturnValue, nil, common.NewXenditSdkError(nil, "", "Error creating HTTP request: PaymentRequestApiService.SimulatePaymentRequestPaymentExecute")
 	}
 
-	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/payments/simulate"
+	localVarPath := localBasePath + "/payment_requests/{paymentRequestId}/simulate"
 	localVarPath = strings.Replace(localVarPath, "{"+"paymentRequestId"+"}", url.PathEscape(utils.ParameterValueToString(r.paymentRequestId, "paymentRequestId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
